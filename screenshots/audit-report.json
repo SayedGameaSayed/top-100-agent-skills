@@ -1,0 +1,23 @@
+{
+  "home": {
+    "name": "الصفحة الرئيسية (index.html)",
+    "score": 100,
+    "passesCount": 35,
+    "violationsCount": 0,
+    "violations": []
+  },
+  "detail-superpowers": {
+    "name": "صفحة تفاصيل مهارة (Superpowers - Collection)",
+    "score": 100,
+    "passesCount": 39,
+    "violationsCount": 0,
+    "violations": []
+  },
+  "detail-pdf": {
+    "name": "صفحة تفاصيل مهارة (PDF - Proprietary)",
+    "score": 100,
+    "passesCount": 39,
+    "violationsCount": 0,
+    "violations": []
+  }
+}

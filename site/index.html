@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="دليل مهارات الذكاء الاصطناعي - افهم المهارة قبل أن تستخدمها">
+  <title>دليل مهارات الذكاء الاصطناعي | افهم المهارة قبل ما تنسخ اللينك</title>
+  
+  <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Fuse.js CDN with graceful fallback -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+</head>
+<body data-page="index">
+
+  <!-- Dala Navigation Bar (Transparent on Black Void) -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="brand-lockup" aria-label="دليل مهارات الذكاء الاصطناعي">
+        <span class="brand-icon-triangle" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12,3 22,21 2,21" />
+          </svg>
+        </span>
+        <span>دليل مهارات الذكاء الاصطناعي</span>
+      </a>
+      
+      <nav class="header-nav" aria-label="روابط الموقع">
+        <a href="/" class="nav-ghost-link active">الرئيسية</a>
+        <a href="/leaderboard" class="nav-ghost-link">لوحة الصدارة</a>
+        <a href="/how-to-use" class="nav-ghost-link">طريقة الاستخدام</a>
+        <a href="#all-skills-section" class="nav-cta-pill">تصفح المهارات</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    
+    <!-- Hero Stage: Constellation Floating on Black Velvet -->
+    <section class="hero-stage">
+      <div class="hero-layout-grid">
+        
+        <!-- Text Column -->
+        <div class="hero-text-col">
+          <div class="hero-kicker-tag">
+            <span>✧</span>
+            <span>دليل مهارات الذكاء الاصطناعي</span>
+          </div>
+          <h1 class="hero-headline-sculptural">افهم المهارة قبل أن تستخدمها.</h1>
+          <p class="hero-body-airy">
+            شرح عربي بسيط ومباشر لأشهر مهارات الذكاء الاصطناعي المفتوحة، مع إرشادات رسمية لإضافتها إلى شاتك أو أداة التطوير التي تستخدمها.
+          </p>
+
+          <!-- Search Centerpiece -->
+          <div class="search-centerpiece">
+            <input 
+              type="search" 
+              id="search-input" 
+              class="search-input-pill" 
+              placeholder="ابحث عن مهارة: ورد، إكسل، تصميم، اختبار…" 
+              autofocus 
+              aria-label="البحث عن مهارة"
+            >
+            <span class="search-icon-symbol" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <button id="clear-search-btn" class="search-clear-symbol" type="button" aria-label="مسح البحث" style="display: none;">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- Signature Constellation Cloud Visual -->
+        <div class="hero-visual-col" aria-hidden="true">
+          <canvas id="constellation-canvas"></canvas>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Category Anchor Navigation -->
+    <nav class="category-nav-bar" aria-label="أقسام وتصنيفات المهارات">
+      <div id="category-nav" class="category-nav-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </nav>
+
+    <!-- Highlights Stage (Featured Band) -->
+    <section id="highlights-band" class="highlights-band" aria-label="المهارات الأشهر">
+      <div class="section-container">
+        <div class="highlights-header">
+          <h2 class="highlights-title">المهارات الأشهر</h2>
+          <a href="#all-skills-section" id="highlights-view-all-btn" class="highlights-view-all">عرض كافة المهارات ↗</a>
+        </div>
+
+        <!-- Horizontal scroll-snap row -->
+        <div id="highlights-container" class="highlights-scroll-row">
+          <!-- Featured skills rendered dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- All Skills Grid Section -->
+    <section id="all-skills-section" class="all-skills-section" aria-label="جميع المهارات">
+      <div class="section-container">
+        <div class="section-headline-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h2 class="section-headline">جميع المهارات المتاحة</h2>
+            <span id="results-count" class="results-count-text">جاري التحميل...</span>
+          </div>
+
+          <!-- Sort Selector -->
+          <div class="sort-selector-box" style="display: flex; align-items: center; gap: 8px;">
+            <label for="sort-select" style="font-size: 13px; color: var(--color-ash-gray);">ترتيب حسب:</label>
+            <select id="sort-select" class="sort-select-input" aria-label="ترتيب المهارات">
+              <option value="stars" selected>الأعلى نجوماً على GitHub ★</option>
+              <option value="featured">المميزة والأشهر</option>
+              <option value="name">أبجدياً (أ - ي)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Grid of floating cards -->
+        <div id="skills-grid" class="skills-grid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="empty-state" style="display: none;">
+          <h3 class="empty-state-title">لم يتم العثور على مهارات تطابق بحثك</h3>
+          <p class="empty-state-text">جرّب كلمات بحث بديلة أو اختر تصنيفاً آخر.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>دليل مهارات الذكاء الاصطناعي — مشروع مجتمعي مستقل ومفتوح المصدر.</p>
+      <nav class="footer-nav" aria-label="روابط التذييل">
+        <a href="/">الرئيسية</a>
+        <a href="/leaderboard">لوحة الصدارة</a>
+        <a href="/how-to-use">طريقة الاستخدام</a>
+        <a href="/api/health">حالة الخادم (API Health)</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

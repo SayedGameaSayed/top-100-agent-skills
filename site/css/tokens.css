@@ -1,0 +1,73 @@
+/**
+ * tokens.css - Dala Style Reference: Constellation floating on black velvet
+ * Pure black void, Electric Iris violet, Saffron Spark amber, monolithic typography.
+ */
+
+:root {
+  /* Colors - Dala Dark Velvet Palette */
+  --color-void: #000000;
+  --color-bone-white: #ffffff;
+  --color-ash-gray: #9a9a9a;
+  --color-silver-mist: #bdbdbd;
+  --color-electric-iris: #8052ff;
+  --color-electric-iris-hover: #9266ff;
+  --color-saffron-spark: #ffb829;
+  --color-deep-verdant: #15846e;
+
+  /* Surfaces */
+  --surface-void-canvas: #000000;
+  --surface-card: rgba(255, 255, 255, 0.03);
+  --surface-card-hover: rgba(255, 255, 255, 0.06);
+  --surface-input: #0c0c0e;
+  --surface-pill: rgba(255, 255, 255, 0.07);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-focus: #8052ff;
+
+  /* Typography Stacks */
+  --font-display: 'Cairo', 'Inter', system-ui, sans-serif;
+  --font-text: 'Cairo', 'Inter', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', Consolas, Monaco, monospace;
+
+  /* Type Scale */
+  --text-caption: 12px;
+  --text-nav-label: 14px;
+  --text-body: 18px;
+  --text-heading-2xs: 24px;
+  --text-heading-xs: 27px;
+  --text-subheading: 36px;
+  --text-heading-sm: 42px;
+  --text-heading: 48px;
+  --text-heading-lg: 78px;
+  --text-display: clamp(48px, 8vw, 104px);
+
+  /* Line Heights */
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.6;
+  --leading-loose: 1.8;
+
+  /* Weights */
+  --weight-ultralight: 200;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Radii */
+  --radius-card: 24px;
+  --radius-button: 24px;
+  --radius-pill: 9999px;
+  --radius-search: 9999px;
+
+  /* Spacing */
+  --spacing-6: 6px;
+  --spacing-12: 12px;
+  --spacing-18: 18px;
+  --spacing-24: 24px;
+  --spacing-30: 30px;
+  --spacing-36: 36px;
+  --spacing-60: 60px;
+  --spacing-96: 96px;
+  --spacing-120: 120px;
+  --container-max: 1280px;
+}

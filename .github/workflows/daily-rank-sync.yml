@@ -1,0 +1,47 @@
+name: Daily Agent Skills Leaderboard Sync
+
+on:
+  schedule:
+    # Runs daily at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-leaderboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Discover New Skills, Sync GitHub Stars & Regenerate Leaderboard
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/discover-and-sync.mjs
+
+      - name: Validate Schema & Rules
+        run: node scripts/validate.mjs
+
+      - name: Run Test Suite
+        run: npm test
+
+      - name: Commit & Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [Leaderboard Bot]"
+          git add data/skills.json data/leaderboard.json README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit. Leaderboard is up-to-date."
+          else
+            git commit -m "chore(leaderboard): auto-discover & sync top 100 agent skills [skip ci]"
+            git push
+          fi

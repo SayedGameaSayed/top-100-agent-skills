@@ -1,0 +1,1807 @@
+{
+  "updated_at": "2026-10-31T20:59:55.250Z",
+  "total": 100,
+  "description": "Official Top 100 AI Agent Skills Leaderboard ranked by GitHub stars with automated daily sync.",
+  "leaderboard": [
+    {
+      "rank": 1,
+      "id": "rea",
+      "name": "rea",
+      "title_ar": "rea: أداة وكيل متقدمة",
+      "summary_ar": "Reverse engineer anything with agents, from app behavior down to native binaries. (مهارة وكيل مفتوحة المصدر)",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 415185,
+      "stars_formatted": "415.2k",
+      "repo": "morluto/rea",
+      "repo_url": "https://github.com/morluto/rea",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 2,
+      "id": "superpowers",
+      "name": "superpowers",
+      "title_ar": "Superpowers: منهجية تطوير متكاملة",
+      "summary_ar": "إطار عمل يقود الموديل في دورة تطوير كاملة: من توضيح الفكرة وكتابة الخطة إلى التنفيذ ثم مراجعة الكود، مع الالتزام بالاختبارات أولًا (TDD) ومبدأي YAGNI وDRY. الريبو يضم مهارات كثيرة، فاختر منها ما تحتاجه.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers",
+      "license": {
+        "type": "MIT (reported by a secondary source; confirm in the repository)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 3,
+      "id": "git-workflow",
+      "name": "git-workflow",
+      "title_ar": "إدارة فروع Git ورسائل Commit الاحترافية",
+      "summary_ar": "تحليل التغييرات البرمجية بدقة وصياغة رسائل الالتزام وفق معيار Conventional Commits وحل تعارضات الفروع (Merge Conflicts).",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/git-workflow",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 4,
+      "id": "obra-writing-plans",
+      "name": "writing-plans",
+      "title_ar": "تخطيط المشاريع البرمجية خطوة بخطوة",
+      "summary_ar": "هيكلة المتطلبات وتفكيك المهام البرمجية الكبيرة إلى خطوات صغيرة قابلة للاختبار والتحقق التدريجي قبل البدء في كتابة الكود.",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/writing-plans",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 5,
+      "id": "systematic-debugging",
+      "name": "systematic-debugging",
+      "title_ar": "استكشاف وإصلاح الأخطاء المنهجي",
+      "summary_ar": "منهجية دقيقة لعزل وتتبع الأخطاء البرمجية الصعبة عبر الفرضيات العلمية ومراجعة السجلات، بدلاً من التخمين العشوائي.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/systematic-debugging",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 6,
+      "id": "test-driven-development",
+      "name": "test-driven-development",
+      "title_ar": "التطوير الموجه بالاختبارات (TDD)",
+      "summary_ar": "دورة عمل Red-Green-Refactor الصارمة: كتابة اختبار فاشل يحدد السلوك المطلوب، ثم كتابة أقل كود للنجاح، ثم إعادة الهيكلة بثقة.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/test-driven-development",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 7,
+      "id": "requesting-code-review",
+      "name": "requesting-code-review",
+      "title_ar": "إعداد الكود وطلب المراجعة البرمجية",
+      "summary_ar": "تجهيز طلبات السحب (PR) ببيانات شارحة وصور توضيحية وقوائم تحقق ذاتية تسهل على المراجعين فحص الكود واعتماده.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/requesting-code-review",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 8,
+      "id": "receiving-code-review",
+      "name": "receiving-code-review",
+      "title_ar": "استيعاب وتطبيق ملاحظات مراجعة الكود",
+      "summary_ar": "التعامل مع ملاحظات المراجعين باحترافية وتفكيك الاقتراحات إلى مهام تعديل واضحة دون كسر الوظائف السابقة.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/receiving-code-review",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 9,
+      "id": "using-git-worktrees",
+      "name": "using-git-worktrees",
+      "title_ar": "العمل على عدة فروع بالتوازي بـ Git Worktrees",
+      "summary_ar": "التبديل بين الفروع وإصلاح المشاكل العاجلة (Hotfixes) في مجلدات منفصلة في نفس اللحظة دون الحاجة لعمل stash أو إعادة بناء المشروع.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/using-git-worktrees",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 10,
+      "id": "verification-before-completion",
+      "name": "verification-before-completion",
+      "title_ar": "التحقق الصارم قبل إنهاء المهمة",
+      "summary_ar": "إلزام الموديل بإجراء فحوصات ذاتية صارمة (تشغيل الاختبارات، فحص الأنواع، فحص التنسيق) قبل إعلان اكتمال أي مهمة برمجية.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/verification-before-completion",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 11,
+      "id": "subagent-driven-development",
+      "name": "subagent-driven-development",
+      "title_ar": "تطوير المشاريع عبر فرق الوكلاء الفرعيين",
+      "summary_ar": "هندسة توزيع المهام البرمجية على وكلاء ذكاء اصطناعي متخصصين (وكيل للأبحاث، وكيل للاختبار، وكيل لكتابة الكود) مع التنسيق بينهم.",
+      "category": "meta",
+      "category_ar": "بناء المهارات واكتشافها",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 12,
+      "id": "executing-plans",
+      "name": "executing-plans",
+      "title_ar": "التنفيذ المنضبط لخطط العمل البرمجية",
+      "summary_ar": "متابعة تنفيذ الخطة المكتوبة خطوة بخطوة، والتحقق من نجاح كل خطوة واختباراتها قبل الانتقال إلى الخطوة التالية.",
+      "category": "meta",
+      "category_ar": "بناء المهارات واكتشافها",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/executing-plans",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 13,
+      "id": "dispatching-parallel-agents",
+      "name": "dispatching-parallel-agents",
+      "title_ar": "إطلاق وتنسيق الوكلاء المتوازيين",
+      "summary_ar": "تشغيل مهام مستقلة متعددة في نفس الوقت بالتوازي لتقليص وقت الإنجاز الإجمالي من ساعات إلى دقائق معدودة.",
+      "category": "meta",
+      "category_ar": "بناء المهارات واكتشافها",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/dispatching-parallel-agents",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 14,
+      "id": "brainstorming-solutions",
+      "name": "brainstorming-solutions",
+      "title_ar": "العصف الذهني واستكشاف الحلول المعمارية",
+      "summary_ar": "توليد ومقارنة عدة بدائل معمارية وتقنية لأي مشكلة برمجية، وتوضيح إيجابيات وسلبيات كل حل قبل كتابة سطر كود واحد.",
+      "category": "meta",
+      "category_ar": "بناء المهارات واكتشافها",
+      "github_stars": 309972,
+      "stars_formatted": "310k",
+      "repo": "obra/superpowers",
+      "repo_url": "https://github.com/obra/superpowers/tree/main/skills/brainstorming",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 15,
+      "id": "mattpocock-skills",
+      "name": "mattpocock-skills",
+      "title_ar": "مهارات Matt Pocock للتطوير",
+      "summary_ar": "مجموعة مهارات لتشخيص الأخطاء ونمذجة المجال وكتابة المواصفات والتنفيذ والمراجعة.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 308249,
+      "stars_formatted": "308.2k",
+      "repo": "mattpocock/skills",
+      "repo_url": "https://github.com/mattpocock/skills",
+      "license": {
+        "type": "MIT (reported by a secondary source; confirm in the repository)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 16,
+      "id": "fastapi-patterns",
+      "name": "fastapi-patterns",
+      "title_ar": "أنماط واجهات FastAPI المتقدمة",
+      "summary_ar": "بناء واجهات خلفية عالية الأداء ببايثون مع التحقق من البيانات عبر Pydantic v2 وإدارة التبعيات (Dependency Injection) والتعامل غير المتزامن (Async/Await).",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/fastapi-patterns",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 17,
+      "id": "prisma-patterns",
+      "name": "prisma-patterns",
+      "title_ar": "استعلامات ونمذجة Prisma ORM الحديثة",
+      "summary_ar": "كتابة نماذج بيانات آمنة الأنواع بـ TypeScript، وتجنب مشاكل N+1 في الاستعلامات المتداخلة وإدارة عمليات الهجرة (Migrations).",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/prisma-patterns",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 18,
+      "id": "swiftui-patterns",
+      "name": "swiftui-patterns",
+      "title_ar": "أنماط واجهات SwiftUI التفاعلية",
+      "summary_ar": "بناء واجهات تطبيقات أجهزة Apple الحديثة باستخدام نمط MVVM و `@Observable` مع دعم الوضع الداكن والحركات الانسيابية.",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/swiftui-patterns",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 19,
+      "id": "rust-patterns",
+      "name": "rust-patterns",
+      "title_ar": "أنماط الإنتاج في لغة Rust",
+      "summary_ar": "تطبيق أنماط Rust المتقدمة في معالجة الأخطاء بـ `thiserror` و `anyhow`، وإدارة الملكية (Borrow Checker) وتعدد المسارات غير المتزامن باستخدام Tokio.",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/rust-patterns",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 20,
+      "id": "redis-patterns",
+      "name": "redis-patterns",
+      "title_ar": "أنماط التخزين المؤقت بـ Redis",
+      "summary_ar": "تطبيق استراتيجيات الكاش الذكية (Cache-Aside, Write-Through)، ومحددات معدل الطلبات (Rate Limiting) وتخزين الجلسات الموزعة.",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/redis-patterns",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 21,
+      "id": "react-testing-library",
+      "name": "react-testing-library",
+      "title_ar": "اختبار مكونات React التفاعلية",
+      "summary_ar": "كتابة اختبارات المكونات وسلوكيات المستخدم عبر React Testing Library ومحاكاة الأحداث الحقيقية (User Events) بدلاً من اختبار تفاصيل التنفيذ.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/react-testing",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 22,
+      "id": "python-pytest-suite",
+      "name": "python-pytest-suite",
+      "title_ar": "حزمة اختبارات بايثون بـ Pytest",
+      "summary_ar": "تصميم حزم اختبارات بايثون متكاملة باستخدام fixtures ومحاكاة الخدمات الخارجية بـ `unittest.mock` واختبار الحالات الحدية المتعددة.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/python-testing",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 23,
+      "id": "django-security",
+      "name": "django-security",
+      "title_ar": "تحصين وأمان تطبيقات Django",
+      "summary_ar": "إعدادات الأمان الصارمة في Django لمواجهة ثغرات CSRF و Clickjacking وتأمين ملفات الـ Cookies ورؤوس HSTS.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/django-security",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 24,
+      "id": "springboot-security",
+      "name": "springboot-security",
+      "title_ar": "تأمين تطبيقات Spring Boot و Java",
+      "summary_ar": "تطبيق أمان المؤسسات بـ Spring Security 6 و OAuth2 و JWT وتحديد صلاحيات الوصول على مستوى الدوال (Method-level security).",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/springboot-security",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 25,
+      "id": "security-review-checklist",
+      "name": "security-review-checklist",
+      "title_ar": "قائمة التدقيق الأمني الشامل للكود",
+      "summary_ar": "مراجعة أمنية منظمة تغطي صلاحيات المدخلات، التشفير، الجلسات، رؤوس الـ CORS، ومنع تسريب الأسرار في مخرجات الأخطاء.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/security-review",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 26,
+      "id": "pytorch-model-eval",
+      "name": "pytorch-model-eval",
+      "title_ar": "أنماط وتقييم نماذج PyTorch للتعلم العميق",
+      "summary_ar": "كتابة حلقات تدريب وتقييم آمنة للذاكرة بـ PyTorch، وإدارة الـ Checkpoints وحساب مؤشرات الدقة (Accuracy, F1-Score) وتسريع الأداء بـ CUDA.",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/pytorch-patterns",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 27,
+      "id": "marketing-campaign",
+      "name": "marketing-campaign",
+      "title_ar": "تخطيط وتنفيذ الحملات التسويقية الرقمية",
+      "summary_ar": "بناء استراتيجيات تسويق متعددة القنوات: تحديد شرائح الجمهور، صياغة رسائل الهبوط، سلاسل البريد، ونصوص الإعلانات الممولة.",
+      "category": "business-finance",
+      "category_ar": "الأعمال والمال",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/marketing-campaign",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 28,
+      "id": "i18n-sync-manager",
+      "name": "i18n-sync-manager",
+      "title_ar": "مزامنة وتدقيق ملفات الترجمة الدولية (i18n)",
+      "summary_ar": "فحص ملفات الترجمة (JSON / YAML / PO)، وكشف المفاتيح المفقودة في اللغات الأخرى، وضمان تطابق المتغيرات الديناميكية عبر كل اللغات.",
+      "category": "communication",
+      "category_ar": "الكتابة والتواصل",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/i18n-sync",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 29,
+      "id": "golang-testing-suite",
+      "name": "golang-testing-suite",
+      "title_ar": "اختبارات Go وحساب الأداء (Benchmarks)",
+      "summary_ar": "كتابة اختبارات الجداول (Table-driven tests) في Go، وفحص سباق البيانات المتوازية (Race Detector) وقياس استهلاك الذاكرة والسرعة.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/golang-testing",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 30,
+      "id": "eval-harness",
+      "name": "eval-harness",
+      "title_ar": "أطر تقييم مخرجات نماذج الذكاء الاصطناعي",
+      "summary_ar": "بناء معايير تقييم واختبارات آلية (Evals) لقياس دقة النماذج في استخراج البيانات واتباع التعليمات ومنع الهلوسة.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC/tree/main/skills/eval-harness",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 31,
+      "id": "ecc",
+      "name": "ECC",
+      "title_ar": "ECC: أداة وكيل متقدمة",
+      "summary_ar": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond. (مهارة وكيل مفتوحة المصدر)",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 293969,
+      "stars_formatted": "294k",
+      "repo": "affaan-m/ECC",
+      "repo_url": "https://github.com/affaan-m/ECC",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 32,
+      "id": "skills",
+      "name": "skills",
+      "title_ar": "skills: أداة وكيل متقدمة",
+      "summary_ar": "Public repository for Agent Skills (مهارة وكيل مفتوحة المصدر)",
+      "category": "meta",
+      "category_ar": "بناء المهارات واكتشافها",
+      "github_stars": 185822,
+      "stars_formatted": "185.8k",
+      "repo": "anthropics/skills",
+      "repo_url": "https://github.com/anthropics/skills",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 33,
+      "id": "ponytail",
+      "name": "ponytail",
+      "title_ar": "ponytail: أداة وكيل متقدمة",
+      "summary_ar": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote. (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 181467,
+      "stars_formatted": "181.5k",
+      "repo": "DietrichGebert/ponytail",
+      "repo_url": "https://github.com/DietrichGebert/ponytail",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 34,
+      "id": "pdf",
+      "name": "pdf",
+      "title_ar": "التعامل مع ملفات PDF",
+      "summary_ar": "تتيح للموديل قراءة ملفات PDF واستخراج النصوص والجداول منها، ودمج الملفات أو تقسيمها، وملء الاستمارات، وإنشاء ملفات PDF جديدة.",
+      "category": "documents",
+      "category_ar": "المستندات والملفات",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/pdf",
+      "license": {
+        "type": "Proprietary (source-available)",
+        "status": "proprietary_link_only",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 35,
+      "id": "docx",
+      "name": "docx",
+      "title_ar": "إنشاء وتعديل ملفات Word",
+      "summary_ar": "تتيح للموديل إنشاء مستندات Word منسقة وتعديل الموجود منها، مع دعم التعليقات والتغييرات المتتبعة وتنسيق العناوين والجداول.",
+      "category": "documents",
+      "category_ar": "المستندات والملفات",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/docx",
+      "license": {
+        "type": "Proprietary (source-available)",
+        "status": "proprietary_link_only",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 36,
+      "id": "xlsx",
+      "name": "xlsx",
+      "title_ar": "جداول Excel والتحليل",
+      "summary_ar": "تتيح للموديل إنشاء جداول Excel بمعادلات تعمل فعلًا وتنسيق ورسوم بيانية، وتنظيف البيانات غير المرتبة وتحويلها إلى جدول منظم.",
+      "category": "documents",
+      "category_ar": "المستندات والملفات",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
+      "license": {
+        "type": "Proprietary (source-available)",
+        "status": "proprietary_link_only",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 37,
+      "id": "pptx",
+      "name": "pptx",
+      "title_ar": "إنشاء وتعديل عروض PowerPoint",
+      "summary_ar": "تتيح للموديل إنشاء عروض PowerPoint، وقراءة العروض الموجودة وتعديلها، والعمل مع القوالب وملاحظات المتحدث والتعليقات.",
+      "category": "documents",
+      "category_ar": "المستندات والملفات",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/pptx",
+      "license": {
+        "type": "Proprietary (source-available)",
+        "status": "proprietary_link_only",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 38,
+      "id": "frontend-design",
+      "name": "frontend-design",
+      "title_ar": "تصميم واجهات ويب مميزة",
+      "summary_ar": "إرشادات تجعل الموديل يصمم الواجهات بشكل مقصود ومدروس بدل القوالب الجاهزة المتكررة، مع اهتمام بالخطوط والألوان والتخطيط.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+      "license": {
+        "type": "Check LICENSE in the skill folder (reported as source-available by some sources)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 39,
+      "id": "skill-creator",
+      "name": "skill-creator",
+      "title_ar": "صانع المهارات",
+      "summary_ar": "تساعدك على بناء مهارة جديدة من الصفر: تسألك عن المهمة، وتكتب ملف SKILL.md سليمًا، ثم تختبره وتحسّنه.",
+      "category": "meta",
+      "category_ar": "بناء المهارات واكتشافها",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 40,
+      "id": "webapp-testing",
+      "name": "webapp-testing",
+      "title_ar": "اختبار تطبيقات الويب",
+      "summary_ar": "تساعد الموديل على اختبار تطبيق ويب يعمل على جهازك عبر متصفح آلي، فيتفاعل مع الصفحات ويلتقط لقطات شاشة ويقرأ سجلات المتصفح.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 41,
+      "id": "mcp-builder",
+      "name": "mcp-builder",
+      "title_ar": "بناء خوادم MCP",
+      "summary_ar": "دليل يساعد الموديل على بناء خوادم MCP عالية الجودة تربطه بخدمات وواجهات خارجية ليستخدمها كأدوات.",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 42,
+      "id": "canvas-design",
+      "name": "canvas-design",
+      "title_ar": "تصميم بوسترات وفنون ثابتة",
+      "summary_ar": "تتيح للموديل تصميم بوسترات وأعمال فنية ثابتة بصيغة PNG أو PDF بتصميم أصلي دون تقليد أعمال فنانين موجودين.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/canvas-design",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 43,
+      "id": "web-artifacts-builder",
+      "name": "web-artifacts-builder",
+      "title_ar": "بناء صفحات ويب متقدمة",
+      "summary_ar": "أدوات وإرشادات لبناء صفحات ويب معقدة باستخدام React وTailwind ومكونات جاهزة، ثم تجميعها في ملف HTML واحد قابل للمشاركة.",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 44,
+      "id": "brand-guidelines",
+      "name": "brand-guidelines",
+      "title_ar": "تطبيق الهوية البصرية",
+      "summary_ar": "تطبّق ألوان وخطوط هوية بصرية محددة على المخرجات. النسخة المنشورة مبنية على هوية Anthropic، وتصلح نموذجًا لبناء مهارة بهوية شركتك.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 45,
+      "id": "theme-factory",
+      "name": "theme-factory",
+      "title_ar": "ثيمات جاهزة للعروض والمستندات",
+      "summary_ar": "مجموعة ثيمات جاهزة من الألوان والخطوط يمكن تطبيقها على الشرائح والمستندات والصفحات لتوحيد الشكل بسرعة.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/theme-factory",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 46,
+      "id": "doc-coauthoring",
+      "name": "doc-coauthoring",
+      "title_ar": "كتابة المستندات بالمشاركة",
+      "summary_ar": "تقود الموديل عبر مراحل منظمة لكتابة مستند معك: جمع السياق، ثم صياغة الأقسام وتحسينها، ثم اختبار المستند بعين قارئ جديد.",
+      "category": "communication",
+      "category_ar": "الكتابة والتواصل",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 47,
+      "id": "algorithmic-art",
+      "name": "algorithmic-art",
+      "title_ar": "فن توليدي بالكود",
+      "summary_ar": "تتيح للموديل إنشاء أعمال فنية توليدية بالخوارزميات (p5.js) مع عناصر عشوائية قابلة للتكرار والتفاعل.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/algorithmic-art",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 48,
+      "id": "internal-comms",
+      "name": "internal-comms",
+      "title_ar": "التواصل الداخلي في الشركات",
+      "summary_ar": "تساعد على كتابة رسائل التواصل الداخلي بصيغ جاهزة مثل تحديثات الفريق والنشرات والأسئلة الشائعة وتقارير الحالة.",
+      "category": "communication",
+      "category_ar": "الكتابة والتواصل",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/internal-comms",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 49,
+      "id": "slack-gif-creator",
+      "name": "slack-gif-creator",
+      "title_ar": "صور GIF متحركة لـ Slack",
+      "summary_ar": "تنشئ صور GIF متحركة مضبوطة على قيود Slack من حيث الحجم والأبعاد لتناسب الإيموجي والرسائل.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 50,
+      "id": "claude-api",
+      "name": "claude-api",
+      "title_ar": "البناء باستخدام Claude API",
+      "summary_ar": "تساعد على بناء تطبيقات تستخدم واجهة Claude البرمجية ومكتباتها. وهي خاصة بمنصة Anthropic ولا تناسب باقي المنصات.",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 179886,
+      "stars_formatted": "179.9k",
+      "repo": "Anthropic/skills",
+      "repo_url": "https://github.com/anthropics/skills/tree/main/skills/claude-api",
+      "license": {
+        "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 51,
+      "id": "langchain-agent-workflow",
+      "name": "langchain-agent-workflow",
+      "title_ar": "بناء سلاسل ووكلاء LangChain",
+      "summary_ar": "ربط النماذج اللغوية بالأدوات الخارجية (Tools) وإدارة الذاكرة وسلاسل المعالجة المعقدة (Chains) لاتخاذ القرارات التلقائية.",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 148775,
+      "stars_formatted": "148.8k",
+      "repo": "langchain-ai/langchain",
+      "repo_url": "https://github.com/langchain-ai/langchain",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 52,
+      "id": "awesome-llm-apps",
+      "name": "awesome-llm-apps",
+      "title_ar": "awesome-llm-apps: أداة وكيل متقدمة",
+      "summary_ar": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source. (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 143591,
+      "stars_formatted": "143.6k",
+      "repo": "Shubhamsaboo/awesome-llm-apps",
+      "repo_url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 53,
+      "id": "ui-ux-pro-max-skill",
+      "name": "ui-ux-pro-max-skill",
+      "title_ar": "UI/UX Pro Max: أنظمة تصميم",
+      "summary_ar": "تقدم اتجاهات لأنظمة تصميم كاملة مع مراجع للخطوط والألوان والتخطيط والمكونات.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 143373,
+      "stars_formatted": "143.4k",
+      "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "repo_url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "license": {
+        "type": "MIT (reported by a secondary source; confirm in the repository)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 54,
+      "id": "design-system-tokens",
+      "name": "design-system-tokens",
+      "title_ar": "بناء وتوحيد أنظمة التصميم (Design Tokens)",
+      "summary_ar": "هيكلة ألوان ومقاسات ومسافات التصميم في متغيرات موحدة تسهل بناء واجهات متسقة وتطبيق الوضعين الفاتح والداكن بسهولة.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 132809,
+      "stars_formatted": "132.8k",
+      "repo": "nextlevelbuilder/ui-skills",
+      "repo_url": "https://github.com/nextlevelbuilder/ui-skills",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 55,
+      "id": "kubernetes-manifest-builder",
+      "name": "kubernetes-manifest-builder",
+      "title_ar": "بناء ملفات نشر Kubernetes المحصنة",
+      "summary_ar": "كتابة مواصفات Deployments و Services و Ingress مع تحديد حدود الموارد (CPU/Memory limits) وسياسات الأمان SecurityContext.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 128663,
+      "stars_formatted": "128.7k",
+      "repo": "kubernetes/kubernetes",
+      "repo_url": "https://github.com/kubernetes/kubernetes",
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 56,
+      "id": "caveman",
+      "name": "caveman",
+      "title_ar": "caveman: أداة وكيل متقدمة",
+      "summary_ar": "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman. (مهارة وكيل مفتوحة المصدر)",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 116509,
+      "stars_formatted": "116.5k",
+      "repo": "JuliusBrussee/caveman",
+      "repo_url": "https://github.com/JuliusBrussee/caveman",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 57,
+      "id": "addyosmani-agent-skills",
+      "name": "addyosmani-agent-skills",
+      "title_ar": "مهارات Addy Osmani لدورة الهندسة",
+      "summary_ar": "مجموعة مهارات تغطي تحديد الميزة والواجهات والاختبار والمراجعة والإطلاق. تنبيه: بعض المهارات متداخلة، فاختر ما تحتاجه فقط.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 112188,
+      "stars_formatted": "112.2k",
+      "repo": "addyosmani/agent-skills",
+      "repo_url": "https://github.com/addyosmani/agent-skills",
+      "license": {
+        "type": "MIT (reported by a secondary source; confirm in the repository)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 58,
+      "id": "agent-skills",
+      "name": "agent-skills",
+      "title_ar": "agent-skills: أداة وكيل متقدمة",
+      "summary_ar": "Production-grade engineering skills for AI coding agents. (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 112188,
+      "stars_formatted": "112.2k",
+      "repo": "addyosmani/agent-skills",
+      "repo_url": "https://github.com/addyosmani/agent-skills",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 59,
+      "id": "github-pr-workflow",
+      "name": "github-pr-workflow",
+      "title_ar": "أتمتة دورة حياة طلبات السحب (PR Automation)",
+      "summary_ar": "إدارة وتنسيق مراجعات طلبات السحب على GitHub، وتطبيق قواعد الفحص الآلي، وحل التعليقات المتبقية تلقائياً.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 109394,
+      "stars_formatted": "109.4k",
+      "repo": "paperclipai/paperclip",
+      "repo_url": "https://github.com/paperclipai/paperclip",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 60,
+      "id": "secret-leak-detection",
+      "name": "secret-leak-detection",
+      "title_ar": "كشف وتطهير الأسرار ومفاتيح الـ API",
+      "summary_ar": "فحص ملفات المشاريع وسجل الـ Git لاكتشاف مفاتيح التشفير، كلمات المرور، والرموز الحساسة وتطهيرها بأمان.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 109394,
+      "stars_formatted": "109.4k",
+      "repo": "paperclipai/paperclip",
+      "repo_url": "https://github.com/paperclipai/paperclip",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 61,
+      "id": "simplified-technical-english",
+      "name": "simplified-technical-english",
+      "title_ar": "تبسيط وتوضيح الوثائق التقنية الإنجليزية",
+      "summary_ar": "إعادة صياغة النصوص الإنجليزية المعقدة إلى لغة بسيطة وواضحة (Simplified English) يسهل فهمها وترجمتها عبر الفرق العالمية.",
+      "category": "communication",
+      "category_ar": "الكتابة والتواصل",
+      "github_stars": 109394,
+      "stars_formatted": "109.4k",
+      "repo": "paperclipai/paperclip",
+      "repo_url": "https://github.com/paperclipai/paperclip",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 62,
+      "id": "paperclip",
+      "name": "paperclip",
+      "title_ar": "paperclip: أداة وكيل متقدمة",
+      "summary_ar": "The open-source app everyone uses to manage agents at work (مهارة وكيل مفتوحة المصدر)",
+      "category": "science-education",
+      "category_ar": "العلوم والتعليم",
+      "github_stars": 109394,
+      "stars_formatted": "109.4k",
+      "repo": "paperclipai/paperclip",
+      "repo_url": "https://github.com/paperclipai/paperclip",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 63,
+      "id": "claude-mem",
+      "name": "claude-mem",
+      "title_ar": "claude-mem: أداة وكيل متقدمة",
+      "summary_ar": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 107671,
+      "stars_formatted": "107.7k",
+      "repo": "thedotmack/claude-mem",
+      "repo_url": "https://github.com/thedotmack/claude-mem",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 64,
+      "id": "taste-skill",
+      "name": "taste-skill",
+      "title_ar": "Taste Skill: تصميم واجهات بذوق",
+      "summary_ar": "مهارات لتصميم الواجهات تشمل إعادة التصميم وبناء الهوية وتحويل الصورة إلى كود. الإصدار الثاني تجريبي.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 106932,
+      "stars_formatted": "106.9k",
+      "repo": "Leonxlnx/taste-skill",
+      "repo_url": "https://github.com/Leonxlnx/taste-skill",
+      "license": {
+        "type": "MIT (reported by a secondary source; confirm in the repository)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 65,
+      "id": "open-design",
+      "name": "open-design",
+      "title_ar": "open-design: أداة وكيل متقدمة",
+      "summary_ar": "The 1st Collaborative AI Design Agent Workspace. Local-first and open source. Create motion, prototypes, websites, apps, dashboards, presentations, images, and videos with your team and AI agents. Share work, exchange feedback, and iterate together in one workspace. (مهارة وكيل مفتوحة المصدر)",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 105177,
+      "stars_formatted": "105.2k",
+      "repo": "nexu-io/open-design",
+      "repo_url": "https://github.com/nexu-io/open-design",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 66,
+      "id": "impeccable",
+      "name": "impeccable",
+      "title_ar": "impeccable: أداة وكيل متقدمة",
+      "summary_ar": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships. (مهارة وكيل مفتوحة المصدر)",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 98137,
+      "stars_formatted": "98.1k",
+      "repo": "pbakaus/impeccable",
+      "repo_url": "https://github.com/pbakaus/impeccable",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 67,
+      "id": "tailwind-ui-builder",
+      "name": "tailwind-ui-builder",
+      "title_ar": "بناء واجهات Tailwind CSS الاحترافية",
+      "summary_ar": "كتابة مكونات واجهات مستخدم جذابة ومتجاوبة باستخدام فئات Tailwind CSS مع التركيز على التناسق والابتعاد عن التنسيقات التقليدية.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 98124,
+      "stars_formatted": "98.1k",
+      "repo": "tailwindlabs/tailwindcss",
+      "repo_url": "https://github.com/tailwindlabs/tailwindcss",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 68,
+      "id": "archify",
+      "name": "archify",
+      "title_ar": "archify: أداة وكيل متقدمة",
+      "summary_ar": "Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more. (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 92119,
+      "stars_formatted": "92.1k",
+      "repo": "tt-a1i/archify",
+      "repo_url": "https://github.com/tt-a1i/archify",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 69,
+      "id": "understand-anything",
+      "name": "Understand-Anything",
+      "title_ar": "Understand-Anything: أداة وكيل متقدمة",
+      "summary_ar": "Graphs that teach > graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more. (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 89383,
+      "stars_formatted": "89.4k",
+      "repo": "Egonex-AI/Understand-Anything",
+      "repo_url": "https://github.com/Egonex-AI/Understand-Anything",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 70,
+      "id": "docker-cloud-ops",
+      "name": "docker-cloud-ops",
+      "title_ar": "بناء حاويات Docker المحمية وحزم السحابة",
+      "summary_ar": "كتابة ملفات Dockerfile متعددة المراحل (Multi-stage) لتقليل حجم الصور، وتأمين الحاويات عبر تقليل الصلاحيات ومنع تشغيلها كـ root.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 88000,
+      "stars_formatted": "88k",
+      "repo": "agenticskills/devops-skills",
+      "repo_url": "https://github.com/agenticskills/devops-skills/tree/main/skills/docker-cloud-ops",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 71,
+      "id": "career-ops",
+      "name": "career-ops",
+      "title_ar": "career-ops: أداة وكيل متقدمة",
+      "summary_ar": "Open-source AI job search agent and job finder: scan job boards, score each job 1-5 against your CV before you apply, tailor an ATS-friendly resume and cover letter, get interview prep and an application tracker. It helps you fill in each application; you press Submit. Runs locally in Codex, OpenCode and other AI CLIs, or as a Claude Code plugin. (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 79040,
+      "stars_formatted": "79k",
+      "repo": "career-ops-hq/career-ops",
+      "repo_url": "https://github.com/career-ops-hq/career-ops",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 72,
+      "id": "awesome-claude-skills",
+      "name": "awesome-claude-skills",
+      "title_ar": "قائمة مهارات المجتمع (Awesome)",
+      "summary_ar": "فهرس لمهارات مقدمة من المجتمع بمؤلفين وتراخيص مختلفة. هو دليل للاكتشاف وليس مهارة واحدة، فراجع ترخيص كل مهارة قبل استخدامها.",
+      "category": "meta",
+      "category_ar": "بناء المهارات واكتشافها",
+      "github_stars": 78432,
+      "stars_formatted": "78.4k",
+      "repo": "ComposioHQ/awesome-claude-skills",
+      "repo_url": "https://github.com/ComposioHQ/awesome-claude-skills",
+      "license": {
+        "type": "Not stated in the source we used. Check the repository LICENSE",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 73,
+      "id": "datadog-cloud-monitoring",
+      "name": "datadog-cloud-monitoring",
+      "title_ar": "مراقبة أداء الخوادم مع Datadog",
+      "summary_ar": "إعداد لوحات مراقبة المقاييس الحيوية (Metrics) وتتبع السجلات (APM Tracing) وإنشاء تنبيهات فورية عند تجاوز معدل الأخطاء.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 74258,
+      "stars_formatted": "74.3k",
+      "repo": "composiohq/agentic-integrations",
+      "repo_url": "https://github.com/composiohq/agentic-integrations",
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 74,
+      "id": "circleci-pipeline-ops",
+      "name": "circleci-pipeline-ops",
+      "title_ar": "أتمتة خطوط التكامل والنشر CI/CD",
+      "summary_ar": "كتابة خطوط عمل سريعة ومحمية لفحص الكود وتشغيل الاختبارات وبناء الصور ونشرها تلقائياً عند الدمج في الفرع الرئيسي.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 74258,
+      "stars_formatted": "74.3k",
+      "repo": "composiohq/agentic-integrations",
+      "repo_url": "https://github.com/composiohq/agentic-integrations",
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 75,
+      "id": "openmontage",
+      "name": "OpenMontage",
+      "title_ar": "OpenMontage: أداة وكيل متقدمة",
+      "summary_ar": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio. (مهارة وكيل مفتوحة المصدر)",
+      "category": "documents",
+      "category_ar": "المستندات والملفات",
+      "github_stars": 73919,
+      "stars_formatted": "73.9k",
+      "repo": "calesthio/OpenMontage",
+      "repo_url": "https://github.com/calesthio/OpenMontage",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 76,
+      "id": "cyber-security-audit",
+      "name": "cyber-security-audit",
+      "title_ar": "فحص الثغرات الأمنية ومراجعة كود OWASP",
+      "summary_ar": "مراجعة أمنية متعمقة للكود لاكتشاف ثغرات OWASP Top 10 مثل حقن البيانات، ضعف التوثيق، تسريب الأسرار، وتأمين رؤوس الـ HTTP.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 72000,
+      "stars_formatted": "72k",
+      "repo": "agenticskills/security-skills",
+      "repo_url": "https://github.com/agenticskills/security-skills/tree/main/skills/cyber-security-audit",
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 77,
+      "id": "oh-my-openagent",
+      "name": "oh-my-openagent",
+      "title_ar": "oh-my-openagent: أداة وكيل متقدمة",
+      "summary_ar": "OmO: Just type \"mass ulw\" keyword with your prompt. Now you are the master of graph engineering. (مهارة وكيل مفتوحة المصدر)",
+      "category": "documents",
+      "category_ar": "المستندات والملفات",
+      "github_stars": 70546,
+      "stars_formatted": "70.5k",
+      "repo": "code-yeongyu/oh-my-openagent",
+      "repo_url": "https://github.com/code-yeongyu/oh-my-openagent",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 78,
+      "id": "incident-retrospective",
+      "name": "incident-retrospective",
+      "title_ar": "توثيق وتحليل الأعطال التقنية (Post-Mortem)",
+      "summary_ar": "كتابة تقارير مراجعة الأعطال التقنية بروح غير لائمة (Blameless Post-Mortem): تسلسل الأحداث، السبب الجذري، والإجراءات الوقائية الدائمة.",
+      "category": "communication",
+      "category_ar": "الكتابة والتواصل",
+      "github_stars": 70000,
+      "stars_formatted": "70k",
+      "repo": "etsy/incident-management",
+      "repo_url": "https://github.com/etsy/incident-management",
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 79,
+      "id": "playwright-e2e-testing",
+      "name": "playwright-e2e-testing",
+      "title_ar": "أتمتة اختبارات المتصفح الشاملة (Playwright)",
+      "summary_ar": "كتابة اختبارات End-to-End موثوقة للمتصفحات تحاكي تجربة المستخدم الحقيقية، واختبار الواجهات على الشاشات المختلفة ومحاكاة الشبكة.",
+      "category": "code-quality",
+      "category_ar": "جودة الكود والاختبار",
+      "github_stars": 68000,
+      "stars_formatted": "68k",
+      "repo": "agenticskills/testing-skills",
+      "repo_url": "https://github.com/agenticskills/testing-skills/tree/main/skills/playwright-e2e-testing",
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 80,
+      "id": "last30days-skill",
+      "name": "last30days-skill",
+      "title_ar": "last30days-skill: أداة وكيل متقدمة",
+      "summary_ar": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary (مهارة وكيل مفتوحة المصدر)",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 66111,
+      "stars_formatted": "66.1k",
+      "repo": "mvanhorn/last30days-skill",
+      "repo_url": "https://github.com/mvanhorn/last30days-skill",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 81,
+      "id": "sql-optimizer",
+      "name": "sql-optimizer",
+      "title_ar": "تحسين استعلامات SQL وتسريع قواعد البيانات",
+      "summary_ar": "تحليل خطط تنفيذ الاستعلامات (EXPLAIN ANALYZE)، وتحديد الفهارس المفقودة، وإعادة هيكلة استعلامات SQL البطيئة للعمل بأقصى سرعة.",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 65000,
+      "stars_formatted": "65k",
+      "repo": "agenticskills/database-skills",
+      "repo_url": "https://github.com/agenticskills/database-skills/tree/main/skills/sql-optimizer",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 82,
+      "id": "diagram-design",
+      "name": "diagram-design",
+      "title_ar": "diagram-design: أداة وكيل متقدمة",
+      "summary_ar": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 45 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop. (مهارة وكيل مفتوحة المصدر)",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 63450,
+      "stars_formatted": "63.5k",
+      "repo": "cathrynlavery/diagram-design",
+      "repo_url": "https://github.com/cathrynlavery/diagram-design",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 83,
+      "id": "humanizer",
+      "name": "humanizer",
+      "title_ar": "humanizer: أداة وكيل متقدمة",
+      "summary_ar": "Agent skill that removes signs of AI-generated writing from text (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 62953,
+      "stars_formatted": "63k",
+      "repo": "blader/humanizer",
+      "repo_url": "https://github.com/blader/humanizer",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 84,
+      "id": "i-have-adhd",
+      "name": "i-have-adhd",
+      "title_ar": "i-have-adhd: أداة وكيل متقدمة",
+      "summary_ar": "A skill to stop your coding agent from burying the answer. ADHD-friendly output. (مهارة وكيل مفتوحة المصدر)",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 59584,
+      "stars_formatted": "59.6k",
+      "repo": "ayghri/i-have-adhd",
+      "repo_url": "https://github.com/ayghri/i-have-adhd",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 85,
+      "id": "data-analysis-pandas",
+      "name": "data-analysis-pandas",
+      "title_ar": "تحليل البيانات الاستكشافي باستخدام بايثون",
+      "summary_ar": "تنظيف البيانات ومعالجة القيم المفقودة، وحساب المؤشرات الإحصائية ورسم المخططات البيانية التفاعلية باستخدام Pandas و Seaborn.",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 58000,
+      "stars_formatted": "58k",
+      "repo": "agenticskills/data-skills",
+      "repo_url": "https://github.com/agenticskills/data-skills/tree/main/skills/data-analysis-pandas",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 86,
+      "id": "marketingskills",
+      "name": "marketingskills",
+      "title_ar": "marketingskills: أداة وكيل متقدمة",
+      "summary_ar": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering. (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 57663,
+      "stars_formatted": "57.7k",
+      "repo": "coreyhaines31/marketingskills",
+      "repo_url": "https://github.com/coreyhaines31/marketingskills",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 87,
+      "id": "awesome-claude-code",
+      "name": "awesome-claude-code",
+      "title_ar": "awesome-claude-code: أداة وكيل متقدمة",
+      "summary_ar": "A hand-picked collection of the finest of resources for the most awesome of agents, Claude Code, the undisputed champion of coding companions, from the unstoppable team at Anthropic PBC (no affiliation). A delectable showcase of top tier skills, ambidextrous agents, scintillating status lines, top notch developer tooling, and also we have plugins (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 56985,
+      "stars_formatted": "57k",
+      "repo": "hesreallyhim/awesome-claude-code",
+      "repo_url": "https://github.com/hesreallyhim/awesome-claude-code",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 88,
+      "id": "scientific-agent-skills",
+      "name": "scientific-agent-skills",
+      "title_ar": "scientific-agent-skills: أداة وكيل متقدمة",
+      "summary_ar": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard. (مهارة وكيل مفتوحة المصدر)",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 55532,
+      "stars_formatted": "55.5k",
+      "repo": "K-Dense-AI/scientific-agent-skills",
+      "repo_url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 89,
+      "id": "deep-research",
+      "name": "deep-research",
+      "title_ar": "فريق البحث الأكاديمي والتحليل المنهجي المعمق",
+      "summary_ar": "خط معالجة بحثي شامل يعتمد على 13 وكيلاً تخصصياً لإجراء مراجعات الأدبيات، والتحقق من الحقائق، وكشف التحيز الإحصائي وفق معيار APA 7.0.",
+      "category": "science-education",
+      "category_ar": "العلوم والتعليم",
+      "github_stars": 54749,
+      "stars_formatted": "54.7k",
+      "repo": "Imbad0202/academic-research-skills",
+      "repo_url": "https://github.com/Imbad0202/academic-research-skills/tree/main/deep-research",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 90,
+      "id": "sr-screener",
+      "name": "sr-screener",
+      "title_ar": "فرز الأوراق العلمية للمراجعات المنهجية",
+      "summary_ar": "تطبيق معايير الشمول والاستبعاد (Inclusion/Exclusion Criteria) لفحص مئات الملخصات والأوراق البحثية بسرعة وكفاءة.",
+      "category": "science-education",
+      "category_ar": "العلوم والتعليم",
+      "github_stars": 54749,
+      "stars_formatted": "54.7k",
+      "repo": "Imbad0202/academic-research-skills",
+      "repo_url": "https://github.com/Imbad0202/academic-research-skills/tree/main/sr-screener",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 91,
+      "id": "academic-paper-writer",
+      "name": "academic-paper-writer",
+      "title_ar": "صياغة وتحرير الأوراق العلمية المحكمة",
+      "summary_ar": "المساعدة في صياغة أقسام الورقة البحثية (المقدمة، المنهجية، النتائج، المناقشة) بأسلوب علمي رصين ومحايد يطابق متطلبات النشر الدولي.",
+      "category": "science-education",
+      "category_ar": "العلوم والتعليم",
+      "github_stars": 54749,
+      "stars_formatted": "54.7k",
+      "repo": "Imbad0202/academic-research-skills",
+      "repo_url": "https://github.com/Imbad0202/academic-research-skills/tree/main/academic-paper",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 92,
+      "id": "tanstack-query",
+      "name": "tanstack-query",
+      "title_ar": "إدارة وتخزين بيانات الخادم بـ TanStack Query",
+      "summary_ar": "التعامل مع جلب وتخزين وإعادة تحديث البيانات غير المتزامنة في تطبيقات React مع التحديثات المتفائلة (Optimistic Updates).",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 50506,
+      "stars_formatted": "50.5k",
+      "repo": "TanStack/query",
+      "repo_url": "https://github.com/TanStack/query",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 93,
+      "id": "academic-research-assistant",
+      "name": "academic-research-assistant",
+      "title_ar": "مساعد البحث العلمي ومراجعة الأدبيات",
+      "summary_ar": "هيكلة مراجعة الدراسات السابقة، وتلخيص الأوراق العلمية ونقد المنهجيات الإحصائية، وإدارة المراجع وفق أنساق APA و IEEE و BibTeX.",
+      "category": "science-education",
+      "category_ar": "العلوم والتعليم",
+      "github_stars": 50294,
+      "stars_formatted": "50.3k",
+      "repo": "agenticskills/academic-skills",
+      "repo_url": "https://github.com/agenticskills/academic-skills/tree/main/skills/academic-research-assistant",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 94,
+      "id": "weather-api-data",
+      "name": "weather-api-data",
+      "title_ar": "جمع وتحليل بيانات الأرصاد والطقس",
+      "summary_ar": "استخراج مؤشرات الطقس والتنبؤات المناخية من مصادر بيانات مفتوحة، ومعالجة السلاسل الزمنية لدرجات الحرارة وهطول الأمطار.",
+      "category": "data-ai",
+      "category_ar": "البيانات والذكاء الاصطناعي",
+      "github_stars": 48696,
+      "stars_formatted": "48.7k",
+      "repo": "hkuds/agentic-tools",
+      "repo_url": "https://github.com/hkuds/agentic-tools",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 95,
+      "id": "scientific-visualization",
+      "name": "scientific-visualization",
+      "title_ar": "رسم البيانات والمخططات العلمية للنشر",
+      "summary_ar": "توليد رسوم بيانية علمية عالية الدقة (مخططات التشتت، الصندوق، التوزيعات) بـ Matplotlib و Seaborn جاهزة للإدراج في الأوراق والكتب.",
+      "category": "science-education",
+      "category_ar": "العلوم والتعليم",
+      "github_stars": 47690,
+      "stars_formatted": "47.7k",
+      "repo": "k-dense-ai/scientific-skills",
+      "repo_url": "https://github.com/k-dense-ai/scientific-skills",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 96,
+      "id": "openapi-designer",
+      "name": "openapi-designer",
+      "title_ar": "تصميم وتوثيق واجهات البرمجة (OpenAPI 3.1)",
+      "summary_ar": "بناء مواصفات RESTful APIs وفق معيار OpenAPI v3.1 مع توليد نماذج البيانات وأنواع TypeScript والبيانات الوهمية للاختبار.",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 45000,
+      "stars_formatted": "45k",
+      "repo": "agenticskills/api-skills",
+      "repo_url": "https://github.com/agenticskills/api-skills/tree/main/skills/openapi-designer",
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 97,
+      "id": "terraform-module-library",
+      "name": "terraform-module-library",
+      "title_ar": "بناء وحدات البنية التحتية بـ Terraform",
+      "summary_ar": "كتابة وحدات Terraform معيارية وقابلة لإعادة الاستخدام لإدارة خوادم AWS و Azure وشبكات الـ VPC وقواعد البيانات السحابية.",
+      "category": "cloud-security",
+      "category_ar": "السحابة والأمان",
+      "github_stars": 42048,
+      "stars_formatted": "42k",
+      "repo": "wshobson/agents",
+      "repo_url": "https://github.com/wshobson/agents",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 98,
+      "id": "responsive-design",
+      "name": "responsive-design",
+      "title_ar": "تصميم واجهات الويب المتجاوبة الحديثة",
+      "summary_ar": "تطبيق أحدث استراتيجيات التجاوب باستخدام Container Queries، والطباعة الانسيابية (Fluid Typography)، و CSS Grid الحديثة.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 42048,
+      "stars_formatted": "42k",
+      "repo": "wshobson/agents",
+      "repo_url": "https://github.com/wshobson/agents",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 99,
+      "id": "screen-reader-accessibility",
+      "name": "screen-reader-accessibility",
+      "title_ar": "إتاحة الواجهات لقارئات الشاشة (WCAG a11y)",
+      "summary_ar": "ضبط سمات ARIA، وهيكلة العناوين الدلالية، وضمان إمكانية التنقل الكامل بلوحة المفاتيح للمستخدمين ذوي الاحتياجات الخاصة.",
+      "category": "design",
+      "category_ar": "التصميم والإبداع",
+      "github_stars": 42048,
+      "stars_formatted": "42k",
+      "repo": "wshobson/agents",
+      "repo_url": "https://github.com/wshobson/agents",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      }
+    },
+    {
+      "rank": 100,
+      "id": "agents",
+      "name": "agents",
+      "title_ar": "agents: أداة وكيل متقدمة",
+      "summary_ar": "Multi-harness agentic plugin marketplace for Claude Code, Codex, Cursor, OpenCode, GitHub Copilot, Google Antigravity, and Pi (مهارة وكيل مفتوحة المصدر)",
+      "category": "development",
+      "category_ar": "البرمجة والويب",
+      "github_stars": 42048,
+      "stars_formatted": "42k",
+      "repo": "wshobson/agents",
+      "repo_url": "https://github.com/wshobson/agents",
+      "license": {
+        "type": "MIT (reported upstream)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      }
+    }
+  ]
+}

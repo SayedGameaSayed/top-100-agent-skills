@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="لوحة صدارة أفضل 100 مهارة ذكاء اصطناعي مفتوحة المصدر مرتبة حسب عدد نجوم جيت هاب">
+  <title>لوحة الصدارة | أفضل 100 مهارة ذكاء اصطناعي على GitHub</title>
+  
+  <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="leaderboard">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="brand-lockup" aria-label="العودة للصفحة الرئيسية">
+        <span class="brand-icon-triangle" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12,3 22,21 2,21" />
+          </svg>
+        </span>
+        <span>دليل مهارات الذكاء الاصطناعي</span>
+      </a>
+      
+      <nav class="header-nav" aria-label="روابط الموقع">
+        <a href="/" class="nav-ghost-link">الرئيسية</a>
+        <a href="/leaderboard" class="nav-ghost-link active">لوحة الصدارة (Leaderboard)</a>
+        <a href="/how-to-use" class="nav-ghost-link">طريقة الاستخدام</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content View -->
+  <main class="section-container" style="padding-block: var(--spacing-60);">
+    
+    <header style="margin-block-end: 40px; text-align: center;">
+      <div class="hero-kicker-tag" style="justify-content: center; margin-inline: auto;">
+        <span>★</span>
+        <span>التصنيف العالمي المباشر لمهارات الوكلاء</span>
+      </div>
+      <h1 class="hero-headline-sculptural" style="margin-inline: auto;">لوحة صدارة أفضل 100 مهارة</h1>
+      <p class="hero-body-airy" style="margin-inline: auto; max-width: 720px;">
+        أعلى مهارات الذكاء الاصطناعي تقييماً واستخداماً في مجتمع المطورين العالمي، مرتبة تنازلياً حسب عدد نجوم GitHub مع تحديث يومي آلي وشرح عربي مبسط لكل مهارة.
+      </p>
+
+      <!-- Live Sync Status Banner -->
+      <div style="display: inline-flex; align-items: center; gap: 8px; margin-block-start: 16px; padding: 6px 16px; background: rgba(21, 132, 110, 0.15); border: 1px solid rgba(21, 132, 110, 0.35); border-radius: var(--radius-pill); font-size: 13px; color: #4ade80;">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: #22c55e;"></span>
+        <span>يتم التحديث والتتبع آلياً يومياً عبر GitHub Actions</span>
+      </div>
+    </header>
+
+    <!-- Filters & Search Toolbar -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-block-end: 24px; padding: 16px 20px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card);">
+      <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 260px;">
+        <input 
+          type="search" 
+          id="leaderboard-search" 
+          class="search-input-pill" 
+          style="padding-block: 8px; font-size: 14px; width: 100%;" 
+          placeholder="ابحث في لوحة الصدارة: TDD، سحابة، بايثون، تصميم…" 
+          aria-label="البحث في لوحة الصدارة"
+        >
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="leaderboard-category-filter" style="font-size: 13px; color: var(--color-ash-gray);">التصنيف:</label>
+        <select id="leaderboard-category-filter" class="sort-select-input" aria-label="تصفية التصنيف">
+          <option value="all">جميع الأقسام (100 مهارة)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Leaderboard Table Container -->
+    <div style="overflow-x: auto; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card);">
+      <table style="width: 100%; border-collapse: collapse; text-align: right; font-size: 14px;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border-subtle); background: rgba(255,255,255,0.02); color: var(--color-ash-gray); font-size: 13px;">
+            <th style="padding: 16px 20px; width: 80px; text-align: center;">الترتيب</th>
+            <th style="padding: 16px 20px; width: 120px; text-align: center;">نجوم جيت هاب</th>
+            <th style="padding: 16px 20px;">المهارة</th>
+            <th style="padding: 16px 20px;">التصنيف</th>
+            <th style="padding: 16px 20px;">المستودع الأصلي</th>
+            <th style="padding: 16px 20px; text-align: center;">الإجراءات</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-tbody">
+          <tr>
+            <td colspan="6" style="padding: 40px; text-align: center; color: var(--color-silver-mist);">جاري تحميل لوحة الصدارة...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>دليل مهارات الذكاء الاصطناعي — مشروع مجتمعي مستقل ومفتوح المصدر.</p>
+      <nav class="footer-nav" aria-label="روابط التذييل">
+        <a href="/">الرئيسية</a>
+        <a href="/leaderboard">لوحة الصدارة</a>
+        <a href="/how-to-use">طريقة الاستخدام</a>
+        <a href="/api/health">حالة الخادم (API Health)</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "arabic-skills-guide",
+  "version": "1.2.0",
+  "description": "دليل مهارات الذكاء الاصطناعي - افهم المهارة قبل ما تنسخ اللينك",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "sync": "node scripts/discover-and-sync.mjs",
+    "discover": "node scripts/discover-and-sync.mjs",
+    "validate": "node scripts/validate.mjs",
+    "test": "node tests/validate.test.mjs && node tests/search.test.mjs && node tests/server.test.mjs"
+  },
+  "keywords": [
+    "ai",
+    "skills",
+    "agent-skills",
+    "arabic",
+    "prompts",
+    "fullstack"
+  ],
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.2",
+    "puppeteer-core": "^24.4.0"
+  },
+  "license": "MIT"
+}

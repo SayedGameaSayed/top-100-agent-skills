@@ -1,0 +1,187 @@
+[
+  {
+    "id": "any-chat",
+    "name": "أي شات ذكاء اصطناعي",
+    "kind": "chat",
+    "support": "paste_only",
+    "docs_url": null,
+    "skills_path": null,
+    "paths": {},
+    "verified": true,
+    "verified_on": "2026-10-31",
+    "requires_ar": "لا يلزم شيء.",
+    "steps_ar": [
+      "اضغط زر «انسخ البرومبت الجاهز» في صفحة المهارة.",
+      "الصق النص في أي محادثة مع الموديل، ثم اكتب طلبك بالعربي.",
+      "إذا لم يستطع الموديل فتح الرابط، افتح المصدر وانسخ محتوى ملف SKILL.md والصقه بنفسك."
+    ],
+    "invoke_ar": "اكتب طلبك بالعربي بعد لصق البرومبت.",
+    "note_ar": "الطريقة العامة التي تعمل مع أي موديل."
+  },
+  {
+    "id": "claude-code",
+    "name": "Claude Code",
+    "kind": "cli",
+    "support": "native",
+    "docs_url": "https://code.claude.com/docs/en/skills",
+    "skills_path": "~/.claude/skills/",
+    "paths": {
+      "user": "~/.claude/skills/<skill-name>/SKILL.md",
+      "project": ".claude/skills/<skill-name>/SKILL.md"
+    },
+    "verified": true,
+    "verified_on": "2026-10-31",
+    "requires_ar": "تثبيت Claude Code.",
+    "steps_ar": [
+      "نزّل فولدر المهارة من المصدر (الفولدر الذي بداخله ملف SKILL.md). يمكنك استخدام git clone للريبو أو زر Download ZIP من GitHub.",
+      "ضع الفولدر في ~/.claude/skills/ لتعمل المهارة في كل مشاريعك، أو في .claude/skills/ داخل المشروع لمشروع واحد. على ويندوز، ~ هو مجلد المستخدم.",
+      "لا حاجة لإعادة التشغيل. وإذا أنشأت فولدر skills جديدًا أثناء جلسة مفتوحة فاكتب /reload-skills.",
+      "ملاحظة: يمكن أيضًا التثبيت عبر نظام الإضافات، مثل: /plugin install skill-creator@claude-plugins-official."
+    ],
+    "invoke_ar": "اكتب /اسم-المهارة، أو اطلب شيئًا يطابق وصفها فيحمّلها تلقائيًا.",
+    "note_ar": "إذا تشابه اسما مهارتين، فمهارات المؤسسة تتغلب على الشخصية، والشخصية على مهارات المشروع."
+  },
+  {
+    "id": "claude-ai",
+    "name": "Claude.ai (الويب وسطح المكتب)",
+    "kind": "chat",
+    "support": "native",
+    "docs_url": "https://support.claude.com/en/articles/12512180-using-skills-in-claude",
+    "skills_path": null,
+    "paths": {},
+    "verified": true,
+    "verified_on": "2026-10-31",
+    "requires_ar": "خطة Pro أو Max أو Team أو Enterprise حسب التوثيق. الخطة المجانية غير مذكورة ضمن الخطط المؤهلة.",
+    "steps_ar": [
+      "نزّل فولدر المهارة واضغطه في ملف ZIP. يجب أن يطابق اسم الفولدر اسم المهارة، وأن يحتوي على ملف SKILL.md.",
+      "افتح Settings ثم Capabilities، وفعّل خيار Code execution and file creation.",
+      "انزل إلى قسم Skills واضغط Upload skill، ثم اختر ملف ZIP.",
+      "ستظهر المهارة في القائمة، ويمكنك تشغيلها أو إيقافها من هناك."
+    ],
+    "invoke_ar": "تُستخدم تلقائيًا عندما يطابق طلبك وصف المهارة.",
+    "note_ar": "المهارات التي ترفعها تكون خاصة بحسابك."
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "kind": "chat",
+    "support": "native",
+    "docs_url": "https://learn.chatgpt.com/docs/build-skills",
+    "skills_path": null,
+    "paths": {},
+    "verified": true,
+    "verified_on": "2026-10-31",
+    "requires_ar": "تطبيق ChatGPT لسطح المكتب للمهارات المستقلة.",
+    "steps_ar": [
+      "التوثيق الرسمي لا يشرح استيراد فولدر مهارة جاهز من GitHub داخل ChatGPT.",
+      "الطرق الموثقة هي: تسجيل سير عمل لتوليد مهارة، أو استدعاء @skill-creator لإنشاء مهارة، أو كتابة فولدر فيه SKILL.md يدويًا.",
+      "في تطبيق سطح المكتب تجد قسم Skills في الشريط الجانبي. أما المشاركة مع الآخرين فتتم عبر حزمة إضافة (plugin).",
+      "للاستخدام السريع بدون إعداد، استخدم طريقة النسخ واللصق العامة."
+    ],
+    "invoke_ar": "اكتب @ لاختيار المهارة، أو اترك ChatGPT يختارها حسب وصفها.",
+    "note_ar": "المهارات المستقلة لا تظهر في نسخة الويب والجوال، أما المهارات المضمنة في إضافات فتظهر فيهما."
+  },
+  {
+    "id": "codex-cli",
+    "name": "OpenAI Codex",
+    "kind": "cli",
+    "support": "native",
+    "docs_url": "https://learn.chatgpt.com/docs/build-skills",
+    "skills_path": "~/.agents/skills/",
+    "paths": {
+      "user": "$HOME/.agents/skills/",
+      "project": ".agents/skills/",
+      "admin": "/etc/codex/skills"
+    },
+    "verified": true,
+    "verified_on": "2026-10-31",
+    "requires_ar": "تثبيت Codex.",
+    "steps_ar": [
+      "نزّل فولدر المهارة من المصدر (الفولدر الذي بداخله ملف SKILL.md). يمكنك استخدام git clone للريبو أو زر Download ZIP من GitHub.",
+      "ضع الفولدر في ~/.agents/skills/ لتعمل المهارة في كل مشاريعك، أو في .agents/skills/ داخل المشروع.",
+      "يكتشف Codex المهارات الجديدة تلقائيًا. وإذا لم تظهر المهارة فأعد تشغيل Codex.",
+      "للمهارات الرسمية المنتقاة يمكنك استخدام: $skill-installer اسم-المهارة."
+    ],
+    "invoke_ar": "يستخدمها Codex تلقائيًا عندما يطابق طلبك وصف المهارة.",
+    "note_ar": "يبحث Codex عن .agents/skills من المجلد الحالي صعودًا إلى جذر الريبو."
+  },
+  {
+    "id": "gemini-cli",
+    "name": "Gemini CLI",
+    "kind": "cli",
+    "support": "native",
+    "docs_url": "https://geminicli.com/docs/cli/skills/",
+    "skills_path": "~/.gemini/skills/",
+    "paths": {
+      "user": "~/.gemini/skills/ (أو ~/.agents/skills/)",
+      "project": ".gemini/skills/ (أو .agents/skills/)"
+    },
+    "verified": true,
+    "verified_on": "2026-10-31",
+    "requires_ar": "تثبيت Gemini CLI.",
+    "steps_ar": [
+      "الأسهل أن تثبّت مباشرة من الريبو بالأمر: gemini skills install {{repo_git_url}} --path {{path_in_repo}} --scope user. استخدم --scope workspace لمشروع واحد.",
+      "أو يدويًا: ضع فولدر المهارة في ~/.gemini/skills/ أو ~/.agents/skills/.",
+      "تحقق من التثبيت بالأمر: gemini skills list --all. وداخل الجلسة يمكنك استخدام /skills list و/skills reload.",
+      "إذا كان الريبو مجموعة مهارات، حدّد الفولدر المطلوب في --path."
+    ],
+    "invoke_ar": "يستدعي Gemini المهارة تلقائيًا عند تطابق المهمة، ويطلب موافقتك قبل تحميلها.",
+    "note_ar": "الخيار --consent يتجاوز رسالة التأكيد الأمنية، فلا تستخدمه إلا لمصدر تثق به."
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "kind": "ide",
+    "support": "native",
+    "docs_url": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills",
+    "skills_path": "~/.copilot/skills/",
+    "paths": {
+      "user": "~/.copilot/skills/ (أو ~/.agents/skills/)",
+      "project": ".github/skills/ (أو .claude/skills/ أو .agents/skills/)"
+    },
+    "verified": true,
+    "verified_on": "2026-10-31",
+    "requires_ar": "اشتراك Copilot. وتدعم المهارات: Copilot cloud agent وCopilot CLI والوضع Agent في VS Code ومراجعة الكود.",
+    "steps_ar": [
+      "نزّل فولدر المهارة من المصدر (الفولدر الذي بداخله ملف SKILL.md). يمكنك استخدام git clone للريبو أو زر Download ZIP من GitHub.",
+      "ضع الفولدر في .github/skills/ داخل الريبو لمشروع واحد، أو في ~/.copilot/skills/ لتعمل في كل مشاريعك.",
+      "لا تضف shell إلى allowed-tools إلا بعد مراجعة المهارة والتأكد من مصدرها."
+    ],
+    "invoke_ar": "يقرر Copilot استخدام المهارة بحسب طلبك ووصفها.",
+    "note_ar": "التوثيق يوصي بتسمية فولدر مراجعة الكود باسم واضح مثل code-review."
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "kind": "ide",
+    "support": "native",
+    "docs_url": "https://cursor.com/docs/skills",
+    "skills_path": "~/.cursor/skills/",
+    "paths": {
+      "user": "~/.cursor/skills/ (أو ~/.agents/skills/)",
+      "project": ".cursor/skills/ (أو .agents/skills/)"
+    },
+    "verified": true,
+    "verified_on": "2026-10-31",
+    "requires_ar": "تثبيت Cursor.",
+    "steps_ar": [
+      "نزّل فولدر المهارة من المصدر (الفولدر الذي بداخله ملف SKILL.md). يمكنك استخدام git clone للريبو أو زر Download ZIP من GitHub.",
+      "ضع الفولدر في .cursor/skills/ داخل المشروع، أو في ~/.cursor/skills/ لتعمل في كل مشاريعك.",
+      "يكتشف Cursor المهارات عند التشغيل، فأعد تشغيله إن لم تظهر.",
+      "ملاحظة: يقرأ Cursor أيضًا فولدرات .claude/skills و.codex/skills للتوافق."
+    ],
+    "invoke_ar": "اكتب / في شات Agent واختر المهارة، أو اتركه يختارها حسب الوصف.",
+    "note_ar": "التثبيت من ريبو GitHub مباشرة يحتاج تغليف المهارات كإضافة (plugin) ونشرها في marketplace."
+  },
+  {
+    "id": "windsurf",
+    "name": "Windsurf",
+    "kind": "ide",
+    "support": "reported_compatible",
+    "docs_url": null,
+    "skills_path": null,
+    "paths": {},
+    "verified": false,
+    "note_ar": "لم نتحقق من التوثيق الرسمي بعد."
+  }
+]

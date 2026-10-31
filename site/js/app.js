@@ -1,0 +1,785 @@
+/**
+ * app.js - Full-Stack Client Logic for Arabic Skills Guide
+ * Dala Style: Constellation floating on black velvet
+ */
+
+import { SkillsSearchEngine, normalizeArabic } from './search.js';
+import { copyToClipboard } from './copy.js';
+import { initConstellation } from './constellation.js';
+
+let skillsData = null;
+let toolsData = null;
+let searchEngine = null;
+
+async function fetchJsonWithFallback(paths) {
+  for (const p of paths) {
+    try {
+      const res = await fetch(p);
+      if (res.ok) {
+        const json = await res.json();
+        // Handle both API response formats { skills: [...] } and raw json { skills: [...] }
+        return json;
+      }
+    } catch {
+      // continue to next path
+    }
+  }
+  throw new Error(`Failed to load data from paths: ${paths.join(', ')}`);
+}
+
+export async function loadData() {
+  if (!skillsData) {
+    try {
+      // Try full-stack API first, then local paths
+      const res = await fetchJsonWithFallback([
+        '/api/skills',
+        '/data/skills.json',
+        '../data/skills.json',
+        './data/skills.json',
+        'data/skills.json'
+      ]);
+      skillsData = res;
+    } catch (err) {
+      console.error('Critical: could not load skills data', err);
+    }
+  }
+
+  if (!toolsData) {
+    try {
+      const res = await fetchJsonWithFallback([
+        '/api/tools',
+        '/data/tools.json',
+        '../data/tools.json',
+        './data/tools.json',
+        'data/tools.json'
+      ]);
+      toolsData = Array.isArray(res) ? res : (res.tools || []);
+    } catch (err) {
+      console.warn('Could not load tools data', err);
+      toolsData = [];
+    }
+  }
+
+  return { skillsData, toolsData };
+}
+
+export function getEffectiveSourceUrl(skill) {
+  if (skill.source?.url_verified === true && skill.source?.url) {
+    return skill.source.url;
+  }
+  return skill.source?.repo_url || skill.source?.url || '#';
+}
+
+export function formatDifficulty(difficulty) {
+  const map = {
+    beginner: 'مبتدئ',
+    intermediate: 'متوسط',
+    advanced: 'متقدم'
+  };
+  return map[difficulty] || 'مبتدئ';
+}
+
+export function getBareLicenseLabelHtml(license) {
+  const status = license?.status;
+  if (status === 'proprietary_link_only') {
+    return `<span class="card-license-label">رخصة خاصة</span>`;
+  }
+  if (status === 'verify_before_publish') {
+    return `<span class="card-license-label verify-orange">تحقق من الرخصة</span>`;
+  }
+  return '';
+}
+
+export function resolveToolSteps(steps, skill) {
+  if (!Array.isArray(steps)) return [];
+  const repoGitUrl = skill.source?.repo_url ? `${skill.source.repo_url}.git` : '';
+  const isMultiSkill = skill.kind === 'collection' || skill.kind === 'directory' || !skill.source?.path_in_repo;
+  const pathInRepo = isMultiSkill ? '<مسار-فولدر-المهارة>' : skill.source.path_in_repo;
+
+  return steps.map((step) => {
+    return step
+      .replace(/\{\{repo_git_url\}\}/g, repoGitUrl)
+      .replace(/\{\{path_in_repo\}\}/g, pathInRepo);
+  });
+}
+
+export function formatStars(num) {
+  if (!num) return '0';
+  if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+  return num.toString();
+}
+
+export function renderSkillCard(skill, categories) {
+  const catObj = (categories || []).find((c) => c.id === skill.category);
+  const catName = catObj ? catObj.name_ar : skill.category;
+  const starsFormatted = formatStars(skill.github_stars);
+
+  return `
+    <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="skill-card" aria-label="${escapeHtml(skill.title_ar)}">
+      <div class="card-top">
+        <div class="card-meta-line">
+          <span class="card-name-en ltr">${escapeHtml(skill.name)}</span>
+          <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} نجمة على GitHub">★ ${starsFormatted}</span>
+          <span class="card-category-label">${escapeHtml(catName)}</span>
+        </div>
+        <h3 class="card-title">${escapeHtml(skill.title_ar)}</h3>
+        <p class="card-summary">${escapeHtml(skill.summary_ar)}</p>
+      </div>
+      <div class="card-bottom-row">
+        <span class="card-difficulty">${formatDifficulty(skill.difficulty)}</span>
+        ${getBareLicenseLabelHtml(skill.license)}
+      </div>
+    </a>
+  `;
+}
+
+/**
+ * INDEX PAGE
+ */
+export async function initIndexPage() {
+  const { skillsData } = await loadData();
+  if (!skillsData || !skillsData.skills) return;
+
+  searchEngine = new SkillsSearchEngine(skillsData.skills);
+
+  // Initialize Dala particle brain constellation
+  initConstellation('constellation-canvas');
+
+  const searchInput = document.getElementById('search-input');
+  const clearSearchBtn = document.getElementById('clear-search-btn');
+  const categoryNav = document.getElementById('category-nav');
+  const highlightsBand = document.getElementById('highlights-band');
+  const highlightsContainer = document.getElementById('highlights-container');
+  const gridContainer = document.getElementById('skills-grid');
+  const resultsCountEl = document.getElementById('results-count');
+  const emptyStateEl = document.getElementById('empty-state');
+  const viewAllBtn = document.getElementById('highlights-view-all-btn');
+  const sortSelect = document.getElementById('sort-select');
+
+  let activeCategory = 'all';
+  let activeSort = 'stars';
+
+  if (sortSelect) {
+    sortSelect.addEventListener('change', () => {
+      activeSort = sortSelect.value;
+      performFilter();
+    });
+  }
+
+  // Render Highlights Band (Featured skills)
+  if (highlightsContainer) {
+    const featuredSkills = skillsData.skills.filter((s) => s.featured === true);
+    highlightsContainer.innerHTML = featuredSkills
+      .map((skill) => renderSkillCard(skill, skillsData.categories))
+      .join('');
+  }
+
+  if (viewAllBtn) {
+    viewAllBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('all-skills-section')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // Render Category Navigation
+  if (categoryNav && skillsData.categories) {
+    categoryNav.innerHTML = `
+      <button class="category-nav-item active" data-category="all" type="button">الكل</button>
+      ${skillsData.categories
+        .map(
+          (cat) =>
+            `<button class="category-nav-item" data-category="${cat.id}" type="button">${escapeHtml(cat.name_ar)}</button>`
+        )
+        .join('')}
+    `;
+
+    categoryNav.addEventListener('click', (e) => {
+      const item = e.target.closest('.category-nav-item');
+      if (!item) return;
+      categoryNav.querySelectorAll('.category-nav-item').forEach((btn) => btn.classList.remove('active'));
+      item.classList.add('active');
+      activeCategory = item.dataset.category;
+      performFilter();
+    });
+  }
+
+  function renderGrid(skills) {
+    if (!gridContainer) return;
+
+    if (resultsCountEl) {
+      resultsCountEl.textContent = `عرض ${skills.length} من أصل ${skillsData.skills.length} مهارة`;
+    }
+
+    if (skills.length === 0) {
+      gridContainer.innerHTML = '';
+      if (emptyStateEl) emptyStateEl.style.display = 'block';
+      return;
+    }
+
+    if (emptyStateEl) emptyStateEl.style.display = 'none';
+    gridContainer.innerHTML = skills
+      .map((skill) => renderSkillCard(skill, skillsData.categories))
+      .join('');
+  }
+
+  function performFilter() {
+    const query = searchInput ? searchInput.value.trim() : '';
+
+    if (clearSearchBtn) {
+      clearSearchBtn.style.display = query ? 'flex' : 'none';
+    }
+
+    const isFiltered = query.length > 0 || activeCategory !== 'all';
+    if (highlightsBand) {
+      highlightsBand.style.display = isFiltered ? 'none' : 'block';
+    }
+
+    let filtered = searchEngine.search({
+      query,
+      category: activeCategory,
+      difficulty: 'all'
+    });
+
+    if (activeSort === 'stars') {
+      filtered.sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+    } else if (activeSort === 'featured') {
+      filtered.sort(
+        (a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || (b.github_stars || 0) - (a.github_stars || 0)
+      );
+    } else if (activeSort === 'name') {
+      filtered.sort((a, b) => (a.title_ar || '').localeCompare(b.title_ar || '', 'ar'));
+    }
+
+    renderGrid(filtered);
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', performFilter);
+  }
+
+  if (clearSearchBtn && searchInput) {
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchInput.focus();
+      performFilter();
+    });
+  }
+
+  performFilter();
+}
+
+/**
+ * SKILL DETAIL PAGE
+ */
+export async function initSkillDetailPage() {
+  const { skillsData, toolsData } = await loadData();
+  if (!skillsData || !skillsData.skills) return;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  let skillId = urlParams.get('id');
+  if (!skillId) {
+    const pathMatch = window.location.pathname.match(/\/skill\/([^/]+)/);
+    if (pathMatch) {
+      skillId = decodeURIComponent(pathMatch[1]);
+    }
+  }
+
+  const container = document.getElementById('skill-detail-container');
+  if (!container) return;
+
+  const skill = skillsData.skills.find((s) => s.id === skillId);
+  if (!skill) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <h1 class="empty-state-title">المهارة غير موجودة</h1>
+        <p class="empty-state-text">عذرًا، لم يتم العثور على المهارة المطلوبة.</p>
+        <div style="margin-block-start: 24px;">
+          <a href="/" class="btn-electric-pill">العودة إلى الدليل الرئيسي</a>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const categoryObj = (skillsData.categories || []).find((c) => c.id === skill.category);
+  const categoryName = categoryObj ? categoryObj.name_ar : skill.category;
+
+  const effectiveSourceUrl = getEffectiveSourceUrl(skill);
+  const linkPromptTemplate = skillsData.prompt_templates?.link_prompt_en || '';
+  const readyPromptEn = linkPromptTemplate.replace(/\{\{source_url\}\}/g, effectiveSourceUrl);
+
+  const verifiedTools = (toolsData || []).filter((t) => t.verified === true);
+  const isMultiSkill = skill.kind === 'collection' || skill.kind === 'directory' || !skill.source?.path_in_repo;
+
+  container.innerHTML = `
+    <!-- Detail Hero Section -->
+    <header class="detail-hero-section">
+      <div class="section-container">
+        <div class="detail-kicker-row" style="display: flex; align-items: center; gap: 12px; margin-block-end: 16px; flex-wrap: wrap;">
+          <span class="detail-kicker-label">${escapeHtml(categoryName)}</span>
+          ${
+            skill.github_stars
+              ? `<span class="detail-stars-badge" style="color: var(--color-saffron-spark); font-size: 13px; font-weight: 600; background: rgba(255,184,41,0.08); border: 1px solid rgba(255,184,41,0.22); border-radius: 9999px; padding: 2px 10px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
+              : ''
+          }
+        </div>
+        <h1 class="detail-headline-sculptural">${escapeHtml(skill.title_ar)}</h1>
+        <p class="detail-summary-airy">${escapeHtml(skill.summary_ar)}</p>
+
+        <div class="detail-actions-row">
+          <button id="copy-ready-prompt-btn" class="btn-electric-pill" type="button">
+            انسخ البرومبت الجاهز
+          </button>
+          
+          <button id="copy-link-only-btn" class="btn-ghost-pill" type="button">
+            انسخ اللينك فقط
+          </button>
+
+          <a href="${escapeHtml(effectiveSourceUrl)}" target="_blank" rel="noopener noreferrer" class="text-accent-link">
+            افتح المصدر على GitHub ↗
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Editorial Block: Benefits -->
+    <section class="editorial-block">
+      <div class="section-container">
+        <div class="editorial-kicker">القدرات والمزايا</div>
+        <h2 class="editorial-statement">ما الذي تقدمه هذه المهارة لعملك؟</h2>
+        <ul class="editorial-list">
+          ${(skill.benefits_ar || []).map((b) => `<li>${escapeHtml(b)}</li>`).join('')}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Editorial Block: Use Cases -->
+    <section class="editorial-block">
+      <div class="section-container">
+        <div class="editorial-kicker">حالات الاستخدام</div>
+        <h2 class="editorial-statement">أمثلة واقعية يمكنك تطبيقها فوراً</h2>
+        <div class="use-cases-grid">
+          ${(skill.use_cases_ar || []).map((uc) => `<div class="use-case-box">${escapeHtml(uc)}</div>`).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Block: Example Prompts -->
+    <section class="editorial-block">
+      <div class="section-container">
+        <div class="editorial-kicker">نماذج الطلبات</div>
+        <h2 class="editorial-statement">اطلب من الموديل بالعربية بهذه الصيغ</h2>
+        <div class="example-prompts-group">
+          ${(skill.example_prompts_ar || [])
+            .map(
+              (p) => `
+            <div class="example-prompt-card">
+              <span class="example-prompt-text">${escapeHtml(p)}</span>
+              <button class="btn-mini-copy copy-prompt-btn" data-text="${escapeHtml(p)}" type="button" aria-label="نسخ الطلب">
+                نسخ الطلب
+              </button>
+            </div>
+          `
+            )
+            .join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- "ضيفها لأداتك" Integration Section -->
+    <section class="tool-integration-section" aria-label="طريقة إضافة المهارة للأداة">
+      <div class="section-container">
+        <div class="tool-integration-container">
+          <h2 class="tool-panel-title">ضيفها لأداتك</h2>
+          <p class="tool-panel-subtitle">إرشادات موثقة لإضافة المهارة إلى بيئة العمل أو الشات الذي تستخدمه.</p>
+
+          <!-- Segmented Control Bar -->
+          <div class="segmented-control" role="tablist">
+            ${verifiedTools
+              .map(
+                (tool, idx) => `
+              <button 
+                class="segment-tab-btn ${idx === 0 ? 'active' : ''}" 
+                role="tab" 
+                aria-selected="${idx === 0 ? 'true' : 'false'}"
+                data-tool-id="${escapeHtml(tool.id)}"
+                type="button"
+              >
+                ${escapeHtml(tool.name)}
+              </button>
+            `
+              )
+              .join('')}
+          </div>
+
+          <div id="tool-tab-content-container" class="tool-tab-content">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        ${
+          skill.content_verified === false
+            ? `
+          <div class="content-review-note" role="note">
+            ⚠️ أُعد هذا الشرح من معلومات عامة عن المهارة، ويُنصح بمراجعة المصدر قبل الاعتماد عليه.
+          </div>
+        `
+            : ''
+        }
+      </div>
+    </section>
+
+    <!-- Floating Capsule for Mobile -->
+    <aside class="floating-mobile-capsule">
+      <button id="floating-copy-btn" class="btn-electric-pill" type="button">
+        انسخ البرومبت الجاهز
+      </button>
+    </aside>
+  `;
+
+  function renderToolTab(toolId) {
+    const tool = verifiedTools.find((t) => t.id === toolId) || verifiedTools[0];
+    if (!tool) return;
+
+    const contentContainer = document.getElementById('tool-tab-content-container');
+    if (!contentContainer) return;
+
+    const resolvedSteps = resolveToolSteps(tool.steps_ar || [], skill);
+
+    contentContainer.innerHTML = `
+      ${
+        isMultiSkill && (tool.id === 'gemini-cli' || tool.id === 'codex-cli')
+          ? `<div class="collection-note">ℹ️ هذا الريبو يضم مهارات كثيرة. افتحه واختر الفولدر المناسب.</div>`
+          : ''
+      }
+
+      <div class="tool-meta-badge-row">
+        <span><strong>المتطلبات:</strong> ${escapeHtml(tool.requires_ar || 'لا يلزم شيء.')}</span>
+        ${tool.skills_path ? `<span><strong>المسار الافتراضي:</strong> <code dir="ltr">${escapeHtml(tool.skills_path)}</code></span>` : ''}
+      </div>
+
+      <div>
+        <h3 style="font-size: 16px; font-weight: 500; margin-block-end: 14px; color: var(--color-bone-white);">خطوات الإعداد:</h3>
+        <ol class="tool-steps-ordered">
+          ${resolvedSteps
+            .map((step) => {
+              const formattedStep = step.replace(
+                /(~[^\s]+|\$[^\s]+|\.agents[^\s]+|\.claude[^\s]+|\.gemini[^\s]+|\.copilot[^\s]+|\.cursor[^\s]+|gemini skills[^\n<]+|git clone[^\s]+|\/plugin[^\n]+)/g,
+                '<code dir="ltr">$1</code>'
+              );
+              return `<li>${formattedStep}</li>`;
+            })
+            .join('')}
+        </ol>
+      </div>
+
+      <div class="tool-invoke-box">
+        <strong style="color: var(--color-saffron-spark);">طريقة الاستدعاء:</strong> ${escapeHtml(tool.invoke_ar || '')}
+      </div>
+
+      <div class="tool-footer-row">
+        <span>${tool.verified_on ? `آخر مراجعة: <bdi dir="ltr">${escapeHtml(tool.verified_on)}</bdi>` : ''}</span>
+        ${
+          tool.docs_url
+            ? `<a href="${escapeHtml(tool.docs_url)}" target="_blank" rel="noopener noreferrer" class="text-accent-link">التوثيق الرسمي ↗</a>`
+            : ''
+        }
+      </div>
+    `;
+  }
+
+  const tabButtons = container.querySelectorAll('.segment-tab-btn');
+  tabButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      renderToolTab(btn.dataset.toolId);
+    });
+  });
+
+  renderToolTab(verifiedTools[0]?.id || 'any-chat');
+
+  const copyReadyBtn = document.getElementById('copy-ready-prompt-btn');
+  if (copyReadyBtn) {
+    copyReadyBtn.addEventListener('click', () => {
+      copyToClipboard(readyPromptEn, 'تم نسخ البرومبت الجاهز بنجاح!');
+    });
+  }
+
+  const floatingCopyBtn = document.getElementById('floating-copy-btn');
+  if (floatingCopyBtn) {
+    floatingCopyBtn.addEventListener('click', () => {
+      copyToClipboard(readyPromptEn, 'تم نسخ البرومبت الجاهز بنجاح!');
+    });
+  }
+
+  const copyLinkBtn = document.getElementById('copy-link-only-btn');
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', () => {
+      copyToClipboard(effectiveSourceUrl, 'تم نسخ رابط المصدر!');
+    });
+  }
+
+  container.querySelectorAll('.copy-prompt-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const text = btn.getAttribute('data-text');
+      copyToClipboard(text, 'تم نسخ نموذج الطلب!');
+    });
+  });
+}
+
+/**
+ * Dynamic shared folder detection from tools.json
+ */
+export function detectSharedFolderTips(tools) {
+  const folderToTools = new Map();
+
+  for (const tool of tools) {
+    if (!tool.verified || !tool.paths) continue;
+    const pathValues = Object.values(tool.paths).join(' ');
+    const matches = pathValues.match(/\.?[a-zA-Z0-9_-]+\/skills\//g) || [];
+    for (const folder of new Set(matches)) {
+      if (!folderToTools.has(folder)) {
+        folderToTools.set(folder, []);
+      }
+      folderToTools.get(folder).push(tool);
+    }
+  }
+
+  const sharedTips = [];
+  for (const [folder, toolList] of folderToTools.entries()) {
+    if (toolList.length > 1) {
+      sharedTips.push({ folder, tools: toolList });
+    }
+  }
+  return sharedTips;
+}
+
+/**
+ * HOW TO USE PAGE
+ */
+export async function initHowToUsePage() {
+  const { toolsData } = await loadData();
+  const tipsContainer = document.getElementById('dynamic-shared-folder-tips');
+
+  if (tipsContainer && Array.isArray(toolsData)) {
+    const sharedTips = detectSharedFolderTips(toolsData);
+    if (sharedTips.length > 0) {
+      tipsContainer.innerHTML = sharedTips
+        .map((tip) => {
+          const linksHtml = tip.tools
+            .map((t) =>
+              t.docs_url
+                ? `<a href="${escapeHtml(t.docs_url)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-saffron-spark); text-decoration: underline;">${escapeHtml(t.name)}</a>`
+                : `<strong>${escapeHtml(t.name)}</strong>`
+            )
+            .join('، ');
+
+          return `
+          <div style="background-color: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 24px; margin-block: 20px;">
+            <p style="font-size: var(--text-body); color: var(--color-bone-white); margin: 0;">
+              💡 <strong>معلومة مفيدة موثقة:</strong> فولدر <code dir="ltr">${escapeHtml(tip.folder)}</code> تقرؤه هذه الأدوات: ${linksHtml}. يعني وضع المهارة في هذا الفولدر يخدمها في أكثر من أداة معًا.
+            </p>
+          </div>
+        `;
+        })
+        .join('');
+    }
+  }
+}
+
+/**
+ * LEADERBOARD PAGE
+ */
+export async function initLeaderboardPage() {
+  const { skillsData } = await loadData();
+  if (!skillsData || !skillsData.skills) return;
+
+  const tbody = document.getElementById('leaderboard-tbody');
+  const searchInput = document.getElementById('leaderboard-search');
+  const categorySelect = document.getElementById('leaderboard-category-filter');
+  if (!tbody) return;
+
+  // Populate category options
+  if (categorySelect && skillsData.categories) {
+    categorySelect.innerHTML =
+      `<option value="all">جميع الأقسام (${skillsData.skills.length} مهارة)</option>` +
+      skillsData.categories
+        .map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.name_ar)}</option>`)
+        .join('');
+  }
+
+  // Ensure skills are sorted by stars descending
+  const sortedSkills = [...skillsData.skills].sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+
+  function renderTable(skills) {
+    if (skills.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" style="padding: 48px 20px; text-align: center; color: var(--color-silver-mist);">
+            لا توجد مهارات تطابق بحثك في لوحة الصدارة.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    tbody.innerHTML = skills
+      .map((skill) => {
+        const globalRank = sortedSkills.findIndex((s) => s.id === skill.id) + 1;
+        let rankBadge = `#${globalRank}`;
+        if (globalRank === 1) rankBadge = '🥇 #1';
+        else if (globalRank === 2) rankBadge = '🥈 #2';
+        else if (globalRank === 3) rankBadge = '🥉 #3';
+
+        const starsFormatted = formatStars(skill.github_stars);
+        const catObj = (skillsData.categories || []).find((c) => c.id === skill.category);
+        const catName = catObj ? catObj.name_ar : skill.category;
+        const effectiveUrl = getEffectiveSourceUrl(skill);
+        let repoDisplay = 'GitHub';
+        try {
+          const parsed = new URL(effectiveUrl);
+          const parts = parsed.pathname.replace(/^\//, '').split('/');
+          if (parts.length >= 2) {
+            repoDisplay = `${parts[0]}/${parts[1]}`;
+          }
+        } catch {}
+
+        const linkPromptTemplate = skillsData.prompt_templates?.link_prompt_en || '';
+        const readyPrompt = linkPromptTemplate.replace(/\{\{source_url\}\}/g, effectiveUrl);
+
+        return `
+          <tr style="border-bottom: 1px solid var(--border-subtle); transition: background-color 0.15s ease;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.02)'" onmouseout="this.style.backgroundColor='transparent'">
+            <td style="padding: 14px 20px; text-align: center; font-weight: 700; color: ${
+              globalRank <= 3 ? 'var(--color-saffron-spark)' : 'var(--color-silver-mist)'
+            };">
+              ${rankBadge}
+            </td>
+            <td style="padding: 14px 20px; text-align: center;">
+              <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} نجمة على GitHub">★ ${starsFormatted}</span>
+            </td>
+            <td style="padding: 14px 20px;">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <a href="skill.html?id=${encodeURIComponent(skill.id)}" style="color: var(--color-bone-white); font-weight: 600; text-decoration: none; font-size: 15px;" class="leaderboard-skill-link">
+                  ${escapeHtml(skill.title_ar)}
+                </a>
+                <span style="color: var(--color-silver-mist); font-size: 12px; font-family: var(--font-mono);" dir="ltr">${escapeHtml(
+                  skill.name
+                )}</span>
+              </div>
+            </td>
+            <td style="padding: 14px 20px;">
+              <span style="display: inline-block; padding: 2px 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: 12px; color: var(--color-ash-gray);">
+                ${escapeHtml(catName)}
+              </span>
+            </td>
+            <td style="padding: 14px 20px;">
+              <a href="${escapeHtml(effectiveUrl)}" target="_blank" rel="noopener noreferrer" style="color: #b392ff; text-decoration: none; font-size: 13px; font-family: var(--font-mono); display: inline-flex; align-items: center; gap: 4px;" dir="ltr">
+                ${escapeHtml(repoDisplay)} ↗
+              </a>
+            </td>
+            <td style="padding: 14px 20px; text-align: center;">
+              <div style="display: inline-flex; align-items: center; gap: 8px;">
+                <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="btn-ghost" style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-pill); text-decoration: none; border: 1px solid var(--border-subtle); color: var(--color-bone-white);">
+                  التفاصيل
+                </a>
+                <button 
+                  type="button" 
+                  class="btn-copy-prompt" 
+                  data-prompt="${escapeHtml(readyPrompt)}" 
+                  style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-pill); background: var(--surface-card); border: 1px solid var(--border-subtle); color: var(--color-bone-white); cursor: pointer;"
+                >
+                  نسخ البرومبت
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      })
+      .join('');
+
+    tbody.querySelectorAll('.btn-copy-prompt').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const prompt = btn.getAttribute('data-prompt') || '';
+        const originalText = btn.textContent;
+        const ok = await copyToClipboard(prompt);
+        if (ok) {
+          btn.textContent = '✓ تم النسخ';
+          btn.style.borderColor = 'var(--color-electric-iris)';
+          btn.style.color = 'var(--color-electric-iris)';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.borderColor = '';
+            btn.style.color = '';
+          }, 2000);
+        }
+      });
+    });
+  }
+
+  // Initial render
+  renderTable(sortedSkills);
+
+  // Search and Filter handler
+  function applyFilters() {
+    const rawQuery = (searchInput?.value || '').trim();
+    const query = normalizeArabic(rawQuery);
+    const selectedCategory = categorySelect?.value || 'all';
+
+    let filtered = sortedSkills;
+
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter((s) => s.category === selectedCategory);
+    }
+
+    if (query) {
+      filtered = filtered.filter((s) => {
+        const titleNorm = normalizeArabic(s.title_ar || '');
+        const summaryNorm = normalizeArabic(s.summary_ar || '');
+        const nameNorm = (s.name || '').toLowerCase();
+        const catNorm = (s.category || '').toLowerCase();
+        const tagsNorm = normalizeArabic((s.tags || []).join(' '));
+        return (
+          titleNorm.includes(query) ||
+          summaryNorm.includes(query) ||
+          nameNorm.includes(rawQuery.toLowerCase()) ||
+          catNorm.includes(rawQuery.toLowerCase()) ||
+          tagsNorm.includes(query)
+        );
+      });
+    }
+
+    renderTable(filtered);
+  }
+
+  searchInput?.addEventListener('input', applyFilters);
+  categorySelect?.addEventListener('change', applyFilters);
+}
+
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const page = document.body.dataset.page;
+  if (page === 'index') {
+    initIndexPage().catch(console.error);
+  } else if (page === 'skill-detail') {
+    initSkillDetailPage().catch(console.error);
+  } else if (page === 'how-to-use') {
+    initHowToUsePage().catch(console.error);
+  } else if (page === 'leaderboard') {
+    initLeaderboardPage().catch(console.error);
+  }
+});
