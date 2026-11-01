@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T20:43:21.816Z",
+  "updated_at": "2026-11-01T23:19:58.557Z",
   "stars_fetched_at": "2026-11-01T20:17:18Z",
   "stars_as_of_ar": "1 نوفمبر 2026",
   "total": 100,
@@ -31,7 +31,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -54,7 +54,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -77,7 +77,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -100,7 +100,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -123,7 +123,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -146,7 +146,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -169,7 +169,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -192,7 +192,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -215,7 +215,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -238,7 +238,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "Proprietary (source-available)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -261,7 +261,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "Proprietary (source-available)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -284,7 +284,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "Proprietary (source-available)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -307,7 +307,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -330,7 +330,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -353,7 +353,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -376,7 +376,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -399,7 +399,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -422,7 +422,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -445,7 +445,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -468,7 +468,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -491,7 +491,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -514,7 +514,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -537,7 +537,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -560,7 +560,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -583,7 +583,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -606,7 +606,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -629,7 +629,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -652,7 +652,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -675,7 +675,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -698,7 +698,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -721,7 +721,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -744,7 +744,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -767,7 +767,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -790,7 +790,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -813,7 +813,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -836,7 +836,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 14,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -859,7 +859,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 15,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -882,7 +882,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -905,7 +905,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -928,7 +928,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -951,7 +951,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -974,7 +974,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -997,7 +997,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1020,7 +1020,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1043,7 +1043,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1066,7 +1066,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1089,7 +1089,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1112,7 +1112,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1135,7 +1135,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1158,7 +1158,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1181,7 +1181,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1204,7 +1204,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1227,7 +1227,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1250,7 +1250,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1273,7 +1273,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1296,7 +1296,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1319,7 +1319,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1342,7 +1342,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 14,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1365,7 +1365,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 15,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1388,7 +1388,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "Proprietary (source-available)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1411,7 +1411,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "Check LICENSE in the skill folder (reported as source-available by some sources)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1434,7 +1434,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1457,7 +1457,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1480,7 +1480,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1503,7 +1503,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1526,7 +1526,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1549,7 +1549,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1572,7 +1572,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1595,7 +1595,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1618,7 +1618,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 14,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1641,7 +1641,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 15,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1664,7 +1664,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 16,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1687,7 +1687,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 17,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1710,7 +1710,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1733,7 +1733,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1756,7 +1756,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1779,7 +1779,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1802,7 +1802,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1825,7 +1825,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1848,7 +1848,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1871,7 +1871,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1894,7 +1894,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1917,7 +1917,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1940,7 +1940,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 14,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1963,7 +1963,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 15,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -1986,7 +1986,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 16,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2009,7 +2009,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 17,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2032,7 +2032,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 18,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2055,7 +2055,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 19,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2078,7 +2078,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2101,7 +2101,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2124,7 +2124,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2147,7 +2147,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2170,7 +2170,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2193,7 +2193,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2216,7 +2216,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2239,7 +2239,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2262,7 +2262,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2285,7 +2285,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2308,7 +2308,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     }
   ],
@@ -2333,7 +2333,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2356,7 +2356,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2379,7 +2379,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2402,7 +2402,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2425,7 +2425,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2448,7 +2448,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2471,7 +2471,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2494,7 +2494,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2517,7 +2517,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2540,7 +2540,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "Proprietary (source-available)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2563,7 +2563,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "Proprietary (source-available)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2586,7 +2586,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "Proprietary (source-available)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2609,7 +2609,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2632,7 +2632,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2655,7 +2655,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2678,7 +2678,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2701,7 +2701,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2724,7 +2724,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2747,7 +2747,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2770,7 +2770,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2793,7 +2793,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2816,7 +2816,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2839,7 +2839,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 1,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2862,7 +2862,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 2,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2885,7 +2885,7 @@
       "tier": "primary_diverse_skill",
       "repo_rank_order": 3,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2908,7 +2908,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2931,7 +2931,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2954,7 +2954,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -2977,7 +2977,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3000,7 +3000,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3023,7 +3023,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3046,7 +3046,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3069,7 +3069,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3092,7 +3092,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3115,7 +3115,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3138,7 +3138,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 14,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3161,7 +3161,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 15,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3184,7 +3184,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3207,7 +3207,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3230,7 +3230,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3253,7 +3253,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3276,7 +3276,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3299,7 +3299,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3322,7 +3322,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3345,7 +3345,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3368,7 +3368,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3391,7 +3391,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3414,7 +3414,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3437,7 +3437,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3460,7 +3460,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3483,7 +3483,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3506,7 +3506,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3529,7 +3529,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3552,7 +3552,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3575,7 +3575,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3598,7 +3598,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3621,7 +3621,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3644,7 +3644,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 14,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3667,7 +3667,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 15,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3690,7 +3690,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "Proprietary (source-available)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3713,7 +3713,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "Check LICENSE in the skill folder (reported as source-available by some sources)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3736,7 +3736,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3759,7 +3759,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3782,7 +3782,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3805,7 +3805,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3828,7 +3828,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3851,7 +3851,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3874,7 +3874,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3897,7 +3897,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3920,7 +3920,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 14,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3943,7 +3943,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 15,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3966,7 +3966,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 16,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -3989,7 +3989,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 17,
       "license": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4012,7 +4012,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4035,7 +4035,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4058,7 +4058,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4081,7 +4081,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4104,7 +4104,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4127,7 +4127,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4150,7 +4150,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 10,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4173,7 +4173,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 11,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4196,7 +4196,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 12,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4219,7 +4219,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 13,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4242,7 +4242,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 14,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4265,7 +4265,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 15,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4288,7 +4288,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 16,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4311,7 +4311,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 17,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4334,7 +4334,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 18,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4357,7 +4357,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 19,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4380,7 +4380,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4403,7 +4403,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4426,7 +4426,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4449,7 +4449,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4472,7 +4472,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4495,7 +4495,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 9,
       "license": "MIT (reported in README)",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4518,7 +4518,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 4,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4541,7 +4541,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 5,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4564,7 +4564,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 6,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4587,7 +4587,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 7,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     },
     {
@@ -4610,7 +4610,7 @@
       "tier": "extended_skill",
       "repo_rank_order": 8,
       "license": "MIT",
-      "content_verified": false,
+      "content_verified": true,
       "responsible_use_note_ar": null
     }
   ]

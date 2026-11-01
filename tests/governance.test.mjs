@@ -82,11 +82,13 @@ test('Sitemap excludes any skill where content_verified !== true', () => {
     );
   }
 
-  // All 100 skills are currently unverified, so sitemap should only contain static pages
+  // Sitemap must contain 3 static pages + all content_verified skills (excluding unverified ones)
+  const verifiedSkills = (skillsData.skills || []).filter((s) => s.content_verified === true);
   const urlMatches = sitemapContent.match(/<loc>/g) || [];
-  assert(
-    urlMatches.length === 3,
-    `Expected exactly 3 static page URLs in sitemap for unverified catalogue, got ${urlMatches.length}`
+  assert.strictEqual(
+    urlMatches.length,
+    3 + verifiedSkills.length,
+    `Expected exactly ${3 + verifiedSkills.length} URLs in sitemap (3 static + ${verifiedSkills.length} verified), got ${urlMatches.length}`
   );
 });
 

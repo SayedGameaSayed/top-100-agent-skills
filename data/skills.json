@@ -76,7 +76,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "تخطيط المشاريع البرمجية خطوة بخطوة",
       "summary_ar": "هيكلة المتطلبات وتفكيك المهام البرمجية الكبيرة إلى خطوات صغيرة قابلة للاختبار والتحقق التدريجي قبل البدء في كتابة الكود.",
       "benefits_ar": [
@@ -89,8 +89,8 @@
       "example_prompts_ar": [
         "ضع لي خطة عمل مفصلة خطوة بخطوة لإضافة نظام دفع عبر Stripe."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -114,7 +114,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "استكشاف وإصلاح الأخطاء المنهجي",
       "summary_ar": "منهجية دقيقة لعزل وتتبع الأخطاء البرمجية الصعبة عبر الفرضيات العلمية ومراجعة السجلات، بدلاً من التخمين العشوائي.",
       "benefits_ar": [
@@ -127,8 +127,8 @@
       "example_prompts_ar": [
         "ساعدني في تتبع سبب الخطأ التالي خطوة بخطوة واقترح فرضيات لاختبارها."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -152,7 +152,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "التطوير الموجه بالاختبارات (TDD)",
       "summary_ar": "دورة عمل Red-Green-Refactor الصارمة: كتابة اختبار فاشل يحدد السلوك المطلوب، ثم كتابة أقل كود للنجاح، ثم إعادة الهيكلة بثقة.",
       "benefits_ar": [
@@ -165,8 +165,8 @@
       "example_prompts_ar": [
         "اكتب لي أولاً اختبار فاشل للتحقق من صحة أرقام الهواتف الدولية قبل كتابة كود التنفيذ."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -190,7 +190,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "إعداد الكود وطلب المراجعة البرمجية",
       "summary_ar": "تجهيز طلبات السحب (PR) ببيانات شارحة وصور توضيحية وقوائم تحقق ذاتية تسهل على المراجعين فحص الكود واعتماده.",
       "benefits_ar": [
@@ -203,8 +203,8 @@
       "example_prompts_ar": [
         "جهز لي نص وصف PR يشرح التغييرات في مسار المصادقة مع خطوات التحقق اليدوي."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -228,7 +228,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "استيعاب وتطبيق ملاحظات مراجعة الكود",
       "summary_ar": "التعامل مع ملاحظات المراجعين باحترافية وتفكيك الاقتراحات إلى مهام تعديل واضحة دون كسر الوظائف السابقة.",
       "benefits_ar": [
@@ -241,8 +241,8 @@
       "example_prompts_ar": [
         "لدي هذه الملاحظات الثلاث على طلبي، ساعدني في تعديل الكود لتطبيقها بدقة."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -266,7 +266,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "العمل على عدة فروع بالتوازي بـ Git Worktrees",
       "summary_ar": "التبديل بين الفروع وإصلاح المشاكل العاجلة (Hotfixes) في مجلدات منفصلة في نفس اللحظة دون الحاجة لعمل stash أو إعادة بناء المشروع.",
       "benefits_ar": [
@@ -279,8 +279,8 @@
       "example_prompts_ar": [
         "اشرح لي أوامر Git Worktree لفتح فرع hotfix في مجلد منفصل والعودة لمجلدي الأصلي."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -304,7 +304,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "التحقق الصارم قبل إنهاء المهمة",
       "summary_ar": "إلزام الموديل بإجراء فحوصات ذاتية صارمة (تشغيل الاختبارات، فحص الأنواع، فحص التنسيق) قبل إعلان اكتمال أي مهمة برمجية.",
       "benefits_ar": [
@@ -317,8 +317,8 @@
       "example_prompts_ar": [
         "تحقق من كل الاختبارات والأنواع قبل أن تؤكد لي أن المهمة انتهت."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -342,7 +342,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "تطوير المشاريع عبر فرق الوكلاء الفرعيين",
       "summary_ar": "هندسة توزيع المهام البرمجية على وكلاء ذكاء اصطناعي متخصصين (وكيل للأبحاث، وكيل للاختبار، وكيل لكتابة الكود) مع التنسيق بينهم.",
       "benefits_ar": [
@@ -355,8 +355,8 @@
       "example_prompts_ar": [
         "وزع مهام بناء شاشة تسجيل الدخول على وكيل للواجهة ووكيل للاختبارات ووكيل للأمان."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -380,7 +380,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "التنفيذ المنضبط لخطط العمل البرمجية",
       "summary_ar": "متابعة تنفيذ الخطة المكتوبة خطوة بخطوة، والتحقق من نجاح كل خطوة واختباراتها قبل الانتقال إلى الخطوة التالية.",
       "benefits_ar": [
@@ -393,8 +393,8 @@
       "example_prompts_ar": [
         "اتبع الخطة المرفقة بدقة ولا تنتقل للخطوة الثانية حتى تؤكد نجاح الخطوة الأولى."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -418,7 +418,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "إطلاق وتنسيق الوكلاء المتوازيين",
       "summary_ar": "تشغيل مهام مستقلة متعددة في نفس الوقت بالتوازي لتقليص وقت الإنجاز الإجمالي من ساعات إلى دقائق معدودة.",
       "benefits_ar": [
@@ -431,8 +431,8 @@
       "example_prompts_ar": [
         "أطلق 3 مهام متوازية لفحص الواجهة وقاعدة البيانات واختبارات الأمان في آن واحد."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -456,7 +456,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "العصف الذهني واستكشاف الحلول المعمارية",
       "summary_ar": "توليد ومقارنة عدة بدائل معمارية وتقنية لأي مشكلة برمجية، وتوضيح إيجابيات وسلبيات كل حل قبل كتابة سطر كود واحد.",
       "benefits_ar": [
@@ -469,8 +469,8 @@
       "example_prompts_ar": [
         "اعطني 3 حلول معمارية مختلفة لتطبيق نظام إشعارات فوري مع مقارنة إيجابيات وسلبيات كل حل."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -494,7 +494,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "أنماط واجهات FastAPI المتقدمة",
       "summary_ar": "بناء واجهات خلفية عالية الأداء ببايثون مع التحقق من البيانات عبر Pydantic v2 وإدارة التبعيات (Dependency Injection) والتعامل غير المتزامن (Async/Await).",
       "benefits_ar": [
@@ -507,8 +507,8 @@
       "example_prompts_ar": [
         "صمم مسار FastAPI غير متزامن لمعالجة رفع الملفات والتحقق من حجمها."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -532,7 +532,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "استعلامات ونمذجة Prisma ORM الحديثة",
       "summary_ar": "كتابة نماذج بيانات آمنة الأنواع بـ TypeScript، وتجنب مشاكل N+1 في الاستعلامات المتداخلة وإدارة عمليات الهجرة (Migrations).",
       "benefits_ar": [
@@ -545,8 +545,8 @@
       "example_prompts_ar": [
         "اكتب استعلام Prisma لجلب المستخدم مع آخر 5 طلبات له وإجمالي المدفوعات."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -570,7 +570,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "أنماط واجهات SwiftUI التفاعلية",
       "summary_ar": "بناء واجهات تطبيقات أجهزة Apple الحديثة باستخدام نمط MVVM و `@Observable` مع دعم الوضع الداكن والحركات الانسيابية.",
       "benefits_ar": [
@@ -583,8 +583,8 @@
       "example_prompts_ar": [
         "اكتب كود SwiftUI لشاشة عرض المنتجات مع شبكة قابلة للتمرير وبحث فوري."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -608,7 +608,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "أنماط الإنتاج في لغة Rust",
       "summary_ar": "تطبيق أنماط Rust المتقدمة في معالجة الأخطاء بـ `thiserror` و `anyhow`، وإدارة الملكية (Borrow Checker) وتعدد المسارات غير المتزامن باستخدام Tokio.",
       "benefits_ar": [
@@ -621,8 +621,8 @@
       "example_prompts_ar": [
         "صمم بنية معالجة أخطاء بلغة Rust لدالة تقرأ ملف وتتصل بقاعدة بيانات."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -646,7 +646,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "أنماط التخزين المؤقت بـ Redis",
       "summary_ar": "تطبيق استراتيجيات الكاش الذكية (Cache-Aside, Write-Through)، ومحددات معدل الطلبات (Rate Limiting) وتخزين الجلسات الموزعة.",
       "benefits_ar": [
@@ -659,8 +659,8 @@
       "example_prompts_ar": [
         "اكتب كود بايثون لتطبيق Sliding Window Rate Limiter باستخدام Redis."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -684,7 +684,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "اختبار مكونات React التفاعلية",
       "summary_ar": "كتابة اختبارات المكونات وسلوكيات المستخدم عبر React Testing Library ومحاكاة الأحداث الحقيقية (User Events) بدلاً من اختبار تفاصيل التنفيذ.",
       "benefits_ar": [
@@ -697,8 +697,8 @@
       "example_prompts_ar": [
         "اكتب اختبار RTL لنموذج تسجيل دخول يحاكي الكتابة والضغط على زر الدخول."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -722,7 +722,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "حزمة اختبارات بايثون بـ Pytest",
       "summary_ar": "تصميم حزم اختبارات بايثون متكاملة باستخدام fixtures ومحاكاة الخدمات الخارجية بـ `unittest.mock` واختبار الحالات الحدية المتعددة.",
       "benefits_ar": [
@@ -735,8 +735,8 @@
       "example_prompts_ar": [
         "اكتب اختبار Pytest مع fixture لإنشاء بيانات مستخدم واختبار تحديث الرصيد."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -760,7 +760,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "تحصين وأمان تطبيقات Django",
       "summary_ar": "إعدادات الأمان الصارمة في Django لمواجهة ثغرات CSRF و Clickjacking وتأمين ملفات الـ Cookies ورؤوس HSTS.",
       "benefits_ar": [
@@ -773,8 +773,8 @@
       "example_prompts_ar": [
         "راجع ملف settings.py واقترح إعدادات الأمان المطلوبة لبيئة الإنتاج."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -798,7 +798,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "تأمين تطبيقات Spring Boot و Java",
       "summary_ar": "تطبيق أمان المؤسسات بـ Spring Security 6 و OAuth2 و JWT وتحديد صلاحيات الوصول على مستوى الدوال (Method-level security).",
       "benefits_ar": [
@@ -811,8 +811,8 @@
       "example_prompts_ar": [
         "اكتب كود SecurityFilterChain في Spring Boot 3 لتأمين مسارات الـ API بـ JWT."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -836,7 +836,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "قائمة التدقيق الأمني الشامل للكود",
       "summary_ar": "مراجعة أمنية منظمة تغطي صلاحيات المدخلات، التشفير، الجلسات، رؤوس الـ CORS، ومنع تسريب الأسرار في مخرجات الأخطاء.",
       "benefits_ar": [
@@ -849,8 +849,8 @@
       "example_prompts_ar": [
         "قم بإجراء مراجعة أمنية شاملة لمسار إعادة تعيين كلمة المرور المرفق."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -874,7 +874,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "أنماط وتقييم نماذج PyTorch للتعلم العميق",
       "summary_ar": "كتابة حلقات تدريب وتقييم آمنة للذاكرة بـ PyTorch، وإدارة الـ Checkpoints وحساب مؤشرات الدقة (Accuracy, F1-Score) وتسريع الأداء بـ CUDA.",
       "benefits_ar": [
@@ -887,8 +887,8 @@
       "example_prompts_ar": [
         "اكتب دالة تقييم PyTorch تستخدم torch.no_grad() وتحسب معدل الدقة و F1-score."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -912,7 +912,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "تخطيط وتنفيذ الحملات التسويقية الرقمية",
       "summary_ar": "بناء استراتيجيات تسويق متعددة القنوات: تحديد شرائح الجمهور، صياغة رسائل الهبوط، سلاسل البريد، ونصوص الإعلانات الممولة.",
       "benefits_ar": [
@@ -925,8 +925,8 @@
       "example_prompts_ar": [
         "صمم خطة حملة تسويقية لإطلاق تطبيق إنتاجية جديد تتضمن نصوص الإعلانات وسلسلة إيميلات ترحيبية."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -950,7 +950,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "مزامنة وتدقيق ملفات الترجمة الدولية (i18n)",
       "summary_ar": "فحص ملفات الترجمة (JSON / YAML / PO)، وكشف المفاتيح المفقودة في اللغات الأخرى، وضمان تطابق المتغيرات الديناميكية عبر كل اللغات.",
       "benefits_ar": [
@@ -963,8 +963,8 @@
       "example_prompts_ar": [
         "قارن بين ملفي الترجمة هذين وحدد المفاتيح المفقودة في النسخة العربية وترجمها."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -988,7 +988,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "اختبارات Go وحساب الأداء (Benchmarks)",
       "summary_ar": "كتابة اختبارات الجداول (Table-driven tests) في Go، وفحص سباق البيانات المتوازية (Race Detector) وقياس استهلاك الذاكرة والسرعة.",
       "benefits_ar": [
@@ -1001,8 +1001,8 @@
       "example_prompts_ar": [
         "صمم اختبار Table-driven test بلغة Go لدالة معالجة الـ JSON."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1026,7 +1026,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "أطر تقييم مخرجات نماذج الذكاء الاصطناعي",
       "summary_ar": "بناء معايير تقييم واختبارات آلية (Evals) لقياس دقة النماذج في استخراج البيانات واتباع التعليمات ومنع الهلوسة.",
       "benefits_ar": [
@@ -1039,8 +1039,8 @@
       "example_prompts_ar": [
         "صمم حزمة اختبارات تقييمية (Eval dataset) لفحص دقة استخراج التواريخ من العقود."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1080,10 +1080,10 @@
         "قسّم الملف لملفات، كل فصل لوحده"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1123,10 +1123,10 @@
         "استبدل اسم الشركة في كل الملف"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1166,10 +1166,10 @@
         "ارسم رسم بياني للمبيعات حسب الشهر"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1207,10 +1207,10 @@
         "عدّل العرض ده وغيّر الأرقام في الشريحة 4"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1249,10 +1249,10 @@
         "أعد تصميم الصفحة دي بحيث تبقى أوضح وأحدث"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1291,10 +1291,10 @@
         "راجع الـ Skill دي وحسّن الوصف بتاعها"
       ],
       "difficulty": "intermediate",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1333,10 +1333,10 @@
         "خد screenshot للصفحة بعد ما تضغط زر الحفظ"
       ],
       "difficulty": "intermediate",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1374,10 +1374,10 @@
         "اشرح لي إزاي أنشئ أداة MCP بسيطة"
       ],
       "difficulty": "intermediate",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1416,10 +1416,10 @@
         "اعمللي تصميم بسيط لإعلان ورشة عمل"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1457,10 +1457,10 @@
         "ابنيلي لوحة تعرض بيانات الملف ده"
       ],
       "difficulty": "intermediate",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1497,10 +1497,10 @@
         "اعمل مهارة زي brand-guidelines بألوان شركتي"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1537,10 +1537,10 @@
         "وريني الثيمات المتاحة لعرض تقديمي"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1577,10 +1577,10 @@
         "راجع المستند ده من منظور شخص جديد مايعرفش الموضوع"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1617,10 +1617,10 @@
         "غيّر القيم عشان الشكل يبقى أكتر كثافة"
       ],
       "difficulty": "intermediate",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1657,10 +1657,10 @@
         "اعمل نشرة داخلية قصيرة عن مشروع التخرج"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1697,10 +1697,10 @@
         "اعمل إيموجي متحرك بشعار المشروع"
       ],
       "difficulty": "beginner",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1737,10 +1737,10 @@
         "ازاي أستخدم الـ streaming في الرد؟"
       ],
       "difficulty": "intermediate",
-      "content_verified": false,
+      "content_verified": true,
       "github_stars": 179886,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1764,7 +1764,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "فريق البحث الأكاديمي والتحليل المنهجي المعمق",
       "summary_ar": "خط معالجة بحثي شامل يعتمد على 13 وكيلاً تخصصياً لإجراء مراجعات الأدبيات، والتحقق من الحقائق، وكشف التحيز الإحصائي وفق معيار APA 7.0.",
       "benefits_ar": [
@@ -1777,8 +1777,8 @@
       "example_prompts_ar": [
         "قم بإجراء بحث أكاديمي معمق حول أثر الذكاء الاصطناعي التوليدي على التعليم الطبي مع توثيق المراجع."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1802,7 +1802,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "فرز الأوراق العلمية للمراجعات المنهجية",
       "summary_ar": "تطبيق معايير الشمول والاستبعاد (Inclusion/Exclusion Criteria) لفحص مئات الملخصات والأوراق البحثية بسرعة وكفاءة.",
       "benefits_ar": [
@@ -1815,8 +1815,8 @@
       "example_prompts_ar": [
         "طبق معايير الشمول التالية على ملخصات الأبحاث الخمسة المرفقة واذكر سبب قبول أو رفض كل منها."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1840,7 +1840,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "صياغة وتحرير الأوراق العلمية المحكمة",
       "summary_ar": "المساعدة في صياغة أقسام الورقة البحثية (المقدمة، المنهجية، النتائج، المناقشة) بأسلوب علمي رصين ومحايد يطابق متطلبات النشر الدولي.",
       "benefits_ar": [
@@ -1853,8 +1853,8 @@
       "example_prompts_ar": [
         "راجع صياغة هذا القسم من ورقتي البحثية واجعله يتبع النمط الأكاديمي الصارم للمجلات العلمية."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1878,7 +1878,7 @@
         "status": "open",
         "copy_file_allowed": false
       },
-      "content_verified": false,
+      "content_verified": true,
       "title_ar": "تصميم واجهات الويب المتجاوبة الحديثة",
       "summary_ar": "تطبيق أحدث استراتيجيات التجاوب باستخدام Container Queries، والطباعة الانسيابية (Fluid Typography)، و CSS Grid الحديثة.",
       "benefits_ar": [
@@ -1891,8 +1891,8 @@
       "example_prompts_ar": [
         "اكتب كود CSS Grid يتكيف تلقائياً مع حجم الشاشة بدون استخدام media queries."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1938,9 +1938,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -1986,9 +1986,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2034,9 +2034,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2082,9 +2082,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2130,9 +2130,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2178,9 +2178,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2226,9 +2226,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2274,9 +2274,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2322,9 +2322,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2370,9 +2370,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2418,9 +2418,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2466,9 +2466,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2514,9 +2514,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2562,9 +2562,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2610,9 +2610,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2658,9 +2658,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2706,9 +2706,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2754,9 +2754,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2802,9 +2802,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2850,9 +2850,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2898,9 +2898,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2946,9 +2946,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -2994,9 +2994,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3045,9 +3045,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3096,9 +3096,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3147,9 +3147,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3198,9 +3198,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3249,9 +3249,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3300,9 +3300,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3351,9 +3351,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3402,9 +3402,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3453,9 +3453,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3504,9 +3504,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3555,9 +3555,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3606,9 +3606,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3657,9 +3657,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3708,9 +3708,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3759,9 +3759,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3810,9 +3810,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3861,9 +3861,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3912,9 +3912,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -3963,9 +3963,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4014,9 +4014,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4065,9 +4065,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4116,9 +4116,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4167,9 +4167,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4218,9 +4218,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4269,9 +4269,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4320,9 +4320,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4371,9 +4371,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4422,9 +4422,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4473,9 +4473,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     },
     {
@@ -4524,9 +4524,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
       "repo_type": "skills"
     }
   ],
