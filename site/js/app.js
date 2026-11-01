@@ -311,7 +311,11 @@ export async function initSkillDetailPage() {
   const categoryName = categoryObj ? categoryObj.name_ar : skill.category;
 
   const effectiveSourceUrl = getEffectiveSourceUrl(skill);
-  const linkPromptTemplate = skillsData.prompt_templates?.link_prompt_en || '';
+  const defaultPromptTemplate =
+    'Read this skill and use it whenever my request matches it: {{source_url}}\n' +
+    'From now on I will write in Arabic (any dialect). Understand my intent, work internally in English, and reply in Arabic. Keep code, commands, file names and technical terms in English.';
+
+  const linkPromptTemplate = skillsData?.prompt_templates?.link_prompt_en || defaultPromptTemplate;
   const readyPromptEn = linkPromptTemplate.replace(/\{\{source_url\}\}/g, effectiveSourceUrl);
 
   const verifiedTools = (toolsData || []).filter((t) => t.verified === true);
@@ -511,22 +515,55 @@ export async function initSkillDetailPage() {
 
   const copyReadyBtn = document.getElementById('copy-ready-prompt-btn');
   if (copyReadyBtn) {
-    copyReadyBtn.addEventListener('click', () => {
-      copyToClipboard(readyPromptEn, 'تم نسخ البرومبت الجاهز بنجاح!');
+    copyReadyBtn.addEventListener('click', async () => {
+      const ok = await copyToClipboard(readyPromptEn, 'تم نسخ البرومبت الجاهز بنجاح!');
+      if (ok) {
+        const originalText = copyReadyBtn.textContent;
+        copyReadyBtn.textContent = 'تم النسخ بنجاح ✓';
+        copyReadyBtn.style.backgroundColor = '#10b981';
+        copyReadyBtn.style.color = '#ffffff';
+        setTimeout(() => {
+          copyReadyBtn.textContent = originalText;
+          copyReadyBtn.style.backgroundColor = '';
+          copyReadyBtn.style.color = '';
+        }, 2000);
+      }
     });
   }
 
   const floatingCopyBtn = document.getElementById('floating-copy-btn');
   if (floatingCopyBtn) {
-    floatingCopyBtn.addEventListener('click', () => {
-      copyToClipboard(readyPromptEn, 'تم نسخ البرومبت الجاهز بنجاح!');
+    floatingCopyBtn.addEventListener('click', async () => {
+      const ok = await copyToClipboard(readyPromptEn, 'تم نسخ البرومبت الجاهز بنجاح!');
+      if (ok) {
+        const originalText = floatingCopyBtn.textContent;
+        floatingCopyBtn.textContent = 'تم النسخ بنجاح ✓';
+        floatingCopyBtn.style.backgroundColor = '#10b981';
+        floatingCopyBtn.style.color = '#ffffff';
+        setTimeout(() => {
+          floatingCopyBtn.textContent = originalText;
+          floatingCopyBtn.style.backgroundColor = '';
+          floatingCopyBtn.style.color = '';
+        }, 2000);
+      }
     });
   }
 
   const copyLinkBtn = document.getElementById('copy-link-only-btn');
   if (copyLinkBtn) {
-    copyLinkBtn.addEventListener('click', () => {
-      copyToClipboard(effectiveSourceUrl, 'تم نسخ رابط المصدر!');
+    copyLinkBtn.addEventListener('click', async () => {
+      const ok = await copyToClipboard(effectiveSourceUrl, 'تم نسخ رابط المصدر!');
+      if (ok) {
+        const originalText = copyLinkBtn.textContent;
+        copyLinkBtn.textContent = 'تم النسخ ✓';
+        copyLinkBtn.style.borderColor = '#10b981';
+        copyLinkBtn.style.color = '#10b981';
+        setTimeout(() => {
+          copyLinkBtn.textContent = originalText;
+          copyLinkBtn.style.borderColor = '';
+          copyLinkBtn.style.color = '';
+        }, 2000);
+      }
     });
   }
 

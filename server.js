@@ -67,6 +67,7 @@ app.get('/api/skills', (req, res) => {
     total: results.length,
     site: skillsData.site,
     categories: skillsData.categories,
+    prompt_templates: skillsData.prompt_templates,
     skills: results
   });
 });
