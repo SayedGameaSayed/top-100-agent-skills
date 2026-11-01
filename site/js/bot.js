@@ -315,34 +315,12 @@ function appendAssistantResponse({ reply, recommendedSkills = [] }) {
 }
 
 /**
- * Intelligent Brain Router:
- * 1. Tries /api/chat (Server with Gemini or local fallback)
- * 2. If client has Gemini key and server is not available (e.g. GitHub Pages), calls Gemini REST API directly
- * 3. Client-side local semantic search engine fallback (0$ and 0 API key required)
+ * Intelligent Brain Router (100% Static & Client-Side):
+ * 1. Direct Client Gemini Call (if user provided their personal key in browser localStorage)
+ * 2. Instant client-side semantic search engine fallback (0$ and 0 API key required, 0 network latency)
  */
 async function queryBotBrain(message, userApiKey = '') {
-  // Option 1: Backend /api/chat
-  try {
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message,
-        apiKey: userApiKey,
-        history: chatHistory.slice(-4)
-      })
-    });
-    if (res.ok) {
-      const data = await res.json();
-      chatHistory.push({ role: 'user', content: message });
-      chatHistory.push({ role: 'assistant', content: data.reply });
-      return data;
-    }
-  } catch {
-    // If backend endpoint is unavailable (e.g. static GitHub Pages), fall through to client methods
-  }
-
-  // Option 2: Direct Client Gemini Call (if user provided key on static site)
+  // Option 1: Direct Client Gemini Call (if user provided key in browser)
   if (userApiKey) {
     try {
       const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userApiKey}`;

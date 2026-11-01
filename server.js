@@ -104,15 +104,34 @@ app.get('/api/tools', (req, res) => {
   });
 });
 
-// Leaderboard API endpoint (Top 100 ranked skills)
+// Leaderboard API endpoint (Top 100 ranked skills with 3-per-repo diversity cap)
 app.get('/api/leaderboard', (req, res) => {
-  const sorted = [...skillsData.skills].sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
-  const ranked = sorted.map((skill, idx) => ({
+  const rawSorted = [...skillsData.skills].sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+  const repoCounts = {};
+  const topTier = [];
+  const remainingTier = [];
+
+  for (const skill of rawSorted) {
+    const owner = (skill.source?.owner || '').toLowerCase();
+    const repo = (skill.source?.repo?.split('/')[1] || skill.source?.repo || '').toLowerCase();
+    const key = `${owner}/${repo}`;
+    repoCounts[key] = (repoCounts[key] || 0) + 1;
+    if (repoCounts[key] <= 3) {
+      topTier.push({ ...skill, repo_skill_order: repoCounts[key], tier: 'primary_diverse' });
+    } else {
+      remainingTier.push({ ...skill, repo_skill_order: repoCounts[key], tier: 'extended_catalog' });
+    }
+  }
+
+  const ranked = [...topTier, ...remainingTier].map((skill, idx) => ({
     rank: idx + 1,
     ...skill
   }));
+
   res.json({
     total: ranked.length,
+    diversity_cap: 3,
+    top_tier_count: topTier.length,
     updated_at: new Date().toISOString(),
     skills: ranked
   });

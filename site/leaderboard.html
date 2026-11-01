@@ -23,10 +23,17 @@
 
   <title>لوحة الصدارة | دليل عربي لأشهر مهارات الذكاء الاصطناعي</title>
   
-  <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) -->
+  <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) with Non-Blocking Asynchronous Load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  </noscript>
+
+  <!-- Preload Critical Data for Immediate LCP Rendering -->
+  <link rel="preload" href="data/skills.json" as="fetch" crossorigin="anonymous">
   
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="css/style.css">

@@ -1291,7 +1291,7 @@
       "category": "documents",
       "featured": true,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/pdf",
@@ -1333,7 +1333,7 @@
       "category": "documents",
       "featured": true,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/docx",
@@ -1375,7 +1375,7 @@
       "category": "documents",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/xlsx",
@@ -1417,7 +1417,7 @@
       "category": "documents",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/pptx",
@@ -1457,7 +1457,7 @@
       "category": "design",
       "featured": true,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/frontend-design",
@@ -1498,7 +1498,7 @@
       "category": "meta",
       "featured": true,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/skill-creator",
@@ -1539,7 +1539,7 @@
       "category": "code-quality",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/webapp-testing",
@@ -1580,7 +1580,7 @@
       "category": "development",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/mcp-builder",
@@ -1620,7 +1620,7 @@
       "category": "design",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/canvas-design",
@@ -1661,7 +1661,7 @@
       "category": "development",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/web-artifacts-builder",
@@ -1701,7 +1701,7 @@
       "category": "design",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/brand-guidelines",
@@ -1740,7 +1740,7 @@
       "category": "design",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/theme-factory",
@@ -1779,7 +1779,7 @@
       "category": "communication",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/doc-coauthoring",
@@ -1818,7 +1818,7 @@
       "category": "design",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/algorithmic-art",
@@ -1857,7 +1857,7 @@
       "category": "communication",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/internal-comms",
@@ -1896,7 +1896,7 @@
       "category": "design",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/slack-gif-creator",
@@ -1935,7 +1935,7 @@
       "category": "development",
       "featured": false,
       "source": {
-        "owner": "Anthropic",
+        "owner": "anthropics",
         "repo": "anthropics/skills",
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/claude-api",

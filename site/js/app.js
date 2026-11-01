@@ -32,13 +32,12 @@ async function fetchJsonWithFallback(paths) {
 export async function loadData() {
   if (!skillsData) {
     try {
-      // Try full-stack API first, then local paths
+      // Pure static JSON paths (matching <link rel="preload"> for zero-latency cache hits)
       const res = await fetchJsonWithFallback([
-        '/api/skills',
-        '/data/skills.json',
-        '../data/skills.json',
+        'data/skills.json',
         './data/skills.json',
-        'data/skills.json'
+        '../data/skills.json',
+        '/data/skills.json'
       ]);
       skillsData = res;
     } catch (err) {
@@ -49,11 +48,10 @@ export async function loadData() {
   if (!toolsData) {
     try {
       const res = await fetchJsonWithFallback([
-        '/api/tools',
-        '/data/tools.json',
-        '../data/tools.json',
+        'data/tools.json',
         './data/tools.json',
-        'data/tools.json'
+        '../data/tools.json',
+        '/data/tools.json'
       ]);
       toolsData = Array.isArray(res) ? res : (res.tools || []);
     } catch (err) {
@@ -723,8 +721,35 @@ export async function initLeaderboardPage() {
         .join('');
   }
 
-  // Ensure skills are sorted by stars descending
-  const sortedSkills = [...skillsData.skills].sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+  // Normalize repository key (owner/repo)
+  function getRepoKey(s) {
+    const owner = (s.source?.owner || '').toLowerCase();
+    const repo = (s.source?.repo?.split('/')[1] || s.source?.repo || '').toLowerCase();
+    return `${owner}/${repo}`;
+  }
+
+  // Diverse Capped Leaderboard: Max 3 skills per repository in the top ranks (Rule 4)
+  function computeDiverseLeaderboard(allSkills) {
+    const rawSorted = [...allSkills].sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+    const repoCounts = {};
+    const topTier = [];
+    const remainingTier = [];
+
+    for (const skill of rawSorted) {
+      const key = getRepoKey(skill);
+      repoCounts[key] = (repoCounts[key] || 0) + 1;
+      if (repoCounts[key] <= 3) {
+        topTier.push({ ...skill, repo_skill_order: repoCounts[key], is_top_diverse: true });
+      } else {
+        remainingTier.push({ ...skill, repo_skill_order: repoCounts[key], is_top_diverse: false });
+      }
+    }
+
+    return [...topTier, ...remainingTier];
+  }
+
+  // Ensure skills are sorted with 3-skills-per-repo diversity cap
+  const sortedSkills = computeDiverseLeaderboard(skillsData.skills);
 
   function renderTable(skills) {
     if (skills.length === 0) {
