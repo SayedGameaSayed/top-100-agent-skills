@@ -7,6 +7,7 @@ import { SkillsSearchEngine, normalizeArabic } from './search.js';
 import { copyToClipboard } from './copy.js';
 import { initConstellation } from './constellation.js';
 import { initAiBot } from './bot.js';
+import { initScrollEffects, observeCardsScrollEntrance } from './scroll-effects.js';
 
 let skillsData = null;
 let toolsData = null;
@@ -222,6 +223,9 @@ export async function initIndexPage() {
     gridContainer.innerHTML = skills
       .map((skill) => renderSkillCard(skill, skillsData.categories))
       .join('');
+
+    // Trigger staggered scroll reveal observer for freshly rendered cards
+    observeCardsScrollEntrance();
   }
 
   function performFilter() {
@@ -786,6 +790,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   } catch (err) {
     console.error('Page init error:', err);
+  }
+
+  // Initialize Creative Scroll Animations & Micro-Interactions
+  try {
+    initScrollEffects();
+  } catch (scrollErr) {
+    console.warn('Scroll effects init warning:', scrollErr);
   }
 
   // Initialize AI Bot on all pages

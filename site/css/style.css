@@ -354,8 +354,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   background-color: var(--color-void);
   border-bottom: 1px solid var(--border-subtle);
   position: sticky;
-  top: 68px;
-  z-index: 80;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.category-nav-bar.is-sticky {
+  background-color: rgba(6, 6, 8, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(128, 82, 255, 0.28);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.85);
 }
 
 .category-nav-container {
@@ -490,6 +499,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 /* Dala Skill Card: Floating on black, 24px radius, subtle border */
 .skill-card {
   background-color: rgba(255, 255, 255, 0.02);
+  background-image: radial-gradient(
+    420px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(128, 82, 255, 0.12),
+    transparent 80%
+  );
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-card);
   padding: 30px;
@@ -498,17 +512,28 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   justify-content: space-between;
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 280px;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(22px) scale(0.98);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease, 
+              box-shadow 0.25s ease;
+  transition-delay: var(--card-stagger-delay, 0ms);
+}
+
+.skill-card.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .skill-card:hover {
-  background-color: rgba(255, 255, 255, 0.04);
-  border-color: rgba(128, 82, 255, 0.45);
-  box-shadow: 0 14px 40px -12px rgba(128, 82, 255, 0.22);
-  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.035);
+  border-color: rgba(128, 82, 255, 0.55);
+  box-shadow: 0 16px 45px -10px rgba(128, 82, 255, 0.25), 0 0 25px rgba(128, 82, 255, 0.1);
+  transform: translateY(-6px) scale(1.01);
   text-decoration: none;
 }
 
@@ -1564,4 +1589,76 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .bot-send-btn:hover {
   transform: scale(1.08);
   background-color: #6a3adb;
+}
+
+/* ==========================================================================
+   Creative Scroll Features & Micro-Interactions (Dala Velvet)
+   ========================================================================== */
+
+/* Top Luminous Scroll Progress Line */
+.scroll-progress-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-electric-iris), var(--color-saffron-spark), #10b981);
+  box-shadow: 0 0 12px rgba(128, 82, 255, 0.8), 0 0 20px rgba(255, 184, 41, 0.5);
+  z-index: 99999;
+  pointer-events: none;
+  transition: width 0.08s ease-out;
+}
+
+/* Creative Floating Back to Top Pill */
+.scroll-top-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1400;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(12, 12, 16, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-pill);
+  padding: 10px 18px;
+  color: var(--color-bone-white);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scroll-top-pill.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.scroll-top-pill:hover {
+  border-color: var(--color-electric-iris);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(128, 82, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.scroll-top-arrow {
+  color: var(--color-saffron-spark);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.scroll-top-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-electric-iris);
 }
