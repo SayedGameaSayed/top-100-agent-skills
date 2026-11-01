@@ -30,6 +30,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Discover New Skills, Sync GitHub Stars & Regenerate Leaderboard
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
