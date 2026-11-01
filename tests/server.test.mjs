@@ -110,11 +110,11 @@ async function runTests() {
     console.log(`  PASS: GET /api/skills returns all ${expectedSkillsCount} skills`);
 
     // 4. API Single Skill by ID
-    const singleSkillRes = await fetchUrl('http://127.0.0.1:3456/api/skills/superpowers');
+    const singleSkillRes = await fetchUrl('http://127.0.0.1:3456/api/skills/docx');
     assert.strictEqual(singleSkillRes.statusCode, 200);
     const singleSkill = JSON.parse(singleSkillRes.data);
-    assert.strictEqual(singleSkill.id, 'superpowers');
-    assert.strictEqual(singleSkill.kind, 'collection');
+    assert.strictEqual(singleSkill.id, 'docx');
+    assert.strictEqual(singleSkill.repo_type, 'skills');
     console.log('  PASS: GET /api/skills/:id returns requested skill');
 
     // 5. API Search with Arabic normalization

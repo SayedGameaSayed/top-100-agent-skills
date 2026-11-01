@@ -56,96 +56,6 @@
   ],
   "skills": [
     {
-      "id": "rea",
-      "name": "rea",
-      "title_ar": "rea: أداة وكيل متقدمة",
-      "summary_ar": "Reverse engineer anything with agents, from app behavior down to native binaries. (مهارة وكيل مفتوحة المصدر)",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 417055,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Reverse engineer anything with agents, from app behavior down to native binaries."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة rea لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "morluto",
-        "repo": "rea",
-        "repo_url": "https://github.com/morluto/rea",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/morluto/rea"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool",
-      "responsible_use_note_ar": "تنبيه الاستخدام المسؤول: مهارة هندسة عكسية متقدمة موجهة لمهندسي البرمجيات ومحللي الأمان للأغراض الدفاعية وفحص الثغرات؛ يجب الالتزام بالقوانين الأخلاقية وعدم فحص أي برمجية دون إذن صريح."
-    },
-    {
-      "id": "superpowers",
-      "name": "superpowers",
-      "kind": "collection",
-      "category": "code-quality",
-      "featured": true,
-      "source": {
-        "owner": "obra",
-        "repo": "obra/superpowers",
-        "repo_url": "https://github.com/obra/superpowers",
-        "path_in_repo": null,
-        "url": "https://github.com/obra/superpowers",
-        "url_verified": true
-      },
-      "license": {
-        "type": "MIT (reported by a secondary source; confirm in the repository)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "title_ar": "Superpowers: منهجية تطوير متكاملة",
-      "summary_ar": "إطار عمل يقود الموديل في دورة تطوير كاملة: من توضيح الفكرة وكتابة الخطة إلى التنفيذ ثم مراجعة الكود، مع الالتزام بالاختبارات أولًا (TDD) ومبدأي YAGNI وDRY. الريبو يضم مهارات كثيرة، فاختر منها ما تحتاجه.",
-      "benefits_ar": [
-        "دورة عمل منظمة بدل البرمجة العشوائية",
-        "اختبارات ومراجعة كجزء من العمل",
-        "تقليل الكود الزائد والتكرار"
-      ],
-      "use_cases_ar": [
-        "بناء ميزة جديدة بخطة واضحة",
-        "تحسين جودة مشروع موجود"
-      ],
-      "example_prompts_ar": [
-        "ساعدني أخطط لميزة تسجيل الدخول قبل ما نكتب كود",
-        "راجع الكود ده بعد التنفيذ"
-      ],
-      "difficulty": "intermediate",
-      "content_verified": false,
-      "github_stars": 310339,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "skills"
-    },
-    {
       "id": "obra-writing-plans",
       "name": "writing-plans",
       "kind": "skill",
@@ -559,46 +469,6 @@
       "example_prompts_ar": [
         "اعطني 3 حلول معمارية مختلفة لتطبيق نظام إشعارات فوري مع مقارنة إيجابيات وسلبيات كل حل."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "skills"
-    },
-    {
-      "id": "mattpocock-skills",
-      "name": "mattpocock-skills",
-      "kind": "collection",
-      "category": "code-quality",
-      "featured": false,
-      "source": {
-        "owner": "mattpocock",
-        "repo": "mattpocock/skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": null,
-        "url": "https://github.com/mattpocock/skills",
-        "url_verified": true
-      },
-      "license": {
-        "type": "MIT (reported by a secondary source; confirm in the repository)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "title_ar": "مهارات Matt Pocock للتطوير",
-      "summary_ar": "مجموعة مهارات لتشخيص الأخطاء ونمذجة المجال وكتابة المواصفات والتنفيذ والمراجعة.",
-      "benefits_ar": [
-        "خطوات واضحة لتشخيص الأخطاء",
-        "من المواصفات إلى التنفيذ والمراجعة"
-      ],
-      "use_cases_ar": [
-        "تتبّع خطأ معقد",
-        "كتابة مواصفات قبل البرمجة"
-      ],
-      "example_prompts_ar": [
-        "شخّص الخطأ ده خطوة بخطوة",
-        "اكتب مواصفات قبل ما نبدأ التنفيذ"
-      ],
-      "difficulty": "intermediate",
-      "content_verified": false,
-      "github_stars": 308866,
       "reviewed_by": null,
       "reviewed_on": null,
       "repo_type": "skills"
@@ -1172,150 +1042,6 @@
       "reviewed_by": null,
       "reviewed_on": null,
       "repo_type": "skills"
-    },
-    {
-      "id": "ecc",
-      "name": "ECC",
-      "title_ar": "ECC: أداة وكيل متقدمة",
-      "summary_ar": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond. (مهارة وكيل مفتوحة المصدر)",
-      "category": "cloud-security",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 294396,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة ECC لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "affaan-m",
-        "repo": "ECC",
-        "repo_url": "https://github.com/affaan-m/ECC",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/affaan-m/ECC"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "skills"
-    },
-    {
-      "id": "skills",
-      "name": "skills",
-      "title_ar": "skills: أداة وكيل متقدمة",
-      "summary_ar": "Public repository for Agent Skills (مهارة وكيل مفتوحة المصدر)",
-      "category": "meta",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 186097,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Public repository for Agent Skills"
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة skills لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "anthropics",
-        "repo": "skills",
-        "repo_url": "https://github.com/anthropics/skills",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/anthropics/skills"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "skills"
-    },
-    {
-      "id": "ponytail",
-      "name": "ponytail",
-      "title_ar": "ponytail: أداة وكيل متقدمة",
-      "summary_ar": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote. (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 181805,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة ponytail لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "DietrichGebert",
-        "repo": "ponytail",
-        "repo_url": "https://github.com/DietrichGebert/ponytail",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/DietrichGebert/ponytail"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "plugin"
     },
     {
       "id": "pdf",
@@ -2018,1077 +1744,6 @@
       "repo_type": "skills"
     },
     {
-      "id": "awesome-llm-apps",
-      "name": "awesome-llm-apps",
-      "title_ar": "awesome-llm-apps: أداة وكيل متقدمة",
-      "summary_ar": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source. (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 143633,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة awesome-llm-apps لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "Shubhamsaboo",
-        "repo": "awesome-llm-apps",
-        "repo_url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/Shubhamsaboo/awesome-llm-apps"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "list"
-    },
-    {
-      "id": "ui-ux-pro-max-skill",
-      "name": "ui-ux-pro-max-skill",
-      "kind": "collection",
-      "category": "design",
-      "featured": true,
-      "source": {
-        "owner": "nextlevelbuilder",
-        "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
-        "repo_url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-        "path_in_repo": null,
-        "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-        "url_verified": true
-      },
-      "license": {
-        "type": "MIT (reported by a secondary source; confirm in the repository)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "title_ar": "UI/UX Pro Max: أنظمة تصميم",
-      "summary_ar": "تقدم اتجاهات لأنظمة تصميم كاملة مع مراجع للخطوط والألوان والتخطيط والمكونات.",
-      "benefits_ar": [
-        "قرارات تصميم جاهزة ومتسقة",
-        "مراجع للألوان والخطوط والمكونات"
-      ],
-      "use_cases_ar": [
-        "اختيار هوية لواجهة تطبيق جديد",
-        "تحسين اتساق واجهة موجودة"
-      ],
-      "example_prompts_ar": [
-        "اقترح نظام تصميم لتطبيق مذاكرة",
-        "وحّد ألوان وخطوط الصفحات دي"
-      ],
-      "difficulty": "beginner",
-      "content_verified": false,
-      "github_stars": 143618,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "caveman",
-      "name": "caveman",
-      "title_ar": "caveman: أداة وكيل متقدمة",
-      "summary_ar": "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman. (مهارة وكيل مفتوحة المصدر)",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 116606,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة caveman لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "JuliusBrussee",
-        "repo": "caveman",
-        "repo_url": "https://github.com/JuliusBrussee/caveman",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/JuliusBrussee/caveman"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "addyosmani-agent-skills",
-      "name": "addyosmani-agent-skills",
-      "kind": "collection",
-      "category": "code-quality",
-      "featured": false,
-      "source": {
-        "owner": "addyosmani",
-        "repo": "addyosmani/agent-skills",
-        "repo_url": "https://github.com/addyosmani/agent-skills",
-        "path_in_repo": null,
-        "url": "https://github.com/addyosmani/agent-skills",
-        "url_verified": true
-      },
-      "license": {
-        "type": "MIT (reported by a secondary source; confirm in the repository)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "title_ar": "مهارات Addy Osmani لدورة الهندسة",
-      "summary_ar": "مجموعة مهارات تغطي تحديد الميزة والواجهات والاختبار والمراجعة والإطلاق. تنبيه: بعض المهارات متداخلة، فاختر ما تحتاجه فقط.",
-      "benefits_ar": [
-        "تغطي دورة العمل حتى الإطلاق",
-        "مناسبة للفرق الصغيرة"
-      ],
-      "use_cases_ar": [
-        "مراجعة جاهزية الإطلاق",
-        "تنظيم مهام الواجهة والاختبار"
-      ],
-      "example_prompts_ar": [
-        "راجع جاهزية الميزة دي قبل الإطلاق",
-        "ساعدني أحدد خطوات الاختبار"
-      ],
-      "difficulty": "intermediate",
-      "content_verified": false,
-      "github_stars": 112395,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "skills"
-    },
-    {
-      "id": "agent-skills",
-      "name": "agent-skills",
-      "title_ar": "agent-skills: أداة وكيل متقدمة",
-      "summary_ar": "Production-grade engineering skills for AI coding agents. (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 112395,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Production-grade engineering skills for AI coding agents."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة agent-skills لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "addyosmani",
-        "repo": "agent-skills",
-        "repo_url": "https://github.com/addyosmani/agent-skills",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/addyosmani/agent-skills"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "skills"
-    },
-    {
-      "id": "paperclip",
-      "name": "paperclip",
-      "title_ar": "paperclip: أداة وكيل متقدمة",
-      "summary_ar": "The open-source app everyone uses to manage agents at work (مهارة وكيل مفتوحة المصدر)",
-      "category": "science-education",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 109696,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "The open-source app everyone uses to manage agents at work"
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة paperclip لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "paperclipai",
-        "repo": "paperclip",
-        "repo_url": "https://github.com/paperclipai/paperclip",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/paperclipai/paperclip"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "claude-mem",
-      "name": "claude-mem",
-      "title_ar": "claude-mem: أداة وكيل متقدمة",
-      "summary_ar": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 108489,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More"
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة claude-mem لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "thedotmack",
-        "repo": "claude-mem",
-        "repo_url": "https://github.com/thedotmack/claude-mem",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/thedotmack/claude-mem"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "plugin"
-    },
-    {
-      "id": "taste-skill",
-      "name": "taste-skill",
-      "kind": "collection",
-      "category": "design",
-      "featured": false,
-      "source": {
-        "owner": "Leonxlnx",
-        "repo": "Leonxlnx/taste-skill",
-        "repo_url": "https://github.com/Leonxlnx/taste-skill",
-        "path_in_repo": null,
-        "url": "https://github.com/Leonxlnx/taste-skill",
-        "url_verified": true
-      },
-      "license": {
-        "type": "MIT (reported by a secondary source; confirm in the repository)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "title_ar": "Taste Skill: تصميم واجهات بذوق",
-      "summary_ar": "مهارات لتصميم الواجهات تشمل إعادة التصميم وبناء الهوية وتحويل الصورة إلى كود. الإصدار الثاني تجريبي.",
-      "benefits_ar": [
-        "إعادة تصميم صفحات موجودة",
-        "تحويل التصميم المرسوم إلى كود"
-      ],
-      "use_cases_ar": [
-        "تحويل صورة تصميم إلى صفحة",
-        "إعادة تصميم صفحة قديمة"
-      ],
-      "example_prompts_ar": [
-        "حوّل صورة التصميم دي لصفحة HTML",
-        "أعد تصميم الصفحة الرئيسية"
-      ],
-      "difficulty": "intermediate",
-      "content_verified": false,
-      "github_stars": 107397,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "open-design",
-      "name": "open-design",
-      "title_ar": "open-design: أداة وكيل متقدمة",
-      "summary_ar": "The 1st Collaborative AI Design Agent Workspace. Local-first and open source. Create motion, prototypes, websites, apps, dashboards, presentations, images, and videos with your team and AI agents. Share work, exchange feedback, and iterate together in one workspace. (مهارة وكيل مفتوحة المصدر)",
-      "category": "design",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": true,
-      "github_stars": 105260,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "The 1st Collaborative AI Design Agent Workspace. Local-first and open source. Create motion, prototypes, websites, apps, dashboards, presentations, images, and videos with your team and AI agents. Share work, exchange feedback, and iterate together in one workspace."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة open-design لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "nexu-io",
-        "repo": "open-design",
-        "repo_url": "https://github.com/nexu-io/open-design",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/nexu-io/open-design"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "impeccable",
-      "name": "impeccable",
-      "title_ar": "impeccable: أداة وكيل متقدمة",
-      "summary_ar": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships. (مهارة وكيل مفتوحة المصدر)",
-      "category": "code-quality",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 98820,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة impeccable لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "pbakaus",
-        "repo": "impeccable",
-        "repo_url": "https://github.com/pbakaus/impeccable",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/pbakaus/impeccable"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "archify",
-      "name": "archify",
-      "title_ar": "archify: أداة وكيل متقدمة",
-      "summary_ar": "Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more. (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 92263,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة archify لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "tt-a1i",
-        "repo": "archify",
-        "repo_url": "https://github.com/tt-a1i/archify",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/tt-a1i/archify"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "understand-anything",
-      "name": "Understand-Anything",
-      "title_ar": "Understand-Anything: أداة وكيل متقدمة",
-      "summary_ar": "Graphs that teach > graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more. (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 89518,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Graphs that teach > graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة Understand-Anything لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "Egonex-AI",
-        "repo": "Understand-Anything",
-        "repo_url": "https://github.com/Egonex-AI/Understand-Anything",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/Egonex-AI/Understand-Anything"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "career-ops",
-      "name": "career-ops",
-      "title_ar": "career-ops: أداة وكيل متقدمة",
-      "summary_ar": "Open-source AI job search agent and job finder: scan job boards, score each job 1-5 against your CV before you apply, tailor an ATS-friendly resume and cover letter, get interview prep and an application tracker. It helps you fill in each application; you press Submit. Runs locally in Codex, OpenCode and other AI CLIs, or as a Claude Code plugin. (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 79148,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Open-source AI job search agent and job finder: scan job boards, score each job 1-5 against your CV before you apply, tailor an ATS-friendly resume and cover letter, get interview prep and an application tracker. It helps you fill in each application; you press Submit. Runs locally in Codex, OpenCode and other AI CLIs, or as a Claude Code plugin."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة career-ops لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "career-ops-hq",
-        "repo": "career-ops",
-        "repo_url": "https://github.com/career-ops-hq/career-ops",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/career-ops-hq/career-ops"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "awesome-claude-skills",
-      "name": "awesome-claude-skills",
-      "kind": "directory",
-      "category": "meta",
-      "featured": false,
-      "source": {
-        "owner": "ComposioHQ",
-        "repo": "ComposioHQ/awesome-claude-skills",
-        "repo_url": "https://github.com/ComposioHQ/awesome-claude-skills",
-        "path_in_repo": null,
-        "url": "https://github.com/ComposioHQ/awesome-claude-skills",
-        "url_verified": true
-      },
-      "license": {
-        "type": "Not stated in the source we used. Check the repository LICENSE",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "title_ar": "قائمة مهارات المجتمع (Awesome)",
-      "summary_ar": "فهرس لمهارات مقدمة من المجتمع بمؤلفين وتراخيص مختلفة. هو دليل للاكتشاف وليس مهارة واحدة، فراجع ترخيص كل مهارة قبل استخدامها.",
-      "benefits_ar": [
-        "اكتشاف مهارات كثيرة في مكان واحد",
-        "روابط للمصادر الأصلية"
-      ],
-      "use_cases_ar": [
-        "البحث عن مهارة لمجال معين",
-        "مقارنة مهارات متشابهة"
-      ],
-      "example_prompts_ar": [
-        "ساعدني أختار مهارة مناسبة لكتابة التقارير من القائمة دي"
-      ],
-      "difficulty": "beginner",
-      "content_verified": false,
-      "github_stars": 78481,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "list"
-    },
-    {
-      "id": "openmontage",
-      "name": "OpenMontage",
-      "title_ar": "OpenMontage: أداة وكيل متقدمة",
-      "summary_ar": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio. (مهارة وكيل مفتوحة المصدر)",
-      "category": "documents",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 74173,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة OpenMontage لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "calesthio",
-        "repo": "OpenMontage",
-        "repo_url": "https://github.com/calesthio/OpenMontage",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/calesthio/OpenMontage"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "oh-my-openagent",
-      "name": "oh-my-openagent",
-      "title_ar": "oh-my-openagent: أداة وكيل متقدمة",
-      "summary_ar": "OmO: Just type \"mass ulw\" keyword with your prompt. Now you are the master of graph engineering. (مهارة وكيل مفتوحة المصدر)",
-      "category": "documents",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 70568,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "OmO: Just type \"mass ulw\" keyword with your prompt. Now you are the master of graph engineering."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة oh-my-openagent لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "code-yeongyu",
-        "repo": "oh-my-openagent",
-        "repo_url": "https://github.com/code-yeongyu/oh-my-openagent",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/code-yeongyu/oh-my-openagent"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "plugin"
-    },
-    {
-      "id": "last30days-skill",
-      "name": "last30days-skill",
-      "title_ar": "last30days-skill: أداة وكيل متقدمة",
-      "summary_ar": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary (مهارة وكيل مفتوحة المصدر)",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 66186,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary"
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة last30days-skill لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "mvanhorn",
-        "repo": "last30days-skill",
-        "repo_url": "https://github.com/mvanhorn/last30days-skill",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/mvanhorn/last30days-skill"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "diagram-design",
-      "name": "diagram-design",
-      "title_ar": "diagram-design: أداة وكيل متقدمة",
-      "summary_ar": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 45 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop. (مهارة وكيل مفتوحة المصدر)",
-      "category": "design",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 63656,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 45 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة diagram-design لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "cathrynlavery",
-        "repo": "diagram-design",
-        "repo_url": "https://github.com/cathrynlavery/diagram-design",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/cathrynlavery/diagram-design"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "humanizer",
-      "name": "humanizer",
-      "title_ar": "humanizer: أداة وكيل متقدمة",
-      "summary_ar": "Agent skill that removes signs of AI-generated writing from text (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 63112,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Agent skill that removes signs of AI-generated writing from text"
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة humanizer لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "blader",
-        "repo": "humanizer",
-        "repo_url": "https://github.com/blader/humanizer",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/blader/humanizer"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "i-have-adhd",
-      "name": "i-have-adhd",
-      "title_ar": "i-have-adhd: أداة وكيل متقدمة",
-      "summary_ar": "A skill to stop your coding agent from burying the answer. ADHD-friendly output. (مهارة وكيل مفتوحة المصدر)",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 59640,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "A skill to stop your coding agent from burying the answer. ADHD-friendly output."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة i-have-adhd لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "ayghri",
-        "repo": "i-have-adhd",
-        "repo_url": "https://github.com/ayghri/i-have-adhd",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/ayghri/i-have-adhd"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "marketingskills",
-      "name": "marketingskills",
-      "title_ar": "marketingskills: أداة وكيل متقدمة",
-      "summary_ar": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering. (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 57750,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة marketingskills لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "coreyhaines31",
-        "repo": "marketingskills",
-        "repo_url": "https://github.com/coreyhaines31/marketingskills",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/coreyhaines31/marketingskills"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
-      "id": "awesome-claude-code",
-      "name": "awesome-claude-code",
-      "title_ar": "awesome-claude-code: أداة وكيل متقدمة",
-      "summary_ar": "A hand-picked collection of the finest of resources for the most awesome of agents, Claude Code, the undisputed champion of coding companions, from the unstoppable team at Anthropic PBC (no affiliation). A delectable showcase of top tier skills, ambidextrous agents, scintillating status lines, top notch developer tooling, and also we have plugins (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 57012,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "A hand-picked collection of the finest of resources for the most awesome of agents, Claude Code, the undisputed champion of coding companions, from the unstoppable team at Anthropic PBC (no affiliation). A delectable showcase of top tier skills, ambidextrous agents, scintillating status lines, top notch developer tooling, and also we have plugins"
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة awesome-claude-code لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "hesreallyhim",
-        "repo": "awesome-claude-code",
-        "repo_url": "https://github.com/hesreallyhim/awesome-claude-code",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/hesreallyhim/awesome-claude-code"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "list"
-    },
-    {
-      "id": "scientific-agent-skills",
-      "name": "scientific-agent-skills",
-      "title_ar": "scientific-agent-skills: أداة وكيل متقدمة",
-      "summary_ar": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard. (مهارة وكيل مفتوحة المصدر)",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 55607,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard."
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة scientific-agent-skills لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "K-Dense-AI",
-        "repo": "scientific-agent-skills",
-        "repo_url": "https://github.com/K-Dense-AI/scientific-agent-skills",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/K-Dense-AI/scientific-agent-skills"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "tool"
-    },
-    {
       "id": "deep-research",
       "name": "deep-research",
       "kind": "skill",
@@ -3236,54 +1891,6 @@
       "example_prompts_ar": [
         "اكتب كود CSS Grid يتكيف تلقائياً مع حجم الشاشة بدون استخدام media queries."
       ],
-      "reviewed_by": null,
-      "reviewed_on": null,
-      "repo_type": "skills"
-    },
-    {
-      "id": "agents",
-      "name": "agents",
-      "title_ar": "agents: أداة وكيل متقدمة",
-      "summary_ar": "Multi-harness agentic plugin marketplace for Claude Code, Codex, Cursor, OpenCode, GitHub Copilot, Google Antigravity, and Pi (مهارة وكيل مفتوحة المصدر)",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT (reported upstream)",
-        "status": "verify_before_publish",
-        "copy_file_allowed": false
-      },
-      "kind": "collection",
-      "featured": false,
-      "github_stars": 42069,
-      "benefits_ar": [
-        "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
-        "العمل المباشر مع أدوات التطوير ومستودعات الكود."
-      ],
-      "use_cases_ar": [
-        "Multi-harness agentic plugin marketplace for Claude Code, Codex, Cursor, OpenCode, GitHub Copilot, Google Antigravity, and Pi"
-      ],
-      "example_prompts_ar": [
-        "استخدم مهارة agents لمساعدتي في المشروع."
-      ],
-      "source": {
-        "owner": "wshobson",
-        "repo": "agents",
-        "repo_url": "https://github.com/wshobson/agents",
-        "path_in_repo": "",
-        "url_verified": true,
-        "url": "https://github.com/wshobson/agents"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": false,
       "reviewed_by": null,
       "reviewed_on": null,
       "repo_type": "skills"
@@ -4391,7 +2998,1538 @@
       "reviewed_by": null,
       "reviewed_on": null,
       "repo_type": "skills"
+    },
+    {
+      "id": "composition-patterns",
+      "name": "composition-patterns",
+      "title_ar": "أنماط تركيب مكونات React القابلة للتوسع",
+      "summary_ar": "دليل أنماط تركيب React للمشاريع الكبيرة؛ يمنع تضخم الخصائص المنطقية (Boolean Props) ويساعد في بناء مكتبات مكونات مرنة وقابلة لإعادة الاستخدام.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "التخلص من مشكلة تضخم الخصائص المنطقية (Prop Proliferation) في مكونات React.",
+        "بناء واجهات ومكتبات مكونات قابلة للتوسع والصيانة بسهولة.",
+        "تحسين تجربة التطوير وفصل منطق المكونات عن طبقة العرض."
+      ],
+      "use_cases_ar": [
+        "إعادة هيكلة مكونات React المعقدة.",
+        "تصميم مكتبات المكونات المشتركة لنظام التصميم (Design System).",
+        "تجنب إعادة تصدير المكونات المتشابكة معقدة التركيب."
+      ],
+      "example_prompts_ar": [
+        "راجع مكون البطاقة هذا وأعد هيكلته باستخدام نمط Compound Components لتجنب تكرار الـ props."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/composition-patterns",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "deploy-to-vercel",
+      "name": "deploy-to-vercel",
+      "title_ar": "النشر المباشر للتطبيقات على منصة Vercel",
+      "summary_ar": "أتمتة نشر التطبيقات والمواقع على Vercel؛ فحص متطلبات المشروع، وإدارة الرموز والمتغيرات البيئية، وتجهيز رابط المعاينة الحية فوراً.",
+      "category": "cloud-security",
+      "difficulty": "beginner",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "نشر التطبيقات والمواقع بضغطة واحدة مع توليد روابط معاينة فورية.",
+        "التحقق المسبق من إعدادات البناء وتكوين بيئة التشغيل قبل النشر.",
+        "إدارة النطاقات والمتغيرات البيئية (Environment Variables) تلقائياً."
+      ],
+      "use_cases_ar": [
+        "نشر تطبيق ويب جديد مباشرة من موجه الأوامر.",
+        "إنشاء بيئة معاينة (Preview Deployment) لاختبار التغييرات.",
+        "تحديث وتفقد حالة النشر وفحص سجلات الأخطاء."
+      ],
+      "example_prompts_ar": [
+        "انشر تطبيقي الحالي على Vercel وجهز لي رابط المعاينة المباشر."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/deploy-to-vercel",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/deploy-to-vercel"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "react-best-practices",
+      "name": "react-best-practices",
+      "title_ar": "أفضل ممارسات أداء React و Next.js من Vercel",
+      "summary_ar": "دليل هندسي رسمي من فريق Vercel يضم أكثر من 40 قاعدة لتحسين أداء React و Next.js، والتخلص من بطء الشلالات المائية وحزم الكود الضخمة.",
+      "category": "code-quality",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "القضاء على ظاهرة شلالات تحميل البيانات (Network Waterfalls).",
+        "تقليص حجم حزمة الجافاسكريبت الموجهة للعميل بنسب ملحوظة.",
+        "منع تكرار الرسم غير الضروري للمكونات (Unnecessary Re-renders)."
+      ],
+      "use_cases_ar": [
+        "مراجعة جودة كود مكونات React قبل الإطلاق.",
+        "تحسين زمن تحميل الصفحة ومؤشرات الويب الأساسية (Core Web Vitals).",
+        "هندسة جلب البيانات في Server Components مقابل Client Components."
+      ],
+      "example_prompts_ar": [
+        "راجع مكونات هذه الصفحة وفق أفضل ممارسات Vercel واكتشف أي تسريبات أداء أو شلالات غير ضرورية."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/react-best-practices",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "react-native-skills",
+      "name": "react-native-skills",
+      "title_ar": "أفضل ممارسات React Native و Expo للتطبيقات السريعة",
+      "summary_ar": "إرشادات بناء تطبيقات الهواتف الذكية بـ React Native و Expo؛ تحسين أداء القوائم الكبيرة، والرسوم المتحركة التفاعلية، وإدارة الذاكرة.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "ضمان سلاسة حركة الرسوم بمعدل 60 إطاراً في الثانية على شاشات الهواتف.",
+        "تحسين أداء القوائم الطويلة (FlatList و FlashList) وتقليل استهلاك الذاكرة.",
+        "اتباع أفضل الممارسات في هيكلة مشاريع Expo و React Native الحديثة."
+      ],
+      "use_cases_ar": [
+        "بناء شاشات وقوائم بيانات ضخمة لتطبيقات الجوال.",
+        "تحسين أوقات إقلاع التطبيق (Cold Start Time).",
+        "تطبيق أنماط التصميم المتوافقة مع نظامي iOS و Android."
+      ],
+      "example_prompts_ar": [
+        "حسّن أداء قائمة التمرير هذه في React Native لمنع التقطيع والتهنيج على الأجهزة المتوسطة."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/react-native-skills",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-native-skills"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "react-view-transitions",
+      "name": "react-view-transitions",
+      "title_ar": "انتقالات الشاشة السينمائية بـ View Transition API",
+      "summary_ar": "دليل تطبيق انتقالات سلسة وطبيعية بين الصفحات والمكونات في React باستخدام View Transitions API الحديثة مع دعم التراجع التدريجي.",
+      "category": "design",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "توفير تجربة مستخدم سلسة وشبيهة بتطبيقات الهواتف الأصلية دون مكتبات ثقيلة.",
+        "دعم الانتقالات السلسة بين مسارات التوجيه وحالات التنقل.",
+        "التوافق مع متصفحات الويب الحديثة مع معالجة المتصفحات القديمة."
+      ],
+      "use_cases_ar": [
+        "إضافة مؤثرات انتقال سينمائية بين بطاقات المنتجات وتفاصيلها.",
+        "التحريك السلس للعناصر المشتركة (Shared Element Transitions).",
+        "تحسين التفاعل الحركي في تطبيقات الويب ذات الصفحة الواحدة."
+      ],
+      "example_prompts_ar": [
+        "أضف مؤثر View Transition سلس عند الانتقال من قائمة البطاقات إلى صفحة التفاصيل."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/react-view-transitions",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-view-transitions"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "vercel-cli-with-tokens",
+      "name": "vercel-cli-with-tokens",
+      "title_ar": "إدارة ونشر Vercel CLI بالرموز البرمجية",
+      "summary_ar": "استخدام أداة موجه الأوامر Vercel CLI عبر رموز الوصول (Access Tokens) دون الحاجة لتسجيل دخول تفاعلي، مخصصة لبيئات الأتمتة و CI/CD.",
+      "category": "cloud-security",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "تشغيل أوامر Vercel داخل خطوط أنابيب CI/CD وأدوات الوكلاء البرمجية بدون تدخل بشري.",
+        "إدارة أذونات الوصول والرموز بأمان دون كشف بيانات الاعتماد الشخصية.",
+        "أتمتة فحص ونشر المشاريع البرمجية في الخوادم البعيدة."
+      ],
+      "use_cases_ar": [
+        "تهيئة إجراءات GitHub Actions للنشر الآلي على Vercel.",
+        "إدارة ونشر المشاريع من داخل بيئات العمل المعزولة.",
+        "فحص إعدادات النطاقات والشهادات الأمنية برمجياً."
+      ],
+      "example_prompts_ar": [
+        "استخدم Vercel CLI مع رمز الوصول لنشر التطبيق وربط النطاق المخصص."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/vercel-cli-with-tokens",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/vercel-cli-with-tokens"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "vercel-optimize",
+      "name": "vercel-optimize",
+      "title_ar": "تدقيق تكاليف وأداء مشاريع Vercel السحابية",
+      "summary_ar": "فحص مشاريع Next.js و SvelteKit المنشورة على Vercel لخفض التكاليف وتحسين سرعة الاستجابة، والتخزين المؤقت، واستهلاك الـ Serverless Functions.",
+      "category": "cloud-security",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "خفض فواتير استهلاك Vercel عبر كشف الدوال المسرفة في الموارد.",
+        "تحسين استراتيجيات التخزين المؤقت (ISR و CDN Caching) للمسارات البطيئة.",
+        "توليد تقرير أولويات مرتب حسب الأثر المالي والتقني على المشروع."
+      ],
+      "use_cases_ar": [
+        "تحليل وتخفيض تكاليف مشروع Vercel كبير.",
+        "اكتشاف المسارات ذات زمن الاستجابة العالي وتصحيحها.",
+        "مراجعة استهلاك دقائق البناء (Build Minutes) ومعالجة الصور."
+      ],
+      "example_prompts_ar": [
+        "حلل مسارات مشروعي المنشور على Vercel واقترح حلولاً لتقليل استهلاك الـ Functions والتكلفة."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/vercel-optimize",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/vercel-optimize"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "web-design-guidelines",
+      "name": "web-design-guidelines",
+      "title_ar": "تدقيق واجهات المستخدم وفق إرشادات الويب القياسية",
+      "summary_ar": "مراجعة كود واجهات الويب للتأكد من مطابقتها لأعلى معايير تجربة المستخدم (UX)، وسهولة الوصول (Accessibility - a11y)، والتناسق البصري.",
+      "category": "design",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "التأكد من التوافق مع معايير إمكانية الوصول العالمية WCAG 2.1.",
+        "فحص تباين الألوان وأحجام الخطوط وحالات التفاعل (Hover/Focus).",
+        "تحسين التجاوب والتناسق الإيقاعي بين عناصر الشاشة."
+      ],
+      "use_cases_ar": [
+        "تدقيق صفحات الهبوط والمواقع قبل النشر النهائي.",
+        "كشف أخطاء التباين وإمكانية الوصول لضعاف البصر.",
+        "مراجعة تصميم نماذج الإدخال والأزرار وقوائم التنقل."
+      ],
+      "example_prompts_ar": [
+        "راجع هذا الكود لواجهة المستخدم وتأكد من توافقه مع إرشادات التصميم وإمكانية الوصول."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/web-design-guidelines",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "writing-guidelines",
+      "name": "writing-guidelines",
+      "title_ar": "تدقيق وصياغة نصوص التوثيق التقني الاحترافي",
+      "summary_ar": "مراجعة النصوص والتوثيق البرمجي وفق إرشادات الصياغة التقنية المتقدمة؛ ضبط النبرة الصوتية، والإيجاز، والوضوح، والدقة الاصطلاحية.",
+      "category": "communication",
+      "difficulty": "beginner",
+      "license": {
+        "type": "MIT (reported in README)",
+        "status": "verify_before_publish",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 33347,
+      "benefits_ar": [
+        "توحيد نبرة الخطاب والأسلوب في المستندات والواجهات البرمجية.",
+        "حذف الحشو والكلمات الزائدة لتقديم شروحات واضحة ومباشرة.",
+        "صياغة نصوص واجهة المستخدم (Microcopy) ورسائل الخطأ بدقة."
+      ],
+      "use_cases_ar": [
+        "مراجعة توثيق المكتبات وواجهات برمجة التطبيقات (API Docs).",
+        "تحرير وتدقيق نصوص الشاشات والتنبيهات ورسائل النجاح والخطأ.",
+        "كتابة إرشادات الاستخدام وملفات README الموجهة للمطورين."
+      ],
+      "example_prompts_ar": [
+        "راجع هذا التوثيق التقني واضبط الصياغة والنبرة لتكون موجزة واحترافية وفق إرشادات الكتابة."
+      ],
+      "source": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "repo_url": "https://github.com/vercel-labs/agent-skills",
+        "path_in_repo": "skills/writing-guidelines",
+        "url_verified": true,
+        "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/writing-guidelines"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "mp-diagnosing-bugs",
+      "name": "diagnosing-bugs",
+      "title_ar": "حلقة التشخيص المنهجي للعلل البرمجية الصعبة",
+      "summary_ar": "منهجية دقيقة لعزل وتشخيص العلل المستعصية وانحدارات الأداء؛ جمع الأدلة، وصياغة الفرضيات، والتحقق العملي قبل الشروع في التعديل.",
+      "category": "code-quality",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "منع التخمين العشوائي في تصليح العلل وحصر السبب الجذري.",
+        "توليد خطوات إعادة إنتاج موثقة وقابلة للاختبار الآلي.",
+        "حماية الكود من الحلول الترقيعية المؤقتة التي تكسر مسارات أخرى."
+      ],
+      "use_cases_ar": [
+        "تشخيص أخطاء انهيار التطبيق الغامضة في بيئة الإنتاج.",
+        "حل مشاكل تدهور الأداء وتسريب الذاكرة.",
+        "تتبع الأخطاء المتزامنة (Race Conditions) وتضارب البيانات."
+      ],
+      "example_prompts_ar": [
+        "شخّص هذا الخطأ الصعب وحدد السبب الجذري بدقة قبل اقتراح أي كود."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/diagnosing-bugs",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "grill-with-docs",
+      "name": "grill-with-docs",
+      "title_ar": "المقابلة الاستقصائية وتوليد توثيق القرارات المعمارية",
+      "summary_ar": "جلسة حوار استقصائية متعمقة لاختبار متانة التصميم المعماري، تقوم آلياً بتدوين سجل القرارات المعمارية (ADR) وقاموس مصطلحات المشروع.",
+      "category": "development",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "اكتشاف الثغرات المنطقية والافتراضات غير المختبرة في الخطة مبكراً.",
+        "توثيق القرارات التقنية وسياقها في ملفات ADR بصيغة Markdown قياسية.",
+        "بناء مرجع موحد لمصطلحات المشروع يمنع التضارب بين المطورين."
+      ],
+      "use_cases_ar": [
+        "صقل الخطط المعمارية المعقدة قبل بدء كتابة الكود.",
+        "توثيق أسباب اختيار تقنية معينة أو مكتبة محددة للمستقبل.",
+        "إجراء مقابلات محاكاة لاختبار متانة هندسة البرمجيات."
+      ],
+      "example_prompts_ar": [
+        "استجوبني بدقة حول معماريّة هذا النظام ووثق قراراتنا في ملف ADR مع مسرد المصطلحات."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/grill-with-docs",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "triage",
+      "name": "triage",
+      "title_ar": "فرز وتصنيف المشاكل وطلبات السحب برمجياً",
+      "summary_ar": "نظام فرز وتصنيف ذكي للمشاكل (Issues) وطلبات الدمج (PRs)؛ يفحص البلاغات، ويتحقق من جديتها، ويصيغ ملخصاً جاهزاً للوكلاء للتنفيذ.",
+      "category": "code-quality",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "تنظيم سيل البلاغات في مستودعات البرمجيات مفتوحة المصدر والشركات.",
+        "تحويل البلاغات المبعثرة إلى تذاكر عمل واضحة المعالم وقابلة للتنفيذ.",
+        "التأكد من اكتمال معلومات إعادة الإنتاج قبل إحالة التذكرة للمطورين."
+      ],
+      "use_cases_ar": [
+        "إدارة وفرز تذاكر الدعم الفني والمستودعات النشطة.",
+        "تجهيز مهام برمجية واضحة لوكلاء الذكاء الاصطناعي لحلها مباشرة.",
+        "تحديد المشاكل المكررة وتوجيه المستخدمين للحلول المتوفرة."
+      ],
+      "example_prompts_ar": [
+        "افرز هذه المشكلة الواردة وصنفها، وتحقق من اكتمال معلوماتها وجهز ملخصاً قابلاً للحل."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/triage",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/triage"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "improve-codebase-architecture",
+      "name": "improve-codebase-architecture",
+      "title_ar": "مسح وتعميق البنية المعمارية للكود البرمجي",
+      "summary_ar": "فحص شامل للمستودع لاكتشاف فرص تعميق الوحدات البرمجية (Deep Modules)، وتوليد تقرير بصري تفاعلي بفرص التحسين المعماري.",
+      "category": "development",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "تطبيق مبادئ تصميم البرمجيات الفلسفية (A Philosophy of Software Design).",
+        "تحويل الوحدات السطحية المتشابكة إلى وحدات عميقة ذات واجهات بسيطة.",
+        "توليد تقرير HTML تفاعلي يوضح مواطن التعقيد المعماري."
+      ],
+      "use_cases_ar": [
+        "إعادة هيكلة الأنظمة الضخمة المليئة بالديون التقنية (Technical Debt).",
+        "تبسيط الواجهات البرمجية الداخلية بين حزم المشروع.",
+        "تحسين متانة الكود وقابليته للاختبار والفهم."
+      ],
+      "example_prompts_ar": [
+        "امسح هذا المستودع وحدد الوحدات التي تعاني من التعقيد السطحي واقترح تصميماً أعمق لها."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/improve-codebase-architecture",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "mp-tdd",
+      "name": "tdd",
+      "title_ar": "التطوير الموجه بالاختبارات الصارم من مات بوكوك",
+      "summary_ar": "تطبيق منهجية Test-Driven Development الصارمة؛ دورة الأحمر والأخضر وإعادة الهيكلة (Red-Green-Refactor) لبناء مزايا برمجية خالية من العيوب.",
+      "category": "code-quality",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "كتابة اختبار فاشل يثبت الحاجة للميزة قبل كتابة أي سطر كود تنفيذي.",
+        "تغطية الحالات الحدية (Edge Cases) وضمان منع الانحدارات مستقبلاً.",
+        "كتابة كود نظيف وبسيط يفي بمتطلبات الاختبار دون تعقيد مبكر."
+      ],
+      "use_cases_ar": [
+        "بناء خوارزميات ومنطق أعمال حساس يتطلب دقة مطلقة.",
+        "إصلاح العلل عبر كتابة اختبار يفشل أولاً ثم تصحيحه.",
+        "إعادة هيكلة الأكواد القديمة بثقة تامة."
+      ],
+      "example_prompts_ar": [
+        "ابنِ هذه الميزة البرمجية باتباع منهجية TDD الصارمة خطوة بخطوة مع البدء باختبار فاشل."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/tdd",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "to-tickets",
+      "name": "to-tickets",
+      "title_ar": "تقسيم الخطط الكبيرة إلى تذاكر برمجية مترابطة",
+      "summary_ar": "تفكيك المواصفات والخطط المعمارية إلى تذاكر عمل محددة (Tracer-Bullet Tickets) توضح التبعيات والمسارات الحرجة ونشرها في نظام التتبع.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "تجنب المهام العملاقة المبهمة وتقسيم العمل لوحدات تنفيذية صغيرة ومستقلة.",
+        "رسم العلاقات والحواجز (Blocking Edges) بوضوح لمعرفة الترتيب الصحيح.",
+        "تسهيل العمل الموازي بين المطورين والوكلاء البرمجيين."
+      ],
+      "use_cases_ar": [
+        "تحويل وثيقة متطلبات برمجية إلى تذاكر في GitHub أو Linear.",
+        "تخطيط إطلاق ميزة جديدة على مراحل قابلة للقياس.",
+        "تنظيم أولويات سبر المسار (Tracer-bullet Development)."
+      ],
+      "example_prompts_ar": [
+        "قسّم هذه الخطة المعمارية إلى مجموعة تذاكر تنفيذية متسلسلة مع تحديد التبعيات بينها."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/to-tickets",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "to-spec",
+      "name": "to-spec",
+      "title_ar": "صياغة وثائق المواصفات الفنية من سياق النقاش",
+      "summary_ar": "تحويل نقاش الأفكار والمحادثات المطولة إلى وثيقة مواصفات فنية (Technical Spec) متكاملة ونشرها مباشرة في متتبع قضايا المشروع.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "استخلاص النقاط المتفق عليها وتلخيصها في مواصفة واضحة ومباشرة.",
+        "توفير ساعات من الكتابة اليدوية لوثائق المتطلبات التقنية.",
+        "ربط التوثيق بمتتبع قضايا المشروع تلقائياً لتسهيل المتابعة."
+      ],
+      "use_cases_ar": [
+        "بلورة جلسات العصف الذهني في وثيقة متطلبات رسمية.",
+        "توثيق الاتفاقيات التقنية قبل الشروع في كتابة الكود.",
+        "تحديث وتطوير مواصفات المنتجات الرقمية."
+      ],
+      "example_prompts_ar": [
+        "حوّل كل ما ناقشناه حتى الآن إلى وثيقة مواصفات فنية دقيقة وانشرها في المتتبع."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/to-spec",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "grill-me",
+      "name": "grill-me",
+      "title_ar": "المقابلة الاستفزازية لاختبار قوة الأفكار والخطط",
+      "summary_ar": "جلسة حوارية صارمة وغير مجاملة تطرح أسئلة جوهرية صعبة لصقل الخطط والأفكار البرمجية وكشف نقاط الضعف قبل الوقوع فيها.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "إخضاع الفكرة لاختبار ضغط منطقي عنيف يظهر مكامن الخلل.",
+        "إجبار المطور على التفكير في حالات الفشل والافتراضات غير الواقعية.",
+        "صقل الحلول البرمجية لتقليل التعديلات باهظة الثمن لاحقاً."
+      ],
+      "use_cases_ar": [
+        "استعراض خطة مشروع جديد قبل عرضها على الفريق أو الإدارة.",
+        "اختبار قرارات التصميم وهيكلة قواعد البيانات.",
+        "التدرب على الإجابة عن التساؤلات المعمارية الصعبة."
+      ],
+      "example_prompts_ar": [
+        "استجوبني بلا رحمة حول هذه الخطة واطرح عليّ أصعب الأسئلة حتى تصبح الفكرة ناضجة تماماً."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/productivity/grill-me",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "setup-pre-commit",
+      "name": "setup-pre-commit",
+      "title_ar": "تهيئة خطافات Husky وفحص الأكواد قبل الاعتماد",
+      "summary_ar": "إعداد خطافات Git (Pre-commit Hooks) باستخدام Husky و lint-staged؛ التحقق التلقائي من تنسيق Prettier، وتدقيق الأنواع، وتشغيل الاختبارات.",
+      "category": "code-quality",
+      "difficulty": "beginner",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "منع وصول الأكواد المعطوبة أو غير المنسقة إلى مستودع المشروع.",
+        "تشغيل أدوات التدقيق فقط على الملفات المعدلة (Staged Files) لضمان السرعة.",
+        "توحيد بيئة العمل ومعايير الجودة بين كافة أعضاء الفريق تلقائياً."
+      ],
+      "use_cases_ar": [
+        "تهيئة مشاريع TypeScript و JavaScript الجديدة بإعدادات فحص احترافية.",
+        "أتمتة تنسيق الكود والتحقق من الأنواع قبل كل commit.",
+        "تقليل مرات فشل اختبارات CI في السحابة."
+      ],
+      "example_prompts_ar": [
+        "جهّز Husky و lint-staged في هذا المشروع لفحص الأنواع والتنسيق تلقائياً قبل الـ commit."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/misc/setup-pre-commit",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/misc/setup-pre-commit"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "git-guardrails-claude-code",
+      "name": "git-guardrails-claude-code",
+      "title_ar": "حواجز حماية أوامر Git الخطرة لوكلاء الذكاء الاصطناعي",
+      "summary_ar": "حواجز أمان لـ Claude Code تمنع تنفيذ أوامر Git التدميرية (مثل push و reset --hard و clean و branch -D) لمنع فقدان البيانات.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "حماية الكود من قرارات الوكيل التدميرية أو التعديل القسري.",
+        "حظر رفع التغييرات إلى الفروع الرئيسية دون مراجعة بشرية.",
+        "توفير شبكة أمان تتيح إعطاء الوكلاء صلاحيات أوسع بثقة."
+      ],
+      "use_cases_ar": [
+        "تأمين بيئة عمل الوكيل عند إعطائه صلاحية تنفيذ أوامر الطرفية.",
+        "منع فقدان التغييرات غير المعتمدة بسبب أوامر الحذف أو التصفير العنيف.",
+        "تطبيق قواعد الحوكمة داخل فرق التطوير."
+      ],
+      "example_prompts_ar": [
+        "ثبّت حواجز الحماية لأوامر Git لمنع تنفيذ أي أمر تدميري مثل reset --hard أو force push."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/misc/git-guardrails-claude-code",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/misc/git-guardrails-claude-code"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "writing-for-agents",
+      "name": "writing-for-agents",
+      "title_ar": "كتابة المستندات والتعليمات الموجهة لوكلاء الذكاء الاصطناعي",
+      "summary_ar": "منهجية صياغة المستندات القياسية لوكلاء الكود؛ كتابة ملفات AGENTS.md و CLAUDE.md والمهارات بوضوح يحسن دقة الوكيل ويقلل الهلوسة.",
+      "category": "communication",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "رفع دقة فهم الوكيل لسياق المشروع وتقليل التشتت.",
+        "تنظيم التعليمات بطريقة هرمية واضحة تمنع تجاوز القواعد.",
+        "بناء مهارات وملفات توجيهية فعالة قابلة لإعادة الاستخدام."
+      ],
+      "use_cases_ar": [
+        "كتابة أو تعديل ملفات CLAUDE.md أو AGENTS.md للمستودعات.",
+        "بناء مهارات جديدة موجهة للوكلاء البرمجيين.",
+        "تحسين كفاءة استهلاك نافذة السياق (Context Window)."
+      ],
+      "example_prompts_ar": [
+        "صغ لي ملف AGENTS.md لهذا المستودع باتباع أفضل ممارسات الكتابة للوكلاء الذكية."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/productivity/writing-for-agents",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "codebase-design",
+      "name": "codebase-design",
+      "title_ar": "تصميم وبناء الوحدات البرمجية العميقة",
+      "summary_ar": "قاموس ومفاهيم مشتركة لتصميم وحدات كود عميقة ذات واجهات بسيطة؛ إخفاء التفاصيل المعقدة وراء واجهات سهلة الاستخدام والصيانة.",
+      "category": "development",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "تصميم واجهات برمجية نظيفة تخفي التعقيد الداخلي للوحدة.",
+        "تقليل التبعيات المتبادلة بين أجزاء النظام البرمجي.",
+        "رفع جودة الكود المعماري وسهولة قراءته وتطويره."
+      ],
+      "use_cases_ar": [
+        "تصميم مكتبات داخلية أو واجهات خدمات جديدة.",
+        "إعادة هيكلة الوحدات السطحية التي تكشف تفاصيلها الداخلية.",
+        "اتخاذ قرارات معمارية واضحة حول موضع المسؤوليات في الكود."
+      ],
+      "example_prompts_ar": [
+        "صمم واجهة برمجية عميقة لهذه الوحدة بحيث تخفي تفاصيل التنفيذ المعقدة بالكامل."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/codebase-design",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "mp-code-review",
+      "name": "code-review",
+      "title_ar": "المراجعة المعيارية الدقيقة لتغييرات الكود",
+      "summary_ar": "مراجعة التغييرات البرمجية منذ نقطة زمنية محددة وفق محورين: الالتزام بالمعايير التوثيقية للمستودع، والتحقق المنطقي من صحة الكود.",
+      "category": "code-quality",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "فحص التغييرات البرمجية بموضوعية ودقة دون تفويت أي معيار موثق.",
+        "كشف التناقضات المنطقية وحالات الحافة التي قد تسبب أعطالاً.",
+        "تقديم ملاحظات بناءة ومباشرة تسهل دمج الكود بسرعة."
+      ],
+      "use_cases_ar": [
+        "مراجعة طلبات السحب (PRs) قبل الدمج النهائي.",
+        "فحص الكود المكتوب بواسطة المطورين أو الوكلاء للتأكد من المعايير.",
+        "تدقيق التغييرات المعمارية قبل الانتقال لمرحلة الاختبار."
+      ],
+      "example_prompts_ar": [
+        "راجع التغييرات التي قمت بها في هذا الفرع مقارنة بـ main وقدم تقرير مراجعة دقيق."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/code-review",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "ms-mcp-builder",
+      "name": "mcp-builder",
+      "title_ar": "بناء خوادم Model Context Protocol من مايكروسوفت",
+      "summary_ar": "دليل مايكروسوفت الرسمي لإنشاء خوادم MCP عالية الجودة؛ تمكين نماذج اللغة من التفاعل مع الخدمات والأدوات الخارجية بأمان وكفاءة.",
+      "category": "meta",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 3163,
+      "benefits_ar": [
+        "بناء أدوات وخدمات تتصل بالذكاء الاصطناعي وفق بروتوكول MCP القياسي.",
+        "إدارة المخططات (Schemas) والمصادقة ومعالجة الأخطاء بأفضل الممارسات.",
+        "توفير تكامل سلس مع وكلاء GitHub Copilot و Claude و VS Code."
+      ],
+      "use_cases_ar": [
+        "ربط وكيل الذكاء الاصطناعي بقواعد بيانات أو واجهات برمجية خاصة.",
+        "بناء خادم MCP لمشاركة أدوات التطوير الداخلية في المؤسسة.",
+        "فحص واختبار خوادم MCP والتحقق من أمان أدواتها."
+      ],
+      "example_prompts_ar": [
+        "ابنِ خادم MCP متكامل بلغة TypeScript يتيح للوكيل استعلام بيانات واجهاتنا الخارجية."
+      ],
+      "source": {
+        "owner": "microsoft",
+        "repo": "skills",
+        "repo_url": "https://github.com/microsoft/skills",
+        "path_in_repo": ".github/skills/mcp-builder",
+        "url_verified": true,
+        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/mcp-builder"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "ms-skill-creator",
+      "name": "skill-creator",
+      "title_ar": "إنشاء مهارات الوكلاء الرسمية وفق معايير Microsoft",
+      "summary_ar": "دليل بناء وتطوير مهارات ذكية لوكلاء البرمجة للعمل مع خدمات Azure SDKs و Microsoft Foundry؛ هيكلة التوجيهات وضبط التوافق.",
+      "category": "meta",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 3163,
+      "benefits_ar": [
+        "إنشاء مهارات معيارية تتبع مواصفة SKILL.md المعتمدة رسمياً.",
+        "تضمين الأمثلة الواقعية وحالات الاستخدام لتقليل معدل الخطأ.",
+        "هيكلة التعليمات لتناسب بيئات VS Code و Copilot و Claude Code."
+      ],
+      "use_cases_ar": [
+        "كتابة مهارة جديدة لتوثيق إجراءات العمل داخل الفريق.",
+        "تحديث المهارات الحالية للتوافق مع أحدث إصدارات SDK.",
+        "نشر المهارات في مستودعات الوكلاء المؤسسية."
+      ],
+      "example_prompts_ar": [
+        "أنشئ مهارة SKILL.md معيارية تشرح للوكيل كيفية استخدام مكتبتنا السحابية."
+      ],
+      "source": {
+        "owner": "microsoft",
+        "repo": "skills",
+        "repo_url": "https://github.com/microsoft/skills",
+        "path_in_repo": ".github/skills/skill-creator",
+        "url_verified": true,
+        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/skill-creator"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "frontend-design-review",
+      "name": "frontend-design-review",
+      "title_ar": "المراجعة المعمارية لجودة واجهات المستخدم من Microsoft",
+      "summary_ar": "تقييم الواجهات الأمامية بالاعتماد على ثلاثة أركان أساسية: تقليل الاحتكاك (Friction)، وجماليات النواة (Kernel Aesthetics)، والتعاطف مع المستخدم.",
+      "category": "design",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 3163,
+      "benefits_ar": [
+        "الارتقاء بجودة واجهات الويب لتصل لمستوى المنتجات العالمية الجاهزة للإنتاج.",
+        "اكتشاف نقاط الاحتكاك التي تعيق تجربة المستخدم وسلاسة التنقل.",
+        "ضمان الالتزام الصارم بأنظمة التصميم (Design Systems) والاتساق الجمالي."
+      ],
+      "use_cases_ar": [
+        "مراجعة شاشات وتطبيقات الويب قبل الإطلاق الرسمي.",
+        "تقييم التصميمات ومقارنتها بأفضل ممارسات الشركات الكبرى.",
+        "تحسين التناسق البصري ونماذج التفاعل في الواجهات المعقدة."
+      ],
+      "example_prompts_ar": [
+        "قيّم هذه الواجهة الأمامية وفق أركان مراجعة التصميم الثلاثة واقترح تحسينات ملموسة."
+      ],
+      "source": {
+        "owner": "microsoft",
+        "repo": "skills",
+        "repo_url": "https://github.com/microsoft/skills",
+        "path_in_repo": ".github/skills/frontend-design-review",
+        "url_verified": true,
+        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/frontend-design-review"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "github-issue-creator",
+      "name": "github-issue-creator",
+      "title_ar": "توليد تقارير المشاكل الاحترافية لـ GitHub آلياً",
+      "summary_ar": "تحويل الملاحظات غير المرتبة، وسجلات الأخطاء، أو لقطات الشاشة إلى تقارير مشاكل (Issues) منسقة بدقة وجاهزة لحلها مباشرة.",
+      "category": "development",
+      "difficulty": "beginner",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 3163,
+      "benefits_ar": [
+        "تحويل سجلات الأخطاء الفوضوية إلى تذاكر منظمة تحتوي على خطوات إعادة الإنتاج.",
+        "استخدام قوالب Markdown المعتمدة لتسهيل فحص وتصحيح العطل.",
+        "توفير الوقت المهدور في صياغة البلاغات والتقارير الفنية."
+      ],
+      "use_cases_ar": [
+        "كتابة بلاغ عن عطل برمجي فور حدوثه في بيئة التطوير.",
+        "تحويل رسائل الخطأ من موجه الأوامر إلى تذاكر GitHub منسقة.",
+        "توثيق الملاحظات السريعة للمطورين كمهام قابلة للجدولة."
+      ],
+      "example_prompts_ar": [
+        "حوّل سجل هذا الخطأ إلى تقرير issue احترافي على GitHub مع خطوات إعادة الإنتاج."
+      ],
+      "source": {
+        "owner": "microsoft",
+        "repo": "skills",
+        "repo_url": "https://github.com/microsoft/skills",
+        "path_in_repo": ".github/skills/github-issue-creator",
+        "url_verified": true,
+        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/github-issue-creator"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "cloud-solution-architect",
+      "name": "cloud-solution-architect",
+      "title_ar": "استشارات مهندس الحلول السحابية وفق معايير Azure",
+      "summary_ar": "تحويل الوكيل إلى مهندس حلول سحابية خبير يتبع إرشادات Azure Architecture Center لتصميم أنظمة قابلة للتوسع وآمنة وعالية التوافر.",
+      "category": "cloud-security",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 3163,
+      "benefits_ar": [
+        "تصميم معمارية الأنظمة السحابية وفق أفضل الممارسات المعتمدة عالمياً.",
+        "مراجعة الأمان، والتوافر العالي، والتكرار الجغرافي (Disaster Recovery).",
+        "تحسين التكلفة والأداء وحساب الموارد المطلوبة بدقة."
+      ],
+      "use_cases_ar": [
+        "تصميم معمارية السحابة لمشروع ناشئ أو نظام مؤسسي كبير.",
+        "مراجعة مخططات البنية التحتية واكتشاف الثغرات المعمارية.",
+        "تخطيط الترحيل السحابي (Cloud Migration) للأنظمة القديمة."
+      ],
+      "example_prompts_ar": [
+        "تصرف كمهندس حلول سحابية واقترح معمارية آمنة وعالية التوافر لهذا التطبيق على السحابة."
+      ],
+      "source": {
+        "owner": "microsoft",
+        "repo": "skills",
+        "repo_url": "https://github.com/microsoft/skills",
+        "path_in_repo": ".github/skills/cloud-solution-architect",
+        "url_verified": true,
+        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/cloud-solution-architect"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "copilot-sdk",
+      "name": "copilot-sdk",
+      "title_ar": "بناء التطبيقات الذكية المعتمدة على Copilot SDK",
+      "summary_ar": "دليل تطوير التطبيقات والحلول المعتمدة على GitHub Copilot باستخدام حزمة Copilot SDK بلغات Node.js و TypeScript و Python و .NET.",
+      "category": "development",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 3163,
+      "benefits_ar": [
+        "دمج قدرات Copilot البرمجية مباشرة في تطبيقاتك الخاصة.",
+        "الاستفادة من النماذج المدربة والأدوات السياقية لحل المشاكل.",
+        "دعم لغات برمجية متعددة مع أمثلة عملية جاهزة للاستخدام."
+      ],
+      "use_cases_ar": [
+        "بناء وكلاء مخصصين ومساعدات برمجية لفرق العمل.",
+        "تطوير إضافات برمجية لأدوات التطوير وبيئات العمل.",
+        "أتمتة مهام الفحص وتوليد الكود عبر واجهات SDK."
+      ],
+      "example_prompts_ar": [
+        "اشرح كيفية استخدام Copilot SDK في Node.js لبناء وكيل ذكي يولد اختبارات آلية."
+      ],
+      "source": {
+        "owner": "microsoft",
+        "repo": "skills",
+        "repo_url": "https://github.com/microsoft/skills",
+        "path_in_repo": ".github/skills/copilot-sdk",
+        "url_verified": true,
+        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/copilot-sdk"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "podcast-generation",
+      "name": "podcast-generation",
+      "title_ar": "توليد الحوارات الصوتية التفاعلية بأسلوب البودكاست",
+      "summary_ar": "إنشاء سرد صوتي حواري بأسلوب البودكاست عبر نماذج الصوت الفورية (GPT Realtime via WebSocket)؛ تحويل المقالات والمستندات لنقاشات مسموعة.",
+      "category": "data-ai",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 3163,
+      "benefits_ar": [
+        "تحويل المحتوى النصي المعقد إلى حوارات صوتية تفاعلية جذابة وسلسة.",
+        "التوليد الفوري للصوت بمخارج واقعية ونبرات حوارية طبيعية.",
+        "دعم البث التدفقي (Audio Streaming) عبر تقنية WebSockets."
+      ],
+      "use_cases_ar": [
+        "توليد بودكاست تعليمي يومي يلخص أحدث الأخبار والمقالات التقنية.",
+        "إتاحة المحتوى النصي صوتياً للأشخاص أثناء القيادة أو التنقل.",
+        "بناء تطبيقات التدريب والمحاكاة الحوارية التفاعلية."
+      ],
+      "example_prompts_ar": [
+        "حوّل هذه المقالة التقنية إلى نص بودكاست حواري شيق بين شخصين مع إرشادات التوليد الصوتي."
+      ],
+      "source": {
+        "owner": "microsoft",
+        "repo": "skills",
+        "repo_url": "https://github.com/microsoft/skills",
+        "path_in_repo": ".github/skills/podcast-generation",
+        "url_verified": true,
+        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/podcast-generation"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
+    },
+    {
+      "id": "kql",
+      "name": "kql",
+      "title_ar": "استعلام وتحليل البيانات المتقدم بلغة Kusto (KQL)",
+      "summary_ar": "دليل كتابة استعلامات KQL المتقدمة للبحث في السجلات والبيانات الضخمة؛ تحسين أداء استعلامات Azure Monitor و Log Analytics و Sentinel.",
+      "category": "data-ai",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 3163,
+      "benefits_ar": [
+        "كتابة استعلامات سريعة لتحليل مليارات السجلات والبيانات في ثوانٍ.",
+        "تجنب الفخاخ الشائعة في معالجة التواريخ والبيانات الديناميكية (Dynamic Types).",
+        "تحسين استعلامات الأمان والمراقبة السحابية لتقليل تكلفة الاستعلام."
+      ],
+      "use_cases_ar": [
+        "التحقيق في الحوادث الأمنية والتهديدات في Microsoft Sentinel.",
+        "تحليل سجلات أخطاء التطبيقات في Azure Log Analytics.",
+        "بناء لوحات مؤشرات لمراقبة أداء الخوادم وقواعد البيانات."
+      ],
+      "example_prompts_ar": [
+        "اكتب استعلام KQL فعال يبحث في سجلات الأخطاء خلال آخر 24 ساعة ويصنفها حسب التكرار."
+      ],
+      "source": {
+        "owner": "microsoft",
+        "repo": "skills",
+        "repo_url": "https://github.com/microsoft/skills",
+        "path_in_repo": ".github/skills/kql",
+        "url_verified": true,
+        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/kql"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "repo_type": "skills"
     }
   ],
-  "last_updated": "2026-11-01T12:18:51.913Z"
+  "last_updated": "2026-11-01T12:18:51.913Z",
+  "updated_at": "2026-11-01T20:42:17.184Z"
 }
