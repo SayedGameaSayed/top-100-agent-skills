@@ -229,8 +229,16 @@ export function validateSkillsData(skillsData, rootDir = ROOT_DIR) {
       errors.push(`${prefix}: invalid difficulty '${s.difficulty}' (expected beginner, intermediate, or advanced)`);
     }
 
-    // Content verification warning
-    if (s.content_verified === false) {
+    // Content verification governance:
+    // When content_verified is true, both reviewed_by and reviewed_on are strictly required
+    if (s.content_verified === true) {
+      if (!isNonEmptyString(s.reviewed_by)) {
+        errors.push(`${prefix}: content_verified is true but reviewed_by is null or empty`);
+      }
+      if (!isNonEmptyString(s.reviewed_on)) {
+        errors.push(`${prefix}: content_verified is true but reviewed_on is null or empty`);
+      }
+    } else {
       warnings.push(`${s.id}: content_verified is false (pending human verification)`);
     }
 

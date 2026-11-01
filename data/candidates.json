@@ -535,5 +535,583 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     }
   ],
-  "total_candidates": 19
+  "total_candidates": 19,
+  "quarantined_from_audit": [
+    {
+      "id": "git-workflow",
+      "name": "git-workflow",
+      "title_ar": "إدارة فروع Git ورسائل Commit الاحترافية",
+      "summary_ar": "تحليل التغييرات البرمجية بدقة وصياغة رسائل الالتزام وفق معيار Conventional Commits وحل تعارضات الفروع (Merge Conflicts).",
+      "category": "code-quality",
+      "source": {
+        "owner": "obra",
+        "repo": "obra/superpowers",
+        "repo_url": "https://github.com/obra/superpowers",
+        "path_in_repo": "skills/git-workflow",
+        "url": "https://github.com/obra/superpowers/tree/main/skills/git-workflow",
+        "url_verified": false
+      },
+      "github_stars": 310339,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.103Z"
+    },
+    {
+      "id": "langchain-agent-workflow",
+      "name": "langchain-agent-workflow",
+      "title_ar": "بناء سلاسل ووكلاء LangChain",
+      "summary_ar": "ربط النماذج اللغوية بالأدوات الخارجية (Tools) وإدارة الذاكرة وسلاسل المعالجة المعقدة (Chains) لاتخاذ القرارات التلقائية.",
+      "category": "data-ai",
+      "source": {
+        "owner": "langchain-ai",
+        "repo": "langchain-ai/langchain",
+        "repo_url": "https://github.com/langchain-ai/langchain",
+        "path_in_repo": "skills/langchain-agent-workflow",
+        "url": "https://github.com/langchain-ai/langchain",
+        "url_verified": false
+      },
+      "github_stars": 148808,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "design-system-tokens",
+      "name": "design-system-tokens",
+      "title_ar": "بناء وتوحيد أنظمة التصميم (Design Tokens)",
+      "summary_ar": "هيكلة ألوان ومقاسات ومسافات التصميم في متغيرات موحدة تسهل بناء واجهات متسقة وتطبيق الوضعين الفاتح والداكن بسهولة.",
+      "category": "design",
+      "source": {
+        "owner": "nextlevelbuilder",
+        "repo": "nextlevelbuilder/ui-skills",
+        "repo_url": "https://github.com/nextlevelbuilder/ui-skills",
+        "path_in_repo": "skills/design-system",
+        "url": "https://github.com/nextlevelbuilder/ui-skills",
+        "url_verified": false
+      },
+      "github_stars": 132809,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "kubernetes-manifest-builder",
+      "name": "kubernetes-manifest-builder",
+      "title_ar": "بناء ملفات نشر Kubernetes المحصنة",
+      "summary_ar": "كتابة مواصفات Deployments و Services و Ingress مع تحديد حدود الموارد (CPU/Memory limits) وسياسات الأمان SecurityContext.",
+      "category": "cloud-security",
+      "source": {
+        "owner": "kubernetes",
+        "repo": "kubernetes/kubernetes",
+        "repo_url": "https://github.com/kubernetes/kubernetes",
+        "path_in_repo": "skills/kubernetes-manifest-builder",
+        "url": "https://github.com/kubernetes/kubernetes",
+        "url_verified": false
+      },
+      "github_stars": 128810,
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "github-pr-workflow",
+      "name": "github-pr-workflow",
+      "title_ar": "أتمتة دورة حياة طلبات السحب (PR Automation)",
+      "summary_ar": "إدارة وتنسيق مراجعات طلبات السحب على GitHub، وتطبيق قواعد الفحص الآلي، وحل التعليقات المتبقية تلقائياً.",
+      "category": "code-quality",
+      "source": {
+        "owner": "paperclipai",
+        "repo": "paperclipai/paperclip",
+        "repo_url": "https://github.com/paperclipai/paperclip",
+        "path_in_repo": "skills/github-pr-workflow",
+        "url": "https://github.com/paperclipai/paperclip",
+        "url_verified": false
+      },
+      "github_stars": 109696,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "secret-leak-detection",
+      "name": "secret-leak-detection",
+      "title_ar": "كشف وتطهير الأسرار ومفاتيح الـ API",
+      "summary_ar": "فحص ملفات المشاريع وسجل الـ Git لاكتشاف مفاتيح التشفير، كلمات المرور، والرموز الحساسة وتطهيرها بأمان.",
+      "category": "cloud-security",
+      "source": {
+        "owner": "paperclipai",
+        "repo": "paperclipai/paperclip",
+        "repo_url": "https://github.com/paperclipai/paperclip",
+        "path_in_repo": "skills/secret-leak-detection",
+        "url": "https://github.com/paperclipai/paperclip",
+        "url_verified": false
+      },
+      "github_stars": 109696,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "simplified-technical-english",
+      "name": "simplified-technical-english",
+      "title_ar": "تبسيط وتوضيح الوثائق التقنية الإنجليزية",
+      "summary_ar": "إعادة صياغة النصوص الإنجليزية المعقدة إلى لغة بسيطة وواضحة (Simplified English) يسهل فهمها وترجمتها عبر الفرق العالمية.",
+      "category": "communication",
+      "source": {
+        "owner": "paperclipai",
+        "repo": "paperclipai/paperclip",
+        "repo_url": "https://github.com/paperclipai/paperclip",
+        "path_in_repo": "skills/simplified-english",
+        "url": "https://github.com/paperclipai/paperclip",
+        "url_verified": false
+      },
+      "github_stars": 109696,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "tailwind-ui-builder",
+      "name": "tailwind-ui-builder",
+      "title_ar": "بناء واجهات Tailwind CSS الاحترافية",
+      "summary_ar": "كتابة مكونات واجهات مستخدم جذابة ومتجاوبة باستخدام فئات Tailwind CSS مع التركيز على التناسق والابتعاد عن التنسيقات التقليدية.",
+      "category": "design",
+      "source": {
+        "owner": "tailwindlabs",
+        "repo": "tailwindlabs/tailwindcss",
+        "repo_url": "https://github.com/tailwindlabs/tailwindcss",
+        "path_in_repo": "skills/tailwind-ui-builder",
+        "url": "https://github.com/tailwindlabs/tailwindcss",
+        "url_verified": false
+      },
+      "github_stars": 98272,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "docker-cloud-ops",
+      "name": "docker-cloud-ops",
+      "title_ar": "بناء حاويات Docker المحمية وحزم السحابة",
+      "summary_ar": "كتابة ملفات Dockerfile متعددة المراحل (Multi-stage) لتقليل حجم الصور، وتأمين الحاويات عبر تقليل الصلاحيات ومنع تشغيلها كـ root.",
+      "category": "cloud-security",
+      "source": {
+        "owner": "agenticskills",
+        "repo": "agenticskills/devops-skills",
+        "repo_url": "https://github.com/agenticskills/devops-skills",
+        "path_in_repo": "skills/docker-cloud-ops",
+        "url": "https://github.com/agenticskills/devops-skills/tree/main/skills/docker-cloud-ops",
+        "url_verified": false
+      },
+      "github_stars": 88000,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "datadog-cloud-monitoring",
+      "name": "datadog-cloud-monitoring",
+      "title_ar": "مراقبة أداء الخوادم مع Datadog",
+      "summary_ar": "إعداد لوحات مراقبة المقاييس الحيوية (Metrics) وتتبع السجلات (APM Tracing) وإنشاء تنبيهات فورية عند تجاوز معدل الأخطاء.",
+      "category": "cloud-security",
+      "source": {
+        "owner": "composiohq",
+        "repo": "composiohq/agentic-integrations",
+        "repo_url": "https://github.com/composiohq/agentic-integrations",
+        "path_in_repo": "skills/datadog-automation",
+        "url": "https://github.com/composiohq/agentic-integrations",
+        "url_verified": false
+      },
+      "github_stars": 74258,
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "circleci-pipeline-ops",
+      "name": "circleci-pipeline-ops",
+      "title_ar": "أتمتة خطوط التكامل والنشر CI/CD",
+      "summary_ar": "كتابة خطوط عمل سريعة ومحمية لفحص الكود وتشغيل الاختبارات وبناء الصور ونشرها تلقائياً عند الدمج في الفرع الرئيسي.",
+      "category": "cloud-security",
+      "source": {
+        "owner": "composiohq",
+        "repo": "composiohq/agentic-integrations",
+        "repo_url": "https://github.com/composiohq/agentic-integrations",
+        "path_in_repo": "skills/circleci-automation",
+        "url": "https://github.com/composiohq/agentic-integrations",
+        "url_verified": false
+      },
+      "github_stars": 74258,
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "cyber-security-audit",
+      "name": "cyber-security-audit",
+      "title_ar": "فحص الثغرات الأمنية ومراجعة كود OWASP",
+      "summary_ar": "مراجعة أمنية متعمقة للكود لاكتشاف ثغرات OWASP Top 10 مثل حقن البيانات، ضعف التوثيق، تسريب الأسرار، وتأمين رؤوس الـ HTTP.",
+      "category": "cloud-security",
+      "source": {
+        "owner": "agenticskills",
+        "repo": "agenticskills/security-skills",
+        "repo_url": "https://github.com/agenticskills/security-skills",
+        "path_in_repo": "skills/cyber-security-audit",
+        "url": "https://github.com/agenticskills/security-skills/tree/main/skills/cyber-security-audit",
+        "url_verified": false
+      },
+      "github_stars": 72000,
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "incident-retrospective",
+      "name": "incident-retrospective",
+      "title_ar": "توثيق وتحليل الأعطال التقنية (Post-Mortem)",
+      "summary_ar": "كتابة تقارير مراجعة الأعطال التقنية بروح غير لائمة (Blameless Post-Mortem): تسلسل الأحداث، السبب الجذري، والإجراءات الوقائية الدائمة.",
+      "category": "communication",
+      "source": {
+        "owner": "etsy",
+        "repo": "etsy/incident-management",
+        "repo_url": "https://github.com/etsy/incident-management",
+        "path_in_repo": "skills/incident-retrospective",
+        "url": "https://github.com/etsy/incident-management",
+        "url_verified": false
+      },
+      "github_stars": 70000,
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "playwright-e2e-testing",
+      "name": "playwright-e2e-testing",
+      "title_ar": "أتمتة اختبارات المتصفح الشاملة (Playwright)",
+      "summary_ar": "كتابة اختبارات End-to-End موثوقة للمتصفحات تحاكي تجربة المستخدم الحقيقية، واختبار الواجهات على الشاشات المختلفة ومحاكاة الشبكة.",
+      "category": "code-quality",
+      "source": {
+        "owner": "agenticskills",
+        "repo": "agenticskills/testing-skills",
+        "repo_url": "https://github.com/agenticskills/testing-skills",
+        "path_in_repo": "skills/playwright-e2e-testing",
+        "url": "https://github.com/agenticskills/testing-skills/tree/main/skills/playwright-e2e-testing",
+        "url_verified": false
+      },
+      "github_stars": 68000,
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "sql-optimizer",
+      "name": "sql-optimizer",
+      "title_ar": "تحسين استعلامات SQL وتسريع قواعد البيانات",
+      "summary_ar": "تحليل خطط تنفيذ الاستعلامات (EXPLAIN ANALYZE)، وتحديد الفهارس المفقودة، وإعادة هيكلة استعلامات SQL البطيئة للعمل بأقصى سرعة.",
+      "category": "data-ai",
+      "source": {
+        "owner": "agenticskills",
+        "repo": "agenticskills/database-skills",
+        "repo_url": "https://github.com/agenticskills/database-skills",
+        "path_in_repo": "skills/sql-optimizer",
+        "url": "https://github.com/agenticskills/database-skills/tree/main/skills/sql-optimizer",
+        "url_verified": false
+      },
+      "github_stars": 65000,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "data-analysis-pandas",
+      "name": "data-analysis-pandas",
+      "title_ar": "تحليل البيانات الاستكشافي باستخدام بايثون",
+      "summary_ar": "تنظيف البيانات ومعالجة القيم المفقودة، وحساب المؤشرات الإحصائية ورسم المخططات البيانية التفاعلية باستخدام Pandas و Seaborn.",
+      "category": "data-ai",
+      "source": {
+        "owner": "agenticskills",
+        "repo": "agenticskills/data-skills",
+        "repo_url": "https://github.com/agenticskills/data-skills",
+        "path_in_repo": "skills/data-analysis-pandas",
+        "url": "https://github.com/agenticskills/data-skills/tree/main/skills/data-analysis-pandas",
+        "url_verified": false
+      },
+      "github_stars": 58000,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "tanstack-query",
+      "name": "tanstack-query",
+      "title_ar": "إدارة وتخزين بيانات الخادم بـ TanStack Query",
+      "summary_ar": "التعامل مع جلب وتخزين وإعادة تحديث البيانات غير المتزامنة في تطبيقات React مع التحديثات المتفائلة (Optimistic Updates).",
+      "category": "development",
+      "source": {
+        "owner": "TanStack",
+        "repo": "TanStack/query",
+        "repo_url": "https://github.com/TanStack/query",
+        "path_in_repo": "skills/tanstack-query",
+        "url": "https://github.com/TanStack/query",
+        "url_verified": false
+      },
+      "github_stars": 50508,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "academic-research-assistant",
+      "name": "academic-research-assistant",
+      "title_ar": "مساعد البحث العلمي ومراجعة الأدبيات",
+      "summary_ar": "هيكلة مراجعة الدراسات السابقة، وتلخيص الأوراق العلمية ونقد المنهجيات الإحصائية، وإدارة المراجع وفق أنساق APA و IEEE و BibTeX.",
+      "category": "science-education",
+      "source": {
+        "owner": "agenticskills",
+        "repo": "agenticskills/academic-skills",
+        "repo_url": "https://github.com/agenticskills/academic-skills",
+        "path_in_repo": "skills/academic-research-assistant",
+        "url": "https://github.com/agenticskills/academic-skills/tree/main/skills/academic-research-assistant",
+        "url_verified": false
+      },
+      "github_stars": 50294,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "weather-api-data",
+      "name": "weather-api-data",
+      "title_ar": "جمع وتحليل بيانات الأرصاد والطقس",
+      "summary_ar": "استخراج مؤشرات الطقس والتنبؤات المناخية من مصادر بيانات مفتوحة، ومعالجة السلاسل الزمنية لدرجات الحرارة وهطول الأمطار.",
+      "category": "data-ai",
+      "source": {
+        "owner": "hkuds",
+        "repo": "hkuds/agentic-tools",
+        "repo_url": "https://github.com/hkuds/agentic-tools",
+        "path_in_repo": "skills/weather-data-pipeline",
+        "url": "https://github.com/hkuds/agentic-tools",
+        "url_verified": false
+      },
+      "github_stars": 48696,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "scientific-visualization",
+      "name": "scientific-visualization",
+      "title_ar": "رسم البيانات والمخططات العلمية للنشر",
+      "summary_ar": "توليد رسوم بيانية علمية عالية الدقة (مخططات التشتت، الصندوق، التوزيعات) بـ Matplotlib و Seaborn جاهزة للإدراج في الأوراق والكتب.",
+      "category": "science-education",
+      "source": {
+        "owner": "k-dense-ai",
+        "repo": "k-dense-ai/scientific-skills",
+        "repo_url": "https://github.com/k-dense-ai/scientific-skills",
+        "path_in_repo": "skills/scientific-visualization",
+        "url": "https://github.com/k-dense-ai/scientific-skills",
+        "url_verified": false
+      },
+      "github_stars": 47690,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "openapi-designer",
+      "name": "openapi-designer",
+      "title_ar": "تصميم وتوثيق واجهات البرمجة (OpenAPI 3.1)",
+      "summary_ar": "بناء مواصفات RESTful APIs وفق معيار OpenAPI v3.1 مع توليد نماذج البيانات وأنواع TypeScript والبيانات الوهمية للاختبار.",
+      "category": "development",
+      "source": {
+        "owner": "agenticskills",
+        "repo": "agenticskills/api-skills",
+        "repo_url": "https://github.com/agenticskills/api-skills",
+        "path_in_repo": "skills/openapi-designer",
+        "url": "https://github.com/agenticskills/api-skills/tree/main/skills/openapi-designer",
+        "url_verified": false
+      },
+      "github_stars": 45000,
+      "license": {
+        "type": "Apache-2.0",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Repo unreachable (404)",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "مستودع وهمي/غير موجود (404) - تم اختراع الشرح بالكامل من اسم المهارة والمفهوم العام",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "terraform-module-library",
+      "name": "terraform-module-library",
+      "title_ar": "بناء وحدات البنية التحتية بـ Terraform",
+      "summary_ar": "كتابة وحدات Terraform معيارية وقابلة لإعادة الاستخدام لإدارة خوادم AWS و Azure وشبكات الـ VPC وقواعد البيانات السحابية.",
+      "category": "cloud-security",
+      "source": {
+        "owner": "wshobson",
+        "repo": "wshobson/agents",
+        "repo_url": "https://github.com/wshobson/agents",
+        "path_in_repo": "plugins/cloud-infra/skills/terraform-module-library",
+        "url": "https://github.com/wshobson/agents",
+        "url_verified": false
+      },
+      "github_stars": 42069,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    },
+    {
+      "id": "screen-reader-accessibility",
+      "name": "screen-reader-accessibility",
+      "title_ar": "إتاحة الواجهات لقارئات الشاشة (WCAG a11y)",
+      "summary_ar": "ضبط سمات ARIA، وهيكلة العناوين الدلالية، وضمان إمكانية التنقل الكامل بلوحة المفاتيح للمستخدمين ذوي الاحتياجات الخاصة.",
+      "category": "design",
+      "source": {
+        "owner": "wshobson",
+        "repo": "wshobson/agents",
+        "repo_url": "https://github.com/wshobson/agents",
+        "path_in_repo": "plugins/ui-design/skills/screen-reader-testing",
+        "url": "https://github.com/wshobson/agents",
+        "url_verified": false
+      },
+      "github_stars": 42069,
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "quarantine_reason": "Path in repo 404 / not found",
+      "readme_existed_at_generation": false,
+      "origin_analysis": "المستودع العام موجود ولكن مسار المهارة غير موجود إطلاقاً (لا يوجد SKILL.md) - تم تأليف الشرح من المعرفة العامة بالمكتبة",
+      "moved_at": "2026-11-01T17:18:56.112Z"
+    }
+  ],
+  "total_quarantined": 23
 }

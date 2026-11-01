@@ -387,6 +387,14 @@ export async function initSkillDetailPage() {
         <div class="detail-kicker-row" style="display: flex; align-items: center; gap: 12px; margin-block-end: 16px; flex-wrap: wrap;">
           <span class="detail-kicker-label">${escapeHtml(categoryName)}</span>
           ${
+            skill.reviewed_by
+              ? `<span class="verified-reviewer-badge" style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 9999px; font-size: 13px; color: #4ade80;">
+                  <span>✓ تدقيق بشري: ${escapeHtml(skill.reviewed_by)}</span>
+                  ${skill.reviewed_on ? `<span>(${escapeHtml(skill.reviewed_on)})</span>` : ''}
+                </span>`
+              : ''
+          }
+          ${
             skill.github_stars
               ? `<span class="detail-stars-badge" style="color: var(--color-saffron-spark); font-size: 13px; font-weight: 600; background: rgba(255,184,41,0.08); border: 1px solid rgba(255,184,41,0.22); border-radius: 9999px; padding: 2px 10px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
               : ''

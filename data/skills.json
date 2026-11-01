@@ -5,7 +5,8 @@
     "tagline_ar": "افهم المهارة قبل ما تنسخ اللينك",
     "hero_title_ar": "افهم المهارة قبل أن تستخدمها.",
     "hero_sub_ar": "شرح عربي بسيط لأشهر مهارات الذكاء الاصطناعي، وطريقة إضافتها إلى الأداة التي تستخدمها.",
-    "search_placeholder_ar": "ابحث عن مهارة: ورد، إكسل، تصميم…"
+    "search_placeholder_ar": "ابحث عن مهارة: ورد، إكسل، تصميم…",
+    "total_skills": 77
   },
   "prompt_templates": {
     "link_prompt_en": "Read this skill and use it whenever my request matches it: {{source_url}}\nFrom now on I will write in Arabic (any dialect). Understand my intent, work internally in English, and reply in Arabic. Keep code, commands, file names and technical terms in English.",
@@ -97,7 +98,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "superpowers",
@@ -135,45 +138,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 310339
-    },
-    {
-      "id": "git-workflow",
-      "name": "git-workflow",
-      "kind": "skill",
-      "category": "code-quality",
-      "featured": true,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "obra",
-        "repo": "obra/superpowers",
-        "repo_url": "https://github.com/obra/superpowers",
-        "path_in_repo": "skills/git-workflow",
-        "url": "https://github.com/obra/superpowers/tree/main/skills/git-workflow",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "إدارة فروع Git ورسائل Commit الاحترافية",
-      "summary_ar": "تحليل التغييرات البرمجية بدقة وصياغة رسائل الالتزام وفق معيار Conventional Commits وحل تعارضات الفروع (Merge Conflicts).",
-      "benefits_ar": [
-        "صياغة رسائل Commit منظمة ومفهومة تشرح ماذا ولماذا تغير الكود.",
-        "إدارة الفروع وإنشاء طلبات السحب (Pull Requests) مع ملخص التغييرات تلقائيًا.",
-        "حل تعارضات الدمج المعقدة بين الفروع بأمان دون فقدان الأكواد."
-      ],
-      "use_cases_ar": [
-        "تجهيز Commit نظيف قبل دمج الكود في الفرع الرئيسي.",
-        "إنشاء ملخص احترافي لطلب سحب (Pull Request) يوضح أثر التعديلات."
-      ],
-      "example_prompts_ar": [
-        "راجع التغييرات في الكود واقترح رسالة commit تتبع معيار conventional commits.",
-        "ساعدني في حل التعارض الناتج عن دمج الفرع feature-auth مع main."
-      ],
-      "github_stars": 310339
+      "github_stars": 310339,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "obra-writing-plans",
@@ -208,7 +175,9 @@
       ],
       "example_prompts_ar": [
         "ضع لي خطة عمل مفصلة خطوة بخطوة لإضافة نظام دفع عبر Stripe."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "systematic-debugging",
@@ -243,7 +212,9 @@
       ],
       "example_prompts_ar": [
         "ساعدني في تتبع سبب الخطأ التالي خطوة بخطوة واقترح فرضيات لاختبارها."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "test-driven-development",
@@ -278,7 +249,9 @@
       ],
       "example_prompts_ar": [
         "اكتب لي أولاً اختبار فاشل للتحقق من صحة أرقام الهواتف الدولية قبل كتابة كود التنفيذ."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "requesting-code-review",
@@ -313,7 +286,9 @@
       ],
       "example_prompts_ar": [
         "جهز لي نص وصف PR يشرح التغييرات في مسار المصادقة مع خطوات التحقق اليدوي."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "receiving-code-review",
@@ -348,7 +323,9 @@
       ],
       "example_prompts_ar": [
         "لدي هذه الملاحظات الثلاث على طلبي، ساعدني في تعديل الكود لتطبيقها بدقة."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "using-git-worktrees",
@@ -383,7 +360,9 @@
       ],
       "example_prompts_ar": [
         "اشرح لي أوامر Git Worktree لفتح فرع hotfix في مجلد منفصل والعودة لمجلدي الأصلي."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "verification-before-completion",
@@ -418,7 +397,9 @@
       ],
       "example_prompts_ar": [
         "تحقق من كل الاختبارات والأنواع قبل أن تؤكد لي أن المهمة انتهت."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "subagent-driven-development",
@@ -453,7 +434,9 @@
       ],
       "example_prompts_ar": [
         "وزع مهام بناء شاشة تسجيل الدخول على وكيل للواجهة ووكيل للاختبارات ووكيل للأمان."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "executing-plans",
@@ -488,7 +471,9 @@
       ],
       "example_prompts_ar": [
         "اتبع الخطة المرفقة بدقة ولا تنتقل للخطوة الثانية حتى تؤكد نجاح الخطوة الأولى."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "dispatching-parallel-agents",
@@ -523,7 +508,9 @@
       ],
       "example_prompts_ar": [
         "أطلق 3 مهام متوازية لفحص الواجهة وقاعدة البيانات واختبارات الأمان في آن واحد."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "brainstorming-solutions",
@@ -558,7 +545,9 @@
       ],
       "example_prompts_ar": [
         "اعطني 3 حلول معمارية مختلفة لتطبيق نظام إشعارات فوري مع مقارنة إيجابيات وسلبيات كل حل."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "mattpocock-skills",
@@ -595,7 +584,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 308866
+      "github_stars": 308866,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "fastapi-patterns",
@@ -630,7 +621,9 @@
       ],
       "example_prompts_ar": [
         "صمم مسار FastAPI غير متزامن لمعالجة رفع الملفات والتحقق من حجمها."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "prisma-patterns",
@@ -665,7 +658,9 @@
       ],
       "example_prompts_ar": [
         "اكتب استعلام Prisma لجلب المستخدم مع آخر 5 طلبات له وإجمالي المدفوعات."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "swiftui-patterns",
@@ -700,7 +695,9 @@
       ],
       "example_prompts_ar": [
         "اكتب كود SwiftUI لشاشة عرض المنتجات مع شبكة قابلة للتمرير وبحث فوري."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "rust-patterns",
@@ -735,7 +732,9 @@
       ],
       "example_prompts_ar": [
         "صمم بنية معالجة أخطاء بلغة Rust لدالة تقرأ ملف وتتصل بقاعدة بيانات."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "redis-patterns",
@@ -770,7 +769,9 @@
       ],
       "example_prompts_ar": [
         "اكتب كود بايثون لتطبيق Sliding Window Rate Limiter باستخدام Redis."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "react-testing-library",
@@ -805,7 +806,9 @@
       ],
       "example_prompts_ar": [
         "اكتب اختبار RTL لنموذج تسجيل دخول يحاكي الكتابة والضغط على زر الدخول."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "python-pytest-suite",
@@ -840,7 +843,9 @@
       ],
       "example_prompts_ar": [
         "اكتب اختبار Pytest مع fixture لإنشاء بيانات مستخدم واختبار تحديث الرصيد."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "django-security",
@@ -875,7 +880,9 @@
       ],
       "example_prompts_ar": [
         "راجع ملف settings.py واقترح إعدادات الأمان المطلوبة لبيئة الإنتاج."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "springboot-security",
@@ -910,7 +917,9 @@
       ],
       "example_prompts_ar": [
         "اكتب كود SecurityFilterChain في Spring Boot 3 لتأمين مسارات الـ API بـ JWT."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "security-review-checklist",
@@ -945,7 +954,9 @@
       ],
       "example_prompts_ar": [
         "قم بإجراء مراجعة أمنية شاملة لمسار إعادة تعيين كلمة المرور المرفق."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "pytorch-model-eval",
@@ -980,7 +991,9 @@
       ],
       "example_prompts_ar": [
         "اكتب دالة تقييم PyTorch تستخدم torch.no_grad() وتحسب معدل الدقة و F1-score."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "marketing-campaign",
@@ -1015,7 +1028,9 @@
       ],
       "example_prompts_ar": [
         "صمم خطة حملة تسويقية لإطلاق تطبيق إنتاجية جديد تتضمن نصوص الإعلانات وسلسلة إيميلات ترحيبية."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "i18n-sync-manager",
@@ -1050,7 +1065,9 @@
       ],
       "example_prompts_ar": [
         "قارن بين ملفي الترجمة هذين وحدد المفاتيح المفقودة في النسخة العربية وترجمها."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "golang-testing-suite",
@@ -1085,7 +1102,9 @@
       ],
       "example_prompts_ar": [
         "صمم اختبار Table-driven test بلغة Go لدالة معالجة الـ JSON."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "eval-harness",
@@ -1120,7 +1139,9 @@
       ],
       "example_prompts_ar": [
         "صمم حزمة اختبارات تقييمية (Eval dataset) لفحص دقة استخراج التواريخ من العقود."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "ecc",
@@ -1165,7 +1186,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "skills",
@@ -1210,7 +1233,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "ponytail",
@@ -1255,7 +1280,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "pdf",
@@ -1295,7 +1322,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "docx",
@@ -1335,7 +1364,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "xlsx",
@@ -1375,7 +1406,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "pptx",
@@ -1413,7 +1446,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "frontend-design",
@@ -1452,7 +1487,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "skill-creator",
@@ -1491,7 +1528,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "webapp-testing",
@@ -1530,7 +1569,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "mcp-builder",
@@ -1568,7 +1609,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "canvas-design",
@@ -1607,7 +1650,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "web-artifacts-builder",
@@ -1645,7 +1690,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "brand-guidelines",
@@ -1682,7 +1729,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "theme-factory",
@@ -1719,7 +1768,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "doc-coauthoring",
@@ -1756,7 +1807,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "algorithmic-art",
@@ -1793,7 +1846,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "internal-comms",
@@ -1830,7 +1885,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "slack-gif-creator",
@@ -1867,7 +1924,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 179886
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "claude-api",
@@ -1904,42 +1963,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 179886
-    },
-    {
-      "id": "langchain-agent-workflow",
-      "name": "langchain-agent-workflow",
-      "kind": "skill",
-      "category": "data-ai",
-      "featured": false,
-      "github_stars": 148808,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "langchain-ai",
-        "repo": "langchain-ai/langchain",
-        "repo_url": "https://github.com/langchain-ai/langchain",
-        "path_in_repo": "skills/langchain-agent-workflow",
-        "url": "https://github.com/langchain-ai/langchain",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "بناء سلاسل ووكلاء LangChain",
-      "summary_ar": "ربط النماذج اللغوية بالأدوات الخارجية (Tools) وإدارة الذاكرة وسلاسل المعالجة المعقدة (Chains) لاتخاذ القرارات التلقائية.",
-      "benefits_ar": [
-        "تمكين الذكاء الاصطناعي من استدعاء APIs وقواعد بيانات لتنفيذ المهام.",
-        "هيكلة مخرجات النماذج بصيغ JSON قابلة للاستخدام البرمجي المباشر."
-      ],
-      "use_cases_ar": [
-        "إنشاء وكيل ذكي يبحث في الإنترنت ثم يرسل بريداً إلكترونياً بالملخص."
-      ],
-      "example_prompts_ar": [
-        "ابنِ وكيل LangChain يملك أداتين: أداة آلة حاسبة وأداة بحث في قاعدة البيانات."
-      ]
+      "github_stars": 179886,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "awesome-llm-apps",
@@ -1984,7 +2010,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "ui-ux-pro-max-skill",
@@ -2021,77 +2049,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 143618
-    },
-    {
-      "id": "design-system-tokens",
-      "name": "design-system-tokens",
-      "kind": "skill",
-      "category": "design",
-      "featured": false,
-      "github_stars": 132809,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "nextlevelbuilder",
-        "repo": "nextlevelbuilder/ui-skills",
-        "repo_url": "https://github.com/nextlevelbuilder/ui-skills",
-        "path_in_repo": "skills/design-system",
-        "url": "https://github.com/nextlevelbuilder/ui-skills",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "بناء وتوحيد أنظمة التصميم (Design Tokens)",
-      "summary_ar": "هيكلة ألوان ومقاسات ومسافات التصميم في متغيرات موحدة تسهل بناء واجهات متسقة وتطبيق الوضعين الفاتح والداكن بسهولة.",
-      "benefits_ar": [
-        "توحيد الهوية البصرية عبر جميع صفحات وتطبيقات الشركة.",
-        "تغيير ألوان أو نمط الموقع بالكامل عبر تعديل ملف المتغيرات فقط."
-      ],
-      "use_cases_ar": [
-        "إنشاء نظام ألوان وخطوط ومسافات لتطبيق ويب حديث."
-      ],
-      "example_prompts_ar": [
-        "صمم لي ملف متغيرات CSS يحتوي على درجات الألوان الأساسية والمسافات بنظام 4px grid."
-      ]
-    },
-    {
-      "id": "kubernetes-manifest-builder",
-      "name": "kubernetes-manifest-builder",
-      "kind": "skill",
-      "category": "cloud-security",
-      "featured": false,
-      "github_stars": 128810,
-      "difficulty": "advanced",
-      "source": {
-        "owner": "kubernetes",
-        "repo": "kubernetes/kubernetes",
-        "repo_url": "https://github.com/kubernetes/kubernetes",
-        "path_in_repo": "skills/kubernetes-manifest-builder",
-        "url": "https://github.com/kubernetes/kubernetes",
-        "url_verified": false
-      },
-      "license": {
-        "type": "Apache-2.0",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "بناء ملفات نشر Kubernetes المحصنة",
-      "summary_ar": "كتابة مواصفات Deployments و Services و Ingress مع تحديد حدود الموارد (CPU/Memory limits) وسياسات الأمان SecurityContext.",
-      "benefits_ar": [
-        "ضمان استقرار التطبيقات السحابية وإعادة تشغيل الحاويات تلقائياً عند الأعطال.",
-        "منع اختراق الحاويات بمنع صلاحيات الـ Root وحظر تعديل نظام الملفات."
-      ],
-      "use_cases_ar": [
-        "نشر تطبيق Node.js وقاعدة بيانات على عنقود Kubernetes."
-      ],
-      "example_prompts_ar": [
-        "اكتب ملف Deployment و Service لتطبيق ويب مع إعدادات Liveness و Readiness probes."
-      ]
+      "github_stars": 143618,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "caveman",
@@ -2136,7 +2096,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "addyosmani-agent-skills",
@@ -2173,7 +2135,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 112395
+      "github_stars": 112395,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "agent-skills",
@@ -2218,112 +2182,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
-    },
-    {
-      "id": "github-pr-workflow",
-      "name": "github-pr-workflow",
-      "kind": "skill",
-      "category": "code-quality",
-      "featured": false,
-      "github_stars": 109696,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "paperclipai",
-        "repo": "paperclipai/paperclip",
-        "repo_url": "https://github.com/paperclipai/paperclip",
-        "path_in_repo": "skills/github-pr-workflow",
-        "url": "https://github.com/paperclipai/paperclip",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
       "content_verified": false,
-      "title_ar": "أتمتة دورة حياة طلبات السحب (PR Automation)",
-      "summary_ar": "إدارة وتنسيق مراجعات طلبات السحب على GitHub، وتطبيق قواعد الفحص الآلي، وحل التعليقات المتبقية تلقائياً.",
-      "benefits_ar": [
-        "التأكد من التزام طلبات السحب باتفاقيات الفريق والشروط المسبقة للدمج.",
-        "تحديث سجل التغييرات وملخص الـ PR عند إضافة التزامات جديدة."
-      ],
-      "use_cases_ar": [
-        "إدارة سير عمل الفرق البرمجية الكبيرة على مستودعات GitHub."
-      ],
-      "example_prompts_ar": [
-        "لخص حالة طلب السحب رقم 42 وما هي الفحوصات المعلقة لدمجه."
-      ]
-    },
-    {
-      "id": "secret-leak-detection",
-      "name": "secret-leak-detection",
-      "kind": "skill",
-      "category": "cloud-security",
-      "featured": false,
-      "github_stars": 109696,
-      "difficulty": "beginner",
-      "source": {
-        "owner": "paperclipai",
-        "repo": "paperclipai/paperclip",
-        "repo_url": "https://github.com/paperclipai/paperclip",
-        "path_in_repo": "skills/secret-leak-detection",
-        "url": "https://github.com/paperclipai/paperclip",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "كشف وتطهير الأسرار ومفاتيح الـ API",
-      "summary_ar": "فحص ملفات المشاريع وسجل الـ Git لاكتشاف مفاتيح التشفير، كلمات المرور، والرموز الحساسة وتطهيرها بأمان.",
-      "benefits_ar": [
-        "حماية الحسابات البنكية والسحابية من الفواتير الضخمة نتيجة تسريب المفاتيح.",
-        "إرشاد المطور لكيفية حذف الأسرار من تاريخ الـ Git بالكامل."
-      ],
-      "use_cases_ar": [
-        "فحص المستودع قبل تحويله من خاص إلى مفتوح المصدر للعامة."
-      ],
-      "example_prompts_ar": [
-        "افحص الكود المرفق للتأكد من خلوه من أي مفاتيح API أو توكنات مسربة."
-      ]
-    },
-    {
-      "id": "simplified-technical-english",
-      "name": "simplified-technical-english",
-      "kind": "skill",
-      "category": "communication",
-      "featured": false,
-      "github_stars": 109696,
-      "difficulty": "beginner",
-      "source": {
-        "owner": "paperclipai",
-        "repo": "paperclipai/paperclip",
-        "repo_url": "https://github.com/paperclipai/paperclip",
-        "path_in_repo": "skills/simplified-english",
-        "url": "https://github.com/paperclipai/paperclip",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "تبسيط وتوضيح الوثائق التقنية الإنجليزية",
-      "summary_ar": "إعادة صياغة النصوص الإنجليزية المعقدة إلى لغة بسيطة وواضحة (Simplified English) يسهل فهمها وترجمتها عبر الفرق العالمية.",
-      "benefits_ar": [
-        "تقليل الغموض في أدلة الاستخدام وشروط الخدمة التقنية.",
-        "تسهيل الفهم على غير الناطقين بالإنجليزية كلغة أم."
-      ],
-      "use_cases_ar": [
-        "تبسيط توثيق واجهة برمجة (API Docs) ليكون واضحاً لأي مطور مبتدئ."
-      ],
-      "example_prompts_ar": [
-        "أعد صياغة هذه الفقرة التقنية المعقدة بأسلوب إنجليزي بسيط ومباشر."
-      ]
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "paperclip",
@@ -2368,7 +2229,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "claude-mem",
@@ -2413,7 +2276,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "taste-skill",
@@ -2450,7 +2315,9 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 107397
+      "github_stars": 107397,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "open-design",
@@ -2495,7 +2362,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "impeccable",
@@ -2540,42 +2409,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
-    },
-    {
-      "id": "tailwind-ui-builder",
-      "name": "tailwind-ui-builder",
-      "kind": "skill",
-      "category": "design",
-      "featured": false,
-      "github_stars": 98272,
-      "difficulty": "beginner",
-      "source": {
-        "owner": "tailwindlabs",
-        "repo": "tailwindlabs/tailwindcss",
-        "repo_url": "https://github.com/tailwindlabs/tailwindcss",
-        "path_in_repo": "skills/tailwind-ui-builder",
-        "url": "https://github.com/tailwindlabs/tailwindcss",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
       "content_verified": false,
-      "title_ar": "بناء واجهات Tailwind CSS الاحترافية",
-      "summary_ar": "كتابة مكونات واجهات مستخدم جذابة ومتجاوبة باستخدام فئات Tailwind CSS مع التركيز على التناسق والابتعاد عن التنسيقات التقليدية.",
-      "benefits_ar": [
-        "تطوير سريع جداً للواجهات بدون الحاجة لكتابة ملفات CSS منفصلة.",
-        "أحجام ملفات نهائية صغيرة جداً بحذف الفئات غير المستخدمة تلقائياً."
-      ],
-      "use_cases_ar": [
-        "بناء شريط ملاحة متجاوب أو بطاقة تسعير بـ Tailwind CSS."
-      ],
-      "example_prompts_ar": [
-        "ابنِ بطاقة تسعير احترافية بـ Tailwind تتضمن تأثيراً عند تمرير الماوس وزر شراء بارز."
-      ]
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "archify",
@@ -2620,7 +2456,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "understand-anything",
@@ -2665,45 +2503,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
-    },
-    {
-      "id": "docker-cloud-ops",
-      "name": "docker-cloud-ops",
-      "kind": "skill",
-      "category": "cloud-security",
-      "featured": false,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "agenticskills",
-        "repo": "agenticskills/devops-skills",
-        "repo_url": "https://github.com/agenticskills/devops-skills",
-        "path_in_repo": "skills/docker-cloud-ops",
-        "url": "https://github.com/agenticskills/devops-skills/tree/main/skills/docker-cloud-ops",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
       "content_verified": false,
-      "title_ar": "بناء حاويات Docker المحمية وحزم السحابة",
-      "summary_ar": "كتابة ملفات Dockerfile متعددة المراحل (Multi-stage) لتقليل حجم الصور، وتأمين الحاويات عبر تقليل الصلاحيات ومنع تشغيلها كـ root.",
-      "benefits_ar": [
-        "تقليص حجم صور Docker لأقل من 100 ميجابايت لتسريع النشر والتوزيع.",
-        "حماية الحاويات عبر إعداد مستخدمين غير جذريين (Non-root users).",
-        "تجهيز ملفات docker-compose لبيئات التطوير والاختبار بأمر واحد."
-      ],
-      "use_cases_ar": [
-        "تحزيم تطبيق Node.js أو Python في صورة Docker جاهزة للإنتاج.",
-        "إعداد بيئة عمل محلية متكاملة تتضمن التطبيق وقاعدة البيانات والـ Cache."
-      ],
-      "example_prompts_ar": [
-        "اكتب Dockerfile متعدد المراحل لتطبيق Next.js مع التركيز على الأمان والحجم الصغير.",
-        "راجع ملف docker-compose التالي واقترح تحسينات لربط الخدمات والتخزين الدائم."
-      ],
-      "github_stars": 88000
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "career-ops",
@@ -2748,7 +2550,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "awesome-claude-skills",
@@ -2784,77 +2588,9 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 78481
-    },
-    {
-      "id": "datadog-cloud-monitoring",
-      "name": "datadog-cloud-monitoring",
-      "kind": "skill",
-      "category": "cloud-security",
-      "featured": false,
-      "github_stars": 74258,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "composiohq",
-        "repo": "composiohq/agentic-integrations",
-        "repo_url": "https://github.com/composiohq/agentic-integrations",
-        "path_in_repo": "skills/datadog-automation",
-        "url": "https://github.com/composiohq/agentic-integrations",
-        "url_verified": false
-      },
-      "license": {
-        "type": "Apache-2.0",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "مراقبة أداء الخوادم مع Datadog",
-      "summary_ar": "إعداد لوحات مراقبة المقاييس الحيوية (Metrics) وتتبع السجلات (APM Tracing) وإنشاء تنبيهات فورية عند تجاوز معدل الأخطاء.",
-      "benefits_ar": [
-        "اكتشاف الاختناقات في أداء السيرفرات قبل أن تؤثر على المستخدمين.",
-        "تتبع المسار الكامل للطلبات عبر الخدمات المصغرة (Distributed Tracing)."
-      ],
-      "use_cases_ar": [
-        "إعداد مراقبة دقيقة لمعدل استهلاك الذاكرة وزمن استجابة الـ API."
-      ],
-      "example_prompts_ar": [
-        "كيف أعد تنبيه Datadog يرسل إشعار لسلاك عند ارتفاع نسبة أخطاء 500 عن 2%؟"
-      ]
-    },
-    {
-      "id": "circleci-pipeline-ops",
-      "name": "circleci-pipeline-ops",
-      "kind": "skill",
-      "category": "cloud-security",
-      "featured": false,
-      "github_stars": 74258,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "composiohq",
-        "repo": "composiohq/agentic-integrations",
-        "repo_url": "https://github.com/composiohq/agentic-integrations",
-        "path_in_repo": "skills/circleci-automation",
-        "url": "https://github.com/composiohq/agentic-integrations",
-        "url_verified": false
-      },
-      "license": {
-        "type": "Apache-2.0",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "أتمتة خطوط التكامل والنشر CI/CD",
-      "summary_ar": "كتابة خطوط عمل سريعة ومحمية لفحص الكود وتشغيل الاختبارات وبناء الصور ونشرها تلقائياً عند الدمج في الفرع الرئيسي.",
-      "benefits_ar": [
-        "تسريع دورة تسليم البرمجيات وتجنب النشر اليدوي المعرض للأخطاء.",
-        "كاش ذكي للاعتماديات يقلص وقت البناء من دقائق إلى ثوانٍ."
-      ],
-      "use_cases_ar": [
-        "بناء خط عمل يختبر الكود ثم يبني صورة Docker وينشرها في السحابة."
-      ],
-      "example_prompts_ar": [
-        "اكتب ملف .circleci/config.yml لتشغيل اختبارات بايثون ونشر الصورة إذا نجحت."
-      ]
+      "github_stars": 78481,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "openmontage",
@@ -2899,45 +2635,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
-    },
-    {
-      "id": "cyber-security-audit",
-      "name": "cyber-security-audit",
-      "kind": "skill",
-      "category": "cloud-security",
-      "featured": true,
-      "difficulty": "advanced",
-      "source": {
-        "owner": "agenticskills",
-        "repo": "agenticskills/security-skills",
-        "repo_url": "https://github.com/agenticskills/security-skills",
-        "path_in_repo": "skills/cyber-security-audit",
-        "url": "https://github.com/agenticskills/security-skills/tree/main/skills/cyber-security-audit",
-        "url_verified": false
-      },
-      "license": {
-        "type": "Apache-2.0",
-        "status": "open",
-        "copy_file_allowed": false
-      },
       "content_verified": false,
-      "title_ar": "فحص الثغرات الأمنية ومراجعة كود OWASP",
-      "summary_ar": "مراجعة أمنية متعمقة للكود لاكتشاف ثغرات OWASP Top 10 مثل حقن البيانات، ضعف التوثيق، تسريب الأسرار، وتأمين رؤوس الـ HTTP.",
-      "benefits_ar": [
-        "اكتشاف الثغرات الأمنية الشائعة قبل وصول الكود إلى بيئة الإنتاج.",
-        "فحص المستودعات للتأكد من عدم وجود مفاتيح API أو كلمات مرور مسربة.",
-        "تقديم حلول كود واضحة وعملية لسد كل ثغرة يتم اكتشافها."
-      ],
-      "use_cases_ar": [
-        "مراجعة أمنية لنظام تسجيل الدخول واستعادة كلمات المرور.",
-        "فحص حزم ومكتبات المشروع بحثاً عن ثغرات CVE المعروفة."
-      ],
-      "example_prompts_ar": [
-        "افحص ملف المصادقة ده بحثاً عن أي ثغرات متعلقة بـ JWT أو CSRF.",
-        "راجع دالة معالجة المدخلات دي وتأكد إنها محمية من ثغرات XSS."
-      ],
-      "github_stars": 72000
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "oh-my-openagent",
@@ -2982,80 +2682,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
-    },
-    {
-      "id": "incident-retrospective",
-      "name": "incident-retrospective",
-      "kind": "skill",
-      "category": "communication",
-      "featured": false,
-      "github_stars": 70000,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "etsy",
-        "repo": "etsy/incident-management",
-        "repo_url": "https://github.com/etsy/incident-management",
-        "path_in_repo": "skills/incident-retrospective",
-        "url": "https://github.com/etsy/incident-management",
-        "url_verified": false
-      },
-      "license": {
-        "type": "Apache-2.0",
-        "status": "open",
-        "copy_file_allowed": false
-      },
       "content_verified": false,
-      "title_ar": "توثيق وتحليل الأعطال التقنية (Post-Mortem)",
-      "summary_ar": "كتابة تقارير مراجعة الأعطال التقنية بروح غير لائمة (Blameless Post-Mortem): تسلسل الأحداث، السبب الجذري، والإجراءات الوقائية الدائمة.",
-      "benefits_ar": [
-        "تحويل الأخطاء والأعطال إلى دروس تعلم ترفع استقرار النظام للأبد.",
-        "بناء ثقافة هندسية ناضجة تطمئن الإدارة وتكسب ثقة العملاء."
-      ],
-      "use_cases_ar": [
-        "توثيق عطل انقطاع الخدمة لمدة 30 دقيقة وخطة منع تكراره مستقبلاً."
-      ],
-      "example_prompts_ar": [
-        "صغ تقرير مراجعة عطل (post-mortem) لحادثة توقف خادم قاعدة البيانات بناءً على الوقائع التالية."
-      ]
-    },
-    {
-      "id": "playwright-e2e-testing",
-      "name": "playwright-e2e-testing",
-      "kind": "skill",
-      "category": "code-quality",
-      "featured": false,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "agenticskills",
-        "repo": "agenticskills/testing-skills",
-        "repo_url": "https://github.com/agenticskills/testing-skills",
-        "path_in_repo": "skills/playwright-e2e-testing",
-        "url": "https://github.com/agenticskills/testing-skills/tree/main/skills/playwright-e2e-testing",
-        "url_verified": false
-      },
-      "license": {
-        "type": "Apache-2.0",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "أتمتة اختبارات المتصفح الشاملة (Playwright)",
-      "summary_ar": "كتابة اختبارات End-to-End موثوقة للمتصفحات تحاكي تجربة المستخدم الحقيقية، واختبار الواجهات على الشاشات المختلفة ومحاكاة الشبكة.",
-      "benefits_ar": [
-        "اختبار مسارات المستخدم الحيوية (التسجيل، الشراء، التصفح) بشكل آلي.",
-        "التقاط صور وتسجيل فيديو للشاشات عند حدوث أي خطأ لتسهيل الإصلاح.",
-        "دعم متصفحات متعددة (Chromium, Firefox, WebKit) في بيئة اختبار واحدة."
-      ],
-      "use_cases_ar": [
-        "أتمتة فحص عملية الشراء والدفع ببطاقة اختبار قبل النشر.",
-        "فحص التوافقية والتجاوب مع شاشات الهواتف المحمولة والحواسب."
-      ],
-      "example_prompts_ar": [
-        "اكتب اختبار Playwright لفحص نموذج تسجيل الدخول والتأكد من ظهور رسالة الخطأ عند إدخال كلمة سر خاطئة.",
-        "صمم كلاس Page Object Model لصفحة إتمام الطلب."
-      ],
-      "github_stars": 68000
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "last30days-skill",
@@ -3100,45 +2729,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
-    },
-    {
-      "id": "sql-optimizer",
-      "name": "sql-optimizer",
-      "kind": "skill",
-      "category": "data-ai",
-      "featured": true,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "agenticskills",
-        "repo": "agenticskills/database-skills",
-        "repo_url": "https://github.com/agenticskills/database-skills",
-        "path_in_repo": "skills/sql-optimizer",
-        "url": "https://github.com/agenticskills/database-skills/tree/main/skills/sql-optimizer",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
       "content_verified": false,
-      "title_ar": "تحسين استعلامات SQL وتسريع قواعد البيانات",
-      "summary_ar": "تحليل خطط تنفيذ الاستعلامات (EXPLAIN ANALYZE)، وتحديد الفهارس المفقودة، وإعادة هيكلة استعلامات SQL البطيئة للعمل بأقصى سرعة.",
-      "benefits_ar": [
-        "تسريع استعلامات قواعد البيانات المعقدة وتخفيف الحمل على الخادم.",
-        "اقتراح الفهارس (Indexes) المناسبة لتقليل الفحص الكامل للجداول.",
-        "كتابة استعلامات آمنة تتجنب ثغرات حقن SQL (SQL Injection)."
-      ],
-      "use_cases_ar": [
-        "تسريع استعلام بطيء يستغرق عدة ثوانٍ في قاعدة بيانات PostgreSQL أو MySQL.",
-        "مراجعة تصميم الجداول والعلاقات قبل إطلاق النظام في الإنتاج."
-      ],
-      "example_prompts_ar": [
-        "افحص استعلام الـ SQL ده واشرح ليه بطيء واقترح فهارس تسرعه.",
-        "أعد كتابة الاستعلام التالي باستخدام CTE بدلاً من الـ subqueries المتداخلة."
-      ],
-      "github_stars": 65000
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "diagram-design",
@@ -3183,7 +2776,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "humanizer",
@@ -3228,7 +2823,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "i-have-adhd",
@@ -3273,45 +2870,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
-    },
-    {
-      "id": "data-analysis-pandas",
-      "name": "data-analysis-pandas",
-      "kind": "skill",
-      "category": "data-ai",
-      "featured": false,
-      "difficulty": "beginner",
-      "source": {
-        "owner": "agenticskills",
-        "repo": "agenticskills/data-skills",
-        "repo_url": "https://github.com/agenticskills/data-skills",
-        "path_in_repo": "skills/data-analysis-pandas",
-        "url": "https://github.com/agenticskills/data-skills/tree/main/skills/data-analysis-pandas",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
       "content_verified": false,
-      "title_ar": "تحليل البيانات الاستكشافي باستخدام بايثون",
-      "summary_ar": "تنظيف البيانات ومعالجة القيم المفقودة، وحساب المؤشرات الإحصائية ورسم المخططات البيانية التفاعلية باستخدام Pandas و Seaborn.",
-      "benefits_ar": [
-        "تحويل البيانات الخام من ملفات CSV و Excel إلى رؤى وأرقام واضحة.",
-        "معالجة وتصحيح التناقضات والقيم المفقودة في مجموعات البيانات الضخمة.",
-        "إنشاء رسومات بيانية توضح التوزيعات والاتجاهات الزمنية."
-      ],
-      "use_cases_ar": [
-        "تحليل بيانات مبيعات شهرية واستخراج المنتجات الأكثر ربحية.",
-        "مقارنة أداء الحملات التسويقية وحساب معدلات التحويل."
-      ],
-      "example_prompts_ar": [
-        "حلل جدول المبيعات التالي واحسب المتوسط والوسيط لكل فئة منتجات.",
-        "اكتب كود بايثون لتنظيف التواريخ وإزالة السجلات المكررة من الملف."
-      ],
-      "github_stars": 58000
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "marketingskills",
@@ -3356,7 +2917,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "awesome-claude-code",
@@ -3401,7 +2964,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "scientific-agent-skills",
@@ -3446,7 +3011,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "deep-research",
@@ -3481,7 +3048,9 @@
       ],
       "example_prompts_ar": [
         "قم بإجراء بحث أكاديمي معمق حول أثر الذكاء الاصطناعي التوليدي على التعليم الطبي مع توثيق المراجع."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "sr-screener",
@@ -3516,7 +3085,9 @@
       ],
       "example_prompts_ar": [
         "طبق معايير الشمول التالية على ملخصات الأبحاث الخمسة المرفقة واذكر سبب قبول أو رفض كل منها."
-      ]
+      ],
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "academic-paper-writer",
@@ -3551,223 +3122,9 @@
       ],
       "example_prompts_ar": [
         "راجع صياغة هذا القسم من ورقتي البحثية واجعله يتبع النمط الأكاديمي الصارم للمجلات العلمية."
-      ]
-    },
-    {
-      "id": "tanstack-query",
-      "name": "tanstack-query",
-      "kind": "skill",
-      "category": "development",
-      "featured": false,
-      "github_stars": 50508,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "TanStack",
-        "repo": "TanStack/query",
-        "repo_url": "https://github.com/TanStack/query",
-        "path_in_repo": "skills/tanstack-query",
-        "url": "https://github.com/TanStack/query",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "إدارة وتخزين بيانات الخادم بـ TanStack Query",
-      "summary_ar": "التعامل مع جلب وتخزين وإعادة تحديث البيانات غير المتزامنة في تطبيقات React مع التحديثات المتفائلة (Optimistic Updates).",
-      "benefits_ar": [
-        "تحديث فوري وسلس للواجهات وإلغاء التعقيد في تتبع حالات التحميل والأخطاء.",
-        "تحديث تلقائي للبيانات عند إعادة تركيز المتصفح أو استعادة الاتصال."
       ],
-      "use_cases_ar": [
-        "ربط واجهات الـ Frontend بـ API مع كاش تلقائي وتحديث متفائل."
-      ],
-      "example_prompts_ar": [
-        "اكتب React Hook مخصص يجلب قائمة المهام مع دعم التحديث المتفائل عند الإضافة."
-      ]
-    },
-    {
-      "id": "academic-research-assistant",
-      "name": "academic-research-assistant",
-      "kind": "skill",
-      "category": "science-education",
-      "featured": false,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "agenticskills",
-        "repo": "agenticskills/academic-skills",
-        "repo_url": "https://github.com/agenticskills/academic-skills",
-        "path_in_repo": "skills/academic-research-assistant",
-        "url": "https://github.com/agenticskills/academic-skills/tree/main/skills/academic-research-assistant",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "مساعد البحث العلمي ومراجعة الأدبيات",
-      "summary_ar": "هيكلة مراجعة الدراسات السابقة، وتلخيص الأوراق العلمية ونقد المنهجيات الإحصائية، وإدارة المراجع وفق أنساق APA و IEEE و BibTeX.",
-      "benefits_ar": [
-        "تلخيص النقاط الجوهرية والمنهجية للأوراق البحثية المطولة بسرعة.",
-        "تنسيق المراجع والاقتباسات بدقة وفق الأنماط الأكاديمية العالمية.",
-        "المساعدة في صياغة الفرضيات وتحديد الثغرات البحثية (Research Gaps)."
-      ],
-      "use_cases_ar": [
-        "كتابة فصل الدراسات السابقة لبحث ماجستير أو دكتوراه.",
-        "تنظيم ملف مراجع BibTeX لمقال علمي معد للنشر في مؤتمر عالمي."
-      ],
-      "example_prompts_ar": [
-        "لخص لي المنهجية والنتائج الرئيسية للورقة البحثية المرفقة بأسلوب أكاديمي محايد.",
-        "حول المراجع التالية إلى صيغة BibTeX موحدة مرتبة أبجدياً."
-      ],
-      "github_stars": 50294
-    },
-    {
-      "id": "weather-api-data",
-      "name": "weather-api-data",
-      "kind": "skill",
-      "category": "data-ai",
-      "featured": false,
-      "github_stars": 48696,
-      "difficulty": "beginner",
-      "source": {
-        "owner": "hkuds",
-        "repo": "hkuds/agentic-tools",
-        "repo_url": "https://github.com/hkuds/agentic-tools",
-        "path_in_repo": "skills/weather-data-pipeline",
-        "url": "https://github.com/hkuds/agentic-tools",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "جمع وتحليل بيانات الأرصاد والطقس",
-      "summary_ar": "استخراج مؤشرات الطقس والتنبؤات المناخية من مصادر بيانات مفتوحة، ومعالجة السلاسل الزمنية لدرجات الحرارة وهطول الأمطار.",
-      "benefits_ar": [
-        "دمج بيانات الطقس الحية في تطبيقات السياحة والزراعة والخدمات اللوجستية.",
-        "توليد تقارير وتحذيرات مناخية مبكرة بتنسيقات واضحة."
-      ],
-      "use_cases_ar": [
-        "تحليل أثر تقلبات الطقس على مواعيد تسليم الشحنات البرية."
-      ],
-      "example_prompts_ar": [
-        "حلل سجل درجات الحرارة لآخر 30 يوماً واستخرج الأيام الأكثر حرارة والأكثر تقلباً."
-      ]
-    },
-    {
-      "id": "scientific-visualization",
-      "name": "scientific-visualization",
-      "kind": "skill",
-      "category": "science-education",
-      "featured": false,
-      "github_stars": 47690,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "k-dense-ai",
-        "repo": "k-dense-ai/scientific-skills",
-        "repo_url": "https://github.com/k-dense-ai/scientific-skills",
-        "path_in_repo": "skills/scientific-visualization",
-        "url": "https://github.com/k-dense-ai/scientific-skills",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "رسم البيانات والمخططات العلمية للنشر",
-      "summary_ar": "توليد رسوم بيانية علمية عالية الدقة (مخططات التشتت، الصندوق، التوزيعات) بـ Matplotlib و Seaborn جاهزة للإدراج في الأوراق والكتب.",
-      "benefits_ar": [
-        "إنتاج رسومات مطابقة لمواصفات الطباعة والنشر (300+ DPI).",
-        "اختيار ألوان مناسبة لضعاف تمييز الألوان (Colorblind-friendly)."
-      ],
-      "use_cases_ar": [
-        "رسم منحنيات التجارب المعملية مع أشرطة الخطأ (Error bars)."
-      ],
-      "example_prompts_ar": [
-        "اكتب كود بايثون لرسم مقارنة نتائج التجربة بمخطط صندوقي أنيق جاهز للنشر في مجلة علمية."
-      ]
-    },
-    {
-      "id": "openapi-designer",
-      "name": "openapi-designer",
-      "kind": "skill",
-      "category": "development",
-      "featured": false,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "agenticskills",
-        "repo": "agenticskills/api-skills",
-        "repo_url": "https://github.com/agenticskills/api-skills",
-        "path_in_repo": "skills/openapi-designer",
-        "url": "https://github.com/agenticskills/api-skills/tree/main/skills/openapi-designer",
-        "url_verified": false
-      },
-      "license": {
-        "type": "Apache-2.0",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "تصميم وتوثيق واجهات البرمجة (OpenAPI 3.1)",
-      "summary_ar": "بناء مواصفات RESTful APIs وفق معيار OpenAPI v3.1 مع توليد نماذج البيانات وأنواع TypeScript والبيانات الوهمية للاختبار.",
-      "benefits_ar": [
-        "توثيق رسمي موحد للواجهات البرمجية يفهمه المطورون والأدوات الآلية.",
-        "توليد مخططات التحقق (Schemas) وأنواع البيانات تلقائيًا للـ Frontend والـ Backend.",
-        "بناء استجابات نموذجية (Mock Responses) لتسريع التطوير قبل اكتمال السيرفر."
-      ],
-      "use_cases_ar": [
-        "تصميم مسارات ومخططات API جديدة لمنصة تجارة إلكترونية.",
-        "تحديث ملف Swagger قديم ليتوافق مع معايير OpenAPI 3.1 الحديثة."
-      ],
-      "example_prompts_ar": [
-        "صمم مواصفة OpenAPI لمسارات إدارة المستخدمين وتوثيق الـ JWT.",
-        "حول مخطط JSON التالي إلى نموذج OpenAPI مع أمثلة للاستجابة."
-      ],
-      "github_stars": 45000
-    },
-    {
-      "id": "terraform-module-library",
-      "name": "terraform-module-library",
-      "kind": "skill",
-      "category": "cloud-security",
-      "featured": false,
-      "github_stars": 42069,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "wshobson",
-        "repo": "wshobson/agents",
-        "repo_url": "https://github.com/wshobson/agents",
-        "path_in_repo": "plugins/cloud-infra/skills/terraform-module-library",
-        "url": "https://github.com/wshobson/agents",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "بناء وحدات البنية التحتية بـ Terraform",
-      "summary_ar": "كتابة وحدات Terraform معيارية وقابلة لإعادة الاستخدام لإدارة خوادم AWS و Azure وشبكات الـ VPC وقواعد البيانات السحابية.",
-      "benefits_ar": [
-        "إدارة الموارد السحابية ككود قابل للإصدار والمراجعة (Infrastructure as Code).",
-        "تأمين البنية التحتية السحابية عبر تحديد صلاحيات IAM الصارمة."
-      ],
-      "use_cases_ar": [
-        "إنشاء شبكة سحابية آمنة في AWS تتضمن شبكات فرعية عامة وخاصة."
-      ],
-      "example_prompts_ar": [
-        "صمم وحدة Terraform لإنشاء قاعدة بيانات AWS RDS داخل شبكة فرعية خاصة."
-      ]
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "responsive-design",
@@ -3802,42 +3159,9 @@
       ],
       "example_prompts_ar": [
         "اكتب كود CSS Grid يتكيف تلقائياً مع حجم الشاشة بدون استخدام media queries."
-      ]
-    },
-    {
-      "id": "screen-reader-accessibility",
-      "name": "screen-reader-accessibility",
-      "kind": "skill",
-      "category": "design",
-      "featured": false,
-      "github_stars": 42069,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "wshobson",
-        "repo": "wshobson/agents",
-        "repo_url": "https://github.com/wshobson/agents",
-        "path_in_repo": "plugins/ui-design/skills/screen-reader-testing",
-        "url": "https://github.com/wshobson/agents",
-        "url_verified": false
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": false,
-      "title_ar": "إتاحة الواجهات لقارئات الشاشة (WCAG a11y)",
-      "summary_ar": "ضبط سمات ARIA، وهيكلة العناوين الدلالية، وضمان إمكانية التنقل الكامل بلوحة المفاتيح للمستخدمين ذوي الاحتياجات الخاصة.",
-      "benefits_ar": [
-        "الوصول لنسبة 100% في اختبارات إمكانية الوصول في Lighthouse و Axe.",
-        "فتح التطبيق لجميع فئات المستخدمين والامتثال للمعايير القانونية العالمية."
       ],
-      "use_cases_ar": [
-        "تدقيق نافذة منبثقة (Modal) للتأكد من حصر التركيز وإتاحتها لقارئ الشاشة."
-      ],
-      "example_prompts_ar": [
-        "راجع هذا المكون وأضف سمات ARIA المناسبة ليتمكن المكفوفون من استخدامه."
-      ]
+      "reviewed_by": null,
+      "reviewed_on": null
     },
     {
       "id": "agents",
@@ -3882,7 +3206,9 @@
         "windsurf": true,
         "roo_code": true
       },
-      "content_verified": false
+      "content_verified": false,
+      "reviewed_by": null,
+      "reviewed_on": null
     }
   ],
   "last_updated": "2026-11-01T12:18:51.913Z"

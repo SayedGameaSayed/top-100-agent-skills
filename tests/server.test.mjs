@@ -1,4 +1,10 @@
 import assert from 'node:assert';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const expectedSkillsCount = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'skills.json'), 'utf8')).skills.length;
 import http from 'node:http';
 import { spawn } from 'node:child_process';
 
@@ -93,15 +99,15 @@ async function runTests() {
     assert.strictEqual(healthRes.statusCode, 200);
     const healthData = JSON.parse(healthRes.data);
     assert.strictEqual(healthData.status, 'ok');
-    assert.strictEqual(healthData.skills_count, 100);
-    console.log('  PASS: GET /api/health reports 100 skills, 9 tools');
+    assert.strictEqual(healthData.skills_count, expectedSkillsCount);
+    console.log(`  PASS: GET /api/health reports ${expectedSkillsCount} skills, 9 tools`);
 
     // 3. API Skills list
     const skillsRes = await fetchUrl('http://127.0.0.1:3456/api/skills');
     assert.strictEqual(skillsRes.statusCode, 200);
     const skillsData = JSON.parse(skillsRes.data);
-    assert.strictEqual(skillsData.skills.length, 100);
-    console.log('  PASS: GET /api/skills returns all 100 skills');
+    assert.strictEqual(skillsData.skills.length, expectedSkillsCount);
+    console.log(`  PASS: GET /api/skills returns all ${expectedSkillsCount} skills`);
 
     // 4. API Single Skill by ID
     const singleSkillRes = await fetchUrl('http://127.0.0.1:3456/api/skills/superpowers');
@@ -141,10 +147,10 @@ async function runTests() {
     const lbApiRes = await fetchUrl('http://127.0.0.1:3456/api/leaderboard');
     assert.strictEqual(lbApiRes.statusCode, 200);
     const lbData = JSON.parse(lbApiRes.data);
-    assert.strictEqual(lbData.total, 100);
+    assert.strictEqual(lbData.total, expectedSkillsCount);
     assert.strictEqual(lbData.skills[0].rank, 1);
-    assert.strictEqual(lbData.skills[99].rank, 100);
-    console.log('  PASS: GET /api/leaderboard returns 100 skills ranked #1 to #100');
+    assert.strictEqual(lbData.skills[expectedSkillsCount - 1].rank, expectedSkillsCount);
+    console.log(`  PASS: GET /api/leaderboard returns ${expectedSkillsCount} skills ranked #1 to #${expectedSkillsCount}`);
 
     // 10. POST /api/chat AI Advisor endpoint
     const chatRes = await postJson('http://127.0.0.1:3456/api/chat', {

@@ -200,6 +200,32 @@ test('Fails when an unresolved placeholder exists in tool steps', () => {
   );
 });
 
+// Rule 15: content_verified: true requires reviewed_by
+test('Fails when content_verified is true but reviewed_by is null or missing', () => {
+  const data = clone(validSkills);
+  data.skills[0].content_verified = true;
+  data.skills[0].reviewed_by = null;
+  data.skills[0].reviewed_on = '2026-11-01';
+  const { errors } = validateSkillsData(data, ROOT_DIR);
+  assert(
+    errors.some((e) => e.includes('content_verified is true but reviewed_by is null or empty')),
+    `Expected reviewed_by error, got: ${JSON.stringify(errors)}`
+  );
+});
+
+// Rule 16: content_verified: true requires reviewed_on
+test('Fails when content_verified is true but reviewed_on is null or missing', () => {
+  const data = clone(validSkills);
+  data.skills[0].content_verified = true;
+  data.skills[0].reviewed_by = 'Human Reviewer';
+  data.skills[0].reviewed_on = null;
+  const { errors } = validateSkillsData(data, ROOT_DIR);
+  assert(
+    errors.some((e) => e.includes('content_verified is true but reviewed_on is null or empty')),
+    `Expected reviewed_on error, got: ${JSON.stringify(errors)}`
+  );
+});
+
 console.log(`\nResults: ${passedCount}/${testCount} tests passed.`);
 if (passedCount !== testCount) {
   process.exit(1);
