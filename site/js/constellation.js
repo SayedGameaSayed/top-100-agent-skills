@@ -1,17 +1,13 @@
 /**
- * constellation.js - Advanced 3D Luminous Particle Constellation Engine
- * Strictly adhering to Dala Brand Spec: "constellation floating on black velvet"
+ * constellation.js - Monumental 3D Luminous Particle Lightbulb Engine
+ * Strictly adhering to Dala Brand Spec: "Spark lightbulb moments floating on black velvet"
  * 
  * Features:
- * 1. 1,100+ chromatic triangular particle glyphs with true 3D perspective projection.
- * 2. 3 Signature Volumetric Models:
- *    - 3D Neural Brain (Image 3 in Dala reference)
- *    - 3D Lightbulb of Insight (Image 4 in Dala reference)
- *    - 3D Cosmic Network Sphere (Image 5 in Dala reference)
- * 3. 18 Large ambient floating 3D wireframe triangles & pyramids drifting in space (Image 2).
+ * 1. 1,850+ chromatic triangular particle glyphs with true 3D perspective projection.
+ * 2. Signature Monumental 3D Lightbulb of Insight with glowing internal filament.
+ * 3. 34 Large ambient floating 3D wireframe triangles & pyramids drifting in space.
  * 4. Real-time 3D rotation, damping spring physics, and mouse / touch gyro parallax.
- * 5. Smooth shape morphing interpolation between geometric states.
- * 6. Chromatic gradient: Saffron Amber (#ffb829) top -> Electric Iris (#8052ff) core -> Deep Verdant Teal (#15846e) base.
+ * 5. Chromatic gradient: Saffron Amber (#ffb829) top -> Electric Iris (#8052ff) core -> Deep Verdant Teal (#15846e) base.
  */
 
 export function initConstellation(canvasId = 'constellation-canvas') {
@@ -21,20 +17,19 @@ export function initConstellation(canvasId = 'constellation-canvas') {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  const container = canvas.parentElement;
+  const container = canvas.parentElement || document.body;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-  let width = 500;
-  let height = 500;
+  let width = 1200;
+  let height = 640;
 
   function resize() {
-    const rect = container ? container.getBoundingClientRect() : { width: 500, height: 500 };
-    const side = Math.min(Math.max(rect.width || 500, 320), 560);
-    width = side;
-    height = side;
+    const rect = container ? container.getBoundingClientRect() : { width: window.innerWidth, height: 640 };
+    width = Math.max(rect.width || window.innerWidth, 320);
+    height = Math.max(rect.height || 640, 500);
 
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
 
@@ -44,80 +39,53 @@ export function initConstellation(canvasId = 'constellation-canvas') {
   resize();
 
   // Colors from Dala Design Spec
-  const COLOR_AMBER = '#ffb829';   // Saffron Spark
-  const COLOR_VIOLET = '#8052ff';  // Electric Iris
-  const COLOR_TEAL = '#15846e';    // Deep Verdant
+  const COLOR_AMBER = '#ffb829';   // Saffron Spark (top glass glow)
+  const COLOR_VIOLET = '#8052ff';  // Electric Iris (bulb body)
+  const COLOR_TEAL = '#15846e';    // Deep Verdant (base)
   const COLOR_CYAN = '#38bdf8';    // Cyber Cyan
   const COLOR_MAGENTA = '#c084fc'; // Iris Accent
-  const COLOR_WHITE = '#ffffff';   // Bone White
+  const COLOR_WHITE = '#ffffff';   // Bone White / Filament
 
-  const PARTICLE_COUNT = 1350;
-  const WIREFRAME_COUNT = 22;
-
-  let currentShape = 'brain';
-  let targetShape = 'brain';
-  let morphProgress = 1;
+  const PARTICLE_COUNT = 1850;
+  const WIREFRAME_COUNT = 34;
 
   // 3D Rotation angles & mouse tracking
-  let rotX = 0.15;
+  let rotX = 0.12;
   let rotY = 0.0;
-  let targetRotX = 0.15;
+  let targetRotX = 0.12;
   let targetRotY = 0.0;
-  let autoSpinSpeed = 0.0035;
+  let autoSpinSpeed = 0.0032;
 
   let isDragging = false;
   let lastMouseX = 0;
   let lastMouseY = 0;
 
   // --------------------------------------------------------------------------
-  // 3D Mathematical Shape Generators
+  // 3D Monumental Lightbulb Mathematical Generator
   // --------------------------------------------------------------------------
-
-  // 1. Dual-Hemisphere 3D Neural Brain
-  function getBrainPoint(i, total, R = 170) {
-    const hemisphere = i % 2 === 0 ? 1 : -1;
+  function getLightbulbPoint(i, total, R = 275) {
     const u = Math.random();
     const v = Math.random();
     const theta = u * 2.0 * Math.PI;
-    const phi = Math.acos(2.0 * v - 1.0);
 
-    // Organic neural perturbations
-    const rLobe = R * (0.85 + 0.18 * Math.sin(3 * phi) * Math.cos(2 * theta) + 0.08 * Math.sin(5 * theta));
-    
-    // Separate into left and right lobes with indentation
-    const sep = R * 0.28 * hemisphere;
-    let x = (rLobe * Math.sin(phi) * Math.cos(theta)) * 0.75 + sep;
-    let y = (rLobe * Math.sin(phi) * Math.sin(theta)) * 0.88;
-    let z = (rLobe * Math.cos(phi)) * 0.95;
-
-    // Flatten medial fissure
-    if (Math.abs(x) < R * 0.18) {
-      x *= 0.7;
+    // 12% of particles form the internal glowing incandescent filament loop
+    if (i < total * 0.12) {
+      const t = (i / (total * 0.12)) * Math.PI * 4;
+      const filR = R * 0.26 * Math.sin(t * 0.5);
+      const x = filR * Math.cos(t);
+      const y = -R * 0.28 - (t / (Math.PI * 4)) * R * 0.35 + Math.sin(t * 4) * 6;
+      const z = filR * Math.sin(t);
+      return { x, y, z, isFilament: true };
     }
-
-    // Cerebellum bulge at base rear
-    if (y > R * 0.3 && z < 0) {
-      y += 18;
-      x *= 1.12;
-    }
-
-    return { x, y: y - 10, z };
-  }
-
-  // 2. 3D Lightbulb of Insight
-  function getLightbulbPoint(i, total, R = 175) {
-    const u = Math.random();
-    const v = Math.random();
-    const theta = u * 2.0 * Math.PI;
 
     if (v < 0.65) {
-      // Upper spherical glass dome
+      // Upper spherical glass dome (Monumental bulb)
       const phi = (v / 0.65) * (Math.PI * 0.75);
-      const r = R * 0.95;
+      const r = R * 0.96;
       const x = r * Math.sin(phi) * Math.cos(theta);
-      const y = -r * Math.cos(phi) - R * 0.25;
+      const y = -r * Math.cos(phi) - R * 0.22;
       const z = r * Math.sin(phi) * Math.sin(theta);
-      return { x, y, z };
+      return { x, y, z, isFilament: false };
     } else if (v < 0.85) {
       // Tapered neck
       const t = (v - 0.65) / 0.2;
@@ -125,89 +93,48 @@ export function initConstellation(canvasId = 'constellation-canvas') {
       const y = t * (R * 0.6) - R * 0.05;
       const x = neckRadius * Math.cos(theta);
       const z = neckRadius * Math.sin(theta);
-      return { x, y, z };
+      return { x, y, z, isFilament: false };
     } else {
       // Screw base
       const t = (v - 0.85) / 0.15;
-      const baseRadius = R * 0.32 * (1 + 0.08 * Math.sin(t * Math.PI * 6));
+      const baseRadius = R * 0.32 * (1 + 0.09 * Math.sin(t * Math.PI * 6));
       const y = R * 0.55 + t * (R * 0.45);
       const x = baseRadius * Math.cos(theta);
       const z = baseRadius * Math.sin(theta);
-      return { x, y, z };
+      return { x, y, z, isFilament: false };
     }
   }
 
-  // 3. 3D Cosmic Network Sphere (Fibonacci Grid)
-  function getGlobePoint(i, total, R = 175) {
-    const phi = Math.acos(1 - 2 * (i + 0.5) / total);
-    const theta = Math.PI * (1 + Math.sqrt(5)) * i;
-
-    // Organic breathing ripple
-    const r = R * (0.95 + 0.05 * Math.sin(theta * 3 + phi * 4));
-    const x = r * Math.sin(phi) * Math.cos(theta);
-    const y = r * Math.cos(phi);
-    const z = r * Math.sin(phi) * Math.sin(theta);
-
-    return { x, y, z };
-  }
-
   // --------------------------------------------------------------------------
-  // Particle Class (1,100 Triangular Chromatic Glyphs)
+  // Particle Class (Triangular Chromatic Glyphs)
   // --------------------------------------------------------------------------
   class ConstellationParticle {
     constructor(index) {
       this.index = index;
 
-      // Positions in 3D
-      this.current = { x: 0, y: 0, z: 0 };
-      this.source = { x: 0, y: 0, z: 0 };
-      this.target = { x: 0, y: 0, z: 0 };
+      // Base radius scaled dynamically to viewport
+      const baseR = Math.min(Math.max(width * 0.24, 230), 295);
+      const pt = getLightbulbPoint(index, PARTICLE_COUNT, baseR);
 
-      // Initialize brain shape
-      const pt = getBrainPoint(index, PARTICLE_COUNT);
-      this.current = { ...pt };
-      this.source = { ...pt };
-      this.target = { ...pt };
+      this.current = { x: pt.x, y: pt.y, z: pt.z };
+      this.isFilament = pt.isFilament;
 
-      // Aesthetics
-      this.baseSize = Math.random() * 2.8 + 1.6;
-      this.tiltAngle = Math.random() * Math.PI * 2;
-      this.spinSpeed = (Math.random() - 0.5) * 0.03;
-      this.pulseSpeed = Math.random() * 0.03 + 0.015;
+      // Glyph properties
+      this.baseSize = this.isFilament ? Math.random() * 2.8 + 2.0 : Math.random() * 2.2 + 1.2;
       this.pulsePhase = Math.random() * Math.PI * 2;
-      this.sparkle = Math.random() > 0.94;
+      this.pulseSpeed = Math.random() * 0.035 + 0.015;
+      this.tiltAngle = Math.random() * Math.PI * 2;
+      this.vTilt = (Math.random() - 0.5) * 0.015;
 
-      // Ambient jitter
-      this.jitterX = (Math.random() - 0.5) * 1.5;
-      this.jitterY = (Math.random() - 0.5) * 1.5;
-      this.jitterZ = (Math.random() - 0.5) * 1.5;
+      this.sparkle = Math.random() > 0.88;
+      this.jitterX = (Math.random() - 0.5) * 3;
+      this.jitterY = (Math.random() - 0.5) * 3;
+      this.jitterZ = (Math.random() - 0.5) * 3;
     }
 
-    setTargetShape(shapeName) {
-      this.source = { ...this.current };
-      let newPt;
-      if (shapeName === 'brain') newPt = getBrainPoint(this.index, PARTICLE_COUNT);
-      else if (shapeName === 'lightbulb') newPt = getLightbulbPoint(this.index, PARTICLE_COUNT);
-      else newPt = getGlobePoint(this.index, PARTICLE_COUNT);
-
-      this.target = newPt;
-    }
-
-    update(progress) {
+    update() {
       this.pulsePhase += this.pulseSpeed;
-      this.tiltAngle += this.spinSpeed;
-
-      // Morph interpolation with cubic ease
-      if (progress < 1) {
-        const ease = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-        this.current.x = this.source.x + (this.target.x - this.source.x) * ease;
-        this.current.y = this.source.y + (this.target.y - this.source.y) * ease;
-        this.current.z = this.source.z + (this.target.z - this.source.z) * ease;
-      } else {
-        this.current.x = this.target.x;
-        this.current.y = this.target.y;
-        this.current.z = this.target.z;
-      }
+      this.tiltAngle += this.vTilt;
     }
 
     getRenderData(rx, ry, cx, cy) {
@@ -231,8 +158,8 @@ export function initConstellation(canvasId = 'constellation-canvas') {
       const z2 = z1 * cosX + y0 * sinX;
 
       // Perspective Projection
-      const fov = 380;
-      const scale = fov / (fov + z2 + 200);
+      const fov = 420;
+      const scale = fov / (fov + z2 + 220);
 
       const projX = cx + x1 * scale;
       const projY = cy + y2 * scale;
@@ -240,22 +167,24 @@ export function initConstellation(canvasId = 'constellation-canvas') {
 
       // Chromatic Palette Mapping (Dala Gradient: Amber top -> Violet middle -> Teal base)
       let color = COLOR_VIOLET;
-      const normalizedY = (y0 + 150) / 300;
+      const normalizedY = (y0 + 200) / 440;
 
-      if (this.sparkle && Math.sin(this.pulsePhase * 3) > 0.8) {
+      if (this.isFilament) {
+        color = Math.sin(this.pulsePhase * 2) > 0 ? COLOR_WHITE : COLOR_AMBER;
+      } else if (this.sparkle && Math.sin(this.pulsePhase * 3) > 0.8) {
         color = COLOR_WHITE;
-      } else if (normalizedY < 0.28) {
+      } else if (normalizedY < 0.32) {
         color = COLOR_AMBER;
-      } else if (normalizedY < 0.65) {
+      } else if (normalizedY < 0.68) {
         color = Math.random() > 0.3 ? COLOR_VIOLET : COLOR_MAGENTA;
       } else {
         color = Math.random() > 0.4 ? COLOR_TEAL : COLOR_CYAN;
       }
 
-      // Alpha drops for particles in background
-      const depthAlpha = Math.min(1, Math.max(0.12, (z2 + 200) / 400));
+      // Alpha drops for particles in deep background
+      const depthAlpha = Math.min(1, Math.max(0.12, (z2 + 220) / 440));
       const pulseAlpha = 0.85 + 0.15 * Math.sin(this.pulsePhase);
-      const finalAlpha = depthAlpha * pulseAlpha;
+      const finalAlpha = this.isFilament ? 0.95 : depthAlpha * pulseAlpha;
 
       return {
         projX,
@@ -265,13 +194,14 @@ export function initConstellation(canvasId = 'constellation-canvas') {
         color,
         alpha: finalAlpha,
         angle: this.tiltAngle,
-        isForeground: z2 > 30
+        isForeground: z2 > 20,
+        isFilament: this.isFilament
       };
     }
   }
 
   // --------------------------------------------------------------------------
-  // Large Ambient Floating 3D Wireframe Triangles (Dala Signature Style)
+  // Large Ambient Floating 3D Wireframe Triangles & Pyramids
   // --------------------------------------------------------------------------
   class FloatingWireframeTriangle {
     constructor() {
@@ -280,24 +210,24 @@ export function initConstellation(canvasId = 'constellation-canvas') {
 
     reset(initial = false) {
       const angle = Math.random() * Math.PI * 2;
-      const dist = Math.random() * 220 + 80;
+      const dist = Math.random() * (width * 0.46) + 80;
       this.x = Math.cos(angle) * dist;
-      this.y = (Math.random() - 0.5) * 360;
-      this.z = (Math.random() - 0.5) * 320;
+      this.y = (Math.random() - 0.5) * (height * 0.85);
+      this.z = (Math.random() - 0.5) * 440;
 
-      this.size = Math.random() * 24 + 14;
+      this.size = Math.random() * 28 + 14;
       this.rotX = Math.random() * Math.PI * 2;
       this.rotY = Math.random() * Math.PI * 2;
       this.rotZ = Math.random() * Math.PI * 2;
 
-      this.vRotX = (Math.random() - 0.5) * 0.02;
-      this.vRotY = (Math.random() - 0.5) * 0.02;
-      this.vRotZ = (Math.random() - 0.5) * 0.02;
+      this.vRotX = (Math.random() - 0.5) * 0.018;
+      this.vRotY = (Math.random() - 0.5) * 0.018;
+      this.vRotZ = (Math.random() - 0.5) * 0.018;
 
-      this.vy = (Math.random() - 0.5) * 0.35;
+      this.vy = (Math.random() - 0.5) * 0.4;
       this.color = [COLOR_VIOLET, COLOR_AMBER, COLOR_TEAL, COLOR_WHITE][Math.floor(Math.random() * 4)];
-      this.alpha = Math.random() * 0.35 + 0.15;
-      this.isDouble = Math.random() > 0.6;
+      this.alpha = Math.random() * 0.35 + 0.12;
+      this.isDouble = Math.random() > 0.55;
     }
 
     update() {
@@ -306,8 +236,9 @@ export function initConstellation(canvasId = 'constellation-canvas') {
       this.rotZ += this.vRotZ;
       this.y += this.vy;
 
-      if (this.y > 220) this.y = -220;
-      if (this.y < -220) this.y = 220;
+      const boundary = height * 0.5;
+      if (this.y > boundary) this.y = -boundary;
+      if (this.y < -boundary) this.y = boundary;
     }
 
     draw(rx, ry, cx, cy) {
@@ -321,8 +252,8 @@ export function initConstellation(canvasId = 'constellation-canvas') {
       const y2 = this.y * cosX - z1 * sinX;
       const z2 = z1 * cosX + this.y * sinX;
 
-      const fov = 420;
-      const scale = fov / (fov + z2 + 250);
+      const fov = 440;
+      const scale = fov / (fov + z2 + 280);
       const px = cx + x1 * scale;
       const py = cy + y2 * scale;
       const s = this.size * scale;
@@ -331,7 +262,7 @@ export function initConstellation(canvasId = 'constellation-canvas') {
       ctx.translate(px, py);
       ctx.rotate(this.rotZ);
 
-      ctx.globalAlpha = Math.max(0.08, this.alpha * scale);
+      ctx.globalAlpha = Math.max(0.06, this.alpha * scale);
       ctx.strokeStyle = this.color;
       ctx.lineWidth = 1.2;
 
@@ -372,7 +303,7 @@ export function initConstellation(canvasId = 'constellation-canvas') {
   }
 
   // --------------------------------------------------------------------------
-  // Mouse & Touch Interaction (Parallax & Gyro)
+  // Mouse & Touch Interaction (Parallax & 3D Gyro)
   // --------------------------------------------------------------------------
   function onPointerMove(e) {
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -382,14 +313,14 @@ export function initConstellation(canvasId = 'constellation-canvas') {
     const nx = (clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
     const ny = (clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
 
-    targetRotY = nx * 0.85;
-    targetRotX = -ny * 0.55 + 0.15;
+    targetRotY = nx * 0.75;
+    targetRotX = -ny * 0.45 + 0.12;
 
     if (isDragging) {
       const dx = clientX - lastMouseX;
       const dy = clientY - lastMouseY;
-      rotY += dx * 0.008;
-      rotX += dy * 0.008;
+      rotY += dx * 0.007;
+      rotX += dy * 0.007;
       lastMouseX = clientX;
       lastMouseY = clientY;
     }
@@ -421,27 +352,24 @@ export function initConstellation(canvasId = 'constellation-canvas') {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    const cx = width / 2;
-    const cy = height / 2;
+    // In RTL, text is on the right, so the bulb sits majestically on the left
+    // On narrower screens (< 900px), it centers in the background
+    const isDesktop = width > 900;
+    const cx = isDesktop ? width * 0.30 : width * 0.5;
+    const cy = isDesktop ? height * 0.52 : height * 0.48;
 
     // Smooth rotation damping & auto-spin
     if (!isDragging) {
       rotY += autoSpinSpeed;
-      rotY += (targetRotY - rotY) * 0.04;
-      rotX += (targetRotX - rotX) * 0.04;
-    }
-
-    // Morph interpolation
-    if (morphProgress < 1) {
-      morphProgress += 0.025;
-      if (morphProgress > 1) morphProgress = 1;
+      rotY += (targetRotY - rotY) * 0.035;
+      rotX += (targetRotX - rotX) * 0.035;
     }
 
     // Update and compute render data for all particles
     const renderList = [];
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
-      p.update(morphProgress);
+      p.update();
       const data = p.getRenderData(rotX, rotY, cx, cy);
       renderList.push(data);
     }
@@ -467,11 +395,11 @@ export function initConstellation(canvasId = 'constellation-canvas') {
         const dy = p1.projY - p2.projY;
         const distSq = dx * dx + dy * dy;
 
-        if (distSq < 720) {
+        if (distSq < 750) {
           const dist = Math.sqrt(distSq);
           ctx.beginPath();
           ctx.strokeStyle = COLOR_VIOLET;
-          ctx.globalAlpha = (1 - dist / 26.8) * 0.22 * p1.alpha;
+          ctx.globalAlpha = (1 - dist / 27.4) * 0.24 * p1.alpha;
           ctx.moveTo(p1.projX, p1.projY);
           ctx.lineTo(p2.projX, p2.projY);
           ctx.stroke();
@@ -489,12 +417,12 @@ export function initConstellation(canvasId = 'constellation-canvas') {
 
       ctx.globalAlpha = p.alpha;
       ctx.strokeStyle = p.color;
-      ctx.lineWidth = 0.9;
+      ctx.lineWidth = 0.95;
 
-      // Soft glow for foreground high-energy particles
-      if (p.isForeground) {
+      // Soft glow for foreground high-energy particles or filament
+      if (p.isForeground || p.isFilament) {
         ctx.shadowColor = p.color;
-        ctx.shadowBlur = 4;
+        ctx.shadowBlur = p.isFilament ? 8 : 4;
       }
 
       // Draw tiny equilateral triangle
@@ -507,11 +435,11 @@ export function initConstellation(canvasId = 'constellation-canvas') {
       ctx.stroke();
 
       // Core luminous dot for large particles
-      if (s > 2.6) {
+      if (s > 2.4 || p.isFilament) {
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.alpha * 0.8;
+        ctx.globalAlpha = p.alpha * 0.85;
         ctx.beginPath();
-        ctx.arc(0, 0, 0.7, 0, Math.PI * 2);
+        ctx.arc(0, 0, 0.8, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -528,34 +456,9 @@ export function initConstellation(canvasId = 'constellation-canvas') {
 
   render();
 
-  // --------------------------------------------------------------------------
-  // Morph Controls Integration
-  // --------------------------------------------------------------------------
-  function setShape(newShape) {
-    if (newShape === currentShape) return;
-    targetShape = newShape;
-    morphProgress = 0;
-    for (const p of particles) {
-      p.setTargetShape(newShape);
-    }
-    currentShape = newShape;
-  }
-
-  // Hook up UI buttons if present
-  const morphButtons = document.querySelectorAll('.morph-pill');
-  morphButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      morphButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      const shape = btn.getAttribute('data-shape');
-      if (shape) setShape(shape);
-    });
-  });
-
   window.addEventListener('resize', resize);
 
   return {
-    setShape,
     destroy() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', onPointerMove);
