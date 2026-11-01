@@ -68,7 +68,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 415185,
+      "github_stars": 417055,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -134,7 +134,7 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 309972
+      "github_stars": 310339
     },
     {
       "id": "git-workflow",
@@ -172,7 +172,7 @@
         "راجع التغييرات في الكود واقترح رسالة commit تتبع معيار conventional commits.",
         "ساعدني في حل التعارض الناتج عن دمج الفرع feature-auth مع main."
       ],
-      "github_stars": 309972
+      "github_stars": 310339
     },
     {
       "id": "obra-writing-plans",
@@ -180,7 +180,7 @@
       "kind": "skill",
       "category": "development",
       "featured": true,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "intermediate",
       "source": {
         "owner": "obra",
@@ -215,7 +215,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": true,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "intermediate",
       "source": {
         "owner": "obra",
@@ -250,7 +250,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "intermediate",
       "source": {
         "owner": "obra",
@@ -285,7 +285,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "beginner",
       "source": {
         "owner": "obra",
@@ -320,7 +320,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "beginner",
       "source": {
         "owner": "obra",
@@ -355,7 +355,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "advanced",
       "source": {
         "owner": "obra",
@@ -390,7 +390,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "intermediate",
       "source": {
         "owner": "obra",
@@ -425,7 +425,7 @@
       "kind": "skill",
       "category": "meta",
       "featured": true,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "advanced",
       "source": {
         "owner": "obra",
@@ -460,7 +460,7 @@
       "kind": "skill",
       "category": "meta",
       "featured": false,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "intermediate",
       "source": {
         "owner": "obra",
@@ -495,7 +495,7 @@
       "kind": "skill",
       "category": "meta",
       "featured": false,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "advanced",
       "source": {
         "owner": "obra",
@@ -530,7 +530,7 @@
       "kind": "skill",
       "category": "meta",
       "featured": false,
-      "github_stars": 309972,
+      "github_stars": 310339,
       "difficulty": "beginner",
       "source": {
         "owner": "obra",
@@ -594,7 +594,7 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 308249
+      "github_stars": 308866
     },
     {
       "id": "fastapi-patterns",
@@ -602,7 +602,7 @@
       "kind": "skill",
       "category": "development",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -637,7 +637,7 @@
       "kind": "skill",
       "category": "development",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -672,7 +672,7 @@
       "kind": "skill",
       "category": "development",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -707,7 +707,7 @@
       "kind": "skill",
       "category": "development",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "advanced",
       "source": {
         "owner": "affaan-m",
@@ -742,7 +742,7 @@
       "kind": "skill",
       "category": "development",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -777,7 +777,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -812,7 +812,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -847,7 +847,7 @@
       "kind": "skill",
       "category": "cloud-security",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -882,7 +882,7 @@
       "kind": "skill",
       "category": "cloud-security",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "advanced",
       "source": {
         "owner": "affaan-m",
@@ -917,7 +917,7 @@
       "kind": "skill",
       "category": "cloud-security",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -952,7 +952,7 @@
       "kind": "skill",
       "category": "data-ai",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "advanced",
       "source": {
         "owner": "affaan-m",
@@ -987,7 +987,7 @@
       "kind": "skill",
       "category": "business-finance",
       "featured": true,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -1022,7 +1022,7 @@
       "kind": "skill",
       "category": "communication",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -1057,7 +1057,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "intermediate",
       "source": {
         "owner": "affaan-m",
@@ -1092,7 +1092,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "difficulty": "advanced",
       "source": {
         "owner": "affaan-m",
@@ -1135,7 +1135,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 293969,
+      "github_stars": 294396,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -1179,7 +1179,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 185822,
+      "github_stars": 186097,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -1223,7 +1223,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 181467,
+      "github_stars": 181805,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -1908,7 +1908,7 @@
       "kind": "skill",
       "category": "data-ai",
       "featured": false,
-      "github_stars": 148775,
+      "github_stars": 148808,
       "difficulty": "intermediate",
       "source": {
         "owner": "langchain-ai",
@@ -1951,7 +1951,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 143591,
+      "github_stars": 143633,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2016,7 +2016,7 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 143373
+      "github_stars": 143618
     },
     {
       "id": "design-system-tokens",
@@ -2059,7 +2059,7 @@
       "kind": "skill",
       "category": "cloud-security",
       "featured": false,
-      "github_stars": 128663,
+      "github_stars": 128810,
       "difficulty": "advanced",
       "source": {
         "owner": "kubernetes",
@@ -2102,7 +2102,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 116509,
+      "github_stars": 116606,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2167,7 +2167,7 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 112188
+      "github_stars": 112395
     },
     {
       "id": "agent-skills",
@@ -2183,7 +2183,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 112188,
+      "github_stars": 112395,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2219,7 +2219,7 @@
       "kind": "skill",
       "category": "code-quality",
       "featured": false,
-      "github_stars": 109394,
+      "github_stars": 109696,
       "difficulty": "intermediate",
       "source": {
         "owner": "paperclipai",
@@ -2254,7 +2254,7 @@
       "kind": "skill",
       "category": "cloud-security",
       "featured": false,
-      "github_stars": 109394,
+      "github_stars": 109696,
       "difficulty": "beginner",
       "source": {
         "owner": "paperclipai",
@@ -2289,7 +2289,7 @@
       "kind": "skill",
       "category": "communication",
       "featured": false,
-      "github_stars": 109394,
+      "github_stars": 109696,
       "difficulty": "beginner",
       "source": {
         "owner": "paperclipai",
@@ -2332,7 +2332,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 109394,
+      "github_stars": 109696,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2376,7 +2376,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 107671,
+      "github_stars": 108489,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2441,7 +2441,7 @@
       ],
       "difficulty": "intermediate",
       "content_verified": false,
-      "github_stars": 106932
+      "github_stars": 107397
     },
     {
       "id": "open-design",
@@ -2457,7 +2457,7 @@
       },
       "kind": "collection",
       "featured": true,
-      "github_stars": 105177,
+      "github_stars": 105260,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2501,7 +2501,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 98137,
+      "github_stars": 98820,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2537,7 +2537,7 @@
       "kind": "skill",
       "category": "design",
       "featured": false,
-      "github_stars": 98124,
+      "github_stars": 98272,
       "difficulty": "beginner",
       "source": {
         "owner": "tailwindlabs",
@@ -2580,7 +2580,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 92119,
+      "github_stars": 92263,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2624,7 +2624,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 89383,
+      "github_stars": 89518,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2706,7 +2706,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 79040,
+      "github_stars": 79148,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2770,7 +2770,7 @@
       ],
       "difficulty": "beginner",
       "content_verified": false,
-      "github_stars": 78432
+      "github_stars": 78481
     },
     {
       "id": "datadog-cloud-monitoring",
@@ -2856,7 +2856,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 73919,
+      "github_stars": 74173,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -2938,7 +2938,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 70546,
+      "github_stars": 70568,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3055,7 +3055,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 66111,
+      "github_stars": 66186,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3137,7 +3137,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 63450,
+      "github_stars": 63656,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3181,7 +3181,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 62953,
+      "github_stars": 63112,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3225,7 +3225,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 59584,
+      "github_stars": 59640,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3307,7 +3307,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 57663,
+      "github_stars": 57750,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3351,7 +3351,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 56985,
+      "github_stars": 57012,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3395,7 +3395,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 55532,
+      "github_stars": 55607,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3431,7 +3431,7 @@
       "kind": "skill",
       "category": "science-education",
       "featured": true,
-      "github_stars": 54749,
+      "github_stars": 54828,
       "difficulty": "advanced",
       "source": {
         "owner": "Imbad0202",
@@ -3466,7 +3466,7 @@
       "kind": "skill",
       "category": "science-education",
       "featured": false,
-      "github_stars": 54749,
+      "github_stars": 54828,
       "difficulty": "advanced",
       "source": {
         "owner": "Imbad0202",
@@ -3501,7 +3501,7 @@
       "kind": "skill",
       "category": "science-education",
       "featured": false,
-      "github_stars": 54749,
+      "github_stars": 54828,
       "difficulty": "intermediate",
       "source": {
         "owner": "Imbad0202",
@@ -3536,7 +3536,7 @@
       "kind": "skill",
       "category": "development",
       "featured": false,
-      "github_stars": 50506,
+      "github_stars": 50508,
       "difficulty": "intermediate",
       "source": {
         "owner": "TanStack",
@@ -3717,7 +3717,7 @@
       "kind": "skill",
       "category": "cloud-security",
       "featured": false,
-      "github_stars": 42048,
+      "github_stars": 42069,
       "difficulty": "intermediate",
       "source": {
         "owner": "wshobson",
@@ -3752,7 +3752,7 @@
       "kind": "skill",
       "category": "design",
       "featured": true,
-      "github_stars": 42048,
+      "github_stars": 42069,
       "difficulty": "intermediate",
       "source": {
         "owner": "wshobson",
@@ -3787,7 +3787,7 @@
       "kind": "skill",
       "category": "design",
       "featured": false,
-      "github_stars": 42048,
+      "github_stars": 42069,
       "difficulty": "intermediate",
       "source": {
         "owner": "wshobson",
@@ -3830,7 +3830,7 @@
       },
       "kind": "collection",
       "featured": false,
-      "github_stars": 42048,
+      "github_stars": 42069,
       "benefits_ar": [
         "توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.",
         "العمل المباشر مع أدوات التطوير ومستودعات الكود."
@@ -3861,5 +3861,5 @@
       }
     }
   ],
-  "last_updated": "2026-10-31T20:59:55.250Z"
+  "last_updated": "2026-11-01T12:18:51.913Z"
 }

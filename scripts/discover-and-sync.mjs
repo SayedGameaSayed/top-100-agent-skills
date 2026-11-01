@@ -327,7 +327,7 @@ export async function runDiscoveryAndSync() {
   // Sync to site/data for static hosting
   const siteDataDir = path.join(ROOT_DIR, 'site/data');
   if (fs.existsSync(siteDataDir)) {
-    fs.writeFileSync(path.join(siteDataDir, 'skills.json'), JSON.stringify(currentData, null, 2), 'utf8');
+    fs.writeFileSync(path.join(siteDataDir, 'skills.json'), JSON.stringify(skillsData, null, 2), 'utf8');
     fs.writeFileSync(path.join(siteDataDir, 'leaderboard.json'), JSON.stringify(leaderboardPayload, null, 2), 'utf8');
     console.log('✓ Synchronized data to site/data for static deployments');
   }
@@ -350,7 +350,7 @@ export async function runDiscoveryAndSync() {
       const stars = formatNumber(skill.github_stars);
       const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
       const effectiveSource = skill.source?.url || skill.source?.repo_url || '#';
-      const webUrl = `https://syedg.github.io/arabic-skills-guide/skill/${encodeURIComponent(skill.id)}`;
+      const webUrl = `https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=${encodeURIComponent(skill.id)}`;
 
       leaderboardLines.push(
         `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catMeta.name_ar} | [\`${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}\`](${skill.source.repo_url}) | [**${skill.title_ar}** ↗](${webUrl}) |`

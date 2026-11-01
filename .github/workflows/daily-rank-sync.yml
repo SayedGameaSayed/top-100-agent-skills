@@ -1,4 +1,4 @@
-name: Daily Agent Skills Leaderboard Sync
+name: Daily Agent Skills Leaderboard Sync & Live Deployment
 
 on:
   schedule:
@@ -8,9 +8,16 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
 
 jobs:
-  sync-leaderboard:
+  sync-and-test:
+    name: Auto-Discover & Rank Skills
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -31,17 +38,40 @@ jobs:
       - name: Validate Schema & Rules
         run: node scripts/validate.mjs
 
-      - name: Run Test Suite
+      - name: Run Full Test Suite
         run: npm test
 
-      - name: Commit & Push Changes
+      - name: Commit & Push Updated Rankings
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [Leaderboard Bot]"
-          git add data/skills.json data/leaderboard.json README.md
+          git add data/*.json site/data/*.json README.md
           if git diff --staged --quiet; then
-            echo "No changes to commit. Leaderboard is up-to-date."
+            echo "No changes to commit. Leaderboard is already up-to-date."
           else
-            git commit -m "chore(leaderboard): auto-discover & sync top 100 agent skills [skip ci]"
+            git commit -m "chore(leaderboard): auto-discover & sync top 100 agent skills"
             git push
           fi
+
+  deploy-pages:
+    name: Deploy Updated Site to GitHub Pages
+    needs: sync-and-test
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
