@@ -205,6 +205,26 @@ export async function initIndexPage() {
     });
   }
 
+  // 1-Click Viral Site Share Button
+  const copySiteLinkBtn = document.getElementById('copy-site-link-btn');
+  if (copySiteLinkBtn) {
+    copySiteLinkBtn.addEventListener('click', async () => {
+      const shareUrl = window.location.href.split('#')[0].split('?')[0];
+      const ok = await copyToClipboard(shareUrl, 'تم نسخ رابط الدليل بنجاح! شاركه مع زملائك ومجتمعك 🚀');
+      if (ok) {
+        const originalText = copySiteLinkBtn.innerHTML;
+        copySiteLinkBtn.innerHTML = '<span>تم النسخ ✓</span>';
+        copySiteLinkBtn.style.borderColor = 'var(--color-pulse-green)';
+        copySiteLinkBtn.style.color = 'var(--color-pulse-green)';
+        setTimeout(() => {
+          copySiteLinkBtn.innerHTML = originalText;
+          copySiteLinkBtn.style.borderColor = '';
+          copySiteLinkBtn.style.color = '';
+        }, 2000);
+      }
+    });
+  }
+
   function renderGrid(skills) {
     if (!gridContainer) return;
 

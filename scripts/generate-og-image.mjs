@@ -3,7 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const logoBase64 = fs.readFileSync('site/assets/logo.png').toString('base64');
-const brainBase64 = fs.readFileSync('screenshots/home-dala-anatomical-brain.png').toString('base64');
+const resendBrainPath = 'C:/Users/syedg/.gemini/antigravity/brain/987b2f99-0fd9-46e7-a2bf-765b28e5dc4c/resend-home-1280px.png';
+const brainBase64 = fs.existsSync(resendBrainPath) 
+  ? fs.readFileSync(resendBrainPath).toString('base64')
+  : fs.readFileSync('site/assets/logo.png').toString('base64');
 
 const htmlContent = `
 <!DOCTYPE html>
@@ -12,49 +15,28 @@ const htmlContent = `
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 1200px;
       height: 630px;
-      background-color: #07070a;
+      background-color: #000000;
       color: #ffffff;
       font-family: 'Cairo', sans-serif;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 50px 70px;
+      padding: 56px 64px;
       overflow: hidden;
       position: relative;
+      border: 1px solid #292d30;
     }
     
-    /* Background subtle ambient glows */
-    .glow-amber {
-      position: absolute;
-      top: -60px;
-      left: 10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255, 184, 41, 0.15) 0%, transparent 70%);
-      filter: blur(50px);
-      pointer-events: none;
-    }
-    .glow-violet {
-      position: absolute;
-      bottom: -80px;
-      right: 10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(128, 82, 255, 0.20) 0%, transparent 70%);
-      filter: blur(60px);
-      pointer-events: none;
-    }
-
     .text-content {
-      flex: 1.25;
+      flex: 1.35;
       z-index: 2;
-      max-width: 630px;
+      max-width: 660px;
     }
 
     .brand-header {
@@ -64,60 +46,74 @@ const htmlContent = `
       margin-bottom: 24px;
     }
     .brand-logo {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       object-fit: contain;
     }
-    .badge {
+    .kicker-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(128, 82, 255, 0.18);
-      border: 1px solid rgba(128, 82, 255, 0.45);
+      background: #000000;
+      border: 1px solid #292d30;
       border-radius: 9999px;
-      padding: 6px 18px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #c084fc;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #f0f0f0;
+      letter-spacing: 0.02em;
+    }
+    .kicker-tag span:first-child {
+      color: #9281f7;
     }
 
     .title {
-      font-size: 54px;
-      font-weight: 900;
-      line-height: 1.22;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.18;
       color: #ffffff;
       margin-bottom: 18px;
       letter-spacing: -0.5px;
     }
     .title span {
-      color: #ffb829;
+      color: #9281f7;
     }
 
     .description {
-      font-size: 21px;
+      font-size: 20px;
       font-weight: 400;
       line-height: 1.6;
-      color: #cbd5e1;
-      margin-bottom: 30px;
+      color: #a1a4a5;
+      margin-bottom: 32px;
     }
 
     .footer-tags {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 9999px;
-      padding: 8px 16px;
-      font-size: 14px;
+      background: #000000;
+      border: 1px solid #292d30;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 13px;
       font-weight: 600;
-      color: #e2e8f0;
+      color: #f0f0f0;
+      font-family: 'JetBrains Mono', 'Cairo', monospace;
+    }
+    .tag-accent {
+      color: #9281f7;
+      border-color: rgba(146, 129, 247, 0.4);
+      background: rgba(146, 129, 247, 0.06);
+    }
+    .tag-stars {
+      color: #ffca16;
     }
 
     .visual-col {
@@ -133,50 +129,49 @@ const htmlContent = `
     .visual-brain-crop {
       width: 480px;
       height: 480px;
-      border-radius: 24px;
+      border: 1px solid #292d30;
+      border-radius: 16px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      background-color: #000000;
       position: relative;
     }
     .visual-brain-crop img {
-      width: 200%;
-      height: 200%;
+      width: 290%;
+      height: 290%;
       object-fit: cover;
-      object-position: 22% 38%;
-      filter: contrast(1.1) brightness(1.1);
+      object-position: 3% 28%;
     }
   </style>
 </head>
 <body>
-  <div class="glow-amber"></div>
-  <div class="glow-violet"></div>
 
   <div class="text-content">
     <div class="brand-header">
       <img src="data:image/png;base64,${logoBase64}" class="brand-logo" alt="Logo">
-      <div class="badge">
-        <span>✨</span>
-        <span>دليل مهارات الذكاء الاصطناعي</span>
+      <div class="kicker-tag">
+        <span>✧</span>
+        <span>دليل مهارات الذكاء الاصطناعي العالمي</span>
       </div>
     </div>
 
-    <h1 class="title">افهم المهارة <span>قبل أن تستخدمها</span>.</h1>
+    <h1 class="title">أفضل 100 مهارة <span>ذكاء اصطناعي</span>.</h1>
     <p class="description">
-      دليل عربي لأشهر مهارات الذكاء الاصطناعي، مع برومبتات إنجليزية فورية جاهزة للنسخ لأي شات أو أداة تطوير، وتصنيف تفاعلي محدث يومياً.
+      دليل عربي تفاعلي موثق لأشهر مهارات الوكلاء الذكية، مع لوحة صدارة يومية بنجوم GitHub وبرومبتات إنجليزية فورية جاهزة لأي شات أو أداة تطوير.
     </p>
 
     <div class="footer-tags">
-      <div class="tag">🏆 لوحة صدارة بالنجوم</div>
-      <div class="tag">⚡ برومبت جاهز بنقرة</div>
-      <div class="tag">🤖 مساعد ذكي مدمج</div>
+      <div class="tag tag-accent"># 100 SKILLS VERIFIED</div>
+      <div class="tag tag-stars">★ DAILY GITHUB LEADERBOARD</div>
+      <div class="tag">⚡ READY-TO-USE PROMPTS</div>
     </div>
   </div>
 
   <div class="visual-col">
     <div class="visual-brain-crop">
-      <img src="data:image/png;base64,${brainBase64}" alt="3D Neural Brain">
+      <img src="data:image/png;base64,${brainBase64}" alt="Resend 3D Brain Visual">
     </div>
   </div>
 </body>
@@ -197,7 +192,7 @@ fs.writeFileSync('temp_og_preview.html', htmlContent, 'utf8');
   await new Promise((r) => setTimeout(r, 1200));
 
   await page.screenshot({ path: 'site/assets/og-preview.png' });
-  console.log('Saved perfected site/assets/og-preview.png (1200x630)');
+  console.log('Saved perfected Resend site/assets/og-preview.png (1200x630)');
 
   await browser.close();
   fs.unlinkSync('temp_og_preview.html');

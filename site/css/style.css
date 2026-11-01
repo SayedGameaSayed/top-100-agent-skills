@@ -175,6 +175,55 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   text-decoration: none;
 }
 
+.nav-github-star-pill {
+  background-color: transparent;
+  color: var(--color-bone-white);
+  border: 1px solid var(--color-graphite-hairline);
+  border-radius: var(--radius-buttons);
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  min-height: 38px;
+  transition: all 0.15s ease;
+}
+
+.nav-github-star-pill:hover {
+  border-color: var(--color-amber);
+  color: var(--color-white);
+  background-color: rgba(255, 202, 22, 0.05);
+}
+
+.nav-github-star-pill .github-star-count {
+  color: var(--color-amber);
+  font-family: var(--font-commit-mono);
+  font-size: 12px;
+}
+
+.share-btn-pill {
+  background-color: transparent;
+  color: var(--color-ash-gray);
+  border: 1px solid var(--color-graphite-hairline);
+  border-radius: var(--radius-buttons);
+  padding: 6px 12px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.share-btn-pill:hover {
+  color: var(--color-white);
+  border-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
 /* ==========================================================================
    Hero Stage (Resend Monochromatic Canvas + Violet Neon Accent)
    Void black canvas, oversized editorial headline, terminal search bar, 3D object

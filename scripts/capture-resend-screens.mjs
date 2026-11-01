@@ -11,18 +11,12 @@ async function capture() {
   });
 
   const page = await browser.newPage();
-  await page.setViewport({ width: 1280, height: 950 });
+  await page.setViewport({ width: 1280, height: 900 });
   await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' });
   await new Promise((r) => setTimeout(r, 1200));
 
-  // Scroll to cards grid
-  await page.evaluate(() => {
-    const el = document.getElementById('all-skills-section');
-    if (el) el.scrollIntoView();
-  });
-  await new Promise((r) => setTimeout(r, 1000));
-  await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'resend-cards-grid-1280px.png'), fullPage: false });
-  console.log('Saved resend-cards-grid-1280px.png');
+  await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'resend-home-with-share-1280px.png'), fullPage: false });
+  console.log('Saved resend-home-with-share-1280px.png');
 
   await browser.close();
 }
