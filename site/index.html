@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
+  <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="css/style.css">
   
   <!-- Fuse.js CDN with graceful fallback -->
@@ -22,19 +23,15 @@
   <!-- Dala Navigation Bar (Transparent on Black Void) -->
   <header class="site-header">
     <div class="header-container">
-      <a href="/" class="brand-lockup" aria-label="دليل مهارات الذكاء الاصطناعي">
-        <span class="brand-icon-triangle" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-            <polygon points="12,3 22,21 2,21" />
-          </svg>
-        </span>
+      <a href="index.html" class="brand-lockup" aria-label="دليل مهارات الذكاء الاصطناعي">
+        <img src="assets/logo.png" alt="شعار دليل مهارات الذكاء الاصطناعي" class="brand-logo-img" width="34" height="34">
         <span>دليل مهارات الذكاء الاصطناعي</span>
       </a>
       
       <nav class="header-nav" aria-label="روابط الموقع">
-        <a href="/" class="nav-ghost-link active">الرئيسية</a>
-        <a href="/leaderboard" class="nav-ghost-link">لوحة الصدارة</a>
-        <a href="/how-to-use" class="nav-ghost-link">طريقة الاستخدام</a>
+        <a href="index.html" class="nav-ghost-link active">الرئيسية</a>
+        <a href="leaderboard.html" class="nav-ghost-link">لوحة الصدارة</a>
+        <a href="how-to-use.html" class="nav-ghost-link">طريقة الاستخدام</a>
         <a href="#all-skills-section" class="nav-cta-pill">تصفح المهارات</a>
       </nav>
     </div>
@@ -81,8 +78,22 @@
         </div>
 
         <!-- Signature Constellation Cloud Visual -->
-        <div class="hero-visual-col" aria-hidden="true">
+        <div class="hero-visual-col" aria-label="العرض البصري التفاعلي">
           <canvas id="constellation-canvas"></canvas>
+          <div class="constellation-morph-controls">
+            <button type="button" class="morph-pill active" data-shape="brain" aria-label="العقل العصبي">
+              <span class="morph-icon">🧠</span>
+              <span>العقل العصبي</span>
+            </button>
+            <button type="button" class="morph-pill" data-shape="lightbulb" aria-label="ومضة إلهام">
+              <span class="morph-icon">💡</span>
+              <span>ومضة إلهام</span>
+            </button>
+            <button type="button" class="morph-pill" data-shape="globe" aria-label="شبكة الوكلاء">
+              <span class="morph-icon">🌐</span>
+              <span>شبكة الوكلاء</span>
+            </button>
+          </div>
         </div>
 
       </div>
@@ -150,10 +161,9 @@
     <div class="footer-container">
       <p>دليل مهارات الذكاء الاصطناعي — مشروع مجتمعي مستقل ومفتوح المصدر.</p>
       <nav class="footer-nav" aria-label="روابط التذييل">
-        <a href="/">الرئيسية</a>
-        <a href="/leaderboard">لوحة الصدارة</a>
-        <a href="/how-to-use">طريقة الاستخدام</a>
-        <a href="/api/health">حالة الخادم (API Health)</a>
+        <a href="index.html">الرئيسية</a>
+        <a href="leaderboard.html">لوحة الصدارة</a>
+        <a href="how-to-use.html">طريقة الاستخدام</a>
       </nav>
     </div>
   </footer>

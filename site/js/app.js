@@ -6,6 +6,7 @@
 import { SkillsSearchEngine, normalizeArabic } from './search.js';
 import { copyToClipboard } from './copy.js';
 import { initConstellation } from './constellation.js';
+import { initAiBot } from './bot.js';
 
 let skillsData = null;
 let toolsData = null;
@@ -771,15 +772,27 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const page = document.body.dataset.page;
-  if (page === 'index') {
-    initIndexPage().catch(console.error);
-  } else if (page === 'skill-detail') {
-    initSkillDetailPage().catch(console.error);
-  } else if (page === 'how-to-use') {
-    initHowToUsePage().catch(console.error);
-  } else if (page === 'leaderboard') {
-    initLeaderboardPage().catch(console.error);
+  try {
+    if (page === 'index') {
+      await initIndexPage();
+    } else if (page === 'skill-detail') {
+      await initSkillDetailPage();
+    } else if (page === 'how-to-use') {
+      await initHowToUsePage();
+    } else if (page === 'leaderboard') {
+      await initLeaderboardPage();
+    }
+  } catch (err) {
+    console.error('Page init error:', err);
+  }
+
+  // Initialize AI Bot on all pages
+  try {
+    const data = await loadData();
+    initAiBot(data?.skillsData?.skills || []);
+  } catch (botErr) {
+    console.warn('Bot init warning:', botErr);
   }
 });

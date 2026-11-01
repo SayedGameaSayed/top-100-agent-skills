@@ -137,6 +137,109 @@ app.get('/api/search', (req, res) => {
   });
 });
 
+// AI Skills Advisor Chat Endpoint
+app.post('/api/chat', async (req, res) => {
+  const { message, apiKey, history } = req.body || {};
+  if (!message || typeof message !== 'string') {
+    return res.status(400).json({ error: 'Message is required' });
+  }
+
+  const effectiveApiKey = apiKey || process.env.GEMINI_API_KEY || '';
+
+  // 1. If Gemini API key is provided, query Gemini Flash (0$ tier)
+  if (effectiveApiKey) {
+    try {
+      const catalogSummary = skillsData.skills.slice(0, 100).map((s) => ({
+        id: s.id,
+        name: s.name,
+        title_ar: s.title_ar,
+        summary_ar: s.summary_ar,
+        category: s.category,
+        stars: s.github_stars,
+        difficulty: s.difficulty
+      }));
+
+      const systemPrompt = `أنت "مساعد مهارات الذكاء الاصطناعي" في دليل المهارات العربي الأعلى نجوماً على GitHub.
+مهمتك: مساعدة المطورين والمستخدمين في العثور على أفضل مهارة (Agent Skill) مناسبة لاحتياجهم.
+القواعد:
+1. أجب بلغة عربية فصيحة، ودودة ومباشرة ومختصرة.
+2. رشّح أفضل 1 إلى 3 مهارات من قاعدة البيانات بدقة.
+3. لكل مهارة ترشحها، ضع رمزها بصيغة [SKILL:id] (مثال: [SKILL:docx] أو [SKILL:clean-code]).
+4. اشرح في سطرين باختصار لماذا هذه المهارة مناسبة وكيف تفيده.
+قائمة المهارات المتاحة:
+${JSON.stringify(catalogSummary)}`;
+
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${effectiveApiKey}`;
+
+      const contents = [];
+      if (Array.isArray(history)) {
+        for (const h of history.slice(-4)) {
+          contents.push({
+            role: h.role === 'assistant' ? 'model' : 'user',
+            parts: [{ text: h.content }]
+          });
+        }
+      }
+      contents.push({
+        role: 'user',
+        parts: [{ text: message }]
+      });
+
+      const geminiRes = await fetch(geminiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          contents,
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 800
+          }
+        })
+      });
+
+      if (geminiRes.ok) {
+        const geminiData = await geminiRes.json();
+        const replyText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const skillMatches = [...replyText.matchAll(/\[SKILL:([a-zA-Z0-9_-]+)\]/gi)].map((m) => m[1]);
+        const matchedSkills = skillsData.skills.filter((s) => skillMatches.includes(s.id));
+
+        return res.json({
+          reply: replyText.replace(/\[SKILL:([a-zA-Z0-9_-]+)\]/g, '').trim(),
+          recommendedSkills: matchedSkills,
+          engine: 'gemini-1.5-flash'
+        });
+      } else {
+        const errText = await geminiRes.text();
+        console.warn('Gemini API call failed, falling back to local semantic engine:', errText);
+      }
+    } catch (apiErr) {
+      console.warn('Gemini API error, falling back:', apiErr.message);
+    }
+  }
+
+  // 2. Intelligent Local Semantic Fallback Engine (0$ and No Key Required!)
+  const searchResults = searchEngine.search({
+    query: message,
+    category: 'all',
+    difficulty: 'all'
+  });
+
+  const topSkills = searchResults.slice(0, 3);
+  let reply = '';
+  if (topSkills.length > 0) {
+    reply = `وجدت لك أفضل ${topSkills.length} مهارات مطابقة لاحتياجك من قاعدة البيانات:`;
+  } else {
+    reply = `أهلاً بك! يمكنك سؤالي عن أي مهمة تريد إنجازها (مثل: تعديل مستندات Word، تحليل بيانات، اختبار الكود، إدارة Docker) وسأرشح لك المهارة الأنسب فوراً.`;
+  }
+
+  return res.json({
+    reply,
+    recommendedSkills: topSkills,
+    engine: 'local-semantic'
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({
@@ -154,14 +257,22 @@ app.get('/api/health', (req, res) => {
 
 // Favicon handler
 app.get('/favicon.ico', (req, res) => {
-  res.type('image/svg+xml').send(
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12,3 22,21 2,21" fill="#8052ff"/></svg>'
-  );
+  const iconPath = path.join(ROOT_DIR, 'site/assets/logo.png');
+  if (fs.existsSync(iconPath)) {
+    res.type('image/png').sendFile(iconPath);
+  } else {
+    res.type('image/svg+xml').send(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12,3 22,21 2,21" fill="#8052ff"/></svg>'
+    );
+  }
 });
 
 // Serve site directory at root, /site, and nested prefixes for complete robustness
 app.use(express.static(path.join(ROOT_DIR, 'site')));
 app.use('/site', express.static(path.join(ROOT_DIR, 'site')));
+app.use('/assets', express.static(path.join(ROOT_DIR, 'site/assets')));
+app.use('/site/assets', express.static(path.join(ROOT_DIR, 'site/assets')));
+app.use('/skill/assets', express.static(path.join(ROOT_DIR, 'site/assets')));
 app.use('/css', express.static(path.join(ROOT_DIR, 'site/css')));
 app.use('/js', express.static(path.join(ROOT_DIR, 'site/js')));
 app.use('/site/css', express.static(path.join(ROOT_DIR, 'site/css')));

@@ -324,6 +324,14 @@ export async function runDiscoveryAndSync() {
   fs.writeFileSync(leaderboardPath, JSON.stringify(leaderboardPayload, null, 2), 'utf8');
   console.log('✓ Generated data/leaderboard.json (Public lightweight API format)');
 
+  // Sync to site/data for static hosting
+  const siteDataDir = path.join(ROOT_DIR, 'site/data');
+  if (fs.existsSync(siteDataDir)) {
+    fs.writeFileSync(path.join(siteDataDir, 'skills.json'), JSON.stringify(currentData, null, 2), 'utf8');
+    fs.writeFileSync(path.join(siteDataDir, 'leaderboard.json'), JSON.stringify(leaderboardPayload, null, 2), 'utf8');
+    console.log('✓ Synchronized data to site/data for static deployments');
+  }
+
   // Step 6: Regenerate Awesome Leaderboard Table in README.md
   if (fs.existsSync(readmePath)) {
     let readme = fs.readFileSync(readmePath, 'utf8');

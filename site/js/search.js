@@ -16,6 +16,11 @@ export const TERM_SYNONYMS = {
   'إكسل': ['excel', 'xlsx']
 };
 
+export const ARABIC_STOP_WORDS = new Set([
+  'عايز', 'عاوز', 'محتاج', 'اريد', 'بدي', 'ابحث', 'مهارة', 'مهاره', 'سكيل', 'اداة', 'اداه',
+  'عن', 'في', 'من', 'الي', 'علي', 'مع', 'هل', 'كيف', 'ما', 'ماذا', 'لو', 'او', 'ثم', 'هو', 'هي', 'لي', 'لك', 'ايه'
+]);
+
 /**
  * Standard Arabic Normalization
  * 1. Remove tashkeel (diacritics) & dagger alef
@@ -157,49 +162,55 @@ export class SkillsSearchEngine {
       }
     } else {
       // Local fallback search path (guaranteed consistent with exact same normalization)
-      const tokens = normalizedQuery.split(' ').filter(Boolean);
+      const rawTokens = normalizedQuery.split(' ').filter(Boolean);
+      // Filter conversational stopwords if other tokens exist
+      const meaningfulTokens = rawTokens.filter((t) => !ARABIC_STOP_WORDS.has(t));
+      const tokens = meaningfulTokens.length > 0 ? meaningfulTokens : rawTokens;
       const scored = [];
 
       for (const item of this.indexedSkills) {
         let score = 0;
-        let allTokensMatch = true;
+        let matchedCount = 0;
 
         for (const token of tokens) {
           let tokenMatches = false;
 
           // Check if token matches title, name, synonyms, summary, etc.
           if (item.normalizedTitle.includes(token)) {
-            score += 10;
+            score += 15;
             tokenMatches = true;
           }
           if (item.normalizedName.includes(token) || item.normalizedId.includes(token)) {
-            score += 8;
+            score += 12;
             tokenMatches = true;
           }
           if (item.synonymsText.includes(token)) {
-            score += 7;
+            score += 10;
             tokenMatches = true;
           }
           if (item.tagsList.some((t) => t.includes(token))) {
-            score += 6;
+            score += 8;
             tokenMatches = true;
           }
           if (item.normalizedSummary.includes(token)) {
-            score += 4;
+            score += 6;
             tokenMatches = true;
           }
           if (item.normalizedUseCases.includes(token) || item.normalizedBenefits.includes(token)) {
-            score += 2;
+            score += 3;
             tokenMatches = true;
           }
 
-          if (!tokenMatches) {
-            allTokensMatch = false;
-            break;
+          if (tokenMatches) {
+            matchedCount++;
           }
         }
 
-        if (allTokensMatch && score > 0) {
+        if (matchedCount > 0) {
+          // Significant bonus when all query tokens match
+          if (matchedCount === tokens.length) {
+            score += 30;
+          }
           scored.push({ item: item.raw, score });
         }
       }
