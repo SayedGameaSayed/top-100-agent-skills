@@ -1,0 +1,20 @@
+{
+  "name": "دليل مهارات الذكاء الاصطناعي",
+  "short_name": "Skills 100",
+  "description": "دليل عربي تفاعلي موثق لأشهر 100 مهارة وكيل ذكاء اصطناعي مع لوحة صدارة يومية وبرومبتات جاهزة للنسخ",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

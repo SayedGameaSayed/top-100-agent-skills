@@ -42,6 +42,25 @@
   }
   </script>
   
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Analytics Tracker (Google Analytics 4 & Vercel Insights Ready) -->
+  <script>
+    window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ضع معرّف GA4 الخاص بك هنا لتسجيل الزوار
+    if (window.GA_MEASUREMENT_ID && window.GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX') {
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${window.GA_MEASUREMENT_ID}`;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', window.GA_MEASUREMENT_ID);
+    }
+  </script>
+
   <title>دليل عربي لأشهر مهارات الذكاء الاصطناعي | افهم المهارة قبل أن تستخدمها</title>
   
   <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) with Non-Blocking Asynchronous Load -->
