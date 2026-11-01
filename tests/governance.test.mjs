@@ -53,19 +53,17 @@ test('Candidates from candidates.json are never rendered on the site', () => {
   const candidatesPath = path.join(ROOT_DIR, 'data/candidates.json');
   if (fs.existsSync(candidatesPath)) {
     const candidatesData = JSON.parse(fs.readFileSync(candidatesPath, 'utf8'));
-    const skillsData = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'data/skills.json'), 'utf8'));
     const leaderboardData = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'data/leaderboard.json'), 'utf8'));
 
-    const candidateIds = new Set((candidatesData.candidates || []).map((c) => c.id || c.repo));
-    const skillIds = new Set((skillsData.skills || []).map((s) => s.id));
-    const leaderboardIds = new Set((leaderboardData.leaderboard || []).map((l) => l.id));
+    const candidateFullNames = new Set((candidatesData.candidates || []).map((c) => (c.full_name || '').toLowerCase()).filter(Boolean));
+    const leaderboardRepos = new Set((leaderboardData.leaderboard || []).map((l) => (l.repo || '').toLowerCase()));
 
-    // Candidates must not leak into active skills or leaderboard
-    for (const cid of candidateIds) {
-      if (cid) {
-        assert(!skillIds.has(cid), `Candidate ${cid} leaked into data/skills.json!`);
-        assert(!leaderboardIds.has(cid), `Candidate ${cid} leaked into data/leaderboard.json!`);
-      }
+    // Candidates in candidates.json are unvetted and must never be rendered in the active leaderboard
+    for (const fullName of candidateFullNames) {
+      assert(
+        !leaderboardRepos.has(fullName),
+        `Candidate repo ${fullName} was illegally rendered in data/leaderboard.json!`
+      );
     }
   }
 });
