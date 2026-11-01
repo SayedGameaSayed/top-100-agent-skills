@@ -9,6 +9,7 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 const VALID_DIFFICULTIES = new Set(['beginner', 'intermediate', 'advanced']);
 const VALID_LICENSE_STATUSES = new Set(['open', 'verify_before_publish', 'proprietary_link_only']);
 const VALID_SKILL_KINDS = new Set(['skill', 'collection', 'directory']);
+const VALID_REPO_TYPES = new Set(['skills', 'plugin', 'tool', 'list']);
 const VALID_TOOL_KINDS = new Set(['chat', 'cli', 'ide']);
 const VALID_TOOL_SUPPORTS = new Set(['paste_only', 'native', 'reported_compatible', 'reported_native']);
 const PERMISSIVE_LICENSES = ['mit', 'apache-2.0', 'apache 2.0', 'bsd', 'isc', 'unlicense'];
@@ -151,6 +152,15 @@ export function validateSkillsData(skillsData, rootDir = ROOT_DIR) {
       if (!VALID_SKILL_KINDS.has(s.kind)) {
         errors.push(`${prefix}: invalid kind '${s.kind}' (expected skill, collection, or directory)`);
       }
+    }
+
+    // Repo Type Qualification (schema_version 2)
+    if (s.repo_type !== undefined) {
+      if (!VALID_REPO_TYPES.has(s.repo_type)) {
+        errors.push(`${prefix}: invalid repo_type '${s.repo_type}' (expected skills, plugin, tool, or list)`);
+      }
+    } else if (skillsData.schema_version === 2) {
+      errors.push(`${prefix}: missing 'repo_type' (expected skills, plugin, tool, or list)`);
     }
 
     // Source

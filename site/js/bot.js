@@ -1,12 +1,11 @@
 /**
  * bot.js - AI Skills Advisor Interactive Chat Assistant
- * Works with Google Gemini 1.5/2.0 Flash (0$ Free Tier) & Local Semantic Engine Fallback
+ * 100% Offline Local Semantic Search Engine (0 External API Keys, 0 LocalStorage, 100% Client-Side Privacy)
  */
 
 import { normalizeArabic } from './search.js';
 
 let skillsCatalog = [];
-let chatHistory = [];
 
 export function initAiBot(skills = []) {
   if (Array.isArray(skills) && skills.length > 0) {
@@ -35,27 +34,13 @@ export function initAiBot(skills = []) {
             <div class="bot-title">مساعد المهارات الذكي</div>
             <div class="bot-subtitle">
               <span class="bot-live-dot"></span>
-              <span id="bot-engine-label">Gemini AI / بحث دلالي</span>
+              <span id="bot-engine-label">بحث دلالي ذكي (محلي وسريع)</span>
             </div>
           </div>
         </div>
         <div class="bot-header-actions">
-          <button id="bot-settings-btn" class="bot-icon-btn" title="إعدادات المفتاح (API Key)" aria-label="إعدادات">⚙️</button>
           <button id="bot-close-btn" class="bot-icon-btn" title="إغلاق المحادثة" aria-label="إغلاق">✕</button>
         </div>
-      </div>
-
-      <!-- Settings Dropdown / Panel -->
-      <div id="bot-settings-panel" class="bot-settings-panel" style="display: none;">
-        <div class="settings-title">إعدادات Google Gemini (0$ مجاناً)</div>
-        <p class="settings-desc">
-          استخدم مفتاح مجاني من <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a>، أو اترك الحقل فارغاً لاستخدام البحث الدلالي الداخلي الفوري.
-        </p>
-        <div class="settings-input-group">
-          <input type="password" id="bot-api-key-input" placeholder="ألصق Gemini API Key هنا..." autocomplete="off">
-          <button id="bot-save-key-btn" class="btn-settings-save">حفظ</button>
-        </div>
-        <div id="bot-key-status" class="settings-status"></div>
       </div>
 
       <!-- Chat Messages Container -->
@@ -104,22 +89,9 @@ function attachBotEventListeners() {
   const trigger = document.getElementById('ai-bot-trigger');
   const modal = document.getElementById('ai-bot-modal');
   const closeBtn = document.getElementById('bot-close-btn');
-  const settingsBtn = document.getElementById('bot-settings-btn');
-  const settingsPanel = document.getElementById('bot-settings-panel');
-  const keyInput = document.getElementById('bot-api-key-input');
-  const saveKeyBtn = document.getElementById('bot-save-key-btn');
-  const keyStatus = document.getElementById('bot-key-status');
   const form = document.getElementById('bot-input-form');
   const input = document.getElementById('bot-input-text');
   const chipsContainer = document.getElementById('bot-quick-chips');
-
-  // Load saved key if present
-  const savedKey = localStorage.getItem('gemini_api_key') || '';
-  if (savedKey) {
-    keyInput.value = savedKey;
-    keyStatus.textContent = '✓ تم تفعيل مفتاح Gemini المخصص';
-    keyStatus.className = 'settings-status success';
-  }
 
   // Toggle modal open/close
   trigger.addEventListener('click', () => {
@@ -137,32 +109,6 @@ function attachBotEventListeners() {
   closeBtn.addEventListener('click', () => {
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
-  });
-
-  // Toggle Settings Panel
-  settingsBtn.addEventListener('click', () => {
-    const isHidden = settingsPanel.style.display === 'none';
-    settingsPanel.style.display = isHidden ? 'block' : 'none';
-  });
-
-  // Save API Key
-  saveKeyBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const val = keyInput.value.trim();
-    if (val) {
-      localStorage.setItem('gemini_api_key', val);
-      keyStatus.textContent = '✓ تم حفظ المفتاح بنجاح!';
-      keyStatus.className = 'settings-status success';
-      document.getElementById('bot-engine-label').textContent = 'Gemini 1.5 Flash (0$)';
-    } else {
-      localStorage.removeItem('gemini_api_key');
-      keyStatus.textContent = 'تم إزالة المفتاح، الاعتماد على البحث الدلالي الداخلي.';
-      keyStatus.className = 'settings-status';
-      document.getElementById('bot-engine-label').textContent = 'بحث دلالي داخلي';
-    }
-    setTimeout(() => {
-      settingsPanel.style.display = 'none';
-    }, 1200);
   });
 
   // Quick Chips click
@@ -187,7 +133,7 @@ function attachBotEventListeners() {
   });
 }
 
-async function handleSendMessage(userText) {
+function handleSendMessage(userText) {
   const messagesContainer = document.getElementById('bot-messages-container');
   const chipsContainer = document.getElementById('bot-quick-chips');
   if (chipsContainer) {
@@ -202,11 +148,11 @@ async function handleSendMessage(userText) {
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
   try {
-    const userApiKey = localStorage.getItem('gemini_api_key') || '';
-    const response = await queryBotBrain(userText, userApiKey);
-
-    removeTypingIndicator(typingId);
-    appendAssistantResponse(response);
+    const response = queryLocalSearchEngine(userText);
+    setTimeout(() => {
+      removeTypingIndicator(typingId);
+      appendAssistantResponse(response);
+    }, 150);
   } catch (err) {
     removeTypingIndicator(typingId);
     appendMessage(
@@ -315,56 +261,10 @@ function appendAssistantResponse({ reply, recommendedSkills = [] }) {
 }
 
 /**
- * Intelligent Brain Router (100% Static & Client-Side):
- * 1. Direct Client Gemini Call (if user provided their personal key in browser localStorage)
- * 2. Instant client-side semantic search engine fallback (0$ and 0 API key required, 0 network latency)
+ * Intelligent Local Semantic Search Engine:
+ * 100% Client-side, 0 External Network Requests, 0 API Keys, 0 Privacy Leaks.
  */
-async function queryBotBrain(message, userApiKey = '') {
-  // Option 1: Direct Client Gemini Call (if user provided key in browser)
-  if (userApiKey) {
-    try {
-      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userApiKey}`;
-      const catalogSummary = skillsCatalog.slice(0, 80).map((s) => ({
-        id: s.id,
-        name: s.name,
-        title_ar: s.title_ar,
-        summary_ar: s.summary_ar,
-        category: s.category,
-        stars: s.github_stars
-      }));
-
-      const systemPrompt = `أنت مساعد مهارات الذكاء الاصطناعي في دليل المهارات العربي.
-رشح أفضل 1-3 مهارات تناسب سؤال المستخدم. ضع رمز كل مهارة بصيغة [SKILL:id]. أجب بعربية واضحة ومختصرة.
-المهارات: ${JSON.stringify(catalogSummary)}`;
-
-      const geminiRes = await fetch(geminiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: systemPrompt }] },
-          contents: [{ role: 'user', parts: [{ text: message }] }],
-          generationConfig: { temperature: 0.3, maxOutputTokens: 600 }
-        })
-      });
-
-      if (geminiRes.ok) {
-        const gData = await geminiRes.json();
-        const text = gData.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        const skillMatches = [...text.matchAll(/\[SKILL:([a-zA-Z0-9_-]+)\]/gi)].map((m) => m[1]);
-        const matched = skillsCatalog.filter((s) => skillMatches.includes(s.id));
-
-        return {
-          reply: text.replace(/\[SKILL:([a-zA-Z0-9_-]+)\]/g, '').trim(),
-          recommendedSkills: matched,
-          engine: 'client-gemini-flash'
-        };
-      }
-    } catch (gErr) {
-      console.warn('Client direct Gemini call failed:', gErr);
-    }
-  }
-
-  // Option 3: Local Semantic Search Engine Fallback (Client-side, 0$, No Key Required!)
+function queryLocalSearchEngine(message) {
   const normQuery = normalizeArabic(message).toLowerCase();
   const scored = skillsCatalog.map((skill) => {
     let score = 0;
@@ -388,7 +288,7 @@ async function queryBotBrain(message, userApiKey = '') {
   const finalSkills = bestMatches.length > 0 ? bestMatches : skillsCatalog.slice(0, 2);
   let replyText = '';
   if (bestMatches.length > 0) {
-    replyText = `وجدت لك أفضل ${bestMatches.length} مهارات مطابقة لاحتياجك من دليل المهارات الأكثر شهرة:`;
+    replyText = `وجدت لك أفضل ${bestMatches.length} مهارات مطابقة لاحتياجك من دليل المهارات:`;
   } else {
     replyText = `إليك أكثر المهارات شائعة واستخداماً التي قد تساعدك في بدء عملك:`;
   }
@@ -396,7 +296,7 @@ async function queryBotBrain(message, userApiKey = '') {
   return {
     reply: replyText,
     recommendedSkills: finalSkills,
-    engine: 'client-semantic-fallback'
+    engine: 'local-semantic'
   };
 }
 

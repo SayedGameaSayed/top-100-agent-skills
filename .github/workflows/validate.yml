@@ -26,3 +26,6 @@ jobs:
 
       - name: Run All Tests
         run: npm test
+
+      - name: Run URL & Path Integrity Audit
+        run: node scripts/check-skills-urls.mjs --ci

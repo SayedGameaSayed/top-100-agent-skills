@@ -142,17 +142,20 @@ async function runAudit() {
   console.log(`Failures / Unverified: ${failures.length}`);
 
   if (failures.length > 0) {
-    console.log('\n--- DETAILED FAILURES LIST ---');
+    console.error('\n--- DETAILED FAILURES LIST ---');
     failures.forEach((f, idx) => {
-      console.log(`${idx + 1}. [${f.id}] -> ${f.reason} (Repo: ${f.repoUrl}, Path: ${f.pathInRepo})`);
+      console.error(`${idx + 1}. [${f.id}] -> ${f.reason} (Repo: ${f.repoUrl}, Path: ${f.pathInRepo})`);
     });
+    process.exit(1);
   }
 
   // Save updated skills.json with accurate url_verified values
-  fs.writeFileSync('data/skills.json', JSON.stringify(skillsData, null, 2) + '\n');
-  fs.writeFileSync('site/data/skills.json', JSON.stringify(skillsData, null, 2) + '\n');
+  if (!process.argv.includes('--ci')) {
+    fs.writeFileSync('data/skills.json', JSON.stringify(skillsData, null, 2) + '\n');
+    fs.writeFileSync('site/data/skills.json', JSON.stringify(skillsData, null, 2) + '\n');
+  }
   fs.writeFileSync('data/url-audit-report.json', JSON.stringify({ summary: { total: skills.length, verified: results.filter(r => r.urlVerified).length, failures: failures.length }, failures, results }, null, 2) + '\n');
-  console.log('Saved data/skills.json and data/url-audit-report.json');
+  console.log('Saved data/url-audit-report.json');
 }
 
 runAudit();

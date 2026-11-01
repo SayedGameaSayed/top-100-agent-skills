@@ -40,40 +40,70 @@ const CATEGORY_MAP = {
   'meta': { name_ar: 'بناء المهارات واكتشافها' }
 };
 
-// Sort descending by stars
-const rawSorted = [...skillsData.skills].sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+const REPO_TYPE_MAP = {
+  'skills': 'مهارة (Skill)',
+  'tool': 'أداة (Tool)',
+  'plugin': 'إضافة (Plugin)',
+  'list': 'قائمة (List)'
+};
 
-// Partition by repository cap (Max 3 per repo in top tier)
+// 1. Separate Qualified Skills (repo_type === 'skills' with real SKILL.md folder path)
+const qualifiedSkills = skillsData.skills.filter(
+  (s) => s.repo_type === 'skills' && s.source?.path_in_repo && s.source.path_in_repo.trim() !== ''
+);
+
+// Sort qualified skills by stars desc
+qualifiedSkills.sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+
+// Diversity Cap: Max 3 skills per repository in top ranks
 const repoCounts = {};
 const topTier = [];
-const remainingTier = [];
+const extendedSkillsTier = [];
 
-for (const skill of rawSorted) {
+for (const skill of qualifiedSkills) {
   const key = getRepoKey(skill);
   repoCounts[key] = (repoCounts[key] || 0) + 1;
   if (repoCounts[key] <= 3) {
-    topTier.push({ ...skill, repo_rank_order: repoCounts[key], tier: 'primary_diverse' });
+    topTier.push({ ...skill, repo_rank_order: repoCounts[key], tier: 'primary_diverse_skill' });
   } else {
-    remainingTier.push({ ...skill, repo_rank_order: repoCounts[key], tier: 'extended_catalog' });
+    extendedSkillsTier.push({ ...skill, repo_rank_order: repoCounts[key], tier: 'extended_skill' });
   }
 }
 
-const finalRanked = [...topTier, ...remainingTier].map((s, idx) => ({
+// 2. Separate Tools, Plugins, Curated Lists & Root Collections
+const toolsAndPlugins = skillsData.skills.filter(
+  (s) => !qualifiedSkills.some((q) => q.id === s.id)
+);
+toolsAndPlugins.sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+const toolsTier = toolsAndPlugins.map((s, idx) => ({
+  ...s,
+  repo_rank_order: idx + 1,
+  tier: 'extended_tool_or_plugin'
+}));
+
+// Combine for full ranked listing (Top diverse skills first, then extended skills, then tools/plugins)
+const finalRanked = [...topTier, ...extendedSkillsTier, ...toolsTier].map((s, idx) => ({
   rank: idx + 1,
   ...s
 }));
 
+const STARS_FETCHED_AT = '2026-11-01T20:17:18Z';
+const STARS_AS_OF_AR = '1 نوفمبر 2026';
 const nowIso = new Date().toISOString();
 
 const leaderboardPayload = {
   updated_at: nowIso,
+  stars_fetched_at: STARS_FETCHED_AT,
+  stars_as_of_ar: STARS_AS_OF_AR,
   total: finalRanked.length,
-  ranking_metric: 'الأكثر شهرة مع حماية التنوع (بحد أقصى 3 مهارات لكل مستودع في الصدارة)',
+  qualified_skills_total: qualifiedSkills.length,
+  top_diverse_skills_count: topTier.length,
+  extended_skills_count: extendedSkillsTier.length,
+  tools_and_plugins_count: toolsTier.length,
+  ranking_metric: 'صدارة مهارات الوكلاء المؤهلة (SKILL.md) مع حماية التنوع (بحد أقصى 3 مهارات لكل مستودع)',
   diversity_cap: 3,
-  top_tier_count: topTier.length,
-  extended_tier_count: remainingTier.length,
-  disclaimer_ar: 'تنبيه: عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها. تم تطبيق معيار حماية التنوع (بحد أقصى 3 مهارات لكل مستودع في الصدارة) لمنع هيمنة مستودع واحد على القائمة.',
-  leaderboard: finalRanked.map((skill) => {
+  disclaimer_ar: 'تنبيه: عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها. تشترط الصدارة وجود ملف SKILL.md حقيقي وأن يكون المستودع مصدراً للمهارات (repo_type: skills)، وتطبق سقفاً بـ 3 مهارات كحد أقصى للمستودع الواحد لمنع الاحتكار.',
+  skills: finalRanked.map((skill) => {
     const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
     const repoNormalized = `${skill.source?.owner}/${skill.source?.repo?.split('/')[1] || skill.source?.repo}`;
     return {
@@ -84,21 +114,30 @@ const leaderboardPayload = {
       summary_ar: skill.summary_ar,
       category: skill.category,
       category_ar: catMeta.name_ar,
+      repo_type: skill.repo_type || 'skills',
+      repo_type_ar: REPO_TYPE_MAP[skill.repo_type] || 'مهارة (Skill)',
       github_stars: skill.github_stars || 0,
       stars_formatted: formatNumber(skill.github_stars),
+      stars_fetched_at: STARS_FETCHED_AT,
+      stars_as_of_ar: STARS_AS_OF_AR,
       repo: repoNormalized,
       repo_url: skill.source?.url || skill.source?.repo_url || '',
+      path_in_repo: skill.source?.path_in_repo || '',
       tier: skill.tier,
       repo_rank_order: skill.repo_rank_order,
       license: skill.license?.type || (typeof skill.license === 'string' ? skill.license : 'MIT'),
-      content_verified: skill.content_verified === true
+      content_verified: skill.content_verified === true,
+      responsible_use_note_ar: skill.responsible_use_note_ar || null
     };
   })
 };
 
+// Also mirror top-level leaderboard property for compatibility
+leaderboardPayload.leaderboard = leaderboardPayload.skills;
+
 fs.writeFileSync(path.join(ROOT, 'data/leaderboard.json'), JSON.stringify(leaderboardPayload, null, 2) + '\n', 'utf8');
 fs.writeFileSync(path.join(ROOT, 'site/data/leaderboard.json'), JSON.stringify(leaderboardPayload, null, 2) + '\n', 'utf8');
-console.log(`✓ Generated data/leaderboard.json with 3-skills-per-repo cap (${topTier.length} diverse top tier + ${remainingTier.length} extended)`);
+console.log(`✓ Generated data/leaderboard.json (${topTier.length} top diverse skills + ${extendedSkillsTier.length} extended skills + ${toolsTier.length} tools/plugins)`);
 
 // Update README.md
 const readmePath = path.join(ROOT, 'README.md');
@@ -106,23 +145,66 @@ if (fs.existsSync(readmePath)) {
   let readme = fs.readFileSync(readmePath, 'utf8');
   const leaderboardLines = [
     '<!-- LEADERBOARD_START -->',
-    `> 🔄 **آخر تحديث:** ${nowIso.slice(0, 10)} | **التصنيف:** الأكثر شهرة مع حماية التنوع (بحد أقصى 3 مهارات لكل مستودع في الصدارة) | [تحميل JSON المباشر](data/leaderboard.json)`,
-    '> ⚠️ **تنبيه:** عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها. تطبق الصدارة سقفاً بـ 3 مهارات كحد أقصى للمستودع الواحد في المراتب المتقدمة.',
+    `> 🔄 **آخر تحديث:** ${nowIso.slice(0, 10)} | **نجوم المستودعات كما في:** ${STARS_AS_OF_AR} | [تحميل JSON المباشر](data/leaderboard.json)`,
+    '> ⚠️ **تنبيه الشفافية وقواعد التأهيل:**',
+    '> 1. تشترط صدارة المهارات المتقدمة أن تشير المهارة لمجلد يحتوي على ملف `SKILL.md` حقيقي وأن يكون المستودع مصدراً للمهارات (`repo_type: "skills"`).',
+    '> 2. يطبق سقف 3 مهارات كحد أقصى للمستودع الواحد في الصدارة لضمان التنوع وتكافؤ الفرص.',
+    '> 3. تم نقل الأدوات (`tools`) والإضافات (`plugins`) والقوائم (`lists`) لقسم مخصص في نهاية القائمة مع إرشادات الاستخدام المسؤول.',
     '',
-    '| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح والبرومبت الجاهز | الترتيب داخل المستودع |',
+    '### 🏆 صدارة مهارات الوكلاء المؤهلة (Top Diverse Skills)',
+    '',
+    '| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح العربي والبرومبت | الترتيب بالمستودع |',
     '|:---:|:---:|---|---|---|:---:|:---:|'
   ];
 
-  finalRanked.forEach((skill) => {
-    const rankBadge = getRankBadge(skill.rank);
+  topTier.forEach((skill, idx) => {
+    const rankBadge = getRankBadge(idx + 1);
     const stars = formatNumber(skill.github_stars);
     const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
     const effectiveSource = skill.source?.url || skill.source?.repo_url || '#';
     const webUrl = `https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=${encodeURIComponent(skill.id)}`;
-    const repoOrderLabel = skill.tier === 'primary_diverse' ? `المهارة #${skill.repo_rank_order}` : `موسعة (#${skill.repo_rank_order})`;
+    const repoNormalized = `${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}`;
 
     leaderboardLines.push(
-      `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catMeta.name_ar} | [\`${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}\`](${skill.source.repo_url}) | [**${skill.title_ar}** ↗](${webUrl}) | ${repoOrderLabel} |`
+      `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catMeta.name_ar} | [\`${repoNormalized}\`](${skill.source.repo_url}) | [**${skill.title_ar}** ↗](${webUrl}) | المهارة #${skill.repo_rank_order} |`
+    );
+  });
+
+  leaderboardLines.push('');
+  leaderboardLines.push('### 📦 مهارات المستودعات الموسعة (Extended Skills)');
+  leaderboardLines.push('');
+  leaderboardLines.push('| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح العربي والبرومبت | الترتيب بالمستودع |');
+  leaderboardLines.push('|:---:|:---:|---|---|---|:---:|:---:|');
+
+  extendedSkillsTier.forEach((skill, idx) => {
+    const stars = formatNumber(skill.github_stars);
+    const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
+    const effectiveSource = skill.source?.url || skill.source?.repo_url || '#';
+    const webUrl = `https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=${encodeURIComponent(skill.id)}`;
+    const repoNormalized = `${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}`;
+
+    leaderboardLines.push(
+      `| #${topTier.length + idx + 1} | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catMeta.name_ar} | [\`${repoNormalized}\`](${skill.source.repo_url}) | [**${skill.title_ar}** ↗](${webUrl}) | مهارة #${skill.repo_rank_order} |`
+    );
+  });
+
+  leaderboardLines.push('');
+  leaderboardLines.push('### 🛠️ الأدوات والإضافات والقوائم المكملة (Tools, Plugins & Lists)');
+  leaderboardLines.push('');
+  leaderboardLines.push('> ℹ️ هذه المستودعات أدوات ومكتبات برمجية أو إضافات وليست مهارات قائمة بذاتها بتنسيق `SKILL.md`، ومصنفة لتسهيل الرجوع إليها.');
+  leaderboardLines.push('');
+  leaderboardLines.push('| # | نجوم المستودع ★ | الأداة / الإضافة | النوع | المستودع الأصلي (GitHub) | ملاحظات الاستخدام |');
+  leaderboardLines.push('|:---:|:---:|---|---|---|---|');
+
+  toolsTier.forEach((tool, idx) => {
+    const stars = formatNumber(tool.github_stars);
+    const effectiveSource = tool.source?.url || tool.source?.repo_url || '#';
+    const repoNormalized = `${tool.source.owner}/${tool.source.repo.split('/')[1] || tool.source.repo}`;
+    const typeLabel = REPO_TYPE_MAP[tool.repo_type] || 'أداة';
+    const note = tool.responsible_use_note_ar ? `⚠️ **${tool.responsible_use_note_ar}**` : (tool.summary_ar || '');
+
+    leaderboardLines.push(
+      `| #${topTier.length + extendedSkillsTier.length + idx + 1} | \`${stars}\` | [**${tool.name}**](${effectiveSource}) | \`${typeLabel}\` | [\`${repoNormalized}\`](${tool.source.repo_url}) | ${note} |`
     );
   });
 
@@ -133,5 +215,5 @@ if (fs.existsSync(readmePath)) {
     readme = readme.replace(/<!-- LEADERBOARD_START -->[\s\S]*?<!-- LEADERBOARD_END -->/, newLeaderboardContent);
   }
   fs.writeFileSync(readmePath, readme, 'utf8');
-  console.log('✓ Updated README.md with capped diverse leaderboard table');
+  console.log('✓ Updated README.md with qualified diverse leaderboard table');
 }

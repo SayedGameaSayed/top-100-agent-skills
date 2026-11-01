@@ -226,6 +226,17 @@ test('Fails when content_verified is true but reviewed_on is null or missing', (
   );
 });
 
+// Rule 17: repo_type must be skills, plugin, tool, or list
+test('Fails when repo_type is invalid', () => {
+  const data = clone(validSkills);
+  data.skills[0].repo_type = 'invalid_type';
+  const { errors } = validateSkillsData(data, ROOT_DIR);
+  assert(
+    errors.some((e) => e.includes('invalid repo_type')),
+    `Expected repo_type error, got: ${JSON.stringify(errors)}`
+  );
+});
+
 console.log(`\nResults: ${passedCount}/${testCount} tests passed.`);
 if (passedCount !== testCount) {
   process.exit(1);

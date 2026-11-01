@@ -728,24 +728,36 @@ export async function initLeaderboardPage() {
     return `${owner}/${repo}`;
   }
 
-  // Diverse Capped Leaderboard: Max 3 skills per repository in the top ranks (Rule 4)
+  // Diverse Capped Leaderboard: Qualified skills only in top ranks (Max 3 per repo)
   function computeDiverseLeaderboard(allSkills) {
-    const rawSorted = [...allSkills].sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+    const qualified = allSkills.filter(
+      (s) => s.repo_type === 'skills' && s.source?.path_in_repo && s.source.path_in_repo.trim() !== ''
+    );
+    qualified.sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+
     const repoCounts = {};
     const topTier = [];
-    const remainingTier = [];
+    const extendedSkillsTier = [];
 
-    for (const skill of rawSorted) {
+    for (const skill of qualified) {
       const key = getRepoKey(skill);
       repoCounts[key] = (repoCounts[key] || 0) + 1;
       if (repoCounts[key] <= 3) {
-        topTier.push({ ...skill, repo_skill_order: repoCounts[key], is_top_diverse: true });
+        topTier.push({ ...skill, repo_skill_order: repoCounts[key], tier: 'primary_diverse_skill' });
       } else {
-        remainingTier.push({ ...skill, repo_skill_order: repoCounts[key], is_top_diverse: false });
+        extendedSkillsTier.push({ ...skill, repo_skill_order: repoCounts[key], tier: 'extended_skill' });
       }
     }
 
-    return [...topTier, ...remainingTier];
+    const toolsAndPlugins = allSkills.filter((s) => !qualified.some((q) => q.id === s.id));
+    toolsAndPlugins.sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
+    const toolsTier = toolsAndPlugins.map((s, idx) => ({
+      ...s,
+      repo_skill_order: idx + 1,
+      tier: 'extended_tool_or_plugin'
+    }));
+
+    return [...topTier, ...extendedSkillsTier, ...toolsTier];
   }
 
   // Ensure skills are sorted with 3-skills-per-repo diversity cap
@@ -799,9 +811,13 @@ export async function initLeaderboardPage() {
             </td>
             <td style="padding: 14px 20px;">
               <div style="display: flex; flex-direction: column; gap: 2px;">
-                <a href="skill.html?id=${encodeURIComponent(skill.id)}" style="color: var(--color-bone-white); font-weight: 600; text-decoration: none; font-size: 15px;" class="leaderboard-skill-link">
-                  ${escapeHtml(skill.title_ar)}
-                </a>
+                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                  <a href="skill.html?id=${encodeURIComponent(skill.id)}" style="color: var(--color-bone-white); font-weight: 600; text-decoration: none; font-size: 15px;" class="leaderboard-skill-link">
+                    ${escapeHtml(skill.title_ar)}
+                  </a>
+                  ${skill.tier === 'extended_tool_or_plugin' ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(148, 163, 184, 0.12); color: #94a3b8; border-radius: 4px; border: 1px solid rgba(148, 163, 184, 0.25);">${skill.repo_type === 'tool' ? 'أداة' : skill.repo_type === 'plugin' ? 'إضافة' : skill.repo_type === 'list' ? 'قائمة' : 'مجموعة'}</span>` : ''}
+                  ${skill.responsible_use_note_ar ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(245, 158, 11, 0.12); color: #fbbf24; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.25);" title="${escapeHtml(skill.responsible_use_note_ar)}">⚠️ استخدام مسؤول</span>` : ''}
+                </div>
                 <span style="color: var(--color-silver-mist); font-size: 12px; font-family: var(--font-mono);" dir="ltr">${escapeHtml(
                   skill.name
                 )}</span>

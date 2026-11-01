@@ -157,88 +157,13 @@ app.get('/api/search', (req, res) => {
   });
 });
 
-// AI Skills Advisor Chat Endpoint
-app.post('/api/chat', async (req, res) => {
-  const { message, apiKey, history } = req.body || {};
+// AI Skills Advisor Chat Endpoint (100% Local Semantic Engine - Zero External API Keys)
+app.post('/api/chat', (req, res) => {
+  const { message } = req.body || {};
   if (!message || typeof message !== 'string') {
     return res.status(400).json({ error: 'Message is required' });
   }
 
-  const effectiveApiKey = apiKey || process.env.GEMINI_API_KEY || '';
-
-  // 1. If Gemini API key is provided, query Gemini Flash (0$ tier)
-  if (effectiveApiKey) {
-    try {
-      const catalogSummary = skillsData.skills.slice(0, 100).map((s) => ({
-        id: s.id,
-        name: s.name,
-        title_ar: s.title_ar,
-        summary_ar: s.summary_ar,
-        category: s.category,
-        stars: s.github_stars,
-        difficulty: s.difficulty
-      }));
-
-      const systemPrompt = `أنت "مساعد مهارات الذكاء الاصطناعي" في دليل المهارات العربي الأعلى نجوماً على GitHub.
-مهمتك: مساعدة المطورين والمستخدمين في العثور على أفضل مهارة (Agent Skill) مناسبة لاحتياجهم.
-القواعد:
-1. أجب بلغة عربية فصيحة، ودودة ومباشرة ومختصرة.
-2. رشّح أفضل 1 إلى 3 مهارات من قاعدة البيانات بدقة.
-3. لكل مهارة ترشحها، ضع رمزها بصيغة [SKILL:id] (مثال: [SKILL:docx] أو [SKILL:clean-code]).
-4. اشرح في سطرين باختصار لماذا هذه المهارة مناسبة وكيف تفيده.
-قائمة المهارات المتاحة:
-${JSON.stringify(catalogSummary)}`;
-
-      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${effectiveApiKey}`;
-
-      const contents = [];
-      if (Array.isArray(history)) {
-        for (const h of history.slice(-4)) {
-          contents.push({
-            role: h.role === 'assistant' ? 'model' : 'user',
-            parts: [{ text: h.content }]
-          });
-        }
-      }
-      contents.push({
-        role: 'user',
-        parts: [{ text: message }]
-      });
-
-      const geminiRes = await fetch(geminiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: systemPrompt }] },
-          contents,
-          generationConfig: {
-            temperature: 0.3,
-            maxOutputTokens: 800
-          }
-        })
-      });
-
-      if (geminiRes.ok) {
-        const geminiData = await geminiRes.json();
-        const replyText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        const skillMatches = [...replyText.matchAll(/\[SKILL:([a-zA-Z0-9_-]+)\]/gi)].map((m) => m[1]);
-        const matchedSkills = skillsData.skills.filter((s) => skillMatches.includes(s.id));
-
-        return res.json({
-          reply: replyText.replace(/\[SKILL:([a-zA-Z0-9_-]+)\]/g, '').trim(),
-          recommendedSkills: matchedSkills,
-          engine: 'gemini-1.5-flash'
-        });
-      } else {
-        const errText = await geminiRes.text();
-        console.warn('Gemini API call failed, falling back to local semantic engine:', errText);
-      }
-    } catch (apiErr) {
-      console.warn('Gemini API error, falling back:', apiErr.message);
-    }
-  }
-
-  // 2. Intelligent Local Semantic Fallback Engine (0$ and No Key Required!)
   const searchResults = searchEngine.search({
     query: message,
     category: 'all',
