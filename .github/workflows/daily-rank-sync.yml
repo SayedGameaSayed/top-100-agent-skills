@@ -43,13 +43,19 @@ jobs:
 
       - name: Commit & Push Updated Rankings
         run: |
+          # Security check: Ensure skills.json and tools.json were never modified
+          if git status --porcelain data/skills.json data/tools.json | grep -q .; then
+            echo "::error::Automated sync script attempted to modify protected files (data/skills.json or data/tools.json)!"
+            exit 1
+          fi
+
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [Leaderboard Bot]"
-          git add data/*.json site/data/*.json README.md
+          git add data/leaderboard.json site/data/leaderboard.json data/candidates.json README.md
           if git diff --staged --quiet; then
             echo "No changes to commit. Leaderboard is already up-to-date."
           else
-            git commit -m "chore(leaderboard): auto-discover & sync top 100 agent skills"
+            git commit -m "chore(leaderboard): update repository stars and candidates [automated]"
             git push
           fi
 

@@ -51,8 +51,11 @@ export function initConstellation(canvasId = 'constellation-canvas') {
   const COLOR_CYAN = '#38bdf8';    // Cyber Cyan (stem)
   const COLOR_WHITE = '#ffffff';   // Bone White / Synaptic Flash
 
-  const PARTICLE_COUNT = 2400;
-  const WIREFRAME_COUNT = 28;
+  // Adaptive particle budget for mobile battery & GPU efficiency
+  const isMobile = width < 680;
+  const PARTICLE_COUNT = isMobile ? 650 : 2400;
+  const WIREFRAME_COUNT = isMobile ? 10 : 28;
+  const brainScale = isMobile ? 185 : 275;
 
   // 3D Rotation angles: Sagittal lateral side-profile view (1:1 with Dala reference image)
   let rotX = 0.08;
@@ -393,7 +396,7 @@ export function initConstellation(canvasId = 'constellation-canvas') {
   }
 
   // Initialize Particles & Wireframes
-  const rawPoints = generateBrainPoints(PARTICLE_COUNT, 275);
+  const rawPoints = generateBrainPoints(PARTICLE_COUNT, brainScale);
   const particles = rawPoints.map((pt) => new ConstellationParticle(pt));
   const wireframes = [];
   for (let i = 0; i < WIREFRAME_COUNT; i++) {
@@ -467,12 +470,43 @@ export function initConstellation(canvasId = 'constellation-canvas') {
   window.addEventListener('touchend', onPointerUp, { passive: true });
 
   // --------------------------------------------------------------------------
-  // Animation Render Loop (Silky 60/120 FPS)
+  // Animation Render Loop (Lazy-Loaded, Pauses Off-Screen, Reduced Motion Aware)
   // --------------------------------------------------------------------------
-  let animationFrameId;
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let animationFrameId = null;
+  let isCanvasVisible = true;
   const startTime = performance.now();
 
+  function onScroll() {
+    targetScrollY = window.pageYOffset || 0;
+    // Wake up render loop if visible and currently paused
+    if (isCanvasVisible && !animationFrameId && !prefersReducedMotion) {
+      animationFrameId = requestAnimationFrame(render);
+    }
+  }
+
+  // Off-screen canvas intersection observer (pauses RAF when out of view)
+  let intersectionObserver = null;
+  if ('IntersectionObserver' in window) {
+    intersectionObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        isCanvasVisible = entry.isIntersecting;
+        if (isCanvasVisible && !animationFrameId && !prefersReducedMotion) {
+          animationFrameId = requestAnimationFrame(render);
+        }
+      }
+    }, { threshold: 0.02 });
+    intersectionObserver.observe(canvas);
+  }
+
   function render(now) {
+    // 1. Immediately pause if canvas is off-screen
+    if (!isCanvasVisible) {
+      animationFrameId = null;
+      return;
+    }
+
     ctx.clearRect(0, 0, width, height);
 
     const time = (now - startTime) * 0.001;
@@ -488,13 +522,14 @@ export function initConstellation(canvasId = 'constellation-canvas') {
     const dispersion = 1 + Math.min(currentScrollY * 0.0006, 0.25);
     const heroFade = Math.max(0, 1 - (currentScrollY / (height * 0.92)));
 
+    // Pause RAF when scrolled far below hero section
     if (heroFade <= 0.01) {
-      animationFrameId = requestAnimationFrame(render);
+      animationFrameId = null;
       return;
     }
 
     // Gentle auto-spin when not interacting
-    if (!isDragging) {
+    if (!isDragging && !prefersReducedMotion) {
       targetRotY += autoSpinSpeed;
     }
 
@@ -609,16 +644,26 @@ export function initConstellation(canvasId = 'constellation-canvas') {
 
     ctx.restore();
 
-    animationFrameId = requestAnimationFrame(render);
+    if (!prefersReducedMotion && isCanvasVisible) {
+      animationFrameId = requestAnimationFrame(render);
+    } else {
+      animationFrameId = null;
+    }
   }
 
-  animationFrameId = requestAnimationFrame(render);
+  // Initial draw
+  if (prefersReducedMotion) {
+    render(performance.now());
+  } else {
+    animationFrameId = requestAnimationFrame(render);
+  }
 
   window.addEventListener('resize', resize);
 
   return {
     destroy() {
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      if (intersectionObserver) intersectionObserver.disconnect();
       window.removeEventListener('mousemove', onPointerMove);
       window.removeEventListener('mousedown', onPointerDown);
       window.removeEventListener('mouseup', onPointerUp);

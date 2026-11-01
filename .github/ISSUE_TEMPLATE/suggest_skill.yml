@@ -1,0 +1,81 @@
+name: 💡 اقتراح مهارة جديدة (Suggest a Skill)
+description: اقترح مهارة وكيل ذكاء اصطناعي جديدة لإضافتها إلى الدليل
+title: "مهارة جديدة: [اسم المهارة]"
+labels: ["skill-suggestion", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        شكرًا لمساهمتك في دليل مهارات الذكاء الاصطناعي!
+        يرجى التأكد من ملء الحقول الإلزامية أدناه وخاصة **رابط المصدر** و**الترخيص القانوني**.
+
+  - type: input
+    id: skill_name
+    attributes:
+      label: اسم المهارة بالإنجليزية (Skill Name)
+      placeholder: "e.g., react-best-practices, docker-optimizer"
+    validations:
+      required: true
+
+  - type: input
+    id: repo_url
+    attributes:
+      label: رابط المستودع الأصلي على GitHub (Source URL)
+      description: يجب أن يكون رابطاً مباشراً يبدأ بـ https://github.com/
+      placeholder: "https://github.com/owner/repo"
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: ترخيص المهارة القانوني (License)
+      description: اذكر رخصة المستودع أو ملف SKILL.md (مثل: MIT, Apache-2.0, Proprietary...)
+      placeholder: "MIT / Apache-2.0 / Proprietary (link only)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: التصنيف المقترح (Category)
+      options:
+        - المستندات والملفات (documents)
+        - التصميم والإبداع (design)
+        - البرمجة والويب (development)
+        - جودة الكود والاختبار (code-quality)
+        - السحابة والأمان (cloud-security)
+        - البيانات والذكاء الاصطناعي (data-ai)
+        - العلوم والتعليم (science-education)
+        - الأعمال والمال (business-finance)
+        - الكتابة والتواصل (communication)
+        - بناء المهارات واكتشافها (meta)
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary_ar
+    attributes:
+      label: شرح مختصر لوظيفة المهارة بالعربية (Arabic Summary)
+      description: ما الذي تقدمه المهارة للمستخدم بأسلوب واضح ومباشر؟
+      placeholder: "تشرح هذه المهارة للنموذج كيفية..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_cases
+    attributes:
+      label: حالات الاستخدام الشائعة (Use Cases)
+      placeholder: "- إنشاء ملفات...\n- اختبار الكود..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: safety_checklist
+    attributes:
+      label: إقرار الأمان والتحقق
+      options:
+        - label: تحققت من أن ملف SKILL.md لا يحتوي على أوامر خبيثة أو Prompt Injection.
+          required: true
+        - label: تأكدت من أن الرابط يعمل ومفتوح للجميع.
+          required: true

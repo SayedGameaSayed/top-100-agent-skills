@@ -1,0 +1,22 @@
+name: 🐛 إبلاغ عن مشكلة (Report a Bug)
+description: الإبلاغ عن رابط معطل، خطأ برمجي، أو مشكلة في الموقع
+title: "مشكلة: [وصف مختصر]"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: شكرًا لإبلاغنا بالمشكلة لمساعدتنا في تحسين الدليل.
+  - type: input
+    id: affected_url
+    attributes:
+      label: الرابط أو المهارة المتأثرة
+      placeholder: "https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=..."
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: وصف المشكلة بالتفصيل
+      placeholder: "ما الذي حدث؟ وما السلوك المتوقع؟"
+    validations:
+      required: true

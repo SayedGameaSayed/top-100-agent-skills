@@ -1,0 +1,26 @@
+name: ✍️ تحسين ترجمة أو شرح عربي (Improve Translation)
+description: اقتراح تحسين أو تدقيق لغوي لشرح مهارة موجودة في الدليل
+title: "تحسين ترجمة: [اسم المهارة]"
+labels: ["translation", "arabic-refinement"]
+body:
+  - type: input
+    id: skill_id
+    attributes:
+      label: معرّف المهارة (Skill ID)
+      placeholder: "e.g., git-workflow, superpowers"
+    validations:
+      required: true
+  - type: textarea
+    id: current_text
+    attributes:
+      label: النص الحالي
+      placeholder: "النص الحالي المراد تعديله..."
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_text
+    attributes:
+      label: النص المقترح بعد التحسين
+      placeholder: "الصياغة المقترحة الأفضل والأكثر دقة..."
+    validations:
+      required: true

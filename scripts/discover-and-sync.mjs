@@ -1,13 +1,14 @@
 /**
  * discover-and-sync.mjs
- * Autonomous AI Agent Skills Discovery & Top 100 Leaderboard Engine
+ * Secure AI Agent Skills Discovery & Leaderboard Engine
  * 
- * 1. Searches GitHub API (topics: agent-skills, claude-skills, cursor-rules) for top starred skill repos.
- * 2. Fetches verified community skills from Skills Directory.
- * 3. Merges and deduplicates candidate skills with the current database.
- * 4. Queries live GitHub stars for all candidates with rate-limit protection.
- * 5. Re-ranks the ecosystem descending by stars and extracts the Top 100.
- * 6. Generates data/skills.json, data/leaderboard.json, and updates README.md.
+ * STRICT SECURITY & INTEGRITY RULES:
+ * 1. NEVER modifies data/skills.json or data/tools.json (human-reviewed files are immutable to automated sync).
+ * 2. Newly discovered skill candidates go strictly to data/candidates.json for human review.
+ *    They are NEVER displayed on the site and NEVER given a copy-prompt button until manually vetted.
+ * 3. Reads vetted skills from data/skills.json, fetches live repo stars, and writes data/leaderboard.json.
+ * 4. Labels all rankings explicitly: "الأكثر شهرة (حسب نجوم المستودع)" with repository-level attribution notice.
+ * 5. Updates the Awesome Leaderboard table in README.md.
  */
 
 import fs from 'node:fs';
@@ -20,9 +21,9 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 
 const skillsPath = path.join(ROOT_DIR, 'data/skills.json');
 const leaderboardPath = path.join(ROOT_DIR, 'data/leaderboard.json');
+const candidatesPath = path.join(ROOT_DIR, 'data/candidates.json');
 const readmePath = path.join(ROOT_DIR, 'README.md');
 
-// 10 Official Categories adhering to BUILD_SPEC and validate.mjs
 const CATEGORY_MAP = {
   'documents': { name_ar: 'المستندات والملفات', keywords: ['pdf', 'doc', 'docx', 'xlsx', 'excel', 'pptx', 'powerpoint', 'word', 'file', 'csv'] },
   'design': { name_ar: 'التصميم والإبداع', keywords: ['design', 'ui', 'ux', 'css', 'style', 'figma', 'canvas', 'tailwind', 'theme', 'art'] },
@@ -102,7 +103,7 @@ async function fetchRepoDetails(owner, repo, token) {
         forks: d.forks_count,
         description: d.description || '',
         topics: d.topics || [],
-        license: d.license?.spdx_id || 'MIT'
+        license: d.license?.spdx_id || 'Unknown'
       };
     }
     return null;
@@ -113,7 +114,7 @@ async function fetchRepoDetails(owner, repo, token) {
 
 export async function runDiscoveryAndSync() {
   console.log('========================================================');
-  console.log('🚀 Autonomous Agent Skills Discovery & Ranking Engine');
+  console.log('🛡️ Secure Agent Skills Discovery & Leaderboard Engine');
   console.log('========================================================\n');
 
   const token = process.env.GITHUB_TOKEN;
@@ -123,21 +124,23 @@ export async function runDiscoveryAndSync() {
     console.log('ℹ Public unauthenticated mode (Rate limit: 60 req/hr)');
   }
 
-  // Load existing database
-  let skillsData = { skills: [], categories: [], prompt_templates: {} };
-  if (fs.existsSync(skillsPath)) {
-    skillsData = JSON.parse(fs.readFileSync(skillsPath, 'utf8'));
+  // 1. Read vetted database (IMMUTABLE - never overwritten by this script)
+  if (!fs.existsSync(skillsPath)) {
+    throw new Error('data/skills.json not found!');
   }
+  const skillsData = JSON.parse(fs.readFileSync(skillsPath, 'utf8'));
+  console.log(`✓ Loaded ${skillsData.skills.length} vetted skills from data/skills.json (Read-Only).`);
 
-  const existingSkillsMap = new Map();
+  // Map existing vetted repo identifiers
+  const vettedRepoSet = new Set();
   for (const s of skillsData.skills) {
-    existingSkillsMap.set(s.id, s);
+    if (s.source?.owner && s.source?.repo) {
+      vettedRepoSet.add(`${s.source.owner.toLowerCase()}/${(s.source.repo.split('/')[1] || s.source.repo).toLowerCase()}`);
+    }
   }
 
-  console.log(`Current tracked skills database: ${existingSkillsMap.size} skills.\n`);
-
-  // Step 1: Discover new high-star skill repos from GitHub Search
-  console.log('🔍 Searching GitHub for top-starred Agent Skill repositories...');
+  // 2. Discover new candidate repositories and route strictly to data/candidates.json
+  console.log('\n🔍 Crawling GitHub for candidate skills (saved strictly to candidates.json)...');
   const searchQueries = [
     'topic:agent-skills',
     'topic:claude-skills',
@@ -145,94 +148,69 @@ export async function runDiscoveryAndSync() {
     'agent-skills in:name,description'
   ];
 
-  const candidateRepos = new Map();
+  let candidatesPayload = {
+    last_crawled_at: new Date().toISOString(),
+    description: 'Newly discovered candidate skill repositories awaiting human translation, license review, and safety validation. NEVER rendered on public site until vetted.',
+    candidates: []
+  };
 
+  if (fs.existsSync(candidatesPath)) {
+    try {
+      candidatesPayload = JSON.parse(fs.readFileSync(candidatesPath, 'utf8'));
+    } catch {
+      // fresh
+    }
+  }
+
+  const existingCandidateUrls = new Set((candidatesPayload.candidates || []).map((c) => c.repo_url.toLowerCase()));
+
+  let newCandidateCount = 0;
   for (const q of searchQueries) {
     process.stdout.write(`  Searching "${q}"... `);
     const repos = await searchGitHub(q, token);
     console.log(`found ${repos.length} candidates.`);
+
     for (const r of repos) {
-      if (!candidateRepos.has(r.full_name) && r.stargazers_count > 50) {
-        candidateRepos.set(r.full_name, {
+      const repoKey = `${r.owner.login.toLowerCase()}/${r.name.toLowerCase()}`;
+      const repoUrl = r.html_url.toLowerCase();
+
+      // Check if already vetted or already in candidates
+      if (!vettedRepoSet.has(repoKey) && !existingCandidateUrls.has(repoUrl) && r.stargazers_count >= 50) {
+        const deducedCat = deduceCategory(r.name, r.description || '', r.topics || []);
+        candidatesPayload.candidates.push({
           owner: r.owner.login,
           repo: r.name,
           full_name: r.full_name,
+          repo_url: r.html_url,
           stars: r.stargazers_count,
           description: r.description || '',
           topics: r.topics || [],
-          html_url: r.html_url
+          deduced_category: deducedCat,
+          deduced_category_ar: CATEGORY_MAP[deducedCat]?.name_ar || 'البرمجة والويب',
+          review_status: 'pending_human_review',
+          safety_warning: 'Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.',
+          discovered_at: new Date().toISOString()
         });
+        existingCandidateUrls.add(repoUrl);
+        newCandidateCount++;
       }
     }
-    // Small delay between searches
     await new Promise((r) => setTimeout(r, 600));
   }
 
-  console.log(`\nDiscovered ${candidateRepos.size} candidate repositories across GitHub.\n`);
+  // Sort candidates by stars descending
+  candidatesPayload.candidates.sort((a, b) => (b.stars || 0) - (a.stars || 0));
+  candidatesPayload.total_candidates = candidatesPayload.candidates.length;
+  candidatesPayload.last_crawled_at = new Date().toISOString();
 
-  // Step 2: Merge newly discovered repositories into candidate list
-  for (const [fullName, repo] of candidateRepos.entries()) {
-    const slug = repo.repo.toLowerCase();
-    const existing = existingSkillsMap.get(slug) || Array.from(existingSkillsMap.values()).find((s) => s.source?.repo === repo.repo);
+  fs.writeFileSync(candidatesPath, JSON.stringify(candidatesPayload, null, 2), 'utf8');
+  console.log(`✓ Updated data/candidates.json (+${newCandidateCount} new candidates, total: ${candidatesPayload.candidates.length})`);
+  console.log('🛡️ Security Guarantee: Candidates remain quarantined and will NEVER be rendered on the live site or receive a copy-prompt button.');
 
-    if (!existing) {
-      const category = deduceCategory(repo.repo, repo.description, repo.topics);
-      const catMeta = CATEGORY_MAP[category] || CATEGORY_MAP['development'];
-
-      const newSkill = {
-        id: slug,
-        name: repo.repo,
-        title_ar: `${repo.repo}: أداة وكيل متقدمة`,
-        summary_ar: repo.description ? `${repo.description} (مهارة وكيل مفتوحة المصدر)` : 'مهارة وكيل ذكاء اصطناعي للمطورين.',
-        category: category,
-        difficulty: 'intermediate',
-        license: {
-          type: `${repo.license || 'MIT'} (reported upstream; confirm in repository)`,
-          status: 'verify_before_publish',
-          copy_file_allowed: false
-        },
-        kind: 'collection',
-        featured: repo.stars > 100000,
-        github_stars: repo.stars,
-        benefits_ar: [
-          'توسيع قدرات وكلاء الذكاء الاصطناعي في بيئة العمل.',
-          'العمل المباشر مع أدوات التطوير ومستودعات الكود.'
-        ],
-        use_cases_ar: [
-          repo.description || 'أتمتة المهام وتطوير المشاريع باستخدام الوكلاء البرمجيين.'
-        ],
-        example_prompts_ar: [
-          `استخدم مهارة ${repo.repo} لمساعدتي في المشروع.`
-        ],
-        source: {
-          owner: repo.owner,
-          repo: repo.repo,
-          repo_url: repo.html_url,
-          path_in_repo: '',
-          url_verified: true,
-          url: repo.html_url
-        },
-        tool_compatibility: {
-          claude_code: true,
-          antigravity: true,
-          cursor: true,
-          gemini_cli: true,
-          copilot: true,
-          codex_cli: true,
-          windsurf: true,
-          roo_code: true
-        }
-      };
-
-      existingSkillsMap.set(slug, newSkill);
-      console.log(`  + Discovered new top skill: ${repo.full_name} (★ ${repo.stars.toLocaleString()}) -> [${catMeta.name_ar}]`);
-    }
-  }
-
-  // Step 3: Refresh live star counts for all unique repos
-  console.log('\n⭐ Querying live star counts for repositories...');
+  // 3. Query live star counts for vetted skills ONLY to update leaderboard rankings
+  console.log('\n⭐ Refreshing repository stars for vetted skills...');
   const repoSyncMap = new Map();
-  for (const s of existingSkillsMap.values()) {
+  for (const s of skillsData.skills) {
     if (s.source?.owner && s.source?.repo) {
       const key = `${s.source.owner}/${s.source.repo.split('/')[1] || s.source.repo}`;
       if (!repoSyncMap.has(key)) {
@@ -257,51 +235,32 @@ export async function runDiscoveryAndSync() {
     await new Promise((r) => setTimeout(r, 150));
   }
 
-  // Apply updated stars
-  for (const s of existingSkillsMap.values()) {
+  // Build ranked leaderboard list from vetted skills with updated stars
+  const rankedVettedSkills = skillsData.skills.map((s) => {
+    let liveStars = s.github_stars || 0;
     if (s.source?.owner && s.source?.repo) {
       const key = `${s.source.owner}/${s.source.repo.split('/')[1] || s.source.repo}`;
       if (repoSyncMap.has(key)) {
-        s.github_stars = repoSyncMap.get(key).currentStars;
+        liveStars = repoSyncMap.get(key).currentStars;
       }
     }
-  }
+    return {
+      ...s,
+      github_stars: liveStars
+    };
+  });
 
-  // Sanitize all skills to match strict BUILD_SPEC schema
-  for (const s of existingSkillsMap.values()) {
-    if (typeof s.license === 'string' || !s.license?.type || !s.license?.status) {
-      s.license = {
-        type: typeof s.license === 'string' ? s.license : (s.license?.type || 'MIT (reported upstream)'),
-        status: 'verify_before_publish',
-        copy_file_allowed: false
-      };
-    }
-    if (s.kind === 'repository') {
-      s.kind = 'collection';
-    }
-    if (!CATEGORY_MAP[s.category]) {
-      s.category = deduceCategory(s.name, s.summary_ar);
-    }
-  }
-
-  // Step 4: Sort descending and take Top 100
-  const allSorted = Array.from(existingSkillsMap.values()).sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
-  const top100 = allSorted.slice(0, 100);
+  rankedVettedSkills.sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
 
   const nowIso = new Date().toISOString();
-  skillsData.skills = top100;
-  skillsData.last_updated = nowIso;
 
-  // Save data/skills.json
-  fs.writeFileSync(skillsPath, JSON.stringify(skillsData, null, 2), 'utf8');
-  console.log(`\n✓ Generated data/skills.json (Top 100 Skills, max: ★ ${top100[0]?.github_stars?.toLocaleString()} - min: ★ ${top100[99]?.github_stars?.toLocaleString()})`);
-
-  // Step 5: Save lightweight public data/leaderboard.json
+  // 4. Save data/leaderboard.json ONLY (skills.json remains untouched!)
   const leaderboardPayload = {
     updated_at: nowIso,
-    total: top100.length,
-    description: 'Official Top 100 AI Agent Skills Leaderboard ranked by GitHub stars with automated daily sync.',
-    leaderboard: top100.map((skill, index) => {
+    total: rankedVettedSkills.length,
+    ranking_metric: 'الأكثر شهرة (حسب نجوم المستودع)',
+    disclaimer_ar: 'تنبيه: عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها.',
+    leaderboard: rankedVettedSkills.map((skill, index) => {
       const rank = index + 1;
       const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
       return {
@@ -316,44 +275,46 @@ export async function runDiscoveryAndSync() {
         stars_formatted: formatNumber(skill.github_stars),
         repo: `${skill.source?.owner}/${skill.source?.repo?.split('/')[1] || skill.source?.repo}`,
         repo_url: skill.source?.url || skill.source?.repo_url || '',
-        license: skill.license || 'MIT'
+        license: skill.license?.type || (typeof skill.license === 'string' ? skill.license : 'MIT'),
+        content_verified: skill.content_verified === true
       };
     })
   };
 
   fs.writeFileSync(leaderboardPath, JSON.stringify(leaderboardPayload, null, 2), 'utf8');
-  console.log('✓ Generated data/leaderboard.json (Public lightweight API format)');
+  console.log(`\n✓ Generated data/leaderboard.json (${rankedVettedSkills.length} vetted skills ranked)`);
 
-  // Sync to site/data for static hosting
+  // Sync leaderboard ONLY to site/data
   const siteDataDir = path.join(ROOT_DIR, 'site/data');
   if (fs.existsSync(siteDataDir)) {
-    fs.writeFileSync(path.join(siteDataDir, 'skills.json'), JSON.stringify(skillsData, null, 2), 'utf8');
     fs.writeFileSync(path.join(siteDataDir, 'leaderboard.json'), JSON.stringify(leaderboardPayload, null, 2), 'utf8');
-    console.log('✓ Synchronized data to site/data for static deployments');
+    console.log('✓ Synchronized data/leaderboard.json to site/data/leaderboard.json for live hosting');
   }
 
-  // Step 6: Regenerate Awesome Leaderboard Table in README.md
+  // 5. Update Leaderboard table in README.md
   if (fs.existsSync(readmePath)) {
     let readme = fs.readFileSync(readmePath, 'utf8');
 
     const leaderboardLines = [
       '<!-- LEADERBOARD_START -->',
-      `> 🔄 **آخر تحديث آلي:** ${nowIso.slice(0, 10)} | يتم التحديث يومياً عبر [GitHub Actions](.github/workflows/daily-rank-sync.yml) | إجمالي المهارات المصنفة: **${top100.length}** | [تحميل JSON المباشر](data/leaderboard.json)`,
+      `> 🔄 **آخر تحديث آلي:** ${nowIso.slice(0, 10)} | **التصنيف:** الأكثر شهرة (حسب نجوم المستودع) | [تحميل JSON المباشر](data/leaderboard.json)`,
+      '> ⚠️ **تنبيه:** عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها.',
       '',
-      '| # | النجوم ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح والبرومبت الجاهز |',
-      '|:---:|:---:|---|---|---|:---:|'
+      '| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح والبرومبت الجاهز | حالة المراجعة |',
+      '|:---:|:---:|---|---|---|:---:|:---:|'
     ];
 
-    top100.forEach((skill, index) => {
+    rankedVettedSkills.forEach((skill, index) => {
       const rank = index + 1;
       const rankBadge = getRankBadge(rank);
       const stars = formatNumber(skill.github_stars);
       const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
       const effectiveSource = skill.source?.url || skill.source?.repo_url || '#';
       const webUrl = `https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=${encodeURIComponent(skill.id)}`;
+      const verifiedBadge = skill.content_verified === true ? '✅ مراجعة يدوية' : 'ℹ️ مسودة عامة';
 
       leaderboardLines.push(
-        `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catMeta.name_ar} | [\`${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}\`](${skill.source.repo_url}) | [**${skill.title_ar}** ↗](${webUrl}) |`
+        `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catMeta.name_ar} | [\`${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}\`](${skill.source.repo_url}) | [**${skill.title_ar}** ↗](${webUrl}) | ${verifiedBadge} |`
       );
     });
 
@@ -363,19 +324,18 @@ export async function runDiscoveryAndSync() {
     if (readme.includes('<!-- LEADERBOARD_START -->') && readme.includes('<!-- LEADERBOARD_END -->')) {
       readme = readme.replace(/<!-- LEADERBOARD_START -->[\s\S]*?<!-- LEADERBOARD_END -->/, newLeaderboardContent);
     } else {
-      readme += `\n\n## 🏆 قائمة المتصدرين لأفضل 100 مهارة ذكاء اصطناعي (Top 100 Leaderboard)\n\n${newLeaderboardContent}\n`;
+      readme += `\n\n## 🏆 قائمة المتصدرين: الأكثر شهرة حسب نجوم المستودع\n\n${newLeaderboardContent}\n`;
     }
 
     fs.writeFileSync(readmePath, readme, 'utf8');
-    console.log('✓ Updated README.md with live Top 100 Awesome Leaderboard table');
+    console.log('✓ Updated README.md with live table and repository stars disclaimer');
   }
 
   console.log('\n========================================================');
-  console.log('🎉 Discovery & Sync Pipeline Finished Successfully!');
+  console.log('🎉 Secure Sync Pipeline Finished Successfully!');
   console.log('========================================================\n');
 }
 
-// CLI entry point
 if (process.argv[1] && process.argv[1].endsWith('discover-and-sync.mjs')) {
   runDiscoveryAndSync().catch((err) => {
     console.error('Fatal Discovery & Sync Error:', err);
