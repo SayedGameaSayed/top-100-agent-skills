@@ -3,6 +3,12 @@
 
 <div align="center">
 
+<p align="center">
+  <a href="https://sayedgameasayed.github.io/top-100-agent-skills/">
+    <img src="site/assets/og-preview.png" alt="Top 100 Agent Skills Preview" width="100%" />
+  </a>
+</p>
+
 [![Daily Discovery & Sync](https://img.shields.io/badge/Auto%20Discovery-Daily%20Sync-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)](.github/workflows/daily-rank-sync.yml)
 [![Top 100 Skills](https://img.shields.io/badge/Leaderboard-Top%20100%20Skills-blueviolet?style=for-the-badge&logo=star&logoColor=white)](data/leaderboard.json)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Site-10b981?style=for-the-badge&logo=github&logoColor=white)](https://sayedgameasayed.github.io/top-100-agent-skills/)
@@ -231,3 +237,39 @@ Licensed under [MIT](LICENSE). Attributions in [NOTICE.md](NOTICE.md).
 | # | نجوم المستودع ★ | الأداة / الإضافة | النوع | المستودع الأصلي (GitHub) | ملاحظات الاستخدام |
 |:---:|:---:|---|---|---|---|
 <!-- LEADERBOARD_END -->
+
+---
+
+## 🌐 English Summary (For Global Developers & AI Builders)
+
+**Top 100 Agent Skills** is an autonomous, open-source daily aggregator and leaderboard tracking the most popular agent skills across GitHub.
+
+### 🌟 Key Highlights
+- **100 Genuine Skills:** Every entry is backed by a verified `SKILL.md` instruction file returning HTTP 200 OK.
+- **Daily Automated Discovery:** Scans GitHub API every 24 hours for new repositories matching `topic:agent-skills` and `SKILL.md`.
+- **Public JSON Endpoints:** Consume the catalog freely via [`data/leaderboard.json`](data/leaderboard.json) and [`data/skills.json`](data/skills.json).
+- **Tool-Agnostic:** Documented setup for **Claude Code, Cursor IDE, GitHub Copilot, Google Antigravity, Roo Code, Windsurf, and Gemini CLI**.
+- **Interactive UI:** Built with [Resend's iconic Black Velvet with Violet Neon](https://sayedgameasayed.github.io/top-100-agent-skills/) aesthetic — flat `#000000` void canvas, 1px graphite hairlines, and 3D neural constellation.
+
+### 📡 Public JSON API
+You can fetch the live leaderboard in your own agent, IDE plugin, or CLI tool:
+```bash
+# Fetch live top 100 skills ranked by GitHub stars
+curl -s https://raw.githubusercontent.com/SayedGameaSayed/top-100-agent-skills/main/data/leaderboard.json
+```
+
+---
+
+## 🤝 المساهمة ودعم المجتمع (Contributing & Community)
+
+نرحب بكافة المساهمات من مجتمع المطورين العربي والعالمي:
+- 💡 **[اقترح مهارة جديدة للـ Top 100](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=suggest_skill.yml)**
+- 🐛 **[أبلغ عن رابط معطل أو خطأ تقني](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=bug_report.yml)**
+- ✍️ **[حسّن ترجمة أو صياغة عربية](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=improve_translation.yml)**
+- 📖 راجع **[دليل المساهمة (CONTRIBUTING.md)](CONTRIBUTING.md)** و **[سياسة الأمان (SECURITY.md)](SECURITY.md)** قبل فتح Pull Request.
+
+---
+
+## 📜 الترخيص (License)
+هذا المشروع مرخص تحت رخصة **[MIT License](LICENSE)** المفتوحة والمجانية بالكامل. كافة حقوق المهارات الأصلية محفوظة لأصحاب مستودعاتها الأصلية بموجب تراخيصها المحددة.
+

@@ -1,7 +1,7 @@
 {
   "name": "top-100-agent-skills",
   "version": "1.2.0",
-  "description": "دليل مهارات الذكاء الاصطناعي - افهم المهارة قبل ما تنسخ اللينك",
+  "description": "دليل أفضل 100 مهارة ذكاء اصطناعي مفتوحة المصدر - Top 100 Open Source Agent Skills with Daily GitHub Leaderboard and Prompts",
   "type": "module",
   "main": "server.js",
   "scripts": {
@@ -12,19 +12,34 @@
     "validate": "node scripts/validate.mjs",
     "test": "node tests/validate.test.mjs && node tests/search.test.mjs && node tests/server.test.mjs && node tests/governance.test.mjs"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SayedGameaSayed/top-100-agent-skills.git"
+  },
+  "homepage": "https://sayedgameasayed.github.io/top-100-agent-skills/",
+  "bugs": {
+    "url": "https://github.com/SayedGameaSayed/top-100-agent-skills/issues"
+  },
   "keywords": [
     "ai",
-    "skills",
     "agent-skills",
+    "skills",
+    "claude-skills",
+    "gemini-skills",
     "arabic",
     "prompts",
-    "fullstack"
+    "leaderboard",
+    "copilot",
+    "cursor",
+    "antigravity",
+    "llm",
+    "open-source"
   ],
-  "dependencies": {},
+  "author": "Sayed Gamea",
+  "license": "MIT",
   "devDependencies": {
     "axe-core": "^4.10.2",
     "express": "^4.21.2",
     "puppeteer-core": "^24.4.0"
-  },
-  "license": "MIT"
+  }
 }
