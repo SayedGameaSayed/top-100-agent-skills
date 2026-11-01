@@ -1,73 +1,142 @@
 /**
- * tokens.css - Dala Style Reference: Constellation floating on black velvet
- * Pure black void, Electric Iris violet, Saffron Spark amber, monolithic typography.
+ * tokens.css - Resend Style Reference
+ * Theme: Black Velvet with Violet Neon
+ * Void Black #000000, Graphite Hairline #292d30, Iris Violet #9281f7, Bone White #f0f0f0
  */
 
 :root {
-  /* Colors - Dala Dark Velvet Palette */
-  --color-void: #000000;
-  --color-bone-white: #ffffff;
-  --color-ash-gray: #9a9a9a;
-  --color-silver-mist: #bdbdbd;
-  --color-electric-iris: #8052ff;
-  --color-electric-iris-hover: #9266ff;
-  --color-saffron-spark: #ffb829;
-  --color-deep-verdant: #15846e;
+  /* ==========================================================================
+     Colors — Resend Palette
+     ========================================================================== */
+  --color-void-black: #000000;
+  --color-graphite-hairline: #292d30;
+  --color-white: #ffffff;
+  --color-bone-white: #f0f0f0;
+  --color-ash-gray: #a1a4a5;
+  --color-smoke-gray: #abafb4;
+  --color-iron: #6e727a;
+  --color-charcoal: #464a4d;
+
+  /* Accents */
+  --color-iris-violet: #9281f7;
+  --gradient-iris-violet: linear-gradient(to right bottom in oklab, rgb(146, 129, 247) 0%, rgb(154, 84, 220) 100%);
+  --color-iris-violet-glow: #baa7ff;
+  --color-signal-blue: #3b9eff;
+  --color-sky-blue: #70b8ff;
+  --color-pulse-green: #3ad389;
+  --color-alarm-red: #ff9592;
+  --color-crimson: #ff6465;
+  --color-amber: #ffca16;
+  --color-amber-glow: #ffd60a;
+  --color-surface-gradient: #0b0e14;
+  --gradient-surface-gradient: linear-gradient(rgb(27, 27, 27), rgb(3, 3, 3));
 
   /* Surfaces */
-  --surface-void-canvas: #000000;
-  --surface-card: rgba(255, 255, 255, 0.03);
-  --surface-card-hover: rgba(255, 255, 255, 0.06);
-  --surface-input: #0c0c0e;
-  --surface-pill: rgba(255, 255, 255, 0.07);
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-focus: #8052ff;
+  --surface-void: #000000;
+  --surface-graphite: #292d30;
+  --surface-surface-lift: #0b0e14;
+  --surface-backdrop-blur: rgba(0, 0, 0, 0.88);
 
-  /* Typography Stacks */
-  --font-display: 'Cairo', 'Inter', system-ui, sans-serif;
-  --font-text: 'Cairo', 'Inter', system-ui, sans-serif;
-  --font-code: 'JetBrains Mono', Consolas, Monaco, monospace;
+  /* Semantic System Aliases */
+  --color-void: var(--color-void-black);
+  --color-electric-iris: var(--color-iris-violet);
+  --color-electric-iris-hover: var(--color-iris-violet-glow);
+  --color-saffron-spark: var(--color-amber);
+  --color-deep-verdant: var(--color-pulse-green);
+  --color-silver-mist: var(--color-ash-gray);
+  --surface-void-canvas: var(--color-void-black);
+  --surface-card: #000000;
+  --surface-card-hover: #080a0e;
+  --surface-input: #000000;
+  --surface-pill: rgba(255, 255, 255, 0.04);
+  --border-subtle: var(--color-graphite-hairline);
+  --border-focus: var(--color-iris-violet);
 
-  /* Type Scale */
+  /* ==========================================================================
+     Typography Stacks
+     ========================================================================== */
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-commit-mono: 'Commit Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-display: 'Cairo', var(--font-inter);
+  --font-text: 'Cairo', var(--font-inter);
+  --font-code: var(--font-commit-mono);
+
+  /* Typography — Scale */
   --text-caption: 12px;
+  --leading-caption: 1.33;
+  --tracking-caption: 0px;
+  --text-body-sm: 14px;
   --text-nav-label: 14px;
-  --text-body: 18px;
+  --leading-body-sm: 1.43;
+  --tracking-body-sm: 0px;
+  --text-body: 16px;
+  --leading-body: 1.5;
+  --tracking-body: 0px;
+  --text-subheading: 20px;
+  --leading-subheading: 1.2;
+  --tracking-subheading: 0px;
   --text-heading-2xs: 24px;
-  --text-heading-xs: 27px;
-  --text-subheading: 36px;
-  --text-heading-sm: 42px;
+  --text-heading-xs: 28px;
+  --text-heading-sm: 32px;
   --text-heading: 48px;
-  --text-heading-lg: 78px;
-  --text-display: clamp(48px, 8vw, 104px);
-
-  /* Line Heights */
-  --leading-tight: 1.1;
-  --leading-snug: 1.25;
-  --leading-normal: 1.6;
-  --leading-loose: 1.8;
+  --text-heading-lg: 56px;
+  --text-display: clamp(44px, 6.5vw, 76px);
 
   /* Weights */
-  --weight-ultralight: 200;
-  --weight-light: 300;
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
+  --weight-bold: 700;
 
-  /* Radii */
-  --radius-card: 24px;
-  --radius-button: 24px;
-  --radius-pill: 9999px;
-  --radius-search: 9999px;
-
-  /* Spacing */
+  /* ==========================================================================
+     Spacing & Layout Scale (Base Unit: 4px)
+     ========================================================================== */
+  --spacing-4: 4px;
   --spacing-6: 6px;
+  --spacing-8: 8px;
   --spacing-12: 12px;
+  --spacing-16: 16px;
   --spacing-18: 18px;
+  --spacing-20: 20px;
   --spacing-24: 24px;
+  --spacing-28: 28px;
   --spacing-30: 30px;
+  --spacing-32: 32px;
   --spacing-36: 36px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
   --spacing-60: 60px;
+  --spacing-64: 64px;
+  --spacing-80: 80px;
   --spacing-96: 96px;
+  --spacing-104: 104px;
   --spacing-120: 120px;
-  --container-max: 1280px;
+  --spacing-144: 144px;
+
+  --container-max: 1200px;
+  --page-max-width: 1200px;
+  --section-gap: 96px;
+  --card-padding: 32px;
+  --element-gap: 16px;
+
+  /* ==========================================================================
+     Border Radius — Canonical Two-Value Scale (6px & 16px)
+     ========================================================================== */
+  --radius-badges: 6px;
+  --radius-inputs: 6px;
+  --radius-buttons: 6px;
+  --radius-button: 6px;
+  --radius-md: 6px;
+  --radius-cards: 16px;
+  --radius-card: 16px;
+  --radius-2xl: 16px;
+  --radius-large-panels: 24px;
+  --radius-pill: 9999px;
+  --radius-search: 8px;
+
+  /* ==========================================================================
+     Elevation — 1px Hairline Borders, Zero Drop Shadows
+     ========================================================================== */
+  --shadow-subtle: rgba(176, 199, 217, 0.145) 0px 0px 0px 1px;
+  --shadow-none: none;
 }

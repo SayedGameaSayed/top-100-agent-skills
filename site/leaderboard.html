@@ -71,19 +71,19 @@
 
       <!-- Repository Stars Transparency Notice -->
       <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-block-start: 18px;">
-        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(255, 184, 41, 0.10); border: 1px solid rgba(255, 184, 41, 0.35); border-radius: var(--radius-pill); font-size: 13px; color: #fbbf24;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(255, 202, 22, 0.08); border: 1px solid rgba(255, 202, 22, 0.28); border-radius: var(--radius-badges); font-size: 13px; color: var(--color-amber);">
           <span>⚠️</span>
           <span><strong>تنبيه شفافية:</strong> عدد النجوم المعروض يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها.</span>
         </div>
-        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px; background: rgba(21, 132, 110, 0.15); border: 1px solid rgba(21, 132, 110, 0.35); border-radius: var(--radius-pill); font-size: 12px; color: #4ade80;">
-          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: #22c55e;"></span>
+        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: rgba(58, 211, 137, 0.08); border: 1px solid rgba(58, 211, 137, 0.28); border-radius: var(--radius-badges); font-size: 12px; color: var(--color-pulse-green);">
+          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-pulse-green);"></span>
           <span>نجوم المستودعات كما في: 1 نوفمبر 2026 (تحديث دوري كل 24 ساعة)</span>
         </div>
       </div>
     </header>
 
     <!-- Filters & Search Toolbar -->
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-block-end: 24px; padding: 16px 20px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card);">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-block-end: 24px; padding: 16px 20px; background: var(--color-void-black); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-cards);">
       <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 260px;">
         <input 
           type="search" 
@@ -104,21 +104,21 @@
     </div>
 
     <!-- Leaderboard Table Container -->
-    <div style="overflow-x: auto; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card);">
-      <table style="width: 100%; border-collapse: collapse; text-align: right; font-size: 14px;">
+    <div class="leaderboard-table-container">
+      <table class="leaderboard-table">
         <thead>
-          <tr style="border-bottom: 1px solid var(--border-subtle); background: rgba(255,255,255,0.02); color: var(--color-ash-gray); font-size: 13px;">
-            <th style="padding: 16px 20px; width: 80px; text-align: center;">الترتيب</th>
-            <th style="padding: 16px 20px; width: 140px; text-align: center;">نجوم المستودع ★</th>
-            <th style="padding: 16px 20px;">المهارة</th>
-            <th style="padding: 16px 20px;">التصنيف</th>
-            <th style="padding: 16px 20px;">المستودع الأصلي</th>
-            <th style="padding: 16px 20px; text-align: center;">الإجراءات</th>
+          <tr>
+            <th style="width: 80px; text-align: center;">الترتيب</th>
+            <th style="width: 140px; text-align: center;">نجوم المستودع ★</th>
+            <th>المهارة</th>
+            <th>التصنيف</th>
+            <th>المستودع الأصلي</th>
+            <th style="text-align: center;">الإجراءات</th>
           </tr>
         </thead>
         <tbody id="leaderboard-tbody">
           <tr>
-            <td colspan="6" style="padding: 40px; text-align: center; color: var(--color-silver-mist);">جاري تحميل لوحة الصدارة...</td>
+            <td colspan="6" style="padding: 40px; text-align: center; color: var(--color-ash-gray);">جاري تحميل لوحة الصدارة...</td>
           </tr>
         </tbody>
       </table>

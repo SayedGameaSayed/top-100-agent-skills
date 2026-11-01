@@ -121,7 +121,7 @@ export function renderSkillCard(skill, categories) {
         <div class="card-meta-line">
           <span class="card-name-en ltr">${escapeHtml(skill.name)}</span>
           <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} نجمة على GitHub">★ ${starsFormatted}</span>
-          ${skill.content_verified !== true ? '<span class="unverified-card-pill" style="font-size: 11px; font-weight: 600; color: #fbbf24; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); border-radius: 9999px; padding: 2px 8px;">غير مراجَع</span>' : ''}
+          ${skill.content_verified !== true ? '<span class="unverified-card-pill" style="font-size: 11px; font-weight: 500; color: var(--color-amber); background: rgba(255, 202, 22, 0.08); border: 1px solid rgba(255, 202, 22, 0.28); border-radius: var(--radius-badges); padding: 2px 8px;">غير مراجَع</span>' : ''}
           <span class="card-category-label">${escapeHtml(catName)}</span>
         </div>
         <h3 class="card-title">${escapeHtml(skill.title_ar)}</h3>
@@ -329,10 +329,10 @@ export async function initSkillDetailPage() {
         <div class="section-container" style="max-width: 780px; margin-inline: auto;">
           <div class="detail-kicker-row" style="display: flex; align-items: center; gap: 12px; margin-block-end: 18px; flex-wrap: wrap;">
             <span class="detail-kicker-label">${escapeHtml(categoryName)}</span>
-            <span class="unverified-card-pill" style="background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 13px;">⚠️ غير مراجَع</span>
+            <span class="unverified-card-pill" style="background: rgba(255, 202, 22, 0.08); color: var(--color-amber); border: 1px solid rgba(255, 202, 22, 0.28); font-weight: 600; padding: 4px 10px; border-radius: var(--radius-badges); font-size: 13px;">⚠️ غير مراجَع</span>
             ${
               skill.github_stars
-                ? `<span class="detail-stars-badge" style="color: var(--color-saffron-spark); font-size: 13px; font-weight: 600; background: rgba(255,184,41,0.08); border: 1px solid rgba(255,184,41,0.22); border-radius: 9999px; padding: 4px 12px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
+                ? `<span class="detail-stars-badge" style="color: var(--color-amber); font-family: var(--font-commit-mono); font-size: 13px; font-weight: 500; background: rgba(255,202,22,0.08); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
                 : ''
             }
           </div>
@@ -386,7 +386,7 @@ export async function initSkillDetailPage() {
           <span class="detail-kicker-label">${escapeHtml(categoryName)}</span>
           ${
             skill.reviewed_by
-              ? `<span class="verified-reviewer-badge" style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 9999px; font-size: 13px; color: #4ade80;">
+              ? `<span class="verified-reviewer-badge" style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: rgba(58, 211, 137, 0.1); border: 1px solid rgba(58, 211, 137, 0.3); border-radius: var(--radius-badges); font-size: 13px; color: var(--color-pulse-green);">
                   <span>✓ تدقيق بشري: ${escapeHtml(skill.reviewed_by)}</span>
                   ${skill.reviewed_on ? `<span>(${escapeHtml(skill.reviewed_on)})</span>` : ''}
                 </span>`
@@ -394,7 +394,7 @@ export async function initSkillDetailPage() {
           }
           ${
             skill.github_stars
-              ? `<span class="detail-stars-badge" style="color: var(--color-saffron-spark); font-size: 13px; font-weight: 600; background: rgba(255,184,41,0.08); border: 1px solid rgba(255,184,41,0.22); border-radius: 9999px; padding: 2px 10px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
+              ? `<span class="detail-stars-badge" style="color: var(--color-amber); font-family: var(--font-commit-mono); font-size: 13px; font-weight: 500; background: rgba(255,202,22,0.08); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
               : ''
           }
         </div>
@@ -585,11 +585,13 @@ export async function initSkillDetailPage() {
       if (ok) {
         const originalText = copyReadyBtn.textContent;
         copyReadyBtn.textContent = 'تم النسخ بنجاح ✓';
-        copyReadyBtn.style.backgroundColor = '#10b981';
-        copyReadyBtn.style.color = '#ffffff';
+        copyReadyBtn.style.backgroundColor = 'var(--color-pulse-green, #3ad389)';
+        copyReadyBtn.style.borderColor = 'var(--color-pulse-green, #3ad389)';
+        copyReadyBtn.style.color = '#000000';
         setTimeout(() => {
           copyReadyBtn.textContent = originalText;
           copyReadyBtn.style.backgroundColor = '';
+          copyReadyBtn.style.borderColor = '';
           copyReadyBtn.style.color = '';
         }, 2000);
       }
@@ -603,11 +605,13 @@ export async function initSkillDetailPage() {
       if (ok) {
         const originalText = floatingCopyBtn.textContent;
         floatingCopyBtn.textContent = 'تم النسخ بنجاح ✓';
-        floatingCopyBtn.style.backgroundColor = '#10b981';
-        floatingCopyBtn.style.color = '#ffffff';
+        floatingCopyBtn.style.backgroundColor = 'var(--color-pulse-green, #3ad389)';
+        floatingCopyBtn.style.borderColor = 'var(--color-pulse-green, #3ad389)';
+        floatingCopyBtn.style.color = '#000000';
         setTimeout(() => {
           floatingCopyBtn.textContent = originalText;
           floatingCopyBtn.style.backgroundColor = '';
+          floatingCopyBtn.style.borderColor = '';
           floatingCopyBtn.style.color = '';
         }, 2000);
       }
@@ -824,18 +828,18 @@ export async function initLeaderboardPage() {
               </div>
             </td>
             <td style="padding: 14px 20px;">
-              <span style="display: inline-block; padding: 2px 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: 12px; color: var(--color-ash-gray);">
+              <span style="display: inline-block; padding: 3px 8px; background: rgba(255,255,255,0.04); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); font-size: 12px; color: var(--color-ash-gray);">
                 ${escapeHtml(catName)}
               </span>
             </td>
             <td style="padding: 14px 20px;">
-              <a href="${escapeHtml(effectiveUrl)}" target="_blank" rel="noopener noreferrer" style="color: #b392ff; text-decoration: none; font-size: 13px; font-family: var(--font-mono); display: inline-flex; align-items: center; gap: 4px;" dir="ltr">
+              <a href="${escapeHtml(effectiveUrl)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-iris-violet); text-decoration: none; font-size: 13px; font-family: var(--font-commit-mono); display: inline-flex; align-items: center; gap: 4px;" dir="ltr">
                 ${escapeHtml(repoDisplay)} ↗
               </a>
             </td>
             <td style="padding: 14px 20px; text-align: center;">
               <div style="display: inline-flex; align-items: center; gap: 8px;">
-                <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="btn-ghost" style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-pill); text-decoration: none; border: 1px solid var(--border-subtle); color: var(--color-bone-white);">
+                <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="btn-ghost" style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-buttons); text-decoration: none; border: 1px solid var(--color-graphite-hairline); color: var(--color-white); background: transparent;">
                   التفاصيل
                 </a>
                 ${
@@ -844,11 +848,11 @@ export async function initLeaderboardPage() {
                         type="button" 
                         class="btn-copy-prompt" 
                         data-prompt="${escapeHtml(readyPrompt)}" 
-                        style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-pill); background: var(--surface-card); border: 1px solid var(--border-subtle); color: var(--color-bone-white); cursor: pointer;"
+                        style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-buttons); background: transparent; border: 1px solid var(--color-graphite-hairline); color: var(--color-white); cursor: pointer;"
                       >
                         نسخ البرومبت
                       </button>`
-                    : `<span style="padding: 4px 10px; font-size: 11px; font-weight: 600; color: #fbbf24; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); border-radius: var(--radius-pill);">غير مراجَع</span>`
+                    : `<span style="padding: 3px 8px; font-size: 11px; font-weight: 500; color: var(--color-amber); background: rgba(255,202,22,0.08); border: 1px solid rgba(255,202,22,0.25); border-radius: var(--radius-badges);">غير مراجَع</span>`
                 }
               </div>
             </td>

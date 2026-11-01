@@ -40,16 +40,15 @@ export function initConstellation(canvasId = 'constellation-canvas') {
 
   resize();
 
-  // Colors from Dala Design Spec
-  const COLOR_AMBER = '#ffb829';   // Saffron Spark (cortex crown)
-  const COLOR_GOLD = '#fbbf24';    // Warm Gold
-  const COLOR_VIOLET = '#8052ff';  // Electric Iris (middle lobes)
-  const COLOR_PURPLE = '#9333ea';  // Deep Royal Purple
-  const COLOR_MAGENTA = '#c084fc'; // Iris Accent
-  const COLOR_TEAL = '#15846e';    // Deep Verdant (cerebellum)
-  const COLOR_EMERALD = '#10b981'; // Luminous Emerald
-  const COLOR_CYAN = '#38bdf8';    // Cyber Cyan (stem)
-  const COLOR_WHITE = '#ffffff';   // Bone White / Synaptic Flash
+  // Colors from Resend Style Reference (Black Velvet with Violet Neon & Graphite Hairline)
+  const COLOR_IRIS_VIOLET = '#9281f7'; // Iris Violet (syntax highlight accent)
+  const COLOR_IRIS_GLOW = '#baa7ff';   // Iris Violet Glow
+  const COLOR_WHITE = '#ffffff';       // Pure White (synaptic flashes)
+  const COLOR_BONE_WHITE = '#f0f0f0';  // Bone White
+  const COLOR_GRAPHITE = '#292d30';    // Graphite Hairline
+  const COLOR_IRON = '#6e727a';        // Iron
+  const COLOR_CHARCOAL = '#464a4d';    // Charcoal
+  const COLOR_ASH_GRAY = '#a1a4a5';    // Ash Gray
 
   // Adaptive particle budget for mobile battery & GPU efficiency
   const isMobile = width < 680;
@@ -268,31 +267,27 @@ export function initConstellation(canvasId = 'constellation-canvas') {
       const projY = cy + y2 * scale;
       const projSize = Math.max(0.7, this.baseSize * scale);
 
-      // Chromatic Palette strictly matching Dala Reference Image:
-      // Crown & Frontal crest: Saffron Amber & Gold -> Middle gyri: Electric Violet & Magenta -> Cerebellum: Verdant Teal & Emerald -> Stem: Cyber Cyan
-      let color = COLOR_VIOLET;
+      // Resend Architectural Monochrome + Iris Violet Palette:
+      // Crown & active nodes: Iris Violet Glow & Pure White sparks
+      // Lobes & cortical folds: Iris Violet & Bone White
+      // Deep convolutions & stem: Graphite & Iron
+      let color = COLOR_IRIS_VIOLET;
       const ny = this.normY;
 
       if (isSynapseFlashing) {
         color = COLOR_WHITE;
-      } else if (ny < -0.42) {
-        // Pure Saffron Amber crown
-        color = Math.random() > 0.25 ? COLOR_AMBER : COLOR_GOLD;
-      } else if (ny < -0.15) {
-        // Upper crest: Amber blending with Magenta
-        color = Math.random() > 0.5 ? COLOR_AMBER : COLOR_MAGENTA;
-      } else if (this.zone === 'cerebellum') {
-        // Deep Verdant Teal & Emerald
-        color = Math.random() > 0.35 ? COLOR_TEAL : COLOR_EMERALD;
-      } else if (this.zone === 'stem') {
-        // Cyber Cyan stalk
-        color = Math.random() > 0.4 ? COLOR_CYAN : COLOR_TEAL;
-      } else if (ny > 0.18) {
-        // Lower lobes transition towards teal
-        color = Math.random() > 0.45 ? COLOR_PURPLE : COLOR_TEAL;
+      } else if (ny < -0.38) {
+        // Upper crown crest
+        color = Math.random() > 0.35 ? COLOR_IRIS_GLOW : COLOR_IRIS_VIOLET;
+      } else if (this.zone === 'cerebellum' || this.zone === 'stem') {
+        // Deep foundation structure: Graphite, Iron & subtle Iris
+        color = Math.random() > 0.5 ? COLOR_IRON : (Math.random() > 0.5 ? COLOR_GRAPHITE : COLOR_IRIS_VIOLET);
+      } else if (ny > 0.20) {
+        // Lower lobes: subtle graphite & violet mix
+        color = Math.random() > 0.4 ? COLOR_ASH_GRAY : COLOR_IRIS_VIOLET;
       } else {
-        // Core lobes: Electric Iris & Magenta
-        color = Math.random() > 0.4 ? COLOR_VIOLET : (Math.random() > 0.5 ? COLOR_PURPLE : COLOR_MAGENTA);
+        // Core lobes: Iris Violet & Bone White accents
+        color = Math.random() > 0.35 ? COLOR_IRIS_VIOLET : (Math.random() > 0.5 ? COLOR_BONE_WHITE : COLOR_IRIS_GLOW);
       }
 
       const depthAlpha = Math.min(1, Math.max(0.22, (z2 + 280) / 560));
@@ -336,9 +331,9 @@ export function initConstellation(canvasId = 'constellation-canvas') {
       this.vRotY = (Math.random() - 0.5) * 0.016;
       this.vRotZ = (Math.random() - 0.5) * 0.010;
 
-      const isAmber = i % 3 === 0;
-      const isTeal = i % 3 === 1;
-      this.color = isAmber ? COLOR_AMBER : (isTeal ? COLOR_TEAL : COLOR_VIOLET);
+      const isGraphite = i % 3 === 0;
+      const isWhite = i % 3 === 1;
+      this.color = isGraphite ? COLOR_GRAPHITE : (isWhite ? COLOR_WHITE : COLOR_IRIS_VIOLET);
     }
 
     update() {
@@ -578,7 +573,7 @@ export function initConstellation(canvasId = 'constellation-canvas') {
         if (distSq < 520) {
           const dist = Math.sqrt(distSq);
           ctx.beginPath();
-          ctx.strokeStyle = p1.zone === 'cerebellum' || p1.zone === 'stem' ? COLOR_TEAL : COLOR_VIOLET;
+          ctx.strokeStyle = p1.zone === 'cerebellum' || p1.zone === 'stem' ? COLOR_IRON : COLOR_IRIS_VIOLET;
           ctx.globalAlpha = (1 - dist / 22.8) * 0.22 * p1.alpha * heroFade;
           ctx.moveTo(p1.projX, p1.projY);
           ctx.lineTo(p2.projX, p2.projY);
