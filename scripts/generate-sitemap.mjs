@@ -39,7 +39,10 @@ export function generateSitemapAndRobots() {
     { loc: `${BASE_URL}/how-to-use.html`, priority: '0.8', changefreq: 'weekly' }
   ];
 
-  const skillUrls = (skillsData.skills || []).map((skill) => ({
+  // Only include skills with content_verified === true
+  const verifiedSkills = (skillsData.skills || []).filter((skill) => skill.content_verified === true);
+
+  const skillUrls = verifiedSkills.map((skill) => ({
     loc: `${BASE_URL}/skill.html?id=${encodeURIComponent(skill.id)}`,
     priority: skill.featured ? '0.8' : '0.7',
     changefreq: 'weekly'

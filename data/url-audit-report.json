@@ -1,0 +1,1172 @@
+{
+  "summary": {
+    "total": 100,
+    "verified": 77,
+    "failures": 23
+  },
+  "failures": [
+    {
+      "id": "git-workflow",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoStatus": 200,
+      "pathInRepo": "skills/git-workflow",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "langchain-agent-workflow",
+      "repoUrl": "https://github.com/langchain-ai/langchain",
+      "repoStatus": 200,
+      "pathInRepo": "skills/langchain-agent-workflow",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "design-system-tokens",
+      "repoUrl": "https://github.com/nextlevelbuilder/ui-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/design-system",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "kubernetes-manifest-builder",
+      "repoUrl": "https://github.com/kubernetes/kubernetes",
+      "repoStatus": 200,
+      "pathInRepo": "skills/kubernetes-manifest-builder",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "github-pr-workflow",
+      "repoUrl": "https://github.com/paperclipai/paperclip",
+      "repoStatus": 200,
+      "pathInRepo": "skills/github-pr-workflow",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "secret-leak-detection",
+      "repoUrl": "https://github.com/paperclipai/paperclip",
+      "repoStatus": 200,
+      "pathInRepo": "skills/secret-leak-detection",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "simplified-technical-english",
+      "repoUrl": "https://github.com/paperclipai/paperclip",
+      "repoStatus": 200,
+      "pathInRepo": "skills/simplified-english",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "tailwind-ui-builder",
+      "repoUrl": "https://github.com/tailwindlabs/tailwindcss",
+      "repoStatus": 200,
+      "pathInRepo": "skills/tailwind-ui-builder",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "docker-cloud-ops",
+      "repoUrl": "https://github.com/agenticskills/devops-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/docker-cloud-ops",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "datadog-cloud-monitoring",
+      "repoUrl": "https://github.com/composiohq/agentic-integrations",
+      "repoStatus": 404,
+      "pathInRepo": "skills/datadog-automation",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "circleci-pipeline-ops",
+      "repoUrl": "https://github.com/composiohq/agentic-integrations",
+      "repoStatus": 404,
+      "pathInRepo": "skills/circleci-automation",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "cyber-security-audit",
+      "repoUrl": "https://github.com/agenticskills/security-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/cyber-security-audit",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "incident-retrospective",
+      "repoUrl": "https://github.com/etsy/incident-management",
+      "repoStatus": 404,
+      "pathInRepo": "skills/incident-retrospective",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "playwright-e2e-testing",
+      "repoUrl": "https://github.com/agenticskills/testing-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/playwright-e2e-testing",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "sql-optimizer",
+      "repoUrl": "https://github.com/agenticskills/database-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/sql-optimizer",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "data-analysis-pandas",
+      "repoUrl": "https://github.com/agenticskills/data-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/data-analysis-pandas",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "tanstack-query",
+      "repoUrl": "https://github.com/TanStack/query",
+      "repoStatus": 200,
+      "pathInRepo": "skills/tanstack-query",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "academic-research-assistant",
+      "repoUrl": "https://github.com/agenticskills/academic-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/academic-research-assistant",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "weather-api-data",
+      "repoUrl": "https://github.com/hkuds/agentic-tools",
+      "repoStatus": 404,
+      "pathInRepo": "skills/weather-data-pipeline",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "scientific-visualization",
+      "repoUrl": "https://github.com/k-dense-ai/scientific-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/scientific-visualization",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "openapi-designer",
+      "repoUrl": "https://github.com/agenticskills/api-skills",
+      "repoStatus": 404,
+      "pathInRepo": "skills/openapi-designer",
+      "reason": "Repo unreachable (404)"
+    },
+    {
+      "id": "terraform-module-library",
+      "repoUrl": "https://github.com/wshobson/agents",
+      "repoStatus": 200,
+      "pathInRepo": "plugins/cloud-infra/skills/terraform-module-library",
+      "reason": "Path in repo 404 / not found"
+    },
+    {
+      "id": "screen-reader-accessibility",
+      "repoUrl": "https://github.com/wshobson/agents",
+      "repoStatus": 200,
+      "pathInRepo": "plugins/ui-design/skills/screen-reader-testing",
+      "reason": "Path in repo 404 / not found"
+    }
+  ],
+  "results": [
+    {
+      "id": "rea",
+      "name": "rea",
+      "repoUrl": "https://github.com/morluto/rea",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "superpowers",
+      "name": "superpowers",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "git-workflow",
+      "name": "git-workflow",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/git-workflow",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "obra-writing-plans",
+      "name": "writing-plans",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/writing-plans",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "systematic-debugging",
+      "name": "systematic-debugging",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/systematic-debugging",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "test-driven-development",
+      "name": "test-driven-development",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/test-driven-development",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "requesting-code-review",
+      "name": "requesting-code-review",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/requesting-code-review",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "receiving-code-review",
+      "name": "receiving-code-review",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/receiving-code-review",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "using-git-worktrees",
+      "name": "using-git-worktrees",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/using-git-worktrees",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "verification-before-completion",
+      "name": "verification-before-completion",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/verification-before-completion",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "subagent-driven-development",
+      "name": "subagent-driven-development",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/subagent-driven-development",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "executing-plans",
+      "name": "executing-plans",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/executing-plans",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "dispatching-parallel-agents",
+      "name": "dispatching-parallel-agents",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/dispatching-parallel-agents",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "brainstorming-solutions",
+      "name": "brainstorming-solutions",
+      "repoUrl": "https://github.com/obra/superpowers",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/brainstorming",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "mattpocock-skills",
+      "name": "mattpocock-skills",
+      "repoUrl": "https://github.com/mattpocock/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "fastapi-patterns",
+      "name": "fastapi-patterns",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/fastapi-patterns",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "prisma-patterns",
+      "name": "prisma-patterns",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/prisma-patterns",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "swiftui-patterns",
+      "name": "swiftui-patterns",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/swiftui-patterns",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "rust-patterns",
+      "name": "rust-patterns",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/rust-patterns",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "redis-patterns",
+      "name": "redis-patterns",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/redis-patterns",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "react-testing-library",
+      "name": "react-testing-library",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/react-testing",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "python-pytest-suite",
+      "name": "python-pytest-suite",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/python-testing",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "django-security",
+      "name": "django-security",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/django-security",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "springboot-security",
+      "name": "springboot-security",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/springboot-security",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "security-review-checklist",
+      "name": "security-review-checklist",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/security-review",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "pytorch-model-eval",
+      "name": "pytorch-model-eval",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/pytorch-patterns",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "marketing-campaign",
+      "name": "marketing-campaign",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/marketing-campaign",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "i18n-sync-manager",
+      "name": "i18n-sync-manager",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/i18n-sync",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "golang-testing-suite",
+      "name": "golang-testing-suite",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/golang-testing",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "eval-harness",
+      "name": "eval-harness",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/eval-harness",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "ecc",
+      "name": "ECC",
+      "repoUrl": "https://github.com/affaan-m/ECC",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "skills",
+      "name": "skills",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "ponytail",
+      "name": "ponytail",
+      "repoUrl": "https://github.com/DietrichGebert/ponytail",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "pdf",
+      "name": "pdf",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/pdf",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "docx",
+      "name": "docx",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/docx",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "xlsx",
+      "name": "xlsx",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/xlsx",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "pptx",
+      "name": "pptx",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/pptx",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "frontend-design",
+      "name": "frontend-design",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/frontend-design",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "skill-creator",
+      "name": "skill-creator",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/skill-creator",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "webapp-testing",
+      "name": "webapp-testing",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/webapp-testing",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "mcp-builder",
+      "name": "mcp-builder",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/mcp-builder",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "canvas-design",
+      "name": "canvas-design",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/canvas-design",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "web-artifacts-builder",
+      "name": "web-artifacts-builder",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/web-artifacts-builder",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "brand-guidelines",
+      "name": "brand-guidelines",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/brand-guidelines",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "theme-factory",
+      "name": "theme-factory",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/theme-factory",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "doc-coauthoring",
+      "name": "doc-coauthoring",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/doc-coauthoring",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "algorithmic-art",
+      "name": "algorithmic-art",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/algorithmic-art",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "internal-comms",
+      "name": "internal-comms",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/internal-comms",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "slack-gif-creator",
+      "name": "slack-gif-creator",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/slack-gif-creator",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "claude-api",
+      "name": "claude-api",
+      "repoUrl": "https://github.com/anthropics/skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/claude-api",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "langchain-agent-workflow",
+      "name": "langchain-agent-workflow",
+      "repoUrl": "https://github.com/langchain-ai/langchain",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/langchain-agent-workflow",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "awesome-llm-apps",
+      "name": "awesome-llm-apps",
+      "repoUrl": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "ui-ux-pro-max-skill",
+      "name": "ui-ux-pro-max-skill",
+      "repoUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "design-system-tokens",
+      "name": "design-system-tokens",
+      "repoUrl": "https://github.com/nextlevelbuilder/ui-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/design-system",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "kubernetes-manifest-builder",
+      "name": "kubernetes-manifest-builder",
+      "repoUrl": "https://github.com/kubernetes/kubernetes",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/kubernetes-manifest-builder",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "caveman",
+      "name": "caveman",
+      "repoUrl": "https://github.com/JuliusBrussee/caveman",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "addyosmani-agent-skills",
+      "name": "addyosmani-agent-skills",
+      "repoUrl": "https://github.com/addyosmani/agent-skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "agent-skills",
+      "name": "agent-skills",
+      "repoUrl": "https://github.com/addyosmani/agent-skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "github-pr-workflow",
+      "name": "github-pr-workflow",
+      "repoUrl": "https://github.com/paperclipai/paperclip",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/github-pr-workflow",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "secret-leak-detection",
+      "name": "secret-leak-detection",
+      "repoUrl": "https://github.com/paperclipai/paperclip",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/secret-leak-detection",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "simplified-technical-english",
+      "name": "simplified-technical-english",
+      "repoUrl": "https://github.com/paperclipai/paperclip",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/simplified-english",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "paperclip",
+      "name": "paperclip",
+      "repoUrl": "https://github.com/paperclipai/paperclip",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "claude-mem",
+      "name": "claude-mem",
+      "repoUrl": "https://github.com/thedotmack/claude-mem",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "taste-skill",
+      "name": "taste-skill",
+      "repoUrl": "https://github.com/Leonxlnx/taste-skill",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "open-design",
+      "name": "open-design",
+      "repoUrl": "https://github.com/nexu-io/open-design",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "impeccable",
+      "name": "impeccable",
+      "repoUrl": "https://github.com/pbakaus/impeccable",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "tailwind-ui-builder",
+      "name": "tailwind-ui-builder",
+      "repoUrl": "https://github.com/tailwindlabs/tailwindcss",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/tailwind-ui-builder",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "archify",
+      "name": "archify",
+      "repoUrl": "https://github.com/tt-a1i/archify",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "understand-anything",
+      "name": "Understand-Anything",
+      "repoUrl": "https://github.com/Egonex-AI/Understand-Anything",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "docker-cloud-ops",
+      "name": "docker-cloud-ops",
+      "repoUrl": "https://github.com/agenticskills/devops-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/docker-cloud-ops",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "career-ops",
+      "name": "career-ops",
+      "repoUrl": "https://github.com/career-ops-hq/career-ops",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "awesome-claude-skills",
+      "name": "awesome-claude-skills",
+      "repoUrl": "https://github.com/ComposioHQ/awesome-claude-skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "datadog-cloud-monitoring",
+      "name": "datadog-cloud-monitoring",
+      "repoUrl": "https://github.com/composiohq/agentic-integrations",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/datadog-automation",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "circleci-pipeline-ops",
+      "name": "circleci-pipeline-ops",
+      "repoUrl": "https://github.com/composiohq/agentic-integrations",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/circleci-automation",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "openmontage",
+      "name": "OpenMontage",
+      "repoUrl": "https://github.com/calesthio/OpenMontage",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "cyber-security-audit",
+      "name": "cyber-security-audit",
+      "repoUrl": "https://github.com/agenticskills/security-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/cyber-security-audit",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "oh-my-openagent",
+      "name": "oh-my-openagent",
+      "repoUrl": "https://github.com/code-yeongyu/oh-my-openagent",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "incident-retrospective",
+      "name": "incident-retrospective",
+      "repoUrl": "https://github.com/etsy/incident-management",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/incident-retrospective",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "playwright-e2e-testing",
+      "name": "playwright-e2e-testing",
+      "repoUrl": "https://github.com/agenticskills/testing-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/playwright-e2e-testing",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "last30days-skill",
+      "name": "last30days-skill",
+      "repoUrl": "https://github.com/mvanhorn/last30days-skill",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "sql-optimizer",
+      "name": "sql-optimizer",
+      "repoUrl": "https://github.com/agenticskills/database-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/sql-optimizer",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "diagram-design",
+      "name": "diagram-design",
+      "repoUrl": "https://github.com/cathrynlavery/diagram-design",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "humanizer",
+      "name": "humanizer",
+      "repoUrl": "https://github.com/blader/humanizer",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "i-have-adhd",
+      "name": "i-have-adhd",
+      "repoUrl": "https://github.com/ayghri/i-have-adhd",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "data-analysis-pandas",
+      "name": "data-analysis-pandas",
+      "repoUrl": "https://github.com/agenticskills/data-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/data-analysis-pandas",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "marketingskills",
+      "name": "marketingskills",
+      "repoUrl": "https://github.com/coreyhaines31/marketingskills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "awesome-claude-code",
+      "name": "awesome-claude-code",
+      "repoUrl": "https://github.com/hesreallyhim/awesome-claude-code",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "scientific-agent-skills",
+      "name": "scientific-agent-skills",
+      "repoUrl": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "deep-research",
+      "name": "deep-research",
+      "repoUrl": "https://github.com/Imbad0202/academic-research-skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "deep-research",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "sr-screener",
+      "name": "sr-screener",
+      "repoUrl": "https://github.com/Imbad0202/academic-research-skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "sr-screener",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "academic-paper-writer",
+      "name": "academic-paper-writer",
+      "repoUrl": "https://github.com/Imbad0202/academic-research-skills",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "academic-paper",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "tanstack-query",
+      "name": "tanstack-query",
+      "repoUrl": "https://github.com/TanStack/query",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "skills/tanstack-query",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "academic-research-assistant",
+      "name": "academic-research-assistant",
+      "repoUrl": "https://github.com/agenticskills/academic-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/academic-research-assistant",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "weather-api-data",
+      "name": "weather-api-data",
+      "repoUrl": "https://github.com/hkuds/agentic-tools",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/weather-data-pipeline",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "scientific-visualization",
+      "name": "scientific-visualization",
+      "repoUrl": "https://github.com/k-dense-ai/scientific-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/scientific-visualization",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "openapi-designer",
+      "name": "openapi-designer",
+      "repoUrl": "https://github.com/agenticskills/api-skills",
+      "repoOk": false,
+      "repoStatus": 404,
+      "pathInRepo": "skills/openapi-designer",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "terraform-module-library",
+      "name": "terraform-module-library",
+      "repoUrl": "https://github.com/wshobson/agents",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "plugins/cloud-infra/skills/terraform-module-library",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "responsive-design",
+      "name": "responsive-design",
+      "repoUrl": "https://github.com/wshobson/agents",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "plugins/ui-design/skills/responsive-design",
+      "pathOk": true,
+      "urlVerified": true
+    },
+    {
+      "id": "screen-reader-accessibility",
+      "name": "screen-reader-accessibility",
+      "repoUrl": "https://github.com/wshobson/agents",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "plugins/ui-design/skills/screen-reader-testing",
+      "pathOk": false,
+      "urlVerified": false
+    },
+    {
+      "id": "agents",
+      "name": "agents",
+      "repoUrl": "https://github.com/wshobson/agents",
+      "repoOk": true,
+      "repoStatus": 200,
+      "pathInRepo": "(root)",
+      "pathOk": true,
+      "urlVerified": true
+    }
+  ]
+}

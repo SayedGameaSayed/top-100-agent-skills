@@ -21,7 +21,6 @@ html {
   background-color: var(--color-void);
   color: var(--color-bone-white);
   color-scheme: dark;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,7 +31,6 @@ body {
   flex-direction: column;
   background-color: var(--color-void);
   color: var(--color-bone-white);
-  overflow-x: hidden;
   position: relative;
 }
 
@@ -493,7 +491,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: var(--spacing-18);
 }
 
@@ -1086,6 +1084,31 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   }
   .floating-mobile-capsule {
     display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-container {
+    padding-inline: 16px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .highlights-scroll-row .skill-card {
+    flex: 0 0 calc(100vw - 48px);
+    max-width: 310px;
+  }
+  .skill-card {
+    padding: 20px;
+    min-height: auto;
+  }
+  .unverified-quarantine-box,
+  .detail-summary-block {
+    padding: 18px !important;
+  }
+  .category-nav-container {
+    padding-inline: 16px;
+    gap: 20px;
   }
 }
 

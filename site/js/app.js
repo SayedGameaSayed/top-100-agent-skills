@@ -123,6 +123,7 @@ export function renderSkillCard(skill, categories) {
         <div class="card-meta-line">
           <span class="card-name-en ltr">${escapeHtml(skill.name)}</span>
           <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} نجمة على GitHub">★ ${starsFormatted}</span>
+          ${skill.content_verified !== true ? '<span class="unverified-card-pill" style="font-size: 11px; font-weight: 600; color: #fbbf24; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); border-radius: 9999px; padding: 2px 8px;">غير مراجَع</span>' : ''}
           <span class="card-category-label">${escapeHtml(catName)}</span>
         </div>
         <h3 class="card-title">${escapeHtml(skill.title_ar)}</h3>
@@ -310,7 +311,65 @@ export async function initSkillDetailPage() {
   const categoryObj = (skillsData.categories || []).find((c) => c.id === skill.category);
   const categoryName = categoryObj ? categoryObj.name_ar : skill.category;
 
+  // Set robots meta tag based strictly on data-driven content_verified
+  let metaRobots = document.getElementById('meta-robots') || document.querySelector('meta[name="robots"]');
+  if (!metaRobots) {
+    metaRobots = document.createElement('meta');
+    metaRobots.id = 'meta-robots';
+    metaRobots.name = 'robots';
+    document.head.appendChild(metaRobots);
+  }
+  metaRobots.content = skill.content_verified === true ? 'index, follow' : 'noindex, nofollow';
+
   const effectiveSourceUrl = getEffectiveSourceUrl(skill);
+
+  // If unverified: strictly render ONLY Arabic summary, "غير مراجَع" label, and source repo link.
+  // NO copy-prompt button, NO prompt templates, NO integration tabs.
+  if (skill.content_verified !== true) {
+    container.innerHTML = `
+      <header class="detail-hero-section unverified-detail-hero" style="padding-block: var(--spacing-60);">
+        <div class="section-container" style="max-width: 780px; margin-inline: auto;">
+          <div class="detail-kicker-row" style="display: flex; align-items: center; gap: 12px; margin-block-end: 18px; flex-wrap: wrap;">
+            <span class="detail-kicker-label">${escapeHtml(categoryName)}</span>
+            <span class="unverified-card-pill" style="background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 13px;">⚠️ غير مراجَع</span>
+            ${
+              skill.github_stars
+                ? `<span class="detail-stars-badge" style="color: var(--color-saffron-spark); font-size: 13px; font-weight: 600; background: rgba(255,184,41,0.08); border: 1px solid rgba(255,184,41,0.22); border-radius: 9999px; padding: 4px 12px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
+                : ''
+            }
+          </div>
+          
+          <h1 class="detail-headline-sculptural" style="margin-block-end: 20px;">${escapeHtml(skill.title_ar)}</h1>
+          
+          <div class="unverified-quarantine-box" role="alert" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-card); padding: 22px; margin-block: 24px; text-align: right;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-block-end: 8px; color: #fbbf24; font-weight: 700; font-size: 15px;">
+              <span>⚠️ مهارة قيد المراجعة والتدقيق</span>
+            </div>
+            <p style="color: var(--color-bone-white); line-height: 1.8; font-size: 14px; margin: 0;">
+              أُعد هذا الشرح العربي استناداً لمعلومات المستودع العامة ولم يخضع بعد للتحقق البشري الدقيق. تم حجب أزرار نسخ البرومبت الجاهز تلقائياً حتى اكتمال التدقيق، ويمكنك مراجعة المصدر مباشرة على GitHub.
+            </p>
+          </div>
+
+          <div class="detail-summary-block" style="text-align: right; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 26px; margin-block-end: 28px;">
+            <h2 style="font-size: 16px; font-weight: 600; color: var(--color-ash-gray); margin-block-end: 12px;">الشرح العربي للمهارة</h2>
+            <p class="detail-summary-airy" style="color: var(--color-bone-white); line-height: 1.8; font-size: 16px; margin: 0;">${escapeHtml(skill.summary_ar)}</p>
+          </div>
+
+          <div class="detail-actions-row" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <a href="${escapeHtml(effectiveSourceUrl)}" target="_blank" rel="noopener noreferrer" class="btn-electric-pill" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+              <span>افتح المصدر على GitHub</span>
+              <span dir="ltr">↗</span>
+            </a>
+            <a href="index.html" class="btn-ghost-pill" style="text-decoration: none;">
+              العودة للدليل
+            </a>
+          </div>
+        </div>
+      </header>
+    `;
+    return;
+  }
+
   const defaultPromptTemplate =
     'Read this skill and use it whenever my request matches it: {{source_url}}\n' +
     'From now on I will write in Arabic (any dialect). Understand my intent, work internally in English, and reply in Arabic. Keep code, commands, file names and technical terms in English.';
@@ -730,14 +789,18 @@ export async function initLeaderboardPage() {
                 <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="btn-ghost" style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-pill); text-decoration: none; border: 1px solid var(--border-subtle); color: var(--color-bone-white);">
                   التفاصيل
                 </a>
-                <button 
-                  type="button" 
-                  class="btn-copy-prompt" 
-                  data-prompt="${escapeHtml(readyPrompt)}" 
-                  style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-pill); background: var(--surface-card); border: 1px solid var(--border-subtle); color: var(--color-bone-white); cursor: pointer;"
-                >
-                  نسخ البرومبت
-                </button>
+                ${
+                  skill.content_verified === true
+                    ? `<button 
+                        type="button" 
+                        class="btn-copy-prompt" 
+                        data-prompt="${escapeHtml(readyPrompt)}" 
+                        style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-pill); background: var(--surface-card); border: 1px solid var(--border-subtle); color: var(--color-bone-white); cursor: pointer;"
+                      >
+                        نسخ البرومبت
+                      </button>`
+                    : `<span style="padding: 4px 10px; font-size: 11px; font-weight: 600; color: #fbbf24; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); border-radius: var(--radius-pill);">غير مراجَع</span>`
+                }
               </div>
             </td>
           </tr>

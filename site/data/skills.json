@@ -96,7 +96,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "superpowers",
@@ -110,7 +111,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": null,
         "url": "https://github.com/obra/superpowers",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT (reported by a secondary source; confirm in the repository)",
@@ -188,7 +189,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/writing-plans",
         "url": "https://github.com/obra/superpowers/tree/main/skills/writing-plans",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -223,7 +224,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/systematic-debugging",
         "url": "https://github.com/obra/superpowers/tree/main/skills/systematic-debugging",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -258,7 +259,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/test-driven-development",
         "url": "https://github.com/obra/superpowers/tree/main/skills/test-driven-development",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -293,7 +294,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/requesting-code-review",
         "url": "https://github.com/obra/superpowers/tree/main/skills/requesting-code-review",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -328,7 +329,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/receiving-code-review",
         "url": "https://github.com/obra/superpowers/tree/main/skills/receiving-code-review",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -363,7 +364,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/using-git-worktrees",
         "url": "https://github.com/obra/superpowers/tree/main/skills/using-git-worktrees",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -398,7 +399,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/verification-before-completion",
         "url": "https://github.com/obra/superpowers/tree/main/skills/verification-before-completion",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -433,7 +434,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/subagent-driven-development",
         "url": "https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -468,7 +469,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/executing-plans",
         "url": "https://github.com/obra/superpowers/tree/main/skills/executing-plans",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -503,7 +504,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/dispatching-parallel-agents",
         "url": "https://github.com/obra/superpowers/tree/main/skills/dispatching-parallel-agents",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -538,7 +539,7 @@
         "repo_url": "https://github.com/obra/superpowers",
         "path_in_repo": "skills/brainstorming",
         "url": "https://github.com/obra/superpowers/tree/main/skills/brainstorming",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -571,7 +572,7 @@
         "repo_url": "https://github.com/mattpocock/skills",
         "path_in_repo": null,
         "url": "https://github.com/mattpocock/skills",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT (reported by a secondary source; confirm in the repository)",
@@ -610,7 +611,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/fastapi-patterns",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/fastapi-patterns",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -645,7 +646,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/prisma-patterns",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/prisma-patterns",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -680,7 +681,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/swiftui-patterns",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/swiftui-patterns",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -715,7 +716,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/rust-patterns",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/rust-patterns",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -750,7 +751,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/redis-patterns",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/redis-patterns",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -785,7 +786,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/react-testing",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/react-testing",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -820,7 +821,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/python-testing",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/python-testing",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -855,7 +856,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/django-security",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/django-security",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -890,7 +891,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/springboot-security",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/springboot-security",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -925,7 +926,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/security-review",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/security-review",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -960,7 +961,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/pytorch-patterns",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/pytorch-patterns",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -995,7 +996,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/marketing-campaign",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/marketing-campaign",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -1030,7 +1031,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/i18n-sync",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/i18n-sync",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -1065,7 +1066,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/golang-testing",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/golang-testing",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -1100,7 +1101,7 @@
         "repo_url": "https://github.com/affaan-m/ECC",
         "path_in_repo": "skills/eval-harness",
         "url": "https://github.com/affaan-m/ECC/tree/main/skills/eval-harness",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -1163,7 +1164,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "skills",
@@ -1207,7 +1209,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "ponytail",
@@ -1251,7 +1254,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "pdf",
@@ -1265,7 +1269,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/pdf",
         "url": "https://github.com/anthropics/skills/tree/main/skills/pdf",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Proprietary (source-available)",
@@ -1305,7 +1309,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/docx",
         "url": "https://github.com/anthropics/skills/tree/main/skills/docx",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Proprietary (source-available)",
@@ -1345,7 +1349,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/xlsx",
         "url": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Proprietary (source-available)",
@@ -1385,7 +1389,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/pptx",
         "url": "https://github.com/anthropics/skills/tree/main/skills/pptx",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Proprietary (source-available)",
@@ -1423,7 +1427,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/frontend-design",
         "url": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (reported as source-available by some sources)",
@@ -1462,7 +1466,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/skill-creator",
         "url": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1501,7 +1505,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/webapp-testing",
         "url": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1540,7 +1544,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/mcp-builder",
         "url": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1578,7 +1582,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/canvas-design",
         "url": "https://github.com/anthropics/skills/tree/main/skills/canvas-design",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1617,7 +1621,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/web-artifacts-builder",
         "url": "https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1655,7 +1659,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/brand-guidelines",
         "url": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1692,7 +1696,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/theme-factory",
         "url": "https://github.com/anthropics/skills/tree/main/skills/theme-factory",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1729,7 +1733,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/doc-coauthoring",
         "url": "https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1766,7 +1770,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/algorithmic-art",
         "url": "https://github.com/anthropics/skills/tree/main/skills/algorithmic-art",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1803,7 +1807,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/internal-comms",
         "url": "https://github.com/anthropics/skills/tree/main/skills/internal-comms",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1840,7 +1844,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/slack-gif-creator",
         "url": "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1877,7 +1881,7 @@
         "repo_url": "https://github.com/anthropics/skills",
         "path_in_repo": "skills/claude-api",
         "url": "https://github.com/anthropics/skills/tree/main/skills/claude-api",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Check LICENSE in the skill folder (most example skills are reported as Apache-2.0)",
@@ -1979,7 +1983,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "ui-ux-pro-max-skill",
@@ -1993,7 +1998,7 @@
         "repo_url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
         "path_in_repo": null,
         "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT (reported by a secondary source; confirm in the repository)",
@@ -2130,7 +2135,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "addyosmani-agent-skills",
@@ -2144,7 +2150,7 @@
         "repo_url": "https://github.com/addyosmani/agent-skills",
         "path_in_repo": null,
         "url": "https://github.com/addyosmani/agent-skills",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT (reported by a secondary source; confirm in the repository)",
@@ -2211,7 +2217,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "github-pr-workflow",
@@ -2360,7 +2367,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "claude-mem",
@@ -2404,7 +2412,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "taste-skill",
@@ -2418,7 +2427,7 @@
         "repo_url": "https://github.com/Leonxlnx/taste-skill",
         "path_in_repo": null,
         "url": "https://github.com/Leonxlnx/taste-skill",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT (reported by a secondary source; confirm in the repository)",
@@ -2485,7 +2494,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "impeccable",
@@ -2529,7 +2539,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "tailwind-ui-builder",
@@ -2608,7 +2619,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "understand-anything",
@@ -2652,7 +2664,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "docker-cloud-ops",
@@ -2734,7 +2747,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "awesome-claude-skills",
@@ -2748,7 +2762,7 @@
         "repo_url": "https://github.com/ComposioHQ/awesome-claude-skills",
         "path_in_repo": null,
         "url": "https://github.com/ComposioHQ/awesome-claude-skills",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "Not stated in the source we used. Check the repository LICENSE",
@@ -2884,7 +2898,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "cyber-security-audit",
@@ -2966,7 +2981,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "incident-retrospective",
@@ -3083,7 +3099,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "sql-optimizer",
@@ -3165,7 +3182,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "humanizer",
@@ -3209,7 +3227,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "i-have-adhd",
@@ -3253,7 +3272,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "data-analysis-pandas",
@@ -3335,7 +3355,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "awesome-claude-code",
@@ -3379,7 +3400,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "scientific-agent-skills",
@@ -3423,7 +3445,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     },
     {
       "id": "deep-research",
@@ -3439,7 +3462,7 @@
         "repo_url": "https://github.com/Imbad0202/academic-research-skills",
         "path_in_repo": "deep-research",
         "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/deep-research",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -3474,7 +3497,7 @@
         "repo_url": "https://github.com/Imbad0202/academic-research-skills",
         "path_in_repo": "sr-screener",
         "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/sr-screener",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -3509,7 +3532,7 @@
         "repo_url": "https://github.com/Imbad0202/academic-research-skills",
         "path_in_repo": "academic-paper",
         "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/academic-paper",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -3760,7 +3783,7 @@
         "repo_url": "https://github.com/wshobson/agents",
         "path_in_repo": "plugins/ui-design/skills/responsive-design",
         "url": "https://github.com/wshobson/agents",
-        "url_verified": false
+        "url_verified": true
       },
       "license": {
         "type": "MIT",
@@ -3858,7 +3881,8 @@
         "codex_cli": true,
         "windsurf": true,
         "roo_code": true
-      }
+      },
+      "content_verified": false
     }
   ],
   "last_updated": "2026-11-01T12:18:51.913Z"
