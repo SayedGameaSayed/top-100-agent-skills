@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 
-const BASE_URL = 'https://sayedgameasayed.github.io/top-100-agent-skills';
+const BASE_URL = process.env.SITE_URL || 'https://top-100-agent-skills.vercel.app';
 const skillsPath = path.join(ROOT_DIR, 'data/skills.json');
 const robotsPath = path.join(ROOT_DIR, 'site/robots.txt');
 const sitemapPath = path.join(ROOT_DIR, 'site/sitemap.xml');
@@ -23,7 +23,8 @@ export function generateSitemapAndRobots() {
   ].join('\n');
 
   fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-  console.log('✓ Generated site/robots.txt');
+  fs.writeFileSync(path.join(ROOT_DIR, 'robots.txt'), robotsContent, 'utf8');
+  console.log('✓ Generated site/robots.txt & robots.txt');
 
   // 2. Read reviewed skills.json ONLY
   if (!fs.existsSync(skillsPath)) {
@@ -69,7 +70,8 @@ export function generateSitemapAndRobots() {
   ].join('\n');
 
   fs.writeFileSync(sitemapPath, sitemapXml, 'utf8');
-  console.log(`✓ Generated site/sitemap.xml with ${allUrls.length} reviewed URLs (${skillUrls.length} skill entries + 3 main pages)`);
+  fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
+  console.log(`✓ Generated site/sitemap.xml & sitemap.xml with ${allUrls.length} reviewed URLs (${skillUrls.length} skill entries + 3 main pages)`);
 }
 
 if (process.argv[1] && process.argv[1].endsWith('generate-sitemap.mjs')) {

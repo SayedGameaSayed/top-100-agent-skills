@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sayedgameasayed.github.io/top-100-agent-skills/sitemap.xml
+Sitemap: https://top-100-agent-skills.vercel.app/sitemap.xml

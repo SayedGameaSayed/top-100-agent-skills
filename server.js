@@ -206,7 +206,7 @@ function sendSeoHtml(filePath, req, res) {
   const proto = req.get('x-forwarded-proto') || (req.secure ? 'https' : 'http');
   const siteUrl = `${proto}://${host}`;
   let html = fs.readFileSync(filePath, 'utf8');
-  html = html.replace(/https:\/\/sayedgameasayed\.github\.io\/top-100-agent-skills/g, siteUrl);
+  html = html.replace(/https:\/\/(top-100-agent-skills\.vercel\.app|sayedgameasayed\.github\.io\/top-100-agent-skills)/g, siteUrl);
   res.type('text/html').send(html);
 }
 
@@ -216,7 +216,7 @@ app.get(['/sitemap.xml', '/site/sitemap.xml'], (req, res) => {
   const proto = req.get('x-forwarded-proto') || (req.secure ? 'https' : 'http');
   const siteUrl = `${proto}://${host}`;
   const rawSitemap = fs.readFileSync(path.join(ROOT_DIR, 'site/sitemap.xml'), 'utf8');
-  const customized = rawSitemap.replace(/https:\/\/sayedgameasayed\.github\.io\/top-100-agent-skills/g, siteUrl);
+  const customized = rawSitemap.replace(/https:\/\/(top-100-agent-skills\.vercel\.app|sayedgameasayed\.github\.io\/top-100-agent-skills)/g, siteUrl);
   res.type('application/xml').send(customized);
 });
 

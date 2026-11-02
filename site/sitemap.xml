@@ -1,620 +1,620 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/leaderboard.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/leaderboard.html</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/how-to-use.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/how-to-use.html</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=obra-writing-plans</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=obra-writing-plans</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=systematic-debugging</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=systematic-debugging</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=test-driven-development</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=test-driven-development</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=requesting-code-review</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=requesting-code-review</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=receiving-code-review</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=receiving-code-review</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=using-git-worktrees</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=using-git-worktrees</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=verification-before-completion</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=verification-before-completion</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=subagent-driven-development</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=executing-plans</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=dispatching-parallel-agents</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=brainstorming-solutions</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=fastapi-patterns</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=prisma-patterns</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=swiftui-patterns</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=rust-patterns</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=redis-patterns</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=react-testing-library</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=python-pytest-suite</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=django-security</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=springboot-security</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=security-review-checklist</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=pytorch-model-eval</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=marketing-campaign</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=subagent-driven-development</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=i18n-sync-manager</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=executing-plans</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=golang-testing-suite</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=dispatching-parallel-agents</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=eval-harness</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=brainstorming-solutions</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=pdf</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=fastapi-patterns</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=prisma-patterns</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=swiftui-patterns</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=rust-patterns</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=redis-patterns</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=react-testing-library</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=python-pytest-suite</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=django-security</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=springboot-security</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=security-review-checklist</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=pytorch-model-eval</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=marketing-campaign</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=docx</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=i18n-sync-manager</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=golang-testing-suite</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=eval-harness</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=pdf</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=xlsx</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=pptx</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=frontend-design</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=docx</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=skill-creator</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=xlsx</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=pptx</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=frontend-design</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=webapp-testing</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=mcp-builder</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=canvas-design</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=web-artifacts-builder</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=brand-guidelines</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=theme-factory</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=doc-coauthoring</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=algorithmic-art</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=internal-comms</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=slack-gif-creator</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=claude-api</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=deep-research</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=skill-creator</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=sr-screener</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=webapp-testing</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=academic-paper-writer</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=mcp-builder</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=responsive-design</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=canvas-design</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=web-artifacts-builder</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=brand-guidelines</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=theme-factory</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=doc-coauthoring</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=algorithmic-art</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=internal-comms</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=slack-gif-creator</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=claude-api</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=deep-research</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=finishing-development-branch</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=sr-screener</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=academic-paper-writer</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=responsive-design</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=using-superpowers</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=finishing-development-branch</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=diagnosing-superpowers</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=writing-skills</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=interview-me</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=using-superpowers</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=idea-refine</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=diagnosing-superpowers</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=spec-driven-development</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=writing-skills</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=interview-me</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=planning-and-task-breakdown</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=idea-refine</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=incremental-implementation</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=frontend-ui-engineering</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=spec-driven-development</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=api-and-interface-design</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=planning-and-task-breakdown</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=context-engineering</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=incremental-implementation</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=frontend-ui-engineering</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=browser-testing-devtools</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=api-and-interface-design</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=debugging-error-recovery</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=doubt-driven-development</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=source-driven-development</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=constraint-driven-development</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=code-review-quality</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=context-engineering</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=code-simplification</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=browser-testing-devtools</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=performance-optimization</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=debugging-error-recovery</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=doubt-driven-development</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=source-driven-development</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=constraint-driven-development</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=code-review-quality</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=deprecation-migration</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=code-simplification</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=git-workflow-versioning</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=performance-optimization</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=shipping-and-launch</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=deprecation-migration</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=git-workflow-versioning</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=composition-patterns</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=deploy-to-vercel</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=shipping-and-launch</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=react-best-practices</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=composition-patterns</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=deploy-to-vercel</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=react-native-skills</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=react-view-transitions</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=vercel-cli-with-tokens</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=vercel-optimize</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=react-best-practices</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=web-design-guidelines</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=react-native-skills</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=writing-guidelines</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=react-view-transitions</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=mp-diagnosing-bugs</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=vercel-cli-with-tokens</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=grill-with-docs</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=triage</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=improve-codebase-architecture</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=mp-tdd</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=to-tickets</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=to-spec</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=grill-me</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=vercel-optimize</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=setup-pre-commit</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=web-design-guidelines</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=git-guardrails-claude-code</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=writing-guidelines</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=mp-diagnosing-bugs</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=grill-with-docs</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=triage</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=improve-codebase-architecture</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=mp-tdd</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=to-tickets</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=to-spec</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=grill-me</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=writing-for-agents</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=setup-pre-commit</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=codebase-design</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=mp-code-review</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=ms-mcp-builder</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=ms-skill-creator</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=frontend-design-review</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=github-issue-creator</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=cloud-solution-architect</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=git-guardrails-claude-code</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=copilot-sdk</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=writing-for-agents</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=podcast-generation</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=codebase-design</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=kql</loc>
-    <lastmod>2026-11-01</lastmod>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=mp-code-review</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=ms-mcp-builder</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=ms-skill-creator</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=frontend-design-review</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=github-issue-creator</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=cloud-solution-architect</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=copilot-sdk</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=podcast-generation</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://top-100-agent-skills.vercel.app/skill.html?id=kql</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
