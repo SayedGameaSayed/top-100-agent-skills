@@ -5,8 +5,10 @@
  * Features:
  * 1. User-Supplied Google Gemini API Key (Saved safely in localStorage, 100% client-side privacy).
  * 2. Step-by-step in-app guide to get a free key from Google AI Studio (aistudio.google.com/app/apikey).
- * 3. Fallback to 100% Offline Local Semantic Search Engine if no API key is provided.
- * 4. Automatic Skill Recommendation Cards with 1-click prompt copying.
+ * 3. Deep Code & Documentation Analysis: Users can paste code snippets, README files, or architecture specs.
+ * 4. Dual Intelligence: Recommends verified skills from the Top 100 catalog AND top tools/skills from the broader AI ecosystem.
+ * 5. Automatic Skill Recommendation Cards with 1-click prompt copying and live skill links.
+ * 6. Fallback to 100% Offline Local Semantic Search Engine if no API key is provided.
  */
 
 import { normalizeArabic } from './search.js';
@@ -97,8 +99,8 @@ export function initAiBot(skills = []) {
         </div>
         <p class="bot-settings-desc">
           ${isEn 
-            ? 'Connect your free personal Gemini API key to unlock full conversational AI recommendations and prompt synthesis.' 
-            : 'اربط مفتاح Gemini المجاني الخاص بك للحصول على إجابات توليدية ذكية وشروحات واقتراحات برومبت مخصصة لمشروعك.'}
+            ? 'Connect your free personal Gemini API key to unlock deep code analysis, project docs inspection, and discover AI tools beyond the catalog.' 
+            : 'اربط مفتاح Gemini المجاني الخاص بك لتحليل الكود والتوثيق واكتشاف مهارات وأدوات ذكية من داخل وخارج الدليل.'}
         </p>
 
         <!-- Step-by-Step Guide Box -->
@@ -157,18 +159,18 @@ export function initAiBot(skills = []) {
         <div class="bot-msg bot-msg-assistant">
           <div class="bot-msg-bubble">
             ${isEn 
-              ? '👋 Hello! I am your <strong>AI Skills Assistant</strong>.<br>Describe your project or task, and I will recommend the top verified skills with ready prompts.' 
-              : '👋 أهلاً بك! أنا <strong>مساعد المهارات الذكي</strong>.<br>أخبرني بما تريد إنجازه أو المشكلة التي تواجهك، وسأرشح لك أفضل مهارة تناسبك مع البرومبت الجاهز.'}
+              ? '👋 Hello! I am your <strong>AI Skills Advisor</strong>.<br><br>💡 <strong>Feel free to paste your code, project README, or architecture description:</strong><br>I will analyze your stack and recommend the exact skills you need — both from our <strong>Top 100 Verified Catalog</strong> and <strong>from the broader AI ecosystem</strong>. For every skill, I will explain what it does, why it fits your project, and how to use it!' 
+              : '👋 أهلاً بك! أنا <strong>مستشارك الذكي لمهارات وأدوات الذكاء الاصطناعي</strong>.<br><br>💡 <strong>يمكنك إرسال فكرتك، كود مشروعك، أو ملف الـ README بالكامل:</strong><br>سأقوم بتحليل بيئة عملك واقتراح أفضل المهارات المناسبة لك بدقة — سواء كانت من ضمن <strong>أفضل 100 مهارة في الدليل</strong> أو <strong>حلول وأدوات ذكية من خارج الدليل</strong>، مع شرح دقيق لوظيفة كل أداة وكيف تفيدك عملياً في مشروعك!'}
           </div>
         </div>
 
         <!-- Gemini Promo Banner if NO Key is set -->
         <div id="bot-welcome-promo" class="bot-welcome-promo" style="${hasKey ? 'display: none;' : ''}">
-          <div class="bot-promo-title">✨ ${isEn ? 'Unlock Google Gemini AI Power:' : 'تفعيل الذكاء الكامل عبر Google Gemini:'}</div>
+          <div class="bot-promo-title">✨ ${isEn ? 'Unlock Deep Gemini AI Analysis:' : 'تفعيل التحليل الذكي عبر Google Gemini:'}</div>
           <p class="bot-promo-desc">
             ${isEn 
-              ? 'Currently using fast local search. Add your free Google Gemini API key to get smart conversational analysis.' 
-              : 'يعمل المساعد حالياً بالبحث المحلي السريع. أضف مفتاح Gemini المجاني للحصول على إجابات ذكية وتفصيلية.'}
+              ? 'Connect your free Gemini API key to enable deep code inspection, documentation parsing, and discovery of AI tools beyond the catalog.' 
+              : 'أدخل مفتاح Gemini المجاني ليقوم بتحليل الكود المعقد ومستندات مشروعك وترشيح مهارات ذكية إضافية من خارج الدليل.'}
           </p>
           <button type="button" id="bot-open-setup-from-banner" class="bot-promo-btn">
             🔑 ${isEn ? 'Enter or Get Free API Key (1-Min)' : 'إدخال أو استخراج المفتاح مجاناً (في دقيقة)'}
@@ -178,29 +180,29 @@ export function initAiBot(skills = []) {
         <!-- Quick Suggestion Chips -->
         <div class="bot-chips-container" id="bot-quick-chips">
           ${isEn ? `
-            <button class="bot-chip" data-query="word pdf documents">📄 Word & PDF Documents</button>
-            <button class="bot-chip" data-query="excel data spreadsheets">📊 Excel & Data Analysis</button>
-            <button class="bot-chip" data-query="code quality testing tdd">💻 Code Quality & Testing</button>
-            <button class="bot-chip" data-query="cloud security devops">🛡️ Cloud & Security</button>
+            <button class="bot-chip" data-query="Analyze my project code and recommend matching agent skills">💻 Analyze my Code & Stack</button>
+            <button class="bot-chip" data-query="Suggest skills for my project README and architecture">📄 Suggest for README / Docs</button>
+            <button class="bot-chip" data-query="What are the best agent skills and tools beyond the top 100 directory?">🌐 Discover Tools beyond Top 100</button>
+            <button class="bot-chip" data-query="Subagent driven development and automated task planning">⚡ Auto Task Planning & Subagents</button>
           ` : `
-            <button class="bot-chip" data-query="ملخص وتعديل مستندات Word و PDF">📄 مستندات Word و PDF</button>
-            <button class="bot-chip" data-query="تحليل وتنسيق جداول Excel">📊 جداول وبيانات Excel</button>
-            <button class="bot-chip" data-query="مراجعة جودة الكود واختبارات TDD">💻 جودة الكود واختبارات</button>
-            <button class="bot-chip" data-query="أتمتة وحاويات Docker و DevOps">🛡️ حاويات وأمان DevOps</button>
+            <button class="bot-chip" data-query="حلل كود مشروعي واقترح أفضل المهارات المناسبة له">💻 تحليل الكود واقتراح مهارات</button>
+            <button class="bot-chip" data-query="اقترح مهارات مناسبة لملف الـ README وتوثيق مشروعي">📄 اقتراحات لملف الـ README</button>
+            <button class="bot-chip" data-query="ما هي أفضل الأدوات والمهارات الذكية من خارج الـ 100 سكيلز؟">🌐 مهارات من خارج الـ 100</button>
+            <button class="bot-chip" data-query="تقسيم المهام وأتمتة العمل عبر الوكلاء الأذكياء">⚡ تقسيم وأتمتة المهام</button>
           `}
         </div>
       </div>
 
       <!-- Chat Input Area -->
       <form id="bot-input-form" class="bot-input-form">
-        <input 
-          type="text" 
+        <textarea 
           id="bot-input-text" 
           class="bot-input-field" 
-          placeholder="${isEn ? 'Describe your task or coding goal...' : 'اسأل عما تحتاجه... (مثال: تلخيص ملفات وورد)'}"
-          autocomplete="off"
+          rows="1"
+          placeholder="${isEn ? 'Paste code, project docs, or describe your goal...' : 'الصق كوداً، أو ملف README، أو اسأل عن أي مهارة تناسب مشروعك...'}"
+          aria-label="${isEn ? 'Message' : 'الرسالة'}"
           required
-        >
+        ></textarea>
         <button type="submit" id="bot-send-btn" class="bot-send-btn" aria-label="${isEn ? 'Send' : 'إرسال'}">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -305,8 +307,8 @@ function attachBotEventListeners() {
         toggleSettingsDrawer(false);
         statusEl.style.display = 'none';
         appendMessage('assistant', isEn 
-          ? '🎉 <strong>Google Gemini AI is now active!</strong> Ask me any task or project question and I will guide you with verified skills.' 
-          : '🎉 <strong>تم تفعيل Google Gemini AI بنجاح!</strong> يمكنك سؤالي الآن عن أي فكرة أو مشروع وسأساعدك بأفضل المهارات والبرومبتات.'
+          ? '🎉 <strong>Google Gemini AI is active!</strong> You can now paste your code, project docs, or ask for any skill from inside or outside the catalog.' 
+          : '🎉 <strong>تم تفعيل Google Gemini AI بنجاح!</strong> يمكنك الآن إرسال كودك أو ملف الـ README وسأقترح عليك أفضل المهارات من داخل وخارج الدليل مع شرحها بالكامل.'
         );
       }, 1200);
     } catch (err) {
@@ -336,6 +338,19 @@ function attachBotEventListeners() {
     }, 1200);
   });
 
+  // Handle textarea enter & auto resize
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+  });
+
   // Quick Chips click
   if (chipsContainer) {
     chipsContainer.addEventListener('click', (e) => {
@@ -354,6 +369,7 @@ function attachBotEventListeners() {
     const text = input.value.trim();
     if (!text) return;
     input.value = '';
+    input.style.height = 'auto';
     handleSendMessage(text);
   });
 }
@@ -487,36 +503,55 @@ async function handleSendMessage(userText) {
 
 /**
  * Direct Client-Side Google Gemini API Connector
+ * Provides deep code and documentation inspection, and suggests both
+ * in-catalog Top 100 skills and external tools from the wider AI ecosystem.
  */
 async function queryGeminiApi(userText, apiKey) {
   const isEn = getLang() === 'en';
   
-  // Build a compact catalog of skills for contextual grounding
-  const catalogContext = skillsCatalog.slice(0, 60).map((s) => {
+  // Build full catalog context for grounding across all 100 skills
+  const catalogContext = skillsCatalog.map((s) => {
     const title = isEn ? (s.title_en || s.name) : (s.title_ar || s.name);
+    const cat = isEn ? (s.category || '') : (s.category_ar || s.category || '');
     const summary = isEn ? (s.summary_en || s.summary_ar) : s.summary_ar;
-    return `- [${s.id}] "${title}": ${summary ? summary.slice(0, 90) : ''}`;
+    return `- [${s.id}] (${cat}) "${title}": ${summary ? summary.slice(0, 110) : ''}`;
   }).join('\n');
 
   const systemInstruction = isEn
-    ? `You are the expert AI Skills Assistant for the "Top 100 Agent Skills" open-source directory.
-Help the developer or user find the perfect skill for their coding/workflow task.
-Explain clearly why the skill fits their task, and provide a quick practical prompt or command.
-Refer to skills using their exact ID in brackets like [docx] or [obra-writing-plans].
-Be concise, helpful, and polite. Always reply in English.`
-    : `أنت المساعد الذكي الرسمي لدليل "أفضل 100 مهارة ذكاء اصطناعي" مفتوح المصدر.
-مهمتك: مساعدة المطور أو المستخدم في إيجاد المهارة الأنسب لمشروعه أو مشكلته البرمجية.
-اشرح له بأسلوب عربي عملي ومباشر كيف تفيده المهارة، وقدم له صيغة برومبت فورية تناسب طلبه.
-استشهد بالمهارات باستخدام معرّفها الدقيق بين قوسين مثل [docx] أو [test-driven-development] أو [obra-writing-plans].
-كن موجزاً ومفيداً، وأجب بنفس لغة المستخدم (عربي).`;
+    ? `You are the principal AI Skills Advisor for the "Top 100 Agent Skills" open-source platform.
+Your expertise is analyzing developer code, architecture documentation, README files, and real-world engineering problems to recommend the highest-leverage AI skills and tools.
+
+Core Directives:
+1. Tech & Architecture Analysis: When the user shares code, a README, or technical requirements, analyze their stack (languages, frameworks, DB, pipelines) and identify key pain points or bottlenecks.
+2. Verified In-Catalog Skills: Recommend the most fitting skills from the "Top 100 Agent Skills" verified directory. When referencing a skill from the directory, ALWAYS include its exact ID in brackets like [docx] or [systematic-debugging] or [writing-plans] so our UI can generate an interactive action card for it.
+3. Wider Ecosystem & External Skills: If the user's project needs capabilities NOT found within the 100 directory (for instance: specialized ML pipelines, external agent frameworks like LangGraph/CrewAI, browser automation, specific cloud APIs, or MCP servers), proactively recommend the best external tools/skills from the broader AI ecosystem.
+4. For EACH skill/tool recommended (whether in the 100 catalog or external), clearly explain:
+   - What it does (Role & core capabilities)
+   - Why & Where to use it in their specific project/code
+   - Actionable Prompt or Command (Ready-to-use prompt template or CLI syntax)
+5. Keep answers well-structured with clear markdown headings, bullet points, and code blocks. Always respond in English.`
+    : `أنت المستشار الذكي المتخصص لدليل "أفضل 100 مهارة ذكاء اصطناعي" (Top 100 Agent Skills) مفتوح المصدر.
+خبرتك تكمن في تحليل كود المطورين، ملفات التوثيق (README)، معمارية المشاريع، والتحديات البرمجية الحقيقية لاقتراح المهارات والأدوات الأكثر كفاءة.
+
+التوجيهات الأساسية:
+1. تحليل الكود والمشروع: عندما يرسل المستخدم كوداً أو ملف README أو مواصفات مشروعه، حلل بيئة العمل (Tech Stack) والمشكلات التي يواجهها.
+2. المهارات الموثقة داخل الدليل: رشح المهارات الأنسب من كتالوج "أفضل 100 مهارة". عند ذكر أي مهارة من الدليل، اكتب دائماً معرّفها الدقيق بين قوسين مثل [docx] أو [test-driven-development] أو [systematic-debugging] أو [writing-plans] لكي يقوم النظام بعرض كارت تفاعلي لها تلقائياً.
+3. المنظومة الذكية والمهارات الخارجية: إذا كان مشروع المستخدم يحتاج مهارات أو أدوات غير موجودة في الـ 100 مهارة (مثل: أدوات ML متخصصة، أطر عمل وكلاء خارجية، خوادم MCP معينة، أو خدمات سحابية)، اقترح له بحرية وبحث ذكي أفضل المهارات والأدوات الخارجية من عالم الذكاء الاصطناعي الأوسع.
+4. لكل مهارة أو أداة ترشحها (سواء من داخل الـ 100 أو من خارجها)، وضح الآتي بأسلوب منسق ومباشر:
+   - **ما وظيفتها؟** (دورها الأساسي وما تقدمه)
+   - **أين وكيف تستخدمها في مشروعه؟** (الربط المباشر مع الكود أو الوثائق التي أرسلها)
+   - **البرومبت أو الأمر الجاهز** (صيغة عملية جاهزة للتنفيذ فوراً)
+5. نظّم الإجابة بعناوين واضحة ونقاط مرتبة، واستخدم لغة عربية برمجية تقنية دقيقة وسلسة.`;
 
   const fullPrompt = `${systemInstruction}
 
-Here is a curated index of verified skills:
+Here is the index of verified in-catalog skills:
 ${catalogContext}
 
-User Query:
-"${userText}"`;
+User Message / Code / Project Docs:
+"""
+${userText}
+"""`;
 
   const models = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro'];
   let lastError = null;
@@ -531,7 +566,7 @@ User Query:
           contents: [{ parts: [{ text: fullPrompt }] }],
           generationConfig: {
             temperature: 0.3,
-            maxOutputTokens: 800
+            maxOutputTokens: 1000
           }
         })
       });
@@ -594,12 +629,6 @@ function extractMatchedSkills(userText, replyText) {
     }
   }
 
-  // If no direct ID found, fallback to top scored from local search
-  if (matched.length === 0) {
-    const local = queryLocalSearchEngine(userText);
-    return local.recommendedSkills || [];
-  }
-
   return matched;
 }
 
@@ -648,29 +677,26 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
           .map((skill) => {
             const stars = (skill.github_stars || 0).toLocaleString('en-US');
             const cat = skill.category_ar || skill.category || '';
-            const skillHref = `skill.html?id=${encodeURIComponent(skill.id)}`;
-            const prompt = `You are an expert agent. Follow the official instructions and best practices for: ${skill.name} (${skill.source?.url || skill.source?.repo_url || ''})`;
-
-            const cardTitle = isEn ? (skill.title_en || skill.name) : (skill.title_ar || skill.name);
-            const cardDesc = isEn ? (skill.summary_en || skill.summary_ar || '') : (skill.summary_ar || '');
-            const cardHref = formatUrlWithLang(skillHref);
-            const detailsLabel = isEn ? 'Details ↗' : 'التفاصيل ↗';
-            const copyLabel = isEn ? 'Copy Prompt 📋' : 'نسخ البرومبت 📋';
+            const title = isEn ? (skill.title_en || skill.name) : (skill.title_ar || skill.name);
+            const promptText = skill.quick_prompt || (isEn ? `Use skill: ${skill.name}` : `استخدم مهارة: ${skill.name}`);
 
             return `
-            <div class="bot-skill-card">
-              <div class="bot-card-top">
-                <span class="bot-card-cat">${escapeHtml(cat)}</span>
-                <span class="bot-card-stars">★ ${stars}</span>
+              <div class="bot-skill-card" data-skill-id="${escapeAttr(skill.id)}">
+                <div class="bot-skill-card-top">
+                  <span class="bot-skill-card-name">${escapeHtml(title)}</span>
+                  <span class="bot-skill-card-badge">★ ${stars}</span>
+                </div>
+                <div class="bot-skill-card-meta">${escapeHtml(cat)}</div>
+                <div class="bot-skill-card-actions">
+                  <button type="button" class="bot-copy-prompt-btn" data-prompt="${escapeAttr(promptText)}">
+                    📋 ${isEn ? 'Copy Prompt' : 'نسخ البرومبت'}
+                  </button>
+                  <a href="${formatUrlWithLang(`skill.html?id=${encodeURIComponent(skill.id)}`)}" class="bot-skill-link" target="_blank">
+                    ${isEn ? 'View Skill ↗' : 'عرض المهارة ↗'}
+                  </a>
+                </div>
               </div>
-              <a href="${cardHref}" class="bot-card-title">${escapeHtml(cardTitle)}</a>
-              <p class="bot-card-desc">${escapeHtml(cardDesc)}</p>
-              <div class="bot-card-actions">
-                <a href="${cardHref}" class="bot-action-link">${detailsLabel}</a>
-                <button class="bot-action-copy-btn" data-prompt="${escapeAttr(prompt)}">${copyLabel}</button>
-              </div>
-            </div>
-          `;
+            `;
           })
           .join('')}
       </div>
@@ -683,8 +709,8 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
     keyBannerHtml = `
       <div class="bot-msg-key-callout">
         <div class="callout-text">
-          ✨ <strong>${isEn ? 'Want deeper Gemini AI analysis?' : 'تريد إجابات أعمق من Gemini AI؟'}</strong>
-          <span>${isEn ? 'Get your free key in 1-min:' : 'احصل على مفتاح مجاني في دقيقة:'}</span>
+          ✨ <strong>${isEn ? 'Want deeper Gemini AI analysis?' : 'تريد تشريحاً أعمق للكود من Gemini AI؟'}</strong>
+          <span>${isEn ? 'Get your free key in 1-min:' : 'احصل على مفتاحك المجاني في دقيقة:'}</span>
         </div>
         <div class="callout-btns">
           <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="callout-link-btn">
@@ -704,8 +730,8 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
     </div>
   `;
 
-  // Attach copy listeners
-  msgEl.querySelectorAll('.bot-action-copy-btn').forEach((btn) => {
+  // Attach Copy Prompt listeners
+  msgEl.querySelectorAll('.bot-copy-prompt-btn').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const prompt = btn.getAttribute('data-prompt');
       try {
@@ -716,9 +742,9 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
         setTimeout(() => {
           btn.textContent = originalText;
           btn.style.color = '';
-        }, 2000);
-      } catch {
-        // Fallback
+        }, 1500);
+      } catch (err) {
+        console.error('Failed to copy prompt:', err);
       }
     });
   });
@@ -745,6 +771,10 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
 function queryLocalSearchEngine(message) {
   const isEn = getLang() === 'en';
   const normQuery = normalizeArabic(message).toLowerCase();
+  
+  // Detect if message is code or long documentation
+  const isCodeOrDoc = message.length > 120 || /[{};=()=>def\s|function\s|import\s|class\s|README]/i.test(message);
+
   const scored = skillsCatalog.map((skill) => {
     let score = 0;
     const normTitle = normalizeArabic(skill.title_ar || '').toLowerCase();
@@ -760,15 +790,29 @@ function queryLocalSearchEngine(message) {
       if (titleEnLower.includes(w)) score += 8;
     }
 
+    // Keyword detection for code/docs
+    if (/debug|خطأ|error|trace|crash/i.test(normQuery) && skill.id.includes('debug')) score += 20;
+    if (/test|اختبار|tdd|mock/i.test(normQuery) && skill.id.includes('test')) score += 20;
+    if (/plan|خطة|مشاريع|هيكل/i.test(normQuery) && skill.id.includes('plan')) score += 20;
+    if (/subagent|وكيل|وكلاء|multi/i.test(normQuery) && skill.id.includes('subagent')) score += 20;
+    if (/docker|حاوي|deploy|devops/i.test(normQuery) && skill.id.includes('docker')) score += 20;
+    if (/excel|xlsx|جدول/i.test(normQuery) && skill.id.includes('xlsx')) score += 20;
+    if (/word|docx|ملف/i.test(normQuery) && skill.id.includes('docx')) score += 20;
+    if (/pdf|بي دي اف/i.test(normQuery) && skill.id.includes('pdf')) score += 20;
+
     return { skill, score: score + (skill.github_stars > 20000 ? 1 : 0) };
   });
 
   scored.sort((a, b) => b.score - a.score);
-  const bestMatches = scored.filter((item) => item.score > 0).slice(0, 3).map((item) => item.skill);
-
+  const bestMatches = scored.filter((item) => item.score > 2).slice(0, 3).map((item) => item.skill);
   const finalSkills = bestMatches.length > 0 ? bestMatches : skillsCatalog.slice(0, 2);
   let replyText = '';
-  if (bestMatches.length > 0) {
+
+  if (isCodeOrDoc) {
+    replyText = isEn
+      ? `Analyzed your project/code keywords and matched the closest skills from the Top 100 directory:\n*(💡 Tip: Connect your free Gemini API key using the 🔑 button above to get deep AI code inspection and discover external skills beyond the catalog!)*`
+      : `قمت بتحليل الكلمات المفتاحية في الكود/التوثيق واستخرجت أقرب المهارات المطابقة من دليل الـ 100 مهارة:\n*(💡 نصيحة: فعّل مفتاح Gemini المجاني عبر زر 🔑 بالأعلى ليقوم الذكاء الاصطناعي بتشريح كامل لكودك واقتراح مهارات ذكية إضافية من خارج الدليل!)*`;
+  } else if (bestMatches.length > 0) {
     replyText = isEn 
       ? `Found ${bestMatches.length} verified skill(s) matching your request:`
       : `وجدت لك أفضل ${bestMatches.length} مهارات مطابقة لاحتياجك من دليل المهارات:`;
@@ -803,11 +847,19 @@ function escapeAttr(str) {
 
 function formatMarkdownText(text) {
   if (!text) return '';
-  return escapeHtml(text)
-    .replace(/### (.*?)\n/g, '<h4 style="margin: 8px 0 4px; font-weight: 700; color: inherit;">$1</h4>')
+  let escaped = escapeHtml(text);
+
+  // Format fenced code blocks ```lang ... ```
+  escaped = escaped.replace(/```([a-zA-Z0-9_\-\+]*)\n?([\s\S]*?)```/g, (match, lang, code) => {
+    return `<pre class="bot-code-block"><code class="language-${lang}">${code.trim()}</code></pre>`;
+  });
+
+  return escaped
+    .replace(/### (.*?)(?:\n|$)/g, '<h4 style="margin: 8px 0 4px; font-weight: 700; color: inherit;">$1</h4>')
+    .replace(/## (.*?)(?:\n|$)/g, '<h3 style="margin: 10px 0 6px; font-weight: 700; color: inherit;">$1</h3>')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/`([^`]+)`/g, '<code style="background: rgba(255,255,255,0.08); padding: 1px 4px; border-radius: 4px; font-size: 0.9em;">$1</code>')
+    .replace(/`([^`]+)`/g, '<code style="background: rgba(255,255,255,0.08); padding: 1px 4px; border-radius: 4px; font-size: 0.9em; font-family: monospace;">$1</code>')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: #3b82f6; text-decoration: underline;">$1</a>')
     .replace(/\n\n/g, '<br><br>')
     .replace(/\n/g, '<br>');
