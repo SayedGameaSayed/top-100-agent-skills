@@ -2958,3 +2958,483 @@ html[dir="ltr"] .guide-lang-block .editorial-block {
 html[dir="ltr"] .guide-lang-block .editorial-statement {
   text-align: left;
 }
+
+
+/* ==========================================================================
+   High-Contrast Structured Light Theme ("مخطط وواضح عالي التباين")
+   ========================================================================== */
+html[data-theme="light"] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  color-scheme: light;
+}
+
+html[data-theme="light"] body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Header */
+html[data-theme="light"] .site-header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+}
+
+html[data-theme="light"] .brand-lockup {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .nav-ghost-link {
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .nav-ghost-link:hover {
+  color: #2563eb !important;
+}
+
+html[data-theme="light"] .nav-ghost-link.active {
+  color: #2563eb !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .nav-cta-pill {
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+  background-color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .nav-cta-pill:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+}
+
+html[data-theme="light"] .nav-github-star-pill,
+html[data-theme="light"] .nav-control-pill {
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+  background-color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .nav-github-star-pill:hover,
+html[data-theme="light"] .nav-control-pill:hover {
+  border-color: #2563eb !important;
+  color: #2563eb !important;
+  background-color: #eff6ff !important;
+}
+
+/* Hero Section */
+html[data-theme="light"] .hero-section {
+  background-color: #ffffff !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+}
+
+html[data-theme="light"] .hero-kicker-tag {
+  background-color: #f1f5f9 !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #1e293b !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .hero-headline-sculptural {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html[data-theme="light"] .hero-body-airy {
+  color: #334155 !important;
+  font-weight: 400 !important;
+}
+
+html[data-theme="light"] .search-input-pill {
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] .search-input-pill::placeholder {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .search-input-pill:hover {
+  border-color: #94a3b8 !important;
+}
+
+html[data-theme="light"] .search-input-pill:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+html[data-theme="light"] .search-icon-symbol,
+html[data-theme="light"] .search-clear-symbol {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .share-btn-pill {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #1e293b !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+}
+
+html[data-theme="light"] .share-btn-pill:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+
+/* Category Filter Bar ("مخطط ومحدد الأزرار") */
+html[data-theme="light"] .category-nav-bar {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  padding-block: 16px !important;
+}
+
+html[data-theme="light"] .category-nav-item {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+  border-radius: 9999px !important;
+  padding: 7px 18px !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  transition: all 0.15s ease !important;
+}
+
+html[data-theme="light"] .category-nav-item:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .category-nav-item.active {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18) !important;
+}
+
+/* Highlights Section (Featured Skills Band) */
+html[data-theme="light"] .highlights-band {
+  background-color: #f1f5f9 !important;
+  border-top: 1.5px solid #e2e8f0 !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+  padding-block: 56px !important;
+}
+
+html[data-theme="light"] .highlights-title {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .highlights-view-all {
+  color: #2563eb !important;
+  font-weight: 600 !important;
+}
+
+/* All Skills Section */
+html[data-theme="light"] .all-skills-section {
+  background-color: #f8fafc !important;
+  padding-block: 56px !important;
+}
+
+html[data-theme="light"] .section-headline-prominent,
+html[data-theme="light"] .section-headline {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .results-count-text {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .sort-select-input {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 10px !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important;
+}
+
+/* Structured High-Contrast Skill Cards ("بطاقات مخططة واضحة") */
+html[data-theme="light"] .skill-card {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 18px !important;
+  padding: 24px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+html[data-theme="light"] .skill-card:hover {
+  background-color: #ffffff !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12), 0 4px 8px -2px rgba(15, 23, 42, 0.04) !important;
+  transform: translateY(-3px) !important;
+}
+
+html[data-theme="light"] .card-title {
+  color: #0f172a !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+html[data-theme="light"] .card-summary {
+  color: #334155 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
+}
+
+html[data-theme="light"] .card-slug-row {
+  margin-block: 6px 10px !important;
+}
+
+html[data-theme="light"] .card-name-en {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 6px !important;
+  padding: 2px 8px !important;
+  font-family: var(--font-commit-mono, ui-monospace, monospace) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  display: inline-block !important;
+}
+
+html[data-theme="light"] .card-category-label {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border: 1px solid #bfdbfe !important;
+  border-radius: 9999px !important;
+  padding: 3px 10px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .card-stars-badge {
+  background-color: #fefce8 !important;
+  color: #854d0e !important;
+  border: 1px solid #fde047 !important;
+  border-radius: 9999px !important;
+  padding: 3px 10px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .card-difficulty {
+  background-color: #f8fafc !important;
+  color: #1e293b !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 9999px !important;
+  padding: 4px 12px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .card-action-cue {
+  color: #2563eb !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+html[data-theme="light"] .skill-card:hover .card-action-cue {
+  color: #1d4ed8 !important;
+}
+
+/* Detail Page Editorial Blocks ("مخطط ومفصول بوضوح") */
+html[data-theme="light"] .detail-hero-section {
+  background-color: #ffffff !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+}
+
+html[data-theme="light"] .detail-headline-sculptural {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html[data-theme="light"] .detail-summary-airy {
+  color: #334155 !important;
+  font-weight: 400 !important;
+}
+
+html[data-theme="light"] .editorial-block {
+  background-color: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 18px !important;
+  margin-block: 24px !important;
+  padding: 36px 32px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] .editorial-kicker {
+  color: #2563eb !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .editorial-statement {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .editorial-list {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  padding: 24px !important;
+}
+
+html[data-theme="light"] .editorial-list li {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+}
+
+html[data-theme="light"] .use-case-box {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  color: #1e293b !important;
+  font-weight: 500 !important;
+}
+
+html[data-theme="light"] .example-prompt-card {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 14px !important;
+}
+
+html[data-theme="light"] .example-prompt-text {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .tool-integration-container {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] .segment-tab-btn {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .segment-tab-btn.active {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .tool-content-display {
+  background-color: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+}
+
+html[data-theme="light"] .tool-meta-badge-row {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .tool-steps-ordered li {
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .tool-invoke-box {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Leaderboard Page ("لوحة صدارة مخططة") */
+html[data-theme="light"] .leaderboard-table-container {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] .leaderboard-table th {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+html[data-theme="light"] .leaderboard-table td {
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .leaderboard-table tr:hover td {
+  background-color: #f8fafc !important;
+}
+
+html[data-theme="light"] .leaderboard-skill-link {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .leaderboard-skill-link:hover {
+  color: #2563eb !important;
+}
+
+/* How to Use Page ("صفحة طريقة الاستخدام مخططة") */
+html[data-theme="light"] .guide-lang-block .editorial-block {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] .guide-lang-block .editorial-list {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+}
+
+html[data-theme="light"] .guide-lang-block .editorial-list li {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+}
+
+/* Footer */
+html[data-theme="light"] .site-footer {
+  background-color: #ffffff !important;
+  border-top: 1.5px solid #e2e8f0 !important;
+}
+
+html[data-theme="light"] .site-footer p {
+  color: #475569 !important;
+  font-weight: 500 !important;
+}
+
+html[data-theme="light"] .site-footer .footer-nav a {
+  color: #1e293b !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] .site-footer .footer-nav a:hover {
+  color: #2563eb !important;
+}
