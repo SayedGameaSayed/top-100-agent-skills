@@ -132,18 +132,25 @@ export function renderSkillCard(skill, categories) {
   return `
     <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="skill-card" aria-label="${escapeHtml(title)}">
       <div class="card-top">
-        <div class="card-meta-line">
-          <span class="card-name-en ltr">${escapeHtml(skill.name)}</span>
-          <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} ${t('navStar')}">★ ${starsFormatted}</span>
-          ${skill.content_verified !== true ? '<span class="unverified-card-pill" style="font-size: 11px; font-weight: 500; color: var(--color-amber); background: rgba(255, 202, 22, 0.08); border: 1px solid rgba(255, 202, 22, 0.28); border-radius: var(--radius-badges); padding: 2px 8px;">غير مراجَع</span>' : ''}
+        <div class="card-header-row">
           <span class="card-category-label">${escapeHtml(catName)}</span>
+          <div class="card-header-badges">
+            ${skill.content_verified !== true ? `<span class="unverified-card-pill">${lang === 'en' ? 'Unreviewed' : 'غير مراجَع'}</span>` : ''}
+            <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} ${t('navStar')}">★ ${starsFormatted}</span>
+          </div>
         </div>
         <h3 class="card-title">${escapeHtml(title)}</h3>
+        <div class="card-slug-row">
+          <span class="card-name-en" dir="ltr">${escapeHtml(skill.name)}</span>
+        </div>
         <p class="card-summary">${escapeHtml(summary)}</p>
       </div>
       <div class="card-bottom-row">
-        <span class="card-difficulty">${formatDifficulty(skill.difficulty)}</span>
-        ${getBareLicenseLabelHtml(skill.license)}
+        <div class="card-bottom-left">
+          <span class="card-difficulty">${formatDifficulty(skill.difficulty)}</span>
+          ${getBareLicenseLabelHtml(skill.license)}
+        </div>
+        <span class="card-action-cue">${lang === 'en' ? 'View Skill →' : 'عرض المهارة ←'}</span>
       </div>
     </a>
   `;

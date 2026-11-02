@@ -500,6 +500,9 @@ export function initConstellation(canvasId = 'constellation-canvas') {
     intersectionObserver.observe(canvas);
   }
 
+  // Smooth lateral placement ratio across language switches (Left for RTL, Right for LTR)
+  let currentCxRatio = (document.documentElement.dir === 'ltr' || document.documentElement.lang === 'en') ? 0.74 : 0.26;
+
   function render(now) {
     // 1. Immediately pause if canvas is off-screen
     if (!isCanvasVisible) {
@@ -542,7 +545,10 @@ export function initConstellation(canvasId = 'constellation-canvas') {
 
     // Placement: Sits majestically on the left in RTL, centered on mobile
     const isDesktop = width > 900;
-    const cx = isDesktop ? width * 0.28 : width * 0.5;
+    const isLtr = document.documentElement.dir === 'ltr' || document.documentElement.lang === 'en';
+    const targetCxRatio = isDesktop ? (isLtr ? 0.74 : 0.26) : 0.5;
+    currentCxRatio += (targetCxRatio - currentCxRatio) * 0.08;
+    const cx = width * currentCxRatio;
     const cy = (isDesktop ? height * 0.50 : height * 0.46) + scrollParallaxY;
 
     // Update and project particles

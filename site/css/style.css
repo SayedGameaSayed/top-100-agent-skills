@@ -401,8 +401,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   background-color: var(--color-void-black);
   border-bottom: 1px solid var(--color-graphite-hairline);
   position: sticky;
-  top: 0;
-  z-index: 100;
+  top: 64px;
+  z-index: 90;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -498,11 +498,16 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 .highlights-scroll-row {
   display: flex;
-  gap: var(--spacing-16);
+  gap: var(--spacing-20, 20px);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-block-end: 16px;
-  scrollbar-width: thin;
+  padding-block: 6px 18px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.highlights-scroll-row::-webkit-scrollbar {
+  display: none;
 }
 
 .highlights-scroll-row .skill-card {
@@ -698,6 +703,31 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   gap: 8px;
   font-size: 13px;
   color: var(--color-ash-gray);
+}
+
+.card-bottom-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-action-cue {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ash-gray);
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.skill-card:hover .card-action-cue {
+  color: var(--color-white);
+  transform: translateX(-3px);
+}
+
+html[dir="ltr"] .skill-card:hover .card-action-cue {
+  transform: translateX(3px);
 }
 
 .card-difficulty {
@@ -2052,10 +2082,11 @@ html[data-theme="light"] #copy-site-link-btn:hover {
    Section Anchor Navigation (Horizontal segmented bar)
    -------------------------------------------------------------------------- */
 html[data-theme="light"] .category-nav-bar {
-  background-color: rgba(250, 250, 252, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--color-hairline-silver, #d6d6d6);
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--color-hairline-silver, #d6d6d6) !important;
+  top: 64px !important;
 }
 
 html[data-theme="light"] .category-nav-item {
@@ -2780,6 +2811,59 @@ html[dir="ltr"] .section-headline-prominent,
 html[dir="ltr"] .highlights-title {
   font-family: var(--font-inter);
   letter-spacing: -0.025em;
+  text-align: left;
+}
+
+html[dir="ltr"] .hero-layout-grid {
+  justify-content: flex-start;
+}
+
+html[dir="ltr"] .hero-text-col {
+  text-align: left;
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
+html[dir="ltr"] .hero-kicker-tag {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
+html[dir="ltr"] .hero-body-airy {
+  text-align: left;
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
+html[dir="ltr"] .search-centerpiece {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
+html[dir="ltr"] .search-input-pill {
+  text-align: left;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+html[dir="ltr"] .search-icon-symbol {
+  left: 18px;
+  right: auto;
+}
+
+html[dir="ltr"] .search-clear-symbol {
+  right: 18px;
+  left: auto;
+}
+
+html[dir="ltr"] .hero-share-bar {
+  justify-content: flex-start;
+}
+
+html[dir="ltr"] .card-top,
+html[dir="ltr"] .card-title,
+html[dir="ltr"] .card-summary {
+  text-align: left;
 }
 
 html[dir="ltr"] .editorial-list {
@@ -2789,6 +2873,7 @@ html[dir="ltr"] .editorial-list {
 html[dir="ltr"] .editorial-list li {
   padding-left: 22px;
   padding-right: 0;
+  text-align: left;
 }
 
 html[dir="ltr"] .editorial-list li::before {
@@ -2800,6 +2885,18 @@ html[dir="ltr"] .editorial-statement {
   text-align: left;
 }
 
+html[dir="ltr"] .detail-hero-section {
+  text-align: left;
+}
+
+html[dir="ltr"] .detail-kicker-row {
+  justify-content: flex-start;
+}
+
+html[dir="ltr"] .detail-actions-row {
+  justify-content: flex-start;
+}
+
 html[dir="ltr"] .detail-summary-block {
   text-align: left !important;
 }
@@ -2808,3 +2905,36 @@ html[dir="ltr"] .unverified-quarantine-box {
   text-align: left !important;
 }
 
+html[dir="ltr"] .tool-integration-container {
+  text-align: left;
+}
+
+html[dir="ltr"] .tool-steps-ordered {
+  padding-left: 24px;
+  padding-right: 0;
+  text-align: left;
+}
+
+
+html[data-theme="light"] .card-bottom-row {
+  border-top: none;
+  padding-block-start: 16px;
+}
+
+html[data-theme="light"] .card-action-cue {
+  color: var(--color-apple-blue, #0066cc);
+}
+
+html[data-theme="light"] .skill-card:hover .card-action-cue {
+  color: var(--color-pricing-blue, #0071e3);
+}
+
+html[data-theme="light"] .card-difficulty {
+  color: var(--color-slate, #707070);
+  background-color: var(--color-studio-mist, #f5f5f7);
+  border: 1px solid var(--color-control-gray, #e6e6e8);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
