@@ -1907,14 +1907,14 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
    Radii: 28px (Cards), 36px/9999px (Pills & Buttons), 980px (Inputs)
    ========================================================================== */
 html[data-theme="light"] {
-  background-color: var(--color-gallery-white, #ffffff);
-  color: var(--color-ink, #1d1d1f);
+  background-color: #f1f5f9;
+  color: #0f172a;
   color-scheme: light;
 }
 
 html[data-theme="light"] body {
-  background-color: var(--color-gallery-white, #ffffff);
-  color: var(--color-ink, #1d1d1f);
+  background-color: #f1f5f9;
+  color: #0f172a;
   font-family: var(--font-sf-pro-text, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
 }
 
@@ -2961,30 +2961,32 @@ html[dir="ltr"] .guide-lang-block .editorial-statement {
 
 
 /* ==========================================================================
-   High-Contrast Structured Light Theme ("مخطط وواضح عالي التباين")
+   Structured Architectural Light Theme ("مخطط ومؤطر ومقسم بالكامل بحدود واضحة")
+   Strictly scoped to html[data-theme="light"] — Dark theme is untouched
    ========================================================================== */
 html[data-theme="light"] {
-  background-color: #f8fafc !important;
+  background-color: #f1f5f9 !important;
   color: #0f172a !important;
   color-scheme: light;
 }
 
 html[data-theme="light"] body {
-  background-color: #f8fafc !important;
+  background-color: #f1f5f9 !important;
   color: #0f172a !important;
 }
 
 /* Header */
 html[data-theme="light"] .site-header {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1.5px solid #e2e8f0 !important;
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
 }
 
 html[data-theme="light"] .brand-lockup {
   color: #0f172a !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
 }
 
 html[data-theme="light"] .nav-ghost-link {
@@ -3003,22 +3005,25 @@ html[data-theme="light"] .nav-ghost-link.active {
 
 html[data-theme="light"] .nav-cta-pill {
   color: #0f172a !important;
-  border: 1.5px solid #cbd5e1 !important;
+  border: 2px solid #cbd5e1 !important;
   background-color: #ffffff !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
 }
 
 html[data-theme="light"] .nav-cta-pill:hover {
-  background-color: #f1f5f9 !important;
-  border-color: #94a3b8 !important;
+  background-color: #eff6ff !important;
+  border-color: #2563eb !important;
+  color: #2563eb !important;
 }
 
 html[data-theme="light"] .nav-github-star-pill,
 html[data-theme="light"] .nav-control-pill {
   color: #0f172a !important;
-  border: 1.5px solid #cbd5e1 !important;
+  border: 2px solid #cbd5e1 !important;
   background-color: #ffffff !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
 }
 
 html[data-theme="light"] .nav-github-star-pill:hover,
@@ -3028,48 +3033,97 @@ html[data-theme="light"] .nav-control-pill:hover {
   background-color: #eff6ff !important;
 }
 
-/* Hero Section */
-html[data-theme="light"] .hero-section {
+/* ==========================================================================
+   Hero Stage & Structured Showcase Card ("منصة البداية مؤطرة داخل بطاقة بيضاء")
+   ========================================================================== */
+html[data-theme="light"] .hero-stage {
+  background-color: #f1f5f9 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+  padding-block: 40px 36px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+html[data-theme="light"] .hero-layout-grid {
+  min-height: 520px !important;
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: none !important;
+}
+
+/* The Hero Content Box — High-contrast Framed Panel */
+html[data-theme="light"] .hero-text-col {
   background-color: #ffffff !important;
-  border-bottom: 1.5px solid #e2e8f0 !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 24px !important;
+  padding: 40px 44px !important;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+}
+
+@media (max-width: 768px) {
+  html[data-theme="light"] .hero-text-col {
+    padding: 24px 20px !important;
+    border-radius: 18px !important;
+  }
 }
 
 html[data-theme="light"] .hero-kicker-tag {
-  background-color: #f1f5f9 !important;
+  background-color: #f8fafc !important;
   border: 1.5px solid #cbd5e1 !important;
-  color: #1e293b !important;
-  font-weight: 600 !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+  margin-block-end: 18px !important;
+  display: inline-flex !important;
 }
 
 html[data-theme="light"] .hero-headline-sculptural {
   color: #0f172a !important;
   font-weight: 800 !important;
+  line-height: 1.25 !important;
+  margin-block-end: 16px !important;
 }
 
 html[data-theme="light"] .hero-body-airy {
   color: #334155 !important;
   font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  margin-block-end: 24px !important;
+}
+
+/* Framed Search Utility Dock */
+html[data-theme="light"] .search-centerpiece {
+  background-color: #f8fafc !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 16px !important;
+  padding: 4px 10px !important;
+  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.04) !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+}
+
+html[data-theme="light"] .search-centerpiece:focus-within {
+  border-color: #2563eb !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18), inset 0 1px 2px rgba(15, 23, 42, 0.02) !important;
 }
 
 html[data-theme="light"] .search-input-pill {
-  background-color: #ffffff !important;
-  border: 2px solid #cbd5e1 !important;
+  background-color: transparent !important;
+  border: none !important;
   color: #0f172a !important;
   font-weight: 500 !important;
-  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05) !important;
+  box-shadow: none !important;
+  font-size: 15px !important;
 }
 
 html[data-theme="light"] .search-input-pill::placeholder {
   color: #64748b !important;
-}
-
-html[data-theme="light"] .search-input-pill:hover {
-  border-color: #94a3b8 !important;
-}
-
-html[data-theme="light"] .search-input-pill:focus {
-  border-color: #2563eb !important;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
 }
 
 html[data-theme="light"] .search-icon-symbol,
@@ -3077,31 +3131,67 @@ html[data-theme="light"] .search-clear-symbol {
   color: #64748b !important;
 }
 
+/* Framed Share Toolbar */
+html[data-theme="light"] .hero-share-bar {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 14px !important;
+  padding: 8px 14px !important;
+  margin-block-start: 22px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+html[data-theme="light"] .share-label {
+  color: #475569 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
 html[data-theme="light"] .share-btn-pill {
   background-color: #ffffff !important;
   border: 1.5px solid #cbd5e1 !important;
-  color: #1e293b !important;
+  color: #0f172a !important;
   font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 5px 12px !important;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
 }
 
 html[data-theme="light"] .share-btn-pill:hover {
-  background-color: #f1f5f9 !important;
-  border-color: #94a3b8 !important;
-  color: #0f172a !important;
+  background-color: #eff6ff !important;
+  border-color: #2563eb !important;
+  color: #2563eb !important;
 }
 
-/* Category Filter Bar ("مخطط ومحدد الأزرار") */
+html[data-theme="light"] #copy-site-link-btn {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light"] #copy-site-link-btn:hover {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Category Filter Navigation ("شريط تصنيفات مؤطر ومحدد")
+   ========================================================================== */
 html[data-theme="light"] .category-nav-bar {
-  background-color: rgba(255, 255, 255, 0.98) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 2px solid #e2e8f0 !important;
+  background-color: #ffffff !important;
+  border-top: 1.5px solid #e2e8f0 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
   padding-block: 16px !important;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03) !important;
 }
 
 html[data-theme="light"] .category-nav-item {
-  background-color: #ffffff !important;
+  background-color: #f8fafc !important;
   border: 1.5px solid #cbd5e1 !important;
   color: #334155 !important;
   font-weight: 600 !important;
@@ -3112,9 +3202,9 @@ html[data-theme="light"] .category-nav-item {
 }
 
 html[data-theme="light"] .category-nav-item:hover {
-  background-color: #f1f5f9 !important;
-  border-color: #94a3b8 !important;
-  color: #0f172a !important;
+  background-color: #eff6ff !important;
+  border-color: #93c5fd !important;
+  color: #1d4ed8 !important;
 }
 
 html[data-theme="light"] .category-nav-item.active {
@@ -3122,37 +3212,60 @@ html[data-theme="light"] .category-nav-item.active {
   border-color: #0f172a !important;
   color: #ffffff !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18) !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.22) !important;
 }
 
-/* Highlights Section (Featured Skills Band) */
+/* ==========================================================================
+   Highlights Section (Featured Skills Band - "شريط المهارات الأشهر مؤطر")
+   ========================================================================== */
 html[data-theme="light"] .highlights-band {
   background-color: #f1f5f9 !important;
-  border-top: 1.5px solid #e2e8f0 !important;
-  border-bottom: 1.5px solid #e2e8f0 !important;
-  padding-block: 56px !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+  padding-block: 52px !important;
 }
 
 html[data-theme="light"] .highlights-title {
   color: #0f172a !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
 }
 
 html[data-theme="light"] .highlights-view-all {
   color: #2563eb !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  background-color: #eff6ff !important;
+  border: 1.5px solid #bfdbfe !important;
+  border-radius: 9999px !important;
+  padding: 5px 16px !important;
 }
 
-/* All Skills Section */
+html[data-theme="light"] .highlights-view-all:hover {
+  background-color: #dbeafe !important;
+  border-color: #60a5fa !important;
+  color: #1d4ed8 !important;
+}
+
+/* ==========================================================================
+   All Skills Section ("قسم جميع المهارات مؤطر بالكامل")
+   ========================================================================== */
 html[data-theme="light"] .all-skills-section {
   background-color: #f8fafc !important;
+  border-bottom: 2px solid #cbd5e1 !important;
   padding-block: 56px !important;
+}
+
+html[data-theme="light"] .section-headline-row {
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 18px !important;
+  padding: 20px 28px !important;
+  margin-block-end: 28px !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03) !important;
 }
 
 html[data-theme="light"] .section-headline-prominent,
 html[data-theme="light"] .section-headline {
   color: #0f172a !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
 }
 
 html[data-theme="light"] .results-count-text {
@@ -3170,28 +3283,33 @@ html[data-theme="light"] .sort-select-input {
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important;
 }
 
-/* Structured High-Contrast Skill Cards ("بطاقات مخططة واضحة") */
+/* ==========================================================================
+   Structured High-Contrast Skill Cards ("بطاقات مخططة ومحددة بحدود واضحة")
+   ========================================================================== */
 html[data-theme="light"] .skill-card {
   background-color: #ffffff !important;
-  border: 1.5px solid #cbd5e1 !important;
-  border-radius: 18px !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 20px !important;
   padding: 24px !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 html[data-theme="light"] .skill-card:hover {
   background-color: #ffffff !important;
   border-color: #2563eb !important;
-  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12), 0 4px 8px -2px rgba(15, 23, 42, 0.04) !important;
-  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.15), 0 4px 8px -2px rgba(15, 23, 42, 0.04) !important;
+  transform: translateY(-4px) !important;
 }
 
 html[data-theme="light"] .card-title {
   color: #0f172a !important;
   font-size: 19px !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
   line-height: 1.35 !important;
+  margin-block: 8px 10px !important;
 }
 
 html[data-theme="light"] .card-summary {
@@ -3199,15 +3317,16 @@ html[data-theme="light"] .card-summary {
   font-size: 14px !important;
   line-height: 1.6 !important;
   font-weight: 400 !important;
+  margin-block-end: 18px !important;
 }
 
 html[data-theme="light"] .card-slug-row {
-  margin-block: 6px 10px !important;
+  margin-block: 4px 10px !important;
 }
 
 html[data-theme="light"] .card-name-en {
   background-color: #f1f5f9 !important;
-  color: #1e293b !important;
+  color: #0f172a !important;
   border: 1px solid #cbd5e1 !important;
   border-radius: 6px !important;
   padding: 2px 8px !important;
@@ -3220,21 +3339,28 @@ html[data-theme="light"] .card-name-en {
 html[data-theme="light"] .card-category-label {
   background-color: #eff6ff !important;
   color: #1d4ed8 !important;
-  border: 1px solid #bfdbfe !important;
+  border: 1.5px solid #bfdbfe !important;
   border-radius: 9999px !important;
   padding: 3px 10px !important;
   font-size: 12px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 }
 
 html[data-theme="light"] .card-stars-badge {
   background-color: #fefce8 !important;
   color: #854d0e !important;
-  border: 1px solid #fde047 !important;
+  border: 1.5px solid #fde047 !important;
   border-radius: 9999px !important;
   padding: 3px 10px !important;
   font-size: 12px !important;
   font-weight: 700 !important;
+}
+
+/* Internal Card Divider */
+html[data-theme="light"] .card-meta-row {
+  border-top: 1.5px solid #f1f5f9 !important;
+  margin-top: auto !important;
+  padding-top: 14px !important;
 }
 
 html[data-theme="light"] .card-difficulty {
@@ -3249,7 +3375,7 @@ html[data-theme="light"] .card-difficulty {
 
 html[data-theme="light"] .card-action-cue {
   color: #2563eb !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   font-size: 13px !important;
 }
 
@@ -3257,10 +3383,58 @@ html[data-theme="light"] .skill-card:hover .card-action-cue {
   color: #1d4ed8 !important;
 }
 
-/* Detail Page Editorial Blocks ("مخطط ومفصول بوضوح") */
+/* ==========================================================================
+   Skill Detail Page ("صفحة تفاصيل المهارة مؤطرة ومفصولة بالكامل")
+   ========================================================================== */
 html[data-theme="light"] .detail-hero-section {
+  background-color: #f1f5f9 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+  padding-block: 40px 24px !important;
+}
+
+html[data-theme="light"] .detail-hero-section .section-container {
   background-color: #ffffff !important;
-  border-bottom: 1.5px solid #e2e8f0 !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 24px !important;
+  padding: 38px 44px !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+@media (max-width: 768px) {
+  html[data-theme="light"] .detail-hero-section .section-container {
+    padding: 24px 20px !important;
+    border-radius: 18px !important;
+  }
+}
+
+html[data-theme="light"] .detail-kicker-label {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border: 1.5px solid #bfdbfe !important;
+  border-radius: 9999px !important;
+  padding: 4px 12px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .verified-reviewer-badge {
+  background-color: #ecfdf5 !important;
+  border: 1.5px solid #a7f3d0 !important;
+  color: #065f46 !important;
+  border-radius: 9999px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  padding: 4px 12px !important;
+}
+
+html[data-theme="light"] .detail-stars-badge {
+  background-color: #fefce8 !important;
+  border: 1.5px solid #fde047 !important;
+  color: #854d0e !important;
+  border-radius: 9999px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 4px 12px !important;
 }
 
 html[data-theme="light"] .detail-headline-sculptural {
@@ -3271,32 +3445,60 @@ html[data-theme="light"] .detail-headline-sculptural {
 html[data-theme="light"] .detail-summary-airy {
   color: #334155 !important;
   font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 1.65 !important;
+}
+
+html[data-theme="light"] .unverified-quarantine-box {
+  background-color: #fffbeb !important;
+  border: 2px solid #f59e0b !important;
+  border-radius: 18px !important;
+}
+
+html[data-theme="light"] .unverified-quarantine-box p {
+  color: #92400e !important;
+  font-weight: 500 !important;
+}
+
+html[data-theme="light"] .detail-summary-block {
+  background-color: #f8fafc !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 18px !important;
+}
+
+html[data-theme="light"] .detail-summary-block h2 {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="light"] .detail-summary-block p {
+  color: #1e293b !important;
 }
 
 html[data-theme="light"] .editorial-block {
   background-color: #ffffff !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 18px !important;
-  margin-block: 24px !important;
-  padding: 36px 32px !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  margin-block: 28px !important;
+  padding: 36px 40px !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
 }
 
 html[data-theme="light"] .editorial-kicker {
-  color: #2563eb !important;
+  color: #0066cc !important;
   font-weight: 700 !important;
 }
 
 html[data-theme="light"] .editorial-statement {
   color: #0f172a !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
 }
 
 html[data-theme="light"] .editorial-list {
   background-color: #f8fafc !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 14px !important;
-  padding: 24px !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 24px 28px !important;
 }
 
 html[data-theme="light"] .editorial-list li {
@@ -3306,16 +3508,18 @@ html[data-theme="light"] .editorial-list li {
 
 html[data-theme="light"] .use-case-box {
   background-color: #f8fafc !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 14px !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 16px !important;
   color: #1e293b !important;
   font-weight: 500 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03) !important;
 }
 
 html[data-theme="light"] .example-prompt-card {
   background-color: #f8fafc !important;
-  border: 1.5px solid #cbd5e1 !important;
-  border-radius: 14px !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 16px !important;
+  padding: 18px 22px !important;
 }
 
 html[data-theme="light"] .example-prompt-text {
@@ -3323,11 +3527,18 @@ html[data-theme="light"] .example-prompt-text {
   font-weight: 600 !important;
 }
 
+html[data-theme="light"] .tool-integration-section {
+  background-color: #f1f5f9 !important;
+  border-top: 2px solid #cbd5e1 !important;
+  padding-block: 40px !important;
+}
+
 html[data-theme="light"] .tool-integration-container {
   background-color: #ffffff !important;
-  border: 1.5px solid #cbd5e1 !important;
-  border-radius: 18px !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 36px 40px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
 }
 
 html[data-theme="light"] .segment-tab-btn {
@@ -3366,13 +3577,27 @@ html[data-theme="light"] .tool-invoke-box {
   color: #0f172a !important;
 }
 
-/* Leaderboard Page ("لوحة صدارة مخططة") */
+/* ==========================================================================
+   Leaderboard Page ("لوحة صدارة مخططة ومؤطرة بالكامل")
+   ========================================================================== */
+html[data-theme="light"] body[data-page="leaderboard"] {
+  background-color: #f1f5f9 !important;
+}
+
+html[data-theme="light"] .leaderboard-hero {
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 36px 40px !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+}
+
 html[data-theme="light"] .leaderboard-table-container {
   background-color: #ffffff !important;
-  border: 1.5px solid #cbd5e1 !important;
-  border-radius: 16px !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 18px !important;
   overflow: hidden !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
 }
 
 html[data-theme="light"] .leaderboard-table th {
@@ -3400,18 +3625,33 @@ html[data-theme="light"] .leaderboard-skill-link:hover {
   color: #2563eb !important;
 }
 
-/* How to Use Page ("صفحة طريقة الاستخدام مخططة") */
+/* ==========================================================================
+   How to Use Page ("صفحة طريقة الاستخدام مخططة ومؤطرة")
+   ========================================================================== */
+html[data-theme="light"] body[data-page="how-to-use"] {
+  background-color: #f1f5f9 !important;
+}
+
+html[data-theme="light"] .guide-hero-section {
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 36px 40px !important;
+  margin-block: 28px !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+}
+
 html[data-theme="light"] .guide-lang-block .editorial-block {
   background-color: #ffffff !important;
-  border: 1.5px solid #cbd5e1 !important;
-  border-radius: 18px !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
 }
 
 html[data-theme="light"] .guide-lang-block .editorial-list {
   background-color: #f8fafc !important;
-  border: 1.5px solid #e2e8f0 !important;
-  border-radius: 14px !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 16px !important;
 }
 
 html[data-theme="light"] .guide-lang-block .editorial-list li {
@@ -3419,10 +3659,12 @@ html[data-theme="light"] .guide-lang-block .editorial-list li {
   font-weight: 500 !important;
 }
 
-/* Footer */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 html[data-theme="light"] .site-footer {
   background-color: #ffffff !important;
-  border-top: 1.5px solid #e2e8f0 !important;
+  border-top: 2px solid #cbd5e1 !important;
 }
 
 html[data-theme="light"] .site-footer p {
@@ -3437,4 +3679,90 @@ html[data-theme="light"] .site-footer .footer-nav a {
 
 html[data-theme="light"] .site-footer .footer-nav a:hover {
   color: #2563eb !important;
+}
+
+/* ==========================================================================
+   Skills Assistant Floating Button & Panel
+   ========================================================================== */
+html[data-theme="light"] #assistant-toggle-btn,
+html[data-theme="light"] .bot-floating-btn {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border: 1.5px solid #334155 !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.25) !important;
+}
+
+html[data-theme="light"] .bot-panel {
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16) !important;
+}
+
+html[data-theme="light"] .bot-header {
+  background-color: #f8fafc !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+}
+
+html[data-theme="light"] .bot-message.assistant {
+  background-color: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .bot-message.user {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] .bot-input {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* Additional Light Mode Framing Fixes */
+html[data-theme="light"] .detail-kicker-label {
+  display: inline-flex !important;
+  width: fit-content !important;
+  margin-block-end: 14px !important;
+}
+
+html[data-theme="light"] .guide-lang-block header {
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 24px !important;
+  padding: 38px 44px !important;
+  margin-block-end: 32px !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] body[data-page="leaderboard"] main > header {
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 24px !important;
+  padding: 38px 44px !important;
+  margin-block-end: 32px !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] .leaderboard-toolbar {
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
+}
+
+html[data-theme="light"] #leaderboard-search {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+}
+
+html[data-theme="light"] #leaderboard-category-filter {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  padding: 6px 12px !important;
 }
