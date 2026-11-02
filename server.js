@@ -200,6 +200,33 @@ app.get('/api/health', (req, res) => {
 // Static Assets & Routing
 // ==========================================
 
+// Helper to serve SEO-optimized HTML matching current hostname
+function sendSeoHtml(filePath, req, res) {
+  const host = req.get('host') || 'localhost:3000';
+  const proto = req.get('x-forwarded-proto') || (req.secure ? 'https' : 'http');
+  const siteUrl = `${proto}://${host}`;
+  let html = fs.readFileSync(filePath, 'utf8');
+  html = html.replace(/https:\/\/sayedgameasayed\.github\.io\/top-100-agent-skills/g, siteUrl);
+  res.type('text/html').send(html);
+}
+
+// Dynamic Sitemap and Robots matching current domain
+app.get(['/sitemap.xml', '/site/sitemap.xml'], (req, res) => {
+  const host = req.get('host') || 'localhost:3000';
+  const proto = req.get('x-forwarded-proto') || (req.secure ? 'https' : 'http');
+  const siteUrl = `${proto}://${host}`;
+  const rawSitemap = fs.readFileSync(path.join(ROOT_DIR, 'site/sitemap.xml'), 'utf8');
+  const customized = rawSitemap.replace(/https:\/\/sayedgameasayed\.github\.io\/top-100-agent-skills/g, siteUrl);
+  res.type('application/xml').send(customized);
+});
+
+app.get(['/robots.txt', '/site/robots.txt'], (req, res) => {
+  const host = req.get('host') || 'localhost:3000';
+  const proto = req.get('x-forwarded-proto') || (req.secure ? 'https' : 'http');
+  const siteUrl = `${proto}://${host}`;
+  res.type('text/plain').send(`User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
+});
+
 // Favicon handler
 app.get('/favicon.ico', (req, res) => {
   const iconPath = path.join(ROOT_DIR, 'site/assets/logo.png');
@@ -210,6 +237,23 @@ app.get('/favicon.ico', (req, res) => {
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12,3 22,21 2,21" fill="#8052ff"/></svg>'
     );
   }
+});
+
+// Clean HTML routes & Aliases
+app.get(['/', '/index.html', '/site', '/site/', '/site/index.html'], (req, res) => {
+  sendSeoHtml(path.join(ROOT_DIR, 'site/index.html'), req, res);
+});
+
+app.get(['/leaderboard', '/leaderboard.html', '/site/leaderboard', '/site/leaderboard.html'], (req, res) => {
+  sendSeoHtml(path.join(ROOT_DIR, 'site/leaderboard.html'), req, res);
+});
+
+app.get(['/how-to-use', '/how-to-use.html', '/site/how-to-use', '/site/how-to-use.html'], (req, res) => {
+  sendSeoHtml(path.join(ROOT_DIR, 'site/how-to-use.html'), req, res);
+});
+
+app.get(['/skill.html', '/site/skill.html', '/skill/:id'], (req, res) => {
+  sendSeoHtml(path.join(ROOT_DIR, 'site/skill.html'), req, res);
 });
 
 // Serve site directory at root, /site, and nested prefixes for complete robustness
@@ -226,27 +270,6 @@ app.use('/skill/css', express.static(path.join(ROOT_DIR, 'site/css')));
 app.use('/skill/js', express.static(path.join(ROOT_DIR, 'site/js')));
 app.use('/data', express.static(path.join(ROOT_DIR, 'data')));
 app.use('/screenshots', express.static(path.join(ROOT_DIR, 'screenshots')));
-
-// Clean HTML routes & Aliases
-app.get(['/', '/index.html', '/site', '/site/', '/site/index.html'], (req, res) => {
-  res.sendFile(path.join(ROOT_DIR, 'site/index.html'));
-});
-
-app.get(['/leaderboard', '/leaderboard.html', '/site/leaderboard', '/site/leaderboard.html'], (req, res) => {
-  res.sendFile(path.join(ROOT_DIR, 'site/leaderboard.html'));
-});
-
-app.get(['/how-to-use', '/how-to-use.html', '/site/how-to-use', '/site/how-to-use.html'], (req, res) => {
-  res.sendFile(path.join(ROOT_DIR, 'site/how-to-use.html'));
-});
-
-app.get(['/skill.html', '/site/skill.html'], (req, res) => {
-  res.sendFile(path.join(ROOT_DIR, 'site/skill.html'));
-});
-
-app.get('/skill/:id', (req, res) => {
-  res.sendFile(path.join(ROOT_DIR, 'site/skill.html'));
-});
 
 // Fallback: 404 handler for unknown paths
 app.use((req, res) => {
