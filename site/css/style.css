@@ -1836,3 +1836,342 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   color: var(--color-amber);
   text-align: center;
 }
+
+/* ==========================================================================
+   Language & Theme Switcher Controls
+   ========================================================================== */
+.nav-control-pill {
+  background-color: transparent;
+  color: var(--color-bone-white);
+  border: 1px solid var(--color-graphite-hairline);
+  border-radius: var(--radius-buttons);
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.nav-control-pill:hover {
+  border-color: var(--color-iris-violet);
+  color: var(--color-white);
+  background-color: rgba(146, 129, 247, 0.08);
+}
+
+.nav-control-pill:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   Minimalist Light White Theme Overrides
+   ========================================================================== */
+html[data-theme="light"] {
+  background-color: #ffffff;
+  color: #09090b;
+  color-scheme: light;
+}
+
+html[data-theme="light"] body {
+  background-color: #ffffff;
+  color: #09090b;
+}
+
+html[data-theme="light"] .site-header {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid #e4e4e7;
+}
+
+html[data-theme="light"] .brand-lockup,
+html[data-theme="light"] .nav-ghost-link:hover,
+html[data-theme="light"] .nav-ghost-link.active {
+  color: #09090b;
+}
+
+html[data-theme="light"] .nav-ghost-link {
+  color: #52525b;
+}
+
+html[data-theme="light"] .nav-cta-pill {
+  color: #09090b;
+  border-color: #e4e4e7;
+  background-color: #ffffff;
+}
+
+html[data-theme="light"] .nav-cta-pill:hover {
+  background-color: #f4f4f5;
+  border-color: #09090b;
+}
+
+html[data-theme="light"] .nav-github-star-pill,
+html[data-theme="light"] .nav-control-pill {
+  color: #09090b;
+  border-color: #e4e4e7;
+  background-color: #ffffff;
+}
+
+html[data-theme="light"] .nav-github-star-pill:hover {
+  border-color: #d97706;
+  background-color: rgba(217, 119, 6, 0.06);
+}
+
+html[data-theme="light"] .nav-control-pill:hover {
+  border-color: #6d28d9;
+  background-color: rgba(109, 40, 217, 0.06);
+  color: #6d28d9;
+}
+
+html[data-theme="light"] .hero-headline-sculptural {
+  color: #09090b;
+}
+
+html[data-theme="light"] .hero-body-airy {
+  color: #52525b;
+}
+
+html[data-theme="light"] .hero-kicker-tag {
+  background-color: #f4f4f5;
+  border-color: #e4e4e7;
+  color: #6d28d9;
+}
+
+html[data-theme="light"] .search-input-pill {
+  background-color: #ffffff;
+  border-color: #e4e4e7;
+  color: #09090b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="light"] .search-input-pill::placeholder {
+  color: #a1a1aa;
+}
+
+html[data-theme="light"] .search-input-pill:hover {
+  border-color: #a1a1aa;
+}
+
+html[data-theme="light"] .search-input-pill:focus {
+  border-color: #6d28d9;
+  box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.2);
+}
+
+html[data-theme="light"] .search-icon-symbol,
+html[data-theme="light"] .search-clear-symbol {
+  color: #71717a;
+}
+
+html[data-theme="light"] .share-btn-pill {
+  background-color: #ffffff;
+  border-color: #e4e4e7;
+  color: #52525b;
+}
+
+html[data-theme="light"] .share-btn-pill:hover {
+  color: #09090b;
+  border-color: #71717a;
+  background-color: #f4f4f5;
+}
+
+html[data-theme="light"] .category-nav-bar {
+  border-bottom-color: #e4e4e7;
+}
+
+html[data-theme="light"] .category-nav-item {
+  color: #52525b;
+}
+
+html[data-theme="light"] .category-nav-item:hover {
+  color: #09090b;
+}
+
+html[data-theme="light"] .category-nav-item.active {
+  color: #6d28d9;
+  border-bottom-color: #6d28d9;
+}
+
+html[data-theme="light"] .skill-card {
+  background-color: #ffffff;
+  border-color: #e4e4e7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="light"] .skill-card:hover {
+  background-color: #fafafa;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="light"] .card-title {
+  color: #09090b;
+}
+
+html[data-theme="light"] .card-summary {
+  color: #52525b;
+}
+
+html[data-theme="light"] .card-name-en {
+  color: #71717a;
+}
+
+html[data-theme="light"] .card-stars-badge {
+  background-color: rgba(217, 119, 6, 0.08);
+  border-color: rgba(217, 119, 6, 0.2);
+  color: #d97706;
+}
+
+html[data-theme="light"] .card-category-label {
+  color: #71717a;
+}
+
+html[data-theme="light"] .card-difficulty {
+  color: #71717a;
+  background-color: #f4f4f5;
+  border-color: #e4e4e7;
+}
+
+html[data-theme="light"] .sort-select {
+  background-color: #ffffff;
+  border-color: #e4e4e7;
+  color: #09090b;
+}
+
+html[data-theme="light"] .site-footer {
+  background-color: #ffffff;
+  border-top-color: #e4e4e7;
+  color: #71717a;
+}
+
+html[data-theme="light"] .footer-brand-title {
+  color: #09090b;
+}
+
+html[data-theme="light"] .footer-nav-link {
+  color: #52525b;
+}
+
+html[data-theme="light"] .footer-nav-link:hover {
+  color: #09090b;
+}
+
+html[data-theme="light"] .leaderboard-table th {
+  background-color: #f8fafc;
+  border-bottom-color: #e4e4e7;
+  color: #52525b;
+}
+
+html[data-theme="light"] .leaderboard-table td {
+  border-bottom-color: #f1f5f9;
+  color: #09090b;
+}
+
+html[data-theme="light"] .leaderboard-table tr:hover td {
+  background-color: #f8fafc;
+}
+
+html[data-theme="light"] .detail-headline-sculptural {
+  color: #09090b;
+}
+
+html[data-theme="light"] .detail-summary-airy {
+  color: #52525b;
+}
+
+html[data-theme="light"] .btn-ghost-pill {
+  color: #09090b;
+  border-color: #e4e4e7;
+  background-color: #ffffff;
+}
+
+html[data-theme="light"] .btn-ghost-pill:hover {
+  background-color: #f4f4f5;
+  border-color: #09090b;
+}
+
+html[data-theme="light"] .editorial-statement {
+  color: #09090b;
+}
+
+html[data-theme="light"] .editorial-list li {
+  color: #3f3f46;
+}
+
+html[data-theme="light"] .use-case-box {
+  background-color: #ffffff;
+  border-color: #e4e4e7;
+  color: #27272a;
+}
+
+html[data-theme="light"] .integration-step-box {
+  background-color: #ffffff;
+  border-color: #e4e4e7;
+}
+
+html[data-theme="light"] .integration-tab-btn {
+  color: #52525b;
+}
+
+html[data-theme="light"] .integration-tab-btn.active {
+  color: #09090b;
+  border-bottom-color: #6d28d9;
+}
+
+html[data-theme="light"] .prompt-pre-box,
+html[data-theme="light"] pre,
+html[data-theme="light"] code {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  color: #0f172a;
+}
+
+html[data-theme="light"] .empty-state {
+  background-color: #ffffff;
+  border-color: #e4e4e7;
+}
+
+html[data-theme="light"] .empty-state-title {
+  color: #09090b;
+}
+
+html[data-theme="light"] .empty-state-text {
+  color: #52525b;
+}
+
+/* ==========================================================================
+   LTR Typography & Directional Alignment
+   ========================================================================== */
+html[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir="ltr"] body {
+  font-family: var(--font-inter);
+}
+
+html[dir="ltr"] .hero-headline-sculptural,
+html[dir="ltr"] .card-title,
+html[dir="ltr"] .detail-headline-sculptural,
+html[dir="ltr"] .editorial-statement,
+html[dir="ltr"] .section-headline-prominent,
+html[dir="ltr"] .highlights-title {
+  font-family: var(--font-inter);
+  letter-spacing: -0.025em;
+}
+
+html[dir="ltr"] .editorial-list {
+  padding-left: 20px;
+  padding-right: 0;
+}
+
+html[dir="ltr"] .detail-summary-block {
+  text-align: left !important;
+}
+
+html[dir="ltr"] .unverified-quarantine-box {
+  text-align: left !important;
+}
+

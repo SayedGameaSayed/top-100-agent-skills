@@ -140,3 +140,55 @@
   --shadow-subtle: rgba(176, 199, 217, 0.145) 0px 0px 0px 1px;
   --shadow-none: none;
 }
+
+:root[data-theme="light"],
+html[data-theme="light"] {
+  /* ==========================================================================
+     Minimalist Light White Palette
+     ========================================================================== */
+  --color-void-black: #ffffff;
+  --color-graphite-hairline: #e4e4e7;
+  --color-white: #09090b;
+  --color-bone-white: #09090b;
+  --color-ash-gray: #52525b;
+  --color-smoke-gray: #71717a;
+  --color-iron: #a1a1aa;
+  --color-charcoal: #d4d4d8;
+
+  /* Accents */
+  --color-iris-violet: #6d28d9;
+  --gradient-iris-violet: linear-gradient(to right bottom, #7c3aed 0%, #6d28d9 100%);
+  --color-iris-violet-glow: #8b5cf6;
+  --color-signal-blue: #0284c7;
+  --color-sky-blue: #0369a1;
+  --color-pulse-green: #059669;
+  --color-alarm-red: #e11d48;
+  --color-crimson: #dc2626;
+  --color-amber: #d97706;
+  --color-amber-glow: #b45309;
+  --color-surface-gradient: #f8fafc;
+  --gradient-surface-gradient: linear-gradient(#ffffff, #f8fafc);
+
+  /* Surfaces */
+  --surface-void: #ffffff;
+  --surface-graphite: #e4e4e7;
+  --surface-surface-lift: #f8fafc;
+  --surface-backdrop-blur: rgba(255, 255, 255, 0.92);
+
+  /* Semantic System Aliases */
+  --color-void: #ffffff;
+  --color-electric-iris: #6d28d9;
+  --color-electric-iris-hover: #5b21b6;
+  --color-saffron-spark: #d97706;
+  --color-deep-verdant: #059669;
+  --color-silver-mist: #71717a;
+  --surface-void-canvas: #ffffff;
+  --surface-card: #ffffff;
+  --surface-card-hover: #f9fafb;
+  --surface-input: #ffffff;
+  --surface-pill: rgba(0, 0, 0, 0.05);
+  --border-subtle: #e4e4e7;
+  --border-focus: #6d28d9;
+
+  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}

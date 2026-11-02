@@ -8,6 +8,7 @@ import { copyToClipboard } from './copy.js';
 import { initConstellation } from './constellation.js';
 import { initAiBot } from './bot.js';
 import { initScrollEffects, observeCardsScrollEntrance } from './scroll-effects.js';
+import { initI18nAndTheme, getLang, getTheme, t, onStateChange } from './i18n.js';
 
 let skillsData = null;
 let toolsData = null;
@@ -71,6 +72,15 @@ export function getEffectiveSourceUrl(skill) {
 }
 
 export function formatDifficulty(difficulty) {
+  const lang = getLang();
+  if (lang === 'en') {
+    const map = {
+      beginner: 'Beginner',
+      intermediate: 'Intermediate',
+      advanced: 'Advanced'
+    };
+    return map[difficulty] || 'Beginner';
+  }
   const map = {
     beginner: 'مبتدئ',
     intermediate: 'متوسط',
@@ -81,11 +91,12 @@ export function formatDifficulty(difficulty) {
 
 export function getBareLicenseLabelHtml(license) {
   const status = license?.status;
+  const lang = getLang();
   if (status === 'proprietary_link_only') {
-    return `<span class="card-license-label">رخصة خاصة</span>`;
+    return `<span class="card-license-label">${lang === 'en' ? 'Proprietary' : 'رخصة خاصة'}</span>`;
   }
   if (status === 'verify_before_publish') {
-    return `<span class="card-license-label verify-orange">تحقق من الرخصة</span>`;
+    return `<span class="card-license-label verify-orange">${lang === 'en' ? 'Verify License' : 'تحقق من الرخصة'}</span>`;
   }
   return '';
 }
@@ -111,21 +122,24 @@ export function formatStars(num) {
 }
 
 export function renderSkillCard(skill, categories) {
+  const lang = getLang();
   const catObj = (categories || []).find((c) => c.id === skill.category);
-  const catName = catObj ? catObj.name_ar : skill.category;
+  const catName = lang === 'en' ? (catObj?.name_en || skill.category) : (catObj?.name_ar || skill.category);
+  const title = lang === 'en' ? (skill.title_en || skill.name) : skill.title_ar;
+  const summary = lang === 'en' ? (skill.summary_en || skill.summary_ar) : skill.summary_ar;
   const starsFormatted = formatStars(skill.github_stars);
 
   return `
-    <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="skill-card" aria-label="${escapeHtml(skill.title_ar)}">
+    <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="skill-card" aria-label="${escapeHtml(title)}">
       <div class="card-top">
         <div class="card-meta-line">
           <span class="card-name-en ltr">${escapeHtml(skill.name)}</span>
-          <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} نجمة على GitHub">★ ${starsFormatted}</span>
+          <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} ${t('navStar')}">★ ${starsFormatted}</span>
           ${skill.content_verified !== true ? '<span class="unverified-card-pill" style="font-size: 11px; font-weight: 500; color: var(--color-amber); background: rgba(255, 202, 22, 0.08); border: 1px solid rgba(255, 202, 22, 0.28); border-radius: var(--radius-badges); padding: 2px 8px;">غير مراجَع</span>' : ''}
           <span class="card-category-label">${escapeHtml(catName)}</span>
         </div>
-        <h3 class="card-title">${escapeHtml(skill.title_ar)}</h3>
-        <p class="card-summary">${escapeHtml(skill.summary_ar)}</p>
+        <h3 class="card-title">${escapeHtml(title)}</h3>
+        <p class="card-summary">${escapeHtml(summary)}</p>
       </div>
       <div class="card-bottom-row">
         <span class="card-difficulty">${formatDifficulty(skill.difficulty)}</span>
@@ -161,6 +175,96 @@ export async function initIndexPage() {
   let activeCategory = 'all';
   let activeSort = 'stars';
 
+  function updateStaticUi() {
+    const kickerSpan = document.querySelector('.hero-kicker-tag span:last-child');
+    if (kickerSpan) kickerSpan.textContent = t('siteName');
+
+    const heroHeadline = document.querySelector('.hero-headline-sculptural');
+    if (heroHeadline) heroHeadline.textContent = t('heroHeadline');
+
+    const heroBody = document.querySelector('.hero-body-airy');
+    if (heroBody) heroBody.textContent = t('heroSub');
+
+    if (searchInput) searchInput.placeholder = t('searchPlaceholder');
+
+    const shareLabel = document.querySelector('.share-label');
+    if (shareLabel) shareLabel.textContent = t('quickShare');
+
+    const shareXText = document.getElementById('share-x-text');
+    if (shareXText) shareXText.textContent = t('shareX');
+
+    const shareWaText = document.getElementById('share-wa-text');
+    if (shareWaText) shareWaText.textContent = t('shareWhatsApp');
+
+    const copyBtnSpan = document.querySelector('#copy-site-link-btn span:last-child');
+    if (copyBtnSpan) copyBtnSpan.textContent = t('copyLink');
+
+    const highlightsTitle = document.querySelector('.highlights-title');
+    if (highlightsTitle) highlightsTitle.textContent = t('featuredTitle');
+
+    const allSkillsTitle = document.querySelector('.section-headline-prominent') || document.querySelector('.section-headline');
+    if (allSkillsTitle) allSkillsTitle.textContent = t('allSkillsTitle');
+
+    const highlightsViewAllBtn = document.getElementById('highlights-view-all-btn');
+    if (highlightsViewAllBtn) highlightsViewAllBtn.textContent = t('viewAllSkills');
+
+    const sortLabel = document.querySelector('label[for="sort-select"]');
+    if (sortLabel) sortLabel.textContent = t('sortBy');
+
+    if (sortSelect && sortSelect.options.length >= 2) {
+      sortSelect.options[0].textContent = t('sortHighestStars');
+      if (sortSelect.options.length >= 3) {
+        sortSelect.options[1].textContent = t('sortFeatured');
+        sortSelect.options[2].textContent = t('sortAlphabetical');
+      } else {
+        sortSelect.options[1].textContent = t('sortAlphabetical');
+      }
+    }
+
+    const botTriggerText = document.querySelector('.bot-trigger-text');
+    if (botTriggerText) botTriggerText.textContent = t('assistantBtn');
+
+    const scrollTopText = document.getElementById('scroll-top-text');
+    if (scrollTopText) scrollTopText.textContent = getLang() === 'en' ? 'Top' : 'للأعلى';
+
+    const footerP = document.querySelector('.site-footer p');
+    if (footerP) {
+      const lang = getLang();
+      footerP.textContent = lang === 'en'
+        ? 'Top 100 AI Agent Skills — Independent community open-source directory.'
+        : 'دليل مهارات الذكاء الاصطناعي — مشروع مجتمعي مستقل ومفتوح المصدر.';
+    }
+
+    if (emptyStateEl) {
+      const emptyTitle = emptyStateEl.querySelector('.empty-state-title');
+      const emptySub = emptyStateEl.querySelector('.empty-state-text');
+      if (emptyTitle) emptyTitle.textContent = t('emptySearch');
+      if (emptySub) emptySub.textContent = t('emptySearchSub');
+    }
+  }
+
+  function renderHighlights() {
+    if (!highlightsContainer) return;
+    const featuredSkills = skillsData.skills.filter((s) => s.featured === true);
+    highlightsContainer.innerHTML = featuredSkills
+      .map((skill) => renderSkillCard(skill, skillsData.categories))
+      .join('');
+  }
+
+  function renderCategoryNavigation() {
+    if (!categoryNav || !skillsData.categories) return;
+    const lang = getLang();
+    categoryNav.innerHTML = `
+      <button class="category-nav-item ${activeCategory === 'all' ? 'active' : ''}" data-category="all" type="button">${t('allCategories')}</button>
+      ${skillsData.categories
+        .map(
+          (cat) =>
+            `<button class="category-nav-item ${activeCategory === cat.id ? 'active' : ''}" data-category="${cat.id}" type="button">${escapeHtml(lang === 'en' ? (cat.name_en || cat.name_ar) : cat.name_ar)}</button>`
+        )
+        .join('')}
+    `;
+  }
+
   if (sortSelect) {
     sortSelect.addEventListener('change', () => {
       activeSort = sortSelect.value;
@@ -168,13 +272,8 @@ export async function initIndexPage() {
     });
   }
 
-  // Render Highlights Band (Featured skills)
-  if (highlightsContainer) {
-    const featuredSkills = skillsData.skills.filter((s) => s.featured === true);
-    highlightsContainer.innerHTML = featuredSkills
-      .map((skill) => renderSkillCard(skill, skillsData.categories))
-      .join('');
-  }
+  // Render Highlights Band
+  renderHighlights();
 
   if (viewAllBtn) {
     viewAllBtn.addEventListener('click', (e) => {
@@ -184,17 +283,8 @@ export async function initIndexPage() {
   }
 
   // Render Category Navigation
-  if (categoryNav && skillsData.categories) {
-    categoryNav.innerHTML = `
-      <button class="category-nav-item active" data-category="all" type="button">الكل</button>
-      ${skillsData.categories
-        .map(
-          (cat) =>
-            `<button class="category-nav-item" data-category="${cat.id}" type="button">${escapeHtml(cat.name_ar)}</button>`
-        )
-        .join('')}
-    `;
-
+  renderCategoryNavigation();
+  if (categoryNav) {
     categoryNav.addEventListener('click', (e) => {
       const item = e.target.closest('.category-nav-item');
       if (!item) return;
@@ -229,7 +319,7 @@ export async function initIndexPage() {
     if (!gridContainer) return;
 
     if (resultsCountEl) {
-      resultsCountEl.textContent = `عرض ${skills.length} من أصل ${skillsData.skills.length} مهارة`;
+      resultsCountEl.textContent = t('showingSkills', skills.length, skillsData.skills.length);
     }
 
     if (skills.length === 0) {
@@ -265,6 +355,7 @@ export async function initIndexPage() {
       difficulty: 'all'
     });
 
+    const lang = getLang();
     if (activeSort === 'stars') {
       filtered.sort((a, b) => (b.github_stars || 0) - (a.github_stars || 0));
     } else if (activeSort === 'featured') {
@@ -272,7 +363,11 @@ export async function initIndexPage() {
         (a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || (b.github_stars || 0) - (a.github_stars || 0)
       );
     } else if (activeSort === 'name') {
-      filtered.sort((a, b) => (a.title_ar || '').localeCompare(b.title_ar || '', 'ar'));
+      filtered.sort((a, b) => {
+        const nameA = lang === 'en' ? (a.title_en || a.name) : (a.title_ar || '');
+        const nameB = lang === 'en' ? (b.title_en || b.name) : (b.title_ar || '');
+        return nameA.localeCompare(nameB, lang === 'en' ? 'en' : 'ar');
+      });
     }
 
     renderGrid(filtered);
@@ -290,7 +385,15 @@ export async function initIndexPage() {
     });
   }
 
+  updateStaticUi();
   performFilter();
+
+  onStateChange(() => {
+    updateStaticUi();
+    renderHighlights();
+    renderCategoryNavigation();
+    performFilter();
+  });
 }
 
 /**
@@ -398,40 +501,47 @@ export async function initSkillDetailPage() {
   const verifiedTools = (toolsData || []).filter((t) => t.verified === true);
   const isMultiSkill = skill.kind === 'collection' || skill.kind === 'directory' || !skill.source?.path_in_repo;
 
+  const lang = getLang();
+  const catObj = (skillsData.categories || []).find((c) => c.id === skill.category);
+  const catName = lang === 'en' ? (catObj?.name_en || skill.category) : (catObj?.name_ar || skill.category);
+  const title = lang === 'en' ? (skill.title_en || skill.name) : skill.title_ar;
+  const summary = lang === 'en' ? (skill.summary_en || skill.summary_ar) : skill.summary_ar;
+  const benefits = lang === 'en' ? (skill.benefits_en || skill.benefits_ar || []) : (skill.benefits_ar || []);
+  const useCases = lang === 'en' ? (skill.use_cases_en || skill.use_cases_ar || []) : (skill.use_cases_ar || []);
+
   container.innerHTML = `
     <!-- Detail Hero Section -->
     <header class="detail-hero-section">
       <div class="section-container">
         <div class="detail-kicker-row" style="display: flex; align-items: center; gap: 12px; margin-block-end: 16px; flex-wrap: wrap;">
-          <span class="detail-kicker-label">${escapeHtml(categoryName)}</span>
+          <span class="detail-kicker-label">${escapeHtml(catName)}</span>
           ${
             skill.reviewed_by
               ? `<span class="verified-reviewer-badge" style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: rgba(58, 211, 137, 0.1); border: 1px solid rgba(58, 211, 137, 0.3); border-radius: var(--radius-badges); font-size: 13px; color: var(--color-pulse-green);">
-                  <span>✓ تدقيق بشري: ${escapeHtml(skill.reviewed_by)}</span>
-                  ${skill.reviewed_on ? `<span>(${escapeHtml(skill.reviewed_on)})</span>` : ''}
+                  <span>${t('humanVerified', escapeHtml(skill.reviewed_by), escapeHtml(skill.reviewed_on || ''))}</span>
                 </span>`
               : ''
           }
           ${
             skill.github_stars
-              ? `<span class="detail-stars-badge" style="color: var(--color-amber); font-family: var(--font-commit-mono); font-size: 13px; font-weight: 500; background: rgba(255,202,22,0.08); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
+              ? `<span class="detail-stars-badge" style="color: var(--color-amber); font-family: var(--font-commit-mono); font-size: 13px; font-weight: 500; background: rgba(255,202,22,0.08); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">${t('starsOnGithub', (skill.github_stars).toLocaleString())}</span>`
               : ''
           }
         </div>
-        <h1 class="detail-headline-sculptural">${escapeHtml(skill.title_ar)}</h1>
-        <p class="detail-summary-airy">${escapeHtml(skill.summary_ar)}</p>
+        <h1 class="detail-headline-sculptural">${escapeHtml(title)}</h1>
+        <p class="detail-summary-airy">${escapeHtml(summary)}</p>
 
         <div class="detail-actions-row">
           <button id="copy-ready-prompt-btn" class="btn-electric-pill" type="button">
-            انسخ البرومبت الجاهز
+            ${t('copyPromptBtn')}
           </button>
           
           <button id="copy-link-only-btn" class="btn-ghost-pill" type="button">
-            انسخ اللينك فقط
+            ${t('copyLinkBtn')}
           </button>
 
           <a href="${escapeHtml(effectiveSourceUrl)}" target="_blank" rel="noopener noreferrer" class="text-accent-link">
-            افتح المصدر على GitHub ↗
+            ${t('openGithub')} ↗
           </a>
         </div>
       </div>
@@ -440,10 +550,10 @@ export async function initSkillDetailPage() {
     <!-- Editorial Block: Benefits -->
     <section class="editorial-block">
       <div class="section-container">
-        <div class="editorial-kicker">القدرات والمزايا</div>
-        <h2 class="editorial-statement">ما الذي تقدمه هذه المهارة لعملك؟</h2>
+        <div class="editorial-kicker">${t('benefitsTitle')}</div>
+        <h2 class="editorial-statement">${t('benefitsSub')}</h2>
         <ul class="editorial-list">
-          ${(skill.benefits_ar || []).map((b) => `<li>${escapeHtml(b)}</li>`).join('')}
+          ${benefits.map((b) => `<li>${escapeHtml(b)}</li>`).join('')}
         </ul>
       </div>
     </section>
@@ -451,10 +561,10 @@ export async function initSkillDetailPage() {
     <!-- Editorial Block: Use Cases -->
     <section class="editorial-block">
       <div class="section-container">
-        <div class="editorial-kicker">حالات الاستخدام</div>
-        <h2 class="editorial-statement">أمثلة واقعية يمكنك تطبيقها فوراً</h2>
+        <div class="editorial-kicker">${t('useCasesTitle')}</div>
+        <h2 class="editorial-statement">${t('useCasesSub')}</h2>
         <div class="use-cases-grid">
-          ${(skill.use_cases_ar || []).map((uc) => `<div class="use-case-box">${escapeHtml(uc)}</div>`).join('')}
+          ${useCases.map((uc) => `<div class="use-case-box">${escapeHtml(uc)}</div>`).join('')}
         </div>
       </div>
     </section>
@@ -462,16 +572,16 @@ export async function initSkillDetailPage() {
     <!-- Editorial Block: Example Prompts -->
     <section class="editorial-block">
       <div class="section-container">
-        <div class="editorial-kicker">نماذج الطلبات</div>
-        <h2 class="editorial-statement">اطلب من الموديل بالعربية بهذه الصيغ</h2>
+        <div class="editorial-kicker">${lang === 'en' ? 'Prompt Formats' : 'نماذج الطلبات'}</div>
+        <h2 class="editorial-statement">${lang === 'en' ? 'Ask the model with these prompt templates' : 'اطلب من الموديل بهذه الصيغ'}</h2>
         <div class="example-prompts-group">
           ${(skill.example_prompts_ar || [])
             .map(
               (p) => `
             <div class="example-prompt-card">
               <span class="example-prompt-text">${escapeHtml(p)}</span>
-              <button class="btn-mini-copy copy-prompt-btn" data-text="${escapeHtml(p)}" type="button" aria-label="نسخ الطلب">
-                نسخ الطلب
+              <button class="btn-mini-copy copy-prompt-btn" data-text="${escapeHtml(p)}" type="button" aria-label="${lang === 'en' ? 'Copy Prompt' : 'نسخ الطلب'}">
+                ${lang === 'en' ? 'Copy Prompt' : 'نسخ الطلب'}
               </button>
             </div>
           `
@@ -787,12 +897,58 @@ export async function initLeaderboardPage() {
   // Ensure skills are sorted with 3-skills-per-repo diversity cap
   const sortedSkills = computeDiverseLeaderboard(skillsData.skills);
 
+  function updateLeaderboardStaticUi() {
+    const lang = getLang();
+    const titleEl = document.querySelector('header h1');
+    if (titleEl) titleEl.textContent = t('leaderboardTitle');
+
+    const subEl = document.querySelector('header p');
+    if (subEl) subEl.textContent = t('leaderboardSub');
+
+    const kickerEl = document.querySelector('.hero-kicker-tag span:last-child');
+    if (kickerEl) kickerEl.textContent = lang === 'en' ? 'Global Ranking of Agent Skills (by repo stars)' : 'التصنيف العالمي لمهارات الوكلاء (الأكثر شهرة حسب نجوم المستودع)';
+
+    const alertEl = document.querySelector('div[style*="rgba(255, 202, 22"] span:last-child');
+    if (alertEl) alertEl.innerHTML = lang === 'en' ? '<strong>Transparency Notice:</strong> Stars shown belong to the parent GitHub repository, not the individual skill alone.' : '<strong>تنبيه شفافية:</strong> عدد النجوم المعروض يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها.';
+
+    const dateEl = document.getElementById('leaderboard-date-badge');
+    if (dateEl) dateEl.textContent = lang === 'en' ? 'Repository stars as of: November 2026 (Refreshed every 24h)' : 'نجوم المستودعات كما في: 1 نوفمبر 2026 (تحديث دوري كل 24 ساعة)';
+
+    const catLabel = document.querySelector('label[for="leaderboard-category-filter"]');
+    if (catLabel) catLabel.textContent = lang === 'en' ? 'Category:' : 'التصنيف:';
+
+    if (searchInput) searchInput.placeholder = lang === 'en' ? 'Search leaderboard skills: planning, testing, devtools...' : 'ابحث في لوحة الصدارة: تخطيط، أدوات، اختبار…';
+
+    const ths = document.querySelectorAll('.leaderboard-table th');
+    if (ths.length >= 6) {
+      ths[0].textContent = t('thRank');
+      ths[1].textContent = t('thStars');
+      ths[2].textContent = t('thSkill');
+      ths[3].textContent = t('thCategory');
+      ths[4].textContent = t('thRepo');
+      ths[5].textContent = t('thAction');
+    }
+
+    if (categorySelect && skillsData.categories) {
+      const currentVal = categorySelect.value || 'all';
+      categorySelect.innerHTML =
+        `<option value="all">${lang === 'en' ? `All Categories (${skillsData.skills.length} skills)` : `جميع الأقسام (${skillsData.skills.length} مهارة)`}</option>` +
+        skillsData.categories
+          .map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(lang === 'en' ? (c.name_en || c.name_ar) : c.name_ar)}</option>`)
+          .join('');
+      categorySelect.value = currentVal;
+    }
+  }
+
+  updateLeaderboardStaticUi();
+
   function renderTable(skills) {
+    const lang = getLang();
     if (skills.length === 0) {
       tbody.innerHTML = `
         <tr>
           <td colspan="6" style="padding: 48px 20px; text-align: center; color: var(--color-silver-mist);">
-            لا توجد مهارات تطابق بحثك في لوحة الصدارة.
+            ${lang === 'en' ? 'No skills matched your search query.' : 'لا توجد مهارات تطابق بحثك في لوحة الصدارة.'}
           </td>
         </tr>
       `;
@@ -809,7 +965,8 @@ export async function initLeaderboardPage() {
 
         const starsFormatted = formatStars(skill.github_stars);
         const catObj = (skillsData.categories || []).find((c) => c.id === skill.category);
-        const catName = catObj ? catObj.name_ar : skill.category;
+        const catName = lang === 'en' ? (catObj?.name_en || skill.category) : (catObj?.name_ar || skill.category);
+        const title = lang === 'en' ? (skill.title_en || skill.name) : skill.title_ar;
         const effectiveUrl = getEffectiveSourceUrl(skill);
         let repoDisplay = 'GitHub';
         try {
@@ -831,16 +988,16 @@ export async function initLeaderboardPage() {
               ${rankBadge}
             </td>
             <td style="padding: 14px 20px; text-align: center;">
-              <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} نجمة على GitHub">★ ${starsFormatted}</span>
+              <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} ${t('navStar')}">★ ${starsFormatted}</span>
             </td>
             <td style="padding: 14px 20px;">
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                   <a href="skill.html?id=${encodeURIComponent(skill.id)}" style="color: var(--color-bone-white); font-weight: 600; text-decoration: none; font-size: 15px;" class="leaderboard-skill-link">
-                    ${escapeHtml(skill.title_ar)}
+                    ${escapeHtml(title)}
                   </a>
-                  ${skill.tier === 'extended_tool_or_plugin' ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(148, 163, 184, 0.12); color: #94a3b8; border-radius: 4px; border: 1px solid rgba(148, 163, 184, 0.25);">${skill.repo_type === 'tool' ? 'أداة' : skill.repo_type === 'plugin' ? 'إضافة' : skill.repo_type === 'list' ? 'قائمة' : 'مجموعة'}</span>` : ''}
-                  ${skill.responsible_use_note_ar ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(245, 158, 11, 0.12); color: #fbbf24; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.25);" title="${escapeHtml(skill.responsible_use_note_ar)}">⚠️ استخدام مسؤول</span>` : ''}
+                  ${skill.tier === 'extended_tool_or_plugin' ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(148, 163, 184, 0.12); color: #94a3b8; border-radius: 4px; border: 1px solid rgba(148, 163, 184, 0.25);">${skill.repo_type === 'tool' ? 'Tool' : skill.repo_type === 'plugin' ? 'Plugin' : 'List'}</span>` : ''}
+                  ${skill.responsible_use_note_ar ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(245, 158, 11, 0.12); color: #fbbf24; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.25);" title="${escapeHtml(skill.responsible_use_note_ar)}">⚠️ ${lang === 'en' ? 'Responsible Use' : 'استخدام مسؤول'}</span>` : ''}
                 </div>
                 <span style="color: var(--color-silver-mist); font-size: 12px; font-family: var(--font-mono);" dir="ltr">${escapeHtml(
                   skill.name
@@ -860,7 +1017,7 @@ export async function initLeaderboardPage() {
             <td style="padding: 14px 20px; text-align: center;">
               <div style="display: inline-flex; align-items: center; gap: 8px;">
                 <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="btn-ghost" style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-buttons); text-decoration: none; border: 1px solid var(--color-graphite-hairline); color: var(--color-white); background: transparent;">
-                  التفاصيل
+                  ${lang === 'en' ? 'Details' : 'التفاصيل'}
                 </a>
                 ${
                   skill.content_verified === true
@@ -870,9 +1027,9 @@ export async function initLeaderboardPage() {
                         data-prompt="${escapeHtml(readyPrompt)}" 
                         style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-buttons); background: transparent; border: 1px solid var(--color-graphite-hairline); color: var(--color-white); cursor: pointer;"
                       >
-                        نسخ البرومبت
+                        ${lang === 'en' ? 'Copy Prompt' : 'نسخ البرومبت'}
                       </button>`
-                    : `<span style="padding: 3px 8px; font-size: 11px; font-weight: 500; color: var(--color-amber); background: rgba(255,202,22,0.08); border: 1px solid rgba(255,202,22,0.25); border-radius: var(--radius-badges);">غير مراجَع</span>`
+                    : `<span style="padding: 3px 8px; font-size: 11px; font-weight: 500; color: var(--color-amber); background: rgba(255,202,22,0.08); border: 1px solid rgba(255,202,22,0.25); border-radius: var(--radius-badges);">${lang === 'en' ? 'Unverified' : 'غير مراجَع'}</span>`
                 }
               </div>
             </td>
@@ -937,6 +1094,11 @@ export async function initLeaderboardPage() {
 
   searchInput?.addEventListener('input', applyFilters);
   categorySelect?.addEventListener('change', applyFilters);
+
+  onStateChange(() => {
+    updateLeaderboardStaticUi();
+    applyFilters();
+  });
 }
 
 function escapeHtml(str) {
@@ -950,6 +1112,12 @@ function escapeHtml(str) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    initI18nAndTheme();
+  } catch (err) {
+    console.warn('i18n init error:', err);
+  }
+
   const page = document.body.dataset.page;
   try {
     if (page === 'index') {

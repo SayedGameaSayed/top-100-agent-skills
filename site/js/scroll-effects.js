@@ -19,10 +19,11 @@ export function initScrollEffects() {
     scrollTopBtn = document.createElement('button');
     scrollTopBtn.id = 'scroll-top-pill';
     scrollTopBtn.className = 'scroll-top-pill';
-    scrollTopBtn.setAttribute('aria-label', 'العودة لأعلى الصفحة');
+    const isEn = document.documentElement.lang === 'en';
+    scrollTopBtn.setAttribute('aria-label', isEn ? 'Back to top' : 'العودة لأعلى الصفحة');
     scrollTopBtn.innerHTML = `
       <span class="scroll-top-arrow">↑</span>
-      <span>للأعلى</span>
+      <span id="scroll-top-text">${isEn ? 'Top' : 'للأعلى'}</span>
       <span class="scroll-top-dot"></span>
     `;
     scrollTopBtn.addEventListener('click', () => {

@@ -28,16 +28,16 @@ function getRankBadge(rank) {
 }
 
 const CATEGORY_MAP = {
-  'documents': { name_ar: 'المستندات والملفات' },
-  'design': { name_ar: 'التصميم والإبداع' },
-  'development': { name_ar: 'البرمجة والويب' },
-  'code-quality': { name_ar: 'جودة الكود والاختبار' },
-  'cloud-security': { name_ar: 'السحابة والأمان' },
-  'data-ai': { name_ar: 'البيانات والذكاء الاصطناعي' },
-  'science-education': { name_ar: 'العلوم والتعليم' },
-  'business-finance': { name_ar: 'الأعمال والمال' },
-  'communication': { name_ar: 'الكتابة والتواصل' },
-  'meta': { name_ar: 'بناء المهارات واكتشافها' }
+  'documents': { name_ar: 'المستندات والملفات', name_en: 'Documents & Files' },
+  'design': { name_ar: 'التصميم والإبداع', name_en: 'Design & Creative' },
+  'development': { name_ar: 'البرمجة والويب', name_en: 'Development & Web' },
+  'code-quality': { name_ar: 'جودة الكود والاختبار', name_en: 'Code Quality & Testing' },
+  'cloud-security': { name_ar: 'السحابة والأمان', name_en: 'Cloud & Security' },
+  'data-ai': { name_ar: 'البيانات والذكاء الاصطناعي', name_en: 'Data & AI' },
+  'science-education': { name_ar: 'العلوم والتعليم', name_en: 'Science & Education' },
+  'business-finance': { name_ar: 'الأعمال والمال', name_en: 'Business & Finance' },
+  'communication': { name_ar: 'الكتابة والتواصل', name_en: 'Writing & Communication' },
+  'meta': { name_ar: 'بناء المهارات واكتشافها', name_en: 'Skill Creation & Meta' }
 };
 
 const REPO_TYPE_MAP = {
@@ -111,11 +111,15 @@ const leaderboardPayload = {
       id: skill.id,
       name: skill.name,
       title_ar: skill.title_ar,
+      title_en: skill.title_en || skill.name,
       summary_ar: skill.summary_ar,
+      summary_en: skill.summary_en || skill.summary_ar,
       category: skill.category,
       category_ar: catMeta.name_ar,
+      category_en: catMeta.name_en || skill.category,
       repo_type: skill.repo_type || 'skills',
       repo_type_ar: REPO_TYPE_MAP[skill.repo_type] || 'مهارة (Skill)',
+      repo_type_en: 'Skill',
       github_stars: skill.github_stars || 0,
       stars_formatted: formatNumber(skill.github_stars),
       stars_fetched_at: STARS_FETCHED_AT,

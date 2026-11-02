@@ -82,6 +82,20 @@
   
   <!-- Fuse.js CDN with graceful fallback -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
+  <!-- Prevent Theme / Lang Flash (FOUC) -->
+  <script>
+    (function() {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var l = p.get('lang') || localStorage.getItem('site_lang') || 'ar';
+        var t = p.get('theme') || localStorage.getItem('site_theme') || 'dark';
+        document.documentElement.lang = l;
+        document.documentElement.dir = (l === 'en') ? 'ltr' : 'rtl';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch(e) {}
+    })();
+  </script>
 </head>
 <body data-page="index">
 
@@ -97,6 +111,15 @@
         <a href="index.html" class="nav-ghost-link active">الرئيسية</a>
         <a href="leaderboard.html" class="nav-ghost-link">لوحة الصدارة</a>
         <a href="how-to-use.html" class="nav-ghost-link">طريقة الاستخدام</a>
+
+        <!-- Language & Theme Switchers -->
+        <button id="lang-toggle-btn" class="nav-control-pill" type="button" aria-label="تبديل اللغة / Switch Language" title="Switch language / تغيير اللغة">
+          🌐 <span id="lang-btn-text">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="nav-control-pill" type="button" aria-label="تبديل المظهر / Toggle Theme" title="Toggle Light/Dark Theme / تغيير المظهر">
+          <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">ثيم أبيض</span>
+        </button>
+
         <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" rel="noopener noreferrer" class="nav-github-star-pill" aria-label="Star on GitHub" title="ادعم المشروع بنجمة على GitHub">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
@@ -153,8 +176,9 @@
 
           <!-- Viral 1-Click Share Toolbar for Influencers & Community -->
           <div class="hero-share-bar" style="margin-block-start: 22px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-            <span style="font-size: 13px; color: var(--color-ash-gray);">مشاركة سريعة:</span>
+            <span class="share-label" style="font-size: 13px; color: var(--color-ash-gray);">مشاركة سريعة:</span>
             <a 
+              id="share-x-link"
               href="https://twitter.com/intent/tweet?text=%D8%AF%D9%84%D9%8A%D9%84%20%D8%A3%D9%81%D8%B6%D9%84%20100%20%D9%85%D9%87%D8%A7%D8%B1%D8%A9%20%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A%20%D9%85%D9%81%D8%AA%D9%88%D8%AD%D8%A9%20%D8%A7%D9%84%D9%85%D8%B5%D8%AF%D8%B1%20%D9%85%D8%B9%20%D9%84%D9%88%D8%AD%D8%A9%20%D8%B5%D8%AF%D8%A7%D8%B1%D8%A9%20%D9%8A%D9%88%D9%85%D9%8A%D8%A9%20%D9%88%D8%A8%D8%B1%D9%88%D9%85%D8%A8%D8%AA%D8%A7%D8%AA%20%D8%AC%D8%A7%D9%87%D8%B2%D8%A9%20%D9%84%D9%84%D9%86%D8%B3%D8%AE%20%F0%9F%9A%80&url=https%3A%2F%2Fsayedgameasayed.github.io%2Ftop-100-agent-skills%2F" 
               target="_blank" 
               rel="noopener noreferrer" 
@@ -163,9 +187,10 @@
               aria-label="مشاركة على X"
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              <span>X / تويتر</span>
+              <span id="share-x-text">X / تويتر</span>
             </a>
             <a 
+              id="share-li-link"
               href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsayedgameasayed.github.io%2Ftop-100-agent-skills%2F" 
               target="_blank" 
               rel="noopener noreferrer" 
@@ -177,6 +202,7 @@
               <span>LinkedIn</span>
             </a>
             <a 
+              id="share-wa-link"
               href="https://api.whatsapp.com/send?text=%D8%AF%D9%84%D9%8A%D9%84%20%D8%A3%D9%81%D8%B6%D9%84%20100%20%D9%85%D9%87%D8%A7%D8%B1%D8%A9%20%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A%20%D9%85%D9%81%D8%AA%D9%88%D8%AD%D8%A9%20%D8%A7%D9%84%D9%85%D8%B5%D8%AF%D8%B1%20%D9%85%D8%B9%20%D8%A8%D8%B1%D9%88%D9%85%D8%A8%D8%AA%D8%A7%D8%AA%20%D8%AC%D8%A7%D9%87%D8%B2%D8%A9%20%D9%84%D9%84%D9%86%D8%B3%D8%AE%3A%20https%3A%2F%2Fsayedgameasayed.github.io%2Ftop-100-agent-skills%2F" 
               target="_blank" 
               rel="noopener noreferrer" 
@@ -184,7 +210,7 @@
               title="مشاركة عبر واتساب"
               aria-label="مشاركة عبر واتساب"
             >
-              <span>واتساب</span>
+              <span id="share-wa-text">واتساب</span>
             </a>
             <button 
               id="copy-site-link-btn" 
