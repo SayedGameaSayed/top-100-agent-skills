@@ -110,7 +110,9 @@
   <!-- Main Content -->
   <main class="section-container" style="padding-block: var(--spacing-60);">
     
-    <header style="margin-block-end: 48px;">
+        <!-- Arabic Guide Content -->
+    <div id="guide-content-ar" class="guide-lang-block">
+<header style="margin-block-end: 48px;">
       <div class="detail-kicker-label">دليل الاستخدام الشامل</div>
       <h1 class="detail-headline-sculptural">كيف تستخدم مهارات الذكاء الاصطناعي؟</h1>
       <p class="detail-summary-airy">
@@ -193,6 +195,94 @@
         </div>
       </div>
     </section>
+    </div>
+
+    <!-- English Guide Content -->
+    <div id="guide-content-en" class="guide-lang-block">
+      <header style="margin-block-end: 48px;">
+        <div class="detail-kicker-label">Comprehensive Usage Guide</div>
+        <h1 class="detail-headline-sculptural">How to Use AI Agent Skills</h1>
+        <p class="detail-summary-airy">
+          An AI agent skill is a structured directory containing a declarative <code>SKILL.md</code> specification that instructs frontier models how to execute specialized workflows step-by-step. Skills give models immediate capabilities they lack by default—such as generating formatted Word documents, analyzing complex spreadsheets, or conducting disciplined test-driven development.
+        </p>
+      </header>
+
+      <!-- Method 1 -->
+      <section class="editorial-block">
+        <div class="editorial-kicker">Method 1 (Universal)</div>
+        <h2 class="editorial-statement">Copy & Paste: Works with Any Chat and Model Instantly</h2>
+        <p style="font-size: var(--text-body); font-weight: var(--weight-light); color: var(--color-silver-mist); line-height: var(--leading-normal); margin-block-end: 18px;">
+          This is the universal method requiring zero setup, compatible with ChatGPT, Gemini, Claude, Copilot, or any other LLM chat:
+        </p>
+        <ol class="editorial-list" style="list-style-type: decimal; padding-inline-start: 24px;">
+          <li>Select the skill you need from the home directory and open its detail page.</li>
+          <li>Click the <strong>«Copy Ready Prompt»</strong> button; this copies an instruction containing the verified skill URL and instructions for your model.</li>
+          <li>Paste into your chat session and type your request directly. The model will adhere strictly to the skill specification.</li>
+          <li>If your model cannot access external URLs directly, open the GitHub source, copy the raw <code>SKILL.md</code> contents, and paste them manually into your chat.</li>
+        </ol>
+      </section>
+
+      <!-- Method 2 -->
+      <section class="editorial-block">
+        <div class="editorial-kicker">Method 2 (Advanced)</div>
+        <h2 class="editorial-statement">Native CLI & IDE Integration</h2>
+        <p style="font-size: var(--text-body); font-weight: var(--weight-light); color: var(--color-silver-mist); line-height: var(--leading-normal); margin-block-end: 20px;">
+          Many modern CLI agents and code editors (such as Codex, Gemini CLI, Claude Code, Copilot, and Cursor) natively discover skill directories from standardized workspace or user paths.
+        </p>
+
+        <!-- Dynamic Shared Folder Tip generated from tools.json -->
+        <div class="dynamic-shared-folder-tips-container">
+          <!-- Rendered dynamically by app.js based on data/tools.json -->
+        </div>
+
+        <p style="font-size: 14px; color: var(--color-ash-gray); margin-block-start: 16px;">
+          Supported paths vary across tools. Refer to official documentation on each skill detail page under the "Add to Your Tool" tabs.
+        </p>
+      </section>
+
+      <!-- Security Checklist Section -->
+      <section class="editorial-block" style="margin-block-start: 48px; background-color: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 32px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-block-end: 16px;">
+          <span style="font-size: 24px;" aria-hidden="true">🛡️</span>
+          <h2 style="font-size: 20px; font-weight: 600; color: var(--color-saffron-spark); margin: 0;">
+            Security & Pre-Installation Checklist: What to review before adding a skill?
+          </h2>
+        </div>
+        <p style="font-size: var(--text-body); font-weight: var(--weight-light); color: var(--color-silver-mist); line-height: var(--leading-normal); margin-block-end: 20px;">
+          Agent skills operating in autonomous development environments possess capabilities to run terminal commands and access workspace files. Avoid superficial automated scorecards (such as arbitrary A-F badges) and perform these 4 manual verification steps before executing any third-party skill:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: var(--radius-inner); border: 1px solid rgba(255,255,255,0.05);">
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--color-bone-white); margin-block-end: 8px;">1. Inspect the SKILL.md File</h3>
+            <p style="font-size: 14px; color: var(--color-silver-mist); line-height: 1.6; margin: 0;">
+              Read through instructions carefully. Look out for unexpected requests attempting to read sensitive credentials (like <code>.env</code> or SSH keys) or transmit telemetry to unknown external servers.
+            </p>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: var(--radius-inner); border: 1px solid rgba(255,255,255,0.05);">
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--color-bone-white); margin-block-end: 8px;">2. Audit Executable Scripts (scripts/)</h3>
+            <p style="font-size: 14px; color: var(--color-silver-mist); line-height: 1.6; margin: 0;">
+              If the skill includes executable Python, Bash, or Node scripts, these run with user privileges. Audit every line before executing.
+            </p>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: var(--radius-inner); border: 1px solid rgba(255,255,255,0.05);">
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--color-bone-white); margin-block-end: 8px;">3. Privilege & Network Boundaries</h3>
+            <p style="font-size: 14px; color: var(--color-silver-mist); line-height: 1.6; margin: 0;">
+              Do not grant unrestricted shell or internet access unless explicitly required for the task. Keep tools in confirmation mode for destructive commands.
+            </p>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: var(--radius-inner); border: 1px solid rgba(255,255,255,0.05);">
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--color-bone-white); margin-block-end: 8px;">4. Author & Repository Authenticity</h3>
+            <p style="font-size: 14px; color: var(--color-silver-mist); line-height: 1.6; margin: 0;">
+              Always verify the repository URL points to an authoritative official organization (such as Anthropic, Microsoft, Vercel, or reputable maintainers) to avoid typosquatting forks.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
 
   </main>
 

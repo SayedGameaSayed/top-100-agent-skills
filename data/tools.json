@@ -16,7 +16,16 @@
       "إذا لم يستطع الموديل فتح الرابط، افتح المصدر وانسخ محتوى ملف SKILL.md والصقه بنفسك."
     ],
     "invoke_ar": "اكتب طلبك بالعربي بعد لصق البرومبت.",
-    "note_ar": "الطريقة العامة التي تعمل مع أي موديل."
+    "note_ar": "الطريقة العامة التي تعمل مع أي موديل.",
+    "name_en": "Any AI Chat",
+    "requires_en": "No setup required.",
+    "steps_en": [
+      "Click the 'Copy Ready Prompt' button on the skill page.",
+      "Paste the prompt into your chat session with any AI model (ChatGPT, Claude, Gemini, Copilot).",
+      "If the model cannot fetch the URL directly, open the source on GitHub, copy the raw SKILL.md contents, and paste it into your chat."
+    ],
+    "invoke_en": "State your request after pasting the prompt.",
+    "note_en": "Universal method compatible with all web chats and models."
   },
   {
     "id": "claude-code",
@@ -39,7 +48,17 @@
       "ملاحظة: يمكن أيضًا التثبيت عبر نظام الإضافات، مثل: /plugin install skill-creator@claude-plugins-official."
     ],
     "invoke_ar": "اكتب /اسم-المهارة، أو اطلب شيئًا يطابق وصفها فيحمّلها تلقائيًا.",
-    "note_ar": "إذا تشابه اسما مهارتين، فمهارات المؤسسة تتغلب على الشخصية، والشخصية على مهارات المشروع."
+    "note_ar": "إذا تشابه اسما مهارتين، فمهارات المؤسسة تتغلب على الشخصية، والشخصية على مهارات المشروع.",
+    "name_en": "Claude Code",
+    "requires_en": "Claude Code CLI installed.",
+    "steps_en": [
+      "Download the skill folder from the repository (the folder containing SKILL.md) using git clone or GitHub's Download ZIP.",
+      "Place the folder into ~/.claude/skills/ for global use across all projects, or into .claude/skills/ inside your project root. On Windows, ~ represents your user directory.",
+      "No restart required. If you created a new skills folder during an active session, run /reload-skills.",
+      "Note: Skills distributed as official plugins can also be installed via: /plugin install <plugin-name>."
+    ],
+    "invoke_en": "Type /<skill-name>, or make a request matching its description for automatic loading.",
+    "note_en": "If two skills share the same name, enterprise skills take precedence over personal, and personal over project skills."
   },
   {
     "id": "claude-ai",
@@ -59,7 +78,17 @@
       "ستظهر المهارة في القائمة، ويمكنك تشغيلها أو إيقافها من هناك."
     ],
     "invoke_ar": "تُستخدم تلقائيًا عندما يطابق طلبك وصف المهارة.",
-    "note_ar": "المهارات التي ترفعها تكون خاصة بحسابك."
+    "note_ar": "المهارات التي ترفعها تكون خاصة بحسابك.",
+    "name_en": "Claude.ai (Web & Desktop)",
+    "requires_en": "Pro, Max, Team, or Enterprise plan as per documentation. Free plans are not eligible.",
+    "steps_en": [
+      "Download the skill folder and package it into a ZIP file. The folder name must match the skill name and contain SKILL.md.",
+      "Open Settings -> Capabilities, and enable 'Code execution and file creation'.",
+      "Scroll down to the Skills section, click 'Upload skill', and select your ZIP file.",
+      "The skill will appear in your skills list where you can enable or disable it anytime."
+    ],
+    "invoke_en": "Invoked automatically whenever your prompt matches the skill description.",
+    "note_en": "Uploaded skills remain private to your account."
   },
   {
     "id": "chatgpt",
@@ -79,7 +108,17 @@
       "للاستخدام السريع بدون إعداد، استخدم طريقة النسخ واللصق العامة."
     ],
     "invoke_ar": "اكتب @ لاختيار المهارة، أو اترك ChatGPT يختارها حسب وصفها.",
-    "note_ar": "المهارات المستقلة لا تظهر في نسخة الويب والجوال، أما المهارات المضمنة في إضافات فتظهر فيهما."
+    "note_ar": "المهارات المستقلة لا تظهر في نسخة الويب والجوال، أما المهارات المضمنة في إضافات فتظهر فيهما.",
+    "name_en": "ChatGPT",
+    "requires_en": "ChatGPT Desktop app for standalone skills.",
+    "steps_en": [
+      "Official documentation currently does not support direct folder imports from GitHub into ChatGPT.",
+      "Documented methods include: recording a workflow to generate a skill, calling @skill-creator, or crafting a folder with SKILL.md manually.",
+      "In the desktop app, navigate to the Skills section in the sidebar. Sharing with collaborators is done via plugin packages.",
+      "For instant usage without local configuration, use the universal Copy-Paste method."
+    ],
+    "invoke_en": "Type @ to select the skill manually, or let ChatGPT select it based on task context.",
+    "note_en": "Standalone skills are desktop-only; skills bundled in plugins sync across web and mobile."
   },
   {
     "id": "codex-cli",
@@ -103,7 +142,17 @@
       "للمهارات الرسمية المنتقاة يمكنك استخدام: $skill-installer اسم-المهارة."
     ],
     "invoke_ar": "يستخدمها Codex تلقائيًا عندما يطابق طلبك وصف المهارة.",
-    "note_ar": "يبحث Codex عن .agents/skills من المجلد الحالي صعودًا إلى جذر الريبو."
+    "note_ar": "يبحث Codex عن .agents/skills من المجلد الحالي صعودًا إلى جذر الريبو.",
+    "name_en": "OpenAI Codex",
+    "requires_en": "Codex CLI installed.",
+    "steps_en": [
+      "Download the skill folder containing SKILL.md using git clone or GitHub ZIP download.",
+      "Place the folder into ~/.agents/skills/ for all projects, or .agents/skills/ within your project.",
+      "Codex automatically discovers new skills upon launch. If a skill does not appear, restart Codex.",
+      "For curated skills, you can install directly via: $skill-installer <skill-name>."
+    ],
+    "invoke_en": "Codex triggers the skill automatically whenever your prompt aligns with the skill description.",
+    "note_en": "Codex walks up directories searching for .agents/skills up to the repository root."
   },
   {
     "id": "gemini-cli",
@@ -126,7 +175,17 @@
       "إذا كان الريبو مجموعة مهارات، حدّد الفولدر المطلوب في --path."
     ],
     "invoke_ar": "يستدعي Gemini المهارة تلقائيًا عند تطابق المهمة، ويطلب موافقتك قبل تحميلها.",
-    "note_ar": "الخيار --consent يتجاوز رسالة التأكيد الأمنية، فلا تستخدمه إلا لمصدر تثق به."
+    "note_ar": "الخيار --consent يتجاوز رسالة التأكيد الأمنية، فلا تستخدمه إلا لمصدر تثق به.",
+    "name_en": "Gemini CLI",
+    "requires_en": "Gemini CLI installed.",
+    "steps_en": [
+      "Install directly from the repository: gemini skills install {{repo_git_url}} --path {{path_in_repo}} --scope user. Use --scope workspace for a single project.",
+      "Or manually place the skill folder in ~/.gemini/skills/ or ~/.agents/skills/.",
+      "Verify installation with: gemini skills list --all. Inside an active session, use /skills list and /skills reload.",
+      "If the repository hosts multiple skills, specify the target directory with --path."
+    ],
+    "invoke_en": "Gemini invokes the skill automatically when a task matches, prompting for your confirmation before loading.",
+    "note_en": "The --consent flag bypasses confirmation prompts; only use it with trusted repositories."
   },
   {
     "id": "github-copilot",
@@ -148,7 +207,16 @@
       "لا تضف shell إلى allowed-tools إلا بعد مراجعة المهارة والتأكد من مصدرها."
     ],
     "invoke_ar": "يقرر Copilot استخدام المهارة بحسب طلبك ووصفها.",
-    "note_ar": "التوثيق يوصي بتسمية فولدر مراجعة الكود باسم واضح مثل code-review."
+    "note_ar": "التوثيق يوصي بتسمية فولدر مراجعة الكود باسم واضح مثل code-review.",
+    "name_en": "GitHub Copilot",
+    "requires_en": "Active Copilot subscription. Supports Copilot cloud agent, Copilot CLI, VS Code Agent mode, and code review.",
+    "steps_en": [
+      "Download the skill folder containing SKILL.md using git clone or GitHub ZIP download.",
+      "Place the folder into .github/skills/ inside your repository, or in ~/.copilot/skills/ for all projects.",
+      "Do not add shell execution to allowed-tools until you have reviewed the skill instructions and verified the author."
+    ],
+    "invoke_en": "Copilot decides to invoke the skill based on your query and the skill description.",
+    "note_en": "Official docs recommend naming code-review folders clearly (e.g. code-review)."
   },
   {
     "id": "cursor",
@@ -171,7 +239,17 @@
       "ملاحظة: يقرأ Cursor أيضًا فولدرات .claude/skills و.codex/skills للتوافق."
     ],
     "invoke_ar": "اكتب / في شات Agent واختر المهارة، أو اتركه يختارها حسب الوصف.",
-    "note_ar": "التثبيت من ريبو GitHub مباشرة يحتاج تغليف المهارات كإضافة (plugin) ونشرها في marketplace."
+    "note_ar": "التثبيت من ريبو GitHub مباشرة يحتاج تغليف المهارات كإضافة (plugin) ونشرها في marketplace.",
+    "name_en": "Cursor",
+    "requires_en": "Cursor IDE installed.",
+    "steps_en": [
+      "Download the skill folder containing SKILL.md from the repository.",
+      "Place the folder into .cursor/skills/ inside your project, or into ~/.cursor/skills/ for global availability.",
+      "Cursor indexes skills on boot; restart the IDE if a newly placed skill does not appear.",
+      "Note: Cursor also reads .claude/skills and .codex/skills for cross-compatibility."
+    ],
+    "invoke_en": "Type / in Agent chat to pick the skill, or let Cursor select it autonomously from description matching.",
+    "note_en": "Direct installation from GitHub requires packaging skills as a plugin published to the marketplace."
   },
   {
     "id": "windsurf",
@@ -182,6 +260,15 @@
     "skills_path": null,
     "paths": {},
     "verified": false,
-    "note_ar": "لم نتحقق من التوثيق الرسمي بعد."
+    "note_ar": "لم نتحقق من التوثيق الرسمي بعد.",
+    "name_en": "Windsurf",
+    "requires_en": "Windsurf IDE installed.",
+    "steps_en": [
+      "Create a .windsurfrules file in your project root.",
+      "Paste the skill instructions from SKILL.md into the rules file.",
+      "Windsurf Cascade will parse and enforce the instructions across your session."
+    ],
+    "invoke_en": "Instruct Cascade in the chat pane; it adheres to workspace rules automatically.",
+    "note_en": "Pending official native skill specification from Windsurf."
   }
 ]

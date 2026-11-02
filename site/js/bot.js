@@ -4,6 +4,7 @@
  */
 
 import { normalizeArabic } from './search.js';
+import { getLang, t, formatUrlWithLang } from './i18n.js';
 
 let skillsCatalog = [];
 
@@ -15,31 +16,32 @@ export function initAiBot(skills = []) {
   // Prevent double injection
   if (document.getElementById('ai-bot-trigger')) return;
 
+  const isEn = getLang() === 'en';
   const widgetContainer = document.createElement('div');
   widgetContainer.id = 'ai-bot-root';
   widgetContainer.innerHTML = `
     <!-- Floating Trigger Pill Button -->
-    <button id="ai-bot-trigger" class="ai-bot-trigger" aria-label="مساعد المهارات الذكي" title="اسأل مساعد المهارات الذكي">
+    <button id="ai-bot-trigger" class="ai-bot-trigger" aria-label="${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}" title="${isEn ? 'Ask AI Skills Assistant' : 'اسأل مساعد المهارات الذكي'}">
       <span class="bot-trigger-pulse"></span>
       <span class="bot-trigger-icon" aria-hidden="true">✨</span>
-      <span class="bot-trigger-text">مساعد المهارات</span>
+      <span class="bot-trigger-text">${isEn ? 'Skills Assistant' : 'مساعد المهارات'}</span>
     </button>
 
     <!-- Floating Chat Modal / Drawer -->
     <div id="ai-bot-modal" class="ai-bot-modal" aria-hidden="true">
       <div class="bot-header">
         <div class="bot-header-info">
-          <img src="assets/logo.png" alt="شعار المساعد" class="bot-avatar-img" width="28" height="28">
+          <img src="assets/logo.png" alt="Assistant Logo" class="bot-avatar-img" width="28" height="28">
           <div>
-            <div class="bot-title">مساعد المهارات الذكي</div>
+            <div class="bot-title">${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}</div>
             <div class="bot-subtitle">
               <span class="bot-live-dot"></span>
-              <span id="bot-engine-label">بحث دلالي ذكي (محلي وسريع)</span>
+              <span id="bot-engine-label">${isEn ? 'Semantic Skill Matcher (Local & Fast)' : 'بحث دلالي ذكي (محلي وسريع)'}</span>
             </div>
           </div>
         </div>
         <div class="bot-header-actions">
-          <button id="bot-close-btn" class="bot-icon-btn" title="إغلاق المحادثة" aria-label="إغلاق">✕</button>
+          <button id="bot-close-btn" class="bot-icon-btn" title="${isEn ? 'Close Chat' : 'إغلاق المحادثة'}" aria-label="${isEn ? 'Close' : 'إغلاق'}">✕</button>
         </div>
       </div>
 
@@ -47,18 +49,25 @@ export function initAiBot(skills = []) {
       <div id="bot-messages-container" class="bot-messages">
         <div class="bot-msg bot-msg-assistant">
           <div class="bot-msg-bubble">
-            👋 أهلاً بك! أنا <strong>مساعد المهارات الذكي</strong>.
-            <br>
-            أخبرني بما تريد إنجازه أو المشكلة التي تواجهك، وسأرشح لك أفضل مهارة ذكاء اصطناعي تناسبك مع البرومبت الجاهز للاستخدام.
+            ${isEn 
+              ? '👋 Hello! I am your <strong>AI Skills Assistant</strong>.<br>Describe your project or task, and I will recommend the top verified skills for you.' 
+              : '👋 أهلاً بك! أنا <strong>مساعد المهارات الذكي</strong>.<br>أخبرني بما تريد إنجازه أو المشكلة التي تواجهك، وسأرشح لك أفضل مهارة تناسبك مع البرومبت الجاهز.'}
           </div>
         </div>
 
         <!-- Quick Suggestion Chips -->
         <div class="bot-chips-container" id="bot-quick-chips">
-          <button class="bot-chip" data-query="ملخص وتعديل مستندات Word و PDF">📄 مستندات Word و PDF</button>
-          <button class="bot-chip" data-query="تحليل وتنسيق جداول Excel">📊 جداول وبيانات Excel</button>
-          <button class="bot-chip" data-query="مراجعة جودة الكود واختبارات TDD">💻 جودة الكود واختبارات</button>
-          <button class="bot-chip" data-query="أتمتة وحاويات Docker و DevOps">🛡️ حاويات وأمان DevOps</button>
+          ${isEn ? `
+            <button class="bot-chip" data-query="word pdf documents">📄 Word & PDF Documents</button>
+            <button class="bot-chip" data-query="excel data spreadsheets">📊 Excel & Data Analysis</button>
+            <button class="bot-chip" data-query="code quality testing tdd">💻 Code Quality & Testing</button>
+            <button class="bot-chip" data-query="cloud security devops">🛡️ Cloud & Security</button>
+          ` : `
+            <button class="bot-chip" data-query="ملخص وتعديل مستندات Word و PDF">📄 مستندات Word و PDF</button>
+            <button class="bot-chip" data-query="تحليل وتنسيق جداول Excel">📊 جداول وبيانات Excel</button>
+            <button class="bot-chip" data-query="مراجعة جودة الكود واختبارات TDD">💻 جودة الكود واختبارات</button>
+            <button class="bot-chip" data-query="أتمتة وحاويات Docker و DevOps">🛡️ حاويات وأمان DevOps</button>
+          `}
         </div>
       </div>
 
@@ -68,11 +77,11 @@ export function initAiBot(skills = []) {
           type="text" 
           id="bot-input-text" 
           class="bot-input-field" 
-          placeholder="اسأل عما تحتاجه... (مثال: تلخيص ملفات وورد)"
+          placeholder="${isEn ? 'Describe your task or coding goal...' : 'اسأل عما تحتاجه... (مثال: تلخيص ملفات وورد)'}"
           autocomplete="off"
           required
         >
-        <button type="submit" id="bot-send-btn" class="bot-send-btn" aria-label="إرسال">
+        <button type="submit" id="bot-send-btn" class="bot-send-btn" aria-label="${isEn ? 'Send' : 'إرسال'}">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
           </svg>
@@ -210,17 +219,24 @@ function appendAssistantResponse({ reply, recommendedSkills = [] }) {
             const skillHref = `skill.html?id=${encodeURIComponent(skill.id)}`;
             const prompt = `You are an expert agent. Follow the official instructions and best practices for: ${skill.name} (${skill.source?.url || skill.source?.repo_url || ''})`;
 
+            const isEn = getLang() === 'en';
+            const cardTitle = isEn ? (skill.title_en || skill.name) : (skill.title_ar || skill.name);
+            const cardDesc = isEn ? (skill.summary_en || skill.summary_ar || '') : (skill.summary_ar || '');
+            const cardHref = formatUrlWithLang(skillHref);
+            const detailsLabel = isEn ? 'Details ↗' : 'التفاصيل ↗';
+            const copyLabel = isEn ? 'Copy Prompt 📋' : 'نسخ البرومبت 📋';
+
             return `
             <div class="bot-skill-card">
               <div class="bot-card-top">
                 <span class="bot-card-cat">${escapeHtml(cat)}</span>
                 <span class="bot-card-stars">★ ${stars}</span>
               </div>
-              <a href="${skillHref}" class="bot-card-title">${escapeHtml(skill.title_ar || skill.name)}</a>
-              <p class="bot-card-desc">${escapeHtml(skill.summary_ar || '')}</p>
+              <a href="${cardHref}" class="bot-card-title">${escapeHtml(cardTitle)}</a>
+              <p class="bot-card-desc">${escapeHtml(cardDesc)}</p>
               <div class="bot-card-actions">
-                <a href="${skillHref}" class="bot-action-link">التفاصيل ↗</a>
-                <button class="bot-action-copy-btn" data-prompt="${escapeAttr(prompt)}">نسخ البرومبت 📋</button>
+                <a href="${cardHref}" class="bot-action-link">${detailsLabel}</a>
+                <button class="bot-action-copy-btn" data-prompt="${escapeAttr(prompt)}">${copyLabel}</button>
               </div>
             </div>
           `;

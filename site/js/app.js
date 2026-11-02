@@ -8,7 +8,7 @@ import { copyToClipboard } from './copy.js';
 import { initConstellation } from './constellation.js';
 import { initAiBot } from './bot.js';
 import { initScrollEffects, observeCardsScrollEntrance } from './scroll-effects.js';
-import { initI18nAndTheme, getLang, getTheme, t, onStateChange } from './i18n.js';
+import { initI18nAndTheme, getLang, getTheme, t, onStateChange, formatUrlWithLang } from './i18n.js';
 
 let skillsData = null;
 let toolsData = null;
@@ -130,7 +130,7 @@ export function renderSkillCard(skill, categories) {
   const starsFormatted = formatStars(skill.github_stars);
 
   return `
-    <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="skill-card" aria-label="${escapeHtml(title)}">
+    <a href="${formatUrlWithLang(`skill.html?id=${encodeURIComponent(skill.id)}`)}" class="skill-card" aria-label="${escapeHtml(title)}">
       <div class="card-top">
         <div class="card-header-row">
           <span class="card-category-label">${escapeHtml(catName)}</span>
@@ -150,7 +150,7 @@ export function renderSkillCard(skill, categories) {
           <span class="card-difficulty">${formatDifficulty(skill.difficulty)}</span>
           ${getBareLicenseLabelHtml(skill.license)}
         </div>
-        <span class="card-action-cue">${lang === 'en' ? 'View Skill →' : 'عرض المهارة ←'}</span>
+        <span class="card-action-cue">${t('viewSkillAction')}</span>
       </div>
     </a>
   `;
@@ -579,16 +579,16 @@ export async function initSkillDetailPage() {
     <!-- Editorial Block: Example Prompts -->
     <section class="editorial-block">
       <div class="section-container">
-        <div class="editorial-kicker">${lang === 'en' ? 'Prompt Formats' : 'نماذج الطلبات'}</div>
-        <h2 class="editorial-statement">${lang === 'en' ? 'Ask the model with these prompt templates' : 'اطلب من الموديل بهذه الصيغ'}</h2>
+        <div class="editorial-kicker">${t('promptFormatsTitle')}</div>
+        <h2 class="editorial-statement">${t('promptFormatsSub')}</h2>
         <div class="example-prompts-group">
-          ${(skill.example_prompts_ar || [])
+          ${((lang === 'en' && skill.example_prompts_en && skill.example_prompts_en.length > 0) ? skill.example_prompts_en : (skill.example_prompts_ar || []))
             .map(
               (p) => `
             <div class="example-prompt-card">
               <span class="example-prompt-text">${escapeHtml(p)}</span>
-              <button class="btn-mini-copy copy-prompt-btn" data-text="${escapeHtml(p)}" type="button" aria-label="${lang === 'en' ? 'Copy Prompt' : 'نسخ الطلب'}">
-                ${lang === 'en' ? 'Copy Prompt' : 'نسخ الطلب'}
+              <button class="btn-mini-copy copy-prompt-btn" data-text="${escapeHtml(p)}" type="button" aria-label="${t('copyPromptMini')}">
+                ${t('copyPromptMini')}
               </button>
             </div>
           `
@@ -598,12 +598,12 @@ export async function initSkillDetailPage() {
       </div>
     </section>
 
-    <!-- "ضيفها لأداتك" Integration Section -->
-    <section class="tool-integration-section" aria-label="طريقة إضافة المهارة للأداة">
+    <!-- Tool Integration Section -->
+    <section class="tool-integration-section" aria-label="${t('toolIntegrationTitle')}">
       <div class="section-container">
         <div class="tool-integration-container">
-          <h2 class="tool-panel-title">ضيفها لأداتك</h2>
-          <p class="tool-panel-subtitle">إرشادات موثقة لإضافة المهارة إلى بيئة العمل أو الشات الذي تستخدمه.</p>
+          <h2 class="tool-panel-title">${t('toolIntegrationTitle')}</h2>
+          <p class="tool-panel-subtitle">${t('toolIntegrationSub')}</p>
 
           <!-- Segmented Control Bar -->
           <div class="segmented-control" role="tablist">
@@ -617,7 +617,7 @@ export async function initSkillDetailPage() {
                 data-tool-id="${escapeHtml(tool.id)}"
                 type="button"
               >
-                ${escapeHtml(tool.name)}
+                ${escapeHtml(lang === 'en' ? (tool.name_en || tool.name) : tool.name)}
               </button>
             `
               )
@@ -643,9 +643,7 @@ export async function initSkillDetailPage() {
 
     <!-- Floating Capsule for Mobile -->
     <aside class="floating-mobile-capsule">
-      <button id="floating-copy-btn" class="btn-electric-pill" type="button">
-        انسخ البرومبت الجاهز
-      </button>
+      <button id="floating-copy-btn" class="btn-electric-pill" type="button">${t("copyPromptBtn")}</button>
     </aside>
   `;
 
@@ -656,22 +654,25 @@ export async function initSkillDetailPage() {
     const contentContainer = document.getElementById('tool-tab-content-container');
     if (!contentContainer) return;
 
-    const resolvedSteps = resolveToolSteps(tool.steps_ar || [], skill);
+    const rawSteps = (lang === 'en' && tool.steps_en && tool.steps_en.length > 0) ? tool.steps_en : (tool.steps_ar || []);
+    const resolvedSteps = resolveToolSteps(rawSteps, skill);
+    const reqText = (lang === 'en' && tool.requires_en) ? tool.requires_en : (tool.requires_ar || 'لا يلزم شيء.');
+    const invokeText = (lang === 'en' && tool.invoke_en) ? tool.invoke_en : (tool.invoke_ar || '');
 
     contentContainer.innerHTML = `
       ${
         isMultiSkill && (tool.id === 'gemini-cli' || tool.id === 'codex-cli')
-          ? `<div class="collection-note">ℹ️ هذا الريبو يضم مهارات كثيرة. افتحه واختر الفولدر المناسب.</div>`
+          ? `<div class="collection-note">${t('toolMultiSkillNote')}</div>`
           : ''
       }
 
       <div class="tool-meta-badge-row">
-        <span><strong>المتطلبات:</strong> ${escapeHtml(tool.requires_ar || 'لا يلزم شيء.')}</span>
-        ${tool.skills_path ? `<span><strong>المسار الافتراضي:</strong> <code dir="ltr">${escapeHtml(tool.skills_path)}</code></span>` : ''}
+        <span><strong>${t('toolRequirements')}</strong> ${escapeHtml(reqText)}</span>
+        ${tool.skills_path ? `<span><strong>${t('toolDefaultPath')}</strong> <code dir="ltr">${escapeHtml(tool.skills_path)}</code></span>` : ''}
       </div>
 
       <div>
-        <h3 style="font-size: 16px; font-weight: 500; margin-block-end: 14px; color: var(--color-bone-white);">خطوات الإعداد:</h3>
+        <h3 style="font-size: 16px; font-weight: 500; margin-block-end: 14px; color: var(--color-bone-white);">${t('toolSetupSteps')}</h3>
         <ol class="tool-steps-ordered">
           ${resolvedSteps
             .map((step) => {
@@ -686,14 +687,14 @@ export async function initSkillDetailPage() {
       </div>
 
       <div class="tool-invoke-box">
-        <strong style="color: var(--color-saffron-spark);">طريقة الاستدعاء:</strong> ${escapeHtml(tool.invoke_ar || '')}
+        <strong style="color: var(--color-saffron-spark);">${t('toolHowToInvoke')}</strong> ${escapeHtml(invokeText)}
       </div>
 
       <div class="tool-footer-row">
-        <span>${tool.verified_on ? `آخر مراجعة: <bdi dir="ltr">${escapeHtml(tool.verified_on)}</bdi>` : ''}</span>
+        <span>${tool.verified_on ? `${t('toolLastVerified')} <bdi dir="ltr">${escapeHtml(tool.verified_on)}</bdi>` : ''}</span>
         ${
           tool.docs_url
-            ? `<a href="${escapeHtml(tool.docs_url)}" target="_blank" rel="noopener noreferrer" class="text-accent-link">التوثيق الرسمي ↗</a>`
+            ? `<a href="${escapeHtml(tool.docs_url)}" target="_blank" rel="noopener noreferrer" class="text-accent-link">${t('toolOfficialDocs')}</a>`
             : ''
         }
       </div>
@@ -845,6 +846,7 @@ export async function initHowToUsePage() {
  * LEADERBOARD PAGE
  */
 export async function initLeaderboardPage() {
+  const lang = getLang();
   const { skillsData } = await loadData();
   if (!skillsData || !skillsData.skills) return;
 
@@ -856,9 +858,9 @@ export async function initLeaderboardPage() {
   // Populate category options
   if (categorySelect && skillsData.categories) {
     categorySelect.innerHTML =
-      `<option value="all">جميع الأقسام (${skillsData.skills.length} مهارة)</option>` +
+      `<option value="all">${t('leaderboardCategoryAll', skillsData.skills.length)}</option>` +
       skillsData.categories
-        .map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.name_ar)}</option>`)
+        .map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(lang === 'en' ? (c.name_en || c.name_ar) : c.name_ar)}</option>`)
         .join('');
   }
 
@@ -1000,7 +1002,7 @@ export async function initLeaderboardPage() {
             <td style="padding: 14px 20px;">
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                  <a href="skill.html?id=${encodeURIComponent(skill.id)}" style="color: var(--color-bone-white); font-weight: 600; text-decoration: none; font-size: 15px;" class="leaderboard-skill-link">
+                  <a href="${formatUrlWithLang(`skill.html?id=${encodeURIComponent(skill.id)}`)}" style="color: var(--color-bone-white); font-weight: 600; text-decoration: none; font-size: 15px;" class="leaderboard-skill-link">
                     ${escapeHtml(title)}
                   </a>
                   ${skill.tier === 'extended_tool_or_plugin' ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(148, 163, 184, 0.12); color: #94a3b8; border-radius: 4px; border: 1px solid rgba(148, 163, 184, 0.25);">${skill.repo_type === 'tool' ? 'Tool' : skill.repo_type === 'plugin' ? 'Plugin' : 'List'}</span>` : ''}
@@ -1023,7 +1025,7 @@ export async function initLeaderboardPage() {
             </td>
             <td style="padding: 14px 20px; text-align: center;">
               <div style="display: inline-flex; align-items: center; gap: 8px;">
-                <a href="skill.html?id=${encodeURIComponent(skill.id)}" class="btn-ghost" style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-buttons); text-decoration: none; border: 1px solid var(--color-graphite-hairline); color: var(--color-white); background: transparent;">
+                <a href="${formatUrlWithLang(`skill.html?id=${encodeURIComponent(skill.id)}`)}" class="btn-ghost" style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-buttons); text-decoration: none; border: 1px solid var(--color-graphite-hairline); color: var(--color-white); background: transparent;">
                   ${lang === 'en' ? 'Details' : 'التفاصيل'}
                 </a>
                 ${

@@ -115,6 +115,9 @@
       ],
       "use_cases_en": [
         "Scaffolding a new backend feature or restructuring legacy repositories."
+      ],
+      "example_prompts_en": [
+        "Draft a detailed step-by-step implementation plan for adding Stripe payments to our app."
       ]
     },
     {
@@ -162,6 +165,9 @@
       ],
       "use_cases_en": [
         "Fixing elusive production bugs and non-deterministic concurrency errors."
+      ],
+      "example_prompts_en": [
+        "Help me isolate the root cause of this error step-by-step and formulate testable hypotheses."
       ]
     },
     {
@@ -209,6 +215,9 @@
       ],
       "use_cases_en": [
         "Implementing critical domain business logic and API contracts."
+      ],
+      "example_prompts_en": [
+        "Write a failing behavioral test for international phone validation before implementing the logic."
       ]
     },
     {
@@ -256,6 +265,9 @@
       ],
       "use_cases_en": [
         "Opening well-documented Pull Requests for peer and tech-lead approval."
+      ],
+      "example_prompts_en": [
+        "Draft a PR description summarizing authentication changes with manual verification steps."
       ]
     },
     {
@@ -303,6 +315,9 @@
       ],
       "use_cases_en": [
         "Addressing complex peer review feedback and requested changes."
+      ],
+      "example_prompts_en": [
+        "Help me address these three review comments and refactor the code accurately."
       ]
     },
     {
@@ -350,6 +365,9 @@
       ],
       "use_cases_en": [
         "Testing parallel pull requests and multi-branch feature workflows."
+      ],
+      "example_prompts_en": [
+        "Show me the Git worktree commands to create a hotfix branch in a separate folder without stashing."
       ]
     },
     {
@@ -397,6 +415,9 @@
       ],
       "use_cases_en": [
         "Final sign-off before committing code, merging PRs, or releasing versions."
+      ],
+      "example_prompts_en": [
+        "Run all tests and type checks to verify functionality before marking the task complete."
       ]
     },
     {
@@ -444,6 +465,9 @@
       ],
       "use_cases_en": [
         "Executing multi-step coding initiatives with dedicated research and test agents."
+      ],
+      "example_prompts_en": [
+        "Delegate login screen tasks across a UI subagent, a test subagent, and a security subagent."
       ]
     },
     {
@@ -491,6 +515,9 @@
       ],
       "use_cases_en": [
         "Executing multi-phase engineering migrations and end-to-end task lists."
+      ],
+      "example_prompts_en": [
+        "Follow this execution plan checkpoint-by-checkpoint and verify each step before proceeding."
       ]
     },
     {
@@ -538,6 +565,9 @@
       ],
       "use_cases_en": [
         "Auditing hundreds of repository files or sweeping test suites in parallel."
+      ],
+      "example_prompts_en": [
+        "Dispatch 3 parallel subagent tasks to audit the frontend, database, and security simultaneously."
       ]
     },
     {
@@ -585,6 +615,9 @@
       ],
       "use_cases_en": [
         "Choosing database architectures, API paradigms, or cloud infrastructure."
+      ],
+      "example_prompts_en": [
+        "Give me 3 distinct architectural solutions for real-time notifications with pros and cons for each."
       ]
     },
     {
@@ -632,6 +665,9 @@
       ],
       "use_cases_en": [
         "Building production-grade Python REST and WebSocket APIs."
+      ],
+      "example_prompts_en": [
+        "Design an async FastAPI route for processing file uploads with size validation and streaming."
       ]
     },
     {
@@ -679,6 +715,9 @@
       ],
       "use_cases_en": [
         "Designing PostgreSQL/MySQL database schemas and high-performance queries."
+      ],
+      "example_prompts_en": [
+        "Write a Prisma query to fetch a user along with their 5 most recent orders and total payments."
       ]
     },
     {
@@ -726,6 +765,9 @@
       ],
       "use_cases_en": [
         "Developing native iOS, iPadOS, and macOS apps in SwiftUI."
+      ],
+      "example_prompts_en": [
+        "Write SwiftUI code for a product catalogue with a scrollable lazy grid and instant search."
       ]
     },
     {
@@ -773,6 +815,9 @@
       ],
       "use_cases_en": [
         "Building high-performance CLI tools, web servers, and systems software."
+      ],
+      "example_prompts_en": [
+        "Design an idiomatic Rust error-handling structure for a function reading files and querying a database."
       ]
     },
     {
@@ -820,6 +865,9 @@
       ],
       "use_cases_en": [
         "Implementing session stores, API rate limiters, and message queues."
+      ],
+      "example_prompts_en": [
+        "Write Python code implementing a sliding-window rate limiter backed by Redis."
       ]
     },
     {
@@ -867,6 +915,9 @@
       ],
       "use_cases_en": [
         "Writing robust unit and integration tests for modern React frontends."
+      ],
+      "example_prompts_en": [
+        "Write a React Testing Library test for a login form simulating user typing and submit."
       ]
     },
     {
@@ -914,6 +965,9 @@
       ],
       "use_cases_en": [
         "Unit and integration testing for Python packages, algorithms, and APIs."
+      ],
+      "example_prompts_en": [
+        "Write a Pytest test with a fixture creating mock user data and verifying account balance updates."
       ]
     },
     {
@@ -961,6 +1015,9 @@
       ],
       "use_cases_en": [
         "Hardening Django web apps and enterprise portals before public launch."
+      ],
+      "example_prompts_en": [
+        "Audit settings.py and recommend necessary production security configurations and headers."
       ]
     },
     {
@@ -1008,6 +1065,9 @@
       ],
       "use_cases_en": [
         "Securing enterprise Java microservices and RESTful Spring backends."
+      ],
+      "example_prompts_en": [
+        "Write a Spring Boot 3 SecurityFilterChain to protect API endpoints with stateless JWT authentication."
       ]
     },
     {
@@ -1055,6 +1115,9 @@
       ],
       "use_cases_en": [
         "Auditing codebases and infrastructure prior to production releases."
+      ],
+      "example_prompts_en": [
+        "Perform a comprehensive security audit of this password reset flow and endpoint."
       ]
     },
     {
@@ -1102,6 +1165,9 @@
       ],
       "use_cases_en": [
         "Evaluating deep learning models and fine-tuned neural networks."
+      ],
+      "example_prompts_en": [
+        "Write a PyTorch evaluation loop using torch.no_grad() calculating accuracy and macro F1-score."
       ]
     },
     {
@@ -1149,6 +1215,9 @@
       ],
       "use_cases_en": [
         "Launching product releases, growth experiments, and content marketing."
+      ],
+      "example_prompts_en": [
+        "Design a marketing launch campaign for a new productivity app including ad copy and email nurture flows."
       ]
     },
     {
@@ -1196,6 +1265,9 @@
       ],
       "use_cases_en": [
         "Managing internationalization for multi-lingual websites and mobile apps."
+      ],
+      "example_prompts_en": [
+        "Compare these two locale translation files, identify missing translation keys, and synchronize them."
       ]
     },
     {
@@ -1243,6 +1315,9 @@
       ],
       "use_cases_en": [
         "Testing Go backend services, concurrency pipelines, and CLI tools."
+      ],
+      "example_prompts_en": [
+        "Design a table-driven test suite in Go testing edge cases for this JSON parser function."
       ]
     },
     {
@@ -1290,6 +1365,9 @@
       ],
       "use_cases_en": [
         "Benchmarking AI agent prompts, system instructions, and RAG pipelines."
+      ],
+      "example_prompts_en": [
+        "Build an evaluation dataset and harness to benchmark accuracy when extracting dates from legal contracts."
       ]
     },
     {
@@ -1342,6 +1420,9 @@
       ],
       "use_cases_en": [
         "Parsing bank statements, invoices, research papers, and generating reports."
+      ],
+      "example_prompts_en": [
+        "Extract all data tables from this PDF document and export them into a structured CSV file."
       ]
     },
     {
@@ -1394,6 +1475,9 @@
       ],
       "use_cases_en": [
         "Automating contract generation, technical proposals, and research documents."
+      ],
+      "example_prompts_en": [
+        "Generate a professional Word document report on this topic with styled headings, callouts, and tables."
       ]
     },
     {
@@ -1446,6 +1530,9 @@
       ],
       "use_cases_en": [
         "Financial forecasting, data analysis, budgets, and automated reporting."
+      ],
+      "example_prompts_en": [
+        "Build a monthly financial budget spreadsheet with automated formulas, category summaries, and percentages."
       ]
     },
     {
@@ -1496,6 +1583,9 @@
       ],
       "use_cases_en": [
         "Generating conference presentations, investor decks, and workshop slides."
+      ],
+      "example_prompts_en": [
+        "Transform this research report into an executive 10-slide presentation deck with visual structure."
       ]
     },
     {
@@ -1547,6 +1637,9 @@
       ],
       "use_cases_en": [
         "Crafting landing pages, SaaS dashboards, and consumer web applications."
+      ],
+      "example_prompts_en": [
+        "Design a high-converting landing page for a study app with a calm, modern, and accessible design system."
       ]
     },
     {
@@ -1598,6 +1691,9 @@
       ],
       "use_cases_en": [
         "Building custom agent skills for specialized company workflows."
+      ],
+      "example_prompts_en": [
+        "Create an AI agent skill that writes weekly team status reports matching our company format."
       ]
     },
     {
@@ -1649,6 +1745,9 @@
       ],
       "use_cases_en": [
         "Testing critical signup funnels, checkouts, and responsive layouts."
+      ],
+      "example_prompts_en": [
+        "Test my web app running on localhost:3000, inspect broken buttons, and report console errors."
       ]
     },
     {
@@ -1699,6 +1798,9 @@
       ],
       "use_cases_en": [
         "Creating custom MCP servers for Claude Desktop, Cursor, and Antigravity."
+      ],
+      "example_prompts_en": [
+        "Build a Model Context Protocol (MCP) server in TypeScript that queries and exposes data from this API."
       ]
     },
     {
@@ -1750,6 +1852,9 @@
       ],
       "use_cases_en": [
         "Building hero animations, charts, and interactive educational graphics."
+      ],
+      "example_prompts_en": [
+        "Design a graduation project exhibition poster using harmonious, restrained visual tokens."
       ]
     },
     {
@@ -1800,6 +1905,9 @@
       ],
       "use_cases_en": [
         "Creating shareable demos, calculators, and rich interactive widgets."
+      ],
+      "example_prompts_en": [
+        "Create an interactive single-page cost calculator artifact using clean vanilla HTML, CSS, and JavaScript."
       ]
     },
     {
@@ -1849,6 +1957,9 @@
       ],
       "use_cases_en": [
         "Defining brand guidelines for startups, products, and open-source projects."
+      ],
+      "example_prompts_en": [
+        "Apply our company brand guidelines, typography rules, and color palettes to this slide deck."
       ]
     },
     {
@@ -1898,6 +2009,9 @@
       ],
       "use_cases_en": [
         "Building multi-theme design systems for modern web apps."
+      ],
+      "example_prompts_en": [
+        "Restyle this presentation using a serene oceanic color theme with high contrast and modern typography."
       ]
     },
     {
@@ -1947,6 +2061,9 @@
       ],
       "use_cases_en": [
         "Drafting strategy papers, engineering RFCs, and board memos."
+      ],
+      "example_prompts_en": [
+        "Guide me step-by-step through drafting a graduation thesis project proposal with structured sections."
       ]
     },
     {
@@ -1996,6 +2113,9 @@
       ],
       "use_cases_en": [
         "Designing unique website backgrounds, book covers, and digital assets."
+      ],
+      "example_prompts_en": [
+        "Create a generative particle canvas animation using flowing vector fields and subdued color gradients."
       ]
     },
     {
@@ -2045,6 +2165,9 @@
       ],
       "use_cases_en": [
         "Writing weekly engineering digests, release notes, and post-incident reviews."
+      ],
+      "example_prompts_en": [
+        "Draft a weekly internal team update summarizing shipped features, blockers, and next milestones."
       ]
     },
     {
@@ -2094,6 +2217,9 @@
       ],
       "use_cases_en": [
         "Creating team announcement GIFs, celebration reactions, and product micro-demos."
+      ],
+      "example_prompts_en": [
+        "Generate a lightweight, celebratory team achievement GIF suitable for Slack reactions."
       ]
     },
     {
@@ -2143,6 +2269,9 @@
       ],
       "use_cases_en": [
         "Building production LLM features and enterprise chatbots with Claude."
+      ],
+      "example_prompts_en": [
+        "Write Python code integrating the Claude Messages API with streaming responses and structured outputs."
       ]
     },
     {
@@ -2190,6 +2319,9 @@
       ],
       "use_cases_en": [
         "Conducting technical market intelligence and academic literature reviews."
+      ],
+      "example_prompts_en": [
+        "Conduct deep academic research on generative AI in medical education with formal scholarly citations."
       ]
     },
     {
@@ -2237,6 +2369,9 @@
       ],
       "use_cases_en": [
         "Systematic literature reviews, meta-analyses, and clinical research screening."
+      ],
+      "example_prompts_en": [
+        "Screen these five research abstracts against our systematic review inclusion criteria and record decisions."
       ]
     },
     {
@@ -2284,6 +2419,9 @@
       ],
       "use_cases_en": [
         "Writing computer science papers, arXiv preprints, and thesis chapters."
+      ],
+      "example_prompts_en": [
+        "Refactor this manuscript section to adhere to rigorous peer-reviewed academic style and tone."
       ]
     },
     {
@@ -2331,6 +2469,9 @@
       ],
       "use_cases_en": [
         "Building cross-device responsive websites and adaptive SaaS dashboards."
+      ],
+      "example_prompts_en": [
+        "Write responsive CSS Grid styles that adapt fluidly across viewports without breakpoint media queries."
       ]
     },
     {
@@ -2388,6 +2529,9 @@
       ],
       "use_cases_en": [
         "Preparing feature branches for clean merge into staging or production."
+      ],
+      "example_prompts_en": [
+        "All tests are passing; execute the finishing-a-development-branch protocol to merge cleanly to main."
       ]
     },
     {
@@ -2445,6 +2589,9 @@
       ],
       "use_cases_en": [
         "Onboarding AI agents into complex legacy codebases."
+      ],
+      "example_prompts_en": [
+        "Before starting work, trigger using-superpowers to survey and load relevant skills for my request."
       ]
     },
     {
@@ -2502,6 +2649,9 @@
       ],
       "use_cases_en": [
         "Troubleshooting AI agent setups and skill execution environments."
+      ],
+      "example_prompts_en": [
+        "The agent repeated an error twice; trigger diagnosing-superpowers to diagnose context drift."
       ]
     },
     {
@@ -2559,6 +2709,9 @@
       ],
       "use_cases_en": [
         "Authoring custom enterprise skills for AI agent platforms."
+      ],
+      "example_prompts_en": [
+        "Walk me step-by-step through authoring a standardized API documentation skill for our engineering team."
       ]
     },
     {
@@ -2616,6 +2769,9 @@
       ],
       "use_cases_en": [
         "Scoping new software features, architecture overhauls, and client projects."
+      ],
+      "example_prompts_en": [
+        "Interview me with structured, sequenced questions to clarify requirements for a new task tracker app."
       ]
     },
     {
@@ -2673,6 +2829,9 @@
       ],
       "use_cases_en": [
         "Refining startup concepts, internal tools, and new product offerings."
+      ],
+      "example_prompts_en": [
+        "Refine and challenge this concept for adding AI-powered product recommendations to my e-commerce store."
       ]
     },
     {
@@ -2730,6 +2889,9 @@
       ],
       "use_cases_en": [
         "Designing complex microservices, payment gateways, and data pipelines."
+      ],
+      "example_prompts_en": [
+        "Draft a comprehensive technical specification (RFC) before writing code for our new payments backend."
       ]
     },
     {
@@ -2787,6 +2949,9 @@
       ],
       "use_cases_en": [
         "Sprint planning, roadmap execution, and Jira/Linear ticket drafting."
+      ],
+      "example_prompts_en": [
+        "Decompose this technical specification into ordered, bite-sized, independently testable engineering tasks."
       ]
     },
     {
@@ -2844,6 +3009,9 @@
       ],
       "use_cases_en": [
         "Developing complex features without breaking main branch stability."
+      ],
+      "example_prompts_en": [
+        "Implement this complex feature slice-by-slice, verifying each increment before moving forward."
       ]
     },
     {
@@ -2901,6 +3069,9 @@
       ],
       "use_cases_en": [
         "Building enterprise component libraries and high-traffic web applications."
+      ],
+      "example_prompts_en": [
+        "Build a multi-select dropdown component with full keyboard navigation and ARIA accessibility."
       ]
     },
     {
@@ -2958,6 +3129,9 @@
       ],
       "use_cases_en": [
         "Designing public developer APIs and internal microservice interfaces."
+      ],
+      "example_prompts_en": [
+        "Design a RESTful API for monthly subscription billing following standard naming and error conventions."
       ]
     },
     {
@@ -3015,6 +3189,9 @@
       ],
       "use_cases_en": [
         "Optimizing autonomous agent memory for deep coding projects."
+      ],
+      "example_prompts_en": [
+        "Prune irrelevant session context and structure only essential state for the agent upcoming task."
       ]
     },
     {
@@ -3072,6 +3249,9 @@
       ],
       "use_cases_en": [
         "Debugging tricky single-page application bugs and performance regressions."
+      ],
+      "example_prompts_en": [
+        "Open this URL in Chrome, simulate submitting the checkout form, and inspect console logs and network traces."
       ]
     },
     {
@@ -3129,6 +3309,9 @@
       ],
       "use_cases_en": [
         "Building fault-tolerant backend services and payment processing flows."
+      ],
+      "example_prompts_en": [
+        "Isolate the root cause of this Unhandled Promise Rejection in the payment service and formulate a patch."
       ]
     },
     {
@@ -3186,6 +3369,9 @@
       ],
       "use_cases_en": [
         "Security auditing, cryptographic implementations, and critical auth logic."
+      ],
+      "example_prompts_en": [
+        "Act as an adversarial reviewer to stress-test this distributed system architecture and expose flaws."
       ]
     },
     {
@@ -3243,6 +3429,9 @@
       ],
       "use_cases_en": [
         "Integrating cutting-edge libraries, SDKs, and platform APIs."
+      ],
+      "example_prompts_en": [
+        "Anchor this Prisma schema query implementation strictly in Prisma v6 official upstream documentation."
       ]
     },
     {
@@ -3300,6 +3489,9 @@
       ],
       "use_cases_en": [
         "Building lightweight embedded software, CLI tools, and high-speed services."
+      ],
+      "example_prompts_en": [
+        "Enforce hard architectural constraints: reject any design that exceeds our 200ms p99 latency budget."
       ]
     },
     {
@@ -3357,6 +3549,9 @@
       ],
       "use_cases_en": [
         "Conducting thorough architectural reviews across engineering teams."
+      ],
+      "example_prompts_en": [
+        "Review these pull request changes focusing on memory leaks, concurrency hazards, and test coverage."
       ]
     },
     {
@@ -3414,6 +3609,9 @@
       ],
       "use_cases_en": [
         "Refactoring legacy spaghetti code and oversized monolithic files."
+      ],
+      "example_prompts_en": [
+        "Refactor this file to eliminate nested conditionals and deep nesting while strictly preserving existing behavior."
       ]
     },
     {
@@ -3471,6 +3669,9 @@
       ],
       "use_cases_en": [
         "Optimizing slow database endpoints and improving frontend load speeds."
+      ],
+      "example_prompts_en": [
+        "Analyze slow database queries and high latency on this page and apply caching and query indexing."
       ]
     },
     {
@@ -3528,6 +3729,9 @@
       ],
       "use_cases_en": [
         "Upgrading React, Next.js, Python, or database drivers across large repos."
+      ],
+      "example_prompts_en": [
+        "Design an Expand and Contract zero-downtime database migration plan to alter our user accounts schema."
       ]
     },
     {
@@ -3585,6 +3789,9 @@
       ],
       "use_cases_en": [
         "Setting up automated release pipelines for open-source and SaaS projects."
+      ],
+      "example_prompts_en": [
+        "Prepare a Conventional Commit message and semver release tag for our latest pull request."
       ]
     },
     {
@@ -3642,6 +3849,9 @@
       ],
       "use_cases_en": [
         "Deploying major product releases to public production infrastructure."
+      ],
+      "example_prompts_en": [
+        "Run through the production launch readiness checklist before deploying this release to production."
       ]
     },
     {
@@ -3702,6 +3912,9 @@
       ],
       "use_cases_en": [
         "Designing design system components and flexible React interfaces."
+      ],
+      "example_prompts_en": [
+        "Refactor this monolithic card component into Compound Components to eliminate prop drilling."
       ]
     },
     {
@@ -3762,6 +3975,9 @@
       ],
       "use_cases_en": [
         "Deploying Next.js, static sites, and frontend applications on Vercel."
+      ],
+      "example_prompts_en": [
+        "Deploy this Next.js application to Vercel, configure environment secrets, and return the preview URL."
       ]
     },
     {
@@ -3822,6 +4038,9 @@
       ],
       "use_cases_en": [
         "Writing clean, maintainable React frontend applications."
+      ],
+      "example_prompts_en": [
+        "Audit this React application against Vercel best practices to eliminate render waterfalls and bloated bundles."
       ]
     },
     {
@@ -3882,6 +4101,9 @@
       ],
       "use_cases_en": [
         "Developing cross-platform mobile apps for iOS App Store and Google Play."
+      ],
+      "example_prompts_en": [
+        "Optimize list rendering and layout performance in React Native to eliminate dropped frames on mobile."
       ]
     },
     {
@@ -3942,6 +4164,9 @@
       ],
       "use_cases_en": [
         "Adding smooth fluid page transitions to modern web apps."
+      ],
+      "example_prompts_en": [
+        "Implement a smooth View Transition animation when navigating from the skill grid to the detail view."
       ]
     },
     {
@@ -4002,6 +4227,9 @@
       ],
       "use_cases_en": [
         "Automating continuous deployment pipelines and headless deployments."
+      ],
+      "example_prompts_en": [
+        "Configure Vercel CLI with an automation token to deploy builds and attach custom domains via CI/CD."
       ]
     },
     {
@@ -4062,6 +4290,9 @@
       ],
       "use_cases_en": [
         "Optimizing high-traffic Vercel applications for peak speed and efficiency."
+      ],
+      "example_prompts_en": [
+        "Analyze Vercel Serverless Function invocations across our routes to minimize compute costs and cold starts."
       ]
     },
     {
@@ -4122,6 +4353,9 @@
       ],
       "use_cases_en": [
         "Elevating landing page aesthetics and SaaS dashboard experiences."
+      ],
+      "example_prompts_en": [
+        "Audit this frontend codebase against WCAG accessibility guidelines and modern UI layout standards."
       ]
     },
     {
@@ -4182,6 +4416,9 @@
       ],
       "use_cases_en": [
         "Writing open-source READMEs, developer portals, and technical tutorials."
+      ],
+      "example_prompts_en": [
+        "Review this technical documentation draft and refine tone, clarity, and conciseness to match guidelines."
       ]
     },
     {
@@ -4242,6 +4479,9 @@
       ],
       "use_cases_en": [
         "Isolating complex frontend and backend library bugs."
+      ],
+      "example_prompts_en": [
+        "Perform root-cause diagnosis on this flaky concurrency bug before recommending any code edits."
       ]
     },
     {
@@ -4302,6 +4542,9 @@
       ],
       "use_cases_en": [
         "Auditing technical architecture proposals against official docs."
+      ],
+      "example_prompts_en": [
+        "Interview me critically on our proposed architecture and capture our consensus in an ADR with a glossary."
       ]
     },
     {
@@ -4362,6 +4605,9 @@
       ],
       "use_cases_en": [
         "Managing high-volume GitHub issue repositories and bug trackers."
+      ],
+      "example_prompts_en": [
+        "Triage this incoming bug report, categorize its severity, verify reproduction steps, and produce a summary."
       ]
     },
     {
@@ -4422,6 +4668,9 @@
       ],
       "use_cases_en": [
         "Refactoring large legacy codebases and monorepo packages."
+      ],
+      "example_prompts_en": [
+        "Scan this repository to identify superficial classes and propose deep module boundaries."
       ]
     },
     {
@@ -4482,6 +4731,9 @@
       ],
       "use_cases_en": [
         "Building open-source TypeScript libraries and core business modules."
+      ],
+      "example_prompts_en": [
+        "Implement this validation module following strict Test-Driven Development, beginning with a failing unit test."
       ]
     },
     {
@@ -4542,6 +4794,9 @@
       ],
       "use_cases_en": [
         "Breaking technical specs into actionable sprint backlogs."
+      ],
+      "example_prompts_en": [
+        "Break down this architectural proposal into granular, linked execution tickets with clear dependency graphs."
       ]
     },
     {
@@ -4602,6 +4857,9 @@
       ],
       "use_cases_en": [
         "Translating product briefs into actionable engineering blueprints."
+      ],
+      "example_prompts_en": [
+        "Synthesize our architectural discussion into an authoritative technical specification ready for tracking."
       ]
     },
     {
@@ -4662,6 +4920,9 @@
       ],
       "use_cases_en": [
         "Preparing for technical design reviews and validating complex plans."
+      ],
+      "example_prompts_en": [
+        "Grill me aggressively with hard questions regarding this design proposal until every edge case is addressed."
       ]
     },
     {
@@ -4722,6 +4983,9 @@
       ],
       "use_cases_en": [
         "Setting up team-wide git guardrails and automated formatting."
+      ],
+      "example_prompts_en": [
+        "Configure Husky and lint-staged in this repository to automate type checks and formatting on pre-commit."
       ]
     },
     {
@@ -4782,6 +5046,9 @@
       ],
       "use_cases_en": [
         "Configuring safe autonomous agent coding sessions in local terminals."
+      ],
+      "example_prompts_en": [
+        "Install Git guardrails in our environment to block destructive commands like reset --hard and force push."
       ]
     },
     {
@@ -4842,6 +5109,9 @@
       ],
       "use_cases_en": [
         "Crafting AGENTS.md, instructions, and prompt templates for developer tools."
+      ],
+      "example_prompts_en": [
+        "Author a clear, concise AGENTS.md guide for this repository following agentic documentation best practices."
       ]
     },
     {
@@ -4902,6 +5172,9 @@
       ],
       "use_cases_en": [
         "Designing greenfield backend services and modernizing legacy code."
+      ],
+      "example_prompts_en": [
+        "Design a deep interface for this telemetry module that hides underlying queue and network complexities."
       ]
     },
     {
@@ -4962,6 +5235,9 @@
       ],
       "use_cases_en": [
         "Reviewing complex TypeScript pull requests and library APIs."
+      ],
+      "example_prompts_en": [
+        "Review the diff between this feature branch and main, providing actionable feedback with line citations."
       ]
     },
     {
@@ -5022,6 +5298,9 @@
       ],
       "use_cases_en": [
         "Building enterprise MCP servers for Microsoft Copilot and custom agents."
+      ],
+      "example_prompts_en": [
+        "Build a complete Model Context Protocol (MCP) server in TypeScript allowing AI agents to query our API."
       ]
     },
     {
@@ -5082,6 +5361,9 @@
       ],
       "use_cases_en": [
         "Authoring skills for Microsoft 365 Copilot and enterprise ecosystems."
+      ],
+      "example_prompts_en": [
+        "Author a standard SKILL.md guide instructing AI agents how to consume our cloud client SDK safely."
       ]
     },
     {
@@ -5142,6 +5424,9 @@
       ],
       "use_cases_en": [
         "Auditing enterprise web apps for accessibility and design consistency."
+      ],
+      "example_prompts_en": [
+        "Evaluate this frontend view against design pillars and recommend concrete aesthetic and ergonomic fixes."
       ]
     },
     {
@@ -5202,6 +5487,9 @@
       ],
       "use_cases_en": [
         "Automating issue generation from bug reports and customer feedback."
+      ],
+      "example_prompts_en": [
+        "Transform this error trace and environment context into a professional GitHub issue with reproduction steps."
       ]
     },
     {
@@ -5262,6 +5550,9 @@
       ],
       "use_cases_en": [
         "Designing enterprise cloud architectures, Kubernetes clusters, and networks."
+      ],
+      "example_prompts_en": [
+        "Act as a Principal Cloud Architect to recommend a secure, high-availability AWS/GCP topology for this app."
       ]
     },
     {
@@ -5322,6 +5613,9 @@
       ],
       "use_cases_en": [
         "Developing intelligent Copilot extensions and custom assistant UI."
+      ],
+      "example_prompts_en": [
+        "Explain how to utilize the GitHub Copilot SDK in Node.js to build an autonomous test-generation assistant."
       ]
     },
     {
@@ -5382,6 +5676,9 @@
       ],
       "use_cases_en": [
         "Converting blog posts, whitepapers, and news digests into audio podcasts."
+      ],
+      "example_prompts_en": [
+        "Adapt this engineering whitepaper into an engaging two-host dialogue script optimized for audio synthesis."
       ]
     },
     {
@@ -5442,6 +5739,9 @@
       ],
       "use_cases_en": [
         "Security threat hunting in Sentinel and log analysis in Azure Monitor."
+      ],
+      "example_prompts_en": [
+        "Write an efficient Kusto Query Language (KQL) query to aggregate error events over the last 24 hours by frequency."
       ]
     }
   ],

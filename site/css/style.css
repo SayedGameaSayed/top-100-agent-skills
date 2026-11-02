@@ -2938,3 +2938,23 @@ html[data-theme="light"] .card-difficulty {
   font-size: 12px;
   font-weight: 500;
 }
+
+/* --------------------------------------------------------------------------
+   Bilingual How-to-Use Guide Toggles
+   -------------------------------------------------------------------------- */
+html[lang="en"] #guide-content-ar {
+  display: none !important;
+}
+
+html[lang="ar"] #guide-content-en {
+  display: none !important;
+}
+
+html[dir="ltr"] .guide-lang-block header,
+html[dir="ltr"] .guide-lang-block .editorial-block {
+  text-align: left;
+}
+
+html[dir="ltr"] .guide-lang-block .editorial-statement {
+  text-align: left;
+}
