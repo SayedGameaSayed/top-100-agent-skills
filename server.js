@@ -227,6 +227,12 @@ app.get(['/robots.txt', '/site/robots.txt'], (req, res) => {
   res.type('text/plain').send(`User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
 });
 
+// Google Search Console Verification handler
+app.get('/google:id.html', (req, res) => {
+  const filename = `google${req.params.id}.html`;
+  res.type('text/html').send(`google-site-verification: ${filename}`);
+});
+
 // Favicon handler
 app.get('/favicon.ico', (req, res) => {
   const iconPath = path.join(ROOT_DIR, 'site/assets/logo.png');
