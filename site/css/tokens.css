@@ -144,51 +144,89 @@
 :root[data-theme="light"],
 html[data-theme="light"] {
   /* ==========================================================================
-     Minimalist Light White Palette
+     Apple — Style Reference (White Gallery Aesthetic)
      ========================================================================== */
-  --color-void-black: #ffffff;
-  --color-graphite-hairline: #e4e4e7;
-  --color-white: #09090b;
-  --color-bone-white: #09090b;
-  --color-ash-gray: #52525b;
-  --color-smoke-gray: #71717a;
-  --color-iron: #a1a1aa;
-  --color-charcoal: #d4d4d8;
+  /* Colors */
+  --color-gallery-white: #ffffff;
+  --color-studio-mist: #f5f5f7;
+  --color-paper-frost: #fafafc;
+  --color-hairline-silver: #d6d6d6;
+  --color-control-gray: #e6e6e8;
+  --color-ink: #1d1d1f;
+  --color-slate: #707070;
+  --color-steel: #86868b;
+  --color-apple-blue: #0066cc;
+  --color-pricing-blue: #0071e3;
+  --color-launch-orange: #b64400;
+
+  /* Typography Stacks */
+  --font-sf-pro-display: 'SF Pro Display', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Inter', sans-serif;
+  --font-sf-pro-text: 'SF Pro Text', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Inter', sans-serif;
+  --font-arial: 'Arial', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --font-inter: var(--font-sf-pro-text);
+  --font-display: 'Cairo', var(--font-sf-pro-display);
+  --font-text: 'Cairo', var(--font-sf-pro-text);
+
+  /* Semantic Resend-to-Apple Variable Mappings */
+  --color-void-black: var(--color-gallery-white);
+  --color-graphite-hairline: var(--color-hairline-silver);
+  --color-white: var(--color-ink);
+  --color-bone-white: var(--color-ink);
+  --color-ash-gray: var(--color-slate);
+  --color-smoke-gray: var(--color-steel);
+  --color-iron: var(--color-steel);
+  --color-charcoal: var(--color-control-gray);
 
   /* Accents */
-  --color-iris-violet: #6d28d9;
-  --gradient-iris-violet: linear-gradient(to right bottom, #7c3aed 0%, #6d28d9 100%);
-  --color-iris-violet-glow: #8b5cf6;
-  --color-signal-blue: #0284c7;
-  --color-sky-blue: #0369a1;
-  --color-pulse-green: #059669;
-  --color-alarm-red: #e11d48;
-  --color-crimson: #dc2626;
-  --color-amber: #d97706;
-  --color-amber-glow: #b45309;
-  --color-surface-gradient: #f8fafc;
-  --gradient-surface-gradient: linear-gradient(#ffffff, #f8fafc);
+  --color-iris-violet: var(--color-pricing-blue);
+  --gradient-iris-violet: var(--color-pricing-blue);
+  --color-iris-violet-glow: #0077ed;
+  --color-signal-blue: var(--color-apple-blue);
+  --color-sky-blue: var(--color-pricing-blue);
+  --color-pulse-green: #1b8738;
+  --color-alarm-red: #d70015;
+  --color-crimson: #d70015;
+  --color-amber: var(--color-launch-orange);
+  --color-amber-glow: #cf4f03;
+  --color-surface-gradient: var(--color-studio-mist);
+  --gradient-surface-gradient: var(--color-studio-mist);
 
   /* Surfaces */
-  --surface-void: #ffffff;
-  --surface-graphite: #e4e4e7;
-  --surface-surface-lift: #f8fafc;
-  --surface-backdrop-blur: rgba(255, 255, 255, 0.92);
+  --surface-void: var(--color-gallery-white);
+  --surface-graphite: var(--color-hairline-silver);
+  --surface-surface-lift: var(--color-studio-mist);
+  --surface-backdrop-blur: rgba(255, 255, 255, 0.85);
 
   /* Semantic System Aliases */
-  --color-void: #ffffff;
-  --color-electric-iris: #6d28d9;
-  --color-electric-iris-hover: #5b21b6;
-  --color-saffron-spark: #d97706;
-  --color-deep-verdant: #059669;
-  --color-silver-mist: #71717a;
-  --surface-void-canvas: #ffffff;
-  --surface-card: #ffffff;
-  --surface-card-hover: #f9fafb;
-  --surface-input: #ffffff;
-  --surface-pill: rgba(0, 0, 0, 0.05);
-  --border-subtle: #e4e4e7;
-  --border-focus: #6d28d9;
+  --color-void: var(--color-gallery-white);
+  --color-electric-iris: var(--color-pricing-blue);
+  --color-electric-iris-hover: #0077ed;
+  --color-saffron-spark: var(--color-launch-orange);
+  --color-deep-verdant: #1b8738;
+  --color-silver-mist: var(--color-slate);
+  --surface-void-canvas: var(--color-gallery-white);
+  --surface-card: var(--color-gallery-white);
+  --surface-card-hover: var(--color-paper-frost);
+  --surface-input: var(--color-gallery-white);
+  --surface-pill: var(--color-studio-mist);
+  --border-subtle: var(--color-hairline-silver);
+  --border-focus: var(--color-pricing-blue);
 
-  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  /* Apple Canonical Radii: 28px cards, 36px/9999px pills/buttons, 980px inputs */
+  --radius-cards: 28px;
+  --radius-card: 28px;
+  --radius-images: 28px;
+  --radius-pills: 36px;
+  --radius-pill: 9999px;
+  --radius-buttons: 9999px;
+  --radius-button: 9999px;
+  --radius-badges: 9999px;
+  --radius-inputs: 980px;
+  --radius-search: 980px;
+  --radius-navigation: 20px;
+
+  /* Shadows (Apple: Flat and shadowless with 1px hairline edges) */
+  --shadow-subtle: rgb(230, 230, 232) 0px 0px 0px 1px;
+  --shadow-subtle-2: rgb(134, 134, 139) 0px 0px 0px 1px;
 }

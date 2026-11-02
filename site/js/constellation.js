@@ -48,14 +48,14 @@ export function initConstellation(canvasId = 'constellation-canvas') {
   function getColor(name) {
     const light = isLight();
     switch (name) {
-      case 'iris': return light ? '#6d28d9' : '#9281f7';
-      case 'glow': return light ? '#8b5cf6' : '#baa7ff';
-      case 'white': return light ? '#09090b' : '#ffffff';
-      case 'bone': return light ? '#27272a' : '#f0f0f0';
-      case 'graphite': return light ? '#cbd5e1' : '#292d30';
-      case 'iron': return light ? '#71717a' : '#6e727a';
-      case 'ash': return light ? '#52525b' : '#a1a4a5';
-      default: return light ? '#6d28d9' : '#9281f7';
+      case 'iris': return light ? '#0071e3' : '#9281f7';
+      case 'glow': return light ? '#0066cc' : '#baa7ff';
+      case 'white': return light ? '#1d1d1f' : '#ffffff';
+      case 'bone': return light ? '#1d1d1f' : '#f0f0f0';
+      case 'graphite': return light ? '#d6d6d6' : '#292d30';
+      case 'iron': return light ? '#86868b' : '#6e727a';
+      case 'ash': return light ? '#707070' : '#a1a4a5';
+      default: return light ? '#0071e3' : '#9281f7';
     }
   }
 
