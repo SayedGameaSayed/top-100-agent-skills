@@ -3766,3 +3766,375 @@ html[data-theme="light"] #leaderboard-category-filter {
   border-radius: 10px !important;
   padding: 6px 12px !important;
 }
+
+/* ==========================================================================
+   Gemini AI Assistant - API Key Drawer & Guided Setup Styles
+   ========================================================================== */
+.bot-api-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-graphite-hairline);
+  color: var(--color-ash-gray);
+  border-radius: 9999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.bot-api-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  border-color: var(--color-iris-violet);
+}
+
+.bot-api-btn.has-key {
+  background: rgba(58, 211, 137, 0.12);
+  border-color: rgba(58, 211, 137, 0.4);
+  color: var(--color-pulse-green);
+  font-weight: 600;
+}
+
+.bot-live-dot.bot-live-gemini {
+  background-color: #60a5fa !important;
+  box-shadow: 0 0 8px #3b82f6 !important;
+}
+
+/* Settings Drawer */
+.bot-settings-drawer {
+  background: #0d1117;
+  border-bottom: 1px solid var(--color-graphite-hairline);
+  padding: 14px 16px;
+  animation: drawerSlideDown 0.2s ease-out;
+}
+
+@keyframes drawerSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bot-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.bot-settings-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.bot-settings-badge {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.bot-settings-desc {
+  font-size: 11px;
+  color: var(--color-ash-gray);
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.bot-api-steps-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-graphite-hairline);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bot-api-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--color-bone-white);
+}
+
+.bot-step-num, .bot-api-step-num {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(146, 129, 247, 0.2);
+  color: var(--color-iris-violet);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bot-api-studio-link {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #60a5fa;
+  text-decoration: underline;
+  padding-inline-start: 26px;
+  margin-bottom: 2px;
+}
+
+.bot-api-studio-link:hover {
+  color: #93c5fd;
+}
+
+.bot-api-input-wrap {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.bot-api-input-wrap input {
+  width: 100%;
+  background: var(--color-void-black);
+  border: 1.5px solid var(--color-graphite-hairline);
+  border-radius: 8px;
+  padding: 7px 34px 7px 10px;
+  color: var(--color-white);
+  font-size: 12px;
+  font-family: var(--font-commit-mono, monospace);
+  outline: none;
+}
+
+.bot-api-input-wrap input:focus {
+  border-color: var(--color-iris-violet);
+}
+
+.bot-key-vis-btn {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--color-ash-gray);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.bot-settings-status {
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-ash-gray);
+}
+
+.bot-settings-status.success {
+  background: rgba(58, 211, 137, 0.12);
+  color: var(--color-pulse-green);
+  border: 1px solid rgba(58, 211, 137, 0.3);
+}
+
+.bot-settings-status.error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.bot-api-actions-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.bot-save-btn {
+  background: #2563eb;
+  border: none;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.bot-save-btn:hover {
+  background: #1d4ed8;
+}
+
+.bot-clear-btn {
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.bot-cancel-btn {
+  background: transparent;
+  border: 1px solid var(--color-graphite-hairline);
+  color: var(--color-ash-gray);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.bot-privacy-notice {
+  font-size: 10px;
+  color: var(--color-smoke-gray);
+  line-height: 1.4;
+}
+
+/* Welcome Promo & In-Chat Banners */
+.bot-welcome-promo {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px dashed rgba(59, 130, 246, 0.35);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-block: 4px 10px;
+}
+
+.bot-promo-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #93c5fd;
+  margin-bottom: 4px;
+}
+
+.bot-promo-desc {
+  font-size: 11px;
+  color: var(--color-bone-white);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.bot-promo-btn {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid #3b82f6;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+
+.bot-promo-btn:hover {
+  background: #2563eb;
+}
+
+.bot-msg-key-callout {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-graphite-hairline);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+
+.callout-text {
+  font-size: 11px;
+  color: var(--color-bone-white);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.callout-btns {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.callout-link-btn {
+  font-size: 11px;
+  color: #60a5fa;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.callout-open-drawer-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-graphite-hairline);
+  color: var(--color-white);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* Light Mode Overrides */
+html[data-theme="light"] .bot-api-btn {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .bot-api-btn.has-key {
+  background: #ecfdf5 !important;
+  border-color: #10b981 !important;
+  color: #065f46 !important;
+}
+
+html[data-theme="light"] .bot-settings-drawer {
+  background: #ffffff !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+html[data-theme="light"] .bot-settings-title {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .bot-settings-desc {
+  color: #334155 !important;
+}
+
+html[data-theme="light"] .bot-api-steps-box {
+  background: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+}
+
+html[data-theme="light"] .bot-api-step {
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .bot-api-input-wrap input {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .bot-welcome-promo {
+  background: #eff6ff !important;
+  border: 1.5px dashed #93c5fd !important;
+}
+
+html[data-theme="light"] .bot-promo-title {
+  color: #1d4ed8 !important;
+}
+
+html[data-theme="light"] .bot-promo-desc {
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .bot-msg-key-callout {
+  background: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+}
+
+html[data-theme="light"] .callout-text {
+  color: #1e293b !important;
+}
