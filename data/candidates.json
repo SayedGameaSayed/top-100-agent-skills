@@ -1,5 +1,5 @@
 {
-  "last_crawled_at": "2026-11-02T15:06:49.736Z",
+  "last_crawled_at": "2026-11-03T13:51:46.416Z",
   "description": "Newly discovered candidate skill repositories awaiting human translation, license review, and safety validation. NEVER rendered on public site until vetted.",
   "candidates": [
     {
@@ -598,6 +598,20 @@
       "discovered_at": "2026-11-02T15:06:45.118Z"
     },
     {
+      "owner": "cloudflare",
+      "repo": "security-audit-skill",
+      "full_name": "cloudflare/security-audit-skill",
+      "repo_url": "https://github.com/cloudflare/security-audit-skill",
+      "stars": 57873,
+      "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+      "topics": [],
+      "deduced_category": "code-quality",
+      "deduced_category_ar": "جودة الكود والاختبار",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-03T13:51:45.815Z"
+    },
+    {
       "owner": "hesreallyhim",
       "repo": "awesome-claude-code",
       "full_name": "hesreallyhim/awesome-claude-code",
@@ -1025,6 +1039,35 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     },
     {
+      "owner": "mhfed",
+      "repo": "vn-law-check",
+      "full_name": "mhfed/vn-law-check",
+      "repo_url": "https://github.com/mhfed/vn-law-check",
+      "stars": 305,
+      "description": "Audit pháp lý website theo luật Việt Nam (BVDLCN 91/2025, TMĐT 122/2025, ANM 116/2025, AI 134/2025) cho Claude Code, Cursor, Copilot, Windsurf, Cline",
+      "topics": [
+        "agent-md",
+        "agent-skills",
+        "claude-code",
+        "claude-plugin",
+        "claude-skills",
+        "compliance",
+        "copilot-instructions",
+        "cursor-rules",
+        "data-protection",
+        "ecomerce",
+        "legal-tech",
+        "privacy",
+        "skills",
+        "vietnam"
+      ],
+      "deduced_category": "development",
+      "deduced_category_ar": "البرمجة والويب",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-03T13:51:44.666Z"
+    },
+    {
       "owner": "Mindrally",
       "repo": "skills",
       "full_name": "Mindrally/skills",
@@ -1196,7 +1239,7 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     }
   ],
-  "total_candidates": 41,
+  "total_candidates": 43,
   "quarantined_from_audit": [
     {
       "id": "git-workflow",
