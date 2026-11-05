@@ -4237,3 +4237,83 @@ html[data-theme="light"] .bot-free-gemini-callout {
 html[data-theme="light"] .bot-free-gemini-callout strong {
   color: #0f172a !important;
 }
+
+
+/* Privacy & Security Trust Box */
+.bot-privacy-trust-box {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #d1fae5;
+}
+
+.bot-privacy-trust-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #34d399;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+}
+
+.bot-privacy-trust-body {
+  color: #a7f3d0;
+  font-size: 10.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bot-privacy-trust-body strong {
+  color: #ffffff;
+}
+
+.bot-privacy-trust-body code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 10px;
+}
+
+.bot-privacy-trust-link {
+  color: #6ee7b7;
+  text-decoration: underline;
+}
+
+.bot-privacy-trust-link:hover {
+  color: #a7f3d0;
+}
+
+/* Light Theme Overrides */
+html[data-theme="light"] .bot-privacy-trust-box {
+  background: rgba(16, 185, 129, 0.08) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  color: #065f46 !important;
+}
+
+html[data-theme="light"] .bot-privacy-trust-header {
+  color: #047857 !important;
+}
+
+html[data-theme="light"] .bot-privacy-trust-body {
+  color: #065f46 !important;
+}
+
+html[data-theme="light"] .bot-privacy-trust-body strong {
+  color: #044e39 !important;
+}
+
+html[data-theme="light"] .bot-privacy-trust-body code {
+  background: rgba(0, 0, 0, 0.06) !important;
+  color: #044e39 !important;
+}
+
+html[data-theme="light"] .bot-privacy-trust-link {
+  color: #047857 !important;
+}

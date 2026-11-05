@@ -281,10 +281,34 @@ export function initAiBot(skills = []) {
           <button type="button" id="bot-cancel-settings-btn" class="bot-cancel-btn">${isEn ? 'Close' : 'إغلاق'}</button>
         </div>
 
-        <div class="bot-privacy-notice">
-          🔒 ${isEn 
-            ? 'Your key stays securely in your browser (localStorage). Never sent to any database. 100% Client-Side Privacy.' 
-            : 'أمان وخصوصية تامة: المفتاح يُحفظ في متصفحك محلياً فقط ولا يُسجل في أي قاعدة بيانات.'}
+        <!-- Transparent Privacy & Security Guarantee -->
+        <div class="bot-privacy-trust-box">
+          <div class="bot-privacy-trust-header">
+            <span>🛡️</span>
+            <span>${isEn 
+              ? '100% Personal Privacy — Nobody Can See Your API Key' 
+              : 'أمان وخصوصية 100% — مفتاحك محفوظ عندك شخصياً ولا يمكن لأحد رؤيته'}</span>
+          </div>
+          <div class="bot-privacy-trust-body">
+            <div>
+              <strong>${isEn ? 'Where is it saved?' : 'أين يُحفظ المفتاح؟'}</strong> 
+              ${isEn 
+                ? 'Strictly inside your browser\'s local sandbox (<code>localStorage</code>) on your own device, like a local password.' 
+                : 'يُحفظ مشفراً داخل متصفحك الشخصي فقط (تقنية <code>localStorage</code>) على جهازك أنت، تماماً مثل كلمة مرور محلية.'}
+            </div>
+            <div>
+              <strong>${isEn ? 'Why can no one see it?' : 'لماذا لا يستطيع أحد (ولا حتى صاحب الموقع) رؤيته؟'}</strong> 
+              ${isEn 
+                ? 'The site runs on pure client-side architecture. Encrypted requests go directly from your browser to AI servers. We have zero databases, zero key tracking, and zero server logging.' 
+                : 'لأن الموقع مبني بمعمارية المتصفح المباشر (Client-Side). يخرج الطلب مشفراً من متصفحك مباشرة إلى شركة الذكاء الاصطناعي. لا توجد لدينا أي قاعدة بيانات لتخزين المفاتيح ولا يتم تسجيل أي مفتاح في أي سيرفر نهائياً.'}
+            </div>
+            <div>
+              <strong>${isEn ? 'How to verify?' : 'كيف تتأكد بنفسك؟'}</strong> 
+              ${isEn 
+                ? 'This project is 100% open-source on <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" class="bot-privacy-trust-link">GitHub</a>. You can inspect the code anytime, and remove your key with 1 click.' 
+                : 'المشروع مفتوح المصدر 100% على <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" class="bot-privacy-trust-link">GitHub</a>، ويمكن لأي مبرمج فحص الكود بنفسه للتأكد. كما يمكنك حذف المفتاح بضغطة زر واحدة في أي لحظة.'}
+            </div>
+          </div>
         </div>
       </div>
 
