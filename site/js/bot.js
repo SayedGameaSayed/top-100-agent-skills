@@ -189,9 +189,10 @@ export function initAiBot(skills = []) {
     <!-- Floating Chat Modal / Drawer -->
     <div id="ai-bot-modal" class="ai-bot-modal" aria-hidden="true">
       
-      <!-- Bot Header -->
-      <div class="bot-header">
+      <!-- Bot Header (Draggable) -->
+      <div class="bot-header" id="bot-header">
         <div class="bot-header-info">
+          <span class="bot-drag-handle" id="bot-drag-handle" title="${isEn ? 'Drag to move window anywhere (Double-click to reset)' : 'اسحب لتحريك النافذة في أي مكان (انقر مرتين لإعادتها للوضع الأصلي)'}">⠿</span>
           <img src="assets/logo.png" alt="Assistant Logo" class="bot-avatar-img" width="28" height="28">
           <div>
             <div class="bot-title">${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}</div>
@@ -209,6 +210,7 @@ export function initAiBot(skills = []) {
           <button id="bot-api-btn" class="bot-api-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Configure API Key (Claude, OpenAI, Gemini...)' : 'إعداد مفتاح API (كلود، ChatGPT، جيميناي...)'}" type="button">
             🔑 <span id="bot-api-btn-text">${hasKey ? (isEn ? 'AI Active ✓' : 'المفتاح نشط ✓') : (isEn ? 'Set API Key' : 'مفتاح API')}</span>
           </button>
+          <button id="bot-expand-btn" class="bot-icon-btn" title="${isEn ? 'Maximize / Restore Window' : 'تكبير / استعادة حجم النافذة'}" aria-label="${isEn ? 'Maximize' : 'تكبير'}" type="button">⤢</button>
           <button id="bot-close-btn" class="bot-icon-btn" title="${isEn ? 'Close Chat' : 'إغلاق المحادثة'}" aria-label="${isEn ? 'Close' : 'إغلاق'}" type="button">✕</button>
         </div>
       </div>
@@ -353,6 +355,12 @@ export function initAiBot(skills = []) {
         </div>
       </div>
 
+      <!-- Floating Scroll to Bottom Button -->
+      <button id="bot-scroll-bottom-btn" class="bot-scroll-bottom-btn" type="button" aria-label="${isEn ? 'Scroll down to latest' : 'التمرير لأسفل المحادثة'}" title="${isEn ? 'Scroll to latest messages' : 'الانتقال لآخر الرسائل'}">
+        <span class="bot-scroll-icon">↓</span>
+        <span class="bot-scroll-text">${isEn ? 'Latest Messages' : 'آخر الرسائل'}</span>
+      </button>
+
       <!-- Chat Input Area -->
       <form id="bot-input-form" class="bot-input-form">
         <textarea 
@@ -379,10 +387,14 @@ export function initAiBot(skills = []) {
 function attachBotEventListeners() {
   const trigger = document.getElementById('ai-bot-trigger');
   const modal = document.getElementById('ai-bot-modal');
+  const header = document.getElementById('bot-header');
+  const expandBtn = document.getElementById('bot-expand-btn');
   const closeBtn = document.getElementById('bot-close-btn');
   const form = document.getElementById('bot-input-form');
   const input = document.getElementById('bot-input-text');
   const chipsContainer = document.getElementById('bot-quick-chips');
+  const messagesContainer = document.getElementById('bot-messages-container');
+  const scrollBottomBtn = document.getElementById('bot-scroll-bottom-btn');
 
   const apiBtn = document.getElementById('bot-api-btn');
   const settingsDrawer = document.getElementById('bot-settings-drawer');
@@ -396,6 +408,40 @@ function attachBotEventListeners() {
   const badgeEl = document.getElementById('bot-settings-badge');
   const stepTextEl = document.getElementById('bot-step-guide-text');
   const linkEl = document.getElementById('bot-provider-link');
+  const isEn = getLang() === 'en';
+
+  // Helper: Smooth scroll to bottom & manage scroll button visibility
+  function scrollToBottom(smooth = true) {
+    if (!messagesContainer) return;
+    messagesContainer.scrollTo({
+      top: messagesContainer.scrollHeight,
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+    if (scrollBottomBtn) {
+      scrollBottomBtn.classList.remove('visible');
+    }
+  }
+
+  // Check scroll position to display the floating down button
+  function checkScrollPosition() {
+    if (!messagesContainer || !scrollBottomBtn) return;
+    const distanceToBottom = messagesContainer.scrollHeight - messagesContainer.scrollTop - messagesContainer.clientHeight;
+    if (distanceToBottom > 60) {
+      scrollBottomBtn.classList.add('visible');
+    } else {
+      scrollBottomBtn.classList.remove('visible');
+    }
+  }
+
+  if (messagesContainer) {
+    messagesContainer.addEventListener('scroll', checkScrollPosition, { passive: true });
+  }
+
+  if (scrollBottomBtn) {
+    scrollBottomBtn.addEventListener('click', () => {
+      scrollToBottom(true);
+    });
+  }
 
   // Toggle modal open/close
   trigger.addEventListener('click', () => {
@@ -407,8 +453,214 @@ function attachBotEventListeners() {
       modal.classList.add('active');
       modal.setAttribute('aria-hidden', 'false');
       input.focus();
+      setTimeout(() => {
+        checkScrollPosition();
+      }, 150);
     }
   });
+
+  // Expand / Maximize modal toggle
+  if (expandBtn) {
+    expandBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = modal.classList.toggle('expanded');
+      expandBtn.textContent = isExpanded ? '🗗' : '⤢';
+      expandBtn.title = isExpanded 
+        ? (isEn ? 'Restore Window Size' : 'استعادة الحجم الأصلي') 
+        : (isEn ? 'Maximize Window' : 'تكبير النافذة');
+      
+      if (modal.style.top) {
+        clampModalInViewport();
+      }
+      setTimeout(checkScrollPosition, 200);
+    });
+  }
+
+  // Keep modal bounded within viewport boundaries
+  function clampModalInViewport() {
+    const rect = modal.getBoundingClientRect();
+    const winWidth = window.innerWidth;
+    const winHeight = window.innerHeight;
+    const maxLeft = Math.max(8, winWidth - rect.width - 8);
+    const maxTop = Math.max(8, winHeight - rect.height - 8);
+    const clampedLeft = Math.max(8, Math.min(maxLeft, rect.left));
+    const clampedTop = Math.max(8, Math.min(maxTop, rect.top));
+    modal.style.left = `${clampedLeft}px`;
+    modal.style.top = `${clampedTop}px`;
+    modal.style.bottom = 'auto';
+    modal.style.right = 'auto';
+  }
+
+  // 1. Draggable Modal Window Implementation
+  function setupModalDraggable() {
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let initialLeft = 0, initialTop = 0;
+
+    const onPointerDown = (e) => {
+      // Don't drag when interacting with buttons, inputs, links, or select
+      if (e.target.closest('button') || e.target.closest('input') || e.target.closest('a') || e.target.closest('select')) {
+        return;
+      }
+
+      isDragging = true;
+      modal.classList.add('is-dragging');
+
+      const rect = modal.getBoundingClientRect();
+      initialLeft = rect.left;
+      initialTop = rect.top;
+
+      // Switch from bottom/left fixed coordinates to explicit px top/left
+      modal.style.top = `${initialTop}px`;
+      modal.style.left = `${initialLeft}px`;
+      modal.style.bottom = 'auto';
+      modal.style.right = 'auto';
+      modal.style.transform = 'none';
+
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
+      startX = clientX;
+      startY = clientY;
+
+      document.addEventListener('mousemove', onPointerMove, { passive: false });
+      document.addEventListener('mouseup', onPointerUp);
+      document.addEventListener('touchmove', onPointerMove, { passive: false });
+      document.addEventListener('touchend', onPointerUp);
+    };
+
+    const onPointerMove = (e) => {
+      if (!isDragging) return;
+      if (e.cancelable) e.preventDefault();
+
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
+      if (clientX === undefined || clientY === undefined) return;
+
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+
+      const modalWidth = modal.offsetWidth;
+      const modalHeight = modal.offsetHeight;
+      const winWidth = window.innerWidth;
+      const winHeight = window.innerHeight;
+
+      const newLeft = Math.max(8, Math.min(winWidth - modalWidth - 8, initialLeft + dx));
+      const newTop = Math.max(8, Math.min(winHeight - modalHeight - 8, initialTop + dy));
+
+      modal.style.left = `${newLeft}px`;
+      modal.style.top = `${newTop}px`;
+    };
+
+    const onPointerUp = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      modal.classList.remove('is-dragging');
+      document.removeEventListener('mousemove', onPointerMove);
+      document.removeEventListener('mouseup', onPointerUp);
+      document.removeEventListener('touchmove', onPointerMove);
+      document.removeEventListener('touchend', onPointerUp);
+    };
+
+    if (header) {
+      header.addEventListener('mousedown', onPointerDown);
+      header.addEventListener('touchstart', onPointerDown, { passive: true });
+
+      // Double click header to reset to original default corner position
+      header.addEventListener('dblclick', (e) => {
+        if (e.target.closest('button')) return;
+        resetModalPosition();
+      });
+    }
+
+    function resetModalPosition() {
+      modal.style.left = '';
+      modal.style.top = '';
+      modal.style.bottom = '';
+      modal.style.right = '';
+      modal.style.transform = '';
+      modal.classList.remove('expanded');
+      if (expandBtn) expandBtn.textContent = '⤢';
+    }
+
+    window.addEventListener('resize', () => {
+      if (modal.style.top) {
+        clampModalInViewport();
+      }
+    });
+  }
+
+  setupModalDraggable();
+
+  // 2. Draggable Trigger Pill Implementation
+  function setupTriggerDraggable() {
+    let isDragging = false;
+    let hasMoved = false;
+    let startX = 0, startY = 0;
+    let initialLeft = 0, initialTop = 0;
+
+    const onStart = (e) => {
+      isDragging = true;
+      hasMoved = false;
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
+      startX = clientX;
+      startY = clientY;
+
+      const rect = trigger.getBoundingClientRect();
+      initialLeft = rect.left;
+      initialTop = rect.top;
+
+      document.addEventListener('mousemove', onMove, { passive: false });
+      document.addEventListener('mouseup', onEnd);
+      document.addEventListener('touchmove', onMove, { passive: false });
+      document.addEventListener('touchend', onEnd);
+    };
+
+    const onMove = (e) => {
+      if (!isDragging) return;
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
+      if (clientX === undefined || clientY === undefined) return;
+
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+
+      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
+        hasMoved = true;
+        if (e.cancelable) e.preventDefault();
+        const winWidth = window.innerWidth;
+        const winHeight = window.innerHeight;
+        const newLeft = Math.max(10, Math.min(winWidth - trigger.offsetWidth - 10, initialLeft + dx));
+        const newTop = Math.max(10, Math.min(winHeight - trigger.offsetHeight - 10, initialTop + dy));
+        trigger.style.left = `${newLeft}px`;
+        trigger.style.top = `${newTop}px`;
+        trigger.style.bottom = 'auto';
+        trigger.style.right = 'auto';
+      }
+    };
+
+    const onEnd = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onEnd);
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onEnd);
+    };
+
+    trigger.addEventListener('mousedown', onStart);
+    trigger.addEventListener('touchstart', onStart, { passive: true });
+
+    trigger.addEventListener('click', (e) => {
+      if (hasMoved) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        hasMoved = false;
+      }
+    }, true);
+  }
+
+  setupTriggerDraggable();
 
   closeBtn.addEventListener('click', () => {
     modal.classList.remove('active');
@@ -602,7 +854,7 @@ async function handleSendMessage(userText) {
 
   // Append typing indicator
   const typingId = appendTypingIndicator();
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
 
   const config = getStoredConfig();
   const isEn = getLang() === 'en';
@@ -662,7 +914,9 @@ async function handleSendMessage(userText) {
     console.error('Bot Error:', err);
   }
 
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+  const scrollBottomBtn = document.getElementById('bot-scroll-bottom-btn');
+  if (scrollBottomBtn) scrollBottomBtn.classList.remove('visible');
 }
 
 /**
@@ -1106,7 +1360,16 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
   });
 
   container.appendChild(msgEl);
-  container.scrollTop = container.scrollHeight;
+  container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+  const scrollBottomBtn = document.getElementById('bot-scroll-bottom-btn');
+  if (scrollBottomBtn) {
+    const offset = container.scrollHeight - container.scrollTop - container.clientHeight;
+    if (offset > 60) {
+      scrollBottomBtn.classList.add('visible');
+    } else {
+      scrollBottomBtn.classList.remove('visible');
+    }
+  }
 }
 
 /**
