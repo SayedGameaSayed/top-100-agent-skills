@@ -3960,12 +3960,47 @@ html[data-theme="light"] #leaderboard-category-filter {
   box-shadow: 0 0 8px #3b82f6 !important;
 }
 
-/* Settings Drawer */
+/* Settings Drawer (Scrollable Settings View) */
 .bot-settings-drawer {
   background: #0d1117;
   border-bottom: 1px solid var(--color-graphite-hairline);
-  padding: 14px 16px;
+  padding: 16px 16px 36px 16px;
   animation: drawerSlideDown 0.2s ease-out;
+  flex: 1;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(146, 129, 247, 0.5) rgba(255, 255, 255, 0.04);
+  -webkit-overflow-scrolling: touch;
+}
+
+.bot-settings-drawer::-webkit-scrollbar {
+  width: 7px;
+}
+
+.bot-settings-drawer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  margin: 4px 0;
+}
+
+.bot-settings-drawer::-webkit-scrollbar-thumb {
+  background: rgba(146, 129, 247, 0.4);
+  border-radius: 6px;
+}
+
+.bot-settings-drawer::-webkit-scrollbar-thumb:hover {
+  background: var(--color-iris-violet);
+}
+
+/* Modal when in Settings View: hide messages & input to allow full scrolling of settings */
+.ai-bot-modal.in-settings .bot-messages,
+.ai-bot-modal.in-settings .bot-input-form,
+.ai-bot-modal.in-settings .bot-scroll-bottom-btn {
+  display: none !important;
 }
 
 @keyframes drawerSlideDown {
@@ -4247,7 +4282,22 @@ html[data-theme="light"] .bot-api-btn.has-key {
 
 html[data-theme="light"] .bot-settings-drawer {
   background: #ffffff !important;
-  border-bottom: 2px solid #cbd5e1 !important;
+  border-bottom: 1px solid var(--color-hairline-silver, #d6d6d6) !important;
+  scrollbar-color: #86868b #f0f0f2;
+}
+
+html[data-theme="light"] .bot-settings-drawer::-webkit-scrollbar-track {
+  background: #f0f0f2;
+  border-radius: 6px;
+}
+
+html[data-theme="light"] .bot-settings-drawer::-webkit-scrollbar-thumb {
+  background: #c1c1c6;
+  border-radius: 6px;
+}
+
+html[data-theme="light"] .bot-settings-drawer::-webkit-scrollbar-thumb:hover {
+  background: #0071e3;
 }
 
 html[data-theme="light"] .bot-settings-title {

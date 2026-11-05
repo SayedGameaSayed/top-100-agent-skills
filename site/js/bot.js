@@ -673,7 +673,11 @@ function attachBotEventListeners() {
     const nextState = show !== undefined ? show : !isVisible;
     settingsDrawer.style.display = nextState ? 'block' : 'none';
     if (nextState) {
+      modal.classList.add('in-settings');
       apiKeyInput.focus();
+    } else {
+      modal.classList.remove('in-settings');
+      setTimeout(checkScrollPosition, 100);
     }
   }
 
