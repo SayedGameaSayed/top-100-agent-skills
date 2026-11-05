@@ -4172,3 +4172,68 @@ html[data-theme="light"] .bot-input-field {
   border-radius: 18px !important;
   color: var(--color-ink, #1d1d1f) !important;
 }
+
+
+/* Multi-Provider Selector & Callouts */
+.bot-provider-select-row {
+  margin-bottom: 10px;
+}
+
+.bot-provider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 5px;
+}
+
+.bot-provider-select {
+  width: 100%;
+  background: var(--color-void-black);
+  border: 1.5px solid var(--color-graphite-hairline);
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.bot-provider-select:focus {
+  border-color: var(--color-iris-violet);
+}
+
+.bot-free-gemini-callout {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #93c5fd;
+}
+
+.bot-free-gemini-callout strong {
+  color: #ffffff;
+}
+
+html[data-theme="light"] .bot-provider-select {
+  background: var(--color-gallery-white, #ffffff) !important;
+  border-color: var(--color-steel, #86868b) !important;
+  color: var(--color-ink, #1d1d1f) !important;
+}
+
+html[data-theme="light"] .bot-free-gemini-callout {
+  background: rgba(0, 102, 204, 0.06) !important;
+  border-color: rgba(0, 102, 204, 0.2) !important;
+  color: #1e40af !important;
+}
+
+html[data-theme="light"] .bot-free-gemini-callout strong {
+  color: #0f172a !important;
+}

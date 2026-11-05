@@ -1,46 +1,166 @@
 /**
- * bot.js - AI Skills Advisor Interactive Chat Assistant
- * Powered by Google Gemini API with Local Semantic Search Engine Fallback
+ * bot.js - Universal Multi-Provider AI Skills Advisor
+ * Supports: Google Gemini, Anthropic Claude, OpenAI, OpenRouter, Groq, DeepSeek
  * 
  * Features:
- * 1. User-Supplied Google Gemini API Key (Saved safely in localStorage, 100% client-side privacy).
- * 2. Step-by-step in-app guide to get a free key from Google AI Studio (aistudio.google.com/app/apikey).
- * 3. Deep Code & Documentation Analysis: Users can paste code snippets, README files, or architecture specs.
- * 4. Dual Intelligence: Recommends verified skills from the Top 100 catalog AND top tools/skills from the broader AI ecosystem.
- * 5. Automatic Skill Recommendation Cards with 1-click prompt copying and live skill links.
- * 6. Fallback to 100% Offline Local Semantic Search Engine if no API key is provided.
+ * 1. Multi-Provider Freedom: Choose any AI model (Claude 3.5 Sonnet, GPT-4o, Gemini 1.5/2.0, DeepSeek V3, Llama 3.3).
+ * 2. 100% Free Gemini Default: Gemini is highlighted as the 100% free, no-credit-card default for easy testing.
+ * 3. 100% Client-Side Privacy: All keys are stored strictly in localStorage and never saved to any database.
+ * 4. Auto-Detection: Automatically detects provider type from key prefixes (sk-ant-, sk-or-, gsk_, AIzaSy...).
+ * 5. Direct Browser Connection with Zero-Logging Relay Fallback.
+ * 6. Code & Documentation Inspection + 1-Click Interactive Skill Recommendation Cards.
+ * 7. Offline Local Semantic Search Fallback when no API key is set.
  */
 
 import { normalizeArabic } from './search.js';
 import { getLang, formatUrlWithLang } from './i18n.js';
 
 let skillsCatalog = [];
-const STORAGE_KEY = 'gemini_api_key';
 
-function getStoredApiKey() {
+const PROVIDERS = {
+  gemini: {
+    id: 'gemini',
+    name: 'Google Gemini',
+    badgeAr: 'مجاني 100% (الافتراضي) 🌟',
+    badgeEn: '100% Free (Default) 🌟',
+    model: 'gemini-1.5-flash',
+    placeholder: 'AIzaSy...',
+    guideUrl: 'https://aistudio.google.com/app/apikey',
+    guideName: 'Google AI Studio',
+    stepAr: 'افتح Google AI Studio واضغط Create API Key (مجاني تماماً)',
+    stepEn: 'Open Google AI Studio and click Create API Key (100% Free)',
+    prefixPattern: /^AIzaSy/
+  },
+  claude: {
+    id: 'claude',
+    name: 'Anthropic Claude',
+    badgeAr: 'الأقوى في البرمجة 🟣',
+    badgeEn: 'Best for Code 🟣',
+    model: 'claude-3-5-sonnet-20241022',
+    placeholder: 'sk-ant-api03-...',
+    guideUrl: 'https://console.anthropic.com/settings/keys',
+    guideName: 'Anthropic Console',
+    stepAr: 'افتح console.anthropic.com وانسخ مفتاحك (يبدأ بـ sk-ant...)',
+    stepEn: 'Open console.anthropic.com and copy your key (starts with sk-ant...)',
+    prefixPattern: /^sk-ant/
+  },
+  openai: {
+    id: 'openai',
+    name: 'OpenAI (ChatGPT)',
+    badgeAr: 'GPT-4o 🟢',
+    badgeEn: 'GPT-4o 🟢',
+    model: 'gpt-4o-mini',
+    placeholder: 'sk-proj-... / sk-...',
+    guideUrl: 'https://platform.openai.com/api-keys',
+    guideName: 'OpenAI Platform',
+    stepAr: 'افتح platform.openai.com وأنشئ مفتاحاً جديداً (يبدأ بـ sk-...)',
+    stepEn: 'Open platform.openai.com and create a key (starts with sk-...)',
+    prefixPattern: /^sk-(proj-)?[A-Za-z0-9_-]{20,}/
+  },
+  openrouter: {
+    id: 'openrouter',
+    name: 'OpenRouter (كل الموديلات)',
+    nameEn: 'OpenRouter (All Models)',
+    badgeAr: 'مفتاح شامل 🔴',
+    badgeEn: 'All-in-1 Key 🔴',
+    model: 'anthropic/claude-3.5-sonnet',
+    placeholder: 'sk-or-v1-...',
+    guideUrl: 'https://openrouter.ai/keys',
+    guideName: 'OpenRouter Keys',
+    stepAr: 'افتح openrouter.ai/keys لإنشاء مفتاح شامل يفتح كل الموديلات',
+    stepEn: 'Open openrouter.ai/keys to create an all-in-1 key for all models',
+    prefixPattern: /^sk-or/
+  },
+  groq: {
+    id: 'groq',
+    name: 'Groq (سريع ومجاني)',
+    nameEn: 'Groq (Ultra-Fast & Free)',
+    badgeAr: 'سرعة فائقة ⚡',
+    badgeEn: 'Ultra Fast ⚡',
+    model: 'llama-3.3-70b-versatile',
+    placeholder: 'gsk_...',
+    guideUrl: 'https://console.groq.com/keys',
+    guideName: 'Groq Console',
+    stepAr: 'افتح console.groq.com للحصول على مفتاح مجاني فائق السرعة',
+    stepEn: 'Open console.groq.com to get a free, ultra-fast Llama 3.3 key',
+    prefixPattern: /^gsk_/
+  },
+  deepseek: {
+    id: 'deepseek',
+    name: 'DeepSeek',
+    badgeAr: 'DeepSeek V3 🐋',
+    badgeEn: 'DeepSeek V3 🐋',
+    model: 'deepseek-chat',
+    placeholder: 'sk-...',
+    guideUrl: 'https://platform.deepseek.com/api_keys',
+    guideName: 'DeepSeek Platform',
+    stepAr: 'افتح platform.deepseek.com وانسخ مفتاحك البرمجي',
+    stepEn: 'Open platform.deepseek.com and copy your API key',
+    prefixPattern: /^sk-[a-f0-9]{32}/
+  }
+};
+
+const STORAGE_KEY = 'ai_bot_api_key';
+const STORAGE_PROVIDER = 'ai_bot_provider';
+
+function getStoredConfig() {
   try {
-    return localStorage.getItem(STORAGE_KEY) || '';
+    const key = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('gemini_api_key') || '';
+    let provider = localStorage.getItem(STORAGE_PROVIDER) || '';
+    if (!provider && key) {
+      if (key.startsWith('sk-ant')) provider = 'claude';
+      else if (key.startsWith('sk-or')) provider = 'openrouter';
+      else if (key.startsWith('gsk_')) provider = 'groq';
+      else if (key.startsWith('AIzaSy')) provider = 'gemini';
+      else provider = 'gemini';
+    }
+    return {
+      key: key.trim(),
+      provider: provider || 'gemini'
+    };
   } catch {
-    return '';
+    return { key: '', provider: 'gemini' };
   }
 }
 
-function setStoredApiKey(key) {
+function setStoredConfig(provider, key) {
   try {
     if (key) {
       localStorage.setItem(STORAGE_KEY, key.trim());
+      localStorage.setItem(STORAGE_PROVIDER, provider || 'gemini');
+      // Sync legacy key
+      if (provider === 'gemini') {
+        localStorage.setItem('gemini_api_key', key.trim());
+      }
     } else {
       localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem('gemini_api_key');
+      localStorage.removeItem(STORAGE_PROVIDER);
     }
   } catch (err) {
-    console.error('Failed to save API key to localStorage:', err);
+    console.error('Failed to save config in localStorage:', err);
   }
 }
 
-function removeStoredApiKey() {
+function removeStoredConfig() {
   try {
     localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem('gemini_api_key');
+    localStorage.removeItem(STORAGE_PROVIDER);
   } catch {}
+}
+
+function detectProviderFromKey(key) {
+  const k = key.trim();
+  if (!k) return null;
+  if (/^AIzaSy/.test(k)) return 'gemini';
+  if (/^sk-ant/.test(k)) return 'claude';
+  if (/^sk-or/.test(k)) return 'openrouter';
+  if (/^gsk_/.test(k)) return 'groq';
+  if (/^sk-proj/.test(k)) return 'openai';
+  if (/^sk-[a-f0-9]{32}$/.test(k)) return 'deepseek';
+  if (/^sk-/.test(k)) return 'openai';
+  return null;
 }
 
 export function initAiBot(skills = []) {
@@ -52,7 +172,9 @@ export function initAiBot(skills = []) {
   if (document.getElementById('ai-bot-trigger')) return;
 
   const isEn = getLang() === 'en';
-  const hasKey = Boolean(getStoredApiKey());
+  const config = getStoredConfig();
+  const hasKey = Boolean(config.key);
+  const activeProvider = PROVIDERS[config.provider] || PROVIDERS.gemini;
 
   const widgetContainer = document.createElement('div');
   widgetContainer.id = 'ai-bot-root';
@@ -77,15 +199,15 @@ export function initAiBot(skills = []) {
               <span class="bot-live-dot ${hasKey ? 'bot-live-gemini' : ''}"></span>
               <span id="bot-engine-label">${
                 hasKey 
-                  ? (isEn ? 'Google Gemini AI (Active ✨)' : 'جيميناي AI (نشط ✨)')
-                  : (isEn ? 'Local Search (Add Gemini Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل جيميناي)')
+                  ? `${isEn ? (activeProvider.nameEn || activeProvider.name) : activeProvider.name} (Active ✨)` 
+                  : (isEn ? 'Local Search (Add AI Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل الذكاء الاصطناعي)')
               }</span>
             </div>
           </div>
         </div>
         <div class="bot-header-actions">
-          <button id="bot-api-btn" class="bot-api-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Configure Gemini API Key' : 'إعداد مفتاح Gemini API'}" type="button">
-            🔑 <span id="bot-api-btn-text">${hasKey ? (isEn ? 'Key Active' : 'المفتاح نشط') : (isEn ? 'Set API Key' : 'مفتاح API')}</span>
+          <button id="bot-api-btn" class="bot-api-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Configure API Key (Claude, OpenAI, Gemini...)' : 'إعداد مفتاح API (كلود، ChatGPT، جيميناي...)'}" type="button">
+            🔑 <span id="bot-api-btn-text">${hasKey ? (isEn ? 'AI Active ✓' : 'المفتاح نشط ✓') : (isEn ? 'Set API Key' : 'مفتاح API')}</span>
           </button>
           <button id="bot-close-btn" class="bot-icon-btn" title="${isEn ? 'Close Chat' : 'إغلاق المحادثة'}" aria-label="${isEn ? 'Close' : 'إغلاق'}" type="button">✕</button>
         </div>
@@ -94,43 +216,57 @@ export function initAiBot(skills = []) {
       <!-- Expandable API Key Settings Drawer -->
       <div id="bot-settings-drawer" class="bot-settings-drawer" style="display: none;">
         <div class="bot-settings-header">
-          <span class="bot-settings-title">🔑 ${isEn ? 'Connect Free Google Gemini API' : 'تفعيل مفتاح Google Gemini المجاني'}</span>
-          <span class="bot-settings-badge">${isEn ? '100% Free' : 'مجاني 100%'}</span>
+          <span class="bot-settings-title">🔑 ${isEn ? 'Connect Any AI Provider (Claude, OpenAI, Gemini...)' : 'ربط أي ذكاء اصطناعي (Claude, ChatGPT, Gemini...)'}</span>
+          <span class="bot-settings-badge" id="bot-settings-badge">${isEn ? activeProvider.badgeEn : activeProvider.badgeAr}</span>
         </div>
-        <p class="bot-settings-desc">
-          ${isEn 
-            ? 'Connect your free personal Gemini API key to unlock deep code analysis, project docs inspection, and discover AI tools beyond the catalog.' 
-            : 'اربط مفتاح Gemini المجاني الخاص بك لتحليل الكود والتوثيق واكتشاف مهارات وأدوات ذكية من داخل وخارج الدليل.'}
-        </p>
 
-        <!-- Step-by-Step Guide Box -->
-        <div class="bot-api-steps-box">
+        <!-- Explanatory Callout: Why Gemini is free default but any key is allowed -->
+        <div class="bot-free-gemini-callout">
+          ${isEn 
+            ? '💡 <strong>Why is Google Gemini the default?</strong> We defaulted to Gemini because it is <strong>100% free with no credit card required</strong> so anyone can test the assistant instantly. <strong>However, you have full freedom:</strong> Select and securely use your personal API key from Claude, OpenAI, DeepSeek, Groq, or OpenRouter with zero server logging!'
+            : '💡 <strong>لماذا وضعنا Google Gemini أولاً؟</strong> اخترنا جيميناي كخيار افتراضي لأنه <strong>مجاني 100% بدون أي تكاليف أو فيزا</strong> حتى يتمكن الجميع من تجربة المساعد فوراً. <strong>ولكنك حر تماماً:</strong> يمكنك اختيار واستخدام مفتاحك الخاص من Claude أو OpenAI أو DeepSeek أو Groq أو OpenRouter بأمان تام وخصوصية 100%!'}
+        </div>
+
+        <!-- Provider Selector -->
+        <div class="bot-provider-select-row">
+          <div class="bot-provider-label">
+            <span>${isEn ? 'Select AI Provider:' : 'اختر مزود الذكاء الاصطناعي:'}</span>
+            <span style="font-size: 10px; color: var(--color-iris-violet); font-weight: normal;">${isEn ? '(Auto-detects on paste)' : '(يكتشف النوع تلقائياً عند اللصق)'}</span>
+          </div>
+          <select id="bot-provider-select" class="bot-provider-select">
+            <option value="gemini" ${config.provider === 'gemini' ? 'selected' : ''}>🌟 Google Gemini (مجاني 100% - الافتراضي)</option>
+            <option value="claude" ${config.provider === 'claude' ? 'selected' : ''}>🟣 Anthropic Claude (Claude 3.5 Sonnet)</option>
+            <option value="openai" ${config.provider === 'openai' ? 'selected' : ''}>🟢 OpenAI (ChatGPT - GPT-4o)</option>
+            <option value="openrouter" ${config.provider === 'openrouter' ? 'selected' : ''}>🔴 OpenRouter (جميع النماذج بمفتاح واحد)</option>
+            <option value="groq" ${config.provider === 'groq' ? 'selected' : ''}>⚡ Groq (Llama 3.3 70B - سرعة فائقة ومجاني)</option>
+            <option value="deepseek" ${config.provider === 'deepseek' ? 'selected' : ''}>🐋 DeepSeek (DeepSeek V3 / Coder)</option>
+          </select>
+        </div>
+
+        <!-- Dynamic Step Guide Box -->
+        <div class="bot-api-steps-box" id="bot-dynamic-steps-box">
           <div class="bot-api-step">
             <span class="bot-step-num">1</span>
-            <span>${isEn ? 'Open official Google AI Studio:' : 'افتح موقع Google AI Studio الرسمي:'}</span>
+            <span id="bot-step-guide-text">${isEn ? activeProvider.stepEn : activeProvider.stepAr}</span>
           </div>
-          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="bot-api-studio-link">
-            🔗 aistudio.google.com/app/apikey ↗
+          <a href="${activeProvider.guideUrl}" target="_blank" rel="noopener noreferrer" class="bot-api-studio-link" id="bot-provider-link">
+            🔗 ${activeProvider.guideName} ↗
           </a>
           <div class="bot-api-step">
             <span class="bot-api-step-num">2</span>
-            <span>${isEn ? 'Sign in with Google & click <strong>Create API Key</strong>' : 'سجّل الدخول واضغط الزر الأزرق: <strong>Create API Key</strong>'}</span>
-          </div>
-          <div class="bot-api-step">
-            <span class="bot-api-step-num">3</span>
-            <span>${isEn ? 'Copy key (starts with <code>AIzaSy...</code>) and paste below:' : 'انسخ المفتاح (يبدأ بـ <code>AIzaSy...</code>) والصقه بالأسفل:'}</span>
+            <span>${isEn ? 'Paste your API key below and click <strong>Save & Activate</strong>:' : 'الصق المفتاح بالأسفل واضغط <strong>حفظ وتفعيل</strong>:'}</span>
           </div>
         </div>
 
-        <!-- Input Row -->
+        <!-- Key Input Row -->
         <div class="bot-api-input-wrap">
           <input 
             type="password" 
             id="bot-api-key-input" 
-            placeholder="AIzaSy..." 
-            value="${escapeAttr(getStoredApiKey())}"
+            placeholder="${activeProvider.placeholder}" 
+            value="${escapeAttr(config.key)}"
             autocomplete="off"
-            aria-label="${isEn ? 'Gemini API Key' : 'مفتاح Gemini API'}"
+            aria-label="${isEn ? 'API Key' : 'مفتاح API'}"
           >
           <button type="button" id="bot-toggle-key-visibility" class="bot-key-vis-btn" title="${isEn ? 'Show/Hide' : 'إظهار/إخفاء'}">👁️</button>
         </div>
@@ -147,8 +283,8 @@ export function initAiBot(skills = []) {
 
         <div class="bot-privacy-notice">
           🔒 ${isEn 
-            ? 'Your key stays securely in your browser (localStorage) and calls Google directly. Never sent to any intermediate server.' 
-            : 'أمان تام: المفتاح يُحفظ في متصفحك محلياً ويتصل مباشرة بـ Google دون المرور على أي خادم وسيط.'}
+            ? 'Your key stays securely in your browser (localStorage). Never sent to any database. 100% Client-Side Privacy.' 
+            : 'أمان وخصوصية تامة: المفتاح يُحفظ في متصفحك محلياً فقط ولا يُسجل في أي قاعدة بيانات.'}
         </div>
       </div>
 
@@ -159,21 +295,21 @@ export function initAiBot(skills = []) {
         <div class="bot-msg bot-msg-assistant">
           <div class="bot-msg-bubble">
             ${isEn 
-              ? '👋 Hello! I am your <strong>AI Skills Advisor</strong>.<br><br>💡 <strong>Feel free to paste your code, project README, or architecture description:</strong><br>I will analyze your stack and recommend the exact skills you need — both from our <strong>Top 100 Verified Catalog</strong> and <strong>from the broader AI ecosystem</strong>. For every skill, I will explain what it does, why it fits your project, and how to use it!' 
+              ? '👋 Hello! I am your <strong>Universal AI Skills Advisor</strong>.<br><br>💡 <strong>Feel free to paste your code, project README, or architecture description:</strong><br>I will analyze your stack and recommend the exact skills you need — both from our <strong>Top 100 Verified Catalog</strong> and <strong>from the broader AI ecosystem</strong>. For every skill, I will explain what it does, why it fits your project, and how to use it!' 
               : '👋 أهلاً بك! أنا <strong>مستشارك الذكي لمهارات وأدوات الذكاء الاصطناعي</strong>.<br><br>💡 <strong>يمكنك إرسال فكرتك، كود مشروعك، أو ملف الـ README بالكامل:</strong><br>سأقوم بتحليل بيئة عملك واقتراح أفضل المهارات المناسبة لك بدقة — سواء كانت من ضمن <strong>أفضل 100 مهارة في الدليل</strong> أو <strong>حلول وأدوات ذكية من خارج الدليل</strong>، مع شرح دقيق لوظيفة كل أداة وكيف تفيدك عملياً في مشروعك!'}
           </div>
         </div>
 
-        <!-- Gemini Promo Banner if NO Key is set -->
+        <!-- Promo Banner if NO Key is set -->
         <div id="bot-welcome-promo" class="bot-welcome-promo" style="${hasKey ? 'display: none;' : ''}">
-          <div class="bot-promo-title">✨ ${isEn ? 'Unlock Deep Gemini AI Analysis:' : 'تفعيل التحليل الذكي عبر Google Gemini:'}</div>
+          <div class="bot-promo-title">✨ ${isEn ? 'Unlock Conversational AI Intelligence:' : 'تفعيل الذكاء الكامل عبر الموديلات الذكية:'}</div>
           <p class="bot-promo-desc">
             ${isEn 
-              ? 'Connect your free Gemini API key to enable deep code inspection, documentation parsing, and discovery of AI tools beyond the catalog.' 
-              : 'أدخل مفتاح Gemini المجاني ليقوم بتحليل الكود المعقد ومستندات مشروعك وترشيح مهارات ذكية إضافية من خارج الدليل.'}
+              ? 'Currently in offline local search mode. Connect your key (Try Google Gemini for 100% free, or use Claude, OpenAI, DeepSeek, or Groq) to unlock deep code & documentation analysis!' 
+              : 'يعمل المساعد حالياً بالبحث المحلي السريع. اربط مفتاحك (جرب Google Gemini مجاناً 100% بدون فيزا، أو استخدم Claude أو ChatGPT أو DeepSeek أو Groq) لتشريح كودك واقتراح مهارات ذكية!'}
           </p>
           <button type="button" id="bot-open-setup-from-banner" class="bot-promo-btn">
-            🔑 ${isEn ? 'Enter or Get Free API Key (1-Min)' : 'إدخال أو استخراج المفتاح مجاناً (في دقيقة)'}
+            🔑 ${isEn ? 'Choose Provider & Enter Key (1-Min)' : 'اختيار المزود وإدخال المفتاح (في دقيقة)'}
           </button>
         </div>
 
@@ -226,12 +362,16 @@ function attachBotEventListeners() {
 
   const apiBtn = document.getElementById('bot-api-btn');
   const settingsDrawer = document.getElementById('bot-settings-drawer');
+  const providerSelect = document.getElementById('bot-provider-select');
   const saveKeyBtn = document.getElementById('bot-save-key-btn');
   const clearKeyBtn = document.getElementById('bot-clear-key-btn');
   const cancelSettingsBtn = document.getElementById('bot-cancel-settings-btn');
   const apiKeyInput = document.getElementById('bot-api-key-input');
   const toggleVisBtn = document.getElementById('bot-toggle-key-visibility');
   const bannerSetupBtn = document.getElementById('bot-open-setup-from-banner');
+  const badgeEl = document.getElementById('bot-settings-badge');
+  const stepTextEl = document.getElementById('bot-step-guide-text');
+  const linkEl = document.getElementById('bot-provider-link');
 
   // Toggle modal open/close
   trigger.addEventListener('click', () => {
@@ -267,6 +407,35 @@ function attachBotEventListeners() {
     bannerSetupBtn.addEventListener('click', () => toggleSettingsDrawer(true));
   }
 
+  // Update step guide based on selected provider
+  function updateProviderGuide(providerId) {
+    const p = PROVIDERS[providerId] || PROVIDERS.gemini;
+    const isEn = getLang() === 'en';
+    if (badgeEl) badgeEl.textContent = isEn ? p.badgeEn : p.badgeAr;
+    if (stepTextEl) stepTextEl.textContent = isEn ? p.stepEn : p.stepAr;
+    if (linkEl) {
+      linkEl.href = p.guideUrl;
+      linkEl.textContent = `🔗 ${p.guideName} ↗`;
+    }
+    if (apiKeyInput && !apiKeyInput.value) {
+      apiKeyInput.placeholder = p.placeholder;
+    }
+  }
+
+  providerSelect.addEventListener('change', (e) => {
+    updateProviderGuide(e.target.value);
+  });
+
+  // Auto-detection when pasting or typing key
+  apiKeyInput.addEventListener('input', (e) => {
+    const val = e.target.value;
+    const detected = detectProviderFromKey(val);
+    if (detected && detected !== providerSelect.value) {
+      providerSelect.value = detected;
+      updateProviderGuide(detected);
+    }
+  });
+
   // Toggle Password Visibility
   toggleVisBtn.addEventListener('click', () => {
     const isPass = apiKeyInput.type === 'password';
@@ -277,28 +446,29 @@ function attachBotEventListeners() {
   // Save API Key
   saveKeyBtn.addEventListener('click', async () => {
     const key = apiKeyInput.value.trim();
+    const provider = providerSelect.value || 'gemini';
     const statusEl = document.getElementById('bot-settings-status');
     const isEn = getLang() === 'en';
+    const p = PROVIDERS[provider] || PROVIDERS.gemini;
 
     if (!key) {
       statusEl.style.display = 'block';
       statusEl.className = 'bot-settings-status error';
-      statusEl.textContent = isEn ? 'Please enter a valid Gemini API key.' : 'يرجى لصق مفتاح Gemini API أولاً.';
+      statusEl.textContent = isEn ? 'Please paste a valid API key.' : 'يرجى لصق مفتاح API أولاً.';
       return;
     }
 
     statusEl.style.display = 'block';
     statusEl.className = 'bot-settings-status';
-    statusEl.textContent = isEn ? 'Testing key with Google Gemini servers...' : 'جاري التحقق من المفتاح مع سيرفرات Google...';
+    statusEl.textContent = isEn ? `Testing connection with ${p.name}...` : `جاري التحقق من المفتاح مع ${p.name}...`;
 
-    // Test Key
     try {
-      await testGeminiKey(key);
-      setStoredApiKey(key);
+      await testApiKey(provider, key);
+      setStoredConfig(provider, key);
       statusEl.className = 'bot-settings-status success';
-      statusEl.textContent = isEn ? '✓ Key verified and activated successfully!' : '✓ تم التحقق وتفعيل مفتاح Gemini بنجاح!';
-      
-      updateBotStatusUI(true);
+      statusEl.textContent = isEn ? `✓ Connected to ${p.name} successfully!` : `✓ تم التحقق وتفعيل ${p.name} بنجاح!`;
+
+      updateBotStatusUI(true, provider);
       clearKeyBtn.style.display = 'inline-block';
       const welcomePromo = document.getElementById('bot-welcome-promo');
       if (welcomePromo) welcomePromo.style.display = 'none';
@@ -307,22 +477,22 @@ function attachBotEventListeners() {
         toggleSettingsDrawer(false);
         statusEl.style.display = 'none';
         appendMessage('assistant', isEn 
-          ? '🎉 <strong>Google Gemini AI is active!</strong> You can now paste your code, project docs, or ask for any skill from inside or outside the catalog.' 
-          : '🎉 <strong>تم تفعيل Google Gemini AI بنجاح!</strong> يمكنك الآن إرسال كودك أو ملف الـ README وسأقترح عليك أفضل المهارات من داخل وخارج الدليل مع شرحها بالكامل.'
+          ? `🎉 <strong>${p.name} is now active!</strong> You can now paste your code, project docs, or ask for any skill from inside or outside the catalog.` 
+          : `🎉 <strong>تم تفعيل ${p.name} بنجاح!</strong> يمكنك الآن إرسال كودك أو ملف الـ README وسأقترح عليك أفضل المهارات من داخل وخارج الدليل مع شرحها بالكامل.`
         );
       }, 1200);
     } catch (err) {
       statusEl.className = 'bot-settings-status error';
       statusEl.textContent = isEn 
-        ? `⚠️ Invalid Key: ${err.message}. Make sure to copy it from aistudio.google.com` 
-        : `⚠️ تعذر التحقق من المفتاح: ${err.message}. تأكد من نسخه بشكل صحيح من aistudio.google.com`;
+        ? `⚠️ Connection failed: ${err.message}. Please check your key.` 
+        : `⚠️ تعذر التحقق من المفتاح: ${err.message}. يرجى مراجعة المفتاح أو الرصيد.`;
     }
   });
 
   // Clear API Key
   clearKeyBtn.addEventListener('click', () => {
     const isEn = getLang() === 'en';
-    removeStoredApiKey();
+    removeStoredConfig();
     apiKeyInput.value = '';
     updateBotStatusUI(false);
     clearKeyBtn.style.display = 'none';
@@ -374,20 +544,22 @@ function attachBotEventListeners() {
   });
 }
 
-function updateBotStatusUI(hasKey) {
+function updateBotStatusUI(hasKey, providerId = 'gemini') {
   const isEn = getLang() === 'en';
   const label = document.getElementById('bot-engine-label');
   const dot = document.querySelector('.bot-live-dot');
   const btn = document.getElementById('bot-api-btn');
   const btnText = document.getElementById('bot-api-btn-text');
+  const p = PROVIDERS[providerId] || PROVIDERS.gemini;
 
   if (hasKey) {
-    if (label) label.textContent = isEn ? 'Google Gemini AI (Active ✨)' : 'جيميناي AI (نشط ✨)';
+    const name = isEn ? (p.nameEn || p.name) : p.name;
+    if (label) label.textContent = `${name} (Active ✨)`;
     if (dot) dot.classList.add('bot-live-gemini');
     if (btn) btn.classList.add('has-key');
-    if (btnText) btnText.textContent = isEn ? 'Key Active ✓' : 'المفتاح نشط ✓';
+    if (btnText) btnText.textContent = isEn ? 'AI Active ✓' : 'المفتاح نشط ✓';
   } else {
-    if (label) label.textContent = isEn ? 'Local Search (Add Gemini Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل جيميناي)';
+    if (label) label.textContent = isEn ? 'Local Search (Add AI Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل الذكاء الاصطناعي)';
     if (dot) dot.classList.remove('bot-live-gemini');
     if (btn) btn.classList.remove('has-key');
     if (btnText) btnText.textContent = isEn ? 'Set API Key' : 'مفتاح API';
@@ -408,67 +580,35 @@ async function handleSendMessage(userText) {
   const typingId = appendTypingIndicator();
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-  const apiKey = getStoredApiKey();
+  const config = getStoredConfig();
   const isEn = getLang() === 'en';
 
-  // Check if user is asking how to get an API key
-  const lowerText = userText.toLowerCase();
-  const isAskingAboutApiKey = 
-    lowerText.includes('api') || 
-    lowerText.includes('مفتاح') || 
-    lowerText.includes('جيميناي') || 
-    lowerText.includes('gemini') || 
-    lowerText.includes('ازاي اجيب') ||
-    lowerText.includes('مش عارف');
-
-  if (isAskingAboutApiKey && !apiKey) {
-    setTimeout(() => {
-      removeTypingIndicator(typingId);
-      appendAssistantResponse({
-        reply: isEn 
-          ? `### 🔑 How to Get Your Free Google Gemini API Key:
-1. Open **[Google AI Studio](https://aistudio.google.com/app/apikey)** (100% Free from Google).
-2. Sign in with your standard Google account.
-3. Click the blue **Create API Key** button.
-4. Copy the key (starts with \`AIzaSy...\`).
-5. Click the button below to paste and activate it instantly:`
-          : `### 🔑 طريقة الحصول على مفتاح Gemini API المجاني في دقيقة:
-1. افتح موقع **[Google AI Studio](https://aistudio.google.com/app/apikey)** الرسمي (مجاني للأبد من Google).
-2. سجّل الدخول بحساب Google العادي الخاص بك.
-3. اضغط على الزر الأزرق: **Create API Key** (إنشاء مفتاح).
-4. انسخ المفتاح الذي يبدأ بـ \`AIzaSy...\`.
-5. اضغط على الزر بالأسفل للصق المفتاح وتفعيله فوراً:`,
-        showKeySetupPrompt: true
-      });
-    }, 200);
-    return;
-  }
-
-  // 1. If API Key is present, call Gemini API
-  if (apiKey) {
+  // 1. If API Key is present, call configured AI provider
+  if (config.key) {
     try {
-      const geminiResponseText = await queryGeminiApi(userText, apiKey);
+      const responseText = await queryUniversalAi(userText, config.provider, config.key);
       removeTypingIndicator(typingId);
 
       // Extract matching skills to render interactive cards
-      const matchedSkills = extractMatchedSkills(userText, geminiResponseText);
+      const matchedSkills = extractMatchedSkills(userText, responseText);
 
       appendAssistantResponse({
-        reply: geminiResponseText,
+        reply: responseText,
         recommendedSkills: matchedSkills,
-        engine: 'gemini'
+        engine: config.provider
       });
       return;
     } catch (err) {
-      console.warn('Gemini API call failed, falling back to local search:', err);
+      console.warn('AI call failed, falling back to local search:', err);
       removeTypingIndicator(typingId);
 
       // If key is invalid or rate limited, notify user gracefully
       const localResult = queryLocalSearchEngine(userText);
+      const providerName = (PROVIDERS[config.provider] || {}).name || config.provider;
       appendAssistantResponse({
         reply: (isEn 
-          ? `⚠️ *Gemini API notice: ${err.message}*\n\nSwitched automatically to verified local matcher:\n\n` 
-          : `⚠️ *تنبيه من Google Gemini: ${err.message}*\n\nتم التبديل تلقائياً للبحث الدلالي المحلي الموثق:\n\n`) + localResult.reply,
+          ? `⚠️ *${providerName} Notice: ${err.message}*\n\nSwitched automatically to local catalog matcher:\n\n` 
+          : `⚠️ *تنبيه من ${providerName}: ${err.message}*\n\nتم التبديل تلقائياً للبحث المحلي الموثق:\n\n`) + localResult.reply,
         recommendedSkills: localResult.recommendedSkills,
         engine: 'local-fallback',
         showKeySetupPrompt: true
@@ -502,19 +642,17 @@ async function handleSendMessage(userText) {
 }
 
 /**
- * Direct Client-Side Google Gemini API Connector
- * Provides deep code and documentation inspection, and suggests both
- * in-catalog Top 100 skills and external tools from the wider AI ecosystem.
+ * Universal AI Caller: Dispatches to Gemini, Claude, OpenAI, OpenRouter, Groq, or DeepSeek
  */
-async function queryGeminiApi(userText, apiKey) {
+async function queryUniversalAi(userText, provider, apiKey) {
   const isEn = getLang() === 'en';
-  
+
   // Build full catalog context for grounding across all 100 skills
   const catalogContext = skillsCatalog.map((s) => {
     const title = isEn ? (s.title_en || s.name) : (s.title_ar || s.name);
     const cat = isEn ? (s.category || '') : (s.category_ar || s.category || '');
     const summary = isEn ? (s.summary_en || s.summary_ar) : s.summary_ar;
-    return `- [${s.id}] (${cat}) "${title}": ${summary ? summary.slice(0, 110) : ''}`;
+    return `- [${s.id}] (${cat}) "${title}": ${summary ? summary.slice(0, 100) : ''}`;
   }).join('\n');
 
   const systemInstruction = isEn
@@ -553,67 +691,248 @@ User Message / Code / Project Docs:
 ${userText}
 """`;
 
-  const models = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro'];
-  let lastError = null;
+  // 1. Google Gemini (Direct client-side fetch)
+  if (provider === 'gemini') {
+    const models = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro'];
+    let lastError = null;
 
-  for (const model of models) {
+    for (const model of models) {
+      try {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: fullPrompt }] }],
+            generationConfig: { temperature: 0.3, maxOutputTokens: 1000 }
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (text) return text;
+        } else {
+          const errJson = await res.json().catch(() => ({}));
+          const msg = errJson.error?.message || `HTTP ${res.status}`;
+          lastError = new Error(msg);
+          if (res.status === 404) continue;
+          throw lastError;
+        }
+      } catch (e) {
+        lastError = e;
+        if (model === models[models.length - 1]) throw e;
+      }
+    }
+    throw lastError || new Error('Failed to generate response from Gemini API');
+  }
+
+  // 2. Anthropic Claude (Direct fetch with dangerous browser access header, with relay fallback)
+  if (provider === 'claude') {
     try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
-      const res = await fetch(url, {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true',
+          'content-type': 'application/json'
+        },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: fullPrompt }] }],
-          generationConfig: {
-            temperature: 0.3,
-            maxOutputTokens: 1000
-          }
+          model: 'claude-3-5-sonnet-20241022',
+          max_tokens: 1000,
+          system: systemInstruction,
+          messages: [{ role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }]
         })
       });
 
       if (res.ok) {
         const data = await res.json();
-        const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (text) return text;
-      } else {
-        const errJson = await res.json().catch(() => ({}));
-        const msg = errJson.error?.message || `HTTP ${res.status}`;
-        lastError = new Error(msg);
-        if (res.status === 404) continue; // try next model
-        throw lastError;
+        return data.content?.[0]?.text || '';
       }
-    } catch (e) {
-      lastError = e;
-      if (model === models[models.length - 1]) throw e;
+    } catch (err) {
+      console.warn('Claude direct browser fetch failed, falling back to secure relay:', err);
     }
+
+    // Relay fallback
+    return callRelayProxy('claude', apiKey, 'claude-3-5-sonnet-20241022', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
   }
 
-  throw lastError || new Error('Failed to generate response from Gemini API');
+  // 3. OpenAI (GPT-4o)
+  if (provider === 'openai') {
+    try {
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o-mini',
+          messages: [
+            { role: 'system', content: systemInstruction },
+            { role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }
+          ],
+          temperature: 0.3,
+          max_tokens: 1000
+        })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        return data.choices?.[0]?.message?.content || '';
+      }
+    } catch (err) {
+      console.warn('OpenAI direct fetch failed, falling back to secure relay:', err);
+    }
+
+    return callRelayProxy('openai', apiKey, 'gpt-4o-mini', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
+  }
+
+  // 4. OpenRouter (All Models)
+  if (provider === 'openrouter') {
+    try {
+      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://top-100-agent-skills.vercel.app',
+          'X-Title': 'Top 100 Agent Skills'
+        },
+        body: JSON.stringify({
+          model: 'anthropic/claude-3.5-sonnet',
+          messages: [
+            { role: 'system', content: systemInstruction },
+            { role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }
+          ],
+          temperature: 0.3,
+          max_tokens: 1000
+        })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        return data.choices?.[0]?.message?.content || '';
+      }
+    } catch (err) {
+      console.warn('OpenRouter direct fetch failed, falling back to secure relay:', err);
+    }
+
+    return callRelayProxy('openrouter', apiKey, 'anthropic/claude-3.5-sonnet', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
+  }
+
+  // 5. Groq (Llama 3.3 70B - Ultra Fast & Free)
+  if (provider === 'groq') {
+    try {
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'llama-3.3-70b-versatile',
+          messages: [
+            { role: 'system', content: systemInstruction },
+            { role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }
+          ],
+          temperature: 0.3,
+          max_tokens: 1000
+        })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        return data.choices?.[0]?.message?.content || '';
+      }
+    } catch (err) {
+      console.warn('Groq direct fetch failed, falling back to secure relay:', err);
+    }
+
+    return callRelayProxy('groq', apiKey, 'llama-3.3-70b-versatile', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
+  }
+
+  // 6. DeepSeek
+  if (provider === 'deepseek') {
+    try {
+      const res = await fetch('https://api.deepseek.com/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'deepseek-chat',
+          messages: [
+            { role: 'system', content: systemInstruction },
+            { role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }
+          ],
+          temperature: 0.3,
+          max_tokens: 1000
+        })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        return data.choices?.[0]?.message?.content || '';
+      }
+    } catch (err) {
+      console.warn('DeepSeek direct fetch failed, falling back to secure relay:', err);
+    }
+
+    return callRelayProxy('deepseek', apiKey, 'deepseek-chat', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
+  }
+
+  throw new Error(`Unsupported AI Provider: ${provider}`);
 }
 
 /**
- * Test a Gemini API key with a fast ping
+ * Fallback to secure pass-through relay if browser CORS prevents direct fetch
  */
-async function testGeminiKey(apiKey) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
-  const res = await fetch(url, {
+async function callRelayProxy(provider, apiKey, model, system, prompt) {
+  const res = await fetch('/api/ai/proxy', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: 'Hello' }] }],
-      generationConfig: { maxOutputTokens: 5 }
-    })
+    body: JSON.stringify({ provider, apiKey, model, system, prompt })
   });
 
+  const data = await res.json().catch(() => ({}));
   if (!res.ok) {
-    const errJson = await res.json().catch(() => ({}));
-    throw new Error(errJson.error?.message || `HTTP ${res.status}`);
+    throw new Error(data.error || `HTTP ${res.status}`);
   }
+  return data.reply || '';
+}
+
+/**
+ * Test any provider API key with a fast ping
+ */
+async function testApiKey(provider, apiKey) {
+  if (provider === 'gemini') {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: 'ping' }] }],
+        generationConfig: { maxOutputTokens: 3 }
+      })
+    });
+    if (!res.ok) {
+      const errJson = await res.json().catch(() => ({}));
+      throw new Error(errJson.error?.message || `HTTP ${res.status}`);
+    }
+    return true;
+  }
+
+  // For other providers, test via ping
+  const reply = await queryUniversalAi('ping', provider, apiKey);
+  if (!reply) throw new Error('No response received');
   return true;
 }
 
 /**
- * Extract matching skill cards from Gemini reply or user query
+ * Extract matching skill cards from AI reply or user query
  */
 function extractMatchedSkills(userText, replyText) {
   const combined = `${userText} ${replyText}`.toLowerCase();
@@ -667,7 +986,8 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
   msgEl.className = 'bot-msg bot-msg-assistant';
 
   const isEn = getLang() === 'en';
-  const hasKey = Boolean(getStoredApiKey());
+  const config = getStoredConfig();
+  const hasKey = Boolean(config.key);
 
   let skillsCardsHtml = '';
   if (Array.isArray(recommendedSkills) && recommendedSkills.length > 0) {
@@ -709,14 +1029,14 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
     keyBannerHtml = `
       <div class="bot-msg-key-callout">
         <div class="callout-text">
-          ✨ <strong>${isEn ? 'Want deeper Gemini AI analysis?' : 'تريد تشريحاً أعمق للكود من Gemini AI؟'}</strong>
-          <span>${isEn ? 'Get your free key in 1-min:' : 'احصل على مفتاحك المجاني في دقيقة:'}</span>
+          ✨ <strong>${isEn ? 'Want deeper AI code analysis?' : 'تريد تشريحاً أعمق للكود والمشروع بالذكاء الاصطناعي؟'}</strong>
+          <span>${isEn ? 'Connect any key (Gemini is 100% Free, or use Claude/OpenAI):' : 'اربط أي مفتاح (جيميناي مجاني 100%، أو استخدم كلود/ChatGPT):'}</span>
         </div>
         <div class="callout-btns">
           <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="callout-link-btn">
-            🔗 aistudio.google.com ↗
+            🔗 aistudio.google.com (مجاني) ↗
           </a>
-          <button type="button" class="callout-open-drawer-btn">🔑 ${isEn ? 'Paste Key' : 'إدخال المفتاح'}</button>
+          <button type="button" class="callout-open-drawer-btn">🔑 ${isEn ? 'Choose Provider' : 'إدخال المفتاح'}</button>
         </div>
       </div>
     `;
@@ -810,8 +1130,8 @@ function queryLocalSearchEngine(message) {
 
   if (isCodeOrDoc) {
     replyText = isEn
-      ? `Analyzed your project/code keywords and matched the closest skills from the Top 100 directory:\n*(💡 Tip: Connect your free Gemini API key using the 🔑 button above to get deep AI code inspection and discover external skills beyond the catalog!)*`
-      : `قمت بتحليل الكلمات المفتاحية في الكود/التوثيق واستخرجت أقرب المهارات المطابقة من دليل الـ 100 مهارة:\n*(💡 نصيحة: فعّل مفتاح Gemini المجاني عبر زر 🔑 بالأعلى ليقوم الذكاء الاصطناعي بتشريح كامل لكودك واقتراح مهارات ذكية إضافية من خارج الدليل!)*`;
+      ? `Analyzed your project/code keywords and matched the closest skills from the Top 100 directory:\n*(💡 Tip: Connect your key (Try Google Gemini for free, or Claude/OpenAI) using the 🔑 button above to get deep AI code inspection and discover external skills beyond the catalog!)*`
+      : `قمت بتحليل الكلمات المفتاحية في الكود/التوثيق واستخرجت أقرب المهارات المطابقة من دليل الـ 100 مهارة:\n*(💡 نصيحة: فعّل مفتاحك الذكي (جيميناي مجاني 100%، أو استخدم كلود/ChatGPT) عبر زر 🔑 بالأعلى ليقوم الذكاء الاصطناعي بتشريح كامل لكودك واقتراح مهارات ذكية إضافية من خارج الدليل!)*`;
   } else if (bestMatches.length > 0) {
     replyText = isEn 
       ? `Found ${bestMatches.length} verified skill(s) matching your request:`

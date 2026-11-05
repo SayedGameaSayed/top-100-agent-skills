@@ -185,6 +185,98 @@ app.post('/api/chat', (req, res) => {
   });
 });
 
+// Zero-Logging Secure AI Relay Proxy (Privacy-Preserving Pass-Through for CORS restrictions)
+app.post('/api/ai/proxy', async (req, res) => {
+  const { provider, apiKey, model, messages, system, prompt } = req.body || {};
+  if (!apiKey || !provider) {
+    return res.status(400).json({ error: 'Provider and API Key are required' });
+  }
+
+  try {
+    let endpoint = '';
+    let headers = { 'Content-Type': 'application/json' };
+    let body = {};
+
+    if (provider === 'claude') {
+      endpoint = 'https://api.anthropic.com/v1/messages';
+      headers['x-api-key'] = apiKey;
+      headers['anthropic-version'] = '2023-06-01';
+      body = {
+        model: model || 'claude-3-5-sonnet-20241022',
+        max_tokens: 1000,
+        system: system || '',
+        messages: messages || [{ role: 'user', content: prompt || '' }]
+      };
+    } else if (provider === 'openai') {
+      endpoint = 'https://api.openai.com/v1/chat/completions';
+      headers['Authorization'] = `Bearer ${apiKey}`;
+      const chatMessages = system ? [{ role: 'system', content: system }, ...(messages || [{ role: 'user', content: prompt || '' }])] : (messages || [{ role: 'user', content: prompt || '' }]);
+      body = {
+        model: model || 'gpt-4o-mini',
+        messages: chatMessages,
+        temperature: 0.3,
+        max_tokens: 1000
+      };
+    } else if (provider === 'openrouter') {
+      endpoint = 'https://openrouter.ai/api/v1/chat/completions';
+      headers['Authorization'] = `Bearer ${apiKey}`;
+      headers['HTTP-Referer'] = 'https://top-100-agent-skills.vercel.app';
+      headers['X-Title'] = 'Top 100 Agent Skills';
+      const chatMessages = system ? [{ role: 'system', content: system }, ...(messages || [{ role: 'user', content: prompt || '' }])] : (messages || [{ role: 'user', content: prompt || '' }]);
+      body = {
+        model: model || 'anthropic/claude-3.5-sonnet',
+        messages: chatMessages,
+        temperature: 0.3,
+        max_tokens: 1000
+      };
+    } else if (provider === 'groq') {
+      endpoint = 'https://api.groq.com/openai/v1/chat/completions';
+      headers['Authorization'] = `Bearer ${apiKey}`;
+      const chatMessages = system ? [{ role: 'system', content: system }, ...(messages || [{ role: 'user', content: prompt || '' }])] : (messages || [{ role: 'user', content: prompt || '' }]);
+      body = {
+        model: model || 'llama-3.3-70b-versatile',
+        messages: chatMessages,
+        temperature: 0.3,
+        max_tokens: 1000
+      };
+    } else if (provider === 'deepseek') {
+      endpoint = 'https://api.deepseek.com/chat/completions';
+      headers['Authorization'] = `Bearer ${apiKey}`;
+      const chatMessages = system ? [{ role: 'system', content: system }, ...(messages || [{ role: 'user', content: prompt || '' }])] : (messages || [{ role: 'user', content: prompt || '' }]);
+      body = {
+        model: model || 'deepseek-chat',
+        messages: chatMessages,
+        temperature: 0.3,
+        max_tokens: 1000
+      };
+    } else {
+      return res.status(400).json({ error: 'Unsupported provider' });
+    }
+
+    const aiRes = await fetch(endpoint, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(body)
+    });
+
+    const data = await aiRes.json();
+    if (!aiRes.ok) {
+      return res.status(aiRes.status).json({ error: data.error?.message || data.error || 'AI Provider API error' });
+    }
+
+    let replyText = '';
+    if (provider === 'claude') {
+      replyText = data.content?.[0]?.text || '';
+    } else {
+      replyText = data.choices?.[0]?.message?.content || '';
+    }
+
+    return res.json({ reply: replyText });
+  } catch (err) {
+    return res.status(500).json({ error: err.message || 'Relay connection error' });
+  }
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({
