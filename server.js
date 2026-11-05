@@ -325,6 +325,11 @@ app.get('/google:id.html', (req, res) => {
   res.type('text/html').send(`google-site-verification: ${filename}`);
 });
 
+// Vercel Insights Script Redirect Handler
+app.get(['/_vercel/insights/script.js', '/site/_vercel/insights/script.js'], (req, res) => {
+  res.redirect(302, 'https://va.vercel-scripts.com/v1/script.js');
+});
+
 // Favicon handler
 app.get('/favicon.ico', (req, res) => {
   const iconPath = path.join(ROOT_DIR, 'site/assets/logo.png');

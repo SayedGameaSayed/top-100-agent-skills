@@ -41,8 +41,11 @@
       gtag('config', window.GA_MEASUREMENT_ID);
     }
   </script>
-  <!-- Vercel Web Analytics -->
-  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Web Analytics (Official Standalone Snippet) -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
 
   <title>Top 100 Agent Skills Leaderboard | لوحة الصدارة</title>
   
