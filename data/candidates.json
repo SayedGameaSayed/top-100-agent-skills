@@ -1,5 +1,5 @@
 {
-  "last_crawled_at": "2026-11-06T13:56:22.687Z",
+  "last_crawled_at": "2026-11-07T12:40:35.466Z",
   "description": "Newly discovered candidate skill repositories awaiting human translation, license review, and safety validation. NEVER rendered on public site until vetted.",
   "candidates": [
     {
@@ -1142,6 +1142,35 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     },
     {
+      "owner": "yucezerey",
+      "repo": "turkish-anti-ai-skill",
+      "full_name": "yucezerey/turkish-anti-ai-skill",
+      "repo_url": "https://github.com/yucezerey/turkish-anti-ai-skill",
+      "stars": 249,
+      "description": "Türkçe metinlerdeki yapay zeka izlerini (AI slop, translationese, çeviri kokan cümle mimarisi ve TDK hatalarını) temizleyen Agent Skill ve Humanizer paketi.",
+      "topics": [
+        "agent-skills",
+        "ai-skills",
+        "ai-writing",
+        "claude-code",
+        "codex",
+        "cursor-rules",
+        "de-slop",
+        "gemini-cli",
+        "humanizer",
+        "llm",
+        "prompt-engineering",
+        "tdk",
+        "turkish",
+        "turkish-nlp"
+      ],
+      "deduced_category": "data-ai",
+      "deduced_category_ar": "البيانات والذكاء الاصطناعي",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-07T12:40:33.700Z"
+    },
+    {
       "owner": "ilindaniel",
       "repo": "ponytail-lite",
       "full_name": "ilindaniel/ponytail-lite",
@@ -1239,7 +1268,7 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     }
   ],
-  "total_candidates": 43,
+  "total_candidates": 44,
   "quarantined_from_audit": [
     {
       "id": "git-workflow",
