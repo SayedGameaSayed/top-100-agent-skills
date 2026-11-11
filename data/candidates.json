@@ -1,5 +1,5 @@
 {
-  "last_crawled_at": "2026-11-05T14:18:34.821Z",
+  "last_crawled_at": "2026-11-11T13:47:38.101Z",
   "description": "Newly discovered candidate skill repositories awaiting human translation, license review, and safety validation. NEVER rendered on public site until vetted.",
   "candidates": [
     {
@@ -392,6 +392,40 @@
       "discovered_at": "2026-11-02T15:06:45.118Z"
     },
     {
+      "owner": "OpenMontageInc",
+      "repo": "OpenMontage",
+      "full_name": "OpenMontageInc/OpenMontage",
+      "repo_url": "https://github.com/OpenMontageInc/OpenMontage",
+      "stars": 78463,
+      "description": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "ai",
+        "claude",
+        "copilot",
+        "cursor",
+        "elevenlabs",
+        "ffmpeg",
+        "flux",
+        "image-generation",
+        "open-source",
+        "openai",
+        "python",
+        "remotion",
+        "stable-diffusion",
+        "text-to-speech",
+        "text-to-video",
+        "video-generation",
+        "video-production"
+      ],
+      "deduced_category": "documents",
+      "deduced_category_ar": "المستندات والملفات",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-08T12:57:43.077Z"
+    },
+    {
       "owner": "calesthio",
       "repo": "OpenMontage",
       "full_name": "calesthio/OpenMontage",
@@ -676,6 +710,41 @@
       "review_status": "pending_human_review",
       "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
       "discovered_at": "2026-11-02T15:06:46.456Z"
+    },
+    {
+      "owner": "alchaincyf",
+      "repo": "nuwa-skill",
+      "full_name": "alchaincyf/nuwa-skill",
+      "repo_url": "https://github.com/alchaincyf/nuwa-skill",
+      "stars": 37791,
+      "description": "你想蒸馏的下一个员工，何必是同事。蒸馏任何人的思维方式——心智模型、决策启发式、表达DNA。Distill how anyone thinks.",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "claude-code",
+        "claude-code-skills",
+        "claude-skills",
+        "codex",
+        "cursor",
+        "decision-making",
+        "deepseek-harness",
+        "dsh-plugin",
+        "gemini-cli",
+        "hermes-agent",
+        "huashu-skills",
+        "mental-models",
+        "nuwa-skill",
+        "openclaw",
+        "opencode",
+        "persona",
+        "prompt-engineering",
+        "skills"
+      ],
+      "deduced_category": "data-ai",
+      "deduced_category_ar": "البيانات والذكاء الاصطناعي",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-08T12:57:40.806Z"
     },
     {
       "owner": "VoltAgent",
@@ -1142,6 +1211,35 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     },
     {
+      "owner": "yucezerey",
+      "repo": "turkish-anti-ai-skill",
+      "full_name": "yucezerey/turkish-anti-ai-skill",
+      "repo_url": "https://github.com/yucezerey/turkish-anti-ai-skill",
+      "stars": 249,
+      "description": "Türkçe metinlerdeki yapay zeka izlerini (AI slop, translationese, çeviri kokan cümle mimarisi ve TDK hatalarını) temizleyen Agent Skill ve Humanizer paketi.",
+      "topics": [
+        "agent-skills",
+        "ai-skills",
+        "ai-writing",
+        "claude-code",
+        "codex",
+        "cursor-rules",
+        "de-slop",
+        "gemini-cli",
+        "humanizer",
+        "llm",
+        "prompt-engineering",
+        "tdk",
+        "turkish",
+        "turkish-nlp"
+      ],
+      "deduced_category": "data-ai",
+      "deduced_category_ar": "البيانات والذكاء الاصطناعي",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-07T12:40:33.700Z"
+    },
+    {
       "owner": "ilindaniel",
       "repo": "ponytail-lite",
       "full_name": "ilindaniel/ponytail-lite",
@@ -1239,7 +1337,7 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     }
   ],
-  "total_candidates": 43,
+  "total_candidates": 46,
   "quarantined_from_audit": [
     {
       "id": "git-workflow",
