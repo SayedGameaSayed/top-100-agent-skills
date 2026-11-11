@@ -1,7 +1,7 @@
 {
   "name": "دليل مهارات الذكاء الاصطناعي",
   "short_name": "Skills 100",
-  "description": "دليل عربي تفاعلي موثق لأشهر 100 مهارة وكيل ذكاء اصطناعي مع لوحة صدارة يومية وبرومبتات جاهزة للنسخ",
+  "description": "دليل عربي تفاعلي موثق لأشهر 100 AI Agent Skills مفتوحة المصدر، مع إرشادات Prompts جاهزة للنسخ ولوحة صدارة محدثة.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",

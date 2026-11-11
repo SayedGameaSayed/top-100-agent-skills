@@ -3,6 +3,8 @@
  * Dala Dark Velvet Aesthetic: Weightless, buttery smooth 60fps performance
  */
 
+import { t } from './i18n.js';
+
 export function initScrollEffects() {
   // 1. Inject Top Luminous Scroll Progress Line
   let progressBar = document.getElementById('scroll-progress-line');
@@ -19,11 +21,10 @@ export function initScrollEffects() {
     scrollTopBtn = document.createElement('button');
     scrollTopBtn.id = 'scroll-top-pill';
     scrollTopBtn.className = 'scroll-top-pill';
-    const isEn = document.documentElement.lang === 'en';
-    scrollTopBtn.setAttribute('aria-label', isEn ? 'Back to top' : 'العودة لأعلى الصفحة');
+    scrollTopBtn.setAttribute('aria-label', t('scrollTopLabel'));
     scrollTopBtn.innerHTML = `
       <span class="scroll-top-arrow">↑</span>
-      <span id="scroll-top-text">${isEn ? 'Top' : 'للأعلى'}</span>
+      <span id="scroll-top-text">${t('backToTop')}</span>
       <span class="scroll-top-dot"></span>
     `;
     scrollTopBtn.addEventListener('click', () => {

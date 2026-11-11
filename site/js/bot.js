@@ -16,31 +16,32 @@ import { normalizeArabic } from './search.js';
 import { getLang, formatUrlWithLang } from './i18n.js';
 
 let skillsCatalog = [];
+let categoriesCatalog = [];
 
 const PROVIDERS = {
   gemini: {
     id: 'gemini',
     name: 'Google Gemini',
-    badgeAr: 'مجاني 100% (الافتراضي) 🌟',
+    badgeAr: 'مجاني 100% (مبدئي) 🌟',
     badgeEn: '100% Free (Default) 🌟',
     model: 'gemini-1.5-flash',
     placeholder: 'AIzaSy...',
     guideUrl: 'https://aistudio.google.com/app/apikey',
     guideName: 'Google AI Studio',
-    stepAr: 'افتح Google AI Studio واضغط Create API Key (مجاني تماماً)',
+    stepAr: 'افتح Google AI Studio واختر Create API Key (مجاني تمامًا)',
     stepEn: 'Open Google AI Studio and click Create API Key (100% Free)',
     prefixPattern: /^AIzaSy/
   },
   claude: {
     id: 'claude',
     name: 'Anthropic Claude',
-    badgeAr: 'الأقوى في البرمجة 🟣',
+    badgeAr: 'الأكثر دقةً في البرمجة 🟣',
     badgeEn: 'Best for Code 🟣',
     model: 'claude-3-5-sonnet-20241022',
     placeholder: 'sk-ant-api03-...',
     guideUrl: 'https://console.anthropic.com/settings/keys',
     guideName: 'Anthropic Console',
-    stepAr: 'افتح console.anthropic.com وانسخ مفتاحك (يبدأ بـ sk-ant...)',
+    stepAr: 'افتح console.anthropic.com وانسخ API Key (يبدأ بـ sk-ant…)',
     stepEn: 'Open console.anthropic.com and copy your key (starts with sk-ant...)',
     prefixPattern: /^sk-ant/
   },
@@ -53,13 +54,13 @@ const PROVIDERS = {
     placeholder: 'sk-proj-... / sk-...',
     guideUrl: 'https://platform.openai.com/api-keys',
     guideName: 'OpenAI Platform',
-    stepAr: 'افتح platform.openai.com وأنشئ مفتاحاً جديداً (يبدأ بـ sk-...)',
+    stepAr: 'افتح platform.openai.com وأنشئ API Key جديدًا (يبدأ بـ sk-…)',
     stepEn: 'Open platform.openai.com and create a key (starts with sk-...)',
     prefixPattern: /^sk-(proj-)?[A-Za-z0-9_-]{20,}/
   },
   openrouter: {
     id: 'openrouter',
-    name: 'OpenRouter (كل الموديلات)',
+    name: 'OpenRouter (جميع AI Models)',
     nameEn: 'OpenRouter (All Models)',
     badgeAr: 'مفتاح شامل 🔴',
     badgeEn: 'All-in-1 Key 🔴',
@@ -67,13 +68,13 @@ const PROVIDERS = {
     placeholder: 'sk-or-v1-...',
     guideUrl: 'https://openrouter.ai/keys',
     guideName: 'OpenRouter Keys',
-    stepAr: 'افتح openrouter.ai/keys لإنشاء مفتاح شامل يفتح كل الموديلات',
+    stepAr: 'افتح openrouter.ai/keys لإنشاء مفتاح موحد يصل إلى جميع AI Models',
     stepEn: 'Open openrouter.ai/keys to create an all-in-1 key for all models',
     prefixPattern: /^sk-or/
   },
   groq: {
     id: 'groq',
-    name: 'Groq (سريع ومجاني)',
+    name: 'Groq (فائق السرعة ومجاني)',
     nameEn: 'Groq (Ultra-Fast & Free)',
     badgeAr: 'سرعة فائقة ⚡',
     badgeEn: 'Ultra Fast ⚡',
@@ -81,7 +82,7 @@ const PROVIDERS = {
     placeholder: 'gsk_...',
     guideUrl: 'https://console.groq.com/keys',
     guideName: 'Groq Console',
-    stepAr: 'افتح console.groq.com للحصول على مفتاح مجاني فائق السرعة',
+    stepAr: 'افتح console.groq.com لإنشاء مفتاح مجاني فائق السرعة',
     stepEn: 'Open console.groq.com to get a free, ultra-fast Llama 3.3 key',
     prefixPattern: /^gsk_/
   },
@@ -94,7 +95,7 @@ const PROVIDERS = {
     placeholder: 'sk-...',
     guideUrl: 'https://platform.deepseek.com/api_keys',
     guideName: 'DeepSeek Platform',
-    stepAr: 'افتح platform.deepseek.com وانسخ مفتاحك البرمجي',
+    stepAr: 'افتح platform.deepseek.com وانسخ API Key',
     stepEn: 'Open platform.deepseek.com and copy your API key',
     prefixPattern: /^sk-[a-f0-9]{32}/
   }
@@ -163,9 +164,12 @@ function detectProviderFromKey(key) {
   return null;
 }
 
-export function initAiBot(skills = []) {
+export function initAiBot(skills = [], categories = []) {
   if (Array.isArray(skills) && skills.length > 0) {
     skillsCatalog = skills;
+  }
+  if (Array.isArray(categories) && categories.length > 0) {
+    categoriesCatalog = categories;
   }
 
   // Prevent double injection
@@ -180,7 +184,7 @@ export function initAiBot(skills = []) {
   widgetContainer.id = 'ai-bot-root';
   widgetContainer.innerHTML = `
     <!-- Floating Trigger Pill Button -->
-    <button id="ai-bot-trigger" class="ai-bot-trigger" aria-label="${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}" title="${isEn ? 'Ask AI Skills Assistant' : 'اسأل مساعد المهارات الذكي'}">
+    <button id="ai-bot-trigger" class="ai-bot-trigger" aria-label="${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}" title="${isEn ? 'Ask AI Skills Assistant' : 'استشر مساعد المهارات الذكي'}">
       <span class="bot-trigger-pulse"></span>
       <span class="bot-trigger-icon" aria-hidden="true">✨</span>
       <span class="bot-trigger-text">${isEn ? 'Skills Assistant' : 'مساعد المهارات'}</span>
@@ -192,7 +196,7 @@ export function initAiBot(skills = []) {
       <!-- Bot Header (Draggable) -->
       <div class="bot-header" id="bot-header">
         <div class="bot-header-info">
-          <span class="bot-drag-handle" id="bot-drag-handle" title="${isEn ? 'Drag to move window anywhere (Double-click to reset)' : 'اسحب لتحريك النافذة في أي مكان (انقر مرتين لإعادتها للوضع الأصلي)'}">⠿</span>
+          <span class="bot-drag-handle" id="bot-drag-handle" title="${isEn ? 'Drag to move window anywhere (Double-click to reset)' : 'اسحب لتحريك النافذة إلى أي موضع (انقر مرتين لإعادتها إلى موضعها الأصلي)'}">⠿</span>
           <img src="assets/logo.png" alt="Assistant Logo" class="bot-avatar-img" width="28" height="28">
           <div>
             <div class="bot-title">${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}</div>
@@ -200,17 +204,17 @@ export function initAiBot(skills = []) {
               <span class="bot-live-dot ${hasKey ? 'bot-live-gemini' : ''}"></span>
               <span id="bot-engine-label">${
                 hasKey 
-                  ? `${isEn ? (activeProvider.nameEn || activeProvider.name) : activeProvider.name} (Active ✨)` 
-                  : (isEn ? 'Local Search (Add AI Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل الذكاء الاصطناعي)')
+                  ? `${isEn ? (activeProvider.nameEn || activeProvider.name) : activeProvider.name} (${isEn ? 'Active ✨' : 'نشط ✨'})` 
+                  : (isEn ? 'Local Search (Add AI Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل AI)')
               }</span>
             </div>
           </div>
         </div>
         <div class="bot-header-actions">
-          <button id="bot-api-btn" class="bot-api-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Configure API Key (Claude, OpenAI, Gemini...)' : 'إعداد مفتاح API (كلود، ChatGPT، جيميناي...)'}" type="button">
-            🔑 <span id="bot-api-btn-text">${hasKey ? (isEn ? 'AI Active ✓' : 'المفتاح نشط ✓') : (isEn ? 'Set API Key' : 'مفتاح API')}</span>
+          <button id="bot-api-btn" class="bot-api-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Configure API Key (Claude, OpenAI, Gemini...)' : 'إعداد API Key (Claude أو OpenAI أو Gemini…)'}" type="button">
+            🔑 <span id="bot-api-btn-text">${hasKey ? (isEn ? 'AI Active ✓' : 'AI مفعّل ✓') : (isEn ? 'Set API Key' : 'مفتاح API')}</span>
           </button>
-          <button id="bot-expand-btn" class="bot-icon-btn" title="${isEn ? 'Maximize / Restore Window' : 'تكبير / استعادة حجم النافذة'}" aria-label="${isEn ? 'Maximize' : 'تكبير'}" type="button">⤢</button>
+          <button id="bot-expand-btn" class="bot-icon-btn" title="${isEn ? 'Maximize / Restore Window' : 'تكبير النافذة / استعادة الحجم'}" aria-label="${isEn ? 'Maximize' : 'تكبير النافذة'}" type="button">⤢</button>
           <button id="bot-close-btn" class="bot-icon-btn" title="${isEn ? 'Close Chat' : 'إغلاق المحادثة'}" aria-label="${isEn ? 'Close' : 'إغلاق'}" type="button">✕</button>
         </div>
       </div>
@@ -218,7 +222,7 @@ export function initAiBot(skills = []) {
       <!-- Expandable API Key Settings Drawer -->
       <div id="bot-settings-drawer" class="bot-settings-drawer" style="display: none;">
         <div class="bot-settings-header">
-          <span class="bot-settings-title">🔑 ${isEn ? 'Connect Any AI Provider (Claude, OpenAI, Gemini...)' : 'ربط أي ذكاء اصطناعي (Claude, ChatGPT, Gemini...)'}</span>
+          <span class="bot-settings-title">🔑 ${isEn ? 'Connect Any AI Provider (Claude, OpenAI, Gemini...)' : 'ربط مزوّد AI'}</span>
           <span class="bot-settings-badge" id="bot-settings-badge">${isEn ? activeProvider.badgeEn : activeProvider.badgeAr}</span>
         </div>
 
@@ -226,21 +230,21 @@ export function initAiBot(skills = []) {
         <div class="bot-free-gemini-callout">
           ${isEn 
             ? '💡 <strong>Why is Google Gemini the default?</strong> We defaulted to Gemini because it is <strong>100% free with no credit card required</strong> so anyone can test the assistant instantly. <strong>However, you have full freedom:</strong> Select and securely use your personal API key from Claude, OpenAI, DeepSeek, Groq, or OpenRouter with zero server logging!'
-            : '💡 <strong>لماذا وضعنا Google Gemini أولاً؟</strong> اخترنا جيميناي كخيار افتراضي لأنه <strong>مجاني 100% بدون أي تكاليف أو فيزا</strong> حتى يتمكن الجميع من تجربة المساعد فوراً. <strong>ولكنك حر تماماً:</strong> يمكنك اختيار واستخدام مفتاحك الخاص من Claude أو OpenAI أو DeepSeek أو Groq أو OpenRouter بأمان تام وخصوصية 100%!'}
+            : '💡 <strong>لماذا نبدأ بـ <bdi dir="ltr">Google Gemini</bdi>؟</strong> اخترناه خيارًا مبدئيًا لأنه <strong>مجاني بالكامل ودون بطاقة دفع</strong>، ليتمكن الجميع من تجربة المساعد فورًا؛ ومع ذلك، تملك حرية الاختيار لاستخدام <bdi dir="ltr">API Key</bdi> الشخصي من <bdi dir="ltr">Claude</bdi> أو <bdi dir="ltr">OpenAI</bdi> أو <bdi dir="ltr">DeepSeek</bdi> أو <bdi dir="ltr">Groq</bdi> أو <bdi dir="ltr">OpenRouter</bdi> بأمان وخصوصية تامّين.'}
         </div>
 
         <!-- Provider Selector -->
         <div class="bot-provider-select-row">
           <div class="bot-provider-label">
-            <span>${isEn ? 'Select AI Provider:' : 'اختر مزود الذكاء الاصطناعي:'}</span>
-            <span style="font-size: 10px; color: var(--color-iris-violet); font-weight: normal;">${isEn ? '(Auto-detects on paste)' : '(يكتشف النوع تلقائياً عند اللصق)'}</span>
+            <span>${isEn ? 'Select AI Provider:' : 'اختر مزوّد AI:'}</span>
+            <span style="font-size: 10px; color: var(--color-iris-violet); font-weight: normal;">${isEn ? '(Auto-detects on paste)' : '(يُتعرّف على المزوّد تلقائيًا عند اللصق)'}</span>
           </div>
           <select id="bot-provider-select" class="bot-provider-select">
-            <option value="gemini" ${config.provider === 'gemini' ? 'selected' : ''}>🌟 Google Gemini (مجاني 100% - الافتراضي)</option>
+            <option value="gemini" ${config.provider === 'gemini' ? 'selected' : ''}>🌟 Google Gemini (${isEn ? '100% Free - Default' : 'مجاني 100% - مبدئي'})</option>
             <option value="claude" ${config.provider === 'claude' ? 'selected' : ''}>🟣 Anthropic Claude (Claude 3.5 Sonnet)</option>
             <option value="openai" ${config.provider === 'openai' ? 'selected' : ''}>🟢 OpenAI (ChatGPT - GPT-4o)</option>
-            <option value="openrouter" ${config.provider === 'openrouter' ? 'selected' : ''}>🔴 OpenRouter (جميع النماذج بمفتاح واحد)</option>
-            <option value="groq" ${config.provider === 'groq' ? 'selected' : ''}>⚡ Groq (Llama 3.3 70B - سرعة فائقة ومجاني)</option>
+            <option value="openrouter" ${config.provider === 'openrouter' ? 'selected' : ''}>🔴 OpenRouter (${isEn ? 'All Models - 1 Key' : 'جميع AI Models بمفتاح واحد'})</option>
+            <option value="groq" ${config.provider === 'groq' ? 'selected' : ''}>⚡ Groq (${isEn ? 'Llama 3.3 70B - Free & Fast' : 'Llama 3.3 70B - مجاني وفائق السرعة'})</option>
             <option value="deepseek" ${config.provider === 'deepseek' ? 'selected' : ''}>🐋 DeepSeek (DeepSeek V3 / Coder)</option>
           </select>
         </div>
@@ -251,26 +255,27 @@ export function initAiBot(skills = []) {
             <span class="bot-step-num">1</span>
             <span id="bot-step-guide-text">${isEn ? activeProvider.stepEn : activeProvider.stepAr}</span>
           </div>
-          <a href="${activeProvider.guideUrl}" target="_blank" rel="noopener noreferrer" class="bot-api-studio-link" id="bot-provider-link">
+          <a href="${activeProvider.guideUrl}" target="_blank" rel="noopener noreferrer" class="bot-api-studio-link" id="bot-provider-link" dir="ltr">
             🔗 ${activeProvider.guideName} ↗
           </a>
           <div class="bot-api-step">
             <span class="bot-api-step-num">2</span>
-            <span>${isEn ? 'Paste your API key below and click <strong>Save & Activate</strong>:' : 'الصق المفتاح بالأسفل واضغط <strong>حفظ وتفعيل</strong>:'}</span>
+            <span>${isEn ? 'Paste your API key below and click <strong>Save & Activate</strong>:' : 'الصق <bdi dir="ltr">API Key</bdi> بالأسفل واضغط <strong>حفظ وتفعيل</strong>:'}</span>
           </div>
         </div>
 
         <!-- Key Input Row -->
-        <div class="bot-api-input-wrap">
+        <div class="bot-api-input-wrap" dir="ltr">
           <input 
             type="password" 
             id="bot-api-key-input" 
+            dir="ltr"
             placeholder="${activeProvider.placeholder}" 
             value="${escapeAttr(config.key)}"
             autocomplete="off"
-            aria-label="${isEn ? 'API Key' : 'مفتاح API'}"
+            aria-label="API Key"
           >
-          <button type="button" id="bot-toggle-key-visibility" class="bot-key-vis-btn" title="${isEn ? 'Show/Hide' : 'إظهار/إخفاء'}">👁️</button>
+          <button type="button" id="bot-toggle-key-visibility" class="bot-key-vis-btn" title="${isEn ? 'Show/Hide' : 'إظهار / إخفاء'}">👁️</button>
         </div>
 
         <!-- Status Message -->
@@ -289,26 +294,26 @@ export function initAiBot(skills = []) {
             <span>🛡️</span>
             <span>${isEn 
               ? '100% Personal Privacy — Nobody Can See Your API Key' 
-              : 'أمان وخصوصية 100% — مفتاحك محفوظ عندك شخصياً ولا يمكن لأحد رؤيته'}</span>
+              : 'أمان وخصوصية تامة: مفتاحك محفوظ لديك ولا يطّلع عليه أحد'}</span>
           </div>
           <div class="bot-privacy-trust-body">
             <div>
               <strong>${isEn ? 'Where is it saved?' : 'أين يُحفظ المفتاح؟'}</strong> 
               ${isEn 
                 ? 'Strictly inside your browser\'s local sandbox (<code>localStorage</code>) on your own device, like a local password.' 
-                : 'يُحفظ مشفراً داخل متصفحك الشخصي فقط (تقنية <code>localStorage</code>) على جهازك أنت، تماماً مثل كلمة مرور محلية.'}
+                : 'يُحفظ داخل مساحة التخزين المحلية في متصفحك فقط (<code dir="ltr">localStorage</code>) على جهازك، على نحو يشبه حفظ كلمة مرور محلية.'}
             </div>
             <div>
-              <strong>${isEn ? 'Why can no one see it?' : 'لماذا لا يستطيع أحد (ولا حتى صاحب الموقع) رؤيته؟'}</strong> 
+              <strong>${isEn ? 'Why can no one see it?' : 'لماذا لا يراه أحد؟'}</strong> 
               ${isEn 
                 ? 'The site runs on pure client-side architecture. Encrypted requests go directly from your browser to AI servers. We have zero databases, zero key tracking, and zero server logging.' 
-                : 'لأن الموقع مبني بمعمارية المتصفح المباشر (Client-Side). يخرج الطلب مشفراً من متصفحك مباشرة إلى شركة الذكاء الاصطناعي. لا توجد لدينا أي قاعدة بيانات لتخزين المفاتيح ولا يتم تسجيل أي مفتاح في أي سيرفر نهائياً.'}
+                : 'يعمل الموقع بالكامل داخل متصفحك (<bdi dir="ltr">Client-Side</bdi>)، وتُرسل الطلبات عبر اتصال مشفّر (<bdi dir="ltr">HTTPS</bdi>) مباشرةً إلى مزوّد <bdi dir="ltr">AI</bdi>، دون أي قاعدة بيانات لحفظ المفاتيح أو خوادم تحتفظ بسجلّها.'}
             </div>
             <div>
-              <strong>${isEn ? 'How to verify?' : 'كيف تتأكد بنفسك؟'}</strong> 
+              <strong>${isEn ? 'How to verify?' : 'كيف تتحقق بنفسك؟'}</strong> 
               ${isEn 
                 ? 'This project is 100% open-source on <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" class="bot-privacy-trust-link">GitHub</a>. You can inspect the code anytime, and remove your key with 1 click.' 
-                : 'المشروع مفتوح المصدر 100% على <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" class="bot-privacy-trust-link">GitHub</a>، ويمكن لأي مبرمج فحص الكود بنفسه للتأكد. كما يمكنك حذف المفتاح بضغطة زر واحدة في أي لحظة.'}
+                : 'المشروع مفتوح المصدر بالكامل على <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" class="bot-privacy-trust-link"><bdi dir="ltr">GitHub</bdi></a>؛ يمكنك مراجعة الشفرة المصدرية في أي وقت، وحذف المفتاح بنقرة واحدة.'}
             </div>
           </div>
         </div>
@@ -322,20 +327,20 @@ export function initAiBot(skills = []) {
           <div class="bot-msg-bubble">
             ${isEn 
               ? '👋 Hello! I am your <strong>Universal AI Skills Advisor</strong>.<br><br>💡 <strong>Feel free to paste your code, project README, or architecture description:</strong><br>I will analyze your stack and recommend the exact skills you need — both from our <strong>Top 100 Verified Catalog</strong> and <strong>from the broader AI ecosystem</strong>. For every skill, I will explain what it does, why it fits your project, and how to use it!' 
-              : '👋 أهلاً بك! أنا <strong>مستشارك الذكي لمهارات وأدوات الذكاء الاصطناعي</strong>.<br><br>💡 <strong>يمكنك إرسال فكرتك، كود مشروعك، أو ملف الـ README بالكامل:</strong><br>سأقوم بتحليل بيئة عملك واقتراح أفضل المهارات المناسبة لك بدقة — سواء كانت من ضمن <strong>أفضل 100 مهارة في الدليل</strong> أو <strong>حلول وأدوات ذكية من خارج الدليل</strong>، مع شرح دقيق لوظيفة كل أداة وكيف تفيدك عملياً في مشروعك!'}
+              : '👋 أهلًا بك! أنا <strong>مستشارك الذكي لـ <bdi dir="ltr">AI Agent Skills</bdi></strong>.<br><br>💡 <strong>يمكنك لصق فكرة مشروعك، أو مقطع من الكود، أو ملف <bdi dir="ltr">README</bdi> كاملًا:</strong><br>سأحلّل تقنيات عملك وأرشّح لك أنسب المهارات بدقة، سواءً من <strong>أشهر 100 مهارة في الدليل</strong> أو من <strong>الأدوات المفتوحة خارج الدليل</strong>، مع توضيح دور كل مهارة وكيفية توظيفها عمليًا في مشروعك.'}
           </div>
         </div>
 
         <!-- Promo Banner if NO Key is set -->
         <div id="bot-welcome-promo" class="bot-welcome-promo" style="${hasKey ? 'display: none;' : ''}">
-          <div class="bot-promo-title">✨ ${isEn ? 'Unlock Conversational AI Intelligence:' : 'تفعيل الذكاء الكامل عبر الموديلات الذكية:'}</div>
+          <div class="bot-promo-title">✨ ${isEn ? 'Unlock Conversational AI Intelligence:' : 'تفعيل التحليل الذكي الكامل عبر <bdi dir="ltr">AI Models</bdi>:'}</div>
           <p class="bot-promo-desc">
             ${isEn 
               ? 'Currently in offline local search mode. Connect your key (Try Google Gemini for 100% free, or use Claude, OpenAI, DeepSeek, or Groq) to unlock deep code & documentation analysis!' 
-              : 'يعمل المساعد حالياً بالبحث المحلي السريع. اربط مفتاحك (جرب Google Gemini مجاناً 100% بدون فيزا، أو استخدم Claude أو ChatGPT أو DeepSeek أو Groq) لتشريح كودك واقتراح مهارات ذكية!'}
+              : 'يعمل المساعد حاليًا بالبحث المحلي السريع. اربط مفتاحك (جرّب <bdi dir="ltr">Google Gemini</bdi> مجانًا دون بطاقة دفع، أو استخدم <bdi dir="ltr">Claude</bdi> أو <bdi dir="ltr">ChatGPT</bdi> أو <bdi dir="ltr">DeepSeek</bdi> أو <bdi dir="ltr">Groq</bdi>) لتحليل كودك وترشيح مهارات متخصصة.'}
           </p>
           <button type="button" id="bot-open-setup-from-banner" class="bot-promo-btn">
-            🔑 ${isEn ? 'Choose Provider & Enter Key (1-Min)' : 'اختيار المزود وإدخال المفتاح (في دقيقة)'}
+            🔑 ${isEn ? 'Choose Provider & Enter Key (1-Min)' : 'اختيار المزوّد وإدخال المفتاح (في دقيقة)'}
           </button>
         </div>
 
@@ -347,18 +352,18 @@ export function initAiBot(skills = []) {
             <button class="bot-chip" data-query="What are the best agent skills and tools beyond the top 100 directory?">🌐 Discover Tools beyond Top 100</button>
             <button class="bot-chip" data-query="Subagent driven development and automated task planning">⚡ Auto Task Planning & Subagents</button>
           ` : `
-            <button class="bot-chip" data-query="حلل كود مشروعي واقترح أفضل المهارات المناسبة له">💻 تحليل الكود واقتراح مهارات</button>
-            <button class="bot-chip" data-query="اقترح مهارات مناسبة لملف الـ README وتوثيق مشروعي">📄 اقتراحات لملف الـ README</button>
-            <button class="bot-chip" data-query="ما هي أفضل الأدوات والمهارات الذكية من خارج الـ 100 سكيلز؟">🌐 مهارات من خارج الـ 100</button>
-            <button class="bot-chip" data-query="تقسيم المهام وأتمتة العمل عبر الوكلاء الأذكياء">⚡ تقسيم وأتمتة المهام</button>
+            <button class="bot-chip" data-query="حلّل كود مشروعي واقترح أنسب AI Agent Skills المناسبة له">💻 تحليل الكود واقتراح مهارات</button>
+            <button class="bot-chip" data-query="اقترح مهارات مناسبة لملف README وتوثيق مشروعي">📄 اقتراحات لملف <bdi dir="ltr">README</bdi></button>
+            <button class="bot-chip" data-query="ما أفضل AI Agent Skills والأدوات المفتوحة من خارج الدليل؟">🌐 مهارات من خارج الدليل</button>
+            <button class="bot-chip" data-query="تقسيم المهام وأتمتة العمل عبر AI Agents">⚡ تقسيم المهام والأتمتة</button>
           `}
         </div>
       </div>
 
       <!-- Floating Scroll to Bottom Button -->
-      <button id="bot-scroll-bottom-btn" class="bot-scroll-bottom-btn" type="button" aria-label="${isEn ? 'Scroll down to latest' : 'التمرير لأسفل المحادثة'}" title="${isEn ? 'Scroll to latest messages' : 'الانتقال لآخر الرسائل'}">
+      <button id="bot-scroll-bottom-btn" class="bot-scroll-bottom-btn" type="button" aria-label="${isEn ? 'Scroll down to latest' : 'التمرير إلى أسفل المحادثة'}" title="${isEn ? 'Scroll to latest messages' : 'الانتقال إلى أحدث الرسائل'}">
         <span class="bot-scroll-icon">↓</span>
-        <span class="bot-scroll-text">${isEn ? 'Latest Messages' : 'آخر الرسائل'}</span>
+        <span class="bot-scroll-text">${isEn ? 'Latest Messages' : 'أحدث الرسائل'}</span>
       </button>
 
       <!-- Chat Input Area -->
@@ -367,7 +372,7 @@ export function initAiBot(skills = []) {
           id="bot-input-text" 
           class="bot-input-field" 
           rows="1"
-          placeholder="${isEn ? 'Paste code, project docs, or describe your goal...' : 'الصق كوداً، أو ملف README، أو اسأل عن أي مهارة تناسب مشروعك...'}"
+          placeholder="${isEn ? 'Paste code, project docs, or describe your goal...' : 'ألصق كودًا أو ملف README، أو اسأل عن مهارة لمشروعك…'}"
           aria-label="${isEn ? 'Message' : 'الرسالة'}"
           required
         ></textarea>
@@ -734,19 +739,19 @@ function attachBotEventListeners() {
     if (!key) {
       statusEl.style.display = 'block';
       statusEl.className = 'bot-settings-status error';
-      statusEl.textContent = isEn ? 'Please paste a valid API key.' : 'يرجى لصق مفتاح API أولاً.';
+      statusEl.textContent = isEn ? 'Please paste a valid API key.' : 'يرجى لصق API Key أولًا.';
       return;
     }
 
     statusEl.style.display = 'block';
     statusEl.className = 'bot-settings-status';
-    statusEl.textContent = isEn ? `Testing connection with ${p.name}...` : `جاري التحقق من المفتاح مع ${p.name}...`;
+    statusEl.textContent = isEn ? `Testing connection with ${p.name}...` : `جارٍ التحقق من المفتاح مع ${p.name}…`;
 
     try {
       await testApiKey(provider, key);
       setStoredConfig(provider, key);
       statusEl.className = 'bot-settings-status success';
-      statusEl.textContent = isEn ? `✓ Connected to ${p.name} successfully!` : `✓ تم التحقق وتفعيل ${p.name} بنجاح!`;
+      statusEl.textContent = isEn ? `✓ Connected to ${p.name} successfully!` : `✓ فُعّل ${p.name} بعد التحقق منه`;
 
       updateBotStatusUI(true, provider);
       clearKeyBtn.style.display = 'inline-block';
@@ -758,14 +763,14 @@ function attachBotEventListeners() {
         statusEl.style.display = 'none';
         appendMessage('assistant', isEn 
           ? `🎉 <strong>${p.name} is now active!</strong> You can now paste your code, project docs, or ask for any skill from inside or outside the catalog.` 
-          : `🎉 <strong>تم تفعيل ${p.name} بنجاح!</strong> يمكنك الآن إرسال كودك أو ملف الـ README وسأقترح عليك أفضل المهارات من داخل وخارج الدليل مع شرحها بالكامل.`
+          : `🎉 <strong><bdi dir="ltr">${p.name}</bdi> نشط الآن.</strong> أرسل كودك أو ملف <bdi dir="ltr">README</bdi> وسأرشّح لك أنسب المهارات من الدليل وخارجه مع شرحها كاملًا.`
         );
       }, 1200);
     } catch (err) {
       statusEl.className = 'bot-settings-status error';
       statusEl.textContent = isEn 
         ? `⚠️ Connection failed: ${err.message}. Please check your key.` 
-        : `⚠️ تعذر التحقق من المفتاح: ${err.message}. يرجى مراجعة المفتاح أو الرصيد.`;
+        : `⚠️ تعذّر التحقق من المفتاح: ${err.message}. تحقّق من صحة المفتاح أو رصيد الحساب.`;
     }
   });
 
@@ -779,7 +784,7 @@ function attachBotEventListeners() {
     const statusEl = document.getElementById('bot-settings-status');
     statusEl.style.display = 'block';
     statusEl.className = 'bot-settings-status';
-    statusEl.textContent = isEn ? 'Key removed. Reverted to local search.' : 'تم حذف المفتاح والعودة للبحث المحلي.';
+    statusEl.textContent = isEn ? 'Key removed. Reverted to local search.' : 'حُذف المفتاح، وعاد المساعد إلى البحث المحلي.';
     const welcomePromo = document.getElementById('bot-welcome-promo');
     if (welcomePromo) welcomePromo.style.display = 'block';
     setTimeout(() => {
@@ -834,12 +839,12 @@ function updateBotStatusUI(hasKey, providerId = 'gemini') {
 
   if (hasKey) {
     const name = isEn ? (p.nameEn || p.name) : p.name;
-    if (label) label.textContent = `${name} (Active ✨)`;
+    if (label) label.textContent = `${name} (${isEn ? 'Active ✨' : 'نشط ✨'})`;
     if (dot) dot.classList.add('bot-live-gemini');
     if (btn) btn.classList.add('has-key');
-    if (btnText) btnText.textContent = isEn ? 'AI Active ✓' : 'المفتاح نشط ✓';
+    if (btnText) btnText.textContent = isEn ? 'AI Active ✓' : 'AI مفعّل ✓';
   } else {
-    if (label) label.textContent = isEn ? 'Local Search (Add AI Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل الذكاء الاصطناعي)';
+    if (label) label.textContent = isEn ? 'Local Search (Add AI Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل AI)';
     if (dot) dot.classList.remove('bot-live-gemini');
     if (btn) btn.classList.remove('has-key');
     if (btnText) btnText.textContent = isEn ? 'Set API Key' : 'مفتاح API';
@@ -888,7 +893,7 @@ async function handleSendMessage(userText) {
       appendAssistantResponse({
         reply: (isEn 
           ? `⚠️ *${providerName} Notice: ${err.message}*\n\nSwitched automatically to local catalog matcher:\n\n` 
-          : `⚠️ *تنبيه من ${providerName}: ${err.message}*\n\nتم التبديل تلقائياً للبحث المحلي الموثق:\n\n`) + localResult.reply,
+          : `⚠️ *تنبيه من ${providerName}: ${err.message}*\n\nانتقل المساعد تلقائيًا إلى البحث المحلي الموثق:\n\n`) + localResult.reply,
         recommendedSkills: localResult.recommendedSkills,
         engine: 'local-fallback',
         showKeySetupPrompt: true
@@ -913,7 +918,7 @@ async function handleSendMessage(userText) {
       'assistant',
       isEn 
         ? 'Sorry, an error occurred while processing. Please try again or use the main search bar.'
-        : 'عذراً، حدث خطأ أثناء معالجة السؤال. يمكنك المحاولة مجدداً أو البحث مباشرة في شريط البحث أعلى الموقع.'
+        : 'عذرًا، تعذّرت معالجة الطلب حاليًا. حاول مجددًا أو استخدم شريط البحث أعلى الصفحة.'
     );
     console.error('Bot Error:', err);
   }
@@ -932,7 +937,8 @@ async function queryUniversalAi(userText, provider, apiKey) {
   // Build full catalog context for grounding across all 100 skills
   const catalogContext = skillsCatalog.map((s) => {
     const title = isEn ? (s.title_en || s.name) : (s.title_ar || s.name);
-    const cat = isEn ? (s.category || '') : (s.category_ar || s.category || '');
+    const catObj = categoriesCatalog.find((c) => c.id === s.category);
+    const cat = isEn ? (catObj?.name_en || s.category || '') : (catObj?.name_ar || s.category || '');
     const summary = isEn ? (s.summary_en || s.summary_ar) : s.summary_ar;
     return `- [${s.id}] (${cat}) "${title}": ${summary ? summary.slice(0, 100) : ''}`;
   }).join('\n');
@@ -950,18 +956,18 @@ Core Directives:
    - Why & Where to use it in their specific project/code
    - Actionable Prompt or Command (Ready-to-use prompt template or CLI syntax)
 5. Keep answers well-structured with clear markdown headings, bullet points, and code blocks. Always respond in English.`
-    : `أنت المستشار الذكي المتخصص لدليل "أفضل 100 مهارة ذكاء اصطناعي" (Top 100 Agent Skills) مفتوح المصدر.
-خبرتك تكمن في تحليل كود المطورين، ملفات التوثيق (README)، معمارية المشاريع، والتحديات البرمجية الحقيقية لاقتراح المهارات والأدوات الأكثر كفاءة.
+    : `أنت المستشار الذكي المتخصص لدليل مهارات الذكاء الاصطناعي (Top 100 Agent Skills) مفتوح المصدر.
+تتمثل خبرتك في تحليل كود المطورين، وملفات التوثيق (README)، ومعمارية المشاريع، والتحديات الهندسية لاقتراح أنسب AI Agent Skills والأدوات المفتوحة.
 
 التوجيهات الأساسية:
-1. تحليل الكود والمشروع: عندما يرسل المستخدم كوداً أو ملف README أو مواصفات مشروعه، حلل بيئة العمل (Tech Stack) والمشكلات التي يواجهها.
-2. المهارات الموثقة داخل الدليل: رشح المهارات الأنسب من كتالوج "أفضل 100 مهارة". عند ذكر أي مهارة من الدليل، اكتب دائماً معرّفها الدقيق بين قوسين مثل [docx] أو [test-driven-development] أو [systematic-debugging] أو [writing-plans] لكي يقوم النظام بعرض كارت تفاعلي لها تلقائياً.
-3. المنظومة الذكية والمهارات الخارجية: إذا كان مشروع المستخدم يحتاج مهارات أو أدوات غير موجودة في الـ 100 مهارة (مثل: أدوات ML متخصصة، أطر عمل وكلاء خارجية، خوادم MCP معينة، أو خدمات سحابية)، اقترح له بحرية وبحث ذكي أفضل المهارات والأدوات الخارجية من عالم الذكاء الاصطناعي الأوسع.
-4. لكل مهارة أو أداة ترشحها (سواء من داخل الـ 100 أو من خارجها)، وضح الآتي بأسلوب منسق ومباشر:
-   - **ما وظيفتها؟** (دورها الأساسي وما تقدمه)
-   - **أين وكيف تستخدمها في مشروعه؟** (الربط المباشر مع الكود أو الوثائق التي أرسلها)
-   - **البرومبت أو الأمر الجاهز** (صيغة عملية جاهزة للتنفيذ فوراً)
-5. نظّم الإجابة بعناوين واضحة ونقاط مرتبة، واستخدم لغة عربية برمجية تقنية دقيقة وسلسة.`;
+1. تحليل الكود والمشروع: عندما يرسل المستخدم كودًا أو ملف README أو متطلبات مشروع، حلّل بيئة العمل (Tech Stack) وحدّد التحديات ونقاط الاختناق.
+2. المهارات الموثقة داخل الدليل: رشّح أنسب المهارات من قائمة أفضل 100 مهارة في الدليل. وعند ذكر أي مهارة من الدليل، اكتب معرّفها الدقيق بين قوسين معقوفين مثل [docx] أو [test-driven-development] أو [systematic-debugging] أو [writing-plans] ليعرض النظام بطاقة تفاعلية لها تلقائيًا.
+3. المنظومة الأوسع والمهارات الخارجية: إذا احتاج مشروع المستخدم قدرات غير متوفرة في الدليل (مثل أطر عمل AI Agents كـ LangGraph وCrewAI، أو خوادم MCP، أو واجهات Cloud APIs)، فاقترح عليه أبرز الأدوات والمهارات الموثوقة من المنظومة الأوسع.
+4. لكل مهارة أو أداة ترشحها (من الدليل أو خارجه)، وضّح بإيجاز وتنظيم:
+   - **وظيفتها الأساسية:** ما الذي تضيفه إلى سير العمل؟
+   - **موضع استخدامها في مشروعك:** كيف ترتبط مباشرةً بالكود أو التوثيق المُرسَل؟
+   - **Prompt أو الأمر الجاهز:** صيغة عملية قابلة للتطبيق فورًا.
+5. نظّم الإجابة بعناوين ونقاط واضحة وأمثلة برمجية منسقة، واكتب بلغة عربية تقنية فصيحة ومباشرة مع إبقاء المصطلحات البرمجية والأوامر وأسماء الملفات بالإنجليزية.`;
 
   const fullPrompt = `${systemInstruction}
 
@@ -1278,9 +1284,10 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
         ${recommendedSkills
           .map((skill) => {
             const stars = (skill.github_stars || 0).toLocaleString('en-US');
-            const cat = skill.category_ar || skill.category || '';
+            const catObj = categoriesCatalog.find((c) => c.id === skill.category);
+            const cat = isEn ? (catObj?.name_en || skill.category || '') : (catObj?.name_ar || skill.category || '');
             const title = isEn ? (skill.title_en || skill.name) : (skill.title_ar || skill.name);
-            const promptText = skill.quick_prompt || (isEn ? `Use skill: ${skill.name}` : `استخدم مهارة: ${skill.name}`);
+            const promptText = skill.quick_prompt || (isEn ? `Use skill: ${skill.name}` : `استخدم مهارة ${skill.name}`);
 
             return `
               <div class="bot-skill-card" data-skill-id="${escapeAttr(skill.id)}">
@@ -1291,9 +1298,9 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
                 <div class="bot-skill-card-meta">${escapeHtml(cat)}</div>
                 <div class="bot-skill-card-actions">
                   <button type="button" class="bot-copy-prompt-btn" data-prompt="${escapeAttr(promptText)}">
-                    📋 ${isEn ? 'Copy Prompt' : 'نسخ البرومبت'}
+                    📋 ${isEn ? 'Copy Prompt' : 'نسخ Prompt'}
                   </button>
-                  <a href="${formatUrlWithLang(`skill.html?id=${encodeURIComponent(skill.id)}`)}" class="bot-skill-link" target="_blank">
+                  <a href="${formatUrlWithLang(`skill.html?id=${encodeURIComponent(skill.id)}`)}" class="bot-skill-link" target="_blank" rel="noopener noreferrer">
                     ${isEn ? 'View Skill ↗' : 'عرض المهارة ↗'}
                   </a>
                 </div>
@@ -1311,14 +1318,14 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
     keyBannerHtml = `
       <div class="bot-msg-key-callout">
         <div class="callout-text">
-          ✨ <strong>${isEn ? 'Want deeper AI code analysis?' : 'تريد تشريحاً أعمق للكود والمشروع بالذكاء الاصطناعي؟'}</strong>
-          <span>${isEn ? 'Connect any key (Gemini is 100% Free, or use Claude/OpenAI):' : 'اربط أي مفتاح (جيميناي مجاني 100%، أو استخدم كلود/ChatGPT):'}</span>
+          ✨ <strong>${isEn ? 'Want deeper AI code analysis?' : 'هل تريد تحليلًا أعمق للكود والمشروع بالذكاء الاصطناعي؟'}</strong>
+          <span>${isEn ? 'Connect any key (Gemini is 100% Free, or use Claude/OpenAI):' : 'اربط أي <bdi dir="ltr">API Key</bdi> (<bdi dir="ltr">Google Gemini</bdi> مجاني بالكامل، أو استخدم <bdi dir="ltr">Claude</bdi> أو <bdi dir="ltr">OpenAI</bdi>):'}</span>
         </div>
         <div class="callout-btns">
           <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="callout-link-btn">
-            🔗 aistudio.google.com (مجاني) ↗
+            🔗 <bdi dir="ltr">aistudio.google.com</bdi> ${isEn ? '(Free)' : '(مجاني)'} ↗
           </a>
-          <button type="button" class="callout-open-drawer-btn">🔑 ${isEn ? 'Choose Provider' : 'إدخال المفتاح'}</button>
+          <button type="button" class="callout-open-drawer-btn">🔑 ${isEn ? 'Choose Provider' : 'اختيار المزود'}</button>
         </div>
       </div>
     `;
@@ -1339,7 +1346,7 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
       try {
         await navigator.clipboard.writeText(prompt);
         const originalText = btn.textContent;
-        btn.textContent = isEn ? 'Copied ✓' : 'تم النسخ ✓';
+        btn.textContent = isEn ? 'Copied ✓' : 'نُسخ ✓';
         btn.style.color = '#10b981';
         setTimeout(() => {
           btn.textContent = originalText;
@@ -1422,15 +1429,22 @@ function queryLocalSearchEngine(message) {
   if (isCodeOrDoc) {
     replyText = isEn
       ? `Analyzed your project/code keywords and matched the closest skills from the Top 100 directory:\n*(💡 Tip: Connect your key (Try Google Gemini for free, or Claude/OpenAI) using the 🔑 button above to get deep AI code inspection and discover external skills beyond the catalog!)*`
-      : `قمت بتحليل الكلمات المفتاحية في الكود/التوثيق واستخرجت أقرب المهارات المطابقة من دليل الـ 100 مهارة:\n*(💡 نصيحة: فعّل مفتاحك الذكي (جيميناي مجاني 100%، أو استخدم كلود/ChatGPT) عبر زر 🔑 بالأعلى ليقوم الذكاء الاصطناعي بتشريح كامل لكودك واقتراح مهارات ذكية إضافية من خارج الدليل!)*`;
+      : `حلّلنا الكلمات المفتاحية في الكود والتوثيق واستخرجنا أقرب المهارات المطابقة من دليل أشهر 100 مهارة:\n*💡 نصيحة: فعّل مفتاح API (جرّب Google Gemini مجانًا أو استخدم Claude أو ChatGPT) من زر 🔑 بالأعلى لتحليل أعمق لكودك واقتراح مهارات إضافية من خارج الدليل.*`;
   } else if (bestMatches.length > 0) {
+    const matchCountAr = bestMatches.length === 1
+      ? 'عثرنا على مهارة واحدة تطابق طلبك:'
+      : bestMatches.length === 2
+        ? 'عثرنا على مهارتين تطابقان طلبك:'
+        : bestMatches.length <= 10
+          ? `عثرنا على ${bestMatches.length} مهارات تطابق طلبك:`
+          : `عثرنا على ${bestMatches.length} مهارة تطابق طلبك:`;
     replyText = isEn 
       ? `Found ${bestMatches.length} verified skill(s) matching your request:`
-      : `وجدت لك أفضل ${bestMatches.length} مهارات مطابقة لاحتياجك من دليل المهارات:`;
+      : matchCountAr;
   } else {
     replyText = isEn
       ? `Here are top popular skills that can help accelerate your task:`
-      : `إليك أكثر المهارات شائعة واستخداماً التي قد تساعدك في بدء عملك:`;
+      : `إليك أبرز المهارات الشائعة لمساعدتك على بدء عملك:`;
   }
 
   return {

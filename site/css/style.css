@@ -288,6 +288,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .hero-kicker-tag {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+  text-align: center;
   gap: 8px;
   font-size: var(--text-caption);
   font-weight: 500;
@@ -339,8 +343,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   background-color: var(--color-void-black);
   border: 1px solid var(--color-graphite-hairline);
   border-radius: var(--radius-inputs);
-  padding-inline-start: 22px;
+  padding-inline-start: 48px;
   padding-inline-end: 48px;
+  text-align: start;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
@@ -361,7 +366,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .search-icon-symbol {
   position: absolute;
   top: 50%;
-  left: 18px;
+  inset-inline-start: 18px;
   transform: translateY(-50%);
   color: var(--color-ash-gray);
   pointer-events: none;
@@ -377,7 +382,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .search-clear-symbol {
   position: absolute;
   top: 50%;
-  left: 16px;
+  inset-inline-end: 16px;
   transform: translateY(-50%);
   width: 28px;
   height: 28px;
@@ -523,6 +528,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 
 .section-container {
+  width: 100%;
+  min-width: 0;
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: 24px;
@@ -892,7 +899,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
   font-weight: 400;
   color: var(--color-white);
   margin-block-end: 22px;
-  text-align: right;
+  text-align: start;
 }
 
 .editorial-list {
@@ -914,7 +921,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
 .editorial-list li::before {
   content: '▸';
   position: absolute;
-  right: 0;
+  inset-inline-start: 0;
   color: var(--color-iris-violet);
   font-size: 1.1em;
 }
@@ -1110,7 +1117,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
 
 .collection-note {
   background-color: rgba(255, 202, 22, 0.08);
-  border-right: 3px solid var(--color-amber);
+  border-inline-start: 3px solid var(--color-amber);
   padding: 12px 16px;
   border-radius: var(--radius-badges);
   font-size: 13px;
@@ -1294,7 +1301,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
 .ai-bot-trigger {
   position: fixed;
   bottom: 24px;
-  left: 24px;
+  inset-inline-end: 24px;
   z-index: 1500;
   display: inline-flex;
   align-items: center;
@@ -1315,7 +1322,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
 @media (max-width: 860px) {
   .ai-bot-trigger {
     bottom: 20px;
-    left: 16px;
+    inset-inline-end: 16px;
     padding: 8px 14px;
     font-size: 13px;
   }
@@ -1338,7 +1345,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
 .bot-trigger-pulse {
   position: absolute;
   top: 6px;
-  right: 10px;
+  inset-inline-start: 10px;
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1349,7 +1356,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
 .ai-bot-modal {
   position: fixed;
   bottom: 80px;
-  left: 24px;
+  inset-inline-end: 24px;
   z-index: 1600;
   width: 430px;
   max-width: calc(100vw - 32px);
@@ -1722,6 +1729,56 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
   border-color: var(--color-iris-violet);
 }
 
+.bot-skill-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.bot-skill-card-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.bot-skill-card-badge {
+  font-size: 11px;
+  color: var(--color-amber);
+  font-family: var(--font-commit-mono);
+  flex-shrink: 0;
+}
+
+.bot-skill-card-meta {
+  font-size: 11px;
+  color: var(--color-iris-violet);
+  margin-bottom: 8px;
+}
+
+.bot-skill-card-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bot-copy-prompt-btn {
+  background: transparent;
+  border: 1px solid var(--color-graphite-hairline);
+  color: var(--color-bone-white);
+  border-radius: var(--radius-badges);
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.bot-skill-link {
+  font-size: 11px;
+  color: var(--color-iris-violet);
+  font-weight: 500;
+}
+
 .bot-card-top {
   display: flex;
   justify-content: space-between;
@@ -1868,6 +1925,14 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
   background-color: var(--color-bone-white);
 }
 
+html[dir="rtl"] .bot-send-btn svg {
+  transform: scaleX(-1);
+}
+
+bdi {
+  unicode-bidi: isolate;
+}
+
 /* ==========================================================================
    Creative Scroll Features & Micro-Interactions (Resend Monochromatic)
    ========================================================================== */
@@ -1889,7 +1954,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
 .scroll-top-pill {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  inset-inline-start: 24px;
   z-index: 1400;
   display: inline-flex;
   align-items: center;
@@ -1948,7 +2013,7 @@ html[dir="ltr"] .skill-card:hover .card-action-cue {
 .leaderboard-table {
   width: 100%;
   border-collapse: collapse;
-  text-align: right;
+  text-align: start;
   font-size: 14px;
 }
 
@@ -2700,7 +2765,8 @@ html[data-theme="light"] .leaderboard-table-container {
   border: 1px solid var(--color-hairline-silver, #d6d6d6) !important;
   border-radius: 28px !important;
   box-shadow: none !important;
-  overflow: hidden !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
 }
 
 html[data-theme="light"] .leaderboard-table th {
@@ -2998,18 +3064,6 @@ html[dir="ltr"] .search-centerpiece {
 
 html[dir="ltr"] .search-input-pill {
   text-align: left;
-  padding-left: 48px;
-  padding-right: 48px;
-}
-
-html[dir="ltr"] .search-icon-symbol {
-  left: 18px;
-  right: auto;
-}
-
-html[dir="ltr"] .search-clear-symbol {
-  right: 18px;
-  left: auto;
 }
 
 html[dir="ltr"] .hero-share-bar {
@@ -3027,14 +3081,7 @@ html[dir="ltr"] .editorial-list {
 }
 
 html[dir="ltr"] .editorial-list li {
-  padding-left: 22px;
-  padding-right: 0;
   text-align: left;
-}
-
-html[dir="ltr"] .editorial-list li::before {
-  left: 0;
-  right: auto;
 }
 
 html[dir="ltr"] .editorial-statement {
@@ -3752,7 +3799,8 @@ html[data-theme="light"] .leaderboard-table-container {
   background-color: #ffffff !important;
   border: 2px solid #cbd5e1 !important;
   border-radius: 18px !important;
-  overflow: hidden !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
 }
 
@@ -4012,6 +4060,7 @@ html[data-theme="light"] #leaderboard-category-filter {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
   margin-bottom: 6px;
 }
 
@@ -4089,6 +4138,7 @@ html[data-theme="light"] #leaderboard-category-filter {
   display: flex;
   align-items: center;
   position: relative;
+  direction: ltr;
   margin-bottom: 8px;
 }
 

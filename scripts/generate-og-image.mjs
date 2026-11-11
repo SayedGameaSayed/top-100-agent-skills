@@ -159,13 +159,13 @@ const htmlContent = `
 
     <h1 class="title">أفضل 100 مهارة <span>ذكاء اصطناعي</span>.</h1>
     <p class="description">
-      دليل عربي تفاعلي موثق لأشهر مهارات الوكلاء الذكية، مع لوحة صدارة يومية بنجوم GitHub وبرومبتات إنجليزية فورية جاهزة لأي شات أو أداة تطوير.
+      دليل عربي تفاعلي موثّق لأشهر <bdi dir="ltr">AI Agent Skills</bdi>، مع لوحة صدارة يومية وفق نجوم <bdi dir="ltr">GitHub</bdi>، وقوالب <bdi dir="ltr">Prompts</bdi> جاهزة لمحادثتك أو بيئة التطوير.
     </p>
 
     <div class="footer-tags">
-      <div class="tag tag-accent"># 100 SKILLS VERIFIED</div>
-      <div class="tag tag-stars">★ DAILY GITHUB LEADERBOARD</div>
-      <div class="tag">⚡ READY-TO-USE PROMPTS</div>
+      <div class="tag tag-accent" dir="ltr"># 100 SKILLS VERIFIED</div>
+      <div class="tag tag-stars" dir="ltr">★ DAILY GITHUB LEADERBOARD</div>
+      <div class="tag" dir="ltr">⚡ READY-TO-USE PROMPTS</div>
     </div>
   </div>
 

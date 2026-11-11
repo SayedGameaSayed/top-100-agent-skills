@@ -100,9 +100,9 @@ const leaderboardPayload = {
   top_diverse_skills_count: topTier.length,
   extended_skills_count: extendedSkillsTier.length,
   tools_and_plugins_count: toolsTier.length,
-  ranking_metric: 'صدارة مهارات الوكلاء المؤهلة (SKILL.md) مع حماية التنوع (بحد أقصى 3 مهارات لكل مستودع)',
+  ranking_metric: 'صدارة AI Agent Skills المؤهلة (SKILL.md) مع حماية التنوع (بحد أقصى 3 مهارات لكل Repository)',
   diversity_cap: 3,
-  disclaimer_ar: 'تنبيه: عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها. تشترط الصدارة وجود ملف SKILL.md حقيقي وأن يكون المستودع مصدراً للمهارات (repo_type: skills)، وتطبق سقفاً بـ 3 مهارات كحد أقصى للمستودع الواحد لمنع الاحتكار.',
+  disclaimer_ar: 'تنبيه: عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة منفردة. تشترط الصدارة وجود ملف SKILL.md حقيقي وأن يكون المستودع مصدرًا للمهارات (repo_type: skills)، وتُطبّق حدًا أقصى قدره 3 مهارات لكل Repository لمنع الاحتكار.',
   skills: finalRanked.map((skill) => {
     const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
     const repoNormalized = `${skill.source?.owner}/${skill.source?.repo?.split('/')[1] || skill.source?.repo}`;
@@ -157,7 +157,7 @@ if (fs.existsSync(readmePath)) {
     '',
     '### 🏆 صدارة مهارات الوكلاء المؤهلة (Top Diverse Skills)',
     '',
-    '| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح العربي والبرومبت | الترتيب بالمستودع |',
+    '| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح العربي والـ Prompt | الترتيب بالمستودع |',
     '|:---:|:---:|---|---|---|:---:|:---:|'
   ];
 
@@ -177,7 +177,7 @@ if (fs.existsSync(readmePath)) {
   leaderboardLines.push('');
   leaderboardLines.push('### 📦 مهارات المستودعات الموسعة (Extended Skills)');
   leaderboardLines.push('');
-  leaderboardLines.push('| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح العربي والبرومبت | الترتيب بالمستودع |');
+  leaderboardLines.push('| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح العربي والـ Prompt | الترتيب بالمستودع |');
   leaderboardLines.push('|:---:|:---:|---|---|---|:---:|:---:|');
 
   extendedSkillsTier.forEach((skill, idx) => {

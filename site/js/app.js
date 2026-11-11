@@ -8,7 +8,7 @@ import { copyToClipboard } from './copy.js';
 import { initConstellation } from './constellation.js';
 import { initAiBot } from './bot.js';
 import { initScrollEffects, observeCardsScrollEntrance } from './scroll-effects.js';
-import { initI18nAndTheme, getLang, getTheme, t, onStateChange, formatUrlWithLang } from './i18n.js';
+import { initI18nAndTheme, getLang, getTheme, t, onStateChange, formatUrlWithLang, formatNumber } from './i18n.js';
 
 let skillsData = null;
 let toolsData = null;
@@ -105,7 +105,8 @@ export function resolveToolSteps(steps, skill) {
   if (!Array.isArray(steps)) return [];
   const repoGitUrl = skill.source?.repo_url ? `${skill.source.repo_url}.git` : '';
   const isMultiSkill = skill.kind === 'collection' || skill.kind === 'directory' || !skill.source?.path_in_repo;
-  const pathInRepo = isMultiSkill ? '<مسار-فولدر-المهارة>' : skill.source.path_in_repo;
+  const placeholderPath = getLang() === 'en' ? '<skill-folder-path>' : '<مسار-مجلد-المهارة>';
+  const pathInRepo = isMultiSkill ? placeholderPath : skill.source.path_in_repo;
 
   return steps.map((step) => {
     return step
@@ -135,8 +136,8 @@ export function renderSkillCard(skill, categories) {
         <div class="card-header-row">
           <span class="card-category-label">${escapeHtml(catName)}</span>
           <div class="card-header-badges">
-            ${skill.content_verified !== true ? `<span class="unverified-card-pill">${lang === 'en' ? 'Unreviewed' : 'غير مراجَع'}</span>` : ''}
-            <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} ${t('navStar')}">★ ${starsFormatted}</span>
+            ${skill.content_verified !== true ? `<span class="unverified-card-pill">${t('unreviewedBadge')}</span>` : ''}
+            <span class="card-stars-badge" title="${formatNumber(skill.github_stars || 0)} ${t('navStar')}">★ ${starsFormatted}</span>
           </div>
         </div>
         <h3 class="card-title">${escapeHtml(title)}</h3>
@@ -203,7 +204,7 @@ export async function initIndexPage() {
     const shareWaText = document.getElementById('share-wa-text');
     if (shareWaText) shareWaText.textContent = t('shareWhatsApp');
 
-    const copyBtnSpan = document.querySelector('#copy-site-link-btn span:last-child');
+    const copyBtnSpan = document.getElementById('copy-site-link-text') || document.querySelector('#copy-site-link-btn span:last-child');
     if (copyBtnSpan) copyBtnSpan.textContent = t('copyLink');
 
     const highlightsTitle = document.querySelector('.highlights-title');
@@ -232,14 +233,11 @@ export async function initIndexPage() {
     if (botTriggerText) botTriggerText.textContent = t('assistantBtn');
 
     const scrollTopText = document.getElementById('scroll-top-text');
-    if (scrollTopText) scrollTopText.textContent = getLang() === 'en' ? 'Top' : 'للأعلى';
+    if (scrollTopText) scrollTopText.textContent = t('backToTop');
 
     const footerP = document.querySelector('.site-footer p');
     if (footerP) {
-      const lang = getLang();
-      footerP.textContent = lang === 'en'
-        ? 'Top 100 AI Agent Skills — Independent community open-source directory.'
-        : 'دليل مهارات الذكاء الاصطناعي — مشروع مجتمعي مستقل ومفتوح المصدر.';
+      footerP.textContent = t('footerDesc');
     }
 
     if (emptyStateEl) {
@@ -307,14 +305,15 @@ export async function initIndexPage() {
   if (copySiteLinkBtn) {
     copySiteLinkBtn.addEventListener('click', async () => {
       const shareUrl = window.location.href.split('#')[0].split('?')[0];
-      const ok = await copyToClipboard(shareUrl, 'تم نسخ رابط الدليل بنجاح! شاركه مع زملائك ومجتمعك 🚀');
+      const ok = await copyToClipboard(shareUrl, t('copySiteSuccess'));
       if (ok) {
-        const originalText = copySiteLinkBtn.innerHTML;
-        copySiteLinkBtn.innerHTML = '<span>تم النسخ ✓</span>';
+        const labelEl = document.getElementById('copy-site-link-text') || copySiteLinkBtn.querySelector('span:last-child');
+        const originalText = labelEl ? labelEl.textContent : t('copyLink');
+        if (labelEl) labelEl.textContent = t('copied');
         copySiteLinkBtn.style.borderColor = 'var(--color-pulse-green)';
         copySiteLinkBtn.style.color = 'var(--color-pulse-green)';
         setTimeout(() => {
-          copySiteLinkBtn.innerHTML = originalText;
+          if (labelEl) labelEl.textContent = originalText;
           copySiteLinkBtn.style.borderColor = '';
           copySiteLinkBtn.style.color = '';
         }, 2000);
@@ -422,14 +421,15 @@ export async function initSkillDetailPage() {
   const container = document.getElementById('skill-detail-container');
   if (!container) return;
 
+  const lang = getLang();
   const skill = skillsData.skills.find((s) => s.id === skillId);
   if (!skill) {
     container.innerHTML = `
       <div class="empty-state">
-        <h1 class="empty-state-title">المهارة غير موجودة</h1>
-        <p class="empty-state-text">عذرًا، لم يتم العثور على المهارة المطلوبة.</p>
+        <h1 class="empty-state-title">${t('skillNotFoundTitle')}</h1>
+        <p class="empty-state-text">${t('skillNotFoundText')}</p>
         <div style="margin-block-start: 24px;">
-          <a href="/" class="btn-electric-pill">العودة إلى الدليل الرئيسي</a>
+          <a href="${formatUrlWithLang('index.html')}" class="btn-electric-pill">${t('backToDirectory')}</a>
         </div>
       </div>
     `;
@@ -437,7 +437,9 @@ export async function initSkillDetailPage() {
   }
 
   const categoryObj = (skillsData.categories || []).find((c) => c.id === skill.category);
-  const categoryName = categoryObj ? categoryObj.name_ar : skill.category;
+  const categoryName = lang === 'en' ? (categoryObj?.name_en || skill.category) : (categoryObj?.name_ar || skill.category);
+  const skillTitle = lang === 'en' ? (skill.title_en || skill.name) : skill.title_ar;
+  const skillSummary = lang === 'en' ? (skill.summary_en || skill.summary_ar) : skill.summary_ar;
 
   // Set robots meta tag based strictly on data-driven content_verified
   let metaRobots = document.getElementById('meta-robots') || document.querySelector('meta[name="robots"]');
@@ -459,37 +461,37 @@ export async function initSkillDetailPage() {
         <div class="section-container" style="max-width: 780px; margin-inline: auto;">
           <div class="detail-kicker-row" style="display: flex; align-items: center; gap: 12px; margin-block-end: 18px; flex-wrap: wrap;">
             <span class="detail-kicker-label">${escapeHtml(categoryName)}</span>
-            <span class="unverified-card-pill" style="background: rgba(255, 202, 22, 0.08); color: var(--color-amber); border: 1px solid rgba(255, 202, 22, 0.28); font-weight: 600; padding: 4px 10px; border-radius: var(--radius-badges); font-size: 13px;">⚠️ غير مراجَع</span>
+            <span class="unverified-card-pill" style="background: rgba(255, 202, 22, 0.08); color: var(--color-amber); border: 1px solid rgba(255, 202, 22, 0.28); font-weight: 600; padding: 4px 10px; border-radius: var(--radius-badges); font-size: 13px;">⚠️ ${lang === 'en' ? 'Unreviewed' : 'غير مراجَع'}</span>
             ${
               skill.github_stars
-                ? `<span class="detail-stars-badge" style="color: var(--color-amber); font-family: var(--font-commit-mono); font-size: 13px; font-weight: 500; background: rgba(255,202,22,0.08); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">★ ${(skill.github_stars).toLocaleString()} نجمة على GitHub</span>`
+                ? `<span class="detail-stars-badge" style="color: var(--color-amber); font-family: var(--font-commit-mono); font-size: 13px; font-weight: 500; background: rgba(255,202,22,0.08); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">${t('starsOnGithub', formatNumber(skill.github_stars))}</span>`
                 : ''
             }
           </div>
           
-          <h1 class="detail-headline-sculptural" style="margin-block-end: 20px;">${escapeHtml(skill.title_ar)}</h1>
+          <h1 class="detail-headline-sculptural" style="margin-block-end: 20px;">${escapeHtml(skillTitle)}</h1>
           
-          <div class="unverified-quarantine-box" role="alert" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-card); padding: 22px; margin-block: 24px; text-align: right;">
+          <div class="unverified-quarantine-box" role="alert" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-card); padding: 22px; margin-block: 24px; text-align: start;">
             <div style="display: flex; align-items: center; gap: 8px; margin-block-end: 8px; color: #fbbf24; font-weight: 700; font-size: 15px;">
-              <span>⚠️ مهارة قيد المراجعة والتدقيق</span>
+              <span>⚠️ ${t('unverifiedHeading')}</span>
             </div>
             <p style="color: var(--color-bone-white); line-height: 1.8; font-size: 14px; margin: 0;">
-              أُعد هذا الشرح العربي استناداً لمعلومات المستودع العامة ولم يخضع بعد للتحقق البشري الدقيق. تم حجب أزرار نسخ البرومبت الجاهز تلقائياً حتى اكتمال التدقيق، ويمكنك مراجعة المصدر مباشرة على GitHub.
+              ${t('unverifiedNoticeBody')}
             </p>
           </div>
 
-          <div class="detail-summary-block" style="text-align: right; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 26px; margin-block-end: 28px;">
-            <h2 style="font-size: 16px; font-weight: 600; color: var(--color-ash-gray); margin-block-end: 12px;">الشرح العربي للمهارة</h2>
-            <p class="detail-summary-airy" style="color: var(--color-bone-white); line-height: 1.8; font-size: 16px; margin: 0;">${escapeHtml(skill.summary_ar)}</p>
+          <div class="detail-summary-block" style="text-align: start; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 26px; margin-block-end: 28px;">
+            <h2 style="font-size: 16px; font-weight: 600; color: var(--color-ash-gray); margin-block-end: 12px;">${t('unverifiedSummaryTitle')}</h2>
+            <p class="detail-summary-airy" style="color: var(--color-bone-white); line-height: 1.8; font-size: 16px; margin: 0;">${escapeHtml(skillSummary)}</p>
           </div>
 
           <div class="detail-actions-row" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
             <a href="${escapeHtml(effectiveSourceUrl)}" target="_blank" rel="noopener noreferrer" class="btn-electric-pill" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-              <span>افتح المصدر على GitHub</span>
+              <span>${t('openGithub')}</span>
               <span dir="ltr">↗</span>
             </a>
-            <a href="index.html" class="btn-ghost-pill" style="text-decoration: none;">
-              العودة للدليل
+            <a href="${formatUrlWithLang('index.html')}" class="btn-ghost-pill" style="text-decoration: none;">
+              ${t('backToDirectory')}
             </a>
           </div>
         </div>
@@ -497,6 +499,8 @@ export async function initSkillDetailPage() {
     `;
     return;
   }
+
+  document.title = `${skillTitle} | ${t('siteName')}`;
 
   const defaultPromptTemplate =
     'Read this skill and use it whenever my request matches it: {{source_url}}\n' +
@@ -508,11 +512,9 @@ export async function initSkillDetailPage() {
   const verifiedTools = (toolsData || []).filter((t) => t.verified === true);
   const isMultiSkill = skill.kind === 'collection' || skill.kind === 'directory' || !skill.source?.path_in_repo;
 
-  const lang = getLang();
-  const catObj = (skillsData.categories || []).find((c) => c.id === skill.category);
-  const catName = lang === 'en' ? (catObj?.name_en || skill.category) : (catObj?.name_ar || skill.category);
-  const title = lang === 'en' ? (skill.title_en || skill.name) : skill.title_ar;
-  const summary = lang === 'en' ? (skill.summary_en || skill.summary_ar) : skill.summary_ar;
+  const catName = categoryName;
+  const title = skillTitle;
+  const summary = skillSummary;
   const benefits = lang === 'en' ? (skill.benefits_en || skill.benefits_ar || []) : (skill.benefits_ar || []);
   const useCases = lang === 'en' ? (skill.use_cases_en || skill.use_cases_ar || []) : (skill.use_cases_ar || []);
 
@@ -525,13 +527,13 @@ export async function initSkillDetailPage() {
           ${
             skill.reviewed_by
               ? `<span class="verified-reviewer-badge" style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: rgba(58, 211, 137, 0.1); border: 1px solid rgba(58, 211, 137, 0.3); border-radius: var(--radius-badges); font-size: 13px; color: var(--color-pulse-green);">
-                  <span>${t('humanVerified', escapeHtml(skill.reviewed_by), escapeHtml(skill.reviewed_on || ''))}</span>
+                  <span>${t('humanVerified', escapeHtml(skill.reviewed_by), skill.reviewed_on ? `<bdi dir="ltr">${escapeHtml(skill.reviewed_on)}</bdi>` : '')}</span>
                 </span>`
               : ''
           }
           ${
             skill.github_stars
-              ? `<span class="detail-stars-badge" style="color: var(--color-amber); font-family: var(--font-commit-mono); font-size: 13px; font-weight: 500; background: rgba(255,202,22,0.08); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">${t('starsOnGithub', (skill.github_stars).toLocaleString())}</span>`
+              ? `<span class="detail-stars-badge" style="color: var(--color-amber); font-family: var(--font-commit-mono); font-size: 13px; font-weight: 500; background: rgba(255,202,22,0.08); border: 1px solid var(--color-graphite-hairline); border-radius: var(--radius-badges); padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">${t('starsOnGithub', formatNumber(skill.github_stars))}</span>`
               : ''
           }
         </div>
@@ -633,7 +635,7 @@ export async function initSkillDetailPage() {
           skill.content_verified === false
             ? `
           <div class="content-review-note" role="note">
-            ⚠️ أُعد هذا الشرح من معلومات عامة عن المهارة، ويُنصح بمراجعة المصدر قبل الاعتماد عليه.
+            ${t('unverifiedReviewNote')}
           </div>
         `
             : ''
@@ -656,7 +658,7 @@ export async function initSkillDetailPage() {
 
     const rawSteps = (lang === 'en' && tool.steps_en && tool.steps_en.length > 0) ? tool.steps_en : (tool.steps_ar || []);
     const resolvedSteps = resolveToolSteps(rawSteps, skill);
-    const reqText = (lang === 'en' && tool.requires_en) ? tool.requires_en : (tool.requires_ar || 'لا يلزم شيء.');
+    const reqText = (lang === 'en' && tool.requires_en) ? tool.requires_en : (tool.requires_ar || t('toolNoSetup'));
     const invokeText = (lang === 'en' && tool.invoke_en) ? tool.invoke_en : (tool.invoke_ar || '');
 
     contentContainer.innerHTML = `
@@ -676,8 +678,9 @@ export async function initSkillDetailPage() {
         <ol class="tool-steps-ordered">
           ${resolvedSteps
             .map((step) => {
-              const formattedStep = step.replace(
-                /(~[^\s]+|\$[^\s]+|\.agents[^\s]+|\.claude[^\s]+|\.gemini[^\s]+|\.copilot[^\s]+|\.cursor[^\s]+|gemini skills[^\n<]+|git clone[^\s]+|\/plugin[^\n]+)/g,
+              const safeStep = escapeHtml(step);
+              const formattedStep = safeStep.replace(
+                /(&lt;[a-zA-Z0-9\u0600-\u06FF_-]+&gt;|~[^\s،.;]+|\$[^\s،.;]+|\.(?:agents|claude|gemini|copilot|cursor|github|codex|windsurfrules)[^\s،.;]*|gemini skills [^\n<\u0600-\u06FF]+?(?=\.\s|$|،)|git clone(?:\s+[^\s،.;]+)?|\/plugin install [^\s،.;]+|\/skills (?:list|reload)|\/reload-skills|--(?:scope\s+[a-z]+|path|consent))/g,
                 '<code dir="ltr">$1</code>'
               );
               return `<li>${formattedStep}</li>`;
@@ -719,10 +722,10 @@ export async function initSkillDetailPage() {
   const copyReadyBtn = document.getElementById('copy-ready-prompt-btn');
   if (copyReadyBtn) {
     copyReadyBtn.addEventListener('click', async () => {
-      const ok = await copyToClipboard(readyPromptEn, 'تم نسخ البرومبت الجاهز بنجاح!');
+      const ok = await copyToClipboard(readyPromptEn, t('copyPromptSuccess'));
       if (ok) {
         const originalText = copyReadyBtn.textContent;
-        copyReadyBtn.textContent = 'تم النسخ بنجاح ✓';
+        copyReadyBtn.textContent = t('copyPromptBtnSuccess');
         copyReadyBtn.style.backgroundColor = 'var(--color-pulse-green, #3ad389)';
         copyReadyBtn.style.borderColor = 'var(--color-pulse-green, #3ad389)';
         copyReadyBtn.style.color = '#000000';
@@ -739,10 +742,10 @@ export async function initSkillDetailPage() {
   const floatingCopyBtn = document.getElementById('floating-copy-btn');
   if (floatingCopyBtn) {
     floatingCopyBtn.addEventListener('click', async () => {
-      const ok = await copyToClipboard(readyPromptEn, 'تم نسخ البرومبت الجاهز بنجاح!');
+      const ok = await copyToClipboard(readyPromptEn, t('copyPromptSuccess'));
       if (ok) {
         const originalText = floatingCopyBtn.textContent;
-        floatingCopyBtn.textContent = 'تم النسخ بنجاح ✓';
+        floatingCopyBtn.textContent = t('copyPromptBtnSuccess');
         floatingCopyBtn.style.backgroundColor = 'var(--color-pulse-green, #3ad389)';
         floatingCopyBtn.style.borderColor = 'var(--color-pulse-green, #3ad389)';
         floatingCopyBtn.style.color = '#000000';
@@ -759,10 +762,10 @@ export async function initSkillDetailPage() {
   const copyLinkBtn = document.getElementById('copy-link-only-btn');
   if (copyLinkBtn) {
     copyLinkBtn.addEventListener('click', async () => {
-      const ok = await copyToClipboard(effectiveSourceUrl, 'تم نسخ رابط المصدر!');
+      const ok = await copyToClipboard(effectiveSourceUrl, t('copyLinkSuccess'));
       if (ok) {
         const originalText = copyLinkBtn.textContent;
-        copyLinkBtn.textContent = 'تم النسخ ✓';
+        copyLinkBtn.textContent = t('copied');
         copyLinkBtn.style.borderColor = '#10b981';
         copyLinkBtn.style.color = '#10b981';
         setTimeout(() => {
@@ -777,7 +780,7 @@ export async function initSkillDetailPage() {
   container.querySelectorAll('.copy-prompt-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const text = btn.getAttribute('data-text');
-      copyToClipboard(text, 'تم نسخ نموذج الطلب!');
+      copyToClipboard(text, t('copySampleSuccess'));
     });
   });
 }
@@ -814,30 +817,58 @@ export function detectSharedFolderTips(tools) {
  */
 export async function initHowToUsePage() {
   const { toolsData } = await loadData();
-  const tipsContainer = document.getElementById('dynamic-shared-folder-tips');
+  const lang = getLang();
+  const arContainer = document.getElementById('dynamic-shared-folder-tips');
+  const enContainer = document.querySelector('.dynamic-shared-folder-tips-container');
 
-  if (tipsContainer && Array.isArray(toolsData)) {
+  if (Array.isArray(toolsData)) {
     const sharedTips = detectSharedFolderTips(toolsData);
     if (sharedTips.length > 0) {
-      tipsContainer.innerHTML = sharedTips
-        .map((tip) => {
-          const linksHtml = tip.tools
-            .map((t) =>
-              t.docs_url
-                ? `<a href="${escapeHtml(t.docs_url)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-saffron-spark); text-decoration: underline;">${escapeHtml(t.name)}</a>`
-                : `<strong>${escapeHtml(t.name)}</strong>`
-            )
-            .join('، ');
+      if (arContainer) {
+        arContainer.innerHTML = sharedTips
+          .map((tip) => {
+            const linksHtml = tip.tools
+              .map((toolItem) => {
+                const label = toolItem.name_en || toolItem.name;
+                return toolItem.docs_url
+                  ? `<a href="${escapeHtml(toolItem.docs_url)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-saffron-spark); text-decoration: underline;"><bdi dir="ltr">${escapeHtml(label)}</bdi></a>`
+                  : `<strong><bdi dir="ltr">${escapeHtml(label)}</bdi></strong>`;
+              })
+              .join('، ');
 
-          return `
+            return `
           <div style="background-color: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 24px; margin-block: 20px;">
             <p style="font-size: var(--text-body); color: var(--color-bone-white); margin: 0;">
-              💡 <strong>معلومة مفيدة موثقة:</strong> فولدر <code dir="ltr">${escapeHtml(tip.folder)}</code> تقرؤه هذه الأدوات: ${linksHtml}. يعني وضع المهارة في هذا الفولدر يخدمها في أكثر من أداة معًا.
+              💡 <strong>معلومة موثقة:</strong> يعتمد أكثر من أداة برمجة على مجلد <code dir="ltr">${escapeHtml(tip.folder)}</code> (${linksHtml})؛ لذا فإن حفظ المهارة داخله يفعّلها تلقائيًا في هذه الأدوات معًا.
             </p>
           </div>
         `;
-        })
-        .join('');
+          })
+          .join('');
+      }
+
+      if (enContainer && lang === 'en') {
+        enContainer.innerHTML = sharedTips
+          .map((tip) => {
+            const linksHtml = tip.tools
+              .map((toolItem) => {
+                const label = toolItem.name_en || toolItem.name;
+                return toolItem.docs_url
+                  ? `<a href="${escapeHtml(toolItem.docs_url)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-saffron-spark); text-decoration: underline;">${escapeHtml(label)}</a>`
+                  : `<strong>${escapeHtml(label)}</strong>`;
+              })
+              .join(', ');
+
+            return `
+          <div style="background-color: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 24px; margin-block: 20px;">
+            <p style="font-size: var(--text-body); color: var(--color-bone-white); margin: 0;">
+              💡 <strong>Verified tip:</strong> Multiple coding tools read <code dir="ltr">${escapeHtml(tip.folder)}</code> (${linksHtml}). Placing a skill inside this directory enables it across all of them automatically.
+            </p>
+          </div>
+        `;
+          })
+          .join('');
+      }
     }
   }
 }
@@ -915,18 +946,21 @@ export async function initLeaderboardPage() {
     if (subEl) subEl.textContent = t('leaderboardSub');
 
     const kickerEl = document.querySelector('.hero-kicker-tag span:last-child');
-    if (kickerEl) kickerEl.textContent = lang === 'en' ? 'Global Ranking of Agent Skills (by repo stars)' : 'التصنيف العالمي لمهارات الوكلاء (الأكثر شهرة حسب نجوم المستودع)';
+    if (kickerEl) kickerEl.textContent = t('leaderboardKicker').replace(/^[^\w\u0600-\u06FF]+/g, '');
 
-    const alertEl = document.querySelector('div[style*="rgba(255, 202, 22"] span:last-child');
-    if (alertEl) alertEl.innerHTML = lang === 'en' ? '<strong>Transparency Notice:</strong> Stars shown belong to the parent GitHub repository, not the individual skill alone.' : '<strong>تنبيه شفافية:</strong> عدد النجوم المعروض يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها.';
+    const noticeTitleEl = document.getElementById('leaderboard-notice-title');
+    if (noticeTitleEl) noticeTitleEl.textContent = t('leaderboardNoticeTitle');
+
+    const noticeTextEl = document.getElementById('leaderboard-notice-text');
+    if (noticeTextEl) noticeTextEl.textContent = t('leaderboardNoticeText');
 
     const dateEl = document.getElementById('leaderboard-date-badge');
-    if (dateEl) dateEl.textContent = lang === 'en' ? 'Repository stars as of: November 2026 (Refreshed every 24h)' : 'نجوم المستودعات كما في: 1 نوفمبر 2026 (تحديث دوري كل 24 ساعة)';
+    if (dateEl) dateEl.textContent = t('leaderboardDateText');
 
     const catLabel = document.querySelector('label[for="leaderboard-category-filter"]');
-    if (catLabel) catLabel.textContent = lang === 'en' ? 'Category:' : 'التصنيف:';
+    if (catLabel) catLabel.textContent = t('categoryFilter');
 
-    if (searchInput) searchInput.placeholder = lang === 'en' ? 'Search leaderboard skills: planning, testing, devtools...' : 'ابحث في لوحة الصدارة: تخطيط، أدوات، اختبار…';
+    if (searchInput) searchInput.placeholder = t('leaderboardSearchPlaceholder');
 
     const ths = document.querySelectorAll('.leaderboard-table th');
     if (ths.length >= 6) {
@@ -941,7 +975,7 @@ export async function initLeaderboardPage() {
     if (categorySelect && skillsData.categories) {
       const currentVal = categorySelect.value || 'all';
       categorySelect.innerHTML =
-        `<option value="all">${lang === 'en' ? `All Categories (${skillsData.skills.length} skills)` : `جميع الأقسام (${skillsData.skills.length} مهارة)`}</option>` +
+        `<option value="all">${t('leaderboardCategoryAll', skillsData.skills.length)}</option>` +
         skillsData.categories
           .map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(lang === 'en' ? (c.name_en || c.name_ar) : c.name_ar)}</option>`)
           .join('');
@@ -957,7 +991,7 @@ export async function initLeaderboardPage() {
       tbody.innerHTML = `
         <tr>
           <td colspan="6" style="padding: 48px 20px; text-align: center; color: var(--color-silver-mist);">
-            ${lang === 'en' ? 'No skills matched your search query.' : 'لا توجد مهارات تطابق بحثك في لوحة الصدارة.'}
+            ${t('emptyLeaderboard')}
           </td>
         </tr>
       `;
@@ -997,7 +1031,7 @@ export async function initLeaderboardPage() {
               ${rankBadge}
             </td>
             <td style="padding: 14px 20px; text-align: center;">
-              <span class="card-stars-badge" title="${(skill.github_stars || 0).toLocaleString()} ${t('navStar')}">★ ${starsFormatted}</span>
+              <span class="card-stars-badge" title="${formatNumber(skill.github_stars || 0)} ${t('navStar')}">★ ${starsFormatted}</span>
             </td>
             <td style="padding: 14px 20px;">
               <div style="display: flex; flex-direction: column; gap: 2px;">
@@ -1006,7 +1040,7 @@ export async function initLeaderboardPage() {
                     ${escapeHtml(title)}
                   </a>
                   ${skill.tier === 'extended_tool_or_plugin' ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(148, 163, 184, 0.12); color: #94a3b8; border-radius: 4px; border: 1px solid rgba(148, 163, 184, 0.25);">${skill.repo_type === 'tool' ? 'Tool' : skill.repo_type === 'plugin' ? 'Plugin' : 'List'}</span>` : ''}
-                  ${skill.responsible_use_note_ar ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(245, 158, 11, 0.12); color: #fbbf24; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.25);" title="${escapeHtml(skill.responsible_use_note_ar)}">⚠️ ${lang === 'en' ? 'Responsible Use' : 'استخدام مسؤول'}</span>` : ''}
+                  ${skill.responsible_use_note_ar ? `<span style="font-size: 11px; padding: 2px 6px; background: rgba(245, 158, 11, 0.12); color: #fbbf24; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.25);" title="${escapeHtml(skill.responsible_use_note_ar)}">⚠️ ${t('responsibleUseBadge')}</span>` : ''}
                 </div>
                 <span style="color: var(--color-silver-mist); font-size: 12px; font-family: var(--font-mono);" dir="ltr">${escapeHtml(
                   skill.name
@@ -1020,13 +1054,13 @@ export async function initLeaderboardPage() {
             </td>
             <td style="padding: 14px 20px;">
               <a href="${escapeHtml(effectiveUrl)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-iris-violet); text-decoration: none; font-size: 13px; font-family: var(--font-commit-mono); display: inline-flex; align-items: center; gap: 4px;" dir="ltr">
-                ${escapeHtml(repoDisplay)} ↗
+                <bdi dir="ltr">${escapeHtml(repoDisplay)}</bdi> ↗
               </a>
             </td>
             <td style="padding: 14px 20px; text-align: center;">
               <div style="display: inline-flex; align-items: center; gap: 8px;">
                 <a href="${formatUrlWithLang(`skill.html?id=${encodeURIComponent(skill.id)}`)}" class="btn-ghost" style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-buttons); text-decoration: none; border: 1px solid var(--color-graphite-hairline); color: var(--color-white); background: transparent;">
-                  ${lang === 'en' ? 'Details' : 'التفاصيل'}
+                  ${t('btnDetails')}
                 </a>
                 ${
                   skill.content_verified === true
@@ -1036,9 +1070,9 @@ export async function initLeaderboardPage() {
                         data-prompt="${escapeHtml(readyPrompt)}" 
                         style="padding: 6px 12px; font-size: 12px; border-radius: var(--radius-buttons); background: transparent; border: 1px solid var(--color-graphite-hairline); color: var(--color-white); cursor: pointer;"
                       >
-                        ${lang === 'en' ? 'Copy Prompt' : 'نسخ البرومبت'}
+                        ${t('btnCopyPrompt')}
                       </button>`
-                    : `<span style="padding: 3px 8px; font-size: 11px; font-weight: 500; color: var(--color-amber); background: rgba(255,202,22,0.08); border: 1px solid rgba(255,202,22,0.25); border-radius: var(--radius-badges);">${lang === 'en' ? 'Unverified' : 'غير مراجَع'}</span>`
+                    : `<span style="padding: 3px 8px; font-size: 11px; font-weight: 500; color: var(--color-amber); background: rgba(255,202,22,0.08); border: 1px solid rgba(255,202,22,0.25); border-radius: var(--radius-badges);">${t('unreviewedBadge')}</span>`
                 }
               </div>
             </td>
@@ -1051,9 +1085,9 @@ export async function initLeaderboardPage() {
       btn.addEventListener('click', async () => {
         const prompt = btn.getAttribute('data-prompt') || '';
         const originalText = btn.textContent;
-        const ok = await copyToClipboard(prompt);
+        const ok = await copyToClipboard(prompt, t('copyPromptSuccess'));
         if (ok) {
-          btn.textContent = '✓ تم النسخ';
+          btn.textContent = t('copied');
           btn.style.borderColor = 'var(--color-electric-iris)';
           btn.style.color = 'var(--color-electric-iris)';
           setTimeout(() => {
@@ -1073,6 +1107,7 @@ export async function initLeaderboardPage() {
   function applyFilters() {
     const rawQuery = (searchInput?.value || '').trim();
     const query = normalizeArabic(rawQuery);
+    const qLower = rawQuery.toLowerCase();
     const selectedCategory = categorySelect?.value || 'all';
 
     let filtered = sortedSkills;
@@ -1085,14 +1120,18 @@ export async function initLeaderboardPage() {
       filtered = filtered.filter((s) => {
         const titleNorm = normalizeArabic(s.title_ar || '');
         const summaryNorm = normalizeArabic(s.summary_ar || '');
+        const titleEn = (s.title_en || '').toLowerCase();
+        const summaryEn = (s.summary_en || '').toLowerCase();
         const nameNorm = (s.name || '').toLowerCase();
         const catNorm = (s.category || '').toLowerCase();
         const tagsNorm = normalizeArabic((s.tags || []).join(' '));
         return (
           titleNorm.includes(query) ||
           summaryNorm.includes(query) ||
-          nameNorm.includes(rawQuery.toLowerCase()) ||
-          catNorm.includes(rawQuery.toLowerCase()) ||
+          titleEn.includes(qLower) ||
+          summaryEn.includes(qLower) ||
+          nameNorm.includes(qLower) ||
+          catNorm.includes(qLower) ||
           tagsNorm.includes(query)
         );
       });
@@ -1152,7 +1191,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Initialize AI Bot on all pages
   try {
     const data = await loadData();
-    initAiBot(data?.skillsData?.skills || []);
+    initAiBot(data?.skillsData?.skills || [], data?.skillsData?.categories || []);
   } catch (botErr) {
     console.warn('Bot init warning:', botErr);
   }

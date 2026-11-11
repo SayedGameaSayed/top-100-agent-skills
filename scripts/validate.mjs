@@ -40,7 +40,7 @@ export function resolveToolSteps(steps, skill) {
   const repoGitUrl = skill.source?.repo_url ? `${skill.source.repo_url}.git` : '';
   const pathInRepo =
     skill.kind === 'collection' || skill.kind === 'directory' || !skill.source?.path_in_repo
-      ? '<مسار-فولدر-المهارة>'
+      ? '<مسار-مجلد-المهارة>'
       : skill.source.path_in_repo;
 
   return steps.map((step) => {

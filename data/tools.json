@@ -1,7 +1,7 @@
 [
   {
     "id": "any-chat",
-    "name": "أي شات ذكاء اصطناعي",
+    "name": "أي محادثة AI",
     "kind": "chat",
     "support": "paste_only",
     "docs_url": null,
@@ -9,14 +9,14 @@
     "paths": {},
     "verified": true,
     "verified_on": "2026-10-31",
-    "requires_ar": "لا يلزم شيء.",
+    "requires_ar": "لا تتطلب إعدادًا مسبقًا.",
     "steps_ar": [
-      "اضغط زر «انسخ البرومبت الجاهز» في صفحة المهارة.",
-      "الصق النص في أي محادثة مع الموديل، ثم اكتب طلبك بالعربي.",
-      "إذا لم يستطع الموديل فتح الرابط، افتح المصدر وانسخ محتوى ملف SKILL.md والصقه بنفسك."
+      "اضغط زر «نسخ Prompt التشغيل» في صفحة المهارة.",
+      "الصق النص في أي محادثة مع AI Model، ثم اكتب طلبك بالعربية.",
+      "إن تعذّر على AI Model فتح الرابط، افتح المصدر وانسخ محتوى ملف SKILL.md يدويًا."
     ],
-    "invoke_ar": "اكتب طلبك بالعربي بعد لصق البرومبت.",
-    "note_ar": "الطريقة العامة التي تعمل مع أي موديل.",
+    "invoke_ar": "اكتب طلبك بالعربية مباشرةً بعد لصق Prompt التشغيل.",
+    "note_ar": "الطريقة الشاملة التي تعمل مع أي AI Model.",
     "name_en": "Any AI Chat",
     "requires_en": "No setup required.",
     "steps_en": [
@@ -42,13 +42,13 @@
     "verified_on": "2026-10-31",
     "requires_ar": "تثبيت Claude Code.",
     "steps_ar": [
-      "نزّل فولدر المهارة من المصدر (الفولدر الذي بداخله ملف SKILL.md). يمكنك استخدام git clone للريبو أو زر Download ZIP من GitHub.",
-      "ضع الفولدر في ~/.claude/skills/ لتعمل المهارة في كل مشاريعك، أو في .claude/skills/ داخل المشروع لمشروع واحد. على ويندوز، ~ هو مجلد المستخدم.",
-      "لا حاجة لإعادة التشغيل. وإذا أنشأت فولدر skills جديدًا أثناء جلسة مفتوحة فاكتب /reload-skills.",
-      "ملاحظة: يمكن أيضًا التثبيت عبر نظام الإضافات، مثل: /plugin install skill-creator@claude-plugins-official."
+      "نزّل مجلد المهارة من GitHub Repository (المجلد الذي يحتوي ملف SKILL.md)، سواء عبر git clone أو بزر Download ZIP في GitHub.",
+      "ضع المجلد في ~/.claude/skills/ لتعمل المهارة في جميع مشاريعك، أو في .claude/skills/ داخل المشروع لمشروع واحد. (في نظام Windows، يمثّل الرمز ~ مجلد المستخدم).",
+      "لا يلزم إعادة التشغيل؛ وإذا أنشأت مجلد المهارات للمرة الأولى أثناء جلسة مفتوحة فاكتب /reload-skills.",
+      "ملاحظة: يمكن التثبيت أيضًا عبر نظام الإضافات، مثل: /plugin install skill-creator@claude-plugins-official."
     ],
-    "invoke_ar": "اكتب /اسم-المهارة، أو اطلب شيئًا يطابق وصفها فيحمّلها تلقائيًا.",
-    "note_ar": "إذا تشابه اسما مهارتين، فمهارات المؤسسة تتغلب على الشخصية، والشخصية على مهارات المشروع.",
+    "invoke_ar": "اكتب /<اسم-المهارة>، أو اطلب مهمة تطابق وصفها ليحمّلها تلقائيًا.",
+    "note_ar": "عند تشابه اسمَي مهارتين، تتقدّم مهارات المؤسسة على المهارات الشخصية، والشخصية على مهارات المشروع.",
     "name_en": "Claude Code",
     "requires_en": "Claude Code CLI installed.",
     "steps_en": [
@@ -70,15 +70,15 @@
     "paths": {},
     "verified": true,
     "verified_on": "2026-10-31",
-    "requires_ar": "خطة Pro أو Max أو Team أو Enterprise حسب التوثيق. الخطة المجانية غير مذكورة ضمن الخطط المؤهلة.",
+    "requires_ar": "خطة Pro أو Max أو Team أو Enterprise حسب التوثيق؛ الخطة المجانية غير مؤهلة حاليًا.",
     "steps_ar": [
-      "نزّل فولدر المهارة واضغطه في ملف ZIP. يجب أن يطابق اسم الفولدر اسم المهارة، وأن يحتوي على ملف SKILL.md.",
+      "نزّل مجلد المهارة واضغطه بصيغة ZIP. يجب أن يطابق اسم المجلد اسم المهارة وأن يحتوي ملف SKILL.md.",
       "افتح Settings ثم Capabilities، وفعّل خيار Code execution and file creation.",
-      "انزل إلى قسم Skills واضغط Upload skill، ثم اختر ملف ZIP.",
-      "ستظهر المهارة في القائمة، ويمكنك تشغيلها أو إيقافها من هناك."
+      "انتقل إلى قسم Skills، واختر Upload skill، ثم حدّد ملف ZIP.",
+      "تظهر المهارة في القائمة حيث يمكنك تفعيلها أو إيقافها في أي وقت."
     ],
-    "invoke_ar": "تُستخدم تلقائيًا عندما يطابق طلبك وصف المهارة.",
-    "note_ar": "المهارات التي ترفعها تكون خاصة بحسابك.",
+    "invoke_ar": "تُستدعى تلقائيًا عندما يطابق طلبك وصف المهارة.",
+    "note_ar": "المهارات التي ترفعها تبقى خاصة بحسابك.",
     "name_en": "Claude.ai (Web & Desktop)",
     "requires_en": "Pro, Max, Team, or Enterprise plan as per documentation. Free plans are not eligible.",
     "steps_en": [
@@ -102,13 +102,13 @@
     "verified_on": "2026-10-31",
     "requires_ar": "تطبيق ChatGPT لسطح المكتب للمهارات المستقلة.",
     "steps_ar": [
-      "التوثيق الرسمي لا يشرح استيراد فولدر مهارة جاهز من GitHub داخل ChatGPT.",
-      "الطرق الموثقة هي: تسجيل سير عمل لتوليد مهارة، أو استدعاء @skill-creator لإنشاء مهارة، أو كتابة فولدر فيه SKILL.md يدويًا.",
-      "في تطبيق سطح المكتب تجد قسم Skills في الشريط الجانبي. أما المشاركة مع الآخرين فتتم عبر حزمة إضافة (plugin).",
-      "للاستخدام السريع بدون إعداد، استخدم طريقة النسخ واللصق العامة."
+      "لا يشرح التوثيق الرسمي استيراد مجلد مهارة جاهز مباشرةً من GitHub إلى ChatGPT.",
+      "الطرق الموثقة هي: تسجيل مسار عمل لتوليد مهارة، أو استدعاء @skill-creator، أو إنشاء مجلد يحتوي ملف SKILL.md يدويًا.",
+      "في تطبيق سطح المكتب يظهر قسم Skills في الشريط الجانبي، وتتم المشاركة مع الآخرين عبر حزم الإضافات (Plugins).",
+      "للاستخدام السريع دون إعداد مسبق، اعتمد طريقة النسخ واللصق العامة."
     ],
-    "invoke_ar": "اكتب @ لاختيار المهارة، أو اترك ChatGPT يختارها حسب وصفها.",
-    "note_ar": "المهارات المستقلة لا تظهر في نسخة الويب والجوال، أما المهارات المضمنة في إضافات فتظهر فيهما.",
+    "invoke_ar": "اكتب @ لاختيار المهارة، أو دع ChatGPT يختارها تلقائيًا بحسب الوصف.",
+    "note_ar": "لا تظهر المهارات المستقلة في نسخة الويب والجوال، بينما تتزامن المهارات المضمنة في الإضافات فيهما.",
     "name_en": "ChatGPT",
     "requires_en": "ChatGPT Desktop app for standalone skills.",
     "steps_en": [
@@ -134,15 +134,15 @@
     },
     "verified": true,
     "verified_on": "2026-10-31",
-    "requires_ar": "تثبيت Codex.",
+    "requires_ar": "تثبيت OpenAI Codex CLI.",
     "steps_ar": [
-      "نزّل فولدر المهارة من المصدر (الفولدر الذي بداخله ملف SKILL.md). يمكنك استخدام git clone للريبو أو زر Download ZIP من GitHub.",
-      "ضع الفولدر في ~/.agents/skills/ لتعمل المهارة في كل مشاريعك، أو في .agents/skills/ داخل المشروع.",
-      "يكتشف Codex المهارات الجديدة تلقائيًا. وإذا لم تظهر المهارة فأعد تشغيل Codex.",
+      "نزّل مجلد المهارة من GitHub Repository (المجلد الذي يحتوي ملف SKILL.md)، سواء عبر git clone أو بزر Download ZIP في GitHub.",
+      "ضع المجلد في ~/.agents/skills/ لتعمل المهارة في جميع مشاريعك، أو في .agents/skills/ داخل المشروع.",
+      "يتعرّف Codex على المهارات الجديدة تلقائيًا؛ وإن لم تظهر فأعد تشغيل Codex.",
       "للمهارات الرسمية المنتقاة يمكنك استخدام: $skill-installer اسم-المهارة."
     ],
-    "invoke_ar": "يستخدمها Codex تلقائيًا عندما يطابق طلبك وصف المهارة.",
-    "note_ar": "يبحث Codex عن .agents/skills من المجلد الحالي صعودًا إلى جذر الريبو.",
+    "invoke_ar": "يستدعي Codex المهارة تلقائيًا عندما يطابق طلبك وصفها.",
+    "note_ar": "يبحث Codex عن .agents/skills بدءًا من المجلد الحالي صعودًا إلى جذر GitHub Repository.",
     "name_en": "OpenAI Codex",
     "requires_en": "Codex CLI installed.",
     "steps_en": [
@@ -169,13 +169,13 @@
     "verified_on": "2026-10-31",
     "requires_ar": "تثبيت Gemini CLI.",
     "steps_ar": [
-      "الأسهل أن تثبّت مباشرة من الريبو بالأمر: gemini skills install {{repo_git_url}} --path {{path_in_repo}} --scope user. استخدم --scope workspace لمشروع واحد.",
-      "أو يدويًا: ضع فولدر المهارة في ~/.gemini/skills/ أو ~/.agents/skills/.",
+      "الأيسر أن تثبّت مباشرةً من GitHub Repository بالأمر: gemini skills install {{repo_git_url}} --path {{path_in_repo}} --scope user. واستخدم --scope workspace لمشروع واحد.",
+      "أو ثبّتها يدويًا بوضع مجلد المهارة في ~/.gemini/skills/ أو ~/.agents/skills/.",
       "تحقق من التثبيت بالأمر: gemini skills list --all. وداخل الجلسة يمكنك استخدام /skills list و/skills reload.",
-      "إذا كان الريبو مجموعة مهارات، حدّد الفولدر المطلوب في --path."
+      "إذا ضم GitHub Repository عدة مهارات، حدّد المجلد المطلوب في --path."
     ],
     "invoke_ar": "يستدعي Gemini المهارة تلقائيًا عند تطابق المهمة، ويطلب موافقتك قبل تحميلها.",
-    "note_ar": "الخيار --consent يتجاوز رسالة التأكيد الأمنية، فلا تستخدمه إلا لمصدر تثق به.",
+    "note_ar": "يتجاوز الخيار --consent رسالة التأكيد الأمنية، فلا تستخدمه إلا مع مصدر موثوق.",
     "name_en": "Gemini CLI",
     "requires_en": "Gemini CLI installed.",
     "steps_en": [
@@ -200,14 +200,14 @@
     },
     "verified": true,
     "verified_on": "2026-10-31",
-    "requires_ar": "اشتراك Copilot. وتدعم المهارات: Copilot cloud agent وCopilot CLI والوضع Agent في VS Code ومراجعة الكود.",
+    "requires_ar": "اشتراك GitHub Copilot؛ وتدعم المهارات Copilot cloud agent وCopilot CLI ووضع Agent في VS Code ومراجعة الكود.",
     "steps_ar": [
-      "نزّل فولدر المهارة من المصدر (الفولدر الذي بداخله ملف SKILL.md). يمكنك استخدام git clone للريبو أو زر Download ZIP من GitHub.",
-      "ضع الفولدر في .github/skills/ داخل الريبو لمشروع واحد، أو في ~/.copilot/skills/ لتعمل في كل مشاريعك.",
-      "لا تضف shell إلى allowed-tools إلا بعد مراجعة المهارة والتأكد من مصدرها."
+      "نزّل مجلد المهارة من GitHub Repository (المجلد الذي يحتوي ملف SKILL.md)، سواء عبر git clone أو بزر Download ZIP في GitHub.",
+      "ضع المجلد في .github/skills/ داخل Repository لمشروع واحد، أو في ~/.copilot/skills/ لتعمل في جميع مشاريعك.",
+      "لا تُضف shell إلى allowed-tools إلا بعد مراجعة تعليمات المهارة والتحقق من مصدرها."
     ],
-    "invoke_ar": "يقرر Copilot استخدام المهارة بحسب طلبك ووصفها.",
-    "note_ar": "التوثيق يوصي بتسمية فولدر مراجعة الكود باسم واضح مثل code-review.",
+    "invoke_ar": "يقرّر Copilot استخدام المهارة بحسب طلبك ووصفها.",
+    "note_ar": "يوصي التوثيق الرسمي بتسمية مجلد مراجعة الكود باسم واضح مثل code-review.",
     "name_en": "GitHub Copilot",
     "requires_en": "Active Copilot subscription. Supports Copilot cloud agent, Copilot CLI, VS Code Agent mode, and code review.",
     "steps_en": [
@@ -233,13 +233,13 @@
     "verified_on": "2026-10-31",
     "requires_ar": "تثبيت Cursor.",
     "steps_ar": [
-      "نزّل فولدر المهارة من المصدر (الفولدر الذي بداخله ملف SKILL.md). يمكنك استخدام git clone للريبو أو زر Download ZIP من GitHub.",
-      "ضع الفولدر في .cursor/skills/ داخل المشروع، أو في ~/.cursor/skills/ لتعمل في كل مشاريعك.",
-      "يكتشف Cursor المهارات عند التشغيل، فأعد تشغيله إن لم تظهر.",
-      "ملاحظة: يقرأ Cursor أيضًا فولدرات .claude/skills و.codex/skills للتوافق."
+      "نزّل مجلد المهارة من GitHub Repository (المجلد الذي يحتوي ملف SKILL.md)، سواء عبر git clone أو بزر Download ZIP في GitHub.",
+      "ضع المجلد في .cursor/skills/ داخل المشروع، أو في ~/.cursor/skills/ لتعمل في جميع مشاريعك.",
+      "يفهرس Cursor المهارات عند التشغيل، فأعد تشغيله إن لم تظهر المهارة الجديدة.",
+      "ملاحظة: يقرأ Cursor أيضًا مجلدَي .claude/skills و.codex/skills للتوافق."
     ],
-    "invoke_ar": "اكتب / في شات Agent واختر المهارة، أو اتركه يختارها حسب الوصف.",
-    "note_ar": "التثبيت من ريبو GitHub مباشرة يحتاج تغليف المهارات كإضافة (plugin) ونشرها في marketplace.",
+    "invoke_ar": "اكتب / في محادثة Agent لاختيار المهارة، أو دعه يختارها تلقائيًا حسب الوصف.",
+    "note_ar": "يتطلب التثبيت المباشر من GitHub تغليف المهارات كإضافة (Plugin) ونشرها في Marketplace.",
     "name_en": "Cursor",
     "requires_en": "Cursor IDE installed.",
     "steps_en": [
@@ -260,7 +260,7 @@
     "skills_path": null,
     "paths": {},
     "verified": false,
-    "note_ar": "لم نتحقق من التوثيق الرسمي بعد.",
+    "note_ar": "بانتظار صدور التوثيق الرسمي من Windsurf.",
     "name_en": "Windsurf",
     "requires_en": "Windsurf IDE installed.",
     "steps_en": [

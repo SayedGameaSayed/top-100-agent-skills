@@ -173,9 +173,15 @@ app.post('/api/chat', (req, res) => {
   const topSkills = searchResults.slice(0, 3);
   let reply = '';
   if (topSkills.length > 0) {
-    reply = `وجدت لك أفضل ${topSkills.length} مهارات مطابقة لاحتياجك من قاعدة البيانات:`;
+    const matchCountLabel =
+      topSkills.length === 1
+        ? 'أفضل مهارة مطابقة'
+        : topSkills.length === 2
+          ? 'أفضل مهارتين مطابقتين'
+          : `أفضل ${topSkills.length} مهارات مطابقة`;
+    reply = `وجدت لك ${matchCountLabel} لاحتياجك من قاعدة البيانات:`;
   } else {
-    reply = `أهلاً بك! يمكنك سؤالي عن أي مهمة تريد إنجازها (مثل: تعديل مستندات Word، تحليل بيانات، اختبار الكود، إدارة Docker) وسأرشح لك المهارة الأنسب فوراً.`;
+    reply = 'أهلًا بك! اسألني عن أي مهمة تريد إنجازها (مثل: تنسيق مستندات Word، أو تحليل البيانات، أو اختبار الكود، أو إدارة Docker) وسأرشح لك المهارة الأنسب فورًا.';
   }
 
   return res.json({

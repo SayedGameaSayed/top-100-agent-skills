@@ -2,12 +2,14 @@
  * copy.js - Clipboard utility with accessible toast notification & fallback
  */
 
+import { t } from './i18n.js';
+
 let toastTimeout = null;
 
 /**
  * Shows an accessible toast notification for 2 seconds
  */
-export function showToast(message = 'تم النسخ') {
+export function showToast(message = t('copied')) {
   let toast = document.getElementById('toast-notification');
   if (!toast) {
     toast = document.createElement('div');
@@ -33,7 +35,7 @@ export function showToast(message = 'تم النسخ') {
 /**
  * Copies text to clipboard with modern API and execCommand fallback
  */
-export async function copyToClipboard(text, successMessage = 'تم النسخ بنجاح!') {
+export async function copyToClipboard(text, successMessage = t('copyToClipboardDefault')) {
   if (!text) return false;
 
   let successful = false;
@@ -69,7 +71,7 @@ export async function copyToClipboard(text, successMessage = 'تم النسخ ب
   if (successful) {
     showToast(successMessage);
   } else {
-    showToast('تعذر النسخ تلقائيًا، يرجى النسخ يدويًا');
+    showToast(t('copyErrorFallback'));
   }
 
   return successful;
