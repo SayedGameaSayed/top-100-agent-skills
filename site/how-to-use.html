@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,10 +69,10 @@
     (function() {
       try {
         var p = new URLSearchParams(window.location.search);
-        var l = p.get('lang') || localStorage.getItem('site_lang') || 'ar';
+        var l = (p.get('lang') === 'ar') ? 'ar' : 'en';
         var t = p.get('theme') || localStorage.getItem('site_theme') || 'dark';
         document.documentElement.lang = l;
-        document.documentElement.dir = (l === 'en') ? 'ltr' : 'rtl';
+        document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
         document.documentElement.setAttribute('data-theme', t);
       } catch(e) {}
     })();
@@ -83,22 +83,22 @@
   <!-- Header -->
   <header class="site-header">
     <div class="header-container">
-      <a href="index.html" class="brand-lockup" aria-label="العودة للصفحة الرئيسية">
-        <img src="assets/logo.png" alt="شعار دليل مهارات الذكاء الاصطناعي" class="brand-logo-img" width="34" height="34">
-        <span>دليل مهارات الذكاء الاصطناعي</span>
+      <a href="index.html" class="brand-lockup" aria-label="Back to Home">
+        <img src="assets/logo.png" alt="Top 100 AI Agent Skills Logo" class="brand-logo-img" width="34" height="34">
+        <span>Top 100 AI Agent Skills</span>
       </a>
       
-      <nav class="header-nav" aria-label="روابط الموقع">
-        <a href="index.html" class="nav-ghost-link">الرئيسية</a>
-        <a href="leaderboard.html" class="nav-ghost-link">لوحة الصدارة</a>
-        <a href="how-to-use.html" class="nav-ghost-link active">طريقة الاستخدام</a>
+      <nav class="header-nav" aria-label="Site Navigation">
+        <a href="index.html" class="nav-ghost-link">Home</a>
+        <a href="leaderboard.html" class="nav-ghost-link">Leaderboard</a>
+        <a href="how-to-use.html" class="nav-ghost-link active">How to Use</a>
 
         <!-- Language & Theme Switchers -->
-        <button id="lang-toggle-btn" class="nav-control-pill" type="button" aria-label="تبديل اللغة / Switch Language" title="Switch language / تغيير اللغة">
-          🌐 <span id="lang-btn-text">English</span>
+        <button id="lang-toggle-btn" class="nav-control-pill" type="button" aria-label="Switch Language / تبديل اللغة" title="Switch language / تغيير اللغة">
+          🌐 <span id="lang-btn-text">العربية</span>
         </button>
-        <button id="theme-toggle-btn" class="nav-control-pill" type="button" aria-label="تبديل المظهر / Toggle Theme" title="Toggle Light/Dark Theme / تغيير المظهر">
-          <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">المظهر الفاتح</span>
+        <button id="theme-toggle-btn" class="nav-control-pill" type="button" aria-label="Toggle Theme / تبديل المظهر" title="Toggle Light/Dark Theme / تغيير المظهر">
+          <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">Light Mode</span>
         </button>
 
         <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" rel="noopener noreferrer" class="nav-github-star-pill" aria-label="Star on GitHub" title="ادعم المشروع بنجمة على GitHub">

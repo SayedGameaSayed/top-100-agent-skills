@@ -5071,3 +5071,189 @@ html[data-theme="light"] .advisor-messages .bot-copy-prompt-btn {
   border-color: #cbd5e1;
   border-radius: 8px !important;
 }
+
+/* Browser-Only Code File Dropzone */
+.advisor-dropzone {
+  padding: 12px 18px;
+  border-top: 1px dashed rgba(146, 129, 247, 0.3);
+  background: rgba(146, 129, 247, 0.03);
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.advisor-dropzone.is-dragover {
+  background: rgba(146, 129, 247, 0.14);
+  border-top-color: var(--color-iris-violet);
+}
+
+.advisor-dropzone-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.advisor-dropzone-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.advisor-dropzone-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-bone-white);
+}
+
+.advisor-dropzone-types {
+  font-size: 11px;
+  color: var(--color-ash-gray);
+  font-family: var(--font-commit-mono), monospace;
+}
+
+.advisor-dropzone-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.advisor-pick-btn,
+.advisor-clear-files-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.advisor-pick-btn {
+  border: 1px solid rgba(146, 129, 247, 0.45);
+  background: rgba(146, 129, 247, 0.14);
+  color: var(--color-white);
+}
+
+.advisor-pick-btn:hover {
+  border-color: var(--color-iris-violet);
+  background: rgba(146, 129, 247, 0.24);
+}
+
+.advisor-clear-files-btn {
+  border: 1px solid var(--color-graphite-hairline);
+  background: transparent;
+  color: var(--color-ash-gray);
+}
+
+.advisor-clear-files-btn:hover {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.45);
+}
+
+.advisor-file-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.advisor-file-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-graphite-hairline);
+  color: var(--color-bone-white);
+  font-size: 12px;
+}
+
+.advisor-file-size {
+  font-size: 10.5px;
+  color: var(--color-ash-gray);
+  font-family: var(--font-commit-mono), monospace;
+}
+
+.advisor-file-remove {
+  background: none;
+  border: none;
+  color: var(--color-ash-gray);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.advisor-file-remove:hover {
+  color: #f87171;
+}
+
+.advisor-file-status {
+  margin-top: 8px;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.advisor-file-status.is-info {
+  color: #a7f3d0;
+}
+
+.advisor-file-status.is-error {
+  color: #fca5a5;
+}
+
+.advisor-dropzone-privacy {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--color-ash-gray);
+  line-height: 1.45;
+}
+
+/* Light Theme Dropzone Overrides */
+html[data-theme="light"] .advisor-dropzone {
+  background: #f8fafc;
+  border-top-color: #cbd5e1;
+}
+
+html[data-theme="light"] .advisor-dropzone.is-dragover {
+  background: rgba(99, 102, 241, 0.1);
+  border-top-color: #6366f1;
+}
+
+html[data-theme="light"] .advisor-dropzone-title {
+  color: #0f172a;
+}
+
+html[data-theme="light"] .advisor-dropzone-types,
+html[data-theme="light"] .advisor-dropzone-privacy,
+html[data-theme="light"] .advisor-file-size {
+  color: #475569;
+}
+
+html[data-theme="light"] .advisor-pick-btn {
+  color: #3730a3;
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+html[data-theme="light"] .advisor-pick-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+html[data-theme="light"] .advisor-file-chip {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+html[data-theme="light"] .advisor-file-status.is-info {
+  color: #047857;
+}
+
+html[data-theme="light"] .advisor-file-status.is-error {
+  color: #b91c1c;
+}

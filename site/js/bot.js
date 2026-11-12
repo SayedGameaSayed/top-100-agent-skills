@@ -15,6 +15,75 @@ let selectedSpecialty = 'auto';
 // Temporarily paused so the UI stays minimal; flip to true to re-enable settings/optional key drawer
 const ENABLE_BOT_SETTINGS_DRAWER = false;
 
+const LOCAL_FILES_STORAGE_KEY = 'ai_advisor_local_files_v1';
+const MAX_LOCAL_FILES = 5;
+const MAX_CHARS_PER_FILE = 3000;
+const MAX_RAW_FILE_BYTES = 200 * 1024;
+const ALLOWED_EXACT_FILES = new Set([
+  'readme',
+  'readme.md',
+  'readme.txt',
+  'package.json',
+  'requirements.txt',
+  'pyproject.toml',
+  'dockerfile',
+  'makefile',
+  'skill.md',
+  '.gitignore',
+  'tsconfig.json'
+]);
+const ALLOWED_CODE_EXTENSIONS = [
+  '.js', '.mjs', '.cjs', '.ts', '.tsx', '.jsx',
+  '.py', '.md', '.txt', '.json', '.yml', '.yaml',
+  '.toml', '.html', '.css', '.scss', '.sql', '.sh',
+  '.go', '.rs', '.java', '.kt', '.cs', '.php', '.rb',
+  '.vue', '.svelte'
+];
+const BLOCKED_SECRET_FILE_RE = /(^\.env($|\.)|\.(pem|key|p12|pfx|crt)$|secrets?\.)/i;
+const FILE_INPUT_ACCEPT = ALLOWED_CODE_EXTENSIONS.join(',');
+
+function getStoredLocalFiles() {
+  try {
+    const raw = localStorage.getItem(LOCAL_FILES_STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.slice(0, MAX_LOCAL_FILES) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveStoredLocalFiles(files = []) {
+  try {
+    if (!files.length) {
+      localStorage.removeItem(LOCAL_FILES_STORAGE_KEY);
+      return true;
+    }
+    localStorage.setItem(LOCAL_FILES_STORAGE_KEY, JSON.stringify(files.slice(0, MAX_LOCAL_FILES)));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function clearStoredLocalFiles() {
+  try {
+    localStorage.removeItem(LOCAL_FILES_STORAGE_KEY);
+  } catch {}
+}
+
+function isAllowedProjectFilename(name = '') {
+  const lower = String(name).trim().toLowerCase();
+  if (!lower || BLOCKED_SECRET_FILE_RE.test(lower)) return false;
+  if (ALLOWED_EXACT_FILES.has(lower)) return true;
+  return ALLOWED_CODE_EXTENSIONS.some((ext) => lower.endsWith(ext));
+}
+
+function formatBytesShort(bytes = 0) {
+  if (bytes < 1024) return `${bytes} B`;
+  return `${(bytes / 1024).toFixed(1)} KB`;
+}
+
 const SPECIALISTS = {
   auto: {
     id: 'auto',
@@ -375,15 +444,46 @@ export function initAiBot(skills = [], categories = []) {
         </button>
       </div>
 
+      <!-- Browser-Only Code File Dropzone -->
+      <div class="advisor-dropzone" id="advisor-dropzone">
+        <div class="advisor-dropzone-row">
+          <div class="advisor-dropzone-info">
+            <span class="advisor-dropzone-title">📎 ${
+              isEn
+                ? 'Drag & drop code files here or pick files'
+                : 'اسحب وأفلِت ملفاتك البرمجية هنا أو اختر ملفات'
+            }</span>
+            <span class="advisor-dropzone-types" dir="ltr">.js .ts .py .md .json .yml .html .css .sql (README / package.json…)</span>
+          </div>
+          <div class="advisor-dropzone-actions">
+            <input type="file" id="advisor-file-input" multiple accept="${FILE_INPUT_ACCEPT}" hidden>
+            <button type="button" id="advisor-pick-files-btn" class="advisor-pick-btn">
+              📂 ${isEn ? 'Choose Files' : 'اختيار ملفات'}
+            </button>
+            <button type="button" id="advisor-clear-files-btn" class="advisor-clear-files-btn" style="display: none;">
+              🗑️ ${isEn ? 'Clear' : 'مسح الكل'}
+            </button>
+          </div>
+        </div>
+        <div id="advisor-file-list" class="advisor-file-list" style="display: none;"></div>
+        <div id="advisor-file-status" class="advisor-file-status" style="display: none;"></div>
+        <div class="advisor-dropzone-privacy">
+          🔒 ${
+            isEn
+              ? 'Stored strictly inside your browser (localStorage) — never saved on our server, and disappears when you clear it or wipe browser data.'
+              : 'تُحفَظ الملفات داخل متصفحك فقط (localStorage) ولا تُخزَّن في أي سيرفر، وتختفي تمامًا فور حذفها أو مسح بيانات المتصفح.'
+          }
+        </div>
+      </div>
+
       <!-- Prompt Input Form -->
       <form id="bot-input-form" class="bot-input-form advisor-input-form">
         <textarea
           id="bot-input-text"
           class="bot-input-field advisor-input-field"
           rows="2"
-          placeholder="${isEn ? 'Ask anything, paste code, or drop a README...' : 'اسأل عن مهارة، أو ألصق كودًا أو ملف README…'}"
+          placeholder="${isEn ? 'Ask anything, paste code, or drop code files above...' : 'اسأل عن مهارة، أو ألصق كودًا أو أرفق ملفات برمجية بالأعلى…'}"
           aria-label="${isEn ? 'Message' : 'الرسالة'}"
-          required
         ></textarea>
         <button type="submit" id="bot-send-btn" class="bot-send-btn advisor-send-btn" aria-label="${isEn ? 'Send' : 'إرسال'}">
           <span>${isEn ? 'Ask AI' : 'بحث ذكي'}</span>
@@ -573,6 +673,190 @@ function attachBotEventListeners() {
     });
   }
 
+  const dropzone = document.getElementById('advisor-dropzone');
+  const fileInput = document.getElementById('advisor-file-input');
+  const pickFilesBtn = document.getElementById('advisor-pick-files-btn');
+  const clearFilesBtn = document.getElementById('advisor-clear-files-btn');
+  const fileListEl = document.getElementById('advisor-file-list');
+  const fileStatusEl = document.getElementById('advisor-file-status');
+  let statusTimer = null;
+
+  function showFileStatus(msg, isError = false) {
+    if (!fileStatusEl) return;
+    clearTimeout(statusTimer);
+    if (!msg) {
+      fileStatusEl.style.display = 'none';
+      return;
+    }
+    fileStatusEl.textContent = msg;
+    fileStatusEl.className = `advisor-file-status ${isError ? 'is-error' : 'is-info'}`;
+    fileStatusEl.style.display = 'block';
+    statusTimer = setTimeout(() => {
+      fileStatusEl.style.display = 'none';
+    }, 4500);
+  }
+
+  function renderLocalFilesTray() {
+    const files = getStoredLocalFiles();
+    if (!fileListEl || !clearFilesBtn) return;
+
+    if (!files.length) {
+      fileListEl.innerHTML = '';
+      fileListEl.style.display = 'none';
+      clearFilesBtn.style.display = 'none';
+      return;
+    }
+
+    clearFilesBtn.style.display = 'inline-flex';
+    fileListEl.style.display = 'flex';
+    fileListEl.innerHTML = files
+      .map(
+        (f, idx) => `
+      <span class="advisor-file-chip" title="${escapeAttr(f.name)} (${escapeAttr(formatBytesShort(f.size))})">
+        <span dir="ltr">📄 ${escapeHtml(f.name)}</span>
+        <span class="advisor-file-size" dir="ltr">${escapeHtml(formatBytesShort(f.size))}</span>
+        <button type="button" class="advisor-file-remove" data-file-idx="${idx}" aria-label="${isEn ? `Remove ${f.name}` : `إزالة ${f.name}`}">✕</button>
+      </span>`
+      )
+      .join('');
+  }
+
+  async function ingestProjectFiles(fileList) {
+    const incoming = Array.from(fileList || []);
+    if (!incoming.length) return;
+
+    let current = getStoredLocalFiles();
+    const skipped = [];
+    let addedCount = 0;
+
+    for (const file of incoming) {
+      if (current.length >= MAX_LOCAL_FILES) {
+        skipped.push(`${file.name} (${isEn ? `max ${MAX_LOCAL_FILES} files` : `الحد الأقصى ${MAX_LOCAL_FILES} ملفات`})`);
+        continue;
+      }
+      if (!isAllowedProjectFilename(file.name)) {
+        skipped.push(`${file.name} (${isEn ? 'unsupported or blocked secret file' : 'نوع غير مدعوم أو محظور'})`);
+        continue;
+      }
+      if (file.size > MAX_RAW_FILE_BYTES) {
+        skipped.push(`${file.name} (${isEn ? 'exceeds 200 KB' : 'أكبر من 200 KB'})`);
+        continue;
+      }
+
+      try {
+        const text = await file.text();
+        if (text.includes('\u0000')) {
+          skipped.push(`${file.name} (${isEn ? 'binary file' : 'ملف ثنائي'})`);
+          continue;
+        }
+        const snippet = text.slice(0, MAX_CHARS_PER_FILE);
+        current = current.filter((item) => item.name.toLowerCase() !== file.name.toLowerCase());
+        current.push({
+          name: file.name,
+          size: file.size,
+          content: snippet,
+          truncated: text.length > MAX_CHARS_PER_FILE
+        });
+        addedCount++;
+      } catch {
+        skipped.push(file.name);
+      }
+    }
+
+    const saved = saveStoredLocalFiles(current);
+    renderLocalFilesTray();
+
+    if (!saved) {
+      showFileStatus(
+        isEn ? 'Browser storage limit reached; remove old files first.' : 'امتلأت مساحة تخزين المتصفح؛ احذف بعض الملفات أولًا.',
+        true
+      );
+      return;
+    }
+
+    if (skipped.length) {
+      showFileStatus(
+        isEn ? `Skipped: ${skipped.join(', ')}` : `تم تخطي: ${skipped.join('، ')}`,
+        true
+      );
+    } else if (addedCount > 0) {
+      showFileStatus(
+        isEn
+          ? `Added ${addedCount} file(s) locally in your browser. Ask anything or click Ask AI!`
+          : `تمت إضافة ${addedCount} ملف/ملفات داخل متصفحك فقط. اكتب سؤالك أو اضغط بحث ذكي!`,
+        false
+      );
+    }
+  }
+
+  renderLocalFilesTray();
+
+  if (pickFilesBtn && fileInput) {
+    pickFilesBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => {
+      ingestProjectFiles(e.target.files);
+      fileInput.value = '';
+    });
+  }
+
+  if (clearFilesBtn) {
+    clearFilesBtn.addEventListener('click', () => {
+      clearStoredLocalFiles();
+      renderLocalFilesTray();
+      showFileStatus(isEn ? 'Cleared all attached files from browser storage.' : 'تم مسح جميع الملفات من تخزين المتصفح.', false);
+    });
+  }
+
+  if (fileListEl) {
+    fileListEl.addEventListener('click', (e) => {
+      const rmBtn = e.target.closest('.advisor-file-remove');
+      if (!rmBtn) return;
+      const idx = Number(rmBtn.getAttribute('data-file-idx'));
+      const current = getStoredLocalFiles();
+      if (!Number.isNaN(idx) && idx >= 0 && idx < current.length) {
+        current.splice(idx, 1);
+        saveStoredLocalFiles(current);
+        renderLocalFilesTray();
+      }
+    });
+  }
+
+  if (dropzone && shell) {
+    let dragCounter = 0;
+    const onDragEnter = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dragCounter++;
+      dropzone.classList.add('is-dragover');
+    };
+    const onDragOver = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+      dropzone.classList.add('is-dragover');
+    };
+    const onDragLeave = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dragCounter = Math.max(0, dragCounter - 1);
+      if (dragCounter === 0) dropzone.classList.remove('is-dragover');
+    };
+    const onDrop = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dragCounter = 0;
+      dropzone.classList.remove('is-dragover');
+      if (e.dataTransfer?.files?.length) {
+        ingestProjectFiles(e.dataTransfer.files);
+      }
+    };
+
+    shell.addEventListener('dragenter', onDragEnter);
+    shell.addEventListener('dragover', onDragOver);
+    shell.addEventListener('dragleave', onDragLeave);
+    shell.addEventListener('drop', onDrop);
+  }
+
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -587,11 +871,20 @@ function attachBotEventListeners() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const text = input.value.trim();
-    if (!text) return;
+    const rawText = input.value.trim();
+    const attachedFiles = getStoredLocalFiles();
+    if (!rawText && attachedFiles.length === 0) {
+      input.focus();
+      return;
+    }
+    const queryText =
+      rawText ||
+      (isEn
+        ? 'Analyze the attached project files and recommend the best skills for my codebase.'
+        : 'حلّل الملفات البرمجية المرفقة واقترح أنسب المهارات لمشروعي.');
     input.value = '';
     input.style.height = 'auto';
-    handleSendMessage(text);
+    handleSendMessage(queryText, attachedFiles);
   });
 }
 
@@ -633,25 +926,37 @@ async function callServerFreeAdvisor(userText, lang, specialty) {
   return null;
 }
 
-async function handleSendMessage(userText) {
+async function handleSendMessage(userText, attachedFiles = []) {
   const messagesContainer = document.getElementById('bot-messages-container');
+  const filesList = Array.isArray(attachedFiles) ? attachedFiles : [];
+  const fileNamesBadge = filesList.length
+    ? `\n\n📎 ${filesList.map((f) => f.name).join(', ')}`
+    : '';
 
-  appendMessage('user', userText);
+  appendMessage('user', `${userText}${fileNamesBadge}`);
   const typingId = appendTypingIndicator();
   messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+
+  const filesContextBlock = filesList.length
+    ? '\n\nAttached Local Code/Project Files (browser-only):\n' +
+      filesList
+        .map((f) => `--- File: ${f.name} ---\n${f.content}${f.truncated ? '\n[...truncated]' : ''}`)
+        .join('\n\n')
+    : '';
+  const aiPayload = `${userText}${filesContextBlock}`;
 
   const config = getStoredConfig();
   const isEn = getLang() === 'en';
   const lang = isEn ? 'en' : 'ar';
-  const detectedSpecialty = detectSpecialtyClient(userText, selectedSpecialty);
+  const detectedSpecialty = detectSpecialtyClient(aiPayload, selectedSpecialty);
   const spMeta = SPECIALISTS[detectedSpecialty] || SPECIALISTS.general;
 
   // 1. Optional Personal Key Path (only if user configured their own key)
   if (config.key) {
     try {
-      const responseText = await queryUniversalAi(userText, config.provider, config.key, detectedSpecialty);
+      const responseText = await queryUniversalAi(aiPayload, config.provider, config.key, detectedSpecialty);
       removeTypingIndicator(typingId);
-      const matchedSkills = extractMatchedSkills(userText, responseText);
+      const matchedSkills = extractMatchedSkills(aiPayload, responseText);
       const pName = (PROVIDERS[config.provider] || {}).name || config.provider;
 
       appendAssistantResponse({
@@ -667,10 +972,10 @@ async function handleSendMessage(userText) {
 
   // 2. Default Zero-Key Multi-Specialist Router (/api/advisor)
   try {
-    const serverAdvisor = await callServerFreeAdvisor(userText, lang, selectedSpecialty);
+    const serverAdvisor = await callServerFreeAdvisor(aiPayload, lang, selectedSpecialty);
     if (serverAdvisor?.reply) {
       removeTypingIndicator(typingId);
-      const matchedSkills = extractMatchedSkills(userText, serverAdvisor.reply);
+      const matchedSkills = extractMatchedSkills(aiPayload, serverAdvisor.reply);
       const spLabel = isEn ? serverAdvisor.specialtyLabelEn : serverAdvisor.specialtyLabelAr;
       const badge = `${serverAdvisor.icon || spMeta.icon} ${spLabel} • ${serverAdvisor.modelLabel}`;
 
@@ -686,7 +991,7 @@ async function handleSendMessage(userText) {
   }
 
   // 3. Instant Bilingual Specialist Local Fallback (works 100% offline/static on GitHub Pages too)
-  const localResult = queryLocalSpecialistEngine(userText, detectedSpecialty);
+  const localResult = queryLocalSpecialistEngine(aiPayload, detectedSpecialty);
   setTimeout(() => {
     removeTypingIndicator(typingId);
     appendAssistantResponse(localResult);

@@ -90,7 +90,7 @@ async function runTests() {
     // 1. Root route serves index.html (200 OK, not 404!)
     const rootRes = await fetchUrl('http://127.0.0.1:3456/');
     assert.strictEqual(rootRes.statusCode, 200);
-    assert(rootRes.data.includes('دليل مهارات الذكاء الاصطناعي'));
+    assert(rootRes.data.includes('Top 100 AI Agent Skills'));
     assert(rootRes.data.includes('constellation-canvas'));
     console.log('  PASS: GET / serves index.html with 200 OK');
 
@@ -140,7 +140,7 @@ async function runTests() {
     // 8. Leaderboard HTML route
     const lbRes = await fetchUrl('http://127.0.0.1:3456/leaderboard');
     assert.strictEqual(lbRes.statusCode, 200);
-    assert(lbRes.data.includes('لوحة صدارة'));
+    assert(lbRes.data.includes('leaderboard-tbody'));
     console.log('  PASS: GET /leaderboard serves leaderboard.html with 200 OK');
 
     // 9. API Leaderboard endpoint

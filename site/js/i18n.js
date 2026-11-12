@@ -242,7 +242,7 @@ export const UI_STRINGS = {
   }
 };
 
-let currentLang = 'ar';
+let currentLang = 'en';
 let currentTheme = 'dark';
 const listeners = [];
 
@@ -255,7 +255,7 @@ export function getTheme() {
 }
 
 export function t(key, ...args) {
-  const dict = UI_STRINGS[currentLang] || UI_STRINGS.ar;
+  const dict = UI_STRINGS[currentLang] || UI_STRINGS.en;
   const val = dict[key];
   if (typeof val === 'function') {
     return val(...args);
@@ -278,18 +278,19 @@ function notifyListeners() {
 }
 
 /**
- * Appends ?lang=en to internal links when in English mode
+ * Appends ?lang=ar to internal links only when Arabic mode is selected;
+ * English is the default language on clean URLs.
  */
 export function formatUrlWithLang(url) {
   if (!url || typeof url !== 'string') return url;
   if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('#') || url.startsWith('mailto:') || url.startsWith('javascript:')) {
     return url;
   }
-  if (currentLang !== 'en') return url;
+  if (currentLang !== 'ar') return url;
   try {
     const [path, query = ''] = url.split('?');
     const params = new URLSearchParams(query);
-    params.set('lang', 'en');
+    params.set('lang', 'ar');
     return `${path}?${params.toString()}`;
   } catch {
     return url;
@@ -297,9 +298,9 @@ export function formatUrlWithLang(url) {
 }
 
 export function setLanguage(newLang) {
-  currentLang = newLang === 'en' ? 'en' : 'ar';
+  currentLang = newLang === 'ar' ? 'ar' : 'en';
   document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === 'en' ? 'ltr' : 'rtl';
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
   try {
     localStorage.setItem('site_lang', currentLang);
   } catch {}
@@ -319,7 +320,7 @@ export function setTheme(newTheme) {
 }
 
 /**
- * Toggle Language: Clean full reload with URL parameter as requested
+ * Toggle Language: clean URL for English default, ?lang=ar for Arabic
  */
 export function toggleLanguage() {
   const targetLang = currentLang === 'ar' ? 'en' : 'ar';
@@ -327,9 +328,12 @@ export function toggleLanguage() {
     localStorage.setItem('site_lang', targetLang);
   } catch {}
 
-  // Update URL param and reload cleanly to render the complete target language
   const url = new URL(window.location.href);
-  url.searchParams.set('lang', targetLang);
+  if (targetLang === 'ar') {
+    url.searchParams.set('lang', 'ar');
+  } else {
+    url.searchParams.delete('lang');
+  }
   window.location.href = url.toString();
 }
 
@@ -354,13 +358,15 @@ export function updateHeaderControls() {
     themeBtnIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
   }
 
-  // Update Brand Lockup text
-  const brandName = document.querySelector('.brand-lockup span');
-  if (brandName) {
-    brandName.textContent = t('siteName');
+  // Update Brand Lockup text & link
+  const brandLockup = document.querySelector('.brand-lockup');
+  if (brandLockup) {
+    brandLockup.href = formatUrlWithLang('index.html');
+    const brandSpan = brandLockup.querySelector('span');
+    if (brandSpan) brandSpan.textContent = t('siteName');
   }
 
-  // Update Static Navigation Links and persist ?lang=en
+  // Update Static Navigation Links and persist ?lang=ar when in Arabic mode
   const navLinks = document.querySelectorAll('.header-nav .nav-ghost-link');
   if (navLinks.length >= 3) {
     navLinks[0].textContent = t('navHome');
@@ -429,6 +435,8 @@ export function applyTranslationsToDocument() {
       document.title = 'لوحة الصدارة | دليل مهارات الذكاء الاصطناعي';
     } else if (isHowToUse) {
       document.title = 'طريقة الاستخدام | دليل مهارات الذكاء الاصطناعي';
+    } else if (!isSkillDetail) {
+      document.title = 'دليل مهارات الذكاء الاصطناعي | Top 100 Agent Skills';
     }
   }
 
@@ -563,27 +571,25 @@ export function applyTranslationsToDocument() {
 }
 
 export function initI18nAndTheme() {
-  // 1. Detect from URL parameters
+  // 1. Detect from URL parameters (clean URL defaults to English; ?lang=ar switches to Arabic)
   const params = new URLSearchParams(window.location.search);
   const urlLang = params.get('lang');
   const urlTheme = params.get('theme');
 
-  // 2. Detect from localStorage
-  let savedLang = null;
+  // 2. Detect theme from localStorage
   let savedTheme = null;
   try {
-    savedLang = localStorage.getItem('site_lang');
     savedTheme = localStorage.getItem('site_theme');
   } catch {}
 
-  const initialLang = (urlLang === 'en' || urlLang === 'ar') ? urlLang : (savedLang || 'ar');
+  const initialLang = urlLang === 'ar' ? 'ar' : 'en';
   const initialTheme = (urlTheme === 'light' || urlTheme === 'dark') ? urlTheme : (savedTheme || 'dark');
 
   currentLang = initialLang;
   currentTheme = initialTheme;
 
   document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === 'en' ? 'ltr' : 'rtl';
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
   document.documentElement.setAttribute('data-theme', currentTheme);
 
   // Setup header buttons

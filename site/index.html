@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,7 +103,7 @@
   </script>
   <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
 
-  <title>Top 100 Agent Skills | دليل مهارات الذكاء الاصطناعي</title>
+  <title>Top 100 AI Agent Skills | Curated Open-Source Directory</title>
   
   <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) with Non-Blocking Asynchronous Load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,10 +128,10 @@
     (function() {
       try {
         var p = new URLSearchParams(window.location.search);
-        var l = p.get('lang') || localStorage.getItem('site_lang') || 'ar';
+        var l = (p.get('lang') === 'ar') ? 'ar' : 'en';
         var t = p.get('theme') || localStorage.getItem('site_theme') || 'dark';
         document.documentElement.lang = l;
-        document.documentElement.dir = (l === 'en') ? 'ltr' : 'rtl';
+        document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
         document.documentElement.setAttribute('data-theme', t);
       } catch(e) {}
     })();
@@ -142,32 +142,32 @@
   <!-- Dala Navigation Bar (Transparent on Black Void) -->
   <header class="site-header">
     <div class="header-container">
-      <a href="index.html" class="brand-lockup" aria-label="دليل مهارات الذكاء الاصطناعي">
-        <img src="assets/logo.png" alt="شعار دليل مهارات الذكاء الاصطناعي" class="brand-logo-img" width="34" height="34">
-        <span>دليل مهارات الذكاء الاصطناعي</span>
+      <a href="index.html" class="brand-lockup" aria-label="Top 100 AI Agent Skills">
+        <img src="assets/logo.png" alt="Top 100 AI Agent Skills Logo" class="brand-logo-img" width="34" height="34">
+        <span>Top 100 AI Agent Skills</span>
       </a>
       
-      <nav class="header-nav" aria-label="روابط الموقع">
-        <a href="index.html" class="nav-ghost-link active">الرئيسية</a>
-        <a href="leaderboard.html" class="nav-ghost-link">لوحة الصدارة</a>
-        <a href="how-to-use.html" class="nav-ghost-link">طريقة الاستخدام</a>
+      <nav class="header-nav" aria-label="Site Navigation">
+        <a href="index.html" class="nav-ghost-link active">Home</a>
+        <a href="leaderboard.html" class="nav-ghost-link">Leaderboard</a>
+        <a href="how-to-use.html" class="nav-ghost-link">How to Use</a>
 
         <!-- Language & Theme Switchers -->
-        <button id="lang-toggle-btn" class="nav-control-pill" type="button" aria-label="تبديل اللغة / Switch Language" title="Switch language / تغيير اللغة">
-          🌐 <span id="lang-btn-text">English</span>
+        <button id="lang-toggle-btn" class="nav-control-pill" type="button" aria-label="Switch Language / تبديل اللغة" title="Switch language / تغيير اللغة">
+          🌐 <span id="lang-btn-text">العربية</span>
         </button>
-        <button id="theme-toggle-btn" class="nav-control-pill" type="button" aria-label="تبديل المظهر / Toggle Theme" title="Toggle Light/Dark Theme / تغيير المظهر">
-          <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">المظهر الفاتح</span>
+        <button id="theme-toggle-btn" class="nav-control-pill" type="button" aria-label="Toggle Theme / تبديل المظهر" title="Toggle Light/Dark Theme / تغيير المظهر">
+          <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">Light Mode</span>
         </button>
 
-        <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" rel="noopener noreferrer" class="nav-github-star-pill" aria-label="Star on GitHub" title="ادعم المشروع بنجمة على GitHub">
+        <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" rel="noopener noreferrer" class="nav-github-star-pill" aria-label="Star on GitHub" title="Support this project with a GitHub Star">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
           </svg>
           <span>Star</span>
           <span class="github-star-count">★</span>
         </a>
-        <a href="#all-skills-section" class="nav-cta-pill">تصفح المهارات</a>
+        <a href="#all-skills-section" class="nav-cta-pill">Browse Skills</a>
       </nav>
     </div>
   </header>
@@ -186,11 +186,11 @@
         <div class="hero-text-col">
           <div class="hero-kicker-tag">
             <span>✧</span>
-            <span>دليل مهارات الذكاء الاصطناعي</span>
+            <span>Top 100 AI Agent Skills</span>
           </div>
-          <h1 class="hero-headline-sculptural">افهم المهارة قبل أن تستخدمها.</h1>
+          <h1 class="hero-headline-sculptural">Understand the skill before you use it.</h1>
           <p class="hero-body-airy">
-            شرح عربي واضح ومباشر لأشهر <bdi dir="ltr">AI Agent Skills</bdi> المفتوحة، مع إرشادات موثقة لإضافتها إلى محادثتك أو بيئة التطوير.
+            Curated directory of the top 100 open-source <bdi dir="ltr">AI Agent Skills</bdi>, with verified prompts ready to copy for Claude, Cursor, ChatGPT, and Codex.
           </p>
 
           <!-- Search Centerpiece -->
@@ -199,9 +199,9 @@
               type="search" 
               id="search-input" 
               class="search-input-pill" 
-              placeholder="ابحث عن مهارة: مستندات، تصميم، اختبار، Word…" 
+              placeholder="Search skills: word, excel, design, testing, pdf..." 
               autofocus 
-              aria-label="البحث عن مهارة"
+              aria-label="Search skills"
             >
             <span class="search-icon-symbol" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -209,7 +209,7 @@
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
             </span>
-            <button id="clear-search-btn" class="search-clear-symbol" type="button" aria-label="مسح البحث" style="display: none;">
+            <button id="clear-search-btn" class="search-clear-symbol" type="button" aria-label="Clear search" style="display: none;">
               ✕
             </button>
           </div>
@@ -217,8 +217,8 @@
           <!-- In-Page AI Advisor Jump Callout -->
           <div class="hero-advisor-callout">
             <a href="#ai-advisor-section" id="hero-advisor-cta" class="hero-advisor-link">
-              <span class="hero-advisor-badge" id="hero-advisor-badge">✨ أداة ذكية</span>
-              <span id="hero-advisor-cta-text">محتار تبدأ بأي مهارة؟ انزل واستخدم مستشار الذكاء الاصطناعي لاختيار الأنسب لمشروعك</span>
+              <span class="hero-advisor-badge" id="hero-advisor-badge">✨ AI Feature</span>
+              <span id="hero-advisor-cta-text">Not sure which skill to start with? Scroll down to use the AI Skills Advisor</span>
               <span class="hero-advisor-arrow" aria-hidden="true">↓</span>
             </a>
           </div>
