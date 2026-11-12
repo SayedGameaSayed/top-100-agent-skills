@@ -161,6 +161,22 @@ async function runTests() {
     assert(chatRes.data.recommendedSkills.some((s) => s.id === 'docx'));
     console.log('  PASS: POST /api/chat returns AI recommendations');
 
+    // 11. POST /api/advisor routes tasks to Code / AI Project / General specialists
+    const codeAdvisorRes = await postJson('http://127.0.0.1:3456/api/advisor', {
+      message: 'function fetchData() { throw new Error("bug"); }',
+      lang: 'ar'
+    });
+    assert.strictEqual(codeAdvisorRes.statusCode, 200);
+    assert.strictEqual(codeAdvisorRes.data.specialty, 'code');
+
+    const aiAdvisorRes = await postJson('http://127.0.0.1:3456/api/advisor', {
+      message: 'README architecture for multi-agent RAG pipeline and MCP server',
+      lang: 'en'
+    });
+    assert.strictEqual(aiAdvisorRes.statusCode, 200);
+    assert.strictEqual(aiAdvisorRes.data.specialty, 'ai-project');
+    console.log('  PASS: POST /api/advisor classifies Code and AI-Project specialties cleanly');
+
     console.log('\nAll 10 Full-Stack Server tests PASSED! 🚀\n');
   } finally {
     serverProc.kill();

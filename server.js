@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SkillsSearchEngine, normalizeArabic } from './site/js/search.js';
+import { checkRateLimit, runFreeSpecialistAdvisor } from './lib/free-advisor-router.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -189,6 +190,42 @@ app.post('/api/chat', (req, res) => {
     recommendedSkills: topSkills,
     engine: 'local-semantic'
   });
+});
+
+// Multi-Specialist Free AI Advisor Endpoint (Zero Client API Keys Required)
+app.post('/api/advisor', async (req, res) => {
+  const clientIp = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.ip || 'local';
+  const limitCheck = checkRateLimit(clientIp);
+  if (!limitCheck.allowed) {
+    return res.status(429).json({
+      ok: false,
+      reason: 'rate_limited',
+      error: 'Too many requests in a short period. Falling back to instant local search.'
+    });
+  }
+
+  const { message, lang = 'ar', specialty = 'auto' } = req.body || {};
+  if (!message || typeof message !== 'string' || !message.trim()) {
+    return res.status(400).json({ error: 'Message is required' });
+  }
+
+  try {
+    const result = await runFreeSpecialistAdvisor({
+      message: message.trim(),
+      lang: lang === 'en' ? 'en' : 'ar',
+      preferredSpecialty: specialty,
+      skills: skillsData.skills || [],
+      categories: skillsData.categories || [],
+      env: process.env
+    });
+    return res.json(result);
+  } catch (err) {
+    return res.json({
+      ok: false,
+      reason: 'internal_fallback',
+      error: err.message
+    });
+  }
 });
 
 // Zero-Logging Secure AI Relay Proxy (Privacy-Preserving Pass-Through for CORS restrictions)

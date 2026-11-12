@@ -4568,3 +4568,178 @@ html[data-theme="light"] .bot-privacy-trust-body code {
 html[data-theme="light"] .bot-privacy-trust-link {
   color: #047857 !important;
 }
+
+/* ==========================================
+   Keyless Multi-Specialist Bot Enhancements
+   ========================================== */
+.bot-settings-toggle-btn.has-key {
+  color: var(--color-pulse-green);
+  background: rgba(58, 211, 137, 0.12);
+}
+
+.ai-bot-modal.in-settings .bot-specialty-bar {
+  display: none !important;
+}
+
+.bot-specialty-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--color-graphite-hairline);
+  background: rgba(255, 255, 255, 0.015);
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.bot-specialty-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.bot-specialty-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-graphite-hairline);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-ash-gray);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.16s ease;
+}
+
+.bot-specialty-pill:hover {
+  color: var(--color-white);
+  border-color: rgba(146, 129, 247, 0.45);
+  background: rgba(146, 129, 247, 0.08);
+}
+
+.bot-specialty-pill.active {
+  color: #ffffff;
+  background: rgba(146, 129, 247, 0.18);
+  border-color: var(--color-iris-violet);
+  font-weight: 600;
+}
+
+.bot-reply-specialist-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  margin-bottom: 8px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #c4b5fd;
+  background: rgba(146, 129, 247, 0.12);
+  border: 1px solid rgba(146, 129, 247, 0.28);
+}
+
+.bot-specialists-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-graphite-hairline);
+}
+
+.bot-specialist-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bot-sp-name {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.bot-sp-model {
+  font-size: 10.5px;
+  color: var(--color-ash-gray);
+  font-family: 'JetBrains Mono', monospace;
+  align-self: flex-start;
+}
+
+.bot-optional-key-details {
+  border: 1px solid var(--color-graphite-hairline);
+  border-radius: 10px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.bot-optional-key-summary {
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-bone-white);
+  list-style: none;
+  outline: none;
+}
+
+.bot-optional-key-body {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bot-privacy-note {
+  font-size: 10.5px;
+  color: var(--color-ash-gray);
+  margin: 4px 0 0;
+  line-height: 1.45;
+}
+
+html[data-theme="light"] .bot-specialty-bar {
+  background: #f8fafc !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] .bot-specialty-pill {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .bot-specialty-pill:hover {
+  color: #0f172a !important;
+  border-color: #6366f1 !important;
+}
+
+html[data-theme="light"] .bot-specialty-pill.active {
+  background: rgba(99, 102, 241, 0.12) !important;
+  border-color: #6366f1 !important;
+  color: #4338ca !important;
+}
+
+html[data-theme="light"] .bot-reply-specialist-pill {
+  color: #4338ca !important;
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: rgba(99, 102, 241, 0.25) !important;
+}
+
+html[data-theme="light"] .bot-specialists-card,
+html[data-theme="light"] .bot-optional-key-details {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] .bot-sp-name,
+html[data-theme="light"] .bot-optional-key-summary {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .bot-sp-model,
+html[data-theme="light"] .bot-privacy-note {
+  color: #475569 !important;
+}

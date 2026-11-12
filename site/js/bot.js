@@ -1,15 +1,8 @@
 /**
- * bot.js - Universal Multi-Provider AI Skills Advisor
- * Supports: Google Gemini, Anthropic Claude, OpenAI, OpenRouter, Groq, DeepSeek
- * 
- * Features:
- * 1. Multi-Provider Freedom: Choose any AI model (Claude 3.5 Sonnet, GPT-4o, Gemini 1.5/2.0, DeepSeek V3, Llama 3.3).
- * 2. 100% Free Gemini Default: Gemini is highlighted as the 100% free, no-credit-card default for easy testing.
- * 3. 100% Client-Side Privacy: All keys are stored strictly in localStorage and never saved to any database.
- * 4. Auto-Detection: Automatically detects provider type from key prefixes (sk-ant-, sk-or-, gsk_, AIzaSy...).
- * 5. Direct Browser Connection with Zero-Logging Relay Fallback.
- * 6. Code & Documentation Inspection + 1-Click Interactive Skill Recommendation Cards.
- * 7. Offline Local Semantic Search Fallback when no API key is set.
+ * bot.js - Keyless Multi-Specialist AI Skills Advisor
+ * Zero API keys required for visitors: routes each query to the best free specialist
+ * model (Code, AI Architecture/Projects, or General Arabic Discovery) via /api/advisor,
+ * with a rich bilingual specialist local engine fallback and optional personal key override.
  */
 
 import { normalizeArabic } from './search.js';
@@ -17,26 +10,93 @@ import { getLang, formatUrlWithLang } from './i18n.js';
 
 let skillsCatalog = [];
 let categoriesCatalog = [];
+let selectedSpecialty = 'auto';
+
+const SPECIALISTS = {
+  auto: {
+    id: 'auto',
+    icon: '✨',
+    pillAr: 'تلقائي',
+    pillEn: 'Auto',
+    labelAr: 'توجيه ذكي حسب التخصص',
+    labelEn: 'Smart Auto-Router'
+  },
+  code: {
+    id: 'code',
+    icon: '💻',
+    pillAr: 'الكود',
+    pillEn: 'Code',
+    labelAr: 'متخصص الكود والتطوير',
+    labelEn: 'Code Specialist',
+    defaultModelLabel: 'North Mini Code / Nemotron 3 Ultra'
+  },
+  'ai-project': {
+    id: 'ai-project',
+    icon: '🧠',
+    pillAr: 'مشاريع AI',
+    pillEn: 'AI Projects',
+    labelAr: 'متخصص مشاريع AI والمعمارية',
+    labelEn: 'AI & Architecture Specialist',
+    defaultModelLabel: 'Nemotron 3 Ultra / Gemini 2.5 Flash'
+  },
+  general: {
+    id: 'general',
+    icon: '🔎',
+    pillAr: 'بحث عام',
+    pillEn: 'General',
+    labelAr: 'متخصص البحث العام',
+    labelEn: 'General Discovery',
+    defaultModelLabel: 'Gemma 4 31B / Llama 3.3 70B'
+  }
+};
 
 const PROVIDERS = {
+  openrouter: {
+    id: 'openrouter',
+    name: 'OpenRouter (Free Specialist Router)',
+    nameEn: 'OpenRouter (Free Specialist Router)',
+    badgeAr: 'نماذج مجانية متعددة 🆓',
+    badgeEn: 'Free Specialists 🆓',
+    model: 'openrouter/free',
+    placeholder: 'sk-or-v1-...',
+    guideUrl: 'https://openrouter.ai/keys',
+    guideName: 'OpenRouter Keys',
+    stepAr: 'افتح openrouter.ai/keys وأنشئ API Key مجانيًا لتشغيل نماذج :free المتخصصة',
+    stepEn: 'Open openrouter.ai/keys to create a free key for specialist :free models',
+    prefixPattern: /^sk-or/
+  },
   gemini: {
     id: 'gemini',
     name: 'Google Gemini',
-    badgeAr: 'مجاني 100% (مبدئي) 🌟',
-    badgeEn: '100% Free (Default) 🌟',
-    model: 'gemini-1.5-flash',
+    badgeAr: 'Gemini 2.5 Flash 🌟',
+    badgeEn: 'Gemini 2.5 Flash 🌟',
+    model: 'gemini-2.5-flash',
     placeholder: 'AIzaSy...',
     guideUrl: 'https://aistudio.google.com/app/apikey',
     guideName: 'Google AI Studio',
-    stepAr: 'افتح Google AI Studio واختر Create API Key (مجاني تمامًا)',
+    stepAr: 'افتح Google AI Studio واختر Create API Key (مجاني دون بطاقة دفع)',
     stepEn: 'Open Google AI Studio and click Create API Key (100% Free)',
     prefixPattern: /^AIzaSy/
+  },
+  groq: {
+    id: 'groq',
+    name: 'Groq (Llama 3.3 70B)',
+    nameEn: 'Groq (Llama 3.3 70B)',
+    badgeAr: 'سرعة فائقة ومجاني ⚡',
+    badgeEn: 'Ultra Fast & Free ⚡',
+    model: 'llama-3.3-70b-versatile',
+    placeholder: 'gsk_...',
+    guideUrl: 'https://console.groq.com/keys',
+    guideName: 'Groq Console',
+    stepAr: 'افتح console.groq.com لإنشاء مفتاح مجاني فائق السرعة',
+    stepEn: 'Open console.groq.com to get a free ultra-fast Llama 3.3 key',
+    prefixPattern: /^gsk_/
   },
   claude: {
     id: 'claude',
     name: 'Anthropic Claude',
-    badgeAr: 'الأكثر دقةً في البرمجة 🟣',
-    badgeEn: 'Best for Code 🟣',
+    badgeAr: 'Claude 🟣',
+    badgeEn: 'Claude 🟣',
     model: 'claude-3-5-sonnet-20241022',
     placeholder: 'sk-ant-api03-...',
     guideUrl: 'https://console.anthropic.com/settings/keys',
@@ -48,43 +108,15 @@ const PROVIDERS = {
   openai: {
     id: 'openai',
     name: 'OpenAI (ChatGPT)',
-    badgeAr: 'GPT-4o 🟢',
-    badgeEn: 'GPT-4o 🟢',
+    badgeAr: 'GPT-4o mini 🟢',
+    badgeEn: 'GPT-4o mini 🟢',
     model: 'gpt-4o-mini',
     placeholder: 'sk-proj-... / sk-...',
     guideUrl: 'https://platform.openai.com/api-keys',
     guideName: 'OpenAI Platform',
-    stepAr: 'افتح platform.openai.com وأنشئ API Key جديدًا (يبدأ بـ sk-…)',
+    stepAr: 'افتح platform.openai.com وأنشئ API Key (يبدأ بـ sk-…)',
     stepEn: 'Open platform.openai.com and create a key (starts with sk-...)',
     prefixPattern: /^sk-(proj-)?[A-Za-z0-9_-]{20,}/
-  },
-  openrouter: {
-    id: 'openrouter',
-    name: 'OpenRouter (جميع AI Models)',
-    nameEn: 'OpenRouter (All Models)',
-    badgeAr: 'مفتاح شامل 🔴',
-    badgeEn: 'All-in-1 Key 🔴',
-    model: 'anthropic/claude-3.5-sonnet',
-    placeholder: 'sk-or-v1-...',
-    guideUrl: 'https://openrouter.ai/keys',
-    guideName: 'OpenRouter Keys',
-    stepAr: 'افتح openrouter.ai/keys لإنشاء مفتاح موحد يصل إلى جميع AI Models',
-    stepEn: 'Open openrouter.ai/keys to create an all-in-1 key for all models',
-    prefixPattern: /^sk-or/
-  },
-  groq: {
-    id: 'groq',
-    name: 'Groq (فائق السرعة ومجاني)',
-    nameEn: 'Groq (Ultra-Fast & Free)',
-    badgeAr: 'سرعة فائقة ⚡',
-    badgeEn: 'Ultra Fast ⚡',
-    model: 'llama-3.3-70b-versatile',
-    placeholder: 'gsk_...',
-    guideUrl: 'https://console.groq.com/keys',
-    guideName: 'Groq Console',
-    stepAr: 'افتح console.groq.com لإنشاء مفتاح مجاني فائق السرعة',
-    stepEn: 'Open console.groq.com to get a free, ultra-fast Llama 3.3 key',
-    prefixPattern: /^gsk_/
   },
   deepseek: {
     id: 'deepseek',
@@ -109,18 +141,14 @@ function getStoredConfig() {
     const key = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('gemini_api_key') || '';
     let provider = localStorage.getItem(STORAGE_PROVIDER) || '';
     if (!provider && key) {
-      if (key.startsWith('sk-ant')) provider = 'claude';
-      else if (key.startsWith('sk-or')) provider = 'openrouter';
-      else if (key.startsWith('gsk_')) provider = 'groq';
-      else if (key.startsWith('AIzaSy')) provider = 'gemini';
-      else provider = 'gemini';
+      provider = detectProviderFromKey(key) || 'openrouter';
     }
     return {
       key: key.trim(),
-      provider: provider || 'gemini'
+      provider: provider || 'openrouter'
     };
   } catch {
-    return { key: '', provider: 'gemini' };
+    return { key: '', provider: 'openrouter' };
   }
 }
 
@@ -128,15 +156,12 @@ function setStoredConfig(provider, key) {
   try {
     if (key) {
       localStorage.setItem(STORAGE_KEY, key.trim());
-      localStorage.setItem(STORAGE_PROVIDER, provider || 'gemini');
-      // Sync legacy key
+      localStorage.setItem(STORAGE_PROVIDER, provider || 'openrouter');
       if (provider === 'gemini') {
         localStorage.setItem('gemini_api_key', key.trim());
       }
     } else {
-      localStorage.removeItem(STORAGE_KEY);
-      localStorage.removeItem('gemini_api_key');
-      localStorage.removeItem(STORAGE_PROVIDER);
+      removeStoredConfig();
     }
   } catch (err) {
     console.error('Failed to save config in localStorage:', err);
@@ -164,6 +189,27 @@ function detectProviderFromKey(key) {
   return null;
 }
 
+function detectSpecialtyClient(text = '', preferred = 'auto') {
+  if (preferred && preferred !== 'auto' && SPECIALISTS[preferred]) {
+    return preferred;
+  }
+  const raw = String(text || '');
+  const codeSignals =
+    /[{};()=>]{2,}|```|\b(function|const|let|var|import|export|class|def|async|await|return|sql|api|endpoint|bug|debug|error|exception|stack|traceback|test|tdd|jest|pytest|vitest|react|nextjs|next\.js|fastapi|django|spring|rust|golang|docker|kubernetes|git|commit|refactor|typescript|python|node\.?js|prisma|redis)\b|كود|برمج|خطأ|عطل|اختبار|دالة|خادم|قاعدة بيانات|واجهة برمجة|مراجعة الكود/i;
+  const aiSignals =
+    /\b(ai|llm|rag|agent|agents|subagent|mcp|skill\.md|skills|prompt|prompts|embedding|vector|langchain|langgraph|crewai|autogen|openai|claude|gemini|readme|architecture|workflow|pipeline|eval|benchmark|model|fine-?tun)\b|ذكاء اصطناعي|وكيل|وكلاء|معمارية|توثيق|ملف تعريف|مشروع|خطة عمل|أتمتة|هندسة السياق|نماذج/i;
+
+  const hasCode = codeSignals.test(raw);
+  const hasAi = aiSignals.test(raw);
+
+  if (hasAi && (/readme|agent|rag|mcp|llm|langgraph|crewai|architecture|ذكاء اصطناعي|وكيل|معمارية|مشروع/i.test(raw) || !hasCode)) {
+    return 'ai-project';
+  }
+  if (hasCode) return 'code';
+  if (hasAi) return 'ai-project';
+  return 'general';
+}
+
 export function initAiBot(skills = [], categories = []) {
   if (Array.isArray(skills) && skills.length > 0) {
     skillsCatalog = skills;
@@ -172,13 +218,12 @@ export function initAiBot(skills = [], categories = []) {
     categoriesCatalog = categories;
   }
 
-  // Prevent double injection
   if (document.getElementById('ai-bot-trigger')) return;
 
   const isEn = getLang() === 'en';
   const config = getStoredConfig();
   const hasKey = Boolean(config.key);
-  const activeProvider = PROVIDERS[config.provider] || PROVIDERS.gemini;
+  const activeProvider = PROVIDERS[config.provider] || PROVIDERS.openrouter;
 
   const widgetContainer = document.createElement('div');
   widgetContainer.id = 'ai-bot-root';
@@ -192,170 +237,153 @@ export function initAiBot(skills = [], categories = []) {
 
     <!-- Floating Chat Modal / Drawer -->
     <div id="ai-bot-modal" class="ai-bot-modal" aria-hidden="true">
-      
-      <!-- Bot Header (Draggable) -->
+
+      <!-- Minimal Draggable Header -->
       <div class="bot-header" id="bot-header">
         <div class="bot-header-info">
-          <span class="bot-drag-handle" id="bot-drag-handle" title="${isEn ? 'Drag to move window anywhere (Double-click to reset)' : 'اسحب لتحريك النافذة إلى أي موضع (انقر مرتين لإعادتها إلى موضعها الأصلي)'}">⠿</span>
+          <span class="bot-drag-handle" id="bot-drag-handle" title="${isEn ? 'Drag to move window (Double-click to reset)' : 'اسحب لتحريك النافذة (انقر مرتين لإعادة التمركز)'}">⠿</span>
           <img src="assets/logo.png" alt="Assistant Logo" class="bot-avatar-img" width="28" height="28">
           <div>
             <div class="bot-title">${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}</div>
             <div class="bot-subtitle">
               <span class="bot-live-dot ${hasKey ? 'bot-live-gemini' : ''}"></span>
               <span id="bot-engine-label">${
-                hasKey 
-                  ? `${isEn ? (activeProvider.nameEn || activeProvider.name) : activeProvider.name} (${isEn ? 'Active ✨' : 'نشط ✨'})` 
-                  : (isEn ? 'Local Search (Add AI Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل AI)')
+                hasKey
+                  ? `${isEn ? (activeProvider.nameEn || activeProvider.name) : activeProvider.name} (${isEn ? 'Personal Key' : 'مفتاح شخصي'})`
+                  : (isEn ? 'Free Auto-Router • No Key Needed' : 'يعمل مجانًا • توجيه حسب التخصص')
               }</span>
             </div>
           </div>
         </div>
         <div class="bot-header-actions">
-          <button id="bot-api-btn" class="bot-api-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Configure API Key (Claude, OpenAI, Gemini...)' : 'إعداد API Key (Claude أو OpenAI أو Gemini…)'}" type="button">
-            🔑 <span id="bot-api-btn-text">${hasKey ? (isEn ? 'AI Active ✓' : 'AI مفعّل ✓') : (isEn ? 'Set API Key' : 'مفتاح API')}</span>
-          </button>
+          <button id="bot-api-btn" class="bot-icon-btn bot-settings-toggle-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Specialist Mode & Optional Key' : 'التخصصات وإعدادات متقدمة'}" aria-label="${isEn ? 'Settings' : 'الإعدادات'}" type="button">⚙️</button>
           <button id="bot-expand-btn" class="bot-icon-btn" title="${isEn ? 'Maximize / Restore Window' : 'تكبير النافذة / استعادة الحجم'}" aria-label="${isEn ? 'Maximize' : 'تكبير النافذة'}" type="button">⤢</button>
           <button id="bot-close-btn" class="bot-icon-btn" title="${isEn ? 'Close Chat' : 'إغلاق المحادثة'}" aria-label="${isEn ? 'Close' : 'إغلاق'}" type="button">✕</button>
         </div>
       </div>
 
-      <!-- Expandable API Key Settings Drawer -->
+      <!-- Compact Specialist Mode Strip -->
+      <div class="bot-specialty-bar" id="bot-specialty-bar" role="tablist" aria-label="${isEn ? 'AI Specialist Mode' : 'تخصص المساعد'}">
+        ${Object.values(SPECIALISTS)
+          .map(
+            (sp) => `
+          <button type="button" class="bot-specialty-pill ${sp.id === selectedSpecialty ? 'active' : ''}" data-specialty="${sp.id}" title="${isEn ? sp.labelEn : sp.labelAr}">
+            <span>${sp.icon}</span>
+            <span>${isEn ? sp.pillEn : sp.pillAr}</span>
+          </button>`
+          )
+          .join('')}
+      </div>
+
+      <!-- Clean Optional Settings Drawer -->
       <div id="bot-settings-drawer" class="bot-settings-drawer" style="display: none;">
         <div class="bot-settings-header">
-          <span class="bot-settings-title">🔑 ${isEn ? 'Connect Any AI Provider (Claude, OpenAI, Gemini...)' : 'ربط مزوّد AI'}</span>
-          <span class="bot-settings-badge" id="bot-settings-badge">${isEn ? activeProvider.badgeEn : activeProvider.badgeAr}</span>
+          <span class="bot-settings-title">⚡ ${isEn ? 'Free Specialist Models' : 'النماذج المجانية حسب التخصص'}</span>
+          <span class="bot-settings-badge">${isEn ? 'No Key Needed' : 'دون مفتاح'}</span>
         </div>
 
-        <!-- Explanatory Callout: Why Gemini is free default but any key is allowed -->
-        <div class="bot-free-gemini-callout">
-          ${isEn 
-            ? '💡 <strong>Why is Google Gemini the default?</strong> We defaulted to Gemini because it is <strong>100% free with no credit card required</strong> so anyone can test the assistant instantly. <strong>However, you have full freedom:</strong> Select and securely use your personal API key from Claude, OpenAI, DeepSeek, Groq, or OpenRouter with zero server logging!'
-            : '💡 <strong>لماذا نبدأ بـ <bdi dir="ltr">Google Gemini</bdi>؟</strong> اخترناه خيارًا مبدئيًا لأنه <strong>مجاني بالكامل ودون بطاقة دفع</strong>، ليتمكن الجميع من تجربة المساعد فورًا؛ ومع ذلك، تملك حرية الاختيار لاستخدام <bdi dir="ltr">API Key</bdi> الشخصي من <bdi dir="ltr">Claude</bdi> أو <bdi dir="ltr">OpenAI</bdi> أو <bdi dir="ltr">DeepSeek</bdi> أو <bdi dir="ltr">Groq</bdi> أو <bdi dir="ltr">OpenRouter</bdi> بأمان وخصوصية تامّين.'}
-        </div>
-
-        <!-- Provider Selector -->
-        <div class="bot-provider-select-row">
-          <div class="bot-provider-label">
-            <span>${isEn ? 'Select AI Provider:' : 'اختر مزوّد AI:'}</span>
-            <span style="font-size: 10px; color: var(--color-iris-violet); font-weight: normal;">${isEn ? '(Auto-detects on paste)' : '(يُتعرّف على المزوّد تلقائيًا عند اللصق)'}</span>
+        <div class="bot-specialists-card">
+          <div class="bot-specialist-item">
+            <span class="bot-sp-name">💻 ${isEn ? 'Code & Debugging' : 'الكود والتطوير'}</span>
+            <span class="bot-sp-model" dir="ltr">North Mini Code • Nemotron 3 Ultra</span>
           </div>
-          <select id="bot-provider-select" class="bot-provider-select">
-            <option value="gemini" ${config.provider === 'gemini' ? 'selected' : ''}>🌟 Google Gemini (${isEn ? '100% Free - Default' : 'مجاني 100% - مبدئي'})</option>
-            <option value="claude" ${config.provider === 'claude' ? 'selected' : ''}>🟣 Anthropic Claude (Claude 3.5 Sonnet)</option>
-            <option value="openai" ${config.provider === 'openai' ? 'selected' : ''}>🟢 OpenAI (ChatGPT - GPT-4o)</option>
-            <option value="openrouter" ${config.provider === 'openrouter' ? 'selected' : ''}>🔴 OpenRouter (${isEn ? 'All Models - 1 Key' : 'جميع AI Models بمفتاح واحد'})</option>
-            <option value="groq" ${config.provider === 'groq' ? 'selected' : ''}>⚡ Groq (${isEn ? 'Llama 3.3 70B - Free & Fast' : 'Llama 3.3 70B - مجاني وفائق السرعة'})</option>
-            <option value="deepseek" ${config.provider === 'deepseek' ? 'selected' : ''}>🐋 DeepSeek (DeepSeek V3 / Coder)</option>
-          </select>
-        </div>
-
-        <!-- Dynamic Step Guide Box -->
-        <div class="bot-api-steps-box" id="bot-dynamic-steps-box">
-          <div class="bot-api-step">
-            <span class="bot-step-num">1</span>
-            <span id="bot-step-guide-text">${isEn ? activeProvider.stepEn : activeProvider.stepAr}</span>
+          <div class="bot-specialist-item">
+            <span class="bot-sp-name">🧠 ${isEn ? 'AI Projects & README' : 'مشاريع <bdi dir="ltr">AI</bdi> والمعمارية'}</span>
+            <span class="bot-sp-model" dir="ltr">Nemotron 3 Ultra • Gemini 2.5 Flash</span>
           </div>
-          <a href="${activeProvider.guideUrl}" target="_blank" rel="noopener noreferrer" class="bot-api-studio-link" id="bot-provider-link" dir="ltr">
-            🔗 ${activeProvider.guideName} ↗
-          </a>
-          <div class="bot-api-step">
-            <span class="bot-api-step-num">2</span>
-            <span>${isEn ? 'Paste your API key below and click <strong>Save & Activate</strong>:' : 'الصق <bdi dir="ltr">API Key</bdi> بالأسفل واضغط <strong>حفظ وتفعيل</strong>:'}</span>
+          <div class="bot-specialist-item">
+            <span class="bot-sp-name">🔎 ${isEn ? 'General Discovery' : 'البحث العام والشرح العربي'}</span>
+            <span class="bot-sp-model" dir="ltr">Gemma 4 31B • Llama 3.3 70B</span>
           </div>
         </div>
 
-        <!-- Key Input Row -->
-        <div class="bot-api-input-wrap" dir="ltr">
-          <input 
-            type="password" 
-            id="bot-api-key-input" 
-            dir="ltr"
-            placeholder="${activeProvider.placeholder}" 
-            value="${escapeAttr(config.key)}"
-            autocomplete="off"
-            aria-label="API Key"
-          >
-          <button type="button" id="bot-toggle-key-visibility" class="bot-key-vis-btn" title="${isEn ? 'Show/Hide' : 'إظهار / إخفاء'}">👁️</button>
-        </div>
+        <details class="bot-optional-key-details" ${hasKey ? 'open' : ''}>
+          <summary class="bot-optional-key-summary">
+            🔑 ${isEn ? 'Use personal API key (Optional)' : 'استخدام مفتاح API شخصي (اختياري للمطورين)'}
+          </summary>
 
-        <!-- Status Message -->
-        <div id="bot-settings-status" class="bot-settings-status" style="display: none;"></div>
-
-        <!-- Action Buttons -->
-        <div class="bot-api-actions-row">
-          <button type="button" id="bot-save-key-btn" class="bot-save-btn">${isEn ? 'Save & Activate ✨' : 'حفظ وتفعيل ✨'}</button>
-          <button type="button" id="bot-clear-key-btn" class="bot-clear-btn" style="${hasKey ? '' : 'display: none;'}">${isEn ? 'Remove Key' : 'حذف المفتاح'}</button>
-          <button type="button" id="bot-cancel-settings-btn" class="bot-cancel-btn">${isEn ? 'Close' : 'إغلاق'}</button>
-        </div>
-
-        <!-- Transparent Privacy & Security Guarantee -->
-        <div class="bot-privacy-trust-box">
-          <div class="bot-privacy-trust-header">
-            <span>🛡️</span>
-            <span>${isEn 
-              ? '100% Personal Privacy — Nobody Can See Your API Key' 
-              : 'أمان وخصوصية تامة: مفتاحك محفوظ لديك ولا يطّلع عليه أحد'}</span>
-          </div>
-          <div class="bot-privacy-trust-body">
-            <div>
-              <strong>${isEn ? 'Where is it saved?' : 'أين يُحفظ المفتاح؟'}</strong> 
-              ${isEn 
-                ? 'Strictly inside your browser\'s local sandbox (<code>localStorage</code>) on your own device, like a local password.' 
-                : 'يُحفظ داخل مساحة التخزين المحلية في متصفحك فقط (<code dir="ltr">localStorage</code>) على جهازك، على نحو يشبه حفظ كلمة مرور محلية.'}
+          <div class="bot-optional-key-body">
+            <div class="bot-provider-select-row">
+              <div class="bot-provider-label">
+                <span>${isEn ? 'Provider:' : 'المزوّد:'}</span>
+                <span class="bot-settings-badge" id="bot-settings-badge">${isEn ? activeProvider.badgeEn : activeProvider.badgeAr}</span>
+              </div>
+              <select id="bot-provider-select" class="bot-provider-select">
+                <option value="openrouter" ${config.provider === 'openrouter' ? 'selected' : ''}>🆓 OpenRouter (${isEn ? 'Free Models' : 'نماذج مجانية متخصصة'})</option>
+                <option value="gemini" ${config.provider === 'gemini' ? 'selected' : ''}>🌟 Google Gemini (Gemini 2.5 Flash)</option>
+                <option value="groq" ${config.provider === 'groq' ? 'selected' : ''}>⚡ Groq (Llama 3.3 70B)</option>
+                <option value="claude" ${config.provider === 'claude' ? 'selected' : ''}>🟣 Anthropic Claude</option>
+                <option value="openai" ${config.provider === 'openai' ? 'selected' : ''}>🟢 OpenAI (GPT-4o mini)</option>
+                <option value="deepseek" ${config.provider === 'deepseek' ? 'selected' : ''}>🐋 DeepSeek</option>
+              </select>
             </div>
-            <div>
-              <strong>${isEn ? 'Why can no one see it?' : 'لماذا لا يراه أحد؟'}</strong> 
-              ${isEn 
-                ? 'The site runs on pure client-side architecture. Encrypted requests go directly from your browser to AI servers. We have zero databases, zero key tracking, and zero server logging.' 
-                : 'يعمل الموقع بالكامل داخل متصفحك (<bdi dir="ltr">Client-Side</bdi>)، وتُرسل الطلبات عبر اتصال مشفّر (<bdi dir="ltr">HTTPS</bdi>) مباشرةً إلى مزوّد <bdi dir="ltr">AI</bdi>، دون أي قاعدة بيانات لحفظ المفاتيح أو خوادم تحتفظ بسجلّها.'}
+
+            <div class="bot-api-steps-box" id="bot-dynamic-steps-box">
+              <div class="bot-api-step">
+                <span class="bot-step-num">1</span>
+                <span id="bot-step-guide-text">${isEn ? activeProvider.stepEn : activeProvider.stepAr}</span>
+              </div>
+              <a href="${activeProvider.guideUrl}" target="_blank" rel="noopener noreferrer" class="bot-api-studio-link" id="bot-provider-link" dir="ltr">
+                🔗 ${activeProvider.guideName} ↗
+              </a>
             </div>
-            <div>
-              <strong>${isEn ? 'How to verify?' : 'كيف تتحقق بنفسك؟'}</strong> 
-              ${isEn 
-                ? 'This project is 100% open-source on <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" class="bot-privacy-trust-link">GitHub</a>. You can inspect the code anytime, and remove your key with 1 click.' 
-                : 'المشروع مفتوح المصدر بالكامل على <a href="https://github.com/SayedGameaSayed/top-100-agent-skills" target="_blank" class="bot-privacy-trust-link"><bdi dir="ltr">GitHub</bdi></a>؛ يمكنك مراجعة الشفرة المصدرية في أي وقت، وحذف المفتاح بنقرة واحدة.'}
+
+            <div class="bot-api-input-wrap" dir="ltr">
+              <input
+                type="password"
+                id="bot-api-key-input"
+                dir="ltr"
+                placeholder="${activeProvider.placeholder}"
+                value="${escapeAttr(config.key)}"
+                autocomplete="off"
+                aria-label="API Key"
+              >
+              <button type="button" id="bot-toggle-key-visibility" class="bot-key-vis-btn" title="${isEn ? 'Show/Hide' : 'إظهار / إخفاء'}">👁️</button>
             </div>
+
+            <div id="bot-settings-status" class="bot-settings-status" style="display: none;"></div>
+
+            <div class="bot-api-actions-row">
+              <button type="button" id="bot-save-key-btn" class="bot-save-btn">${isEn ? 'Save Key' : 'حفظ المفتاح'}</button>
+              <button type="button" id="bot-clear-key-btn" class="bot-clear-btn" style="${hasKey ? '' : 'display: none;'}">${isEn ? 'Use Default Free Mode' : 'العودة للوضع المجاني'}</button>
+              <button type="button" id="bot-cancel-settings-btn" class="bot-cancel-btn">${isEn ? 'Done' : 'تم'}</button>
+            </div>
+
+            <p class="bot-privacy-note">
+              🛡️ ${isEn ? 'Optional keys stay strictly in your browser localStorage.' : 'إذا أدخلت مفتاحًا شخصيًا، يُحفظ محليًا في متصفحك (<code dir="ltr">localStorage</code>) فقط.'}
+            </p>
           </div>
+        </details>
+
+        <div style="margin-top: 10px;" class="bot-settings-close-footer">
+          <button type="button" id="bot-close-drawer-btn" class="bot-cancel-btn" style="width: 100%;">${isEn ? 'Back to Chat' : 'العودة إلى المحادثة'}</button>
         </div>
       </div>
 
       <!-- Chat Messages Container -->
       <div id="bot-messages-container" class="bot-messages">
-        
-        <!-- Welcome Message -->
+
+        <!-- Clean Welcome Message -->
         <div class="bot-msg bot-msg-assistant">
           <div class="bot-msg-bubble">
-            ${isEn 
-              ? '👋 Hello! I am your <strong>Universal AI Skills Advisor</strong>.<br><br>💡 <strong>Feel free to paste your code, project README, or architecture description:</strong><br>I will analyze your stack and recommend the exact skills you need — both from our <strong>Top 100 Verified Catalog</strong> and <strong>from the broader AI ecosystem</strong>. For every skill, I will explain what it does, why it fits your project, and how to use it!' 
-              : '👋 أهلًا بك! أنا <strong>مستشارك الذكي لـ <bdi dir="ltr">AI Agent Skills</bdi></strong>.<br><br>💡 <strong>يمكنك لصق فكرة مشروعك، أو مقطع من الكود، أو ملف <bdi dir="ltr">README</bdi> كاملًا:</strong><br>سأحلّل تقنيات عملك وأرشّح لك أنسب المهارات بدقة، سواءً من <strong>أشهر 100 مهارة في الدليل</strong> أو من <strong>الأدوات المفتوحة خارج الدليل</strong>، مع توضيح دور كل مهارة وكيفية توظيفها عمليًا في مشروعك.'}
+            ${isEn
+              ? '👋 Hi! I’m your <strong>AI Skills Advisor</strong> — ready to help with zero sign-up or API keys.<br><br>Describe your goal, paste code, or drop a <code>README</code>, and I’ll automatically route it to the best free specialist model to match the right skills for you.'
+              : '👋 أهلًا بك! أنا <strong>مساعد المهارات الذكي</strong> — جاهز للبحث فورًا دون أي مفتاح أو تسجيل.<br><br>اكتب احتياجك، أو ألصق مقطع كود، أو ملف <bdi dir="ltr">README</bdi>، وسأوجّه طلبك تلقائيًا إلى أنسب نموذج مجاني حسب التخصص (الكود، مشاريع <bdi dir="ltr">AI</bdi>، أو البحث العام) لترشيح أفضل المهارات.'}
           </div>
         </div>
 
-        <!-- Promo Banner if NO Key is set -->
-        <div id="bot-welcome-promo" class="bot-welcome-promo" style="${hasKey ? 'display: none;' : ''}">
-          <div class="bot-promo-title">✨ ${isEn ? 'Unlock Conversational AI Intelligence:' : 'تفعيل التحليل الذكي الكامل عبر <bdi dir="ltr">AI Models</bdi>:'}</div>
-          <p class="bot-promo-desc">
-            ${isEn 
-              ? 'Currently in offline local search mode. Connect your key (Try Google Gemini for 100% free, or use Claude, OpenAI, DeepSeek, or Groq) to unlock deep code & documentation analysis!' 
-              : 'يعمل المساعد حاليًا بالبحث المحلي السريع. اربط مفتاحك (جرّب <bdi dir="ltr">Google Gemini</bdi> مجانًا دون بطاقة دفع، أو استخدم <bdi dir="ltr">Claude</bdi> أو <bdi dir="ltr">ChatGPT</bdi> أو <bdi dir="ltr">DeepSeek</bdi> أو <bdi dir="ltr">Groq</bdi>) لتحليل كودك وترشيح مهارات متخصصة.'}
-          </p>
-          <button type="button" id="bot-open-setup-from-banner" class="bot-promo-btn">
-            🔑 ${isEn ? 'Choose Provider & Enter Key (1-Min)' : 'اختيار المزوّد وإدخال المفتاح (في دقيقة)'}
-          </button>
-        </div>
-
-        <!-- Quick Suggestion Chips -->
+        <!-- Clean Quick Suggestion Chips -->
         <div class="bot-chips-container" id="bot-quick-chips">
           ${isEn ? `
-            <button class="bot-chip" data-query="Analyze my project code and recommend matching agent skills">💻 Analyze my Code & Stack</button>
-            <button class="bot-chip" data-query="Suggest skills for my project README and architecture">📄 Suggest for README / Docs</button>
-            <button class="bot-chip" data-query="What are the best agent skills and tools beyond the top 100 directory?">🌐 Discover Tools beyond Top 100</button>
-            <button class="bot-chip" data-query="Subagent driven development and automated task planning">⚡ Auto Task Planning & Subagents</button>
+            <button class="bot-chip" data-query="Analyze my code for bugs, tests, and code-quality skills">💻 Code & Debugging Skills</button>
+            <button class="bot-chip" data-query="Recommend AI agent, MCP, and architecture skills for my README/project">🧠 AI Project & README</button>
+            <button class="bot-chip" data-query="Skills for Word, Excel, PDF, and PowerPoint automation">📄 Docs & Spreadsheets</button>
+            <button class="bot-chip" data-query="Planning, specs, and subagent workflow automation">⚡ Task Planning</button>
           ` : `
-            <button class="bot-chip" data-query="حلّل كود مشروعي واقترح أنسب AI Agent Skills المناسبة له">💻 تحليل الكود واقتراح مهارات</button>
-            <button class="bot-chip" data-query="اقترح مهارات مناسبة لملف README وتوثيق مشروعي">📄 اقتراحات لملف <bdi dir="ltr">README</bdi></button>
-            <button class="bot-chip" data-query="ما أفضل AI Agent Skills والأدوات المفتوحة من خارج الدليل؟">🌐 مهارات من خارج الدليل</button>
-            <button class="bot-chip" data-query="تقسيم المهام وأتمتة العمل عبر AI Agents">⚡ تقسيم المهام والأتمتة</button>
+            <button class="bot-chip" data-query="حلّل كودي واقترح مهارات تصحيح الأخطاء والاختبار وجودة الكود">💻 تحليل الكود والأخطاء</button>
+            <button class="bot-chip" data-query="اقترح مهارات AI Agents وMCP ومعمارية مشروعي أو ملف README">🧠 مشروع <bdi dir="ltr">AI</bdi> أو <bdi dir="ltr">README</bdi></button>
+            <button class="bot-chip" data-query="أريد مهارات لأتمتة ملفات Word وExcel وPDF والعروض التقديمية">📄 مستندات وجداول</button>
+            <button class="bot-chip" data-query="أفضل مهارات تخطيط المشاريع وتقسيم المهام للوكلاء">⚡ تخطيط وأتمتة المهام</button>
           `}
         </div>
       </div>
@@ -363,16 +391,16 @@ export function initAiBot(skills = [], categories = []) {
       <!-- Floating Scroll to Bottom Button -->
       <button id="bot-scroll-bottom-btn" class="bot-scroll-bottom-btn" type="button" aria-label="${isEn ? 'Scroll down to latest' : 'التمرير إلى أسفل المحادثة'}" title="${isEn ? 'Scroll to latest messages' : 'الانتقال إلى أحدث الرسائل'}">
         <span class="bot-scroll-icon">↓</span>
-        <span class="bot-scroll-text">${isEn ? 'Latest Messages' : 'أحدث الرسائل'}</span>
+        <span class="bot-scroll-text">${isEn ? 'Latest' : 'الأسفل'}</span>
       </button>
 
       <!-- Chat Input Area -->
       <form id="bot-input-form" class="bot-input-form">
-        <textarea 
-          id="bot-input-text" 
-          class="bot-input-field" 
+        <textarea
+          id="bot-input-text"
+          class="bot-input-field"
           rows="1"
-          placeholder="${isEn ? 'Paste code, project docs, or describe your goal...' : 'ألصق كودًا أو ملف README، أو اسأل عن مهارة لمشروعك…'}"
+          placeholder="${isEn ? 'Ask anything, paste code, or drop a README...' : 'اسأل عن مهارة، أو ألصق كودًا أو ملف README…'}"
           aria-label="${isEn ? 'Message' : 'الرسالة'}"
           required
         ></textarea>
@@ -398,6 +426,7 @@ function attachBotEventListeners() {
   const form = document.getElementById('bot-input-form');
   const input = document.getElementById('bot-input-text');
   const chipsContainer = document.getElementById('bot-quick-chips');
+  const specialtyBar = document.getElementById('bot-specialty-bar');
   const messagesContainer = document.getElementById('bot-messages-container');
   const scrollBottomBtn = document.getElementById('bot-scroll-bottom-btn');
 
@@ -407,15 +436,14 @@ function attachBotEventListeners() {
   const saveKeyBtn = document.getElementById('bot-save-key-btn');
   const clearKeyBtn = document.getElementById('bot-clear-key-btn');
   const cancelSettingsBtn = document.getElementById('bot-cancel-settings-btn');
+  const closeDrawerBtn = document.getElementById('bot-close-drawer-btn');
   const apiKeyInput = document.getElementById('bot-api-key-input');
   const toggleVisBtn = document.getElementById('bot-toggle-key-visibility');
-  const bannerSetupBtn = document.getElementById('bot-open-setup-from-banner');
   const badgeEl = document.getElementById('bot-settings-badge');
   const stepTextEl = document.getElementById('bot-step-guide-text');
   const linkEl = document.getElementById('bot-provider-link');
   const isEn = getLang() === 'en';
 
-  // Helper: Smooth scroll to bottom & manage scroll button visibility
   function scrollToBottom(smooth = true) {
     if (!messagesContainer) return;
     messagesContainer.scrollTo({
@@ -427,7 +455,6 @@ function attachBotEventListeners() {
     }
   }
 
-  // Check scroll position to display the floating down button
   function checkScrollPosition() {
     if (!messagesContainer || !scrollBottomBtn) return;
     const distanceToBottom = messagesContainer.scrollHeight - messagesContainer.scrollTop - messagesContainer.clientHeight;
@@ -441,14 +468,24 @@ function attachBotEventListeners() {
   if (messagesContainer) {
     messagesContainer.addEventListener('scroll', checkScrollPosition, { passive: true });
   }
-
   if (scrollBottomBtn) {
-    scrollBottomBtn.addEventListener('click', () => {
-      scrollToBottom(true);
+    scrollBottomBtn.addEventListener('click', () => scrollToBottom(true));
+  }
+
+  // Specialty Bar Selection
+  if (specialtyBar) {
+    specialtyBar.addEventListener('click', (e) => {
+      const pill = e.target.closest('.bot-specialty-pill');
+      if (!pill) return;
+      const next = pill.getAttribute('data-specialty') || 'auto';
+      selectedSpecialty = next;
+      specialtyBar.querySelectorAll('.bot-specialty-pill').forEach((btn) => {
+        btn.classList.toggle('active', btn.getAttribute('data-specialty') === next);
+      });
     });
   }
 
-  // Toggle modal open/close
+  // Open / Close Modal
   trigger.addEventListener('click', () => {
     const isOpen = modal.classList.contains('active');
     if (isOpen) {
@@ -458,74 +495,59 @@ function attachBotEventListeners() {
       modal.classList.add('active');
       modal.setAttribute('aria-hidden', 'false');
       input.focus();
-      setTimeout(() => {
-        checkScrollPosition();
-      }, 150);
+      setTimeout(checkScrollPosition, 150);
     }
   });
 
-  // Expand / Maximize modal toggle
+  // Expand / Restore
   if (expandBtn) {
     expandBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const isExpanded = modal.classList.toggle('expanded');
       expandBtn.textContent = isExpanded ? '🗗' : '⤢';
-      expandBtn.title = isExpanded 
-        ? (isEn ? 'Restore Window Size' : 'استعادة الحجم الأصلي') 
+      expandBtn.title = isExpanded
+        ? (isEn ? 'Restore Window Size' : 'استعادة الحجم الأصلي')
         : (isEn ? 'Maximize Window' : 'تكبير النافذة');
-      
-      if (modal.style.top) {
-        clampModalInViewport();
-      }
+      if (modal.style.top) clampModalInViewport();
       setTimeout(checkScrollPosition, 200);
     });
   }
 
-  // Keep modal bounded within viewport boundaries
   function clampModalInViewport() {
     const rect = modal.getBoundingClientRect();
-    const winWidth = window.innerWidth;
-    const winHeight = window.innerHeight;
-    const maxLeft = Math.max(8, winWidth - rect.width - 8);
-    const maxTop = Math.max(8, winHeight - rect.height - 8);
-    const clampedLeft = Math.max(8, Math.min(maxLeft, rect.left));
-    const clampedTop = Math.max(8, Math.min(maxTop, rect.top));
-    modal.style.left = `${clampedLeft}px`;
-    modal.style.top = `${clampedTop}px`;
+    const maxLeft = Math.max(8, window.innerWidth - rect.width - 8);
+    const maxTop = Math.max(8, window.innerHeight - rect.height - 8);
+    modal.style.left = `${Math.max(8, Math.min(maxLeft, rect.left))}px`;
+    modal.style.top = `${Math.max(8, Math.min(maxTop, rect.top))}px`;
     modal.style.bottom = 'auto';
     modal.style.right = 'auto';
   }
 
-  // 1. Draggable Modal Window Implementation
+  // Draggable Modal Window
   function setupModalDraggable() {
     let isDragging = false;
-    let startX = 0, startY = 0;
-    let initialLeft = 0, initialTop = 0;
+    let startX = 0;
+    let startY = 0;
+    let initialLeft = 0;
+    let initialTop = 0;
 
     const onPointerDown = (e) => {
-      // Don't drag when interacting with buttons, inputs, links, or select
       if (e.target.closest('button') || e.target.closest('input') || e.target.closest('a') || e.target.closest('select')) {
         return;
       }
-
       isDragging = true;
       modal.classList.add('is-dragging');
-
       const rect = modal.getBoundingClientRect();
       initialLeft = rect.left;
       initialTop = rect.top;
-
-      // Switch from bottom/left fixed coordinates to explicit px top/left
       modal.style.top = `${initialTop}px`;
       modal.style.left = `${initialLeft}px`;
       modal.style.bottom = 'auto';
       modal.style.right = 'auto';
       modal.style.transform = 'none';
 
-      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
-      startX = clientX;
-      startY = clientY;
+      startX = e.clientX !== undefined ? e.clientX : e.touches?.[0]?.clientX;
+      startY = e.clientY !== undefined ? e.clientY : e.touches?.[0]?.clientY;
 
       document.addEventListener('mousemove', onPointerMove, { passive: false });
       document.addEventListener('mouseup', onPointerUp);
@@ -536,22 +558,12 @@ function attachBotEventListeners() {
     const onPointerMove = (e) => {
       if (!isDragging) return;
       if (e.cancelable) e.preventDefault();
-
-      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
+      const clientX = e.clientX !== undefined ? e.clientX : e.touches?.[0]?.clientX;
+      const clientY = e.clientY !== undefined ? e.clientY : e.touches?.[0]?.clientY;
       if (clientX === undefined || clientY === undefined) return;
 
-      const dx = clientX - startX;
-      const dy = clientY - startY;
-
-      const modalWidth = modal.offsetWidth;
-      const modalHeight = modal.offsetHeight;
-      const winWidth = window.innerWidth;
-      const winHeight = window.innerHeight;
-
-      const newLeft = Math.max(8, Math.min(winWidth - modalWidth - 8, initialLeft + dx));
-      const newTop = Math.max(8, Math.min(winHeight - modalHeight - 8, initialTop + dy));
-
+      const newLeft = Math.max(8, Math.min(window.innerWidth - modal.offsetWidth - 8, initialLeft + (clientX - startX)));
+      const newTop = Math.max(8, Math.min(window.innerHeight - modal.offsetHeight - 8, initialTop + (clientY - startY)));
       modal.style.left = `${newLeft}px`;
       modal.style.top = `${newTop}px`;
     };
@@ -569,48 +581,39 @@ function attachBotEventListeners() {
     if (header) {
       header.addEventListener('mousedown', onPointerDown);
       header.addEventListener('touchstart', onPointerDown, { passive: true });
-
-      // Double click header to reset to original default corner position
       header.addEventListener('dblclick', (e) => {
         if (e.target.closest('button')) return;
-        resetModalPosition();
+        modal.style.left = '';
+        modal.style.top = '';
+        modal.style.bottom = '';
+        modal.style.right = '';
+        modal.style.transform = '';
+        modal.classList.remove('expanded');
+        if (expandBtn) expandBtn.textContent = '⤢';
       });
     }
 
-    function resetModalPosition() {
-      modal.style.left = '';
-      modal.style.top = '';
-      modal.style.bottom = '';
-      modal.style.right = '';
-      modal.style.transform = '';
-      modal.classList.remove('expanded');
-      if (expandBtn) expandBtn.textContent = '⤢';
-    }
-
     window.addEventListener('resize', () => {
-      if (modal.style.top) {
-        clampModalInViewport();
-      }
+      if (modal.style.top) clampModalInViewport();
     });
   }
 
   setupModalDraggable();
 
-  // 2. Draggable Trigger Pill Implementation
+  // Draggable Trigger Pill
   function setupTriggerDraggable() {
     let isDragging = false;
     let hasMoved = false;
-    let startX = 0, startY = 0;
-    let initialLeft = 0, initialTop = 0;
+    let startX = 0;
+    let startY = 0;
+    let initialLeft = 0;
+    let initialTop = 0;
 
     const onStart = (e) => {
       isDragging = true;
       hasMoved = false;
-      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
-      startX = clientX;
-      startY = clientY;
-
+      startX = e.clientX !== undefined ? e.clientX : e.touches?.[0]?.clientX;
+      startY = e.clientY !== undefined ? e.clientY : e.touches?.[0]?.clientY;
       const rect = trigger.getBoundingClientRect();
       initialLeft = rect.left;
       initialTop = rect.top;
@@ -623,20 +626,17 @@ function attachBotEventListeners() {
 
     const onMove = (e) => {
       if (!isDragging) return;
-      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
+      const clientX = e.clientX !== undefined ? e.clientX : e.touches?.[0]?.clientX;
+      const clientY = e.clientY !== undefined ? e.clientY : e.touches?.[0]?.clientY;
       if (clientX === undefined || clientY === undefined) return;
-
       const dx = clientX - startX;
       const dy = clientY - startY;
 
       if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
         hasMoved = true;
         if (e.cancelable) e.preventDefault();
-        const winWidth = window.innerWidth;
-        const winHeight = window.innerHeight;
-        const newLeft = Math.max(10, Math.min(winWidth - trigger.offsetWidth - 10, initialLeft + dx));
-        const newTop = Math.max(10, Math.min(winHeight - trigger.offsetHeight - 10, initialTop + dy));
+        const newLeft = Math.max(10, Math.min(window.innerWidth - trigger.offsetWidth - 10, initialLeft + dx));
+        const newTop = Math.max(10, Math.min(window.innerHeight - trigger.offsetHeight - 10, initialTop + dy));
         trigger.style.left = `${newLeft}px`;
         trigger.style.top = `${newTop}px`;
         trigger.style.bottom = 'auto';
@@ -655,14 +655,17 @@ function attachBotEventListeners() {
 
     trigger.addEventListener('mousedown', onStart);
     trigger.addEventListener('touchstart', onStart, { passive: true });
-
-    trigger.addEventListener('click', (e) => {
-      if (hasMoved) {
-        e.stopImmediatePropagation();
-        e.preventDefault();
-        hasMoved = false;
-      }
-    }, true);
+    trigger.addEventListener(
+      'click',
+      (e) => {
+        if (hasMoved) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          hasMoved = false;
+        }
+      },
+      true
+    );
   }
 
   setupTriggerDraggable();
@@ -672,14 +675,12 @@ function attachBotEventListeners() {
     modal.setAttribute('aria-hidden', 'true');
   });
 
-  // Toggle Settings Drawer
   function toggleSettingsDrawer(show) {
     const isVisible = settingsDrawer.style.display !== 'none';
     const nextState = show !== undefined ? show : !isVisible;
     settingsDrawer.style.display = nextState ? 'block' : 'none';
     if (nextState) {
       modal.classList.add('in-settings');
-      apiKeyInput.focus();
     } else {
       modal.classList.remove('in-settings');
       setTimeout(checkScrollPosition, 100);
@@ -687,15 +688,11 @@ function attachBotEventListeners() {
   }
 
   apiBtn.addEventListener('click', () => toggleSettingsDrawer());
-  cancelSettingsBtn.addEventListener('click', () => toggleSettingsDrawer(false));
-  if (bannerSetupBtn) {
-    bannerSetupBtn.addEventListener('click', () => toggleSettingsDrawer(true));
-  }
+  if (cancelSettingsBtn) cancelSettingsBtn.addEventListener('click', () => toggleSettingsDrawer(false));
+  if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', () => toggleSettingsDrawer(false));
 
-  // Update step guide based on selected provider
   function updateProviderGuide(providerId) {
-    const p = PROVIDERS[providerId] || PROVIDERS.gemini;
-    const isEn = getLang() === 'en';
+    const p = PROVIDERS[providerId] || PROVIDERS.openrouter;
     if (badgeEl) badgeEl.textContent = isEn ? p.badgeEn : p.badgeAr;
     if (stepTextEl) stepTextEl.textContent = isEn ? p.stepEn : p.stepAr;
     if (linkEl) {
@@ -707,34 +704,27 @@ function attachBotEventListeners() {
     }
   }
 
-  providerSelect.addEventListener('change', (e) => {
-    updateProviderGuide(e.target.value);
-  });
+  providerSelect.addEventListener('change', (e) => updateProviderGuide(e.target.value));
 
-  // Auto-detection when pasting or typing key
   apiKeyInput.addEventListener('input', (e) => {
-    const val = e.target.value;
-    const detected = detectProviderFromKey(val);
+    const detected = detectProviderFromKey(e.target.value);
     if (detected && detected !== providerSelect.value) {
       providerSelect.value = detected;
       updateProviderGuide(detected);
     }
   });
 
-  // Toggle Password Visibility
   toggleVisBtn.addEventListener('click', () => {
     const isPass = apiKeyInput.type === 'password';
     apiKeyInput.type = isPass ? 'text' : 'password';
     toggleVisBtn.textContent = isPass ? '🙈' : '👁️';
   });
 
-  // Save API Key
   saveKeyBtn.addEventListener('click', async () => {
     const key = apiKeyInput.value.trim();
-    const provider = providerSelect.value || 'gemini';
+    const provider = providerSelect.value || 'openrouter';
     const statusEl = document.getElementById('bot-settings-status');
-    const isEn = getLang() === 'en';
-    const p = PROVIDERS[provider] || PROVIDERS.gemini;
+    const p = PROVIDERS[provider] || PROVIDERS.openrouter;
 
     if (!key) {
       statusEl.style.display = 'block';
@@ -751,49 +741,37 @@ function attachBotEventListeners() {
       await testApiKey(provider, key);
       setStoredConfig(provider, key);
       statusEl.className = 'bot-settings-status success';
-      statusEl.textContent = isEn ? `✓ Connected to ${p.name} successfully!` : `✓ فُعّل ${p.name} بعد التحقق منه`;
-
+      statusEl.textContent = isEn ? `✓ Connected to ${p.name}!` : `✓ تم تفعيل ${p.name} بنجاح`;
       updateBotStatusUI(true, provider);
       clearKeyBtn.style.display = 'inline-block';
-      const welcomePromo = document.getElementById('bot-welcome-promo');
-      if (welcomePromo) welcomePromo.style.display = 'none';
 
       setTimeout(() => {
         toggleSettingsDrawer(false);
         statusEl.style.display = 'none';
-        appendMessage('assistant', isEn 
-          ? `🎉 <strong>${p.name} is now active!</strong> You can now paste your code, project docs, or ask for any skill from inside or outside the catalog.` 
-          : `🎉 <strong><bdi dir="ltr">${p.name}</bdi> نشط الآن.</strong> أرسل كودك أو ملف <bdi dir="ltr">README</bdi> وسأرشّح لك أنسب المهارات من الدليل وخارجه مع شرحها كاملًا.`
-        );
-      }, 1200);
+      }, 900);
     } catch (err) {
       statusEl.className = 'bot-settings-status error';
-      statusEl.textContent = isEn 
-        ? `⚠️ Connection failed: ${err.message}. Please check your key.` 
-        : `⚠️ تعذّر التحقق من المفتاح: ${err.message}. تحقّق من صحة المفتاح أو رصيد الحساب.`;
+      statusEl.textContent = isEn
+        ? `⚠️ Connection failed: ${err.message}`
+        : `⚠️ تعذّر التحقق من المفتاح: ${err.message}`;
     }
   });
 
-  // Clear API Key
   clearKeyBtn.addEventListener('click', () => {
-    const isEn = getLang() === 'en';
     removeStoredConfig();
     apiKeyInput.value = '';
     updateBotStatusUI(false);
     clearKeyBtn.style.display = 'none';
     const statusEl = document.getElementById('bot-settings-status');
     statusEl.style.display = 'block';
-    statusEl.className = 'bot-settings-status';
-    statusEl.textContent = isEn ? 'Key removed. Reverted to local search.' : 'حُذف المفتاح، وعاد المساعد إلى البحث المحلي.';
-    const welcomePromo = document.getElementById('bot-welcome-promo');
-    if (welcomePromo) welcomePromo.style.display = 'block';
+    statusEl.className = 'bot-settings-status success';
+    statusEl.textContent = isEn ? 'Switched back to free auto-router.' : 'تمت العودة إلى الوضع المجاني التلقائي.';
     setTimeout(() => {
       toggleSettingsDrawer(false);
       statusEl.style.display = 'none';
-    }, 1200);
+    }, 900);
   });
 
-  // Handle textarea enter & auto resize
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -806,19 +784,16 @@ function attachBotEventListeners() {
     input.style.height = Math.min(input.scrollHeight, 120) + 'px';
   });
 
-  // Quick Chips click
   if (chipsContainer) {
     chipsContainer.addEventListener('click', (e) => {
       const chip = e.target.closest('.bot-chip');
       if (chip) {
         const query = chip.getAttribute('data-query');
-        input.value = query;
         handleSendMessage(query);
       }
     });
   }
 
-  // Submit form
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const text = input.value.trim();
@@ -829,26 +804,42 @@ function attachBotEventListeners() {
   });
 }
 
-function updateBotStatusUI(hasKey, providerId = 'gemini') {
+function updateBotStatusUI(hasKey, providerId = 'openrouter') {
   const isEn = getLang() === 'en';
   const label = document.getElementById('bot-engine-label');
   const dot = document.querySelector('.bot-live-dot');
   const btn = document.getElementById('bot-api-btn');
-  const btnText = document.getElementById('bot-api-btn-text');
-  const p = PROVIDERS[providerId] || PROVIDERS.gemini;
+  const p = PROVIDERS[providerId] || PROVIDERS.openrouter;
 
   if (hasKey) {
     const name = isEn ? (p.nameEn || p.name) : p.name;
-    if (label) label.textContent = `${name} (${isEn ? 'Active ✨' : 'نشط ✨'})`;
+    if (label) label.textContent = `${name} (${isEn ? 'Personal Key' : 'مفتاح شخصي'})`;
     if (dot) dot.classList.add('bot-live-gemini');
     if (btn) btn.classList.add('has-key');
-    if (btnText) btnText.textContent = isEn ? 'AI Active ✓' : 'AI مفعّل ✓';
   } else {
-    if (label) label.textContent = isEn ? 'Local Search (Add AI Key ⚡)' : 'بحث محلي (اضغط 🔑 لتفعيل AI)';
+    if (label) label.textContent = isEn ? 'Free Auto-Router • No Key Needed' : 'يعمل مجانًا • توجيه حسب التخصص';
     if (dot) dot.classList.remove('bot-live-gemini');
     if (btn) btn.classList.remove('has-key');
-    if (btnText) btnText.textContent = isEn ? 'Set API Key' : 'مفتاح API';
   }
+}
+
+async function callServerFreeAdvisor(userText, lang, specialty) {
+  const res = await fetch('/api/advisor', {
+    method: 'POST',
+    signal: AbortSignal.timeout(18000),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      message: userText,
+      lang: lang === 'en' ? 'en' : 'ar',
+      specialty: specialty || 'auto'
+    })
+  });
+  if (!res.ok) return null;
+  const data = await res.json().catch(() => null);
+  if (data?.ok && data?.reply) {
+    return data;
+  }
+  return null;
 }
 
 async function handleSendMessage(userText) {
@@ -858,132 +849,88 @@ async function handleSendMessage(userText) {
     chipsContainer.style.display = 'none';
   }
 
-  // Append user bubble
   appendMessage('user', userText);
-
-  // Append typing indicator
   const typingId = appendTypingIndicator();
   messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
 
   const config = getStoredConfig();
   const isEn = getLang() === 'en';
+  const lang = isEn ? 'en' : 'ar';
+  const detectedSpecialty = detectSpecialtyClient(userText, selectedSpecialty);
+  const spMeta = SPECIALISTS[detectedSpecialty] || SPECIALISTS.general;
 
-  // 1. If API Key is present, call configured AI provider
+  // 1. Optional Personal Key Path (only if user configured their own key)
   if (config.key) {
     try {
-      const responseText = await queryUniversalAi(userText, config.provider, config.key);
+      const responseText = await queryUniversalAi(userText, config.provider, config.key, detectedSpecialty);
       removeTypingIndicator(typingId);
-
-      // Extract matching skills to render interactive cards
       const matchedSkills = extractMatchedSkills(userText, responseText);
+      const pName = (PROVIDERS[config.provider] || {}).name || config.provider;
 
       appendAssistantResponse({
         reply: responseText,
         recommendedSkills: matchedSkills,
-        engine: config.provider
+        specialistBadge: `${spMeta.icon} ${isEn ? spMeta.labelEn : spMeta.labelAr} • ${pName}`
       });
       return;
     } catch (err) {
-      console.warn('AI call failed, falling back to local search:', err);
-      removeTypingIndicator(typingId);
-
-      // If key is invalid or rate limited, notify user gracefully
-      const localResult = queryLocalSearchEngine(userText);
-      const providerName = (PROVIDERS[config.provider] || {}).name || config.provider;
-      appendAssistantResponse({
-        reply: (isEn 
-          ? `⚠️ *${providerName} Notice: ${err.message}*\n\nSwitched automatically to local catalog matcher:\n\n` 
-          : `⚠️ *تنبيه من ${providerName}: ${err.message}*\n\nانتقل المساعد تلقائيًا إلى البحث المحلي الموثق:\n\n`) + localResult.reply,
-        recommendedSkills: localResult.recommendedSkills,
-        engine: 'local-fallback',
-        showKeySetupPrompt: true
-      });
-      return;
+      console.warn('Personal API key call failed, falling back to free router:', err);
     }
   }
 
-  // 2. Otherwise use the Local Semantic Engine
+  // 2. Default Zero-Key Multi-Specialist Router (/api/advisor)
   try {
-    const response = queryLocalSearchEngine(userText);
-    setTimeout(() => {
+    const serverAdvisor = await callServerFreeAdvisor(userText, lang, selectedSpecialty);
+    if (serverAdvisor?.reply) {
       removeTypingIndicator(typingId);
+      const matchedSkills = extractMatchedSkills(userText, serverAdvisor.reply);
+      const spLabel = isEn ? serverAdvisor.specialtyLabelEn : serverAdvisor.specialtyLabelAr;
+      const badge = `${serverAdvisor.icon || spMeta.icon} ${spLabel} • ${serverAdvisor.modelLabel}`;
+
       appendAssistantResponse({
-        ...response,
-        showKeySetupPrompt: true
+        reply: serverAdvisor.reply,
+        recommendedSkills: matchedSkills,
+        specialistBadge: badge
       });
-    }, 200);
+      return;
+    }
   } catch (err) {
-    removeTypingIndicator(typingId);
-    appendMessage(
-      'assistant',
-      isEn 
-        ? 'Sorry, an error occurred while processing. Please try again or use the main search bar.'
-        : 'عذرًا، تعذّرت معالجة الطلب حاليًا. حاول مجددًا أو استخدم شريط البحث أعلى الصفحة.'
-    );
-    console.error('Bot Error:', err);
+    console.warn('Free server advisor unavailable, using instant specialist matcher:', err);
   }
 
-  messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
-  const scrollBottomBtn = document.getElementById('bot-scroll-bottom-btn');
-  if (scrollBottomBtn) scrollBottomBtn.classList.remove('visible');
+  // 3. Instant Bilingual Specialist Local Fallback (works 100% offline/static on GitHub Pages too)
+  const localResult = queryLocalSpecialistEngine(userText, detectedSpecialty);
+  setTimeout(() => {
+    removeTypingIndicator(typingId);
+    appendAssistantResponse(localResult);
+  }, 180);
 }
 
 /**
- * Universal AI Caller: Dispatches to Gemini, Claude, OpenAI, OpenRouter, Groq, or DeepSeek
+ * Optional User-Key AI Caller (Supports OpenRouter free specialists, Gemini 2.5, Groq, Claude, OpenAI, DeepSeek)
  */
-async function queryUniversalAi(userText, provider, apiKey) {
+async function queryUniversalAi(userText, provider, apiKey, specialty = 'general') {
   const isEn = getLang() === 'en';
-
-  // Build full catalog context for grounding across all 100 skills
-  const catalogContext = skillsCatalog.map((s) => {
-    const title = isEn ? (s.title_en || s.name) : (s.title_ar || s.name);
-    const catObj = categoriesCatalog.find((c) => c.id === s.category);
-    const cat = isEn ? (catObj?.name_en || s.category || '') : (catObj?.name_ar || s.category || '');
-    const summary = isEn ? (s.summary_en || s.summary_ar) : s.summary_ar;
-    return `- [${s.id}] (${cat}) "${title}": ${summary ? summary.slice(0, 100) : ''}`;
-  }).join('\n');
+  const catalogContext = skillsCatalog
+    .slice(0, 45)
+    .map((s) => {
+      const title = isEn ? (s.title_en || s.name) : (s.title_ar || s.name);
+      const catObj = categoriesCatalog.find((c) => c.id === s.category);
+      const cat = isEn ? (catObj?.name_en || s.category || '') : (catObj?.name_ar || s.category || '');
+      const summary = isEn ? (s.summary_en || s.summary_ar) : s.summary_ar;
+      return `- [${s.id}] (${cat}) "${title}": ${summary ? summary.slice(0, 95) : ''}`;
+    })
+    .join('\n');
 
   const systemInstruction = isEn
-    ? `You are the principal AI Skills Advisor for the "Top 100 Agent Skills" open-source platform.
-Your expertise is analyzing developer code, architecture documentation, README files, and real-world engineering problems to recommend the highest-leverage AI skills and tools.
+    ? `You are the AI Skills Advisor (${SPECIALISTS[specialty]?.labelEn || 'Specialist'}). Pick the best matching skills from the Top 100 list and ALWAYS write their exact ID in brackets like [docx] or [systematic-debugging]. Include 1-2 trusted external tools if needed, plus a concise prompt or command. Reply in English.`
+    : `أنت مستشار المهارات الذكي (${SPECIALISTS[specialty]?.labelAr || 'متخصص'}). رشّح أنسب المهارات من القائمة واكتب معرّف كل مهارة بين قوسين مثل [docx] أو [systematic-debugging]. أضف أداة خارجية موثوقة عند الحاجة مع شرح مختصر وPrompt جاهز. اكتب بعربية تقنية واضحة.`;
 
-Core Directives:
-1. Tech & Architecture Analysis: When the user shares code, a README, or technical requirements, analyze their stack (languages, frameworks, DB, pipelines) and identify key pain points or bottlenecks.
-2. Verified In-Catalog Skills: Recommend the most fitting skills from the "Top 100 Agent Skills" verified directory. When referencing a skill from the directory, ALWAYS include its exact ID in brackets like [docx] or [systematic-debugging] or [writing-plans] so our UI can generate an interactive action card for it.
-3. Wider Ecosystem & External Skills: If the user's project needs capabilities NOT found within the 100 directory (for instance: specialized ML pipelines, external agent frameworks like LangGraph/CrewAI, browser automation, specific cloud APIs, or MCP servers), proactively recommend the best external tools/skills from the broader AI ecosystem.
-4. For EACH skill/tool recommended (whether in the 100 catalog or external), clearly explain:
-   - What it does (Role & core capabilities)
-   - Why & Where to use it in their specific project/code
-   - Actionable Prompt or Command (Ready-to-use prompt template or CLI syntax)
-5. Keep answers well-structured with clear markdown headings, bullet points, and code blocks. Always respond in English.`
-    : `أنت المستشار الذكي المتخصص لدليل مهارات الذكاء الاصطناعي (Top 100 Agent Skills) مفتوح المصدر.
-تتمثل خبرتك في تحليل كود المطورين، وملفات التوثيق (README)، ومعمارية المشاريع، والتحديات الهندسية لاقتراح أنسب AI Agent Skills والأدوات المفتوحة.
+  const fullPrompt = `${systemInstruction}\n\nCatalog:\n${catalogContext}\n\nUser Input:\n"""\n${userText}\n"""`;
 
-التوجيهات الأساسية:
-1. تحليل الكود والمشروع: عندما يرسل المستخدم كودًا أو ملف README أو متطلبات مشروع، حلّل بيئة العمل (Tech Stack) وحدّد التحديات ونقاط الاختناق.
-2. المهارات الموثقة داخل الدليل: رشّح أنسب المهارات من قائمة أفضل 100 مهارة في الدليل. وعند ذكر أي مهارة من الدليل، اكتب معرّفها الدقيق بين قوسين معقوفين مثل [docx] أو [test-driven-development] أو [systematic-debugging] أو [writing-plans] ليعرض النظام بطاقة تفاعلية لها تلقائيًا.
-3. المنظومة الأوسع والمهارات الخارجية: إذا احتاج مشروع المستخدم قدرات غير متوفرة في الدليل (مثل أطر عمل AI Agents كـ LangGraph وCrewAI، أو خوادم MCP، أو واجهات Cloud APIs)، فاقترح عليه أبرز الأدوات والمهارات الموثوقة من المنظومة الأوسع.
-4. لكل مهارة أو أداة ترشحها (من الدليل أو خارجه)، وضّح بإيجاز وتنظيم:
-   - **وظيفتها الأساسية:** ما الذي تضيفه إلى سير العمل؟
-   - **موضع استخدامها في مشروعك:** كيف ترتبط مباشرةً بالكود أو التوثيق المُرسَل؟
-   - **Prompt أو الأمر الجاهز:** صيغة عملية قابلة للتطبيق فورًا.
-5. نظّم الإجابة بعناوين ونقاط واضحة وأمثلة برمجية منسقة، واكتب بلغة عربية تقنية فصيحة ومباشرة مع إبقاء المصطلحات البرمجية والأوامر وأسماء الملفات بالإنجليزية.`;
-
-  const fullPrompt = `${systemInstruction}
-
-Here is the index of verified in-catalog skills:
-${catalogContext}
-
-User Message / Code / Project Docs:
-"""
-${userText}
-"""`;
-
-  // 1. Google Gemini (Direct client-side fetch)
   if (provider === 'gemini') {
-    const models = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro'];
+    const models = ['gemini-2.5-flash', 'gemini-2.0-flash'];
     let lastError = null;
-
     for (const model of models) {
       try {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
@@ -992,30 +939,64 @@ ${userText}
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             contents: [{ parts: [{ text: fullPrompt }] }],
-            generationConfig: { temperature: 0.3, maxOutputTokens: 1000 }
+            generationConfig: { temperature: 0.3, maxOutputTokens: 900 }
           })
         });
-
         if (res.ok) {
           const data = await res.json();
           const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
           if (text) return text;
         } else {
           const errJson = await res.json().catch(() => ({}));
-          const msg = errJson.error?.message || `HTTP ${res.status}`;
-          lastError = new Error(msg);
+          lastError = new Error(errJson.error?.message || `HTTP ${res.status}`);
           if (res.status === 404) continue;
           throw lastError;
         }
       } catch (e) {
         lastError = e;
-        if (model === models[models.length - 1]) throw e;
       }
     }
-    throw lastError || new Error('Failed to generate response from Gemini API');
+    throw lastError || new Error('Gemini API request failed');
   }
 
-  // 2. Anthropic Claude (Direct fetch with dangerous browser access header, with relay fallback)
+  if (provider === 'openrouter') {
+    const specialistModel =
+      specialty === 'code'
+        ? 'cohere/north-mini-code:free'
+        : specialty === 'ai-project'
+          ? 'nvidia/nemotron-3-ultra-550b-a55b:free'
+          : 'google/gemma-4-31b-it:free';
+
+    for (const model of [specialistModel, 'openrouter/free']) {
+      try {
+        const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://top-100-agent-skills.vercel.app',
+            'X-Title': 'Top 100 Agent Skills'
+          },
+          body: JSON.stringify({
+            model,
+            messages: [
+              { role: 'system', content: systemInstruction },
+              { role: 'user', content: `Catalog:\n${catalogContext}\n\nRequest:\n${userText}` }
+            ],
+            temperature: 0.3,
+            max_tokens: 900
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const text = data.choices?.[0]?.message?.content;
+          if (text) return text;
+        }
+      } catch {}
+    }
+    return callRelayProxy('openrouter', apiKey, specialistModel, systemInstruction, `Catalog:\n${catalogContext}\n\nRequest:\n${userText}`);
+  }
+
   if (provider === 'claude') {
     try {
       const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -1028,163 +1009,61 @@ ${userText}
         },
         body: JSON.stringify({
           model: 'claude-3-5-sonnet-20241022',
-          max_tokens: 1000,
+          max_tokens: 900,
           system: systemInstruction,
-          messages: [{ role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }]
+          messages: [{ role: 'user', content: `Catalog:\n${catalogContext}\n\nRequest:\n${userText}` }]
         })
       });
-
       if (res.ok) {
         const data = await res.json();
         return data.content?.[0]?.text || '';
       }
-    } catch (err) {
-      console.warn('Claude direct browser fetch failed, falling back to secure relay:', err);
-    }
-
-    // Relay fallback
-    return callRelayProxy('claude', apiKey, 'claude-3-5-sonnet-20241022', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
+    } catch {}
+    return callRelayProxy('claude', apiKey, 'claude-3-5-sonnet-20241022', systemInstruction, `Catalog:\n${catalogContext}\n\nRequest:\n${userText}`);
   }
 
-  // 3. OpenAI (GPT-4o)
-  if (provider === 'openai') {
+  const openaiEndpoints = {
+    openai: { url: 'https://api.openai.com/v1/chat/completions', model: 'gpt-4o-mini' },
+    groq: { url: 'https://api.groq.com/openai/v1/chat/completions', model: 'llama-3.3-70b-versatile' },
+    deepseek: { url: 'https://api.deepseek.com/chat/completions', model: 'deepseek-chat' }
+  };
+
+  if (openaiEndpoints[provider]) {
+    const { url, model } = openaiEndpoints[provider];
     try {
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      const res = await fetch(url, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${apiKey}`,
+          Authorization: `Bearer ${apiKey}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'gpt-4o-mini',
+          model,
           messages: [
             { role: 'system', content: systemInstruction },
-            { role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }
+            { role: 'user', content: `Catalog:\n${catalogContext}\n\nRequest:\n${userText}` }
           ],
           temperature: 0.3,
-          max_tokens: 1000
+          max_tokens: 900
         })
       });
-
       if (res.ok) {
         const data = await res.json();
         return data.choices?.[0]?.message?.content || '';
       }
-    } catch (err) {
-      console.warn('OpenAI direct fetch failed, falling back to secure relay:', err);
-    }
-
-    return callRelayProxy('openai', apiKey, 'gpt-4o-mini', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
-  }
-
-  // 4. OpenRouter (All Models)
-  if (provider === 'openrouter') {
-    try {
-      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://top-100-agent-skills.vercel.app',
-          'X-Title': 'Top 100 Agent Skills'
-        },
-        body: JSON.stringify({
-          model: 'anthropic/claude-3.5-sonnet',
-          messages: [
-            { role: 'system', content: systemInstruction },
-            { role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }
-          ],
-          temperature: 0.3,
-          max_tokens: 1000
-        })
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        return data.choices?.[0]?.message?.content || '';
-      }
-    } catch (err) {
-      console.warn('OpenRouter direct fetch failed, falling back to secure relay:', err);
-    }
-
-    return callRelayProxy('openrouter', apiKey, 'anthropic/claude-3.5-sonnet', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
-  }
-
-  // 5. Groq (Llama 3.3 70B - Ultra Fast & Free)
-  if (provider === 'groq') {
-    try {
-      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
-          messages: [
-            { role: 'system', content: systemInstruction },
-            { role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }
-          ],
-          temperature: 0.3,
-          max_tokens: 1000
-        })
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        return data.choices?.[0]?.message?.content || '';
-      }
-    } catch (err) {
-      console.warn('Groq direct fetch failed, falling back to secure relay:', err);
-    }
-
-    return callRelayProxy('groq', apiKey, 'llama-3.3-70b-versatile', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
-  }
-
-  // 6. DeepSeek
-  if (provider === 'deepseek') {
-    try {
-      const res = await fetch('https://api.deepseek.com/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'deepseek-chat',
-          messages: [
-            { role: 'system', content: systemInstruction },
-            { role: 'user', content: `Index:\n${catalogContext}\n\nTask/Code:\n${userText}` }
-          ],
-          temperature: 0.3,
-          max_tokens: 1000
-        })
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        return data.choices?.[0]?.message?.content || '';
-      }
-    } catch (err) {
-      console.warn('DeepSeek direct fetch failed, falling back to secure relay:', err);
-    }
-
-    return callRelayProxy('deepseek', apiKey, 'deepseek-chat', systemInstruction, `Index:\n${catalogContext}\n\nTask/Code:\n${userText}`);
+    } catch {}
+    return callRelayProxy(provider, apiKey, model, systemInstruction, `Catalog:\n${catalogContext}\n\nRequest:\n${userText}`);
   }
 
   throw new Error(`Unsupported AI Provider: ${provider}`);
 }
 
-/**
- * Fallback to secure pass-through relay if browser CORS prevents direct fetch
- */
 async function callRelayProxy(provider, apiKey, model, system, prompt) {
   const res = await fetch('/api/ai/proxy', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ provider, apiKey, model, system, prompt })
   });
-
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     throw new Error(data.error || `HTTP ${res.status}`);
@@ -1192,12 +1071,9 @@ async function callRelayProxy(provider, apiKey, model, system, prompt) {
   return data.reply || '';
 }
 
-/**
- * Test any provider API key with a fast ping
- */
 async function testApiKey(provider, apiKey) {
   if (provider === 'gemini') {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1213,29 +1089,22 @@ async function testApiKey(provider, apiKey) {
     return true;
   }
 
-  // For other providers, test via ping
   const reply = await queryUniversalAi('ping', provider, apiKey);
   if (!reply) throw new Error('No response received');
   return true;
 }
 
-/**
- * Extract matching skill cards from AI reply or user query
- */
 function extractMatchedSkills(userText, replyText) {
   const combined = `${userText} ${replyText}`.toLowerCase();
   const matched = [];
-
   for (const s of skillsCatalog) {
     const id = s.id.toLowerCase();
     const name = (s.name || '').toLowerCase();
-
-    if (combined.includes(id) || combined.includes(`[${id}]`) || (name && combined.includes(name))) {
+    if (combined.includes(`[${id}]`) || combined.includes(id) || (name && name.length > 3 && combined.includes(name))) {
       matched.push(s);
-      if (matched.length >= 3) break;
+      if (matched.length >= 4) break;
     }
   }
-
   return matched;
 }
 
@@ -1268,14 +1137,15 @@ function removeTypingIndicator(id) {
   if (el) el.remove();
 }
 
-function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPrompt = false, engine = 'local' }) {
+function appendAssistantResponse({ reply, recommendedSkills = [], specialistBadge = '' }) {
   const container = document.getElementById('bot-messages-container');
   const msgEl = document.createElement('div');
   msgEl.className = 'bot-msg bot-msg-assistant';
-
   const isEn = getLang() === 'en';
-  const config = getStoredConfig();
-  const hasKey = Boolean(config.key);
+
+  const badgeHtml = specialistBadge
+    ? `<div class="bot-reply-specialist-pill">${escapeHtml(specialistBadge)}</div>`
+    : '';
 
   let skillsCardsHtml = '';
   if (Array.isArray(recommendedSkills) && recommendedSkills.length > 0) {
@@ -1312,34 +1182,14 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
     `;
   }
 
-  // Key Prompt Banner if applicable
-  let keyBannerHtml = '';
-  if (!hasKey && showKeySetupPrompt) {
-    keyBannerHtml = `
-      <div class="bot-msg-key-callout">
-        <div class="callout-text">
-          ✨ <strong>${isEn ? 'Want deeper AI code analysis?' : 'هل تريد تحليلًا أعمق للكود والمشروع بالذكاء الاصطناعي؟'}</strong>
-          <span>${isEn ? 'Connect any key (Gemini is 100% Free, or use Claude/OpenAI):' : 'اربط أي <bdi dir="ltr">API Key</bdi> (<bdi dir="ltr">Google Gemini</bdi> مجاني بالكامل، أو استخدم <bdi dir="ltr">Claude</bdi> أو <bdi dir="ltr">OpenAI</bdi>):'}</span>
-        </div>
-        <div class="callout-btns">
-          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="callout-link-btn">
-            🔗 <bdi dir="ltr">aistudio.google.com</bdi> ${isEn ? '(Free)' : '(مجاني)'} ↗
-          </a>
-          <button type="button" class="callout-open-drawer-btn">🔑 ${isEn ? 'Choose Provider' : 'اختيار المزود'}</button>
-        </div>
-      </div>
-    `;
-  }
-
   msgEl.innerHTML = `
     <div class="bot-msg-bubble">
+      ${badgeHtml}
       ${formatMarkdownText(reply)}
       ${skillsCardsHtml}
-      ${keyBannerHtml}
     </div>
   `;
 
-  // Attach Copy Prompt listeners
   msgEl.querySelectorAll('.bot-copy-prompt-btn').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const prompt = btn.getAttribute('data-prompt');
@@ -1358,99 +1208,91 @@ function appendAssistantResponse({ reply, recommendedSkills = [], showKeySetupPr
     });
   });
 
-  // Attach Open Drawer listener
-  msgEl.querySelectorAll('.callout-open-drawer-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const drawer = document.getElementById('bot-settings-drawer');
-      if (drawer) {
-        drawer.style.display = 'block';
-        const keyInput = document.getElementById('bot-api-key-input');
-        if (keyInput) keyInput.focus();
-      }
-    });
-  });
-
   container.appendChild(msgEl);
   container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
   const scrollBottomBtn = document.getElementById('bot-scroll-bottom-btn');
   if (scrollBottomBtn) {
     const offset = container.scrollHeight - container.scrollTop - container.clientHeight;
-    if (offset > 60) {
-      scrollBottomBtn.classList.add('visible');
-    } else {
-      scrollBottomBtn.classList.remove('visible');
-    }
+    scrollBottomBtn.classList.toggle('visible', offset > 60);
   }
 }
 
+const LOCAL_SYNONYM_RULES = [
+  { re: /bug|debug|error|trace|crash|خطا|عطل|اصلاح|تصحيح/i, ids: ['systematic-debugging', 'mp-diagnosing-bugs', 'debugging-error-recovery'] },
+  { re: /test|tdd|pytest|jest|playwright|اختبار|فحص/i, ids: ['test-driven-development', 'mp-tdd', 'webapp-testing', 'python-pytest-suite', 'react-testing-library'] },
+  { re: /plan|spec|ticket|خطة|تخطيط|مواصفات/i, ids: ['obra-writing-plans', 'spec-driven-development', 'to-spec', 'planning-and-task-breakdown'] },
+  { re: /agent|subagent|mcp|llm|rag|ai|وكيل|ذكاء|معمارية/i, ids: ['subagent-driven-development', 'dispatching-parallel-agents', 'mcp-builder', 'context-engineering', 'eval-harness'] },
+  { re: /readme|doc|كتابة|توثيق|مستند/i, ids: ['doc-coauthoring', 'writing-for-agents', 'writing-guidelines', 'grill-with-docs'] },
+  { re: /react|next|ui|frontend|design|واجهة|تصميم/i, ids: ['frontend-design', 'frontend-ui-engineering', 'react-best-practices', 'composition-patterns', 'responsive-design'] },
+  { re: /python|fastapi|django|prisma|rust|redis|api|backend|خادم/i, ids: ['fastapi-patterns', 'prisma-patterns', 'rust-patterns', 'redis-patterns', 'api-and-interface-design'] },
+  { re: /security|review|امان|حماية|مراجعة/i, ids: ['security-review-checklist', 'code-review-quality', 'mp-code-review', 'django-security'] },
+  { re: /deploy|vercel|cloud|git|worktree|نشر|سحابة/i, ids: ['deploy-to-vercel', 'shipping-and-launch', 'using-git-worktrees', 'cloud-solution-architect'] },
+  { re: /word|docx|وورد|ورد/i, ids: ['docx'] },
+  { re: /excel|xlsx|اكسل|جدول|جداول/i, ids: ['xlsx'] },
+  { re: /pdf|بي دي اف/i, ids: ['pdf'] },
+  { re: /powerpoint|pptx|عرض|عروض|شرائح/i, ids: ['pptx'] },
+  { re: /research|paper|academic|بحث|علمي|دراسة/i, ids: ['deep-research', 'sr-screener', 'academic-paper-writer'] }
+];
+
 /**
- * Intelligent Local Semantic Search Engine (0 External API Keys Fallback)
+ * Upgraded Instant Bilingual Specialist Engine (runs locally with 0 external keys required)
  */
-function queryLocalSearchEngine(message) {
+function queryLocalSpecialistEngine(message, specialty = 'general') {
   const isEn = getLang() === 'en';
   const normQuery = normalizeArabic(message).toLowerCase();
-  
-  // Detect if message is code or long documentation
-  const isCodeOrDoc = message.length > 120 || /[{};=()=>def\s|function\s|import\s|class\s|README]/i.test(message);
+  const sp = SPECIALISTS[specialty] || SPECIALISTS.general;
 
+  const boostedIds = new Set();
+  for (const rule of LOCAL_SYNONYM_RULES) {
+    if (rule.re.test(normQuery) || rule.re.test(message)) {
+      for (const id of rule.ids) boostedIds.add(id);
+    }
+  }
+
+  const words = normQuery.split(/\s+/).filter((w) => w.length > 2);
   const scored = skillsCatalog.map((skill) => {
-    let score = 0;
+    let score = boostedIds.has(skill.id) ? 28 : 0;
+    if (specialty === 'code' && ['code-quality', 'development', 'cloud-security'].includes(skill.category)) score += 3;
+    if (specialty === 'ai-project' && ['meta', 'data-ai', 'development'].includes(skill.category)) score += 3;
+
     const normTitle = normalizeArabic(skill.title_ar || '').toLowerCase();
     const normSummary = normalizeArabic(skill.summary_ar || '').toLowerCase();
-    const nameLower = (skill.name || '').toLowerCase();
-    const titleEnLower = (skill.title_en || '').toLowerCase();
+    const hayEn = `${skill.id} ${skill.name || ''} ${skill.title_en || ''} ${skill.summary_en || ''}`.toLowerCase();
 
-    const words = normQuery.split(/\s+/).filter((w) => w.length > 2);
     for (const w of words) {
       if (normTitle.includes(w)) score += 10;
       if (normSummary.includes(w)) score += 5;
-      if (nameLower.includes(w)) score += 8;
-      if (titleEnLower.includes(w)) score += 8;
+      if (hayEn.includes(w)) score += 8;
     }
 
-    // Keyword detection for code/docs
-    if (/debug|خطأ|error|trace|crash/i.test(normQuery) && skill.id.includes('debug')) score += 20;
-    if (/test|اختبار|tdd|mock/i.test(normQuery) && skill.id.includes('test')) score += 20;
-    if (/plan|خطة|مشاريع|هيكل/i.test(normQuery) && skill.id.includes('plan')) score += 20;
-    if (/subagent|وكيل|وكلاء|multi/i.test(normQuery) && skill.id.includes('subagent')) score += 20;
-    if (/docker|حاوي|deploy|devops/i.test(normQuery) && skill.id.includes('docker')) score += 20;
-    if (/excel|xlsx|جدول/i.test(normQuery) && skill.id.includes('xlsx')) score += 20;
-    if (/word|docx|ملف/i.test(normQuery) && skill.id.includes('docx')) score += 20;
-    if (/pdf|بي دي اف/i.test(normQuery) && skill.id.includes('pdf')) score += 20;
-
-    return { skill, score: score + (skill.github_stars > 20000 ? 1 : 0) };
+    return { skill, score: score + (skill.github_stars > 50000 ? 1 : 0) };
   });
 
   scored.sort((a, b) => b.score - a.score);
-  const bestMatches = scored.filter((item) => item.score > 2).slice(0, 3).map((item) => item.skill);
-  const finalSkills = bestMatches.length > 0 ? bestMatches : skillsCatalog.slice(0, 2);
-  let replyText = '';
+  const bestMatches = scored.filter((item) => item.score > 4).slice(0, 3).map((item) => item.skill);
+  const finalSkills = bestMatches.length > 0 ? bestMatches : skillsCatalog.slice(0, 3);
 
-  if (isCodeOrDoc) {
-    replyText = isEn
-      ? `Analyzed your project/code keywords and matched the closest skills from the Top 100 directory:\n*(💡 Tip: Connect your key (Try Google Gemini for free, or Claude/OpenAI) using the 🔑 button above to get deep AI code inspection and discover external skills beyond the catalog!)*`
-      : `حلّلنا الكلمات المفتاحية في الكود والتوثيق واستخرجنا أقرب المهارات المطابقة من دليل أشهر 100 مهارة:\n*💡 نصيحة: فعّل مفتاح API (جرّب Google Gemini مجانًا أو استخدم Claude أو ChatGPT) من زر 🔑 بالأعلى لتحليل أعمق لكودك واقتراح مهارات إضافية من خارج الدليل.*`;
-  } else if (bestMatches.length > 0) {
-    const matchCountAr = bestMatches.length === 1
-      ? 'عثرنا على مهارة واحدة تطابق طلبك:'
-      : bestMatches.length === 2
-        ? 'عثرنا على مهارتين تطابقان طلبك:'
-        : bestMatches.length <= 10
-          ? `عثرنا على ${bestMatches.length} مهارات تطابق طلبك:`
-          : `عثرنا على ${bestMatches.length} مهارة تطابق طلبك:`;
-    replyText = isEn 
-      ? `Found ${bestMatches.length} verified skill(s) matching your request:`
-      : matchCountAr;
+  const lines = finalSkills.map((s) => {
+    const title = isEn ? (s.title_en || s.name) : (s.title_ar || s.name);
+    const summary = isEn ? (s.summary_en || s.summary_ar) : s.summary_ar;
+    return `- **${title}** (\`[${s.id}]\`): ${(summary || '').slice(0, 120)}`;
+  });
+
+  let intro = '';
+  if (isEn) {
+    intro = bestMatches.length > 0
+      ? `Matched top verified skills for your **${sp.labelEn}** request:`
+      : `Here are popular verified skills to start with:`;
   } else {
-    replyText = isEn
-      ? `Here are top popular skills that can help accelerate your task:`
-      : `إليك أبرز المهارات الشائعة لمساعدتك على بدء عملك:`;
+    intro = bestMatches.length > 0
+      ? `حلّلت طلبك عبر مسار **${sp.labelAr}**، وإليك أنسب المهارات الموثقة لك:`
+      : `إليك أبرز المهارات الشائعة المناسبة لطلبك:`;
   }
 
   return {
-    reply: replyText,
+    reply: `${intro}\n\n${lines.join('\n')}`,
     recommendedSkills: finalSkills,
-    engine: 'local-semantic'
+    specialistBadge: `${sp.icon} ${isEn ? sp.labelEn : sp.labelAr} • ${isEn ? 'Instant Catalog Engine' : 'التحليل الفوري'}`
   };
 }
 
@@ -1474,8 +1316,7 @@ function formatMarkdownText(text) {
   if (!text) return '';
   let escaped = escapeHtml(text);
 
-  // Format fenced code blocks ```lang ... ```
-  escaped = escaped.replace(/```([a-zA-Z0-9_\-\+]*)\n?([\s\S]*?)```/g, (match, lang, code) => {
+  escaped = escaped.replace(/```([a-zA-Z0-9_\-+]*)\n?([\s\S]*?)```/g, (match, lang, code) => {
     return `<pre class="bot-code-block"><code class="language-${lang}">${code.trim()}</code></pre>`;
   });
 
