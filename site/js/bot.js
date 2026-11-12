@@ -367,24 +367,9 @@ export function initAiBot(skills = [], categories = []) {
         <div class="bot-msg bot-msg-assistant">
           <div class="bot-msg-bubble">
             ${isEn
-              ? '👋 Hi! I’m your <strong>AI Skills Advisor</strong> — ready to help with zero sign-up or API keys.<br><br>Describe your goal, paste code, or drop a <code>README</code>, and I’ll automatically route it to the best free specialist model to match the right skills for you.'
-              : '👋 أهلًا بك! أنا <strong>مساعد المهارات الذكي</strong> — جاهز للبحث فورًا دون أي مفتاح أو تسجيل.<br><br>اكتب احتياجك، أو ألصق مقطع كود، أو ملف <bdi dir="ltr">README</bdi>، وسأوجّه طلبك تلقائيًا إلى أنسب نموذج مجاني حسب التخصص (الكود، مشاريع <bdi dir="ltr">AI</bdi>، أو البحث العام) لترشيح أفضل المهارات.'}
+              ? '👋 Hi! I’m your <strong>AI Skills Advisor</strong> — ready to help.<br><br>Describe your goal, paste code, or drop a <code>README</code>, and I’ll automatically route it to the best free specialist model to match the right skills for you.'
+              : '👋 أهلًا بك! أنا <strong>مساعد المهارات الذكي</strong> — جاهز للبحث فورًا.<br><br>اكتب احتياجك، أو ألصق مقطع كود، أو ملف <bdi dir="ltr">README</bdi>، وسأوجّه طلبك تلقائيًا إلى أنسب نموذج مجاني حسب التخصص (الكود، مشاريع <bdi dir="ltr">AI</bdi>، أو البحث العام) لترشيح أفضل المهارات.'}
           </div>
-        </div>
-
-        <!-- Clean Quick Suggestion Chips -->
-        <div class="bot-chips-container" id="bot-quick-chips">
-          ${isEn ? `
-            <button class="bot-chip" data-query="Analyze my code for bugs, tests, and code-quality skills">💻 Code & Debugging Skills</button>
-            <button class="bot-chip" data-query="Recommend AI agent, MCP, and architecture skills for my README/project">🧠 AI Project & README</button>
-            <button class="bot-chip" data-query="Skills for Word, Excel, PDF, and PowerPoint automation">📄 Docs & Spreadsheets</button>
-            <button class="bot-chip" data-query="Planning, specs, and subagent workflow automation">⚡ Task Planning</button>
-          ` : `
-            <button class="bot-chip" data-query="حلّل كودي واقترح مهارات تصحيح الأخطاء والاختبار وجودة الكود">💻 تحليل الكود والأخطاء</button>
-            <button class="bot-chip" data-query="اقترح مهارات AI Agents وMCP ومعمارية مشروعي أو ملف README">🧠 مشروع <bdi dir="ltr">AI</bdi> أو <bdi dir="ltr">README</bdi></button>
-            <button class="bot-chip" data-query="أريد مهارات لأتمتة ملفات Word وExcel وPDF والعروض التقديمية">📄 مستندات وجداول</button>
-            <button class="bot-chip" data-query="أفضل مهارات تخطيط المشاريع وتقسيم المهام للوكلاء">⚡ تخطيط وأتمتة المهام</button>
-          `}
         </div>
       </div>
 
@@ -425,7 +410,6 @@ function attachBotEventListeners() {
   const closeBtn = document.getElementById('bot-close-btn');
   const form = document.getElementById('bot-input-form');
   const input = document.getElementById('bot-input-text');
-  const chipsContainer = document.getElementById('bot-quick-chips');
   const specialtyBar = document.getElementById('bot-specialty-bar');
   const messagesContainer = document.getElementById('bot-messages-container');
   const scrollBottomBtn = document.getElementById('bot-scroll-bottom-btn');
@@ -784,16 +768,6 @@ function attachBotEventListeners() {
     input.style.height = Math.min(input.scrollHeight, 120) + 'px';
   });
 
-  if (chipsContainer) {
-    chipsContainer.addEventListener('click', (e) => {
-      const chip = e.target.closest('.bot-chip');
-      if (chip) {
-        const query = chip.getAttribute('data-query');
-        handleSendMessage(query);
-      }
-    });
-  }
-
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const text = input.value.trim();
@@ -844,10 +818,6 @@ async function callServerFreeAdvisor(userText, lang, specialty) {
 
 async function handleSendMessage(userText) {
   const messagesContainer = document.getElementById('bot-messages-container');
-  const chipsContainer = document.getElementById('bot-quick-chips');
-  if (chipsContainer) {
-    chipsContainer.style.display = 'none';
-  }
 
   appendMessage('user', userText);
   const typingId = appendTypingIndicator();
