@@ -4,13 +4,27 @@
   "description": "دليل أفضل 100 مهارة ذكاء اصطناعي مفتوحة المصدر - Top 100 Open Source Agent Skills with Daily GitHub Leaderboard and Prompts",
   "type": "module",
   "main": "server.js",
+  "bin": {
+    "top-100-agent-skills": "./bin/mcp.js"
+  },
+  "files": [
+    "bin/",
+    "data/skills.json",
+    "data/leaderboard.json",
+    "lib/free-advisor-router.js",
+    "site/js/search.js",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md"
+  ],
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
+    "mcp": "node bin/mcp.js",
     "sync": "node scripts/discover-and-sync.mjs",
     "discover": "node scripts/discover-and-sync.mjs",
     "validate": "node scripts/validate.mjs",
-    "test": "node tests/validate.test.mjs && node tests/search.test.mjs && node tests/server.test.mjs && node tests/governance.test.mjs"
+    "test": "node tests/validate.test.mjs && node tests/search.test.mjs && node tests/server.test.mjs && node tests/governance.test.mjs && node tests/mcp.test.mjs"
   },
   "repository": {
     "type": "git",
@@ -32,13 +46,17 @@
     "copilot",
     "cursor",
     "antigravity",
+    "mcp",
+    "model-context-protocol",
     "llm",
     "open-source"
   ],
   "author": "Sayed Gamea",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.21.2"
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "express": "^4.21.2",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "axe-core": "^4.10.2",

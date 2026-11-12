@@ -22,9 +22,39 @@ let searchEngine = new SkillsSearchEngine(skillsData.skills);
 
 // Middleware
 app.use(express.json());
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({ error: 'Invalid JSON body' });
+  }
+  return next(err);
+});
 
-// Enable CORS for external API consumers
+const ADVISOR_ALLOWED_ORIGINS = new Set([
+  'https://top-100-agent-skills.vercel.app',
+  'https://sayedgameasayed.github.io'
+]);
+
+function isAdvisorOriginAllowed(origin) {
+  if (!origin) return false;
+  if (ADVISOR_ALLOWED_ORIGINS.has(origin)) return true;
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return true;
+  if (/^https:\/\/top-100-agent-skills[a-z0-9-]*\.vercel\.app$/.test(origin)) return true;
+  return false;
+}
+
+// Enable CORS for read-only catalog consumers; restrict AI advisor endpoints
 app.use((req, res, next) => {
+  if (req.path === '/api/advisor' || req.path === '/api/ai/proxy') {
+    const origin = req.headers.origin;
+    if (origin && isAdvisorOriginAllowed(origin)) {
+      res.header('Access-Control-Allow-Origin', origin);
+      res.header('Vary', 'Origin');
+    }
+    res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'OPTIONS') return res.status(204).end();
+    return next();
+  }
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -204,14 +234,19 @@ app.post('/api/advisor', async (req, res) => {
     });
   }
 
-  const { message, lang = 'ar', specialty = 'auto' } = req.body || {};
+  const { message, files = [], lang = 'ar', specialty = 'auto' } = req.body || {};
   if (!message || typeof message !== 'string' || !message.trim()) {
     return res.status(400).json({ error: 'Message is required' });
+  }
+
+  if (message.length > 1000) {
+    return res.status(400).json({ error: 'Message exceeds 1000 character limit' });
   }
 
   try {
     const result = await runFreeSpecialistAdvisor({
       message: message.trim(),
+      files: Array.isArray(files) ? files : [],
       lang: lang === 'en' ? 'en' : 'ar',
       preferredSpecialty: specialty,
       skills: skillsData.skills || [],
@@ -220,10 +255,11 @@ app.post('/api/advisor', async (req, res) => {
     });
     return res.json(result);
   } catch (err) {
+    console.error('[server advisor error]:', err?.message || err);
     return res.json({
       ok: false,
       reason: 'internal_fallback',
-      error: err.message
+      error: 'Advisor service temporarily unavailable. Falling back to local search.'
     });
   }
 });

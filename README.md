@@ -52,37 +52,58 @@
 
 ---
 
-### 🏛️ معمارية المشروع (Pure Static Architecture)
-- **البيئة الإنتاجية (Production):** الموقع المنشور على GitHub Pages هو **موقع ساكن بالكامل (100% Pure Static Site)** بدون أي خادم أو قاعدة بيانات أو استدعاءات خارجية؛ محرك البحث ومساعد المهارات يعملان محلياً بالكامل داخل متصفح المستخدم (Client-Side) مع الحفاظ التام على الخصوصية.
-- **ملف `server.js`:** خادم Express اختياري مخصص **فقط للتطوير المحلي (Local Development Only)** واختبار واجهات الـ API التجريبية عبر `npm run dev`. حزمة `express` مدرجة ضمن `devDependencies` ولا تعمل نهائياً في بيئة الإنتاج الساكنة.
+### 🏛️ معمارية المشروع والخصوصية (Hybrid Architecture & Privacy)
+- **النشر الإنتاجي الكامل على Vercel ([Live Site](https://top-100-agent-skills.vercel.app/)):** يجمع بين واجهة سريعة خالية من الـ Build ودالة Serverless (`/api/advisor`) في [`api/advisor.js`](api/advisor.js) لتشغيل **مستشار المهارات الذكي** عبر توجيه الطلبات حسب التخصص (الكود، مشاريع AI، البحث العام) مع حد أقصى `1000` حرف للرسالة، وحفظ الملفات المرفوعة داخل متصفح الزائر (`localStorage`) فقط.
+- **إفصاح الخصوصية (External AI Disclosure):** البحث والتصفح ولوحة الصدارة تعمل محلياً بالكامل داخل متصفحك. أما عند استخدام **مستشار المهارات الذكي** وإرسال استفسار، فإن نص السؤال ومقتطفات الملفات المختارة تُرسَل عبر HTTPS إلى مزوّدي النماذج الخارجيين (**OpenRouter / Groq / Google Gemini**) لمعالجة الترشيح فقط دون تخزين في قاعدة بيانات — لذلك يُمنع إدخال مفاتيح أو أسرار خاصة (راجع [`SECURITY.md`](SECURITY.md)).
+- **المرآة الساكنة على GitHub Pages & التطوير المحلي:** الموقع يعمل أيضاً كنسخة ساكنة بالكامل مع محرك مطابقة محلي فوري (Local Specialist Fallback) إذا تعذر الوصول للخادم، كما يعمل عبر خادم Express في [`server.js`](server.js) للتطوير المحلي واختبارات التكامل (`npm run dev`).
+
+---
+
+## 🔌 خادم MCP مدمج لمحررات الأكواد (`npx top-100-agent-skills`)
+
+يمكن لأي مطور ربط الدليل مباشرة مع **Claude Code / Claude Desktop / Cursor / Windsurf / Antigravity** عبر **Model Context Protocol (MCP)** بدون أي مفاتيح API (يعمل محلياً من حزمة الحوار نفسها):
+
+```json
+{
+  "mcpServers": {
+    "top-100-agent-skills": {
+      "command": "npx",
+      "args": ["-y", "top-100-agent-skills"]
+    }
+  }
+}
+```
+
+الأدوات المتوفرة للوكيل:
+- `search_skills`: بحث فوري بالعربية أو الإنجليزية مع التصفية بالتصنيف والمستوى.
+- `get_skill`: جلب تفاصيل المهارة كاملة مع الرابط الرسمي على GitHub والـ Prompt الجاهز.
+- `get_leaderboard`: عرض قائمة الترتيب اليومية لأعلى المهارات بالنجوم.
+- `recommend_skills_for_task`: ترشيح المهارات المناسبة لمهمتك البرمجية محلياً (Zero external calls).
 
 ---
 
 ## تشغيل المشروع محلياً
 
-المشروع مبني بـ HTML / CSS / Vanilla JavaScript بدون أي Framework أو خطوة Build:
-
-1. استنسخ المستودع:
+1. استنسخ المستودع وثبّت الحزم:
    ```bash
    git clone https://github.com/SayedGameaSayed/top-100-agent-skills.git
    cd top-100-agent-skills
+   npm install
    ```
-2. شغّل خادم محلي لتصفح الموقع (بسبب سياسة CORS لـ `fetch` لملفات JSON):
+2. شغّل الخادم المحلي واختبر الـ API:
    ```bash
-   # باستخدام Node.js
-   npx serve .
-   # أو باستخدام Python
-   python -m http.server 8000
+   npm run dev
    ```
-3. افتح المتصفح على `http://localhost:8000/site/`.
+3. أو افتح الموقع مباشرة عبر خادم ملفات على `http://localhost:3000/`.
 
 ---
 
-## التحقق من صحة البيانات (Validator)
+## التحقق والاختبارات (Validator & Test Suite)
 
-يحتوي المستودع على أداة تحقق صارمة تفحص صحة البيانات والرخص:
+يحتوي المستودع على اختبارات صارمة للبيانات والخادم والـ MCP:
 ```bash
 node scripts/validate.mjs
+npm test
 ```
 
 ---
@@ -91,20 +112,25 @@ node scripts/validate.mjs
 
 ## English Overview
 
-**Arabic Skills Guide** is an open-source, tool-agnostic static website and curated repository. It helps Arabic-speaking users understand AI Skills (folders following the `SKILL.md` specification) before using them.
+**Top 100 AI Agent Skills** is an open-source, bilingual (English-default + Arabic RTL) directory, daily GitHub star leaderboard, and **Model Context Protocol (MCP) server** for curated `SKILL.md` agent skills.
 
 ### Key Highlights:
-- **Core Workflow:** Search in Arabic -> Understand capability in Arabic -> Copy ready English prompt wrapper -> Paste into any AI model (Gemini, ChatGPT, Claude, Copilot, Cursor, etc.).
-- **Strict Licensing:** Proprietary and source-available skills are never copied into the repo; only official upstream links are referenced. Permissive derived skills preserve original licenses and notices.
-- **Pure Static Stack:** Zero build dependencies, pure HTML/CSS/ES modules, accessible, RTL-first with dark/light mode.
+- **Zero-Key AI Skills Advisor + Local Fallback:** Deployed on Vercel with [`api/advisor.js`](api/advisor.js) routing coding, AI architecture, and general discovery queries to free-tier specialists (**OpenRouter / Groq / Google Gemini**), alongside an instant client-side semantic fallback when offline or on static mirrors.
+- **Transparent Privacy & Abuse Controls:** Catalog search and leaderboard run purely in-browser; submitted advisor prompts (capped at 1,000 chars) and optional browser-`localStorage` code snippets (max 3 files, 50 KB each) are forwarded only for inference and never stored in a database. See [`SECURITY.md`](SECURITY.md).
+- **MCP Server (`npx` ready):** Expose `search_skills`, `get_skill`, `get_leaderboard`, and offline `recommend_skills_for_task` directly inside Claude Code, Cursor, Antigravity, or Claude Desktop via `node bin/mcp.js` or `npx -y top-100-agent-skills`.
+- **Strict Licensing:** Proprietary skills never have files copied into this repo; permissive derived skills retain upstream attributions.
 
-### Running & Validating:
+### Running & Testing:
 ```bash
-# Run schema and rules validation
+# Install dependencies & validate catalog rules
+npm install
 node scripts/validate.mjs
 
-# Serve locally
-npx serve .
+# Run full validation, search, server security, governance & MCP tests
+npm test
+
+# Start local Express + API server
+npm run dev
 ```
 
 Licensed under [MIT](LICENSE). Attributions in [NOTICE.md](NOTICE.md).

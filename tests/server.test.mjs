@@ -24,10 +24,10 @@ function fetchUrl(url) {
   });
 }
 
-function postJson(url, payload) {
+function postJson(url, payload, extraHeaders = {}) {
   return new Promise((resolve, reject) => {
     const parsed = new URL(url);
-    const body = JSON.stringify(payload);
+    const body = typeof payload === 'string' ? payload : JSON.stringify(payload);
     const req = http.request(
       {
         hostname: parsed.hostname,
@@ -36,13 +36,22 @@ function postJson(url, payload) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(body)
+          'Content-Length': Buffer.byteLength(body),
+          ...extraHeaders
         }
       },
       (res) => {
         let data = '';
         res.on('data', (c) => (data += c));
-        res.on('end', () => resolve({ statusCode: res.statusCode, data: JSON.parse(data) }));
+        res.on('end', () => {
+          let parsedJson = null;
+          try {
+            parsedJson = JSON.parse(data);
+          } catch {
+            parsedJson = data;
+          }
+          resolve({ statusCode: res.statusCode, headers: res.headers, data: parsedJson });
+        });
       }
     );
     req.on('error', reject);
@@ -177,7 +186,82 @@ async function runTests() {
     assert.strictEqual(aiAdvisorRes.data.specialty, 'ai-project');
     console.log('  PASS: POST /api/advisor classifies Code and AI-Project specialties cleanly');
 
-    console.log('\nAll 10 Full-Stack Server tests PASSED! 🚀\n');
+    // 12. Security: Enforce 1000 char prompt limit & malformed JSON rejection
+    const longMsgRes = await postJson('http://127.0.0.1:3456/api/advisor', {
+      message: 'a'.repeat(1001)
+    });
+    assert.strictEqual(longMsgRes.statusCode, 400);
+    console.log('  PASS: POST /api/advisor rejects messages over 1000 chars with HTTP 400');
+
+    const badJsonRes = await postJson('http://127.0.0.1:3456/api/advisor', '{"bad": ');
+    assert.strictEqual(badJsonRes.statusCode, 400);
+    console.log('  PASS: POST /api/advisor rejects malformed JSON with HTTP 400');
+
+    // 13. Security: Restricted CORS on /api/advisor
+    const allowedCorsRes = await postJson(
+      'http://127.0.0.1:3456/api/advisor',
+      { message: 'test cors' },
+      { Origin: 'https://top-100-agent-skills.vercel.app' }
+    );
+    assert.strictEqual(allowedCorsRes.headers['access-control-allow-origin'], 'https://top-100-agent-skills.vercel.app');
+
+    const blockedCorsRes = await postJson(
+      'http://127.0.0.1:3456/api/advisor',
+      { message: 'test cors' },
+      { Origin: 'https://evil-site.example' }
+    );
+    assert.strictEqual(blockedCorsRes.headers['access-control-allow-origin'], undefined);
+    console.log('  PASS: /api/advisor restricts CORS to trusted origins');
+
+    // 14. Serverless handler unit verification (api/advisor.js)
+    const { default: serverlessAdvisor } = await import('../api/advisor.js');
+    function createMockRes() {
+      const headers = {};
+      return {
+        statusCode: 200,
+        headers,
+        body: null,
+        ended: false,
+        setHeader(k, v) { headers[k.toLowerCase()] = v; },
+        status(code) { this.statusCode = code; return this; },
+        json(payload) { this.body = payload; return this; },
+        end() { this.ended = true; return this; }
+      };
+    }
+
+    // Invalid string JSON body -> 400
+    const badHandlerRes = createMockRes();
+    await serverlessAdvisor(
+      { method: 'POST', headers: { origin: 'https://evil.example', 'x-forwarded-for': '10.0.0.1' }, body: '{bad-json' },
+      badHandlerRes
+    );
+    assert.strictEqual(badHandlerRes.statusCode, 400);
+    assert.strictEqual(badHandlerRes.headers['access-control-allow-origin'], undefined);
+
+    // >1000 char message -> 400 & valid CORS
+    const longHandlerRes = createMockRes();
+    await serverlessAdvisor(
+      { method: 'POST', headers: { origin: 'https://top-100-agent-skills.vercel.app', 'x-forwarded-for': '10.0.0.2' }, body: { message: 'x'.repeat(1001) } },
+      longHandlerRes
+    );
+    assert.strictEqual(longHandlerRes.statusCode, 400);
+    assert.strictEqual(longHandlerRes.headers['access-control-allow-origin'], 'https://top-100-agent-skills.vercel.app');
+
+    // Internal exception sanitization (throwing getter triggered inside try/catch must not leak)
+    const errHandlerRes = createMockRes();
+    const throwingBody = {
+      message: 'hello world',
+      specialty: { toString() { throw new Error('SECRET_INTERNAL_TRACE'); } }
+    };
+    await serverlessAdvisor(
+      { method: 'POST', headers: { origin: 'https://top-100-agent-skills.vercel.app', 'x-forwarded-for': '10.0.0.3' }, body: throwingBody },
+      errHandlerRes
+    );
+    assert.strictEqual(errHandlerRes.body.reason, 'internal_fallback');
+    assert(!JSON.stringify(errHandlerRes.body).includes('SECRET_INTERNAL_TRACE'));
+    console.log('  PASS: Serverless api/advisor.js enforces CORS, 400 JSON/length validation, and sanitizes internal errors');
+
+    console.log('\nAll 14 Full-Stack & Security Server tests PASSED! 🚀\n');
   } finally {
     serverProc.kill();
   }

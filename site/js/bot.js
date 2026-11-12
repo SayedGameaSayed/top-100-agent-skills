@@ -488,8 +488,8 @@ export function initAiBot(skills = [], categories = []) {
         <div class="advisor-dropzone-privacy">
           🔒 ${
             isEn
-              ? 'Stored strictly inside your browser (localStorage) — never saved on our server, and disappears when you clear it or wipe browser data.'
-              : 'تُحفَظ الملفات داخل متصفحك فقط (localStorage) ولا تُخزَّن في أي سيرفر، وتختفي تمامًا فور حذفها أو مسح بيانات المتصفح.'
+              ? 'Files stay stored in your browser (localStorage) only — never saved to our server, and disappear when you clear browser data.'
+              : 'تُحفَظ الملفات داخل متصفحك فقط (localStorage) ولا تُخزَّن في أي قاعدة بيانات، وتختفي تمامًا عند حذفها أو مسح بيانات المتصفح.'
           }
         </div>
       </div>
@@ -500,7 +500,8 @@ export function initAiBot(skills = [], categories = []) {
           id="bot-input-text"
           class="bot-input-field advisor-input-field"
           rows="2"
-          placeholder="${isEn ? 'Ask anything, paste code, or drop code files above...' : 'اسأل عن مهارة، أو ألصق كودًا أو أرفق ملفات برمجية بالأعلى…'}"
+          maxlength="1000"
+          placeholder="${isEn ? 'Ask anything (max 1000 chars), or drop code files above...' : 'اسأل عن مهارة (بحد أقصى 1000 حرف)، أو أرفق ملفات برمجية بالأعلى…'}"
           aria-label="${isEn ? 'Message' : 'الرسالة'}"
         ></textarea>
         <button type="submit" id="bot-send-btn" class="bot-send-btn advisor-send-btn" aria-label="${isEn ? 'Send' : 'إرسال'}">
@@ -510,6 +511,13 @@ export function initAiBot(skills = [], categories = []) {
           </svg>
         </button>
       </form>
+      <div id="advisor-ai-privacy-note" class="advisor-ai-privacy-note">
+        ⚠️ ${
+          isEn
+            ? 'Privacy Notice: Your prompt and attached file snippets are sent to external AI providers (OpenRouter, Groq, or Google Gemini) for inference. Do not paste secrets, API keys, or private credentials.'
+            : 'تنبيه الخصوصية: يتم إرسال نص استفسارك ومحتوى الملفات المرفقة إلى مزوّدي ذكاء اصطناعي خارجيين (OpenRouter أو Groq أو Google Gemini) لتوليد الترشيح؛ لا تلصق أي أسرار أو مفاتيح خاصة.'
+        }
+      </div>
     </div>
   `;
 
@@ -958,13 +966,21 @@ function updateBotStatusUI(hasKey, providerId = 'openrouter') {
   }
 }
 
-async function callServerFreeAdvisor(userText, lang, specialty) {
+async function callServerFreeAdvisor(userText, files = [], lang = 'ar', specialty = 'auto') {
+  const safeFiles = Array.isArray(files)
+    ? files.slice(0, MAX_LOCAL_FILES).map((f) => ({
+        name: f.name,
+        content: String(f.content || '').slice(0, MAX_CHARS_PER_FILE)
+      }))
+    : [];
+
   const res = await fetch('/api/advisor', {
     method: 'POST',
     signal: AbortSignal.timeout(18000),
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      message: userText,
+      message: String(userText || '').slice(0, 1000),
+      files: safeFiles,
       lang: lang === 'en' ? 'en' : 'ar',
       specialty: specialty || 'auto'
     })
@@ -1029,7 +1045,7 @@ async function handleSendMessage(userText, attachedFiles = []) {
 
     // 2. Default Zero-Key Multi-Specialist Router (/api/advisor)
     try {
-      const serverAdvisor = await callServerFreeAdvisor(aiPayload, lang, selectedSpecialty);
+      const serverAdvisor = await callServerFreeAdvisor(userText, filesList, lang, selectedSpecialty);
       if (serverAdvisor?.reply) {
         removeTypingIndicator(typingId);
         const matchedSkills = extractMatchedSkills(aiPayload, serverAdvisor.reply);

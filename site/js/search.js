@@ -47,14 +47,20 @@ export function normalizeArabic(text) {
  * Prepares searchable document for a skill, normalizing every field
  */
 export function prepareSkillForSearch(skill) {
-  const normalizedTitle = normalizeArabic(skill.title_ar);
-  const normalizedSummary = normalizeArabic(skill.summary_ar);
-  const normalizedBenefits = Array.isArray(skill.benefits_ar)
-    ? skill.benefits_ar.map(normalizeArabic).join(' ')
-    : '';
-  const normalizedUseCases = Array.isArray(skill.use_cases_ar)
-    ? skill.use_cases_ar.map(normalizeArabic).join(' ')
-    : '';
+  const normalizedTitle = `${normalizeArabic(skill.title_ar)} ${normalizeArabic(skill.title_en)}`.trim();
+  const normalizedSummary = `${normalizeArabic(skill.summary_ar)} ${normalizeArabic(skill.summary_en)}`.trim();
+  const normalizedBenefits = [
+    ...(Array.isArray(skill.benefits_ar) ? skill.benefits_ar : []),
+    ...(Array.isArray(skill.benefits_en) ? skill.benefits_en : [])
+  ]
+    .map(normalizeArabic)
+    .join(' ');
+  const normalizedUseCases = [
+    ...(Array.isArray(skill.use_cases_ar) ? skill.use_cases_ar : []),
+    ...(Array.isArray(skill.use_cases_en) ? skill.use_cases_en : [])
+  ]
+    .map(normalizeArabic)
+    .join(' ');
   const normalizedName = (skill.name || '').toLowerCase();
   const normalizedId = (skill.id || '').toLowerCase();
   const tagsList = Array.isArray(skill.tags) ? skill.tags.map(normalizeArabic) : [];
