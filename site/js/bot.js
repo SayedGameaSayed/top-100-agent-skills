@@ -12,6 +12,9 @@ let skillsCatalog = [];
 let categoriesCatalog = [];
 let selectedSpecialty = 'auto';
 
+// Temporarily paused so the UI stays minimal; flip to true to re-enable settings/optional key drawer
+const ENABLE_BOT_SETTINGS_DRAWER = false;
+
 const SPECIALISTS = {
   auto: {
     id: 'auto',
@@ -256,7 +259,7 @@ export function initAiBot(skills = [], categories = []) {
           </div>
         </div>
         <div class="bot-header-actions">
-          <button id="bot-api-btn" class="bot-icon-btn bot-settings-toggle-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Specialist Mode & Optional Key' : 'التخصصات وإعدادات متقدمة'}" aria-label="${isEn ? 'Settings' : 'الإعدادات'}" type="button">⚙️</button>
+          ${ENABLE_BOT_SETTINGS_DRAWER ? `<button id="bot-api-btn" class="bot-icon-btn bot-settings-toggle-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Specialist Mode & Optional Key' : 'التخصصات وإعدادات متقدمة'}" aria-label="${isEn ? 'Settings' : 'الإعدادات'}" type="button">⚙️</button>` : ''}
           <button id="bot-expand-btn" class="bot-icon-btn" title="${isEn ? 'Maximize / Restore Window' : 'تكبير النافذة / استعادة الحجم'}" aria-label="${isEn ? 'Maximize' : 'تكبير النافذة'}" type="button">⤢</button>
           <button id="bot-close-btn" class="bot-icon-btn" title="${isEn ? 'Close Chat' : 'إغلاق المحادثة'}" aria-label="${isEn ? 'Close' : 'إغلاق'}" type="button">✕</button>
         </div>
@@ -275,7 +278,7 @@ export function initAiBot(skills = [], categories = []) {
           .join('')}
       </div>
 
-      <!-- Clean Optional Settings Drawer -->
+      ${ENABLE_BOT_SETTINGS_DRAWER ? `<!-- Clean Optional Settings Drawer -->
       <div id="bot-settings-drawer" class="bot-settings-drawer" style="display: none;">
         <div class="bot-settings-header">
           <span class="bot-settings-title">⚡ ${isEn ? 'Free Specialist Models' : 'النماذج المجانية حسب التخصص'}</span>
@@ -358,7 +361,7 @@ export function initAiBot(skills = [], categories = []) {
         <div style="margin-top: 10px;" class="bot-settings-close-footer">
           <button type="button" id="bot-close-drawer-btn" class="bot-cancel-btn" style="width: 100%;">${isEn ? 'Back to Chat' : 'العودة إلى المحادثة'}</button>
         </div>
-      </div>
+      </div>` : ''}
 
       <!-- Chat Messages Container -->
       <div id="bot-messages-container" class="bot-messages">
@@ -660,6 +663,7 @@ function attachBotEventListeners() {
   });
 
   function toggleSettingsDrawer(show) {
+    if (!settingsDrawer) return;
     const isVisible = settingsDrawer.style.display !== 'none';
     const nextState = show !== undefined ? show : !isVisible;
     settingsDrawer.style.display = nextState ? 'block' : 'none';
@@ -670,10 +674,6 @@ function attachBotEventListeners() {
       setTimeout(checkScrollPosition, 100);
     }
   }
-
-  apiBtn.addEventListener('click', () => toggleSettingsDrawer());
-  if (cancelSettingsBtn) cancelSettingsBtn.addEventListener('click', () => toggleSettingsDrawer(false));
-  if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', () => toggleSettingsDrawer(false));
 
   function updateProviderGuide(providerId) {
     const p = PROVIDERS[providerId] || PROVIDERS.openrouter;
@@ -688,73 +688,80 @@ function attachBotEventListeners() {
     }
   }
 
-  providerSelect.addEventListener('change', (e) => updateProviderGuide(e.target.value));
+  if (apiBtn && settingsDrawer) {
+    apiBtn.addEventListener('click', () => toggleSettingsDrawer());
+    if (cancelSettingsBtn) cancelSettingsBtn.addEventListener('click', () => toggleSettingsDrawer(false));
+    if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', () => toggleSettingsDrawer(false));
 
-  apiKeyInput.addEventListener('input', (e) => {
-    const detected = detectProviderFromKey(e.target.value);
-    if (detected && detected !== providerSelect.value) {
-      providerSelect.value = detected;
-      updateProviderGuide(detected);
-    }
-  });
+    providerSelect?.addEventListener('change', (e) => updateProviderGuide(e.target.value));
 
-  toggleVisBtn.addEventListener('click', () => {
-    const isPass = apiKeyInput.type === 'password';
-    apiKeyInput.type = isPass ? 'text' : 'password';
-    toggleVisBtn.textContent = isPass ? '🙈' : '👁️';
-  });
+    apiKeyInput?.addEventListener('input', (e) => {
+      const detected = detectProviderFromKey(e.target.value);
+      if (detected && providerSelect && detected !== providerSelect.value) {
+        providerSelect.value = detected;
+        updateProviderGuide(detected);
+      }
+    });
 
-  saveKeyBtn.addEventListener('click', async () => {
-    const key = apiKeyInput.value.trim();
-    const provider = providerSelect.value || 'openrouter';
-    const statusEl = document.getElementById('bot-settings-status');
-    const p = PROVIDERS[provider] || PROVIDERS.openrouter;
+    toggleVisBtn?.addEventListener('click', () => {
+      if (!apiKeyInput) return;
+      const isPass = apiKeyInput.type === 'password';
+      apiKeyInput.type = isPass ? 'text' : 'password';
+      toggleVisBtn.textContent = isPass ? '🙈' : '👁️';
+    });
 
-    if (!key) {
+    saveKeyBtn?.addEventListener('click', async () => {
+      const key = apiKeyInput?.value.trim() || '';
+      const provider = providerSelect?.value || 'openrouter';
+      const statusEl = document.getElementById('bot-settings-status');
+      const p = PROVIDERS[provider] || PROVIDERS.openrouter;
+
+      if (!key) {
+        statusEl.style.display = 'block';
+        statusEl.className = 'bot-settings-status error';
+        statusEl.textContent = isEn ? 'Please paste a valid API key.' : 'يرجى لصق API Key أولًا.';
+        return;
+      }
+
       statusEl.style.display = 'block';
-      statusEl.className = 'bot-settings-status error';
-      statusEl.textContent = isEn ? 'Please paste a valid API key.' : 'يرجى لصق API Key أولًا.';
-      return;
-    }
+      statusEl.className = 'bot-settings-status';
+      statusEl.textContent = isEn ? `Testing connection with ${p.name}...` : `جارٍ التحقق من المفتاح مع ${p.name}…`;
 
-    statusEl.style.display = 'block';
-    statusEl.className = 'bot-settings-status';
-    statusEl.textContent = isEn ? `Testing connection with ${p.name}...` : `جارٍ التحقق من المفتاح مع ${p.name}…`;
+      try {
+        await testApiKey(provider, key);
+        setStoredConfig(provider, key);
+        statusEl.className = 'bot-settings-status success';
+        statusEl.textContent = isEn ? `✓ Connected to ${p.name}!` : `✓ تم تفعيل ${p.name} بنجاح`;
+        updateBotStatusUI(true, provider);
+        if (clearKeyBtn) clearKeyBtn.style.display = 'inline-block';
 
-    try {
-      await testApiKey(provider, key);
-      setStoredConfig(provider, key);
+        setTimeout(() => {
+          toggleSettingsDrawer(false);
+          statusEl.style.display = 'none';
+        }, 900);
+      } catch (err) {
+        statusEl.className = 'bot-settings-status error';
+        statusEl.textContent = isEn
+          ? `⚠️ Connection failed: ${err.message}`
+          : `⚠️ تعذّر التحقق من المفتاح: ${err.message}`;
+      }
+    });
+
+    clearKeyBtn?.addEventListener('click', () => {
+      removeStoredConfig();
+      if (apiKeyInput) apiKeyInput.value = '';
+      updateBotStatusUI(false);
+      clearKeyBtn.style.display = 'none';
+      const statusEl = document.getElementById('bot-settings-status');
+      statusEl.style.display = 'block';
       statusEl.className = 'bot-settings-status success';
-      statusEl.textContent = isEn ? `✓ Connected to ${p.name}!` : `✓ تم تفعيل ${p.name} بنجاح`;
-      updateBotStatusUI(true, provider);
-      clearKeyBtn.style.display = 'inline-block';
-
+      statusEl.textContent = isEn ? 'Switched back to free auto-router.' : 'تمت العودة إلى الوضع المجاني التلقائي.';
       setTimeout(() => {
         toggleSettingsDrawer(false);
         statusEl.style.display = 'none';
       }, 900);
-    } catch (err) {
-      statusEl.className = 'bot-settings-status error';
-      statusEl.textContent = isEn
-        ? `⚠️ Connection failed: ${err.message}`
-        : `⚠️ تعذّر التحقق من المفتاح: ${err.message}`;
-    }
-  });
-
-  clearKeyBtn.addEventListener('click', () => {
-    removeStoredConfig();
-    apiKeyInput.value = '';
-    updateBotStatusUI(false);
-    clearKeyBtn.style.display = 'none';
-    const statusEl = document.getElementById('bot-settings-status');
-    statusEl.style.display = 'block';
-    statusEl.className = 'bot-settings-status success';
-    statusEl.textContent = isEn ? 'Switched back to free auto-router.' : 'تمت العودة إلى الوضع المجاني التلقائي.';
-    setTimeout(() => {
-      toggleSettingsDrawer(false);
-      statusEl.style.display = 'none';
-    }, 900);
-  });
+    });
+  }
 
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
