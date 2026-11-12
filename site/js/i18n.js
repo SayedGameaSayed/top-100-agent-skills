@@ -18,6 +18,9 @@ export const UI_STRINGS = {
     heroHeadline: 'افهم المهارة قبل أن تستخدمها.',
     heroSub: 'شرح عربي واضح ومباشر لأشهر AI Agent Skills المفتوحة، مع إرشادات موثقة لإضافتها إلى محادثتك أو بيئة التطوير.',
     searchPlaceholder: 'ابحث عن مهارة: مستندات، تصميم، اختبار، Word…',
+    heroAdvisorBadge: '✨ أداة ذكية',
+    heroAdvisorCtaText: 'محتار تبدأ بأي مهارة؟ انزل واستخدم مستشار الذكاء الاصطناعي لاختيار الأنسب لمشروعك',
+    advisorAriaLabel: 'مستشار المهارات الذكي',
     quickShare: 'مشاركة سريعة:',
     shareX: 'منصة X',
     shareLinkedIn: 'LinkedIn',
@@ -136,6 +139,9 @@ export const UI_STRINGS = {
     heroHeadline: 'Understand the skill before you use it.',
     heroSub: 'Curated directory of the top 100 open-source AI agent skills, with verified prompts ready to copy for Claude, Cursor, ChatGPT, and Codex.',
     searchPlaceholder: 'Search skills: word, excel, design, testing, pdf...',
+    heroAdvisorBadge: '✨ AI Feature',
+    heroAdvisorCtaText: 'Not sure which skill to start with? Scroll down to use the AI Skills Advisor',
+    advisorAriaLabel: 'AI Skills Advisor',
     quickShare: 'Quick Share:',
     shareX: 'X / Twitter',
     shareLinkedIn: 'LinkedIn',
@@ -456,6 +462,15 @@ export function applyTranslationsToDocument() {
 
     const searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.placeholder = t('searchPlaceholder');
+
+    const heroAdvisorBadge = document.getElementById('hero-advisor-badge');
+    if (heroAdvisorBadge) heroAdvisorBadge.textContent = t('heroAdvisorBadge');
+
+    const heroAdvisorCtaText = document.getElementById('hero-advisor-cta-text');
+    if (heroAdvisorCtaText) heroAdvisorCtaText.textContent = t('heroAdvisorCtaText');
+
+    const advisorSection = document.getElementById('ai-advisor-section');
+    if (advisorSection) advisorSection.setAttribute('aria-label', t('advisorAriaLabel'));
 
     const quickShareLabel = document.querySelector('.hero-share-bar .share-label') || document.querySelector('.hero-share-bar span');
     if (quickShareLabel) quickShareLabel.textContent = t('quickShare');

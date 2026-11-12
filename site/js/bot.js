@@ -221,52 +221,43 @@ export function initAiBot(skills = [], categories = []) {
     categoriesCatalog = categories;
   }
 
-  if (document.getElementById('ai-bot-trigger')) return;
+  const mount = document.getElementById('ai-advisor-mount');
+  if (!mount || document.getElementById('ai-advisor-shell')) return;
 
   const isEn = getLang() === 'en';
   const config = getStoredConfig();
   const hasKey = Boolean(config.key);
   const activeProvider = PROVIDERS[config.provider] || PROVIDERS.openrouter;
 
-  const widgetContainer = document.createElement('div');
-  widgetContainer.id = 'ai-bot-root';
-  widgetContainer.innerHTML = `
-    <!-- Floating Trigger Pill Button -->
-    <button id="ai-bot-trigger" class="ai-bot-trigger" aria-label="${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}" title="${isEn ? 'Ask AI Skills Assistant' : 'استشر مساعد المهارات الذكي'}">
-      <span class="bot-trigger-pulse"></span>
-      <span class="bot-trigger-icon" aria-hidden="true">✨</span>
-      <span class="bot-trigger-text">${isEn ? 'Skills Assistant' : 'مساعد المهارات'}</span>
-    </button>
+  mount.innerHTML = `
+    <div class="advisor-intro-header">
+      <div>
+        <span class="advisor-kicker">✨ ${isEn ? 'Interactive Feature' : 'ميزة ذكية مدمجة'}</span>
+        <h2 class="advisor-heading">${isEn ? 'AI Skills Advisor' : 'مستشار المهارات الذكي'}</h2>
+        <p class="advisor-subheading">${
+          isEn
+            ? 'Describe what you are building, paste code, or drop a README to get matched with the right verified skills automatically.'
+            : 'صف ما تبنيه، أو ألصق مقطع كود أو ملف <bdi dir="ltr">README</bdi> ليتم توجيه طلبك تلقائيًا وترشيح أنسب المهارات لمشروعك.'
+        }</p>
+      </div>
+    </div>
 
-    <!-- Floating Chat Modal / Drawer -->
-    <div id="ai-bot-modal" class="ai-bot-modal" aria-hidden="true">
-
-      <!-- Minimal Draggable Header -->
-      <div class="bot-header" id="bot-header">
-        <div class="bot-header-info">
-          <span class="bot-drag-handle" id="bot-drag-handle" title="${isEn ? 'Drag to move window (Double-click to reset)' : 'اسحب لتحريك النافذة (انقر مرتين لإعادة التمركز)'}">⠿</span>
-          <img src="assets/logo.png" alt="Assistant Logo" class="bot-avatar-img" width="28" height="28">
-          <div>
-            <div class="bot-title">${isEn ? 'AI Skills Assistant' : 'مساعد المهارات الذكي'}</div>
-            <div class="bot-subtitle">
-              <span class="bot-live-dot ${hasKey ? 'bot-live-gemini' : ''}"></span>
-              <span id="bot-engine-label">${
-                hasKey
-                  ? `${isEn ? (activeProvider.nameEn || activeProvider.name) : activeProvider.name} (${isEn ? 'Personal Key' : 'مفتاح شخصي'})`
-                  : (isEn ? 'Free Auto-Router • No Key Needed' : 'يعمل مجانًا • توجيه حسب التخصص')
-              }</span>
-            </div>
-          </div>
+    <div id="ai-advisor-shell" class="advisor-shell">
+      <!-- Top Workspace Bar -->
+      <div class="advisor-topbar">
+        <div class="advisor-status-pill">
+          <span class="bot-live-dot ${hasKey ? 'bot-live-gemini' : ''}"></span>
+          <span id="bot-engine-label">${
+            hasKey
+              ? `${isEn ? (activeProvider.nameEn || activeProvider.name) : activeProvider.name} (${isEn ? 'Personal Key' : 'مفتاح شخصي'})`
+              : (isEn ? 'Free Auto-Router • Specialty Detection' : 'يعمل مجانًا • توجيه حسب التخصص')
+          }</span>
         </div>
-        <div class="bot-header-actions">
-          ${ENABLE_BOT_SETTINGS_DRAWER ? `<button id="bot-api-btn" class="bot-icon-btn bot-settings-toggle-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Specialist Mode & Optional Key' : 'التخصصات وإعدادات متقدمة'}" aria-label="${isEn ? 'Settings' : 'الإعدادات'}" type="button">⚙️</button>` : ''}
-          <button id="bot-expand-btn" class="bot-icon-btn" title="${isEn ? 'Maximize / Restore Window' : 'تكبير النافذة / استعادة الحجم'}" aria-label="${isEn ? 'Maximize' : 'تكبير النافذة'}" type="button">⤢</button>
-          <button id="bot-close-btn" class="bot-icon-btn" title="${isEn ? 'Close Chat' : 'إغلاق المحادثة'}" aria-label="${isEn ? 'Close' : 'إغلاق'}" type="button">✕</button>
-        </div>
+        ${ENABLE_BOT_SETTINGS_DRAWER ? `<div class="bot-header-actions"><button id="bot-api-btn" class="bot-icon-btn bot-settings-toggle-btn ${hasKey ? 'has-key' : ''}" title="${isEn ? 'Specialist Mode & Optional Key' : 'التخصصات وإعدادات متقدمة'}" aria-label="${isEn ? 'Settings' : 'الإعدادات'}" type="button">⚙️</button></div>` : ''}
       </div>
 
       <!-- Compact Specialist Mode Strip -->
-      <div class="bot-specialty-bar" id="bot-specialty-bar" role="tablist" aria-label="${isEn ? 'AI Specialist Mode' : 'تخصص المساعد'}">
+      <div class="bot-specialty-bar advisor-specialty-bar" id="bot-specialty-bar" role="tablist" aria-label="${isEn ? 'AI Specialist Mode' : 'تخصص المستشار'}">
         ${Object.values(SPECIALISTS)
           .map(
             (sp) => `
@@ -363,37 +354,40 @@ export function initAiBot(skills = [], categories = []) {
         </div>
       </div>` : ''}
 
-      <!-- Chat Messages Container -->
-      <div id="bot-messages-container" class="bot-messages">
+      <!-- Conversation Output Area -->
+      <div class="advisor-messages-wrap">
+        <div id="bot-messages-container" class="bot-messages advisor-messages">
 
-        <!-- Clean Welcome Message -->
-        <div class="bot-msg bot-msg-assistant">
-          <div class="bot-msg-bubble">
-            ${isEn
-              ? '👋 Hi! I’m your <strong>AI Skills Advisor</strong> — ready to help.<br><br>Describe your goal, paste code, or drop a <code>README</code>, and I’ll automatically route it to the best free specialist model to match the right skills for you.'
-              : '👋 أهلًا بك! أنا <strong>مساعد المهارات الذكي</strong> — جاهز للبحث فورًا.<br><br>اكتب احتياجك، أو ألصق مقطع كود، أو ملف <bdi dir="ltr">README</bdi>، وسأوجّه طلبك تلقائيًا إلى أنسب نموذج مجاني حسب التخصص (الكود، مشاريع <bdi dir="ltr">AI</bdi>، أو البحث العام) لترشيح أفضل المهارات.'}
+          <!-- Clean Welcome Message -->
+          <div class="bot-msg bot-msg-assistant">
+            <div class="bot-msg-bubble">
+              ${isEn
+                ? '👋 Hi! I’m your <strong>AI Skills Advisor</strong> — ready to help.<br><br>Describe your goal, paste code, or drop a <code>README</code>, and I’ll automatically route it to the best free specialist model to match the right skills for you.'
+                : '👋 أهلًا بك! أنا <strong>مساعد المهارات الذكي</strong> — جاهز للبحث فورًا.<br><br>اكتب احتياجك، أو ألصق مقطع كود، أو ملف <bdi dir="ltr">README</bdi>، وسأوجّه طلبك تلقائيًا إلى أنسب نموذج مجاني حسب التخصص (الكود، مشاريع <bdi dir="ltr">AI</bdi>، أو البحث العام) لترشيح أفضل المهارات.'}
+            </div>
           </div>
         </div>
+
+        <!-- Scroll to Bottom Helper -->
+        <button id="bot-scroll-bottom-btn" class="bot-scroll-bottom-btn" type="button" aria-label="${isEn ? 'Scroll down to latest' : 'التمرير إلى أسفل المحادثة'}" title="${isEn ? 'Scroll to latest messages' : 'الانتقال إلى أحدث الرسائل'}">
+          <span class="bot-scroll-icon">↓</span>
+          <span class="bot-scroll-text">${isEn ? 'Latest' : 'الأسفل'}</span>
+        </button>
       </div>
 
-      <!-- Floating Scroll to Bottom Button -->
-      <button id="bot-scroll-bottom-btn" class="bot-scroll-bottom-btn" type="button" aria-label="${isEn ? 'Scroll down to latest' : 'التمرير إلى أسفل المحادثة'}" title="${isEn ? 'Scroll to latest messages' : 'الانتقال إلى أحدث الرسائل'}">
-        <span class="bot-scroll-icon">↓</span>
-        <span class="bot-scroll-text">${isEn ? 'Latest' : 'الأسفل'}</span>
-      </button>
-
-      <!-- Chat Input Area -->
-      <form id="bot-input-form" class="bot-input-form">
+      <!-- Prompt Input Form -->
+      <form id="bot-input-form" class="bot-input-form advisor-input-form">
         <textarea
           id="bot-input-text"
-          class="bot-input-field"
-          rows="1"
+          class="bot-input-field advisor-input-field"
+          rows="2"
           placeholder="${isEn ? 'Ask anything, paste code, or drop a README...' : 'اسأل عن مهارة، أو ألصق كودًا أو ملف README…'}"
           aria-label="${isEn ? 'Message' : 'الرسالة'}"
           required
         ></textarea>
-        <button type="submit" id="bot-send-btn" class="bot-send-btn" aria-label="${isEn ? 'Send' : 'إرسال'}">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <button type="submit" id="bot-send-btn" class="bot-send-btn advisor-send-btn" aria-label="${isEn ? 'Send' : 'إرسال'}">
+          <span>${isEn ? 'Ask AI' : 'بحث ذكي'}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
           </svg>
         </button>
@@ -401,21 +395,17 @@ export function initAiBot(skills = [], categories = []) {
     </div>
   `;
 
-  document.body.appendChild(widgetContainer);
   attachBotEventListeners();
 }
 
 function attachBotEventListeners() {
-  const trigger = document.getElementById('ai-bot-trigger');
-  const modal = document.getElementById('ai-bot-modal');
-  const header = document.getElementById('bot-header');
-  const expandBtn = document.getElementById('bot-expand-btn');
-  const closeBtn = document.getElementById('bot-close-btn');
+  const shell = document.getElementById('ai-advisor-shell');
   const form = document.getElementById('bot-input-form');
   const input = document.getElementById('bot-input-text');
   const specialtyBar = document.getElementById('bot-specialty-bar');
   const messagesContainer = document.getElementById('bot-messages-container');
   const scrollBottomBtn = document.getElementById('bot-scroll-bottom-btn');
+  const heroAdvisorCta = document.getElementById('hero-advisor-cta');
 
   const apiBtn = document.getElementById('bot-api-btn');
   const settingsDrawer = document.getElementById('bot-settings-drawer');
@@ -430,6 +420,16 @@ function attachBotEventListeners() {
   const stepTextEl = document.getElementById('bot-step-guide-text');
   const linkEl = document.getElementById('bot-provider-link');
   const isEn = getLang() === 'en';
+
+  if (heroAdvisorCta) {
+    heroAdvisorCta.addEventListener('click', (e) => {
+      const target = document.getElementById('ai-advisor-section');
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => input?.focus({ preventScroll: true }), 420);
+    });
+  }
 
   function scrollToBottom(smooth = true) {
     if (!messagesContainer) return;
@@ -472,205 +472,15 @@ function attachBotEventListeners() {
     });
   }
 
-  // Open / Close Modal
-  trigger.addEventListener('click', () => {
-    const isOpen = modal.classList.contains('active');
-    if (isOpen) {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-    } else {
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
-      input.focus();
-      setTimeout(checkScrollPosition, 150);
-    }
-  });
-
-  // Expand / Restore
-  if (expandBtn) {
-    expandBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isExpanded = modal.classList.toggle('expanded');
-      expandBtn.textContent = isExpanded ? '🗗' : '⤢';
-      expandBtn.title = isExpanded
-        ? (isEn ? 'Restore Window Size' : 'استعادة الحجم الأصلي')
-        : (isEn ? 'Maximize Window' : 'تكبير النافذة');
-      if (modal.style.top) clampModalInViewport();
-      setTimeout(checkScrollPosition, 200);
-    });
-  }
-
-  function clampModalInViewport() {
-    const rect = modal.getBoundingClientRect();
-    const maxLeft = Math.max(8, window.innerWidth - rect.width - 8);
-    const maxTop = Math.max(8, window.innerHeight - rect.height - 8);
-    modal.style.left = `${Math.max(8, Math.min(maxLeft, rect.left))}px`;
-    modal.style.top = `${Math.max(8, Math.min(maxTop, rect.top))}px`;
-    modal.style.bottom = 'auto';
-    modal.style.right = 'auto';
-  }
-
-  // Draggable Modal Window
-  function setupModalDraggable() {
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let initialLeft = 0;
-    let initialTop = 0;
-
-    const onPointerDown = (e) => {
-      if (e.target.closest('button') || e.target.closest('input') || e.target.closest('a') || e.target.closest('select')) {
-        return;
-      }
-      isDragging = true;
-      modal.classList.add('is-dragging');
-      const rect = modal.getBoundingClientRect();
-      initialLeft = rect.left;
-      initialTop = rect.top;
-      modal.style.top = `${initialTop}px`;
-      modal.style.left = `${initialLeft}px`;
-      modal.style.bottom = 'auto';
-      modal.style.right = 'auto';
-      modal.style.transform = 'none';
-
-      startX = e.clientX !== undefined ? e.clientX : e.touches?.[0]?.clientX;
-      startY = e.clientY !== undefined ? e.clientY : e.touches?.[0]?.clientY;
-
-      document.addEventListener('mousemove', onPointerMove, { passive: false });
-      document.addEventListener('mouseup', onPointerUp);
-      document.addEventListener('touchmove', onPointerMove, { passive: false });
-      document.addEventListener('touchend', onPointerUp);
-    };
-
-    const onPointerMove = (e) => {
-      if (!isDragging) return;
-      if (e.cancelable) e.preventDefault();
-      const clientX = e.clientX !== undefined ? e.clientX : e.touches?.[0]?.clientX;
-      const clientY = e.clientY !== undefined ? e.clientY : e.touches?.[0]?.clientY;
-      if (clientX === undefined || clientY === undefined) return;
-
-      const newLeft = Math.max(8, Math.min(window.innerWidth - modal.offsetWidth - 8, initialLeft + (clientX - startX)));
-      const newTop = Math.max(8, Math.min(window.innerHeight - modal.offsetHeight - 8, initialTop + (clientY - startY)));
-      modal.style.left = `${newLeft}px`;
-      modal.style.top = `${newTop}px`;
-    };
-
-    const onPointerUp = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      modal.classList.remove('is-dragging');
-      document.removeEventListener('mousemove', onPointerMove);
-      document.removeEventListener('mouseup', onPointerUp);
-      document.removeEventListener('touchmove', onPointerMove);
-      document.removeEventListener('touchend', onPointerUp);
-    };
-
-    if (header) {
-      header.addEventListener('mousedown', onPointerDown);
-      header.addEventListener('touchstart', onPointerDown, { passive: true });
-      header.addEventListener('dblclick', (e) => {
-        if (e.target.closest('button')) return;
-        modal.style.left = '';
-        modal.style.top = '';
-        modal.style.bottom = '';
-        modal.style.right = '';
-        modal.style.transform = '';
-        modal.classList.remove('expanded');
-        if (expandBtn) expandBtn.textContent = '⤢';
-      });
-    }
-
-    window.addEventListener('resize', () => {
-      if (modal.style.top) clampModalInViewport();
-    });
-  }
-
-  setupModalDraggable();
-
-  // Draggable Trigger Pill
-  function setupTriggerDraggable() {
-    let isDragging = false;
-    let hasMoved = false;
-    let startX = 0;
-    let startY = 0;
-    let initialLeft = 0;
-    let initialTop = 0;
-
-    const onStart = (e) => {
-      isDragging = true;
-      hasMoved = false;
-      startX = e.clientX !== undefined ? e.clientX : e.touches?.[0]?.clientX;
-      startY = e.clientY !== undefined ? e.clientY : e.touches?.[0]?.clientY;
-      const rect = trigger.getBoundingClientRect();
-      initialLeft = rect.left;
-      initialTop = rect.top;
-
-      document.addEventListener('mousemove', onMove, { passive: false });
-      document.addEventListener('mouseup', onEnd);
-      document.addEventListener('touchmove', onMove, { passive: false });
-      document.addEventListener('touchend', onEnd);
-    };
-
-    const onMove = (e) => {
-      if (!isDragging) return;
-      const clientX = e.clientX !== undefined ? e.clientX : e.touches?.[0]?.clientX;
-      const clientY = e.clientY !== undefined ? e.clientY : e.touches?.[0]?.clientY;
-      if (clientX === undefined || clientY === undefined) return;
-      const dx = clientX - startX;
-      const dy = clientY - startY;
-
-      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
-        hasMoved = true;
-        if (e.cancelable) e.preventDefault();
-        const newLeft = Math.max(10, Math.min(window.innerWidth - trigger.offsetWidth - 10, initialLeft + dx));
-        const newTop = Math.max(10, Math.min(window.innerHeight - trigger.offsetHeight - 10, initialTop + dy));
-        trigger.style.left = `${newLeft}px`;
-        trigger.style.top = `${newTop}px`;
-        trigger.style.bottom = 'auto';
-        trigger.style.right = 'auto';
-      }
-    };
-
-    const onEnd = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      document.removeEventListener('mousemove', onMove);
-      document.removeEventListener('mouseup', onEnd);
-      document.removeEventListener('touchmove', onMove);
-      document.removeEventListener('touchend', onEnd);
-    };
-
-    trigger.addEventListener('mousedown', onStart);
-    trigger.addEventListener('touchstart', onStart, { passive: true });
-    trigger.addEventListener(
-      'click',
-      (e) => {
-        if (hasMoved) {
-          e.stopImmediatePropagation();
-          e.preventDefault();
-          hasMoved = false;
-        }
-      },
-      true
-    );
-  }
-
-  setupTriggerDraggable();
-
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-  });
-
   function toggleSettingsDrawer(show) {
-    if (!settingsDrawer) return;
+    if (!settingsDrawer || !shell) return;
     const isVisible = settingsDrawer.style.display !== 'none';
     const nextState = show !== undefined ? show : !isVisible;
     settingsDrawer.style.display = nextState ? 'block' : 'none';
     if (nextState) {
-      modal.classList.add('in-settings');
+      shell.classList.add('in-settings');
     } else {
-      modal.classList.remove('in-settings');
+      shell.classList.remove('in-settings');
       setTimeout(checkScrollPosition, 100);
     }
   }
@@ -772,7 +582,7 @@ function attachBotEventListeners() {
 
   input.addEventListener('input', () => {
     input.style.height = 'auto';
-    input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+    input.style.height = Math.min(input.scrollHeight, 180) + 'px';
   });
 
   form.addEventListener('submit', (e) => {
@@ -798,7 +608,7 @@ function updateBotStatusUI(hasKey, providerId = 'openrouter') {
     if (dot) dot.classList.add('bot-live-gemini');
     if (btn) btn.classList.add('has-key');
   } else {
-    if (label) label.textContent = isEn ? 'Free Auto-Router • No Key Needed' : 'يعمل مجانًا • توجيه حسب التخصص';
+    if (label) label.textContent = isEn ? 'Free Auto-Router • Specialty Detection' : 'يعمل مجانًا • توجيه حسب التخصص';
     if (dot) dot.classList.remove('bot-live-gemini');
     if (btn) btn.classList.remove('has-key');
   }
@@ -1302,7 +1112,7 @@ function formatMarkdownText(text) {
     .replace(/## (.*?)(?:\n|$)/g, '<h3 style="margin: 10px 0 6px; font-weight: 700; color: inherit;">$1</h3>')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/`([^`]+)`/g, '<code style="background: rgba(255,255,255,0.08); padding: 1px 4px; border-radius: 4px; font-size: 0.9em; font-family: monospace;">$1</code>')
+    .replace(/`([^`]+)`/g, '<code class="bot-inline-code">$1</code>')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: #3b82f6; text-decoration: underline;">$1</a>')
     .replace(/\n\n/g, '<br><br>')
     .replace(/\n/g, '<br>');

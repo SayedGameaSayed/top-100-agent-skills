@@ -4743,3 +4743,331 @@ html[data-theme="light"] .bot-sp-model,
 html[data-theme="light"] .bot-privacy-note {
   color: #475569 !important;
 }
+
+/* ==========================================================================
+   In-Page AI Skills Advisor Feature & Hero Callout
+   ========================================================================== */
+.hero-advisor-callout {
+  margin-block-start: 18px;
+}
+
+.hero-advisor-link {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(146, 129, 247, 0.35);
+  background: rgba(146, 129, 247, 0.08);
+  color: var(--color-white);
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.hero-advisor-link:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-iris-violet);
+  background: rgba(146, 129, 247, 0.16);
+  box-shadow: 0 8px 24px rgba(146, 129, 247, 0.14);
+}
+
+.hero-advisor-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ddd6fe;
+  background: rgba(146, 129, 247, 0.24);
+  border: 1px solid rgba(146, 129, 247, 0.4);
+  white-space: nowrap;
+}
+
+.hero-advisor-arrow {
+  font-size: 15px;
+  color: var(--color-iris-violet);
+  transition: transform 0.2s ease;
+}
+
+.hero-advisor-link:hover .hero-advisor-arrow {
+  transform: translateY(3px);
+}
+
+.advisor-band {
+  background-color: var(--color-void-black);
+  padding-block: 42px;
+  border-bottom: 1px solid var(--color-graphite-hairline);
+  scroll-margin-top: 76px;
+}
+
+.advisor-intro-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-block-end: 20px;
+}
+
+.advisor-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #c4b5fd;
+  background: rgba(146, 129, 247, 0.12);
+  border: 1px solid rgba(146, 129, 247, 0.28);
+  margin-block-end: 10px;
+}
+
+.advisor-heading {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 600;
+  color: var(--color-white);
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.advisor-subheading {
+  font-size: 14.5px;
+  color: var(--color-ash-gray);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+.advisor-shell {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid var(--color-graphite-hairline);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.015) 100%);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.advisor-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--color-graphite-hairline);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.advisor-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--color-bone-white);
+  font-weight: 500;
+}
+
+.advisor-specialty-bar {
+  padding: 10px 18px;
+  gap: 8px;
+}
+
+.advisor-specialty-bar .bot-specialty-pill {
+  padding: 6px 13px;
+  font-size: 12.5px;
+}
+
+.advisor-messages-wrap {
+  position: relative;
+}
+
+.advisor-messages-wrap .bot-scroll-bottom-btn {
+  position: absolute;
+  bottom: 10px;
+  inset-inline-end: 14px;
+  left: auto;
+  transform: none;
+  z-index: 5;
+}
+
+.bot-inline-code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-family: var(--font-commit-mono), monospace;
+}
+
+.advisor-messages {
+  min-height: 150px;
+  max-height: 390px;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.advisor-messages .bot-msg-bubble {
+  max-width: min(820px, 92%);
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 14px 16px;
+}
+
+.advisor-messages .bot-recommended-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.advisor-input-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--color-graphite-hairline);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.advisor-input-field {
+  min-height: 52px;
+  max-height: 180px;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.55;
+  border-radius: 12px;
+}
+
+.advisor-send-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto;
+  min-width: 110px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .advisor-band {
+    padding-block: 40px;
+  }
+
+  .advisor-messages {
+    padding: 14px;
+    max-height: 380px;
+  }
+
+  .advisor-input-form {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .advisor-send-btn {
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+  }
+
+  .advisor-send-btn span {
+    display: none;
+  }
+}
+
+/* Light Theme Support for In-Page AI Advisor */
+html[data-theme="light"] .hero-advisor-link {
+  color: #1e1b4b;
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+html[data-theme="light"] .hero-advisor-link:hover {
+  background: rgba(99, 102, 241, 0.14);
+  border-color: #6366f1;
+}
+
+html[data-theme="light"] .hero-advisor-badge,
+html[data-theme="light"] .advisor-kicker {
+  color: #4338ca;
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.28);
+}
+
+html[data-theme="light"] .advisor-band {
+  background-color: #f8fafc;
+  border-bottom-color: #e2e8f0;
+}
+
+html[data-theme="light"] .advisor-heading {
+  color: #0f172a;
+}
+
+html[data-theme="light"] .advisor-subheading,
+html[data-theme="light"] .advisor-status-pill {
+  color: #334155;
+}
+
+html[data-theme="light"] .advisor-shell {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+}
+
+html[data-theme="light"] .advisor-topbar {
+  background: #f8fafc;
+  border-bottom-color: #e2e8f0;
+}
+
+html[data-theme="light"] .advisor-input-form {
+  background: #f8fafc;
+  border-top-color: #e2e8f0;
+}
+
+html[data-theme="light"] .advisor-messages .bot-msg-user .bot-msg-bubble {
+  color: #ffffff;
+}
+
+html[data-theme="light"] .advisor-input-field {
+  border-radius: 12px !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme="light"] .advisor-send-btn {
+  border-radius: 10px !important;
+}
+
+html[data-theme="light"] .advisor-messages .bot-skill-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  border-radius: 12px !important;
+}
+
+html[data-theme="light"] .advisor-messages .bot-msg-bubble {
+  border-radius: 14px !important;
+}
+
+html[data-theme="light"] .bot-inline-code {
+  background: rgba(15, 23, 42, 0.07);
+  color: #1e293b;
+}
+
+html[data-theme="light"] .advisor-messages .bot-skill-card-name {
+  color: #0f172a;
+}
+
+html[data-theme="light"] .advisor-messages .bot-copy-prompt-btn {
+  color: #334155;
+  border-color: #cbd5e1;
+  border-radius: 8px !important;
+}
