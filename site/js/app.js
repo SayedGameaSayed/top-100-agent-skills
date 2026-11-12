@@ -1164,6 +1164,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initI18nAndTheme();
   } catch (err) {
     console.warn('i18n init error:', err);
+  } finally {
+    document.documentElement.classList.remove('i18n-pending');
   }
 
   const page = document.body.dataset.page;

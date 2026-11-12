@@ -9,10 +9,11 @@ export const UI_STRINGS = {
     navHome: 'الرئيسية',
     navLeaderboard: 'لوحة الصدارة',
     navHowToUse: 'طريقة الاستخدام',
+    navAiAdvisor: '✨ المستشار الذكي',
     navBrowse: 'تصفح المهارات',
     navStar: 'Star',
     langToggle: 'English',
-    themeLight: 'المظهر الفاتح',
+    themeLight: 'المظهر الأبيض',
     themeDark: 'المظهر الداكن',
     heroKicker: '✧ دليل مهارات الذكاء الاصطناعي',
     heroHeadline: 'افهم المهارة قبل أن تستخدمها.',
@@ -130,6 +131,7 @@ export const UI_STRINGS = {
     navHome: 'Home',
     navLeaderboard: 'Leaderboard',
     navHowToUse: 'How to Use',
+    navAiAdvisor: '✨ AI Advisor',
     navBrowse: 'Browse Skills',
     navStar: 'Star',
     langToggle: 'العربية',
@@ -288,10 +290,11 @@ export function formatUrlWithLang(url) {
   }
   if (currentLang !== 'ar') return url;
   try {
-    const [path, query = ''] = url.split('?');
+    const [baseAndQuery, hash = ''] = url.split('#');
+    const [path, query = ''] = baseAndQuery.split('?');
     const params = new URLSearchParams(query);
     params.set('lang', 'ar');
-    return `${path}?${params.toString()}`;
+    return `${path}?${params.toString()}${hash ? `#${hash}` : ''}`;
   } catch {
     return url;
   }
@@ -377,6 +380,13 @@ export function updateHeaderControls() {
 
     navLinks[2].textContent = t('navHowToUse');
     navLinks[2].href = formatUrlWithLang('how-to-use.html');
+  }
+
+  const advisorNavPill = document.getElementById('nav-advisor-pill');
+  if (advisorNavPill) {
+    advisorNavPill.textContent = t('navAiAdvisor');
+    const isHome = document.body?.dataset?.page === 'index';
+    advisorNavPill.href = isHome ? '#ai-advisor-section' : formatUrlWithLang('index.html#ai-advisor-section');
   }
 
   const browseBtn = document.querySelector('.nav-cta-pill');
@@ -508,6 +518,19 @@ export function applyTranslationsToDocument() {
 
     const sortLabel = document.querySelector('label[for="sort-select"]');
     if (sortLabel) sortLabel.textContent = t('sortBy');
+
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect && sortSelect.options.length >= 3) {
+      sortSelect.options[0].textContent = t('sortHighestStars');
+      sortSelect.options[1].textContent = t('sortFeatured');
+      sortSelect.options[2].textContent = t('sortAlphabetical');
+    }
+
+    const emptyTitle = document.querySelector('#empty-state .empty-state-title');
+    if (emptyTitle) emptyTitle.textContent = t('emptySearch');
+
+    const emptyText = document.querySelector('#empty-state .empty-state-text');
+    if (emptyText) emptyText.textContent = t('emptySearchSub');
   }
 
   // 4. Leaderboard Page Specifics

@@ -16,9 +16,19 @@ let selectedSpecialty = 'auto';
 const ENABLE_BOT_SETTINGS_DRAWER = false;
 
 const LOCAL_FILES_STORAGE_KEY = 'ai_advisor_local_files_v1';
-const MAX_LOCAL_FILES = 5;
-const MAX_CHARS_PER_FILE = 3000;
-const MAX_RAW_FILE_BYTES = 200 * 1024;
+const MAX_LOCAL_FILES = 3;
+const MAX_CHARS_PER_FILE = 2200;
+const MAX_TOTAL_FILE_CHARS = 6000;
+const MAX_RAW_FILE_BYTES = 50 * 1024;
+const IGNORED_GENERATED_FILES = new Set([
+  'package-lock.json',
+  'yarn.lock',
+  'pnpm-lock.yaml',
+  'bun.lockb',
+  'poetry.lock',
+  'cargo.lock',
+  'composer.lock'
+]);
 const ALLOWED_EXACT_FILES = new Set([
   'readme',
   'readme.md',
@@ -39,8 +49,9 @@ const ALLOWED_CODE_EXTENSIONS = [
   '.go', '.rs', '.java', '.kt', '.cs', '.php', '.rb',
   '.vue', '.svelte'
 ];
-const BLOCKED_SECRET_FILE_RE = /(^\.env($|\.)|\.(pem|key|p12|pfx|crt)$|secrets?\.)/i;
+const BLOCKED_SECRET_FILE_RE = /(^\.env($|\.)|\.(pem|key|p12|pfx|crt)$|secrets?\.|\.(min\.(js|css)|map)$)/i;
 const FILE_INPUT_ACCEPT = ALLOWED_CODE_EXTENSIONS.join(',');
+let isAdvisorSending = false;
 
 function getStoredLocalFiles() {
   try {
@@ -74,9 +85,13 @@ function clearStoredLocalFiles() {
 
 function isAllowedProjectFilename(name = '') {
   const lower = String(name).trim().toLowerCase();
-  if (!lower || BLOCKED_SECRET_FILE_RE.test(lower)) return false;
+  if (!lower || IGNORED_GENERATED_FILES.has(lower) || BLOCKED_SECRET_FILE_RE.test(lower)) return false;
   if (ALLOWED_EXACT_FILES.has(lower)) return true;
   return ALLOWED_CODE_EXTENSIONS.some((ext) => lower.endsWith(ext));
+}
+
+function getTotalStoredChars(files = []) {
+  return files.reduce((sum, f) => sum + (f.content ? f.content.length : 0), 0);
 }
 
 function formatBytesShort(bytes = 0) {
@@ -453,9 +468,12 @@ export function initAiBot(skills = [], categories = []) {
                 ? 'Drag & drop code files here or pick files'
                 : 'اسحب وأفلِت ملفاتك البرمجية هنا أو اختر ملفات'
             }</span>
-            <span class="advisor-dropzone-types" dir="ltr">.js .ts .py .md .json .yml .html .css .sql (README / package.json…)</span>
+            <span class="advisor-dropzone-types" dir="ltr">
+              .js .ts .py .md .json .yml (README / package.json…) • Max ${MAX_LOCAL_FILES} files • 50 KB/file
+            </span>
           </div>
           <div class="advisor-dropzone-actions">
+            <span id="advisor-file-quota" class="advisor-quota-badge" dir="ltr">0 / ${MAX_LOCAL_FILES}</span>
             <input type="file" id="advisor-file-input" multiple accept="${FILE_INPUT_ACCEPT}" hidden>
             <button type="button" id="advisor-pick-files-btn" class="advisor-pick-btn">
               📂 ${isEn ? 'Choose Files' : 'اختيار ملفات'}
@@ -677,6 +695,7 @@ function attachBotEventListeners() {
   const fileInput = document.getElementById('advisor-file-input');
   const pickFilesBtn = document.getElementById('advisor-pick-files-btn');
   const clearFilesBtn = document.getElementById('advisor-clear-files-btn');
+  const fileQuotaEl = document.getElementById('advisor-file-quota');
   const fileListEl = document.getElementById('advisor-file-list');
   const fileStatusEl = document.getElementById('advisor-file-status');
   let statusTimer = null;
@@ -698,6 +717,18 @@ function attachBotEventListeners() {
 
   function renderLocalFilesTray() {
     const files = getStoredLocalFiles();
+    const totalChars = getTotalStoredChars(files);
+    if (fileQuotaEl) {
+      fileQuotaEl.textContent = `${files.length} / ${MAX_LOCAL_FILES} • ${(totalChars / 1000).toFixed(1)}/${(MAX_TOTAL_FILE_CHARS / 1000).toFixed(0)}k ch`;
+      fileQuotaEl.classList.toggle('is-full', files.length >= MAX_LOCAL_FILES || totalChars >= MAX_TOTAL_FILE_CHARS);
+    }
+    if (pickFilesBtn) {
+      const atCap = files.length >= MAX_LOCAL_FILES || totalChars >= MAX_TOTAL_FILE_CHARS;
+      pickFilesBtn.disabled = atCap;
+      pickFilesBtn.title = atCap
+        ? (isEn ? `Limit reached (${MAX_LOCAL_FILES} files max)` : `تم بلوغ الحد الأقصى (${MAX_LOCAL_FILES} ملفات)`)
+        : '';
+    }
     if (!fileListEl || !clearFilesBtn) return;
 
     if (!files.length) {
@@ -714,7 +745,7 @@ function attachBotEventListeners() {
         (f, idx) => `
       <span class="advisor-file-chip" title="${escapeAttr(f.name)} (${escapeAttr(formatBytesShort(f.size))})">
         <span dir="ltr">📄 ${escapeHtml(f.name)}</span>
-        <span class="advisor-file-size" dir="ltr">${escapeHtml(formatBytesShort(f.size))}</span>
+        <span class="advisor-file-size" dir="ltr">${escapeHtml(formatBytesShort(f.size))}${f.truncated ? ' ✂' : ''}</span>
         <button type="button" class="advisor-file-remove" data-file-idx="${idx}" aria-label="${isEn ? `Remove ${f.name}` : `إزالة ${f.name}`}">✕</button>
       </span>`
       )
@@ -725,21 +756,39 @@ function attachBotEventListeners() {
     const incoming = Array.from(fileList || []);
     if (!incoming.length) return;
 
+    // Guard against dropping an entire massive repository folder at once
+    const batch = incoming.slice(0, 12);
     let current = getStoredLocalFiles();
     const skipped = [];
     let addedCount = 0;
 
-    for (const file of incoming) {
-      if (current.length >= MAX_LOCAL_FILES) {
+    if (incoming.length > batch.length) {
+      skipped.push(
+        isEn
+          ? `${incoming.length - batch.length} extra files ignored (max ${MAX_LOCAL_FILES} allowed)`
+          : `تم تجاهل ${incoming.length - batch.length} ملفًا زائدًا (الحد الأقصى ${MAX_LOCAL_FILES} ملفات)`
+      );
+    }
+
+    for (const file of batch) {
+      const withoutDup = current.filter((item) => item.name.toLowerCase() !== file.name.toLowerCase());
+      const currentChars = getTotalStoredChars(withoutDup);
+      const remainingChars = MAX_TOTAL_FILE_CHARS - currentChars;
+
+      if (withoutDup.length >= MAX_LOCAL_FILES) {
         skipped.push(`${file.name} (${isEn ? `max ${MAX_LOCAL_FILES} files` : `الحد الأقصى ${MAX_LOCAL_FILES} ملفات`})`);
         continue;
       }
+      if (remainingChars < 120) {
+        skipped.push(`${file.name} (${isEn ? 'context budget full' : 'اكتمل حجم النصوص المسموح'})`);
+        continue;
+      }
       if (!isAllowedProjectFilename(file.name)) {
-        skipped.push(`${file.name} (${isEn ? 'unsupported or blocked secret file' : 'نوع غير مدعوم أو محظور'})`);
+        skipped.push(`${file.name} (${isEn ? 'unsupported/lockfile/secret' : 'غير مدعوم أو محظور'})`);
         continue;
       }
       if (file.size > MAX_RAW_FILE_BYTES) {
-        skipped.push(`${file.name} (${isEn ? 'exceeds 200 KB' : 'أكبر من 200 KB'})`);
+        skipped.push(`${file.name} (${isEn ? 'exceeds 50 KB limit' : 'أكبر من 50 KB'})`);
         continue;
       }
 
@@ -749,13 +798,14 @@ function attachBotEventListeners() {
           skipped.push(`${file.name} (${isEn ? 'binary file' : 'ملف ثنائي'})`);
           continue;
         }
-        const snippet = text.slice(0, MAX_CHARS_PER_FILE);
-        current = current.filter((item) => item.name.toLowerCase() !== file.name.toLowerCase());
+        const allowedSlice = Math.min(MAX_CHARS_PER_FILE, remainingChars);
+        const snippet = text.slice(0, allowedSlice);
+        current = withoutDup;
         current.push({
           name: file.name,
           size: file.size,
           content: snippet,
-          truncated: text.length > MAX_CHARS_PER_FILE
+          truncated: text.length > allowedSlice
         });
         addedCount++;
       } catch {
@@ -871,6 +921,7 @@ function attachBotEventListeners() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (isAdvisorSending) return;
     const rawText = input.value.trim();
     const attachedFiles = getStoredLocalFiles();
     if (!rawText && attachedFiles.length === 0) {
@@ -927,75 +978,84 @@ async function callServerFreeAdvisor(userText, lang, specialty) {
 }
 
 async function handleSendMessage(userText, attachedFiles = []) {
-  const messagesContainer = document.getElementById('bot-messages-container');
-  const filesList = Array.isArray(attachedFiles) ? attachedFiles : [];
-  const fileNamesBadge = filesList.length
-    ? `\n\n📎 ${filesList.map((f) => f.name).join(', ')}`
-    : '';
+  if (isAdvisorSending) return;
+  isAdvisorSending = true;
+  const sendBtn = document.getElementById('bot-send-btn');
+  if (sendBtn) sendBtn.disabled = true;
 
-  appendMessage('user', `${userText}${fileNamesBadge}`);
-  const typingId = appendTypingIndicator();
-  messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
-
-  const filesContextBlock = filesList.length
-    ? '\n\nAttached Local Code/Project Files (browser-only):\n' +
-      filesList
-        .map((f) => `--- File: ${f.name} ---\n${f.content}${f.truncated ? '\n[...truncated]' : ''}`)
-        .join('\n\n')
-    : '';
-  const aiPayload = `${userText}${filesContextBlock}`;
-
-  const config = getStoredConfig();
-  const isEn = getLang() === 'en';
-  const lang = isEn ? 'en' : 'ar';
-  const detectedSpecialty = detectSpecialtyClient(aiPayload, selectedSpecialty);
-  const spMeta = SPECIALISTS[detectedSpecialty] || SPECIALISTS.general;
-
-  // 1. Optional Personal Key Path (only if user configured their own key)
-  if (config.key) {
-    try {
-      const responseText = await queryUniversalAi(aiPayload, config.provider, config.key, detectedSpecialty);
-      removeTypingIndicator(typingId);
-      const matchedSkills = extractMatchedSkills(aiPayload, responseText);
-      const pName = (PROVIDERS[config.provider] || {}).name || config.provider;
-
-      appendAssistantResponse({
-        reply: responseText,
-        recommendedSkills: matchedSkills,
-        specialistBadge: `${spMeta.icon} ${isEn ? spMeta.labelEn : spMeta.labelAr} • ${pName}`
-      });
-      return;
-    } catch (err) {
-      console.warn('Personal API key call failed, falling back to free router:', err);
-    }
-  }
-
-  // 2. Default Zero-Key Multi-Specialist Router (/api/advisor)
   try {
-    const serverAdvisor = await callServerFreeAdvisor(aiPayload, lang, selectedSpecialty);
-    if (serverAdvisor?.reply) {
-      removeTypingIndicator(typingId);
-      const matchedSkills = extractMatchedSkills(aiPayload, serverAdvisor.reply);
-      const spLabel = isEn ? serverAdvisor.specialtyLabelEn : serverAdvisor.specialtyLabelAr;
-      const badge = `${serverAdvisor.icon || spMeta.icon} ${spLabel} • ${serverAdvisor.modelLabel}`;
+    const messagesContainer = document.getElementById('bot-messages-container');
+    const filesList = Array.isArray(attachedFiles) ? attachedFiles : [];
+    const fileNamesBadge = filesList.length
+      ? `\n\n📎 ${filesList.map((f) => f.name).join(', ')}`
+      : '';
 
-      appendAssistantResponse({
-        reply: serverAdvisor.reply,
-        recommendedSkills: matchedSkills,
-        specialistBadge: badge
-      });
-      return;
+    appendMessage('user', `${userText}${fileNamesBadge}`);
+    const typingId = appendTypingIndicator();
+    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+
+    const filesContextBlock = filesList.length
+      ? '\n\nAttached Local Code/Project Files (browser-only):\n' +
+        filesList
+          .map((f) => `--- File: ${f.name} ---\n${f.content}${f.truncated ? '\n[...truncated]' : ''}`)
+          .join('\n\n')
+      : '';
+    const aiPayload = `${userText}${filesContextBlock}`;
+
+    const config = getStoredConfig();
+    const isEn = getLang() === 'en';
+    const lang = isEn ? 'en' : 'ar';
+    const detectedSpecialty = detectSpecialtyClient(aiPayload, selectedSpecialty);
+    const spMeta = SPECIALISTS[detectedSpecialty] || SPECIALISTS.general;
+
+    // 1. Optional Personal Key Path (only if user configured their own key)
+    if (config.key) {
+      try {
+        const responseText = await queryUniversalAi(aiPayload, config.provider, config.key, detectedSpecialty);
+        removeTypingIndicator(typingId);
+        const matchedSkills = extractMatchedSkills(aiPayload, responseText);
+        const pName = (PROVIDERS[config.provider] || {}).name || config.provider;
+
+        appendAssistantResponse({
+          reply: responseText,
+          recommendedSkills: matchedSkills,
+          specialistBadge: `${spMeta.icon} ${isEn ? spMeta.labelEn : spMeta.labelAr} • ${pName}`
+        });
+        return;
+      } catch (err) {
+        console.warn('Personal API key call failed, falling back to free router:', err);
+      }
     }
-  } catch (err) {
-    console.warn('Free server advisor unavailable, using instant specialist matcher:', err);
-  }
 
-  // 3. Instant Bilingual Specialist Local Fallback (works 100% offline/static on GitHub Pages too)
-  const localResult = queryLocalSpecialistEngine(aiPayload, detectedSpecialty);
-  setTimeout(() => {
+    // 2. Default Zero-Key Multi-Specialist Router (/api/advisor)
+    try {
+      const serverAdvisor = await callServerFreeAdvisor(aiPayload, lang, selectedSpecialty);
+      if (serverAdvisor?.reply) {
+        removeTypingIndicator(typingId);
+        const matchedSkills = extractMatchedSkills(aiPayload, serverAdvisor.reply);
+        const spLabel = isEn ? serverAdvisor.specialtyLabelEn : serverAdvisor.specialtyLabelAr;
+        const badge = `${serverAdvisor.icon || spMeta.icon} ${spLabel} • ${serverAdvisor.modelLabel}`;
+
+        appendAssistantResponse({
+          reply: serverAdvisor.reply,
+          recommendedSkills: matchedSkills,
+          specialistBadge: badge
+        });
+        return;
+      }
+    } catch (err) {
+      console.warn('Free server advisor unavailable, using instant specialist matcher:', err);
+    }
+
+    // 3. Instant Bilingual Specialist Local Fallback (works 100% offline/static on GitHub Pages too)
+    const localResult = queryLocalSpecialistEngine(aiPayload, detectedSpecialty);
+    await new Promise((r) => setTimeout(r, 180));
     removeTypingIndicator(typingId);
     appendAssistantResponse(localResult);
-  }, 180);
+  } finally {
+    isAdvisorSending = false;
+    if (sendBtn) sendBtn.disabled = false;
+  }
 }
 
 /**

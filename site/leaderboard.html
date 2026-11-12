@@ -47,7 +47,7 @@
   </script>
   <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
 
-  <title>Top 100 Agent Skills Leaderboard | لوحة الصدارة</title>
+  <title>Leaderboard | Top 100 AI Agent Skills</title>
   
   <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) with Non-Blocking Asynchronous Load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +65,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Prevent Theme / Lang Flash (FOUC) -->
+  <style>html.i18n-pending body{opacity:0!important;}</style>
   <script>
     (function() {
       try {
@@ -74,6 +75,10 @@
         document.documentElement.lang = l;
         document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
         document.documentElement.setAttribute('data-theme', t);
+        if (l === 'ar') {
+          document.documentElement.classList.add('i18n-pending');
+          setTimeout(function() { document.documentElement.classList.remove('i18n-pending'); }, 500);
+        }
       } catch(e) {}
     })();
   </script>
@@ -92,6 +97,7 @@
         <a href="index.html" class="nav-ghost-link">Home</a>
         <a href="leaderboard.html" class="nav-ghost-link active">Leaderboard</a>
         <a href="how-to-use.html" class="nav-ghost-link">How to Use</a>
+        <a href="index.html#ai-advisor-section" id="nav-advisor-pill" class="nav-ai-feature-pill">✨ AI Advisor</a>
 
         <!-- Language & Theme Switchers -->
         <button id="lang-toggle-btn" class="nav-control-pill" type="button" aria-label="Switch Language / تبديل اللغة" title="Switch language / تغيير اللغة">
@@ -118,22 +124,22 @@
     <header style="margin-block-end: 40px; text-align: center;">
       <div class="hero-kicker-tag" style="justify-content: center; margin-inline: auto;">
         <span>★</span>
-        <span>التصنيف العالمي لـ <bdi dir="ltr">Agent Skills</bdi> (بحسب نجوم <bdi dir="ltr">GitHub Repository</bdi>)</span>
+        <span>Global Ranking of Agent Skills (by repo stars)</span>
       </div>
-      <h1 class="hero-headline-sculptural" style="margin-inline: auto;">لوحة صدارة المهارات الأكثر شهرة</h1>
+      <h1 class="hero-headline-sculptural" style="margin-inline: auto;">Leaderboard | Top Verified Agent Skills</h1>
       <p class="hero-body-airy" style="margin-inline: auto; max-width: 760px;">
-        ترتيب أشهر <bdi dir="ltr">AI Agent Skills</bdi> مفتوحة المصدر في مجتمع المطورين، وفق نجوم <bdi dir="ltr">GitHub Repository</bdi> الأصلي مع تحديث يومي وشرح عربي لكل مهارة.
+        Top open-source agent skills ranked by GitHub stars, protected by diversity caps (max 3 skills per repository).
       </p>
 
       <!-- Repository Stars Transparency Notice -->
       <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-block-start: 18px; max-width: 100%;">
         <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; max-width: 100%; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(255, 202, 22, 0.08); border: 1px solid rgba(255, 202, 22, 0.28); border-radius: var(--radius-badges); font-size: 13px; color: var(--color-amber);">
           <span>⚠️</span>
-          <span><strong id="leaderboard-notice-title">تنبيه شفافية:</strong> <span id="leaderboard-notice-text">تُحتسَب النجوم على مستوى <bdi dir="ltr">GitHub Repository</bdi> كاملًا، لا للمهارة وحدها.</span></span>
+          <span><strong id="leaderboard-notice-title">Transparency Notice:</strong> <span id="leaderboard-notice-text">Stars shown belong to the parent GitHub repository, not the individual skill alone.</span></span>
         </div>
         <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; max-width: 100%; align-items: center; gap: 8px; padding: 4px 12px; background: rgba(58, 211, 137, 0.08); border: 1px solid rgba(58, 211, 137, 0.28); border-radius: var(--radius-badges); font-size: 12px; color: var(--color-pulse-green);">
           <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-pulse-green);"></span>
-          <span id="leaderboard-date-badge">نجوم GitHub Repository كما في: 1 نوفمبر 2026 (تحديث كل 24 ساعة)</span>
+          <span id="leaderboard-date-badge">Repository stars as of: November 2026 (Refreshed every 24h)</span>
         </div>
       </div>
     </header>
@@ -146,15 +152,15 @@
           id="leaderboard-search" 
           class="search-input-pill" 
           style="padding-block: 8px; font-size: 14px; width: 100%;" 
-          placeholder="ابحث في لوحة الصدارة: TDD أو Cloud أو Python أو تصميم…" 
-          aria-label="البحث في لوحة الصدارة"
+          placeholder="Search leaderboard: TDD, cloud, python, design..." 
+          aria-label="Search leaderboard"
         >
       </div>
       
       <div style="display: flex; align-items: center; gap: 10px;">
-        <label for="leaderboard-category-filter" style="font-size: 13px; color: var(--color-ash-gray);">التصنيف:</label>
-        <select id="leaderboard-category-filter" class="sort-select-input" aria-label="تصفية التصنيف">
-          <option value="all">جميع التصنيفات (100 مهارة)</option>
+        <label for="leaderboard-category-filter" style="font-size: 13px; color: var(--color-ash-gray);">Filter by category:</label>
+        <select id="leaderboard-category-filter" class="sort-select-input" aria-label="Filter by category">
+          <option value="all">All Categories (100 skills)</option>
         </select>
       </div>
     </div>
@@ -164,17 +170,17 @@
       <table class="leaderboard-table">
         <thead>
           <tr>
-            <th style="width: 80px; text-align: center;">الترتيب</th>
-            <th style="width: 140px; text-align: center;">نجوم Repository ★</th>
-            <th>المهارة</th>
-            <th>التصنيف</th>
-            <th>Repository الأصلي</th>
-            <th style="text-align: center;">الإجراءات</th>
+            <th style="width: 80px; text-align: center;">Rank</th>
+            <th style="width: 140px; text-align: center;">Repo Stars ★</th>
+            <th>Skill</th>
+            <th>Category</th>
+            <th>Original Repository</th>
+            <th style="text-align: center;">Actions</th>
           </tr>
         </thead>
         <tbody id="leaderboard-tbody">
           <tr>
-            <td id="leaderboard-loading-cell" colspan="6" style="padding: 40px; text-align: center; color: var(--color-ash-gray);">جارٍ تحميل لوحة الصدارة…</td>
+            <td id="leaderboard-loading-cell" colspan="6" style="padding: 40px; text-align: center; color: var(--color-ash-gray);">Loading leaderboard...</td>
           </tr>
         </tbody>
       </table>
@@ -185,11 +191,11 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-container">
-      <p>دليل مهارات الذكاء الاصطناعي: مشروع مجتمعي مفتوح المصدر بإشراف وتدقيق سيد جمعة.</p>
-      <nav class="footer-nav" aria-label="روابط التذييل">
-        <a href="index.html">الرئيسية</a>
-        <a href="leaderboard.html">لوحة الصدارة</a>
-        <a href="how-to-use.html">طريقة الاستخدام</a>
+      <p>Top 100 AI Agent Skills — Independent open-source community directory curated and maintained by Sayed Gamea.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="how-to-use.html">How to Use</a>
       </nav>
     </div>
   </footer>

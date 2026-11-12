@@ -64,6 +64,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Prevent Theme / Lang Flash (FOUC) -->
+  <style>html.i18n-pending body{opacity:0!important;}</style>
   <script>
     (function() {
       try {
@@ -73,6 +74,10 @@
         document.documentElement.lang = l;
         document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
         document.documentElement.setAttribute('data-theme', t);
+        if (l === 'ar') {
+          document.documentElement.classList.add('i18n-pending');
+          setTimeout(function() { document.documentElement.classList.remove('i18n-pending'); }, 500);
+        }
       } catch(e) {}
     })();
   </script>
@@ -91,6 +96,7 @@
         <a href="index.html" class="nav-ghost-link">Home</a>
         <a href="leaderboard.html" class="nav-ghost-link">Leaderboard</a>
         <a href="how-to-use.html" class="nav-ghost-link">How to Use</a>
+        <a href="index.html#ai-advisor-section" id="nav-advisor-pill" class="nav-ai-feature-pill">✨ AI Advisor</a>
 
         <!-- Language & Theme Switchers -->
         <button id="lang-toggle-btn" class="nav-control-pill" type="button" aria-label="Switch Language / تبديل اللغة" title="Switch language / تغيير اللغة">
@@ -114,18 +120,18 @@
   <!-- Main Content View -->
   <main id="skill-detail-container">
     <div id="skill-loading-text" style="text-align: center; padding: 80px 20px; color: var(--color-silver-mist);">
-      جارٍ تحميل بيانات المهارة…
+      Loading skill details...
     </div>
   </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-container">
-      <p>دليل مهارات الذكاء الاصطناعي: مشروع مجتمعي مفتوح المصدر بإشراف وتدقيق سيد جمعة.</p>
-      <nav class="footer-nav" aria-label="روابط التذييل">
-        <a href="index.html">الرئيسية</a>
-        <a href="leaderboard.html">لوحة الصدارة</a>
-        <a href="how-to-use.html">طريقة الاستخدام</a>
+      <p>Top 100 AI Agent Skills — Independent open-source community directory curated and maintained by Sayed Gamea.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="how-to-use.html">How to Use</a>
       </nav>
     </div>
   </footer>
