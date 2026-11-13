@@ -80,6 +80,8 @@
 - `get_leaderboard`: عرض قائمة الترتيب اليومية لأعلى المهارات بالنجوم.
 - `recommend_skills_for_task`: ترشيح المهارات المناسبة لمهمتك البرمجية محلياً (Zero external calls).
 
+> 📦 **ملاحظة حول تحديث بيانات الـ MCP:** حزمة الـ npm المنشورة تشمل لقطة بيانات مدمجة ومفهرسة محلياً (`data/skills.json` و `data/leaderboard.json`) لتعمل بسرعة فائقة وبدون أي اتصال بالإنترنت؛ تتجدد هذه البيانات مع كل إصدار جديد يُنشر على npm (`npm publish`)، بينما يستمر الموقع الحي ومستودع GitHub في التحديث اليومي التلقائي للنجوم والمهارات عبر GitHub Actions.
+
 ---
 
 ## تشغيل المشروع محلياً
@@ -117,7 +119,7 @@ npm test
 ### Key Highlights:
 - **Zero-Key AI Skills Advisor + Local Fallback:** Deployed on Vercel with [`api/advisor.js`](api/advisor.js) routing coding, AI architecture, and general discovery queries to free-tier specialists (**OpenRouter / Groq / Google Gemini**), alongside an instant client-side semantic fallback when offline or on static mirrors.
 - **Transparent Privacy & Abuse Controls:** Catalog search and leaderboard run purely in-browser; submitted advisor prompts (capped at 1,000 chars) and optional browser-`localStorage` code snippets (max 3 files, 50 KB each) are forwarded only for inference and never stored in a database. See [`SECURITY.md`](SECURITY.md).
-- **MCP Server (`npx` ready):** Expose `search_skills`, `get_skill`, `get_leaderboard`, and offline `recommend_skills_for_task` directly inside Claude Code, Cursor, Antigravity, or Claude Desktop via `node bin/mcp.js` or `npx -y top-100-agent-skills`.
+- **MCP Server (`npx` ready):** Expose `search_skills`, `get_skill`, `get_leaderboard`, and offline `recommend_skills_for_task` directly inside Claude Code, Cursor, Antigravity, or Claude Desktop via `node bin/mcp.js` or `npx -y top-100-agent-skills`. *(Note: The npm package ships with a bundled zero-latency local data snapshot updated on each npm release; the live website and GitHub repo continue syncing daily via GitHub Actions).*
 - **Strict Licensing:** Proprietary skills never have files copied into this repo; permissive derived skills retain upstream attributions.
 
 ### Running & Testing:
