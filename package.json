@@ -5,7 +5,7 @@
   "type": "module",
   "main": "server.js",
   "bin": {
-    "top-100-agent-skills": "./bin/mcp.js"
+    "top-100-agent-skills": "bin/mcp.js"
   },
   "files": [
     "bin/",
