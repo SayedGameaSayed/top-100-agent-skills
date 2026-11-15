@@ -1,5 +1,5 @@
 {
-  "last_crawled_at": "2026-11-14T13:12:02.170Z",
+  "last_crawled_at": "2026-11-15T13:39:58.758Z",
   "description": "Newly discovered candidate skill repositories awaiting human translation, license review, and safety validation. NEVER rendered on public site until vetted.",
   "candidates": [
     {
@@ -712,6 +712,41 @@
       "discovered_at": "2026-11-02T15:06:46.456Z"
     },
     {
+      "owner": "obsidianmd",
+      "repo": "obsidian-skills",
+      "full_name": "obsidianmd/obsidian-skills",
+      "repo_url": "https://github.com/obsidianmd/obsidian-skills",
+      "stars": 52731,
+      "description": "Agent skills for Obsidian. Teach your agent to use Obsidian CLI and open formats including Markdown, Bases, JSON Canvas.",
+      "topics": [
+        "agents",
+        "agentskills",
+        "bases",
+        "chatgpt",
+        "claude",
+        "claude-code",
+        "claude-skills",
+        "cli",
+        "codex",
+        "defuddle",
+        "grok-bot",
+        "hermes",
+        "jsoncanvas",
+        "knap",
+        "markdown",
+        "md",
+        "obsidian",
+        "openclaw",
+        "opencode",
+        "skills"
+      ],
+      "deduced_category": "design",
+      "deduced_category_ar": "التصميم والإبداع",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-15T13:39:56.034Z"
+    },
+    {
       "owner": "alchaincyf",
       "repo": "nuwa-skill",
       "full_name": "alchaincyf/nuwa-skill",
@@ -1337,7 +1372,7 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     }
   ],
-  "total_candidates": 46,
+  "total_candidates": 47,
   "quarantined_from_audit": [
     {
       "id": "git-workflow",
