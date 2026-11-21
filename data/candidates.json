@@ -1,5 +1,5 @@
 {
-  "last_crawled_at": "2026-11-20T15:04:07.140Z",
+  "last_crawled_at": "2026-11-21T14:25:12.052Z",
   "description": "Newly discovered candidate skill repositories awaiting human translation, license review, and safety validation. NEVER rendered on public site until vetted.",
   "candidates": [
     {
@@ -595,6 +595,27 @@
       "review_status": "pending_human_review",
       "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
       "discovered_at": "2026-11-02T15:06:46.456Z"
+    },
+    {
+      "owner": "emilkowalski",
+      "repo": "skills",
+      "full_name": "emilkowalski/skills",
+      "repo_url": "https://github.com/emilkowalski/skills",
+      "stars": 58572,
+      "description": "Skills for Designers and Engineers.",
+      "topics": [
+        "agent-skills",
+        "animation",
+        "claude-code",
+        "codex",
+        "cursor",
+        "design-engineering"
+      ],
+      "deduced_category": "design",
+      "deduced_category_ar": "التصميم والإبداع",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-21T14:25:08.050Z"
     },
     {
       "owner": "coreyhaines31",
@@ -1372,7 +1393,7 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     }
   ],
-  "total_candidates": 47,
+  "total_candidates": 48,
   "quarantined_from_audit": [
     {
       "id": "git-workflow",
