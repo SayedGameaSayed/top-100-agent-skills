@@ -1,5 +1,5 @@
 {
-  "last_crawled_at": "2026-11-22T14:17:23.489Z",
+  "last_crawled_at": "2026-11-23T17:40:43.551Z",
   "description": "Newly discovered candidate skill repositories awaiting human translation, license review, and safety validation. NEVER rendered on public site until vetted.",
   "candidates": [
     {
@@ -323,6 +323,41 @@
       "review_status": "pending_human_review",
       "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
       "discovered_at": "2026-11-02T15:06:46.456Z"
+    },
+    {
+      "owner": "heygen-com",
+      "repo": "hyperframes",
+      "full_name": "heygen-com/hyperframes",
+      "repo_url": "https://github.com/heygen-com/hyperframes",
+      "stars": 88782,
+      "description": "Open-source AI video editor: edit your own footage, or create and remake any video with Claude Code, Codex or the free Studio app. Write HTML, render MP4. By HeyGen.",
+      "topics": [
+        "agent-skills",
+        "ai",
+        "ai-agents",
+        "ai-video",
+        "ai-video-editor",
+        "animation",
+        "claude-code",
+        "ffmpeg",
+        "gsap",
+        "html",
+        "html-to-video",
+        "mcp",
+        "motion-graphics",
+        "puppeteer",
+        "remotion-alternative",
+        "rendering",
+        "typescript",
+        "video-editing",
+        "video-editor",
+        "video-generation"
+      ],
+      "deduced_category": "data-ai",
+      "deduced_category_ar": "البيانات والذكاء الاصطناعي",
+      "review_status": "pending_human_review",
+      "safety_warning": "Unverified prompt code. Requires manual review of SKILL.md before promoting to skills.json.",
+      "discovered_at": "2026-11-23T17:40:38.539Z"
     },
     {
       "owner": "career-ops-hq",
@@ -1393,7 +1428,7 @@
       "discovered_at": "2026-11-01T15:40:43.819Z"
     }
   ],
-  "total_candidates": 48,
+  "total_candidates": 49,
   "quarantined_from_audit": [
     {
       "id": "git-workflow",
