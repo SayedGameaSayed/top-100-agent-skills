@@ -67,7 +67,7 @@ jobs:
     needs: sync-and-test
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_final.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -81,6 +81,19 @@ jobs:
         with:
           path: './site'
 
+      - name: Wait for artifact metadata propagation
+        run: sleep 8
+
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+
+      - name: Wait before retrying GitHub Pages deploy
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 15
+
+      - name: Deploy to GitHub Pages (Retry)
+        if: steps.deployment.outcome == 'failure'
+        id: deployment_final
         uses: actions/deploy-pages@v5
