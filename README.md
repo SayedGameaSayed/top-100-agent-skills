@@ -1,67 +1,40 @@
-# 🏆 أفضل 100 مهارة ذكاء اصطناعي (Top 100 Agent Skills Leaderboard)
-> **مستودع محدّث دوريًا يرصد ويصنّف أشهر 100 من AI Agent Skills على GitHub مع شروحات عربية وPrompts جاهزة**
+# 🏆 Top 100 AI Agent Skills
+
+> **Curated open-source directory, daily GitHub star leaderboard, and local-first MCP server for verified `SKILL.md` agent skills — built in English and Arabic.**
 
 <div align="center">
 
 <p align="center">
-  <a href="https://sayedgameasayed.github.io/top-100-agent-skills/">
-    <img src="site/assets/og-preview.png" alt="Top 100 Agent Skills Preview" width="100%" />
+  <a href="https://top-100-agent-skills.vercel.app/">
+    <img src="site/assets/og-preview.png" alt="Top 100 AI Agent Skills Preview" width="100%" />
   </a>
 </p>
 
-[![Daily Discovery & Sync](https://img.shields.io/badge/Auto%20Discovery-Daily%20Sync-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)](.github/workflows/daily-rank-sync.yml)
-[![Top 100 Skills](https://img.shields.io/badge/Leaderboard-Top%20100%20Skills-blueviolet?style=for-the-badge&logo=star&logoColor=white)](data/leaderboard.json)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Site-10b981?style=for-the-badge&logo=github&logoColor=white)](https://sayedgameasayed.github.io/top-100-agent-skills/)
-[![Deploy with Vercel](https://img.shields.io/badge/Vercel-Instant%20Deploy-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSayedGameaSayed%2Ftop-100-agent-skills)
-[![Public API](https://img.shields.io/badge/Public%20API-JSON%20Endpoint-10b981?style=for-the-badge&logo=json&logoColor=white)](data/leaderboard.json)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![Live Directory](https://img.shields.io/badge/Live%20Site-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://top-100-agent-skills.vercel.app/)
+[![npm Package](https://img.shields.io/npm/v/top-100-agent-skills?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/top-100-agent-skills)
+[![Daily Sync](https://img.shields.io/badge/Auto%20Discovery-Daily%20Sync-10b981?style=for-the-badge&logo=githubactions&logoColor=white)](.github/workflows/daily-rank-sync.yml)
+[![Public JSON API](https://img.shields.io/badge/Public%20API-JSON%20Feed-6366f1?style=for-the-badge&logo=json&logoColor=white)](data/leaderboard.json)
+[![License: MIT](https://img.shields.io/badge/License-MIT-eab308?style=for-the-badge)](LICENSE)
+
+[![XERJ Corpus Hub contributor](https://hub.xerj.org/contributors/SayedGameaSayed/badge.svg)](https://hub.xerj.org/contributors/SayedGameaSayed)
 
 </div>
 
 ---
 
-## ⚡ لماذا هذا المستودع مصدر مباشر للمستخدم؟
+## ✨ Key Highlights
 
-بدلاً من مجرد نسخ مستودعات أخرى، يعمل هذا المستودع كـ **محرك استكشاف وتصنيف آلي مستقل (Autonomous Aggregator & Leaderboard)**:
-1. 🤖 **محرك استكشاف يومي (Daily Crawler):** يبحث آليًا كل 24 ساعة عبر GitHub API والمنصات المفتوحة عن أحدث AI Agent Skills (`topic:agent-skills`, `topic:claude-skills`, `SKILL.md`).
-2. 📊 **ترتيب حقيقي بالنجوم والنشاط:** يجلب عدد نجوم GitHub المباشر لكل مستودع، ويصنف أعلى 100 مهارة في العالم تنازلياً.
-3. 📦 **مصدر بيانات مفتوح (Public JSON API):** يوفر ملف `data/leaderboard.json` خفيف الوزن ومحدث يومياً، يمكن لأي مطور أو أداة أو إضافة IDE سحبه واستخدامه مباشرة.
-4. 🌍 **شرح عربي مخصص لكل مهارة:** تبسيط وظيفة المهارة بالعربية مع Prompt إنجليزي فوري جاهز للنسخ إلى أي نموذج أو بيئة تطوير (ChatGPT, Claude, Gemini, Copilot, Cursor).
-5. 🛠️ **دعم كافة أدوات التطوير والوكلاء:** توافق موثق مع Claude Code, Cursor, GitHub Copilot, Google Antigravity, Roo Code, Windsurf, و Gemini CLI.
-
----
-
-## 🚀 طريقة إضافة أي مهارة إلى أداتك المفضلة
-
-| الأداة / البيئة | طريقة التفعيل المباشرة |
-|---|---|
-| **Claude Code** | انسخ رابط المهارة واطلب: `Read this skill: <url>` أو أضفها عبر أمر التثبيت. |
-| **Cursor IDE** | انسخ تعليمات المهارة إلى ملف `.cursorrules` أو داخل المجلد `.cursor/rules/`. |
-| **Google Antigravity** | ضع ملف المهارة في `~/.gemini/antigravity/builtin/skills/<name>/SKILL.md` أو استخدم أمر `/plugin`. |
-| **GitHub Copilot** | أضف نص المهارة أو رابطها داخل ملف `.github/copilot-instructions.md`. |
-| **Roo Code / Cline** | ضع المهارة في مجلد التخصيصات `.roo/skills/` أو كتعليمات مخصصة Custom Instructions. |
-| **أي محادثة AI (ChatGPT / Gemini / Claude)** | انسخ الـ Prompt الجاهز من لوحة الصدارة والصقه مباشرة في محادثتك. |
+1. **100 Human-Vetted Agent Skills:** Every active entry links to a verified upstream `SKILL.md` instruction file checked for license compliance and URL availability. Unvetted repositories discovered by automation remain quarantined in [`data/candidates.json`](data/candidates.json).
+2. **Autonomous Daily Leaderboard:** [GitHub Actions](.github/workflows/daily-rank-sync.yml) refreshes upstream repository star counts every 24 hours and publishes updated rankings to [`data/leaderboard.json`](data/leaderboard.json).
+3. **Built-in MCP Server (`npx` Ready):** Connect any MCP-compatible IDE or agent directly to the catalog over stdio with zero API keys via `npx -y top-100-agent-skills`.
+4. **Zero-Key AI Skills Advisor + Local Fallback:** Deployed on Vercel with specialist task routing (`/api/advisor`) and an instant client-side semantic fallback when offline or running on static mirrors.
+5. **Bilingual by Design (English Default + Arabic RTL):** Full native English interface at [`top-100-agent-skills.vercel.app`](https://top-100-agent-skills.vercel.app/) with instant switch to Arabic RTL at [`?lang=ar`](https://top-100-agent-skills.vercel.app/?lang=ar).
 
 ---
 
-## طريقة العمل الأساسية
+## 🔌 MCP Server Quickstart (`npx top-100-agent-skills`)
 
-```text
-ابحث بالعربية ──> افهم المهارة والأمثلة ──> انسخ الـ Prompt الجاهز (English) ──> الصقه في محادثتك أو بيئة التطوير
-```
-
----
-
-### 🏛️ معمارية المشروع والخصوصية (Hybrid Architecture & Privacy)
-- **النشر الإنتاجي الكامل على Vercel ([Live Site](https://top-100-agent-skills.vercel.app/)):** يجمع بين واجهة سريعة خالية من الـ Build ودالة Serverless (`/api/advisor`) في [`api/advisor.js`](api/advisor.js) لتشغيل **مستشار المهارات الذكي** عبر توجيه الطلبات حسب التخصص (الكود، مشاريع AI، البحث العام) مع حد أقصى `1000` حرف للرسالة، وحفظ الملفات المرفوعة داخل متصفح الزائر (`localStorage`) فقط.
-- **إفصاح الخصوصية (External AI Disclosure):** البحث والتصفح ولوحة الصدارة تعمل محلياً بالكامل داخل متصفحك. أما عند استخدام **مستشار المهارات الذكي** وإرسال استفسار، فإن نص السؤال ومقتطفات الملفات المختارة تُرسَل عبر HTTPS إلى مزوّدي النماذج الخارجيين (**OpenRouter / Groq / Google Gemini**) لمعالجة الترشيح فقط دون تخزين في قاعدة بيانات — لذلك يُمنع إدخال مفاتيح أو أسرار خاصة (راجع [`SECURITY.md`](SECURITY.md)).
-- **المرآة الساكنة على GitHub Pages & التطوير المحلي:** الموقع يعمل أيضاً كنسخة ساكنة بالكامل مع محرك مطابقة محلي فوري (Local Specialist Fallback) إذا تعذر الوصول للخادم، كما يعمل عبر خادم Express في [`server.js`](server.js) للتطوير المحلي واختبارات التكامل (`npm run dev`).
-
----
-
-## 🔌 خادم MCP مدمج لمحررات الأكواد (`npx top-100-agent-skills`)
-
-يمكن لأي مطور ربط الدليل مباشرة مع **Claude Code / Claude Desktop / Cursor / Windsurf / Antigravity** عبر **Model Context Protocol (MCP)** بدون أي مفاتيح API (يعمل محلياً من حزمة الحوار نفسها):
+Connect your coding agent (**Claude Code**, **Cursor**, **Claude Desktop**, **Windsurf**, or **Google Antigravity**) directly to the curated catalog over local `stdio` — zero API keys or network calls required:
 
 ```json
 {
@@ -74,213 +47,211 @@
 }
 ```
 
-الأدوات المتوفرة للوكيل:
-- `search_skills`: بحث فوري بالعربية أو الإنجليزية مع التصفية بالتصنيف والمستوى.
-- `get_skill`: جلب تفاصيل المهارة كاملة مع الرابط الرسمي على GitHub والـ Prompt الجاهز.
-- `get_leaderboard`: عرض قائمة الترتيب اليومية لأعلى المهارات بالنجوم.
-- `recommend_skills_for_task`: ترشيح المهارات المناسبة لمهمتك البرمجية محلياً (Zero external calls).
+### Available MCP Tools
 
-> 📦 **ملاحظة حول تحديث بيانات الـ MCP:** حزمة الـ npm المنشورة تشمل لقطة بيانات مدمجة ومفهرسة محلياً (`data/skills.json` و `data/leaderboard.json`) لتعمل بسرعة فائقة وبدون أي اتصال بالإنترنت؛ تتجدد هذه البيانات مع كل إصدار جديد يُنشر على npm (`npm publish`)، بينما يستمر الموقع الحي ومستودع GitHub في التحديث اليومي التلقائي للنجوم والمهارات عبر GitHub Actions.
+| Tool | Description | External Calls |
+|---|---|---|
+| `search_skills` | Fuzzy & normalized English/Arabic search filtered by category or difficulty | None (local) |
+| `get_skill` | Full metadata, license status, verified upstream URL, and ready-to-use prompt | None (local) |
+| `get_leaderboard` | Ranked skills ordered by upstream GitHub repository stars | None (local) |
+| `recommend_skills_for_task` | Local task & stack classifier returning best matching skills for code or AI projects | None (local) |
+
+> 📦 **Data Snapshot Note:** The published npm package bundles a zero-latency local snapshot (`data/skills.json` and `data/leaderboard.json`) refreshed on each `npm publish`. Meanwhile, the live website and GitHub repository sync upstream stars daily via GitHub Actions.
 
 ---
 
-## تشغيل المشروع محلياً
+## 🚀 Using Skills Across Tools & IDEs
 
-1. استنسخ المستودع وثبّت الحزم:
+| Tool / Environment | Quick Activation |
+|---|---|
+| **Claude Code** | Copy a skill URL and instruct Claude: `Read this skill: <url>`, or attach the MCP server above. |
+| **Cursor IDE** | Add instructions to `.cursorrules` or `.cursor/rules/`, or connect via MCP. |
+| **Google Antigravity** | Place `SKILL.md` under `~/.gemini/antigravity/builtin/skills/<name>/SKILL.md` or connect via MCP. |
+| **GitHub Copilot** | Reference instructions inside `.github/copilot-instructions.md`. |
+| **Roo Code / Cline** | Add the skill folder to `.roo/skills/` or configure it as custom instructions. |
+| **ChatGPT / Gemini / Claude Web** | Click **Copy Prompt** on any skill card and paste directly into chat. |
+
+---
+
+## 🏛️ Hybrid Architecture, Security & Privacy
+
+This repository cleanly separates **client-side catalog discovery** from the **optional AI Skills Advisor**:
+
+- **Catalog Search & Leaderboard (100% Client-Side):** Filtering, Arabic/English search normalization ([`site/js/search.js`](site/js/search.js)), theme switching, and prompt copying run locally in your browser with zero external requests. GitHub Pages hosts this static mirror cleanly with an offline semantic fallback.
+- **Optional AI Skills Advisor ([`api/advisor.js`](api/advisor.js)):** On the Vercel production deployment, submitted prompts and optional code snippets attached via the browser dropzone are sent over HTTPS to external inference providers (**Groq**, **Google Gemini**, and **OpenRouter**) to generate specialist skill recommendations.
+- **Privacy & Abuse Hardening:**
+  - Prompts sent to `/api/advisor` are strictly capped at **1,000 characters** (`HTTP 400` if exceeded).
+  - Browser code attachments are stored in **`localStorage` only** (max 3 files, 50 KB/file, 6,000 chars total), never saved to any backend database, and common secret/lockfile patterns (`.env*`, `.pem`, `.key`, `package-lock.json`) are blocked client-side.
+  - Cross-origin requests to `/api/advisor` are restricted via an explicit allowlist, upstream keys reside strictly in server environment variables, and internal errors are never leaked to clients.
+  - Read the full threat model and serverless rate-limiter notes in [`SECURITY.md`](SECURITY.md).
+
+---
+
+## 📡 Public JSON Endpoints
+
+Consume the verified leaderboard and catalog directly inside scripts, CI pipelines, or agent tools:
+
+```bash
+# Fetch live Top 100 skills ranked by GitHub stars
+curl -s https://raw.githubusercontent.com/SayedGameaSayed/top-100-agent-skills/main/data/leaderboard.json
+
+# Fetch full curated skills catalog (bilingual metadata & prompts)
+curl -s https://raw.githubusercontent.com/SayedGameaSayed/top-100-agent-skills/main/data/skills.json
+```
+
+---
+
+## 🏆 Top 100 AI Agent Skills Leaderboard
+
+<!-- LEADERBOARD_START -->
+> 🔄 **Last Automated Sync:** 2026-11-24 | **Metric:** Upstream Repository GitHub Stars | [Download JSON](data/leaderboard.json)
+> ⚠️ **Note:** Star counts reflect the upstream GitHub repository as a whole rather than individual skill files.
+
+| Rank | Repo Stars ★ | Skill | Category | Upstream Repository | Guide & Prompt | Status |
+|:---:|:---:|---|---|---|:---:|:---:|
+| **🥇 1** | `332k` | [**diagnosing-bugs**](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Code Quality & Testing | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Diagnosing Engineering Bugs** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=mp-diagnosing-bugs) | ✅ Verified |
+| **🥈 2** | `332k` | [**grill-with-docs**](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) | Development & Web | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Documentation Stress-Testing** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=grill-with-docs) | ✅ Verified |
+| **🥉 3** | `332k` | [**triage**](https://github.com/mattpocock/skills/tree/main/skills/engineering/triage) | Code Quality & Testing | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Issue Triage & Prioritization** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=triage) | ✅ Verified |
+| **#4** | `332k` | [**improve-codebase-architecture**](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Development & Web | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Codebase Architecture Refactoring** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=improve-codebase-architecture) | ✅ Verified |
+| **#5** | `332k` | [**tdd**](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd) | Code Quality & Testing | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Matt Pocock TDD Methodology** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=mp-tdd) | ✅ Verified |
+| **#6** | `332k` | [**to-tickets**](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets) | Development & Web | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Spec-to-Tickets Breakdown** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=to-tickets) | ✅ Verified |
+| **#7** | `332k` | [**to-spec**](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec) | Development & Web | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**PRD to Technical Specification** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=to-spec) | ✅ Verified |
+| **#8** | `332k` | [**grill-me**](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me) | Development & Web | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Interactive Architecture Griller** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=grill-me) | ✅ Verified |
+| **#9** | `332k` | [**setup-pre-commit**](https://github.com/mattpocock/skills/tree/main/skills/misc/setup-pre-commit) | Code Quality & Testing | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Pre-Commit Hooks & Lint Guardrails** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=setup-pre-commit) | ✅ Verified |
+| **#10** | `332k` | [**git-guardrails-claude-code**](https://github.com/mattpocock/skills/tree/main/skills/misc/git-guardrails-claude-code) | Development & Web | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Git Guardrails for Claude Code** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=git-guardrails-claude-code) | ✅ Verified |
+| **#11** | `332k` | [**writing-for-agents**](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) | Writing & Communication | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Writing Instructions for AI Agents** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=writing-for-agents) | ✅ Verified |
+| **#12** | `332k` | [**codebase-design**](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | Development & Web | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**Modular Codebase Design Principles** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=codebase-design) | ✅ Verified |
+| **#13** | `332k` | [**code-review**](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) | Code Quality & Testing | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**TypeScript Code Review Master** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=mp-code-review) | ✅ Verified |
+| **#14** | `325.7k` | [**writing-plans**](https://github.com/obra/superpowers/tree/main/skills/writing-plans) | Development & Web | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Step-by-Step Software Planning** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=obra-writing-plans) | ✅ Verified |
+| **#15** | `325.7k` | [**systematic-debugging**](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging) | Code Quality & Testing | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Systematic Debugging** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=systematic-debugging) | ✅ Verified |
+| **#16** | `325.7k` | [**test-driven-development**](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) | Code Quality & Testing | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Test-Driven Development (TDD)** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=test-driven-development) | ✅ Verified |
+| **#17** | `325.7k` | [**requesting-code-review**](https://github.com/obra/superpowers/tree/main/skills/requesting-code-review) | Code Quality & Testing | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Requesting Code Review** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=requesting-code-review) | ✅ Verified |
+| **#18** | `325.7k` | [**receiving-code-review**](https://github.com/obra/superpowers/tree/main/skills/receiving-code-review) | Code Quality & Testing | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Receiving & Applying Code Review** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=receiving-code-review) | ✅ Verified |
+| **#19** | `325.7k` | [**using-git-worktrees**](https://github.com/obra/superpowers/tree/main/skills/using-git-worktrees) | Code Quality & Testing | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Git Worktrees Multi-Tasking** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=using-git-worktrees) | ✅ Verified |
+| **#20** | `325.7k` | [**verification-before-completion**](https://github.com/obra/superpowers/tree/main/skills/verification-before-completion) | Code Quality & Testing | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Verification Before Completion** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=verification-before-completion) | ✅ Verified |
+| **#21** | `325.7k` | [**subagent-driven-development**](https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development) | Skill Creation & Meta | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Subagent-Driven Development** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=subagent-driven-development) | ✅ Verified |
+| **#22** | `325.7k` | [**executing-plans**](https://github.com/obra/superpowers/tree/main/skills/executing-plans) | Skill Creation & Meta | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Autonomous Plan Execution** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=executing-plans) | ✅ Verified |
+| **#23** | `325.7k` | [**dispatching-parallel-agents**](https://github.com/obra/superpowers/tree/main/skills/dispatching-parallel-agents) | Skill Creation & Meta | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Dispatching Parallel Agents** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=dispatching-parallel-agents) | ✅ Verified |
+| **#24** | `325.7k` | [**brainstorming-solutions**](https://github.com/obra/superpowers/tree/main/skills/brainstorming) | Skill Creation & Meta | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Architectural Solution Brainstorming** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=brainstorming-solutions) | ✅ Verified |
+| **#25** | `325.7k` | [**finishing-a-development-branch**](https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch) | Code Quality & Testing | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Finishing Development Branches** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=finishing-development-branch) | ✅ Verified |
+| **#26** | `325.7k` | [**using-superpowers**](https://github.com/obra/superpowers/tree/main/skills/using-superpowers) | Skill Creation & Meta | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Superpowers Agent Framework** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=using-superpowers) | ✅ Verified |
+| **#27** | `325.7k` | [**diagnosing-superpowers**](https://github.com/obra/superpowers/tree/main/skills/diagnosing-superpowers) | Code Quality & Testing | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Superpowers Skill Diagnostics** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=diagnosing-superpowers) | ✅ Verified |
+| **#28** | `325.7k` | [**writing-skills**](https://github.com/obra/superpowers/tree/main/skills/writing-skills) | Skill Creation & Meta | [`obra/superpowers`](https://github.com/obra/superpowers) | [**Agent Skill Authoring & Formatting** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=writing-skills) | ✅ Verified |
+| **#29** | `310k` | [**fastapi-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/fastapi-patterns) | Development & Web | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**FastAPI Production Patterns** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=fastapi-patterns) | ✅ Verified |
+| **#30** | `310k` | [**prisma-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/prisma-patterns) | Development & Web | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Prisma ORM Database Patterns** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=prisma-patterns) | ✅ Verified |
+| **#31** | `310k` | [**swiftui-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/swiftui-patterns) | Development & Web | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**SwiftUI Native iOS Patterns** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=swiftui-patterns) | ✅ Verified |
+| **#32** | `310k` | [**rust-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/rust-patterns) | Development & Web | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Rust Idiomatic Systems Patterns** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=rust-patterns) | ✅ Verified |
+| **#33** | `310k` | [**redis-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/redis-patterns) | Development & Web | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Redis Caching & Pub/Sub Patterns** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=redis-patterns) | ✅ Verified |
+| **#34** | `310k` | [**react-testing-library**](https://github.com/affaan-m/ECC/tree/main/skills/react-testing) | Code Quality & Testing | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**React Testing Library Suite** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=react-testing-library) | ✅ Verified |
+| **#35** | `310k` | [**python-pytest-suite**](https://github.com/affaan-m/ECC/tree/main/skills/python-testing) | Code Quality & Testing | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Python Pytest Automation Suite** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=python-pytest-suite) | ✅ Verified |
+| **#36** | `310k` | [**django-security**](https://github.com/affaan-m/ECC/tree/main/skills/django-security) | Cloud & Security | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Django Security Hardening** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=django-security) | ✅ Verified |
+| **#37** | `310k` | [**springboot-security**](https://github.com/affaan-m/ECC/tree/main/skills/springboot-security) | Cloud & Security | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Spring Boot Security Architecture** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=springboot-security) | ✅ Verified |
+| **#38** | `310k` | [**security-review-checklist**](https://github.com/affaan-m/ECC/tree/main/skills/security-review) | Cloud & Security | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Comprehensive Security Review** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=security-review-checklist) | ✅ Verified |
+| **#39** | `310k` | [**pytorch-model-eval**](https://github.com/affaan-m/ECC/tree/main/skills/pytorch-patterns) | Data & AI | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**PyTorch Model Evaluation & Metrics** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=pytorch-model-eval) | ✅ Verified |
+| **#40** | `310k` | [**marketing-campaign**](https://github.com/affaan-m/ECC/tree/main/skills/marketing-campaign) | Business & Finance | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Marketing Campaign Strategy** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=marketing-campaign) | ✅ Verified |
+| **#41** | `310k` | [**i18n-sync-manager**](https://github.com/affaan-m/ECC/tree/main/skills/i18n-sync) | Writing & Communication | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**i18n Localization Sync Manager** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=i18n-sync-manager) | ✅ Verified |
+| **#42** | `310k` | [**golang-testing-suite**](https://github.com/affaan-m/ECC/tree/main/skills/golang-testing) | Code Quality & Testing | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**Go Testing & Benchmarking Suite** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=golang-testing-suite) | ✅ Verified |
+| **#43** | `310k` | [**eval-harness**](https://github.com/affaan-m/ECC/tree/main/skills/eval-harness) | Code Quality & Testing | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**AI Evaluation & Benchmarking Harness** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=eval-harness) | ✅ Verified |
+| **#44** | `199.8k` | [**pdf**](https://github.com/anthropics/skills/tree/main/skills/pdf) | Documents & Files | [`anthropics/skills`](https://github.com/anthropics/skills) | [**PDF Document Master** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=pdf) | ✅ Verified |
+| **#45** | `199.8k` | [**docx**](https://github.com/anthropics/skills/tree/main/skills/docx) | Documents & Files | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Word Document (DOCX) Handler** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=docx) | ✅ Verified |
+| **#46** | `199.8k` | [**xlsx**](https://github.com/anthropics/skills/tree/main/skills/xlsx) | Documents & Files | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Excel Spreadsheet (XLSX) Pro** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=xlsx) | ✅ Verified |
+| **#47** | `199.8k` | [**pptx**](https://github.com/anthropics/skills/tree/main/skills/pptx) | Documents & Files | [`anthropics/skills`](https://github.com/anthropics/skills) | [**PowerPoint Presentation (PPTX)** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=pptx) | ✅ Verified |
+| **#48** | `199.8k` | [**frontend-design**](https://github.com/anthropics/skills/tree/main/skills/frontend-design) | Design & Creative | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Frontend UI/UX Design System** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=frontend-design) | ✅ Verified |
+| **#49** | `199.8k` | [**skill-creator**](https://github.com/anthropics/skills/tree/main/skills/skill-creator) | Skill Creation & Meta | [`anthropics/skills`](https://github.com/anthropics/skills) | [**AI Skill Creator & Architect** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=skill-creator) | ✅ Verified |
+| **#50** | `199.8k` | [**webapp-testing**](https://github.com/anthropics/skills/tree/main/skills/webapp-testing) | Code Quality & Testing | [`anthropics/skills`](https://github.com/anthropics/skills) | [**End-to-End Web App Testing** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=webapp-testing) | ✅ Verified |
+| **#51** | `199.8k` | [**mcp-builder**](https://github.com/anthropics/skills/tree/main/skills/mcp-builder) | Development & Web | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Model Context Protocol (MCP) Builder** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=mcp-builder) | ✅ Verified |
+| **#52** | `199.8k` | [**canvas-design**](https://github.com/anthropics/skills/tree/main/skills/canvas-design) | Design & Creative | [`anthropics/skills`](https://github.com/anthropics/skills) | [**HTML5 Canvas Visuals & Generative Art** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=canvas-design) | ✅ Verified |
+| **#53** | `199.8k` | [**web-artifacts-builder**](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) | Development & Web | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Standalone Web Artifacts Builder** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=web-artifacts-builder) | ✅ Verified |
+| **#54** | `199.8k` | [**brand-guidelines**](https://github.com/anthropics/skills/tree/main/skills/brand-guidelines) | Design & Creative | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Brand Guidelines & Identity System** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=brand-guidelines) | ✅ Verified |
+| **#55** | `199.8k` | [**theme-factory**](https://github.com/anthropics/skills/tree/main/skills/theme-factory) | Design & Creative | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Design System Theme Factory** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=theme-factory) | ✅ Verified |
+| **#56** | `199.8k` | [**doc-coauthoring**](https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring) | Writing & Communication | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Collaborative Document Co-Authoring** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=doc-coauthoring) | ✅ Verified |
+| **#57** | `199.8k` | [**algorithmic-art**](https://github.com/anthropics/skills/tree/main/skills/algorithmic-art) | Design & Creative | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Algorithmic Art & Generative Patterns** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=algorithmic-art) | ✅ Verified |
+| **#58** | `199.8k` | [**internal-comms**](https://github.com/anthropics/skills/tree/main/skills/internal-comms) | Writing & Communication | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Internal Communications & Updates** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=internal-comms) | ✅ Verified |
+| **#59** | `199.8k` | [**slack-gif-creator**](https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator) | Design & Creative | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Custom Slack GIF & Meme Creator** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=slack-gif-creator) | ✅ Verified |
+| **#60** | `199.8k` | [**claude-api**](https://github.com/anthropics/skills/tree/main/skills/claude-api) | Development & Web | [`anthropics/skills`](https://github.com/anthropics/skills) | [**Claude API Integration Patterns** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=claude-api) | ✅ Verified |
+| **#61** | `120.2k` | [**interview-me**](https://github.com/addyosmani/agent-skills/tree/main/skills/interview-me) | Writing & Communication | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Requirements Discovery Interviewer** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=interview-me) | ✅ Verified |
+| **#62** | `120.2k` | [**idea-refine**](https://github.com/addyosmani/agent-skills/tree/main/skills/idea-refine) | Writing & Communication | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Product Idea Refinement** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=idea-refine) | ✅ Verified |
+| **#63** | `120.2k` | [**spec-driven-development**](https://github.com/addyosmani/agent-skills/tree/main/skills/spec-driven-development) | Code Quality & Testing | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Spec-Driven Development** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=spec-driven-development) | ✅ Verified |
+| **#64** | `120.2k` | [**planning-and-task-breakdown**](https://github.com/addyosmani/agent-skills/tree/main/skills/planning-and-task-breakdown) | Code Quality & Testing | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Engineering Task Breakdown** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=planning-and-task-breakdown) | ✅ Verified |
+| **#65** | `120.2k` | [**incremental-implementation**](https://github.com/addyosmani/agent-skills/tree/main/skills/incremental-implementation) | Development & Web | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Incremental Code Implementation** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=incremental-implementation) | ✅ Verified |
+| **#66** | `120.2k` | [**frontend-ui-engineering**](https://github.com/addyosmani/agent-skills/tree/main/skills/frontend-ui-engineering) | Design & Creative | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Frontend UI Engineering Pro** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=frontend-ui-engineering) | ✅ Verified |
+| **#67** | `120.2k` | [**api-and-interface-design**](https://github.com/addyosmani/agent-skills/tree/main/skills/api-and-interface-design) | Development & Web | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**API & Interface Design** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=api-and-interface-design) | ✅ Verified |
+| **#68** | `120.2k` | [**context-engineering**](https://github.com/addyosmani/agent-skills/tree/main/skills/context-engineering) | Skill Creation & Meta | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Agent Context Window Engineering** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=context-engineering) | ✅ Verified |
+| **#69** | `120.2k` | [**browser-testing-with-devtools**](https://github.com/addyosmani/agent-skills/tree/main/skills/browser-testing-with-devtools) | Code Quality & Testing | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Browser Testing with Chrome DevTools** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=browser-testing-devtools) | ✅ Verified |
+| **#70** | `120.2k` | [**debugging-and-error-recovery**](https://github.com/addyosmani/agent-skills/tree/main/skills/debugging-and-error-recovery) | Code Quality & Testing | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Debugging & Error Recovery Protocols** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=debugging-error-recovery) | ✅ Verified |
+| **#71** | `120.2k` | [**doubt-driven-development**](https://github.com/addyosmani/agent-skills/tree/main/skills/doubt-driven-development) | Code Quality & Testing | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Doubt-Driven Code Verification** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=doubt-driven-development) | ✅ Verified |
+| **#72** | `120.2k` | [**source-driven-development**](https://github.com/addyosmani/agent-skills/tree/main/skills/source-driven-development) | Development & Web | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Source-Driven Architecture** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=source-driven-development) | ✅ Verified |
+| **#73** | `120.2k` | [**constraint-driven-development**](https://github.com/addyosmani/agent-skills/tree/main/skills/constraint-driven-development) | Code Quality & Testing | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Constraint-Driven Development** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=constraint-driven-development) | ✅ Verified |
+| **#74** | `120.2k` | [**code-review-and-quality**](https://github.com/addyosmani/agent-skills/tree/main/skills/code-review-and-quality) | Code Quality & Testing | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Code Review & Architectural Quality** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=code-review-quality) | ✅ Verified |
+| **#75** | `120.2k` | [**code-simplification**](https://github.com/addyosmani/agent-skills/tree/main/skills/code-simplification) | Development & Web | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Code Simplification & Pruning** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=code-simplification) | ✅ Verified |
+| **#76** | `120.2k` | [**performance-optimization**](https://github.com/addyosmani/agent-skills/tree/main/skills/performance-optimization) | Development & Web | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Full-Stack Performance Optimization** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=performance-optimization) | ✅ Verified |
+| **#77** | `120.2k` | [**deprecation-and-migration**](https://github.com/addyosmani/agent-skills/tree/main/skills/deprecation-and-migration) | Development & Web | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Deprecation & Version Migration** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=deprecation-migration) | ✅ Verified |
+| **#78** | `120.2k` | [**git-workflow-and-versioning**](https://github.com/addyosmani/agent-skills/tree/main/skills/git-workflow-and-versioning) | Development & Web | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Git Workflow & Semantic Versioning** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=git-workflow-versioning) | ✅ Verified |
+| **#79** | `120.2k` | [**shipping-and-launch**](https://github.com/addyosmani/agent-skills/tree/main/skills/shipping-and-launch) | Cloud & Security | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**Shipping & Production Launch Protocol** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=shipping-and-launch) | ✅ Verified |
+| **#80** | `58.4k` | [**deep-research**](https://github.com/Imbad0202/academic-research-skills/tree/main/deep-research) | Science & Education | [`Imbad0202/academic-research-skills`](https://github.com/Imbad0202/academic-research-skills) | [**Deep Literature & Fact Research** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=deep-research) | ✅ Verified |
+| **#81** | `58.4k` | [**sr-screener**](https://github.com/Imbad0202/academic-research-skills/tree/main/sr-screener) | Science & Education | [`Imbad0202/academic-research-skills`](https://github.com/Imbad0202/academic-research-skills) | [**Systematic Review Paper Screener** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=sr-screener) | ✅ Verified |
+| **#82** | `58.4k` | [**academic-paper-writer**](https://github.com/Imbad0202/academic-research-skills/tree/main/academic-paper) | Science & Education | [`Imbad0202/academic-research-skills`](https://github.com/Imbad0202/academic-research-skills) | [**Academic Paper & LaTeX Author** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=academic-paper-writer) | ✅ Verified |
+| **#83** | `42.9k` | [**responsive-design**](https://github.com/wshobson/agents) | Design & Creative | [`wshobson/agents`](https://github.com/wshobson/agents) | [**Fluid Responsive Web Design** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=responsive-design) | ✅ Verified |
+| **#84** | `34.9k` | [**composition-patterns**](https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns) | Development & Web | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**Component Composition Patterns** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=composition-patterns) | ✅ Verified |
+| **#85** | `34.9k` | [**deploy-to-vercel**](https://github.com/vercel-labs/agent-skills/tree/main/skills/deploy-to-vercel) | Cloud & Security | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**Deploy to Vercel Pro** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=deploy-to-vercel) | ✅ Verified |
+| **#86** | `34.9k` | [**react-best-practices**](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) | Code Quality & Testing | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**React Modern Best Practices** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=react-best-practices) | ✅ Verified |
+| **#87** | `34.9k` | [**react-native-skills**](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-native-skills) | Development & Web | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**React Native Mobile Skills** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=react-native-skills) | ✅ Verified |
+| **#88** | `34.9k` | [**react-view-transitions**](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-view-transitions) | Design & Creative | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**React View Transitions & Motion** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=react-view-transitions) | ✅ Verified |
+| **#89** | `34.9k` | [**vercel-cli-with-tokens**](https://github.com/vercel-labs/agent-skills/tree/main/skills/vercel-cli-with-tokens) | Cloud & Security | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**Vercel CLI & CI/CD Automation** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=vercel-cli-with-tokens) | ✅ Verified |
+| **#90** | `34.9k` | [**vercel-optimize**](https://github.com/vercel-labs/agent-skills/tree/main/skills/vercel-optimize) | Cloud & Security | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**Vercel Performance & Edge Optimization** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=vercel-optimize) | ✅ Verified |
+| **#91** | `34.9k` | [**web-design-guidelines**](https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines) | Design & Creative | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**Web Design Guidelines & Aesthetics** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=web-design-guidelines) | ✅ Verified |
+| **#92** | `34.9k` | [**writing-guidelines**](https://github.com/vercel-labs/agent-skills/tree/main/skills/writing-guidelines) | Writing & Communication | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**Technical Writing & Documentation** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=writing-guidelines) | ✅ Verified |
+| **#93** | `3.2k` | [**mcp-builder**](https://github.com/microsoft/skills/tree/main/.github/skills/mcp-builder) | Skill Creation & Meta | [`microsoft/skills`](https://github.com/microsoft/skills) | [**Microsoft MCP Server Scaffold** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=ms-mcp-builder) | ✅ Verified |
+| **#94** | `3.2k` | [**skill-creator**](https://github.com/microsoft/skills/tree/main/.github/skills/skill-creator) | Skill Creation & Meta | [`microsoft/skills`](https://github.com/microsoft/skills) | [**Microsoft Copilot Skill Creator** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=ms-skill-creator) | ✅ Verified |
+| **#95** | `3.2k` | [**frontend-design-review**](https://github.com/microsoft/skills/tree/main/.github/skills/frontend-design-review) | Design & Creative | [`microsoft/skills`](https://github.com/microsoft/skills) | [**Microsoft Frontend Design Review** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=frontend-design-review) | ✅ Verified |
+| **#96** | `3.2k` | [**github-issue-creator**](https://github.com/microsoft/skills/tree/main/.github/skills/github-issue-creator) | Development & Web | [`microsoft/skills`](https://github.com/microsoft/skills) | [**Automated GitHub Issue Creator** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=github-issue-creator) | ✅ Verified |
+| **#97** | `3.2k` | [**cloud-solution-architect**](https://github.com/microsoft/skills/tree/main/.github/skills/cloud-solution-architect) | Cloud & Security | [`microsoft/skills`](https://github.com/microsoft/skills) | [**Cloud Solution Architecture Pro** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=cloud-solution-architect) | ✅ Verified |
+| **#98** | `3.2k` | [**copilot-sdk**](https://github.com/microsoft/skills/tree/main/.github/skills/copilot-sdk) | Development & Web | [`microsoft/skills`](https://github.com/microsoft/skills) | [**Microsoft Copilot SDK Integration** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=copilot-sdk) | ✅ Verified |
+| **#99** | `3.2k` | [**podcast-generation**](https://github.com/microsoft/skills/tree/main/.github/skills/podcast-generation) | Data & AI | [`microsoft/skills`](https://github.com/microsoft/skills) | [**AI Podcast Script & Audio Generator** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=podcast-generation) | ✅ Verified |
+| **#100** | `3.2k` | [**kql**](https://github.com/microsoft/skills/tree/main/.github/skills/kql) | Data & AI | [`microsoft/skills`](https://github.com/microsoft/skills) | [**Kusto Query Language (KQL) Master** ↗](https://top-100-agent-skills.vercel.app/skill.html?id=kql) | ✅ Verified |
+<!-- LEADERBOARD_END -->
+
+---
+
+## 💻 Local Development & Test Suite
+
+1. **Clone and install dependencies:**
    ```bash
    git clone https://github.com/SayedGameaSayed/top-100-agent-skills.git
    cd top-100-agent-skills
    npm install
    ```
-2. شغّل الخادم المحلي واختبر الـ API:
+
+2. **Validate schemas, licensing governance, security rules & MCP protocol:**
+   ```bash
+   node scripts/validate.mjs
+   npm test
+   ```
+
+3. **Run the local Express server & static UI:**
    ```bash
    npm run dev
+   # Open http://localhost:3000/
    ```
-3. أو افتح الموقع مباشرة عبر خادم ملفات على `http://localhost:3000/`.
 
 ---
 
-## التحقق والاختبارات (Validator & Test Suite)
+## 🌍 Bilingual Support (English & Arabic)
 
-يحتوي المستودع على اختبارات صارمة للبيانات والخادم والـ MCP:
-```bash
-node scripts/validate.mjs
-npm test
-```
+While this repository and web UI default to **English** for global developer accessibility, full **Arabic RTL** descriptions, normalized Arabic search, and localized prompts are first-class features across the web app ([`?lang=ar`](https://top-100-agent-skills.vercel.app/?lang=ar)) and the MCP server (`lang: "ar"`).
 
 ---
 
-<div dir="ltr">
+## 🤝 Contributing & Indexing
 
-## English Overview
-
-**Top 100 AI Agent Skills** is an open-source, bilingual (English-default + Arabic RTL) directory, daily GitHub star leaderboard, and **Model Context Protocol (MCP) server** for curated `SKILL.md` agent skills.
-
-### Key Highlights:
-- **Zero-Key AI Skills Advisor + Local Fallback:** Deployed on Vercel with [`api/advisor.js`](api/advisor.js) routing coding, AI architecture, and general discovery queries to free-tier specialists (**OpenRouter / Groq / Google Gemini**), alongside an instant client-side semantic fallback when offline or on static mirrors.
-- **Transparent Privacy & Abuse Controls:** Catalog search and leaderboard run purely in-browser; submitted advisor prompts (capped at 1,000 chars) and optional browser-`localStorage` code snippets (max 3 files, 50 KB each) are forwarded only for inference and never stored in a database. See [`SECURITY.md`](SECURITY.md).
-- **MCP Server (`npx` ready):** Expose `search_skills`, `get_skill`, `get_leaderboard`, and offline `recommend_skills_for_task` directly inside Claude Code, Cursor, Antigravity, or Claude Desktop via `node bin/mcp.js` or `npx -y top-100-agent-skills`. *(Note: The npm package ships with a bundled zero-latency local data snapshot updated on each npm release; the live website and GitHub repo continue syncing daily via GitHub Actions).*
-- **Strict Licensing:** Proprietary skills never have files copied into this repo; permissive derived skills retain upstream attributions.
-
-### Running & Testing:
-```bash
-# Install dependencies & validate catalog rules
-npm install
-node scripts/validate.mjs
-
-# Run full validation, search, server security, governance & MCP tests
-npm test
-
-# Start local Express + API server
-npm run dev
-```
-
-Licensed under [MIT](LICENSE). Attributions in [NOTICE.md](NOTICE.md).
-</div>
-
-
-## 🏆 قائمة المتصدرين لأفضل 100 مهارة ذكاء اصطناعي (Top 100 Leaderboard)
-
-<!-- LEADERBOARD_START -->
-> 🔄 **آخر تحديث آلي:** 2026-11-24 | **التصنيف:** الأكثر شهرة (حسب نجوم المستودع) | [تحميل JSON المباشر](data/leaderboard.json)
-> ⚠️ **تنبيه:** عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها.
-
-| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح والبرومبت الجاهز | حالة المراجعة |
-|:---:|:---:|---|---|---|:---:|:---:|
-| **🥇 1** | `332k` | [**diagnosing-bugs**](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | جودة الكود والاختبار | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**حلقة التشخيص المنهجي للأخطاء البرمجية الصعبة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=mp-diagnosing-bugs) | ✅ مراجعة يدوية |
-| **🥈 2** | `332k` | [**grill-with-docs**](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) | البرمجة والويب | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**المقابلة الاستقصائية وتوليد توثيق القرارات المعمارية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=grill-with-docs) | ✅ مراجعة يدوية |
-| **🥉 3** | `332k` | [**triage**](https://github.com/mattpocock/skills/tree/main/skills/engineering/triage) | جودة الكود والاختبار | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**فرز وتصنيف المشاكل وطلبات السحب برمجيًا** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=triage) | ✅ مراجعة يدوية |
-| **#4** | `332k` | [**improve-codebase-architecture**](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | البرمجة والويب | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**مسح وتعميق البنية المعمارية للكود البرمجي** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=improve-codebase-architecture) | ✅ مراجعة يدوية |
-| **#5** | `332k` | [**tdd**](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd) | جودة الكود والاختبار | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**التطوير الموجه بالاختبارات الصارم من مات بوكوك** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=mp-tdd) | ✅ مراجعة يدوية |
-| **#6** | `332k` | [**to-tickets**](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets) | البرمجة والويب | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**تقسيم الخطط الكبيرة إلى تذاكر برمجية مترابطة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=to-tickets) | ✅ مراجعة يدوية |
-| **#7** | `332k` | [**to-spec**](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec) | البرمجة والويب | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**صياغة وثائق المواصفات الفنية من سياق النقاش** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=to-spec) | ✅ مراجعة يدوية |
-| **#8** | `332k` | [**grill-me**](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me) | البرمجة والويب | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**المراجعة الاستقصائية الصارمة لاختبار الأفكار والخطط** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=grill-me) | ✅ مراجعة يدوية |
-| **#9** | `332k` | [**setup-pre-commit**](https://github.com/mattpocock/skills/tree/main/skills/misc/setup-pre-commit) | جودة الكود والاختبار | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**تهيئة خطافات Husky وفحص الأكواد قبل الاعتماد** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=setup-pre-commit) | ✅ مراجعة يدوية |
-| **#10** | `332k` | [**git-guardrails-claude-code**](https://github.com/mattpocock/skills/tree/main/skills/misc/git-guardrails-claude-code) | البرمجة والويب | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**حواجز حماية أوامر Git الخطرة لوكلاء الذكاء الاصطناعي** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=git-guardrails-claude-code) | ✅ مراجعة يدوية |
-| **#11** | `332k` | [**writing-for-agents**](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) | الكتابة والتواصل | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**كتابة المستندات والتعليمات الموجهة لوكلاء الذكاء الاصطناعي** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=writing-for-agents) | ✅ مراجعة يدوية |
-| **#12** | `332k` | [**codebase-design**](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | البرمجة والويب | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**تصميم وبناء الوحدات البرمجية العميقة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=codebase-design) | ✅ مراجعة يدوية |
-| **#13** | `332k` | [**code-review**](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) | جودة الكود والاختبار | [`mattpocock/skills`](https://github.com/mattpocock/skills) | [**المراجعة المعيارية الدقيقة لتغييرات الكود** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=mp-code-review) | ✅ مراجعة يدوية |
-| **#14** | `325.7k` | [**writing-plans**](https://github.com/obra/superpowers/tree/main/skills/writing-plans) | البرمجة والويب | [`obra/superpowers`](https://github.com/obra/superpowers) | [**تخطيط المشاريع البرمجية خطوة بخطوة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=obra-writing-plans) | ✅ مراجعة يدوية |
-| **#15** | `325.7k` | [**systematic-debugging**](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging) | جودة الكود والاختبار | [`obra/superpowers`](https://github.com/obra/superpowers) | [**استكشاف وإصلاح الأخطاء المنهجي** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=systematic-debugging) | ✅ مراجعة يدوية |
-| **#16** | `325.7k` | [**test-driven-development**](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) | جودة الكود والاختبار | [`obra/superpowers`](https://github.com/obra/superpowers) | [**التطوير الموجه بالاختبارات (TDD)** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=test-driven-development) | ✅ مراجعة يدوية |
-| **#17** | `325.7k` | [**requesting-code-review**](https://github.com/obra/superpowers/tree/main/skills/requesting-code-review) | جودة الكود والاختبار | [`obra/superpowers`](https://github.com/obra/superpowers) | [**إعداد الكود وطلب المراجعة البرمجية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=requesting-code-review) | ✅ مراجعة يدوية |
-| **#18** | `325.7k` | [**receiving-code-review**](https://github.com/obra/superpowers/tree/main/skills/receiving-code-review) | جودة الكود والاختبار | [`obra/superpowers`](https://github.com/obra/superpowers) | [**استيعاب وتطبيق ملاحظات مراجعة الكود** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=receiving-code-review) | ✅ مراجعة يدوية |
-| **#19** | `325.7k` | [**using-git-worktrees**](https://github.com/obra/superpowers/tree/main/skills/using-git-worktrees) | جودة الكود والاختبار | [`obra/superpowers`](https://github.com/obra/superpowers) | [**العمل على عدة فروع بالتوازي بـ Git Worktrees** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=using-git-worktrees) | ✅ مراجعة يدوية |
-| **#20** | `325.7k` | [**verification-before-completion**](https://github.com/obra/superpowers/tree/main/skills/verification-before-completion) | جودة الكود والاختبار | [`obra/superpowers`](https://github.com/obra/superpowers) | [**التحقق الصارم قبل إنهاء المهمة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=verification-before-completion) | ✅ مراجعة يدوية |
-| **#21** | `325.7k` | [**subagent-driven-development**](https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development) | بناء المهارات واكتشافها | [`obra/superpowers`](https://github.com/obra/superpowers) | [**تطوير المشاريع عبر فرق الوكلاء الفرعيين** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=subagent-driven-development) | ✅ مراجعة يدوية |
-| **#22** | `325.7k` | [**executing-plans**](https://github.com/obra/superpowers/tree/main/skills/executing-plans) | بناء المهارات واكتشافها | [`obra/superpowers`](https://github.com/obra/superpowers) | [**التنفيذ المنضبط لخطط العمل البرمجية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=executing-plans) | ✅ مراجعة يدوية |
-| **#23** | `325.7k` | [**dispatching-parallel-agents**](https://github.com/obra/superpowers/tree/main/skills/dispatching-parallel-agents) | بناء المهارات واكتشافها | [`obra/superpowers`](https://github.com/obra/superpowers) | [**إطلاق وتنسيق الوكلاء المتوازيين** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=dispatching-parallel-agents) | ✅ مراجعة يدوية |
-| **#24** | `325.7k` | [**brainstorming-solutions**](https://github.com/obra/superpowers/tree/main/skills/brainstorming) | بناء المهارات واكتشافها | [`obra/superpowers`](https://github.com/obra/superpowers) | [**العصف الذهني واستكشاف الحلول المعمارية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=brainstorming-solutions) | ✅ مراجعة يدوية |
-| **#25** | `325.7k` | [**finishing-a-development-branch**](https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch) | جودة الكود والاختبار | [`obra/superpowers`](https://github.com/obra/superpowers) | [**إنهاء فرع التطوير والدمج الآمن** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=finishing-development-branch) | ✅ مراجعة يدوية |
-| **#26** | `325.7k` | [**using-superpowers**](https://github.com/obra/superpowers/tree/main/skills/using-superpowers) | بناء المهارات واكتشافها | [`obra/superpowers`](https://github.com/obra/superpowers) | [**الاستدعاء التلقائي لمهارات الوكلاء** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=using-superpowers) | ✅ مراجعة يدوية |
-| **#27** | `325.7k` | [**diagnosing-superpowers**](https://github.com/obra/superpowers/tree/main/skills/diagnosing-superpowers) | جودة الكود والاختبار | [`obra/superpowers`](https://github.com/obra/superpowers) | [**تشخيص ومعالجة انحراف الجلسات** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=diagnosing-superpowers) | ✅ مراجعة يدوية |
-| **#28** | `325.7k` | [**writing-skills**](https://github.com/obra/superpowers/tree/main/skills/writing-skills) | بناء المهارات واكتشافها | [`obra/superpowers`](https://github.com/obra/superpowers) | [**تأليف واختبار مهارات الوكلاء الجديدة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=writing-skills) | ✅ مراجعة يدوية |
-| **#29** | `310k` | [**fastapi-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/fastapi-patterns) | البرمجة والويب | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**أنماط واجهات FastAPI المتقدمة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=fastapi-patterns) | ✅ مراجعة يدوية |
-| **#30** | `310k` | [**prisma-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/prisma-patterns) | البرمجة والويب | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**استعلامات ونمذجة Prisma ORM الحديثة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=prisma-patterns) | ✅ مراجعة يدوية |
-| **#31** | `310k` | [**swiftui-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/swiftui-patterns) | البرمجة والويب | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**أنماط واجهات SwiftUI التفاعلية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=swiftui-patterns) | ✅ مراجعة يدوية |
-| **#32** | `310k` | [**rust-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/rust-patterns) | البرمجة والويب | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**أنماط الإنتاج في لغة Rust** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=rust-patterns) | ✅ مراجعة يدوية |
-| **#33** | `310k` | [**redis-patterns**](https://github.com/affaan-m/ECC/tree/main/skills/redis-patterns) | البرمجة والويب | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**أنماط التخزين المؤقت بـ Redis** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=redis-patterns) | ✅ مراجعة يدوية |
-| **#34** | `310k` | [**react-testing-library**](https://github.com/affaan-m/ECC/tree/main/skills/react-testing) | جودة الكود والاختبار | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**اختبار مكونات React التفاعلية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=react-testing-library) | ✅ مراجعة يدوية |
-| **#35** | `310k` | [**python-pytest-suite**](https://github.com/affaan-m/ECC/tree/main/skills/python-testing) | جودة الكود والاختبار | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**حزمة اختبارات Python عبر Pytest** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=python-pytest-suite) | ✅ مراجعة يدوية |
-| **#36** | `310k` | [**django-security**](https://github.com/affaan-m/ECC/tree/main/skills/django-security) | السحابة والأمان | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**تحصين وأمان تطبيقات Django** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=django-security) | ✅ مراجعة يدوية |
-| **#37** | `310k` | [**springboot-security**](https://github.com/affaan-m/ECC/tree/main/skills/springboot-security) | السحابة والأمان | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**تأمين تطبيقات Spring Boot و Java** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=springboot-security) | ✅ مراجعة يدوية |
-| **#38** | `310k` | [**security-review-checklist**](https://github.com/affaan-m/ECC/tree/main/skills/security-review) | السحابة والأمان | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**قائمة التدقيق الأمني الشامل للكود** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=security-review-checklist) | ✅ مراجعة يدوية |
-| **#39** | `310k` | [**pytorch-model-eval**](https://github.com/affaan-m/ECC/tree/main/skills/pytorch-patterns) | البيانات والذكاء الاصطناعي | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**أنماط وتقييم نماذج PyTorch للتعلم العميق** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=pytorch-model-eval) | ✅ مراجعة يدوية |
-| **#40** | `310k` | [**marketing-campaign**](https://github.com/affaan-m/ECC/tree/main/skills/marketing-campaign) | الأعمال والمال | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**تخطيط وتنفيذ الحملات التسويقية الرقمية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=marketing-campaign) | ✅ مراجعة يدوية |
-| **#41** | `310k` | [**i18n-sync-manager**](https://github.com/affaan-m/ECC/tree/main/skills/i18n-sync) | الكتابة والتواصل | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**مزامنة وتدقيق ملفات الترجمة الدولية (i18n)** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=i18n-sync-manager) | ✅ مراجعة يدوية |
-| **#42** | `310k` | [**golang-testing-suite**](https://github.com/affaan-m/ECC/tree/main/skills/golang-testing) | جودة الكود والاختبار | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**اختبارات Go وحساب الأداء (Benchmarks)** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=golang-testing-suite) | ✅ مراجعة يدوية |
-| **#43** | `310k` | [**eval-harness**](https://github.com/affaan-m/ECC/tree/main/skills/eval-harness) | جودة الكود والاختبار | [`affaan-m/ECC`](https://github.com/affaan-m/ECC) | [**أطر تقييم مخرجات نماذج الذكاء الاصطناعي** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=eval-harness) | ✅ مراجعة يدوية |
-| **#44** | `199.8k` | [**pdf**](https://github.com/anthropics/skills/tree/main/skills/pdf) | المستندات والملفات | [`anthropics/skills`](https://github.com/anthropics/skills) | [**التعامل مع ملفات PDF** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=pdf) | ✅ مراجعة يدوية |
-| **#45** | `199.8k` | [**docx**](https://github.com/anthropics/skills/tree/main/skills/docx) | المستندات والملفات | [`anthropics/skills`](https://github.com/anthropics/skills) | [**إنشاء وتعديل ملفات Word** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=docx) | ✅ مراجعة يدوية |
-| **#46** | `199.8k` | [**xlsx**](https://github.com/anthropics/skills/tree/main/skills/xlsx) | المستندات والملفات | [`anthropics/skills`](https://github.com/anthropics/skills) | [**جداول Excel والتحليل** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=xlsx) | ✅ مراجعة يدوية |
-| **#47** | `199.8k` | [**pptx**](https://github.com/anthropics/skills/tree/main/skills/pptx) | المستندات والملفات | [`anthropics/skills`](https://github.com/anthropics/skills) | [**إنشاء وتعديل عروض PowerPoint** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=pptx) | ✅ مراجعة يدوية |
-| **#48** | `199.8k` | [**frontend-design**](https://github.com/anthropics/skills/tree/main/skills/frontend-design) | التصميم والإبداع | [`anthropics/skills`](https://github.com/anthropics/skills) | [**تصميم واجهات ويب مميزة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=frontend-design) | ✅ مراجعة يدوية |
-| **#49** | `199.8k` | [**skill-creator**](https://github.com/anthropics/skills/tree/main/skills/skill-creator) | بناء المهارات واكتشافها | [`anthropics/skills`](https://github.com/anthropics/skills) | [**صانع المهارات** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=skill-creator) | ✅ مراجعة يدوية |
-| **#50** | `199.8k` | [**webapp-testing**](https://github.com/anthropics/skills/tree/main/skills/webapp-testing) | جودة الكود والاختبار | [`anthropics/skills`](https://github.com/anthropics/skills) | [**اختبار تطبيقات الويب** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=webapp-testing) | ✅ مراجعة يدوية |
-| **#51** | `199.8k` | [**mcp-builder**](https://github.com/anthropics/skills/tree/main/skills/mcp-builder) | البرمجة والويب | [`anthropics/skills`](https://github.com/anthropics/skills) | [**بناء خوادم MCP** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=mcp-builder) | ✅ مراجعة يدوية |
-| **#52** | `199.8k` | [**canvas-design**](https://github.com/anthropics/skills/tree/main/skills/canvas-design) | التصميم والإبداع | [`anthropics/skills`](https://github.com/anthropics/skills) | [**تصميم بوسترات وفنون ثابتة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=canvas-design) | ✅ مراجعة يدوية |
-| **#53** | `199.8k` | [**web-artifacts-builder**](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) | البرمجة والويب | [`anthropics/skills`](https://github.com/anthropics/skills) | [**بناء صفحات ويب متقدمة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=web-artifacts-builder) | ✅ مراجعة يدوية |
-| **#54** | `199.8k` | [**brand-guidelines**](https://github.com/anthropics/skills/tree/main/skills/brand-guidelines) | التصميم والإبداع | [`anthropics/skills`](https://github.com/anthropics/skills) | [**تطبيق الهوية البصرية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=brand-guidelines) | ✅ مراجعة يدوية |
-| **#55** | `199.8k` | [**theme-factory**](https://github.com/anthropics/skills/tree/main/skills/theme-factory) | التصميم والإبداع | [`anthropics/skills`](https://github.com/anthropics/skills) | [**مظاهر جاهزة للعروض والمستندات** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=theme-factory) | ✅ مراجعة يدوية |
-| **#56** | `199.8k` | [**doc-coauthoring**](https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring) | الكتابة والتواصل | [`anthropics/skills`](https://github.com/anthropics/skills) | [**كتابة المستندات بالمشاركة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=doc-coauthoring) | ✅ مراجعة يدوية |
-| **#57** | `199.8k` | [**algorithmic-art**](https://github.com/anthropics/skills/tree/main/skills/algorithmic-art) | التصميم والإبداع | [`anthropics/skills`](https://github.com/anthropics/skills) | [**فن توليدي بالكود** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=algorithmic-art) | ✅ مراجعة يدوية |
-| **#58** | `199.8k` | [**internal-comms**](https://github.com/anthropics/skills/tree/main/skills/internal-comms) | الكتابة والتواصل | [`anthropics/skills`](https://github.com/anthropics/skills) | [**التواصل الداخلي في الشركات** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=internal-comms) | ✅ مراجعة يدوية |
-| **#59** | `199.8k` | [**slack-gif-creator**](https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator) | التصميم والإبداع | [`anthropics/skills`](https://github.com/anthropics/skills) | [**صور GIF متحركة لـ Slack** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=slack-gif-creator) | ✅ مراجعة يدوية |
-| **#60** | `199.8k` | [**claude-api**](https://github.com/anthropics/skills/tree/main/skills/claude-api) | البرمجة والويب | [`anthropics/skills`](https://github.com/anthropics/skills) | [**البناء باستخدام Claude API** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=claude-api) | ✅ مراجعة يدوية |
-| **#61** | `120.2k` | [**interview-me**](https://github.com/addyosmani/agent-skills/tree/main/skills/interview-me) | الكتابة والتواصل | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**استخلاص المتطلبات بالحوار المتدرج** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=interview-me) | ✅ مراجعة يدوية |
-| **#62** | `120.2k` | [**idea-refine**](https://github.com/addyosmani/agent-skills/tree/main/skills/idea-refine) | الكتابة والتواصل | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**بلورة وتطوير الأفكار التقنية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=idea-refine) | ✅ مراجعة يدوية |
-| **#63** | `120.2k` | [**spec-driven-development**](https://github.com/addyosmani/agent-skills/tree/main/skills/spec-driven-development) | جودة الكود والاختبار | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**التطوير المدفوع بالمواصفات التقنية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=spec-driven-development) | ✅ مراجعة يدوية |
-| **#64** | `120.2k` | [**planning-and-task-breakdown**](https://github.com/addyosmani/agent-skills/tree/main/skills/planning-and-task-breakdown) | جودة الكود والاختبار | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**تفكيك المهام وتخطيط التسليم** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=planning-and-task-breakdown) | ✅ مراجعة يدوية |
-| **#65** | `120.2k` | [**incremental-implementation**](https://github.com/addyosmani/agent-skills/tree/main/skills/incremental-implementation) | البرمجة والويب | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**التنفيذ التدريجي بالشرائح القابلة للتحقق** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=incremental-implementation) | ✅ مراجعة يدوية |
-| **#66** | `120.2k` | [**frontend-ui-engineering**](https://github.com/addyosmani/agent-skills/tree/main/skills/frontend-ui-engineering) | التصميم والإبداع | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**هندسة واجهات المستخدم الإنتاجية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=frontend-ui-engineering) | ✅ مراجعة يدوية |
-| **#67** | `120.2k` | [**api-and-interface-design**](https://github.com/addyosmani/agent-skills/tree/main/skills/api-and-interface-design) | البرمجة والويب | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**تصميم واجهات البرمجة (APIs) والحدود المعمارية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=api-and-interface-design) | ✅ مراجعة يدوية |
-| **#68** | `120.2k` | [**context-engineering**](https://github.com/addyosmani/agent-skills/tree/main/skills/context-engineering) | بناء المهارات واكتشافها | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**هندسة سياق الوكلاء وإدارة الذاكرة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=context-engineering) | ✅ مراجعة يدوية |
-| **#69** | `120.2k` | [**browser-testing-with-devtools**](https://github.com/addyosmani/agent-skills/tree/main/skills/browser-testing-with-devtools) | جودة الكود والاختبار | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**الاختبار الآلي للمتصفح عبر DevTools** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=browser-testing-devtools) | ✅ مراجعة يدوية |
-| **#70** | `120.2k` | [**debugging-and-error-recovery**](https://github.com/addyosmani/agent-skills/tree/main/skills/debugging-and-error-recovery) | جودة الكود والاختبار | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**التشخيص الجذري للأخطاء والتعافي الذاتي** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=debugging-error-recovery) | ✅ مراجعة يدوية |
-| **#71** | `120.2k` | [**doubt-driven-development**](https://github.com/addyosmani/agent-skills/tree/main/skills/doubt-driven-development) | جودة الكود والاختبار | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**المراجعة المعارضة واختبار الافتراضات** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=doubt-driven-development) | ✅ مراجعة يدوية |
-| **#72** | `120.2k` | [**source-driven-development**](https://github.com/addyosmani/agent-skills/tree/main/skills/source-driven-development) | البرمجة والويب | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**التطوير المرتكز على التوثيق والمصادر الرسمية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=source-driven-development) | ✅ مراجعة يدوية |
-| **#73** | `120.2k` | [**constraint-driven-development**](https://github.com/addyosmani/agent-skills/tree/main/skills/constraint-driven-development) | جودة الكود والاختبار | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**التطوير المنضبط بالقيود الهندسية الصارمة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=constraint-driven-development) | ✅ مراجعة يدوية |
-| **#74** | `120.2k` | [**code-review-and-quality**](https://github.com/addyosmani/agent-skills/tree/main/skills/code-review-and-quality) | جودة الكود والاختبار | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**المراجعة الشاملة لجودة الكود والأمان** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=code-review-quality) | ✅ مراجعة يدوية |
-| **#75** | `120.2k` | [**code-simplification**](https://github.com/addyosmani/agent-skills/tree/main/skills/code-simplification) | البرمجة والويب | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**تبسيط الكود وتطهيره من التعقيد الزائد** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=code-simplification) | ✅ مراجعة يدوية |
-| **#76** | `120.2k` | [**performance-optimization**](https://github.com/addyosmani/agent-skills/tree/main/skills/performance-optimization) | البرمجة والويب | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**تسريع وتحسين أداء التطبيقات وقواعد البيانات** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=performance-optimization) | ✅ مراجعة يدوية |
-| **#77** | `120.2k` | [**deprecation-and-migration**](https://github.com/addyosmani/agent-skills/tree/main/skills/deprecation-and-migration) | البرمجة والويب | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**إدارة الترحيل البرمجي (Migration) والأنظمة المتوقفة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=deprecation-migration) | ✅ مراجعة يدوية |
-| **#78** | `120.2k` | [**git-workflow-and-versioning**](https://github.com/addyosmani/agent-skills/tree/main/skills/git-workflow-and-versioning) | البرمجة والويب | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**إدارة إصدارات Git والترقيم الدلالي** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=git-workflow-versioning) | ✅ مراجعة يدوية |
-| **#79** | `120.2k` | [**shipping-and-launch**](https://github.com/addyosmani/agent-skills/tree/main/skills/shipping-and-launch) | السحابة والأمان | [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) | [**جاهزية الإطلاق والتدقيق النهائي للنشر** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=shipping-and-launch) | ✅ مراجعة يدوية |
-| **#80** | `58.4k` | [**deep-research**](https://github.com/Imbad0202/academic-research-skills/tree/main/deep-research) | العلوم والتعليم | [`Imbad0202/academic-research-skills`](https://github.com/Imbad0202/academic-research-skills) | [**فريق البحث الأكاديمي والتحليل المنهجي المعمق** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=deep-research) | ✅ مراجعة يدوية |
-| **#81** | `58.4k` | [**sr-screener**](https://github.com/Imbad0202/academic-research-skills/tree/main/sr-screener) | العلوم والتعليم | [`Imbad0202/academic-research-skills`](https://github.com/Imbad0202/academic-research-skills) | [**فرز الأوراق العلمية للمراجعات المنهجية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=sr-screener) | ✅ مراجعة يدوية |
-| **#82** | `58.4k` | [**academic-paper-writer**](https://github.com/Imbad0202/academic-research-skills/tree/main/academic-paper) | العلوم والتعليم | [`Imbad0202/academic-research-skills`](https://github.com/Imbad0202/academic-research-skills) | [**صياغة وتحرير الأوراق العلمية المحكمة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=academic-paper-writer) | ✅ مراجعة يدوية |
-| **#83** | `42.9k` | [**responsive-design**](https://github.com/wshobson/agents) | التصميم والإبداع | [`wshobson/agents`](https://github.com/wshobson/agents) | [**تصميم واجهات الويب المتجاوبة الحديثة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=responsive-design) | ✅ مراجعة يدوية |
-| **#84** | `34.9k` | [**composition-patterns**](https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns) | البرمجة والويب | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**أنماط تركيب مكونات React القابلة للتوسع** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=composition-patterns) | ✅ مراجعة يدوية |
-| **#85** | `34.9k` | [**deploy-to-vercel**](https://github.com/vercel-labs/agent-skills/tree/main/skills/deploy-to-vercel) | السحابة والأمان | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**النشر المباشر للتطبيقات على منصة Vercel** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=deploy-to-vercel) | ✅ مراجعة يدوية |
-| **#86** | `34.9k` | [**react-best-practices**](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) | جودة الكود والاختبار | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**أفضل ممارسات أداء React و Next.js من Vercel** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=react-best-practices) | ✅ مراجعة يدوية |
-| **#87** | `34.9k` | [**react-native-skills**](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-native-skills) | البرمجة والويب | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**أفضل ممارسات React Native و Expo للتطبيقات السريعة** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=react-native-skills) | ✅ مراجعة يدوية |
-| **#88** | `34.9k` | [**react-view-transitions**](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-view-transitions) | التصميم والإبداع | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**انتقالات الشاشة السينمائية بـ View Transition API** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=react-view-transitions) | ✅ مراجعة يدوية |
-| **#89** | `34.9k` | [**vercel-cli-with-tokens**](https://github.com/vercel-labs/agent-skills/tree/main/skills/vercel-cli-with-tokens) | السحابة والأمان | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**إدارة ونشر Vercel CLI بالرموز البرمجية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=vercel-cli-with-tokens) | ✅ مراجعة يدوية |
-| **#90** | `34.9k` | [**vercel-optimize**](https://github.com/vercel-labs/agent-skills/tree/main/skills/vercel-optimize) | السحابة والأمان | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**تدقيق تكاليف وأداء مشاريع Vercel السحابية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=vercel-optimize) | ✅ مراجعة يدوية |
-| **#91** | `34.9k` | [**web-design-guidelines**](https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines) | التصميم والإبداع | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**تدقيق واجهات المستخدم وفق إرشادات الويب القياسية** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=web-design-guidelines) | ✅ مراجعة يدوية |
-| **#92** | `34.9k` | [**writing-guidelines**](https://github.com/vercel-labs/agent-skills/tree/main/skills/writing-guidelines) | الكتابة والتواصل | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | [**تدقيق وصياغة نصوص التوثيق التقني الاحترافي** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=writing-guidelines) | ✅ مراجعة يدوية |
-| **#93** | `3.2k` | [**mcp-builder**](https://github.com/microsoft/skills/tree/main/.github/skills/mcp-builder) | بناء المهارات واكتشافها | [`microsoft/skills`](https://github.com/microsoft/skills) | [**بناء خوادم Model Context Protocol من Microsoft** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=ms-mcp-builder) | ✅ مراجعة يدوية |
-| **#94** | `3.2k` | [**skill-creator**](https://github.com/microsoft/skills/tree/main/.github/skills/skill-creator) | بناء المهارات واكتشافها | [`microsoft/skills`](https://github.com/microsoft/skills) | [**إنشاء مهارات الوكلاء الرسمية وفق معايير Microsoft** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=ms-skill-creator) | ✅ مراجعة يدوية |
-| **#95** | `3.2k` | [**frontend-design-review**](https://github.com/microsoft/skills/tree/main/.github/skills/frontend-design-review) | التصميم والإبداع | [`microsoft/skills`](https://github.com/microsoft/skills) | [**المراجعة المعمارية لجودة واجهات المستخدم من Microsoft** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=frontend-design-review) | ✅ مراجعة يدوية |
-| **#96** | `3.2k` | [**github-issue-creator**](https://github.com/microsoft/skills/tree/main/.github/skills/github-issue-creator) | البرمجة والويب | [`microsoft/skills`](https://github.com/microsoft/skills) | [**توليد تقارير المشاكل الاحترافية لـ GitHub آليًا** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=github-issue-creator) | ✅ مراجعة يدوية |
-| **#97** | `3.2k` | [**cloud-solution-architect**](https://github.com/microsoft/skills/tree/main/.github/skills/cloud-solution-architect) | السحابة والأمان | [`microsoft/skills`](https://github.com/microsoft/skills) | [**استشارات مهندس الحلول السحابية وفق معايير Azure** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=cloud-solution-architect) | ✅ مراجعة يدوية |
-| **#98** | `3.2k` | [**copilot-sdk**](https://github.com/microsoft/skills/tree/main/.github/skills/copilot-sdk) | البرمجة والويب | [`microsoft/skills`](https://github.com/microsoft/skills) | [**بناء التطبيقات الذكية المعتمدة على Copilot SDK** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=copilot-sdk) | ✅ مراجعة يدوية |
-| **#99** | `3.2k` | [**podcast-generation**](https://github.com/microsoft/skills/tree/main/.github/skills/podcast-generation) | البيانات والذكاء الاصطناعي | [`microsoft/skills`](https://github.com/microsoft/skills) | [**توليد الحوارات الصوتية التفاعلية بأسلوب البودكاست** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=podcast-generation) | ✅ مراجعة يدوية |
-| **#100** | `3.2k` | [**kql**](https://github.com/microsoft/skills/tree/main/.github/skills/kql) | البيانات والذكاء الاصطناعي | [`microsoft/skills`](https://github.com/microsoft/skills) | [**استعلام وتحليل البيانات المتقدم بلغة Kusto (KQL)** ↗](https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=kql) | ✅ مراجعة يدوية |
-<!-- LEADERBOARD_END -->
+- 💡 [Suggest a New Skill](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=suggest_skill.yml)
+- 🐛 [Report a Broken Link or Bug](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=bug_report.yml)
+- ✍️ [Improve English / Arabic Localization](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=improve_translation.yml)
+- 📖 Review [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`SECURITY.md`](SECURITY.md) before opening a Pull Request.
+- 🔍 Indexed as an open-source reference corpus on [XERJ Corpus Hub](https://hub.xerj.org/corpus/sayedgameasayed--top-100-agent-skills).
 
 ---
 
-## 🌐 English Summary (For Global Developers & AI Builders)
+## 📜 License
 
-**Top 100 Agent Skills** is an autonomous, open-source daily aggregator and leaderboard tracking the most popular agent skills across GitHub.
-
-### 🌟 Key Highlights
-- **100 Genuine Skills:** Every entry is backed by a verified `SKILL.md` instruction file returning HTTP 200 OK.
-- **Daily Automated Discovery:** Scans GitHub API every 24 hours for new repositories matching `topic:agent-skills` and `SKILL.md`.
-- **Public JSON Endpoints:** Consume the catalog freely via [`data/leaderboard.json`](data/leaderboard.json) and [`data/skills.json`](data/skills.json).
-- **Tool-Agnostic:** Documented setup for **Claude Code, Cursor IDE, GitHub Copilot, Google Antigravity, Roo Code, Windsurf, and Gemini CLI**.
-- **Interactive UI:** Built with [Resend's iconic Black Velvet with Violet Neon](https://sayedgameasayed.github.io/top-100-agent-skills/) aesthetic — flat `#000000` void canvas, 1px graphite hairlines, and 3D neural constellation.
-
-### 📡 Public JSON API
-You can fetch the live leaderboard in your own agent, IDE plugin, or CLI tool:
-```bash
-# Fetch live top 100 skills ranked by GitHub stars
-curl -s https://raw.githubusercontent.com/SayedGameaSayed/top-100-agent-skills/main/data/leaderboard.json
-```
-
----
-
-## 🤝 المساهمة ودعم المجتمع (Contributing & Community)
-
-نرحب بكافة المساهمات من مجتمع المطورين العربي والعالمي:
-- 💡 **[اقترح مهارة جديدة للـ Top 100](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=suggest_skill.yml)**
-- 🐛 **[أبلغ عن رابط معطل أو خطأ تقني](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=bug_report.yml)**
-- ✍️ **[حسّن ترجمة أو صياغة عربية](https://github.com/SayedGameaSayed/top-100-agent-skills/issues/new?template=improve_translation.yml)**
-- 📖 راجع **[دليل المساهمة (CONTRIBUTING.md)](CONTRIBUTING.md)** و **[سياسة الأمان (SECURITY.md)](SECURITY.md)** قبل فتح Pull Request.
-
----
-
-## 📜 الترخيص (License)
-هذا المشروع مرخص تحت رخصة **[MIT License](LICENSE)** المفتوحة والمجانية بالكامل. كافة حقوق المهارات الأصلية محفوظة لأصحاب مستودعاتها الأصلية بموجب تراخيصها المحددة.
-
+Licensed under the **[MIT License](LICENSE)**. Third-party skill attributions and upstream license notices are documented in [`NOTICE.md`](NOTICE.md).

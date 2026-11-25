@@ -1,7 +1,7 @@
 {
   "name": "top-100-agent-skills",
   "version": "1.2.0",
-  "description": "دليل أفضل 100 مهارة ذكاء اصطناعي مفتوحة المصدر - Top 100 Open Source Agent Skills with Daily GitHub Leaderboard and Prompts",
+  "description": "Curated directory, daily GitHub star leaderboard, and local-first MCP server for the Top 100 open-source AI Agent Skills (English & Arabic).",
   "type": "module",
   "main": "server.js",
   "bin": {
@@ -30,7 +30,7 @@
     "type": "git",
     "url": "git+https://github.com/SayedGameaSayed/top-100-agent-skills.git"
   },
-  "homepage": "https://sayedgameasayed.github.io/top-100-agent-skills/",
+  "homepage": "https://top-100-agent-skills.vercel.app/",
   "bugs": {
     "url": "https://github.com/SayedGameaSayed/top-100-agent-skills/issues"
   },

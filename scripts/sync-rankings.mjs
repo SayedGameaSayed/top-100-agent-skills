@@ -143,15 +143,15 @@ export async function syncRankings() {
     // Build categories lookup
     const catLookup = {};
     for (const c of skillsData.categories || []) {
-      catLookup[c.id] = c.name_ar;
+      catLookup[c.id] = c.name_en || c.name_ar;
     }
 
     const leaderboardLines = [
       '<!-- LEADERBOARD_START -->',
-      `> 🔄 **آخر تحديث آلي:** ${nowIso.slice(0, 10)} | يتم التحديث يومياً عبر [GitHub Actions](.github/workflows/daily-rank-sync.yml) | إجمالي المهارات: **${skillsData.skills.length}**`,
+      `> 🔄 **Last Automated Sync:** ${nowIso.slice(0, 10)} | **Updated daily via** [GitHub Actions](.github/workflows/daily-rank-sync.yml) | Total Skills: **${skillsData.skills.length}**`,
       '',
-      '| # | النجوم ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح والبرومبت الجاهز |',
-      '|:---:|:---:|---|---|---|:---:|'
+      '| Rank | Repo Stars ★ | Skill | Category | Upstream Repository | Guide & Prompt | Status |',
+      '|:---:|:---:|---|---|---|:---:|:---:|'
     ];
 
     skillsData.skills.forEach((skill, index) => {
@@ -160,10 +160,12 @@ export async function syncRankings() {
       const stars = formatNumber(skill.github_stars);
       const catName = catLookup[skill.category] || skill.category;
       const effectiveSource = skill.source?.url || skill.source?.repo_url || '#';
-      const webUrl = `https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=${encodeURIComponent(skill.id)}`;
+      const webUrl = `https://top-100-agent-skills.vercel.app/skill.html?id=${encodeURIComponent(skill.id)}`;
+      const displayTitle = skill.title_en || skill.title_ar || skill.name;
+      const verifiedBadge = skill.content_verified === true ? '✅ Verified' : 'ℹ️ Unverified';
 
       leaderboardLines.push(
-        `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catName} | [\`${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}\`](${skill.source.repo_url}) | [**${skill.title_ar}** ↗](${webUrl}) |`
+        `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catName} | [\`${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}\`](${skill.source.repo_url}) | [**${displayTitle}** ↗](${webUrl}) | ${verifiedBadge} |`
       );
     });
 
@@ -173,7 +175,7 @@ export async function syncRankings() {
     if (readme.includes('<!-- LEADERBOARD_START -->') && readme.includes('<!-- LEADERBOARD_END -->')) {
       readme = readme.replace(/<!-- LEADERBOARD_START -->[\s\S]*?<!-- LEADERBOARD_END -->/, newLeaderboardContent);
     } else {
-      readme += `\n\n## 🏆 قائمة المتصدرين لأفضل 100 مهارة ذكاء اصطناعي (Top 100 Leaderboard)\n\n${newLeaderboardContent}\n`;
+      readme += `\n\n## 🏆 Top 100 AI Agent Skills Leaderboard\n\n${newLeaderboardContent}\n`;
     }
 
     fs.writeFileSync(readmePath, readme, 'utf8');

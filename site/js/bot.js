@@ -115,7 +115,7 @@ const SPECIALISTS = {
     pillEn: 'Code',
     labelAr: 'متخصص الكود والتطوير',
     labelEn: 'Code Specialist',
-    defaultModelLabel: 'North Mini Code / Nemotron 3 Ultra'
+    defaultModelLabel: 'Llama 3.3 70B / Nemotron 3.5 Lightning'
   },
   'ai-project': {
     id: 'ai-project',
@@ -363,7 +363,7 @@ export function initAiBot(skills = [], categories = []) {
         <div class="bot-specialists-card">
           <div class="bot-specialist-item">
             <span class="bot-sp-name">💻 ${isEn ? 'Code & Debugging' : 'الكود والتطوير'}</span>
-            <span class="bot-sp-model" dir="ltr">North Mini Code • Nemotron 3 Ultra</span>
+            <span class="bot-sp-model" dir="ltr">Llama 3.3 70B • Nemotron 3.5 Lightning</span>
           </div>
           <div class="bot-specialist-item">
             <span class="bot-sp-name">🧠 ${isEn ? 'AI Projects & README' : 'مشاريع <bdi dir="ltr">AI</bdi> والمعمارية'}</span>
@@ -1130,7 +1130,7 @@ async function queryUniversalAi(userText, provider, apiKey, specialty = 'general
   if (provider === 'openrouter') {
     const specialistModel =
       specialty === 'code'
-        ? 'cohere/north-mini-code:free'
+        ? 'nvidia/nemotron-3.5-lightning:free'
         : specialty === 'ai-project'
           ? 'nvidia/nemotron-3-ultra-550b-a55b:free'
           : 'google/gemma-4-31b-it:free';

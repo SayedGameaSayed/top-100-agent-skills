@@ -25,16 +25,16 @@ const candidatesPath = path.join(ROOT_DIR, 'data/candidates.json');
 const readmePath = path.join(ROOT_DIR, 'README.md');
 
 const CATEGORY_MAP = {
-  'documents': { name_ar: 'المستندات والملفات', keywords: ['pdf', 'doc', 'docx', 'xlsx', 'excel', 'pptx', 'powerpoint', 'word', 'file', 'csv'] },
-  'design': { name_ar: 'التصميم والإبداع', keywords: ['design', 'ui', 'ux', 'css', 'style', 'figma', 'canvas', 'tailwind', 'theme', 'art'] },
-  'development': { name_ar: 'البرمجة والويب', keywords: ['react', 'vue', 'next', 'fastapi', 'prisma', 'rust', 'go', 'golang', 'backend', 'frontend', 'web', 'api', 'framework', 'git', 'commit', 'branch', 'worktree'] },
-  'code-quality': { name_ar: 'جودة الكود والاختبار', keywords: ['test', 'tdd', 'testing', 'debug', 'review', 'clean', 'refactor', 'quality', 'audit'] },
-  'cloud-security': { name_ar: 'السحابة والأمان', keywords: ['docker', 'kubernetes', 'k8s', 'aws', 'terraform', 'cloud', 'devops', 'cicd', 'container', 'deploy', 'security', 'auth', 'secret', 'vulnerability', 'owasp'] },
-  'data-ai': { name_ar: 'البيانات والذكاء الاصطناعي', keywords: ['ai', 'llm', 'rag', 'langchain', 'pytorch', 'model', 'data', 'sql', 'database', 'graph', 'embed'] },
-  'science-education': { name_ar: 'العلوم والتعليم', keywords: ['learn', 'academic', 'research', 'paper', 'guide', 'tutorial', 'study', 'education'] },
-  'business-finance': { name_ar: 'الأعمال والمال', keywords: ['business', 'finance', 'invest', 'sales', 'marketing', 'marketingskills', 'launch', 'pricing'] },
-  'communication': { name_ar: 'الكتابة والتواصل', keywords: ['write', 'writing', 'comms', 'i18n', 'slack', 'translate', 'docs', 'readme', 'humanizer'] },
-  'meta': { name_ar: 'بناء المهارات واكتشافها', keywords: ['skill-creator', 'skills', 'awesome', 'catalog', 'directory', 'marketplace', 'agentic-os', 'superpowers'] }
+  'documents': { name_en: 'Documents & Files', name_ar: 'المستندات والملفات', keywords: ['pdf', 'doc', 'docx', 'xlsx', 'excel', 'pptx', 'powerpoint', 'word', 'file', 'csv'] },
+  'design': { name_en: 'Design & Creative', name_ar: 'التصميم والإبداع', keywords: ['design', 'ui', 'ux', 'css', 'style', 'figma', 'canvas', 'tailwind', 'theme', 'art'] },
+  'development': { name_en: 'Development & Web', name_ar: 'البرمجة والويب', keywords: ['react', 'vue', 'next', 'fastapi', 'prisma', 'rust', 'go', 'golang', 'backend', 'frontend', 'web', 'api', 'framework', 'git', 'commit', 'branch', 'worktree'] },
+  'code-quality': { name_en: 'Code Quality & Testing', name_ar: 'جودة الكود والاختبار', keywords: ['test', 'tdd', 'testing', 'debug', 'review', 'clean', 'refactor', 'quality', 'audit'] },
+  'cloud-security': { name_en: 'Cloud & Security', name_ar: 'السحابة والأمان', keywords: ['docker', 'kubernetes', 'k8s', 'aws', 'terraform', 'cloud', 'devops', 'cicd', 'container', 'deploy', 'security', 'auth', 'secret', 'vulnerability', 'owasp'] },
+  'data-ai': { name_en: 'Data & AI', name_ar: 'البيانات والذكاء الاصطناعي', keywords: ['ai', 'llm', 'rag', 'langchain', 'pytorch', 'model', 'data', 'sql', 'database', 'graph', 'embed'] },
+  'science-education': { name_en: 'Science & Education', name_ar: 'العلوم والتعليم', keywords: ['learn', 'academic', 'research', 'paper', 'guide', 'tutorial', 'study', 'education'] },
+  'business-finance': { name_en: 'Business & Finance', name_ar: 'الأعمال والمال', keywords: ['business', 'finance', 'invest', 'sales', 'marketing', 'marketingskills', 'launch', 'pricing'] },
+  'communication': { name_en: 'Writing & Communication', name_ar: 'الكتابة والتواصل', keywords: ['write', 'writing', 'comms', 'i18n', 'slack', 'translate', 'docs', 'readme', 'humanizer'] },
+  'meta': { name_en: 'Skill Creation & Meta', name_ar: 'بناء المهارات واكتشافها', keywords: ['skill-creator', 'skills', 'awesome', 'catalog', 'directory', 'marketplace', 'agentic-os', 'superpowers'] }
 };
 
 function deduceCategory(name, desc = '', topics = []) {
@@ -258,18 +258,22 @@ export async function runDiscoveryAndSync() {
   const leaderboardPayload = {
     updated_at: nowIso,
     total: rankedVettedSkills.length,
-    ranking_metric: 'الأكثر شهرة (حسب نجوم المستودع)',
+    ranking_metric: 'Most Popular (by upstream repository GitHub stars)',
+    disclaimer_en: 'Note: Star counts reflect the entire upstream GitHub repository rather than an individual skill file alone.',
     disclaimer_ar: 'تنبيه: عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها.',
     leaderboard: rankedVettedSkills.map((skill, index) => {
       const rank = index + 1;
-      const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
+      const catMeta = CATEGORY_MAP[skill.category] || { name_en: skill.category, name_ar: skill.category };
       return {
         rank,
         id: skill.id,
         name: skill.name,
+        title_en: skill.title_en || skill.title_ar || skill.name,
+        summary_en: skill.summary_en || skill.summary_ar || '',
         title_ar: skill.title_ar,
         summary_ar: skill.summary_ar,
         category: skill.category,
+        category_en: catMeta.name_en || skill.category,
         category_ar: catMeta.name_ar,
         github_stars: skill.github_stars || 0,
         stars_formatted: formatNumber(skill.github_stars),
@@ -297,10 +301,10 @@ export async function runDiscoveryAndSync() {
 
     const leaderboardLines = [
       '<!-- LEADERBOARD_START -->',
-      `> 🔄 **آخر تحديث آلي:** ${nowIso.slice(0, 10)} | **التصنيف:** الأكثر شهرة (حسب نجوم المستودع) | [تحميل JSON المباشر](data/leaderboard.json)`,
-      '> ⚠️ **تنبيه:** عدد النجوم يعود لمستودع GitHub الأصلي بالكامل وليس للمهارة المنفصلة بمفردها.',
+      `> 🔄 **Last Automated Sync:** ${nowIso.slice(0, 10)} | **Metric:** Upstream Repository GitHub Stars | [Download JSON](data/leaderboard.json)`,
+      '> ⚠️ **Note:** Star counts reflect the upstream GitHub repository as a whole rather than individual skill files.',
       '',
-      '| # | نجوم المستودع ★ | المهارة (Skill) | التصنيف | المستودع الأصلي (GitHub) | الشرح والبرومبت الجاهز | حالة المراجعة |',
+      '| Rank | Repo Stars ★ | Skill | Category | Upstream Repository | Guide & Prompt | Status |',
       '|:---:|:---:|---|---|---|:---:|:---:|'
     ];
 
@@ -308,13 +312,14 @@ export async function runDiscoveryAndSync() {
       const rank = index + 1;
       const rankBadge = getRankBadge(rank);
       const stars = formatNumber(skill.github_stars);
-      const catMeta = CATEGORY_MAP[skill.category] || { name_ar: skill.category };
+      const catMeta = CATEGORY_MAP[skill.category] || { name_en: skill.category };
       const effectiveSource = skill.source?.url || skill.source?.repo_url || '#';
-      const webUrl = `https://sayedgameasayed.github.io/top-100-agent-skills/skill.html?id=${encodeURIComponent(skill.id)}`;
-      const verifiedBadge = skill.content_verified === true ? '✅ مراجعة يدوية' : 'ℹ️ مسودة عامة';
+      const webUrl = `https://top-100-agent-skills.vercel.app/skill.html?id=${encodeURIComponent(skill.id)}`;
+      const verifiedBadge = skill.content_verified === true ? '✅ Verified' : 'ℹ️ Unverified';
+      const displayTitle = skill.title_en || skill.title_ar || skill.name;
 
       leaderboardLines.push(
-        `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catMeta.name_ar} | [\`${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}\`](${skill.source.repo_url}) | [**${skill.title_ar}** ↗](${webUrl}) | ${verifiedBadge} |`
+        `| **${rankBadge}** | \`${stars}\` | [**${skill.name}**](${effectiveSource}) | ${catMeta.name_en} | [\`${skill.source.owner}/${skill.source.repo.split('/')[1] || skill.source.repo}\`](${skill.source.repo_url}) | [**${displayTitle}** ↗](${webUrl}) | ${verifiedBadge} |`
       );
     });
 
@@ -324,11 +329,11 @@ export async function runDiscoveryAndSync() {
     if (readme.includes('<!-- LEADERBOARD_START -->') && readme.includes('<!-- LEADERBOARD_END -->')) {
       readme = readme.replace(/<!-- LEADERBOARD_START -->[\s\S]*?<!-- LEADERBOARD_END -->/, newLeaderboardContent);
     } else {
-      readme += `\n\n## 🏆 قائمة المتصدرين: الأكثر شهرة حسب نجوم المستودع\n\n${newLeaderboardContent}\n`;
+      readme += `\n\n## 🏆 Top 100 AI Agent Skills Leaderboard\n\n${newLeaderboardContent}\n`;
     }
 
     fs.writeFileSync(readmePath, readme, 'utf8');
-    console.log('✓ Updated README.md with live table and repository stars disclaimer');
+    console.log('✓ Updated README.md with English leaderboard table and repository stars disclaimer');
   }
 
   console.log('\n========================================================');
