@@ -621,6 +621,1065 @@
       ]
     },
     {
+      "id": "finishing-development-branch",
+      "name": "finishing-a-development-branch",
+      "title_ar": "إنهاء فرع التطوير والدمج الآمن",
+      "summary_ar": "منهجية منضبطة لإنهاء مهام التطوير: التحقق من نجاح الاختبارات جميعها، وفحص بيئة العمل، واختيار أفضل طريقة للدمج (Merge/PR) بأمان.",
+      "category": "code-quality",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 310339,
+      "benefits_ar": [
+        "ضمان عدم دمج أي فرع قبل التحقق الفعلي من نجاح الاختبارات.",
+        "تنظيف فروع العمل المؤقتة والحفاظ على سجل Git مرتب وواضح."
+      ],
+      "use_cases_ar": [
+        "عند اكتمال تنفيذ ميزة برمجية واجتياز الفحوصات والتحضير لإنشاء PR أو الدمج مع main."
+      ],
+      "example_prompts_ar": [
+        "انتهيت من تنفيذ الميزة ونجحت الاختبارات كلها؛ فعّل مهارة finishing-a-development-branch لنتمّ الدمج بأمان."
+      ],
+      "source": {
+        "owner": "obra",
+        "repo": "obra/superpowers",
+        "repo_url": "https://github.com/obra/superpowers",
+        "path_in_repo": "skills/finishing-a-development-branch",
+        "url_verified": true,
+        "url": "https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Finishing Development Branches",
+      "summary_en": "Clean branch wrap-up protocol: rebase cleanup, squashing commits, lint checks, and clean PR descriptions.",
+      "benefits_en": [
+        "Maintains an immaculate, bisectable Git commit history across your team.",
+        "Verifies that no lingering debug statements or temporary files reach main."
+      ],
+      "use_cases_en": [
+        "Preparing feature branches for clean merge into staging or production."
+      ],
+      "example_prompts_en": [
+        "All tests are passing; execute the finishing-a-development-branch protocol to merge cleanly to main."
+      ]
+    },
+    {
+      "id": "using-superpowers",
+      "name": "using-superpowers",
+      "title_ar": "الاستدعاء التلقائي لمهارات الوكلاء",
+      "summary_ar": "إطار العمل التأسيسي للبدء في أي جلسة برمجية: يلزم الوكيل بالبحث في دليل المهارات واستدعاء المهارة المناسبة قبل كتابة الكود.",
+      "category": "meta",
+      "difficulty": "beginner",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 310339,
+      "benefits_ar": [
+        "منع الوكيل من الارتجال العشوائي وإلزامه ببروتوكولات التطوير المحددة.",
+        "اكتشاف وتفعيل المهارات المتخصصة بناءً على سياق المحادثة والطلب."
+      ],
+      "use_cases_ar": [
+        "في بداية كل جلسة برمجية لتوجيه الوكيل نحو اتباع المهارات المتاحة في المشروع."
+      ],
+      "example_prompts_ar": [
+        "قبل بدء العمل، فعّل مهارة using-superpowers واستكشف المهارات المناسبة لاحتياجي."
+      ],
+      "source": {
+        "owner": "obra",
+        "repo": "obra/superpowers",
+        "repo_url": "https://github.com/obra/superpowers",
+        "path_in_repo": "skills/using-superpowers",
+        "url_verified": true,
+        "url": "https://github.com/obra/superpowers/tree/main/skills/using-superpowers"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Superpowers Agent Framework",
+      "summary_en": "Harness the full superpowers skill library to augment coding agents with systematic workflows.",
+      "benefits_en": [
+        "Equips agents with battle-tested engineering methodologies out of the box.",
+        "Ensures autonomous agents write cleaner code, better tests, and safer commits."
+      ],
+      "use_cases_en": [
+        "Onboarding AI agents into complex legacy codebases."
+      ],
+      "example_prompts_en": [
+        "Before starting work, trigger using-superpowers to survey and load relevant skills for my request."
+      ]
+    },
+    {
+      "id": "diagnosing-superpowers",
+      "name": "diagnosing-superpowers",
+      "title_ar": "تشخيص ومعالجة انحراف الجلسات",
+      "summary_ar": "تحليل أسباب فشل الجلسات البرمجية أو تكرار العمل أو تجاهل المهارات، مع تقديم تشخيص منهجي وحلول لإعادة ضبط المسار.",
+      "category": "code-quality",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 310339,
+      "benefits_ar": [
+        "اكتشاف الأخطاء الناتجة عن تجاهل المهارات أو تلوث سياق الوكيل (Context).",
+        "إعادة ضبط الجلسة وإصلاح الخطوات المكسورة دون الحاجة للبدء من الصفر."
+      ],
+      "use_cases_ar": [
+        "عندما يكرر الوكيل نفس الخطوات أو يتجاهل التعليمات أو يدخل في حلقة مفرغة من الأخطاء."
+      ],
+      "example_prompts_ar": [
+        "كرّر AI Agent الخطأ نفسه مرتين ولم يتّبع الخطة؛ فعّل مهارة diagnosing-superpowers واكشف السبب."
+      ],
+      "source": {
+        "owner": "obra",
+        "repo": "obra/superpowers",
+        "repo_url": "https://github.com/obra/superpowers",
+        "path_in_repo": "skills/diagnosing-superpowers",
+        "url_verified": true,
+        "url": "https://github.com/obra/superpowers/tree/main/skills/diagnosing-superpowers"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Superpowers Skill Diagnostics",
+      "summary_en": "Diagnose, inspect, and benchmark installed superpowers agent skills for syntax, triggers, and execution.",
+      "benefits_en": [
+        "Detects misconfigured skill paths, broken triggers, or conflicting instructions.",
+        "Validates that all agent skills load cleanly into active AI sessions."
+      ],
+      "use_cases_en": [
+        "Troubleshooting AI agent setups and skill execution environments."
+      ],
+      "example_prompts_en": [
+        "The agent repeated an error twice; trigger diagnosing-superpowers to diagnose context drift."
+      ]
+    },
+    {
+      "id": "writing-skills",
+      "name": "writing-skills",
+      "title_ar": "تأليف واختبار مهارات الوكلاء الجديدة",
+      "summary_ar": "دليل معياري لكتابة ملفات SKILL.md وتطوير مهارات جديدة واختبارها عبر وكلاء فرعيين قبل اعتمادها في بيئة الإنتاج.",
+      "category": "meta",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 310339,
+      "benefits_ar": [
+        "بناء مهارات جديدة تلتزم بمواصفات Agent Skills العالمية وصياغة YAML frontmatter الصحيحة.",
+        "اختبار المهارات بأسلوب TDD والتأكد من وضوح الشروط وقابلية تنفيذها آليًا."
+      ],
+      "use_cases_ar": [
+        "عند رغبة الفريق في تحويل بروتوكول داخلي أو أداة خاصة إلى مهارة قابلة للاستدعاء عبر الذكاء الاصطناعي."
+      ],
+      "example_prompts_ar": [
+        "أريد إنشاء مهارة جديدة لتوثيق واجهات API في شركتنا؛ فعّل مهارة writing-skills وتابع معي خطوة بخطوة."
+      ],
+      "source": {
+        "owner": "obra",
+        "repo": "obra/superpowers",
+        "repo_url": "https://github.com/obra/superpowers",
+        "path_in_repo": "skills/writing-skills",
+        "url_verified": true,
+        "url": "https://github.com/obra/superpowers/tree/main/skills/writing-skills"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Agent Skill Authoring & Formatting",
+      "summary_en": "Standardized authoring rules for writing declarative, self-documenting agent skills with crisp YAML frontmatter.",
+      "benefits_en": [
+        "Ensures custom skills trigger only when intended, avoiding agent confusion.",
+        "Documents prerequisites, parameters, and example invocations clearly."
+      ],
+      "use_cases_en": [
+        "Authoring custom enterprise skills for AI agent platforms."
+      ],
+      "example_prompts_en": [
+        "Walk me step-by-step through authoring a standardized API documentation skill for our engineering team."
+      ]
+    },
+    {
+      "id": "mp-diagnosing-bugs",
+      "name": "diagnosing-bugs",
+      "title_ar": "حلقة التشخيص المنهجي للأخطاء البرمجية الصعبة",
+      "summary_ar": "منهجية دقيقة لعزل وتشخيص الأعطال المستعصية وانحدارات الأداء: جمع الأدلة، وصياغة الفرضيات، والتحقق العملي قبل الشروع في التعديل.",
+      "category": "code-quality",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "منع التخمين العشوائي في إصلاح الأعطال وحصر السبب الجذري.",
+        "توليد خطوات إعادة إنتاج موثقة وقابلة للاختبار الآلي.",
+        "حماية الكود من الحلول المؤقتة التي تكسر مسارات أخرى."
+      ],
+      "use_cases_ar": [
+        "تشخيص أخطاء انهيار التطبيق الغامضة في بيئة الإنتاج.",
+        "حل مشكلات تدهور الأداء وتسريب الذاكرة.",
+        "تتبع الأخطاء المتزامنة (Race Conditions) وتضارب البيانات."
+      ],
+      "example_prompts_ar": [
+        "شخّص هذا الخطأ الصعب وحدد السبب الجذري بدقة قبل اقتراح أي كود."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/diagnosing-bugs",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Diagnosing Engineering Bugs",
+      "summary_en": "Trace subtle stack traces, isolate regression commits, and construct minimal reproductions for bugs.",
+      "benefits_en": [
+        "Builds clean isolated reproduction sandboxes to prove bugs before fixing.",
+        "Saves hours of developer frustration with structured error isolation."
+      ],
+      "use_cases_en": [
+        "Isolating complex frontend and backend library bugs."
+      ],
+      "example_prompts_en": [
+        "Perform root-cause diagnosis on this flaky concurrency bug before recommending any code edits."
+      ]
+    },
+    {
+      "id": "grill-with-docs",
+      "name": "grill-with-docs",
+      "title_ar": "المقابلة الاستقصائية وتوليد توثيق القرارات المعمارية",
+      "summary_ar": "جلسة حوار استقصائية متعمقة لاختبار متانة التصميم المعماري، وتدوّن آليًا سجل القرارات المعمارية (ADR) وقاموس مصطلحات المشروع.",
+      "category": "development",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "اكتشاف الثغرات المنطقية والافتراضات غير المختبرة في الخطة مبكرًا.",
+        "توثيق القرارات التقنية وسياقها في ملفات ADR بصيغة Markdown قياسية.",
+        "بناء مرجع موحد لمصطلحات المشروع يمنع التضارب بين المطورين."
+      ],
+      "use_cases_ar": [
+        "صقل الخطط المعمارية المعقدة قبل بدء كتابة الكود.",
+        "توثيق أسباب اختيار تقنية معينة أو مكتبة محددة للمستقبل.",
+        "إجراء مقابلات محاكاة لاختبار متانة هندسة البرمجيات."
+      ],
+      "example_prompts_ar": [
+        "استجوبني بدقة حول معماريّة هذا النظام ووثق قراراتنا في ملف ADR مع مسرد المصطلحات."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/grill-with-docs",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Documentation Stress-Testing",
+      "summary_en": "Challenge proposed architectures and pull requests against official upstream library documentation.",
+      "benefits_en": [
+        "Prevents implementing features using deprecated or sub-optimal patterns.",
+        "Validates edge-case behavior directly from vendor technical specs."
+      ],
+      "use_cases_en": [
+        "Auditing technical architecture proposals against official docs."
+      ],
+      "example_prompts_en": [
+        "Interview me critically on our proposed architecture and capture our consensus in an ADR with a glossary."
+      ]
+    },
+    {
+      "id": "triage",
+      "name": "triage",
+      "title_ar": "فرز وتصنيف المشاكل وطلبات السحب برمجيًا",
+      "summary_ar": "نظام فرز وتصنيف ذكي للمشاكل (Issues) وطلبات الدمج (PRs)؛ يفحص البلاغات، ويتحقق من جديتها، ويصيغ ملخصًا جاهزًا للوكلاء للتنفيذ.",
+      "category": "code-quality",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "تنظيم سيل البلاغات في مستودعات البرمجيات مفتوحة المصدر والشركات.",
+        "تحويل البلاغات المبعثرة إلى تذاكر عمل واضحة المعالم وقابلة للتنفيذ.",
+        "التأكد من اكتمال معلومات إعادة الإنتاج قبل إحالة التذكرة للمطورين."
+      ],
+      "use_cases_ar": [
+        "إدارة وفرز تذاكر الدعم الفني والمستودعات النشطة.",
+        "تجهيز مهام برمجية واضحة لوكلاء الذكاء الاصطناعي لحلها مباشرة.",
+        "تحديد المشاكل المكررة وتوجيه المستخدمين للحلول المتوفرة."
+      ],
+      "example_prompts_ar": [
+        "افرز هذه المشكلة الواردة وصنفها، وتحقق من اكتمال معلوماتها وجهز ملخصًا قابلًا للحل."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/triage",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/triage"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Issue Triage & Prioritization",
+      "summary_en": "Rapidly triage bug reports and feature requests: verify reproducibility, assign severities, and tag.",
+      "benefits_en": [
+        "Keeps open-source and product issue backlogs organized and prioritized.",
+        "Automates severity labeling (P0, P1, P2) based on business impact."
+      ],
+      "use_cases_en": [
+        "Managing high-volume GitHub issue repositories and bug trackers."
+      ],
+      "example_prompts_en": [
+        "Triage this incoming bug report, categorize its severity, verify reproduction steps, and produce a summary."
+      ]
+    },
+    {
+      "id": "improve-codebase-architecture",
+      "name": "improve-codebase-architecture",
+      "title_ar": "مسح وتعميق البنية المعمارية للكود البرمجي",
+      "summary_ar": "فحص شامل للمستودع لاكتشاف فرص تعميق الوحدات البرمجية (Deep Modules)، وتوليد تقرير بصري تفاعلي بفرص التحسين المعماري.",
+      "category": "development",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "تطبيق مبادئ كتاب A Philosophy of Software Design.",
+        "تحويل الوحدات السطحية المتشابكة إلى وحدات عميقة ذات واجهات واضحة ومباشرة.",
+        "توليد تقرير HTML تفاعلي يوضح مواطن التعقيد المعماري."
+      ],
+      "use_cases_ar": [
+        "إعادة هيكلة الأنظمة الضخمة المليئة بالديون التقنية (Technical Debt).",
+        "تبسيط الواجهات البرمجية الداخلية بين حزم المشروع.",
+        "تحسين متانة الكود وقابليته للاختبار والفهم."
+      ],
+      "example_prompts_ar": [
+        "امسح هذا المستودع وحدد الوحدات التي تعاني من التعقيد السطحي واقترح تصميمًا أعمق لها."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/improve-codebase-architecture",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Codebase Architecture Refactoring",
+      "summary_en": "Modernize repository structure, decouple circular dependencies, and enforce domain boundary hygiene.",
+      "benefits_en": [
+        "Eliminates circular dependency graph cycles that cause bundle bloat.",
+        "Restructures chaotic codebases into modular, domain-driven architectures."
+      ],
+      "use_cases_en": [
+        "Refactoring large legacy codebases and monorepo packages."
+      ],
+      "example_prompts_en": [
+        "Scan this repository to identify superficial classes and propose deep module boundaries."
+      ]
+    },
+    {
+      "id": "mp-tdd",
+      "name": "tdd",
+      "title_ar": "التطوير الموجه بالاختبارات الصارم من مات بوكوك",
+      "summary_ar": "تطبيق منهجية Test-Driven Development الصارمة؛ دورة الأحمر والأخضر وإعادة الهيكلة (Red-Green-Refactor) لبناء مزايا برمجية خالية من العيوب.",
+      "category": "code-quality",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "كتابة اختبار فاشل يثبت الحاجة للميزة قبل كتابة أي سطر كود تنفيذي.",
+        "تغطية الحالات الحدية (Edge Cases) وضمان منع الانحدارات مستقبلًا.",
+        "كتابة كود نظيف ومباشر يفي بمتطلبات الاختبار دون تعقيد مبكر."
+      ],
+      "use_cases_ar": [
+        "بناء خوارزميات ومنطق أعمال حساس يتطلب دقة مطلقة.",
+        "إصلاح العلل عبر كتابة اختبار يفشل أولًا ثم تصحيحه.",
+        "إعادة هيكلة الأكواد القديمة بثقة تامة."
+      ],
+      "example_prompts_ar": [
+        "ابنِ هذه الميزة البرمجية باتباع منهجية TDD الصارمة خطوة بخطوة مع البدء باختبار فاشل."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/tdd",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Matt Pocock TDD Methodology",
+      "summary_en": "TypeScript-first Test Driven Development: write type contracts and unit tests to guide API design.",
+      "benefits_en": [
+        "Harnesses TypeScript compiler types alongside runtime tests for maximum safety.",
+        "Creates elegant, developer-friendly library APIs from day one."
+      ],
+      "use_cases_en": [
+        "Building open-source TypeScript libraries and core business modules."
+      ],
+      "example_prompts_en": [
+        "Implement this validation module following strict Test-Driven Development, beginning with a failing unit test."
+      ]
+    },
+    {
+      "id": "to-tickets",
+      "name": "to-tickets",
+      "title_ar": "تقسيم الخطط الكبيرة إلى تذاكر برمجية مترابطة",
+      "summary_ar": "تفكيك المواصفات والخطط المعمارية إلى تذاكر عمل محددة (Tracer-Bullet Tickets) توضح التبعيات والمسارات الحرجة ونشرها في نظام التتبع.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "تجنب المهام العملاقة المبهمة وتقسيم العمل لوحدات تنفيذية صغيرة ومستقلة.",
+        "رسم العلاقات والحواجز (Blocking Edges) بوضوح لمعرفة الترتيب الصحيح.",
+        "تسهيل العمل الموازي بين المطورين والوكلاء البرمجيين."
+      ],
+      "use_cases_ar": [
+        "تحويل وثيقة متطلبات برمجية إلى تذاكر في GitHub أو Linear.",
+        "تخطيط إطلاق ميزة جديدة على مراحل قابلة للقياس.",
+        "تنظيم أولويات التطوير بأسلوب Tracer-bullet Development."
+      ],
+      "example_prompts_ar": [
+        "قسّم هذه الخطة المعمارية إلى مجموعة تذاكر تنفيذية متسلسلة مع تحديد التبعيات بينها."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/to-tickets",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Spec-to-Tickets Breakdown",
+      "summary_en": "Transform broad engineering specifications into concise, ready-to-execute Jira/Linear tickets.",
+      "benefits_en": [
+        "Generates self-contained tickets with clear acceptance criteria and test steps.",
+        "Enables parallel sprint execution across engineering teams."
+      ],
+      "use_cases_en": [
+        "Breaking technical specs into actionable sprint backlogs."
+      ],
+      "example_prompts_en": [
+        "Break down this architectural proposal into granular, linked execution tickets with clear dependency graphs."
+      ]
+    },
+    {
+      "id": "to-spec",
+      "name": "to-spec",
+      "title_ar": "صياغة وثائق المواصفات الفنية من سياق النقاش",
+      "summary_ar": "تحويل نقاش الأفكار والمحادثات المطولة إلى وثيقة مواصفات فنية (Technical Spec) متكاملة ونشرها مباشرة في متتبع قضايا المشروع.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "استخلاص النقاط المتفق عليها وتلخيصها في مواصفة واضحة ومباشرة.",
+        "توفير ساعات من الكتابة اليدوية لوثائق المتطلبات التقنية.",
+        "ربط التوثيق بمتتبع قضايا المشروع تلقائيًا لتسهيل المتابعة."
+      ],
+      "use_cases_ar": [
+        "بلورة جلسات العصف الذهني في وثيقة متطلبات رسمية.",
+        "توثيق الاتفاقيات التقنية قبل الشروع في كتابة الكود.",
+        "تحديث وتطوير مواصفات المنتجات الرقمية."
+      ],
+      "example_prompts_ar": [
+        "حوّل كل ما ناقشناه حتى الآن إلى وثيقة مواصفات فنية دقيقة وانشرها في المتتبع."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/to-spec",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "PRD to Technical Specification",
+      "summary_en": "Convert high-level Product Requirement Documents (PRD) into rigorous engineering architecture specs.",
+      "benefits_en": [
+        "Bridges the gap between product managers and senior software architects.",
+        "Specifies exact data models, API endpoints, and failure fallback modes."
+      ],
+      "use_cases_en": [
+        "Translating product briefs into actionable engineering blueprints."
+      ],
+      "example_prompts_en": [
+        "Synthesize our architectural discussion into an authoritative technical specification ready for tracking."
+      ]
+    },
+    {
+      "id": "grill-me",
+      "name": "grill-me",
+      "title_ar": "المراجعة الاستقصائية الصارمة لاختبار الأفكار والخطط",
+      "summary_ar": "جلسة حوارية صارمة وغير مجاملة تطرح أسئلة جوهرية صعبة لصقل الخطط والأفكار البرمجية وكشف نقاط الضعف قبل الوقوع فيها.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "إخضاع الفكرة لاختبار منطقي صارم يظهر مكامن الخلل.",
+        "إلزام المطور بالتفكير في حالات الفشل والافتراضات غير الواقعية.",
+        "صقل الحلول البرمجية لتقليل التعديلات باهظة الثمن لاحقًا."
+      ],
+      "use_cases_ar": [
+        "استعراض خطة مشروع جديد قبل عرضها على الفريق أو الإدارة.",
+        "اختبار قرارات التصميم وهيكلة قواعد البيانات.",
+        "التدرب على الإجابة عن التساؤلات المعمارية الصعبة."
+      ],
+      "example_prompts_ar": [
+        "استجوبني بلا رحمة حول هذه الخطة واطرح عليّ أصعب الأسئلة حتى تصبح الفكرة ناضجة تمامًا."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/productivity/grill-me",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Interactive Architecture Griller",
+      "summary_en": "Interrogate the developer with tough architectural questions to uncover blind spots before coding.",
+      "benefits_en": [
+        "Acts as a rigorous principal engineer challenging your design choices.",
+        "Identifies security flaws, scaling bottlenecks, and edge case gaps upfront."
+      ],
+      "use_cases_en": [
+        "Preparing for technical design reviews and validating complex plans."
+      ],
+      "example_prompts_en": [
+        "Grill me aggressively with hard questions regarding this design proposal until every edge case is addressed."
+      ]
+    },
+    {
+      "id": "setup-pre-commit",
+      "name": "setup-pre-commit",
+      "title_ar": "تهيئة خطافات Husky وفحص الأكواد قبل الاعتماد",
+      "summary_ar": "إعداد خطافات Git (Pre-commit Hooks) باستخدام Husky و lint-staged؛ التحقق التلقائي من تنسيق Prettier، وتدقيق الأنواع، وتشغيل الاختبارات.",
+      "category": "code-quality",
+      "difficulty": "beginner",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "منع وصول الكود المعطوب أو غير المنسق إلى مستودع المشروع.",
+        "تشغيل أدوات التدقيق فقط على الملفات المعدلة (Staged Files) لضمان السرعة.",
+        "توحيد بيئة العمل ومعايير الجودة بين أعضاء الفريق جميعهم تلقائيًا."
+      ],
+      "use_cases_ar": [
+        "تهيئة مشاريع TypeScript و JavaScript الجديدة بإعدادات فحص احترافية.",
+        "أتمتة تنسيق الكود والتحقق من الأنواع قبل كل commit.",
+        "تقليل مرات فشل اختبارات CI في السحابة."
+      ],
+      "example_prompts_ar": [
+        "جهّز Husky و lint-staged في هذا المشروع لفحص الأنواع والتنسيق تلقائيًا قبل كل commit."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/misc/setup-pre-commit",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/misc/setup-pre-commit"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Pre-Commit Hooks & Lint Guardrails",
+      "summary_en": "Configure Lefthook, Husky, ESLint, Prettier, and git hook scripts to enforce code hygiene on commit.",
+      "benefits_en": [
+        "Guarantees zero malformed or unformatted code gets committed.",
+        "Runs fast incremental linting and secret scanning in milliseconds."
+      ],
+      "use_cases_en": [
+        "Setting up team-wide git guardrails and automated formatting."
+      ],
+      "example_prompts_en": [
+        "Configure Husky and lint-staged in this repository to automate type checks and formatting on pre-commit."
+      ]
+    },
+    {
+      "id": "git-guardrails-claude-code",
+      "name": "git-guardrails-claude-code",
+      "title_ar": "حواجز حماية أوامر Git الخطرة لوكلاء الذكاء الاصطناعي",
+      "summary_ar": "حواجز أمان لـ Claude Code تمنع تنفيذ أوامر Git التدميرية (مثل push و reset --hard و clean و branch -D) لمنع فقدان البيانات.",
+      "category": "development",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": true,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "حماية الكود من قرارات الوكيل التدميرية أو التعديل القسري.",
+        "حظر رفع التغييرات إلى الفروع الرئيسية دون مراجعة بشرية.",
+        "توفير شبكة أمان تتيح إعطاء الوكلاء صلاحيات أوسع بثقة."
+      ],
+      "use_cases_ar": [
+        "تأمين بيئة عمل الوكيل عند إعطائه صلاحية تنفيذ أوامر الطرفية.",
+        "منع فقدان التغييرات غير المعتمدة بسبب أوامر الحذف أو التصفير العنيف.",
+        "تطبيق قواعد الحوكمة داخل فرق التطوير."
+      ],
+      "example_prompts_ar": [
+        "ثبّت حواجز الحماية لأوامر Git لمنع تنفيذ أي أمر تدميري مثل reset --hard أو force push."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/misc/git-guardrails-claude-code",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/misc/git-guardrails-claude-code"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Git Guardrails for Claude Code",
+      "summary_en": "Safety rules and branch protections to prevent autonomous AI agents from making destructive commits.",
+      "benefits_en": [
+        "Protects main branches from accidental force-pushes or unchecked changes.",
+        "Requires explicit user confirmation before committing sensitive configuration files."
+      ],
+      "use_cases_en": [
+        "Configuring safe autonomous agent coding sessions in local terminals."
+      ],
+      "example_prompts_en": [
+        "Install Git guardrails in our environment to block destructive commands like reset --hard and force push."
+      ]
+    },
+    {
+      "id": "writing-for-agents",
+      "name": "writing-for-agents",
+      "title_ar": "كتابة المستندات والتعليمات الموجهة لوكلاء الذكاء الاصطناعي",
+      "summary_ar": "منهجية صياغة المستندات القياسية لوكلاء الكود؛ كتابة ملفات AGENTS.md و CLAUDE.md والمهارات بوضوح يحسن دقة الوكيل ويقلل الهلوسة.",
+      "category": "communication",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "رفع دقة فهم الوكيل لسياق المشروع وتقليل التشتت.",
+        "تنظيم التعليمات بطريقة هرمية واضحة تمنع تجاوز القواعد.",
+        "بناء مهارات وملفات توجيهية فعالة قابلة لإعادة الاستخدام."
+      ],
+      "use_cases_ar": [
+        "كتابة أو تعديل ملفات CLAUDE.md أو AGENTS.md للمستودعات.",
+        "بناء مهارات جديدة موجهة للوكلاء البرمجيين.",
+        "تحسين كفاءة استهلاك نافذة السياق (Context Window)."
+      ],
+      "example_prompts_ar": [
+        "صُغ لي ملف AGENTS.md لهذا المستودع باتباع أفضل ممارسات الكتابة لـ AI Agents."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/productivity/writing-for-agents",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Writing Instructions for AI Agents",
+      "summary_en": "Author unambiguous, machine-parseable system prompts and markdown instructions for AI coding agents.",
+      "benefits_en": [
+        "Prevents AI agent loops, hallucinations, and misunderstood instructions.",
+        "Structures concise constraints and deterministic expected output formats."
+      ],
+      "use_cases_en": [
+        "Crafting AGENTS.md, instructions, and prompt templates for developer tools."
+      ],
+      "example_prompts_en": [
+        "Author a clear, concise AGENTS.md guide for this repository following agentic documentation best practices."
+      ]
+    },
+    {
+      "id": "codebase-design",
+      "name": "codebase-design",
+      "title_ar": "تصميم وبناء الوحدات البرمجية العميقة",
+      "summary_ar": "قاموس ومفاهيم مشتركة لتصميم وحدات كود عميقة ذات واجهات بسيطة؛ إخفاء التفاصيل المعقدة وراء واجهات سهلة الاستخدام والصيانة.",
+      "category": "development",
+      "difficulty": "advanced",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "تصميم واجهات برمجية نظيفة تخفي التعقيد الداخلي للوحدة.",
+        "تقليل التبعيات المتبادلة بين أجزاء النظام البرمجي.",
+        "رفع جودة الكود المعماري وسهولة قراءته وتطويره."
+      ],
+      "use_cases_ar": [
+        "تصميم مكتبات داخلية أو واجهات خدمات جديدة.",
+        "إعادة هيكلة الوحدات السطحية التي تكشف تفاصيلها الداخلية.",
+        "اتخاذ قرارات معمارية واضحة حول موضع المسؤوليات في الكود."
+      ],
+      "example_prompts_ar": [
+        "صمم واجهة برمجية عميقة لهذه الوحدة بحيث تخفي تفاصيل التنفيذ المعقدة بالكامل."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/codebase-design",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Modular Codebase Design Principles",
+      "summary_en": "Design scalable, decoupled codebases with clear dependency flow, ports & adapters, and clean interfaces.",
+      "benefits_en": [
+        "Makes codebases enjoyable and intuitive for new developers to navigate.",
+        "Enables independent unit testing by decoupling external IO from core domain logic."
+      ],
+      "use_cases_en": [
+        "Designing greenfield backend services and modernizing legacy code."
+      ],
+      "example_prompts_en": [
+        "Design a deep interface for this telemetry module that hides underlying queue and network complexities."
+      ]
+    },
+    {
+      "id": "mp-code-review",
+      "name": "code-review",
+      "title_ar": "المراجعة المعيارية الدقيقة لتغييرات الكود",
+      "summary_ar": "مراجعة التغييرات البرمجية منذ نقطة زمنية محددة وفق محورين: الالتزام بالمعايير التوثيقية للمستودع، والتحقق المنطقي من صحة الكود.",
+      "category": "code-quality",
+      "difficulty": "intermediate",
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "kind": "skill",
+      "featured": false,
+      "github_stars": 309147,
+      "benefits_ar": [
+        "فحص التغييرات البرمجية بموضوعية ودقة دون تفويت أي معيار موثق.",
+        "كشف التناقضات المنطقية وحالات الحافة التي قد تسبب أعطالًا.",
+        "تقديم ملاحظات بناءة ومباشرة تسهل دمج الكود بسرعة."
+      ],
+      "use_cases_ar": [
+        "مراجعة طلبات السحب (PRs) قبل الدمج النهائي.",
+        "فحص الكود الذي يكتبه المطورون أو AI Agents للتأكد من الالتزام بالمعايير.",
+        "تدقيق التغييرات المعمارية قبل الانتقال إلى مرحلة الاختبار."
+      ],
+      "example_prompts_ar": [
+        "راجع التغييرات التي قمت بها في هذا الفرع مقارنة بـ main وقدم تقرير مراجعة دقيق."
+      ],
+      "source": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "repo_url": "https://github.com/mattpocock/skills",
+        "path_in_repo": "skills/engineering/code-review",
+        "url_verified": true,
+        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review"
+      },
+      "tool_compatibility": {
+        "claude_code": true,
+        "antigravity": true,
+        "cursor": true,
+        "gemini_cli": true,
+        "copilot": true,
+        "codex_cli": true,
+        "windsurf": true,
+        "roo_code": true
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "TypeScript Code Review Master",
+      "summary_en": "Deep TypeScript review checking type-narrowing, inference safety, avoid `any`, and performance.",
+      "benefits_en": [
+        "Enforces strict TypeScript patterns that prevent runtime `undefined` crashes.",
+        "Optimizes generic type compilation performance in large codebases."
+      ],
+      "use_cases_en": [
+        "Reviewing complex TypeScript pull requests and library APIs."
+      ],
+      "example_prompts_en": [
+        "Review the diff between this feature branch and main, providing actionable feedback with line citations."
+      ]
+    },
+    {
       "id": "fastapi-patterns",
       "name": "fastapi-patterns",
       "kind": "skill",
@@ -1368,6 +2427,56 @@
       ],
       "example_prompts_en": [
         "Build an evaluation dataset and harness to benchmark accuracy when extracting dates from legal contracts."
+      ]
+    },
+    {
+      "id": "ponytail-audit",
+      "name": "ponytail-audit",
+      "kind": "skill",
+      "category": "code-quality",
+      "featured": true,
+      "github_stars": 198749,
+      "difficulty": "advanced",
+      "source": {
+        "owner": "DietrichGebert",
+        "repo": "DietrichGebert/ponytail",
+        "repo_url": "https://github.com/DietrichGebert/ponytail",
+        "path_in_repo": ".openclaw/skills/ponytail-audit",
+        "url": "https://github.com/DietrichGebert/ponytail/tree/main/.openclaw/skills/ponytail-audit",
+        "url_verified": true
+      },
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-26",
+      "repo_type": "skills",
+      "title_ar": "التدقيق الهندسي الشامل للأخطاء والأمان والانتفاخ البرمجي",
+      "summary_ar": "فحص كامل للمستودع بعقلية المهندس المسؤول: كشف الأخطاء المنطقية، والثغرات الأمنية، ومشاكل الضغط الفعلي، وما يجب حذفه من الكود غير الضروري.",
+      "benefits_ar": [
+        "اكتشاف الأعطال الخفية في مسارات المستخدم والأمان والكتابة المتزامنة قبل الإنتاج.",
+        "تحديد الأكواد الميتة والتعقيد الزائد لتقليص حجم الصيانة والاختبارات."
+      ],
+      "use_cases_ar": [
+        "مراجعة مستودع كامل قبل الإطلاق أو عند استلام مشروع برمجي قائم."
+      ],
+      "example_prompts_ar": [
+        "طبّق تدقيق ponytail-audit على مسار API المصادقة والدفع وحدّد أهم 5 مخاطر مرتبة حسب الأولوية."
+      ],
+      "title_en": "Full-Repo Engineering & Security Audit",
+      "summary_en": "Senior-engineer repository audit ranking correctness, security vulnerabilities, real load bottlenecks, missing tests, and dead code to delete.",
+      "benefits_en": [
+        "Traces end-to-end user input, auth, payments, and shared state before production incidents hit.",
+        "Identifies redundant abstraction and dead code to keep the codebase lean and testable."
+      ],
+      "use_cases_en": [
+        "Pre-launch codebase auditing or onboarding onto an inherited repository."
+      ],
+      "example_prompts_en": [
+        "Run a full ponytail-audit on our backend API routes and rank critical security and load issues first."
       ]
     },
     {
@@ -2275,169 +3384,69 @@
       ]
     },
     {
-      "id": "deep-research",
-      "name": "deep-research",
+      "id": "caveman",
+      "name": "caveman",
       "kind": "skill",
-      "category": "science-education",
+      "category": "communication",
       "featured": true,
-      "github_stars": 54828,
-      "difficulty": "advanced",
+      "github_stars": 122873,
+      "difficulty": "beginner",
       "source": {
-        "owner": "Imbad0202",
-        "repo": "Imbad0202/academic-research-skills",
-        "repo_url": "https://github.com/Imbad0202/academic-research-skills",
-        "path_in_repo": "deep-research",
-        "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/deep-research",
+        "owner": "JuliusBrussee",
+        "repo": "JuliusBrussee/caveman",
+        "repo_url": "https://github.com/JuliusBrussee/caveman",
+        "path_in_repo": "plugins/caveman/skills/caveman",
+        "url": "https://github.com/JuliusBrussee/caveman/tree/main/plugins/caveman/skills/caveman",
         "url_verified": true
       },
       "license": {
-        "type": "MIT",
+        "type": "Apache-2.0",
         "status": "open",
         "copy_file_allowed": false
       },
       "content_verified": true,
-      "title_ar": "فريق البحث الأكاديمي والتحليل المنهجي المعمق",
-      "summary_ar": "خط معالجة بحثي شامل يعتمد على 13 وكيلًا تخصصيًا لإجراء مراجعات الأدبيات، والتحقق من الحقائق، وكشف التحيز الإحصائي وفق معيار APA 7.0.",
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-26",
+      "repo_type": "skills",
+      "title_ar": "الوضع المختصر الموفّر للتوكنز (Caveman Mode)",
+      "summary_ar": "يفرض ردودًا برمجية فائقة الإيجاز تحفظ كل الحقائق التقنية والأوامر دون حشو لغوي لتقليص استهلاك التوكنز والتكلفة حتى 65%.",
       "benefits_ar": [
-        "إنتاج أبحاث ودراسات منهجية شاملة بدقة أكاديمية موثقة بالمصادر.",
-        "كشف الثغرات المنهجية وتقييم جودة الأدلة العلمية في الأوراق المنشورة."
+        "خفض تكلفة API الذكاء الاصطناعي وتقليل استهلاك التوكنز في جلسات البرمجة الطويلة.",
+        "عرض الحلول والأكواد مباشرة دون مقدمات أو تكرار غير مفيد."
       ],
       "use_cases_ar": [
-        "إعداد مراجعة منهجية شاملة لموضوع علمي أو طبي معقد."
+        "جلسات Claude Code أو Cursor المكثفة لتقليل استهلاك الرصيد وتسريع القراءة."
       ],
       "example_prompts_ar": [
-        "أجرِ بحثًا أكاديميًا معمقًا حول أثر الذكاء الاصطناعي التوليدي على التعليم الطبي مع توثيق المراجع."
+        "فعّل وضع caveman طوال هذه الجلسة وأعطني الفروقات البرمجية المباشرة بأقل عدد ممكن من التوكنز."
       ],
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Deep Literature & Fact Research",
-      "summary_en": "Thorough multi-source research methodology with cross-referencing, academic citations, and bias detection.",
+      "title_en": "Token-Saving Terse Coding Mode (Caveman)",
+      "summary_en": "Cuts coding-agent output tokens by up to 65% by removing conversational fluff while keeping every technical fact, command, and diff intact.",
       "benefits_en": [
-        "Cross-verifies claims across peer-reviewed sources and empirical benchmarks.",
-        "Synthesizes complex, multifaceted domains into actionable executive summaries."
+        "Significantly lowers API token spend during long Claude Code or Cursor sessions.",
+        "Delivers answer-first technical precision tailored for fast terminal reading."
       ],
       "use_cases_en": [
-        "Conducting technical market intelligence and academic literature reviews."
+        "Long debugging or refactoring sessions where token efficiency and fast scanning matter."
       ],
       "example_prompts_en": [
-        "Conduct deep academic research on generative AI in medical education with formal scholarly citations."
+        "Activate caveman mode for this session and inspect why our build pipeline is slowing down."
       ]
     },
     {
-      "id": "sr-screener",
-      "name": "sr-screener",
-      "kind": "skill",
-      "category": "science-education",
-      "featured": false,
-      "github_stars": 54828,
-      "difficulty": "advanced",
-      "source": {
-        "owner": "Imbad0202",
-        "repo": "Imbad0202/academic-research-skills",
-        "repo_url": "https://github.com/Imbad0202/academic-research-skills",
-        "path_in_repo": "sr-screener",
-        "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/sr-screener",
-        "url_verified": true
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": true,
-      "title_ar": "فرز الأوراق العلمية للمراجعات المنهجية",
-      "summary_ar": "تطبيق معايير الشمول والاستبعاد (Inclusion/Exclusion Criteria) لفحص مئات الملخصات والأوراق البحثية بسرعة وكفاءة.",
-      "benefits_ar": [
-        "توفير أسابيع من العمل اليدوي في فرز وقراءة ملخصات الأبحاث.",
-        "تسجيل أسباب استبعاد كل دراسة لتوثيقها في مخطط PRISMA المعتمد."
-      ],
-      "use_cases_ar": [
-        "فرز نتائج بحث لقاعدة بيانات PubMed لبحث مراجعة منهجية."
-      ],
-      "example_prompts_ar": [
-        "طبق معايير الشمول التالية على ملخصات الأبحاث الخمسة المرفقة واذكر سبب قبول أو رفض كل منها."
-      ],
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Systematic Review Paper Screener",
-      "summary_en": "Accelerate medical and scientific systematic reviews by screening abstracts against inclusion/exclusion criteria.",
-      "benefits_en": [
-        "Filters hundreds of scientific papers rapidly with PRISMA guideline compliance.",
-        "Tracks rationale for every paper inclusion or exclusion with high repeatability."
-      ],
-      "use_cases_en": [
-        "Systematic literature reviews, meta-analyses, and clinical research screening."
-      ],
-      "example_prompts_en": [
-        "Screen these five research abstracts against our systematic review inclusion criteria and record decisions."
-      ]
-    },
-    {
-      "id": "academic-paper-writer",
-      "name": "academic-paper-writer",
-      "kind": "skill",
-      "category": "science-education",
-      "featured": false,
-      "github_stars": 54828,
-      "difficulty": "intermediate",
-      "source": {
-        "owner": "Imbad0202",
-        "repo": "Imbad0202/academic-research-skills",
-        "repo_url": "https://github.com/Imbad0202/academic-research-skills",
-        "path_in_repo": "academic-paper",
-        "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/academic-paper",
-        "url_verified": true
-      },
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "content_verified": true,
-      "title_ar": "صياغة وتحرير الأوراق العلمية المحكمة",
-      "summary_ar": "المساعدة في صياغة أقسام الورقة البحثية (المقدمة، المنهجية، النتائج، المناقشة) بأسلوب علمي رصين ومحايد يطابق متطلبات النشر الدولي.",
-      "benefits_ar": [
-        "تحسين الصياغة اللغوية والتعبير عن النتائج الإحصائية بدقة دون مبالغة.",
-        "التأكد من وضوح المنطق الأكاديمي وترابط الحجج العلمية بين الأقسام."
-      ],
-      "use_cases_ar": [
-        "تحرير قسم المناقشة في ورقة بحثية ومقارنة النتائج بالدراسات السابقة."
-      ],
-      "example_prompts_ar": [
-        "راجع صياغة هذا القسم من ورقتي البحثية واجعله يتبع النمط الأكاديمي الصارم للمجلات العلمية."
-      ],
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Academic Paper & LaTeX Author",
-      "summary_en": "Author scholarly papers with IEEE/ACM LaTeX formatting, KaTeX equations, and BibTeX citations.",
-      "benefits_en": [
-        "Formats papers to publication standards with rigorous mathematical notation.",
-        "Manages bibliographies, figure callouts, and peer-review structural conventions."
-      ],
-      "use_cases_en": [
-        "Writing computer science papers, arXiv preprints, and thesis chapters."
-      ],
-      "example_prompts_en": [
-        "Refactor this manuscript section to adhere to rigorous peer-reviewed academic style and tone."
-      ]
-    },
-    {
-      "id": "responsive-design",
-      "name": "responsive-design",
+      "id": "taste-skill",
+      "name": "design-taste-frontend",
       "kind": "skill",
       "category": "design",
       "featured": true,
-      "github_stars": 42069,
+      "github_stars": 121575,
       "difficulty": "intermediate",
       "source": {
-        "owner": "wshobson",
-        "repo": "wshobson/agents",
-        "repo_url": "https://github.com/wshobson/agents",
-        "path_in_repo": "plugins/ui-design/skills/responsive-design",
-        "url": "https://github.com/wshobson/agents",
+        "owner": "Leonxlnx",
+        "repo": "Leonxlnx/taste-skill",
+        "repo_url": "https://github.com/Leonxlnx/taste-skill",
+        "path_in_repo": "skills/taste-skill",
+        "url": "https://github.com/Leonxlnx/taste-skill/tree/main/skills/taste-skill",
         "url_verified": true
       },
       "license": {
@@ -2446,272 +3455,132 @@
         "copy_file_allowed": false
       },
       "content_verified": true,
-      "title_ar": "تصميم واجهات الويب المتجاوبة الحديثة",
-      "summary_ar": "تطبيق أحدث استراتيجيات التجاوب باستخدام Container Queries، والطباعة الانسيابية (Fluid Typography)، و CSS Grid الحديثة.",
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-26",
+      "repo_type": "skills",
+      "title_ar": "الذوق التصميمي الاحترافي لواجهات الويب (Anti-Slop Frontend)",
+      "summary_ar": "يمنح وكلاء البرمجة ذوقًا تصميميًا دقيقًا لبناء صفحات هبوط ومواقع شركات خالية من قوالب الذكاء الاصطناعي المكررة مع تفاعل حقيقي وفحص متصفح.",
       "benefits_ar": [
-        "واجهات تعمل بانسيابية على كل الشاشات من الهواتف الصغيرة وحتى الشاشات العريضة.",
-        "تجاوب العناصر بناءً على حجم الحاوية المحيطة وليس فقط حجم نافذة المتصفح."
+        "التخلص من التصاميم النمطية المتشابهة وبناء واجهات بهوية بصرية متماسكة.",
+        "الجمع بين التخطيط النظيف والحركات الهادئة والتحقق العملي في المتصفح."
       ],
       "use_cases_ar": [
-        "بناء لوحة تحكم تحتوي على بطاقات وجداول تتكيف تلقائيًا مع الشاشة."
+        "تصميم صفحات SaaS وأدوات المطورين ومواقع المنتجات باستخدام HTML أو React أو Next.js."
       ],
       "example_prompts_ar": [
-        "اكتب كود CSS Grid يتكيف تلقائيًا مع حجم الشاشة بدون استخدام media queries."
+        "أعد تصميم صفحة الهبوط لمشروعنا وفق مهارة taste-skill بعيدًا عن القوالب التقليدية."
       ],
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Fluid Responsive Web Design",
-      "summary_en": "Modern mobile-first CSS architecture using container queries, CSS Grid, clamp() scaling, and subgrid.",
+      "title_en": "Anti-Slop Frontend Taste & Art Direction",
+      "summary_en": "Equips coding agents with disciplined editorial art direction, visual pacing, quiet micro-interactions, and browser finish checks to eliminate generic AI templates.",
       "benefits_en": [
-        "Guarantees pixel-perfect rendering from 320px mobile screens to 4K ultra-wide monitors.",
-        "Eliminates brittle media queries with modern CSS container queries."
+        "Replaces templated AI landing pages with cohesive typography, spacing, and visual hierarchy.",
+        "Works cleanly across static HTML/CSS, React, Next.js, Tailwind, Vue, and Svelte."
       ],
       "use_cases_en": [
-        "Building cross-device responsive websites and adaptive SaaS dashboards."
+        "Designing standout SaaS marketing sites, developer tool homepages, or studio portfolios."
       ],
       "example_prompts_en": [
-        "Write responsive CSS Grid styles that adapt fluidly across viewports without breakpoint media queries."
+        "Use taste-skill principles to redesign our developer tool landing page in React and Tailwind."
       ]
     },
     {
-      "id": "finishing-development-branch",
-      "name": "finishing-a-development-branch",
-      "title_ar": "إنهاء فرع التطوير والدمج الآمن",
-      "summary_ar": "منهجية منضبطة لإنهاء مهام التطوير: التحقق من نجاح الاختبارات جميعها، وفحص بيئة العمل، واختيار أفضل طريقة للدمج (Merge/PR) بأمان.",
-      "category": "code-quality",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
+      "id": "mem-search",
+      "name": "mem-search",
       "kind": "skill",
-      "featured": true,
-      "github_stars": 310339,
-      "benefits_ar": [
-        "ضمان عدم دمج أي فرع قبل التحقق الفعلي من نجاح الاختبارات.",
-        "تنظيف فروع العمل المؤقتة والحفاظ على سجل Git مرتب وواضح."
-      ],
-      "use_cases_ar": [
-        "عند اكتمال تنفيذ ميزة برمجية واجتياز الفحوصات والتحضير لإنشاء PR أو الدمج مع main."
-      ],
-      "example_prompts_ar": [
-        "انتهيت من تنفيذ الميزة ونجحت الاختبارات كلها؛ فعّل مهارة finishing-a-development-branch لنتمّ الدمج بأمان."
-      ],
-      "source": {
-        "owner": "obra",
-        "repo": "obra/superpowers",
-        "repo_url": "https://github.com/obra/superpowers",
-        "path_in_repo": "skills/finishing-a-development-branch",
-        "url_verified": true,
-        "url": "https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Finishing Development Branches",
-      "summary_en": "Clean branch wrap-up protocol: rebase cleanup, squashing commits, lint checks, and clean PR descriptions.",
-      "benefits_en": [
-        "Maintains an immaculate, bisectable Git commit history across your team.",
-        "Verifies that no lingering debug statements or temporary files reach main."
-      ],
-      "use_cases_en": [
-        "Preparing feature branches for clean merge into staging or production."
-      ],
-      "example_prompts_en": [
-        "All tests are passing; execute the finishing-a-development-branch protocol to merge cleanly to main."
-      ]
-    },
-    {
-      "id": "using-superpowers",
-      "name": "using-superpowers",
-      "title_ar": "الاستدعاء التلقائي لمهارات الوكلاء",
-      "summary_ar": "إطار العمل التأسيسي للبدء في أي جلسة برمجية: يلزم الوكيل بالبحث في دليل المهارات واستدعاء المهارة المناسبة قبل كتابة الكود.",
       "category": "meta",
-      "difficulty": "beginner",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
       "featured": true,
-      "github_stars": 310339,
-      "benefits_ar": [
-        "منع الوكيل من الارتجال العشوائي وإلزامه ببروتوكولات التطوير المحددة.",
-        "اكتشاف وتفعيل المهارات المتخصصة بناءً على سياق المحادثة والطلب."
-      ],
-      "use_cases_ar": [
-        "في بداية كل جلسة برمجية لتوجيه الوكيل نحو اتباع المهارات المتاحة في المشروع."
-      ],
-      "example_prompts_ar": [
-        "قبل بدء العمل، فعّل مهارة using-superpowers واستكشف المهارات المناسبة لاحتياجي."
-      ],
-      "source": {
-        "owner": "obra",
-        "repo": "obra/superpowers",
-        "repo_url": "https://github.com/obra/superpowers",
-        "path_in_repo": "skills/using-superpowers",
-        "url_verified": true,
-        "url": "https://github.com/obra/superpowers/tree/main/skills/using-superpowers"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Superpowers Agent Framework",
-      "summary_en": "Harness the full superpowers skill library to augment coding agents with systematic workflows.",
-      "benefits_en": [
-        "Equips agents with battle-tested engineering methodologies out of the box.",
-        "Ensures autonomous agents write cleaner code, better tests, and safer commits."
-      ],
-      "use_cases_en": [
-        "Onboarding AI agents into complex legacy codebases."
-      ],
-      "example_prompts_en": [
-        "Before starting work, trigger using-superpowers to survey and load relevant skills for my request."
-      ]
-    },
-    {
-      "id": "diagnosing-superpowers",
-      "name": "diagnosing-superpowers",
-      "title_ar": "تشخيص ومعالجة انحراف الجلسات",
-      "summary_ar": "تحليل أسباب فشل الجلسات البرمجية أو تكرار العمل أو تجاهل المهارات، مع تقديم تشخيص منهجي وحلول لإعادة ضبط المسار.",
-      "category": "code-quality",
+      "github_stars": 119780,
       "difficulty": "intermediate",
+      "source": {
+        "owner": "thedotmack",
+        "repo": "thedotmack/claude-mem",
+        "repo_url": "https://github.com/thedotmack/claude-mem",
+        "path_in_repo": "claude-mem-cursor/skills/mem-search",
+        "url": "https://github.com/thedotmack/claude-mem/tree/main/claude-mem-cursor/skills/mem-search",
+        "url_verified": true
+      },
       "license": {
-        "type": "MIT",
+        "type": "Apache-2.0",
         "status": "open",
         "copy_file_allowed": false
       },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 310339,
-      "benefits_ar": [
-        "اكتشاف الأخطاء الناتجة عن تجاهل المهارات أو تلوث سياق الوكيل (Context).",
-        "إعادة ضبط الجلسة وإصلاح الخطوات المكسورة دون الحاجة للبدء من الصفر."
-      ],
-      "use_cases_ar": [
-        "عندما يكرر الوكيل نفس الخطوات أو يتجاهل التعليمات أو يدخل في حلقة مفرغة من الأخطاء."
-      ],
-      "example_prompts_ar": [
-        "كرّر AI Agent الخطأ نفسه مرتين ولم يتّبع الخطة؛ فعّل مهارة diagnosing-superpowers واكشف السبب."
-      ],
-      "source": {
-        "owner": "obra",
-        "repo": "obra/superpowers",
-        "repo_url": "https://github.com/obra/superpowers",
-        "path_in_repo": "skills/diagnosing-superpowers",
-        "url_verified": true,
-        "url": "https://github.com/obra/superpowers/tree/main/skills/diagnosing-superpowers"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
       "content_verified": true,
       "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
+      "reviewed_on": "2026-11-26",
       "repo_type": "skills",
-      "title_en": "Superpowers Skill Diagnostics",
-      "summary_en": "Diagnose, inspect, and benchmark installed superpowers agent skills for syntax, triggers, and execution.",
+      "title_ar": "البحث المتدرج في الذاكرة الدائمة للوكيل عبر الجلسات",
+      "summary_ar": "منهجية منظمة لاسترجاع القرارات والحلول من جلسات العمل السابقة على مراحل دون إغراق نافذة السياق بسجلات ضخمة.",
+      "benefits_ar": [
+        "تجنّب تكرار شرح سياق المشروع القديم في كل جلسة جديدة مع الوكيل.",
+        "توفير التوكنز عبر تصفية الفهرس والجدول الزمني قبل سحب تفاصيل الأدوات."
+      ],
+      "use_cases_ar": [
+        "استعادة كيفية حل مشكلة سابقة أو معرفة سبب قرار معماري في جلسات قديمة."
+      ],
+      "example_prompts_ar": [
+        "ابحث عبر mem-search في جلساتنا السابقة عن طريقة إعداد المصادقة التي اعتمدناها الشهر الماضي."
+      ],
+      "title_en": "Persistent Cross-Session Agent Memory Search",
+      "summary_en": "Layered workflow for querying past agent sessions—filtering observation IDs and timelines before retrieving raw tool payloads to save context tokens.",
       "benefits_en": [
-        "Detects misconfigured skill paths, broken triggers, or conflicting instructions.",
-        "Validates that all agent skills load cleanly into active AI sessions."
+        "Preserves institutional memory of past fixes and architecture choices across IDE sessions.",
+        "Avoids dumping huge raw transcripts by progressively narrowing search to timeline anchors."
       ],
       "use_cases_en": [
-        "Troubleshooting AI agent setups and skill execution environments."
+        "Answering \"how did we solve this bug last week?\" across Cursor or Claude Code sessions."
       ],
       "example_prompts_en": [
-        "The agent repeated an error twice; trigger diagnosing-superpowers to diagnose context drift."
+        "Search persistent session memory with mem-search to recall how we fixed the deployment pipeline error."
       ]
     },
     {
-      "id": "writing-skills",
-      "name": "writing-skills",
-      "title_ar": "تأليف واختبار مهارات الوكلاء الجديدة",
-      "summary_ar": "دليل معياري لكتابة ملفات SKILL.md وتطوير مهارات جديدة واختبارها عبر وكلاء فرعيين قبل اعتمادها في بيئة الإنتاج.",
-      "category": "meta",
-      "difficulty": "advanced",
+      "id": "impeccable",
+      "name": "impeccable",
+      "kind": "skill",
+      "category": "design",
+      "featured": true,
+      "github_stars": 116905,
+      "difficulty": "intermediate",
+      "source": {
+        "owner": "pbakaus",
+        "repo": "pbakaus/impeccable",
+        "repo_url": "https://github.com/pbakaus/impeccable",
+        "path_in_repo": ".claude/skills/impeccable",
+        "url": "https://github.com/pbakaus/impeccable/tree/main/.claude/skills/impeccable",
+        "url_verified": true
+      },
       "license": {
-        "type": "MIT",
+        "type": "Apache-2.0",
         "status": "open",
         "copy_file_allowed": false
       },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 310339,
-      "benefits_ar": [
-        "بناء مهارات جديدة تلتزم بمواصفات Agent Skills العالمية وصياغة YAML frontmatter الصحيحة.",
-        "اختبار المهارات بأسلوب TDD والتأكد من وضوح الشروط وقابلية تنفيذها آليًا."
-      ],
-      "use_cases_ar": [
-        "عند رغبة الفريق في تحويل بروتوكول داخلي أو أداة خاصة إلى مهارة قابلة للاستدعاء عبر الذكاء الاصطناعي."
-      ],
-      "example_prompts_ar": [
-        "أريد إنشاء مهارة جديدة لتوثيق واجهات API في شركتنا؛ فعّل مهارة writing-skills وتابع معي خطوة بخطوة."
-      ],
-      "source": {
-        "owner": "obra",
-        "repo": "obra/superpowers",
-        "repo_url": "https://github.com/obra/superpowers",
-        "path_in_repo": "skills/writing-skills",
-        "url_verified": true,
-        "url": "https://github.com/obra/superpowers/tree/main/skills/writing-skills"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
       "content_verified": true,
       "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
+      "reviewed_on": "2026-11-26",
       "repo_type": "skills",
-      "title_en": "Agent Skill Authoring & Formatting",
-      "summary_en": "Standardized authoring rules for writing declarative, self-documenting agent skills with crisp YAML frontmatter.",
+      "title_ar": "مراجعة وصقل واجهات المستخدم بمعايير مديري التصميم",
+      "summary_ar": "منهجية متكاملة لتصميم وتدقيق وصقل واجهات الويب والتطبيقات وأنظمة التصميم (DESIGN.md) مع حزم أوامر للنقد والتحسين البصري.",
+      "benefits_ar": [
+        "رفع جودة الواجهات ولوحات التحكم إلى مستوى إنتاجي متقن خالٍ من العيوب البصرية.",
+        "توفير أوضاع متخصصة للنقد والتبسيط والحركة والتحقق الفعلي عبر المتصفح."
+      ],
+      "use_cases_ar": [
+        "إعادة صقل لوحة تحكم أو بناء نظام تصميم متكامل في DESIGN.md."
+      ],
+      "example_prompts_ar": [
+        "افحص واجهة الصفحة الرئيسية وفق مهارة impeccable واقترح تحسينات التباين والترتيب البصري."
+      ],
+      "title_en": "Production UI Craft, Critique & Polish",
+      "summary_en": "Design-director toolkit with specialized critique, polish, layout, color, typography, and animation modes for production web and mobile UIs.",
       "benefits_en": [
-        "Ensures custom skills trigger only when intended, avoiding agent confusion.",
-        "Documents prerequisites, parameters, and example invocations clearly."
+        "Applies cohesive visual craft across dashboards, landing pages, and DESIGN.md specifications.",
+        "Encourages visual verification on rendered outputs rather than assuming CSS works."
       ],
       "use_cases_en": [
-        "Authoring custom enterprise skills for AI agent platforms."
+        "Polishing dashboards, critiquing UI contrast/spacing, or authoring a full DESIGN.md."
       ],
       "example_prompts_en": [
-        "Walk me step-by-step through authoring a standardized API documentation skill for our engineering team."
+        "Run impeccable critique and polish on our analytics dashboard layout and typography."
       ]
     },
     {
@@ -3855,6 +4724,356 @@
       ]
     },
     {
+      "id": "understand-explain",
+      "name": "understand-explain",
+      "kind": "skill",
+      "category": "development",
+      "featured": true,
+      "github_stars": 94455,
+      "difficulty": "intermediate",
+      "source": {
+        "owner": "Egonex-AI",
+        "repo": "Egonex-AI/Understand-Anything",
+        "repo_url": "https://github.com/Egonex-AI/Understand-Anything",
+        "path_in_repo": "understand-anything-plugin/skills/understand-explain",
+        "url": "https://github.com/Egonex-AI/Understand-Anything/tree/main/understand-anything-plugin/skills/understand-explain",
+        "url_verified": true
+      },
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-26",
+      "repo_type": "skills",
+      "title_ar": "شرح الوحدات البرمجية عبر رسم بياني معرفي للكود",
+      "summary_ar": "تحليل عميق لأي ملف أو وحدة برمجية باستخدام خريطة العلاقات والاعتماديات (Knowledge Graph) لشرح كيف تتصل الأجزاء ببعضها.",
+      "benefits_ar": [
+        "فهم المشاريع الكبيرة والمعقدة بسرعة عبر تتبع الاستدعاءات والطبقات.",
+        "تسهيل تهيئة المطورين الجدد وشرح التدفقات الخلفية للنظام."
+      ],
+      "use_cases_ar": [
+        "فهم ملف مركزى معقد وتدفقاته عبر خدمات وبوابات متعددة."
+      ],
+      "example_prompts_ar": [
+        "استخدم مهارة understand-explain لشرح بنية وعلاقات الملف lib/free-advisor-router.js."
+      ],
+      "title_en": "Codebase Knowledge-Graph Deep Explainer",
+      "summary_en": "Produces structured deep-dive explanations of files, functions, and modules mapped through dependency, call-chain, and architectural knowledge graphs.",
+      "benefits_en": [
+        "Uncovers upstream callers, downstream dependencies, and cross-layer flows accurately.",
+        "Accelerates codebase onboarding without manual grep hunting."
+      ],
+      "use_cases_en": [
+        "Documenting complex modules or onboarding engineers into unfamiliar multi-service codebases."
+      ],
+      "example_prompts_en": [
+        "Apply understand-explain to trace all imports, callers, and data flows around our checkout service."
+      ]
+    },
+    {
+      "id": "last30days",
+      "name": "last30days",
+      "kind": "skill",
+      "category": "science-education",
+      "featured": true,
+      "github_stars": 75124,
+      "difficulty": "intermediate",
+      "source": {
+        "owner": "mvanhorn",
+        "repo": "mvanhorn/last30days-skill",
+        "repo_url": "https://github.com/mvanhorn/last30days-skill",
+        "path_in_repo": "skills/last30days",
+        "url": "https://github.com/mvanhorn/last30days-skill/tree/main/skills/last30days",
+        "url_verified": true
+      },
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-26",
+      "repo_type": "skills",
+      "title_ar": "البحث الفوري في ترندات آخر 30 يومًا عبر الويب والمجتمعات",
+      "summary_ar": "مهارة استقصاء حديثة تبحث في نقاشات المطورين والمستخدمين خلال آخر 30 يومًا عبر Reddit وX وHacker News والويب قبل اتخاذ قرارات تقنية أو منتجية.",
+      "benefits_ar": [
+        "تجاوز المعلومات القديمة لدى النماذج والتقاط التوجهات الفعلية في آخر شهر.",
+        "استخراج خلاصة تجارب المطورين والمشاكل المتكررة لأي أداة أو تقنية."
+      ],
+      "use_cases_ar": [
+        "استكشاف آراء المطورين حديثًا حول إطار عمل جديد أو إطلاق أداة ذكاء اصطناعي."
+      ],
+      "example_prompts_ar": [
+        "ابحث بمهارة last30days عن أحدث نقاشات المطورين خلال آخر 30 يومًا حول MCP servers."
+      ],
+      "title_en": "Last 30 Days Community & Trend Research",
+      "summary_en": "Researches real-world developer sentiment and emerging updates from the past 30 days across Reddit, X, Hacker News, and web sources.",
+      "benefits_en": [
+        "Bridges stale LLM training cutoffs with fresh real-world community signal.",
+        "Synthesizes user pain points, tool comparisons, and consensus from live discussions."
+      ],
+      "use_cases_en": [
+        "Market validation, researching latest framework regressions, or discovering trending workflows."
+      ],
+      "example_prompts_en": [
+        "Run last30days on \"MCP servers for Claude Code and Cursor\" to summarize community pain points."
+      ]
+    },
+    {
+      "id": "diagram-design",
+      "name": "diagram-design",
+      "kind": "skill",
+      "category": "design",
+      "featured": true,
+      "github_stars": 73057,
+      "difficulty": "intermediate",
+      "source": {
+        "owner": "cathrynlavery",
+        "repo": "cathrynlavery/diagram-design",
+        "repo_url": "https://github.com/cathrynlavery/diagram-design",
+        "path_in_repo": "skills/diagram-design",
+        "url": "https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design",
+        "url_verified": true
+      },
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "content_verified": true,
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-26",
+      "repo_type": "skills",
+      "title_ar": "تصميم 52 نوعًا من المخططات الهندسية والمعمارية الاحترافية",
+      "summary_ar": "إنشاء مخططات معمارية وتدفقات بيانات وجداول ER ومخططات تسلسل وحالات كملفات HTML/SVG عالية الجودة مع دعم Mermaid وExcalidraw وDraw.io.",
+      "benefits_ar": [
+        "توليد مخططات نظيفة قابلة للتضمين في التوثيق والعروض دون تشوّه الخطوط.",
+        "تغطية 52 نوع مخطط من المعمارية السحابية وقواعد البيانات حتى خرائط السرد التقني."
+      ],
+      "use_cases_ar": [
+        "رسم معمارية مشروع أو تدفق API كامل كـ SVG/HTML نظيف لملف README أو توثيق الفريق."
+      ],
+      "example_prompts_ar": [
+        "صمم مخطط تدفق بيانات بمهارة diagram-design يوضح مسار الطلب في مشروعنا من المتصفح إلى Vercel."
+      ],
+      "title_en": "Editorial Architecture & Engineering Diagrams",
+      "summary_en": "Generates 52 semantic diagram types—architecture, ER/database schemas, sequence flows, and state machines—as self-contained HTML/SVG/PNG visuals.",
+      "benefits_en": [
+        "Supports 52 technical diagram formats plus Draw.io, Mermaid, Excalidraw, and PlantUML import.",
+        "Outputs publication-ready diagrams tailored for system design docs and READMEs."
+      ],
+      "use_cases_en": [
+        "Creating crisp architecture diagrams or database schemas for technical RFCs and repositories."
+      ],
+      "example_prompts_en": [
+        "Use diagram-design to generate a clean SVG sequence diagram of our serverless AI routing flow."
+      ]
+    },
+    {
+      "id": "deep-research",
+      "name": "deep-research",
+      "kind": "skill",
+      "category": "science-education",
+      "featured": true,
+      "github_stars": 54828,
+      "difficulty": "advanced",
+      "source": {
+        "owner": "Imbad0202",
+        "repo": "Imbad0202/academic-research-skills",
+        "repo_url": "https://github.com/Imbad0202/academic-research-skills",
+        "path_in_repo": "deep-research",
+        "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/deep-research",
+        "url_verified": true
+      },
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "content_verified": true,
+      "title_ar": "فريق البحث الأكاديمي والتحليل المنهجي المعمق",
+      "summary_ar": "خط معالجة بحثي شامل يعتمد على 13 وكيلًا تخصصيًا لإجراء مراجعات الأدبيات، والتحقق من الحقائق، وكشف التحيز الإحصائي وفق معيار APA 7.0.",
+      "benefits_ar": [
+        "إنتاج أبحاث ودراسات منهجية شاملة بدقة أكاديمية موثقة بالمصادر.",
+        "كشف الثغرات المنهجية وتقييم جودة الأدلة العلمية في الأوراق المنشورة."
+      ],
+      "use_cases_ar": [
+        "إعداد مراجعة منهجية شاملة لموضوع علمي أو طبي معقد."
+      ],
+      "example_prompts_ar": [
+        "أجرِ بحثًا أكاديميًا معمقًا حول أثر الذكاء الاصطناعي التوليدي على التعليم الطبي مع توثيق المراجع."
+      ],
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Deep Literature & Fact Research",
+      "summary_en": "Thorough multi-source research methodology with cross-referencing, academic citations, and bias detection.",
+      "benefits_en": [
+        "Cross-verifies claims across peer-reviewed sources and empirical benchmarks.",
+        "Synthesizes complex, multifaceted domains into actionable executive summaries."
+      ],
+      "use_cases_en": [
+        "Conducting technical market intelligence and academic literature reviews."
+      ],
+      "example_prompts_en": [
+        "Conduct deep academic research on generative AI in medical education with formal scholarly citations."
+      ]
+    },
+    {
+      "id": "sr-screener",
+      "name": "sr-screener",
+      "kind": "skill",
+      "category": "science-education",
+      "featured": false,
+      "github_stars": 54828,
+      "difficulty": "advanced",
+      "source": {
+        "owner": "Imbad0202",
+        "repo": "Imbad0202/academic-research-skills",
+        "repo_url": "https://github.com/Imbad0202/academic-research-skills",
+        "path_in_repo": "sr-screener",
+        "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/sr-screener",
+        "url_verified": true
+      },
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "content_verified": true,
+      "title_ar": "فرز الأوراق العلمية للمراجعات المنهجية",
+      "summary_ar": "تطبيق معايير الشمول والاستبعاد (Inclusion/Exclusion Criteria) لفحص مئات الملخصات والأوراق البحثية بسرعة وكفاءة.",
+      "benefits_ar": [
+        "توفير أسابيع من العمل اليدوي في فرز وقراءة ملخصات الأبحاث.",
+        "تسجيل أسباب استبعاد كل دراسة لتوثيقها في مخطط PRISMA المعتمد."
+      ],
+      "use_cases_ar": [
+        "فرز نتائج بحث لقاعدة بيانات PubMed لبحث مراجعة منهجية."
+      ],
+      "example_prompts_ar": [
+        "طبق معايير الشمول التالية على ملخصات الأبحاث الخمسة المرفقة واذكر سبب قبول أو رفض كل منها."
+      ],
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Systematic Review Paper Screener",
+      "summary_en": "Accelerate medical and scientific systematic reviews by screening abstracts against inclusion/exclusion criteria.",
+      "benefits_en": [
+        "Filters hundreds of scientific papers rapidly with PRISMA guideline compliance.",
+        "Tracks rationale for every paper inclusion or exclusion with high repeatability."
+      ],
+      "use_cases_en": [
+        "Systematic literature reviews, meta-analyses, and clinical research screening."
+      ],
+      "example_prompts_en": [
+        "Screen these five research abstracts against our systematic review inclusion criteria and record decisions."
+      ]
+    },
+    {
+      "id": "academic-paper-writer",
+      "name": "academic-paper-writer",
+      "kind": "skill",
+      "category": "science-education",
+      "featured": false,
+      "github_stars": 54828,
+      "difficulty": "intermediate",
+      "source": {
+        "owner": "Imbad0202",
+        "repo": "Imbad0202/academic-research-skills",
+        "repo_url": "https://github.com/Imbad0202/academic-research-skills",
+        "path_in_repo": "academic-paper",
+        "url": "https://github.com/Imbad0202/academic-research-skills/tree/main/academic-paper",
+        "url_verified": true
+      },
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "content_verified": true,
+      "title_ar": "صياغة وتحرير الأوراق العلمية المحكمة",
+      "summary_ar": "المساعدة في صياغة أقسام الورقة البحثية (المقدمة، المنهجية، النتائج، المناقشة) بأسلوب علمي رصين ومحايد يطابق متطلبات النشر الدولي.",
+      "benefits_ar": [
+        "تحسين الصياغة اللغوية والتعبير عن النتائج الإحصائية بدقة دون مبالغة.",
+        "التأكد من وضوح المنطق الأكاديمي وترابط الحجج العلمية بين الأقسام."
+      ],
+      "use_cases_ar": [
+        "تحرير قسم المناقشة في ورقة بحثية ومقارنة النتائج بالدراسات السابقة."
+      ],
+      "example_prompts_ar": [
+        "راجع صياغة هذا القسم من ورقتي البحثية واجعله يتبع النمط الأكاديمي الصارم للمجلات العلمية."
+      ],
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Academic Paper & LaTeX Author",
+      "summary_en": "Author scholarly papers with IEEE/ACM LaTeX formatting, KaTeX equations, and BibTeX citations.",
+      "benefits_en": [
+        "Formats papers to publication standards with rigorous mathematical notation.",
+        "Manages bibliographies, figure callouts, and peer-review structural conventions."
+      ],
+      "use_cases_en": [
+        "Writing computer science papers, arXiv preprints, and thesis chapters."
+      ],
+      "example_prompts_en": [
+        "Refactor this manuscript section to adhere to rigorous peer-reviewed academic style and tone."
+      ]
+    },
+    {
+      "id": "responsive-design",
+      "name": "responsive-design",
+      "kind": "skill",
+      "category": "design",
+      "featured": true,
+      "github_stars": 42069,
+      "difficulty": "intermediate",
+      "source": {
+        "owner": "wshobson",
+        "repo": "wshobson/agents",
+        "repo_url": "https://github.com/wshobson/agents",
+        "path_in_repo": "plugins/ui-design/skills/responsive-design",
+        "url": "https://github.com/wshobson/agents",
+        "url_verified": true
+      },
+      "license": {
+        "type": "MIT",
+        "status": "open",
+        "copy_file_allowed": false
+      },
+      "content_verified": true,
+      "title_ar": "تصميم واجهات الويب المتجاوبة الحديثة",
+      "summary_ar": "تطبيق أحدث استراتيجيات التجاوب باستخدام Container Queries، والطباعة الانسيابية (Fluid Typography)، و CSS Grid الحديثة.",
+      "benefits_ar": [
+        "واجهات تعمل بانسيابية على كل الشاشات من الهواتف الصغيرة وحتى الشاشات العريضة.",
+        "تجاوب العناصر بناءً على حجم الحاوية المحيطة وليس فقط حجم نافذة المتصفح."
+      ],
+      "use_cases_ar": [
+        "بناء لوحة تحكم تحتوي على بطاقات وجداول تتكيف تلقائيًا مع الشاشة."
+      ],
+      "example_prompts_ar": [
+        "اكتب كود CSS Grid يتكيف تلقائيًا مع حجم الشاشة بدون استخدام media queries."
+      ],
+      "reviewed_by": "Sayed Gamea",
+      "reviewed_on": "2026-11-02",
+      "repo_type": "skills",
+      "title_en": "Fluid Responsive Web Design",
+      "summary_en": "Modern mobile-first CSS architecture using container queries, CSS Grid, clamp() scaling, and subgrid.",
+      "benefits_en": [
+        "Guarantees pixel-perfect rendering from 320px mobile screens to 4K ultra-wide monitors.",
+        "Eliminates brittle media queries with modern CSS container queries."
+      ],
+      "use_cases_en": [
+        "Building cross-device responsive websites and adaptive SaaS dashboards."
+      ],
+      "example_prompts_en": [
+        "Write responsive CSS Grid styles that adapt fluidly across viewports without breakpoint media queries."
+      ]
+    },
+    {
       "id": "composition-patterns",
       "name": "composition-patterns",
       "title_ar": "أنماط تركيب مكونات React القابلة للتوسع",
@@ -4419,1329 +5638,6 @@
       ],
       "example_prompts_en": [
         "Review this technical documentation draft and refine tone, clarity, and conciseness to match guidelines."
-      ]
-    },
-    {
-      "id": "mp-diagnosing-bugs",
-      "name": "diagnosing-bugs",
-      "title_ar": "حلقة التشخيص المنهجي للأخطاء البرمجية الصعبة",
-      "summary_ar": "منهجية دقيقة لعزل وتشخيص الأعطال المستعصية وانحدارات الأداء: جمع الأدلة، وصياغة الفرضيات، والتحقق العملي قبل الشروع في التعديل.",
-      "category": "code-quality",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "منع التخمين العشوائي في إصلاح الأعطال وحصر السبب الجذري.",
-        "توليد خطوات إعادة إنتاج موثقة وقابلة للاختبار الآلي.",
-        "حماية الكود من الحلول المؤقتة التي تكسر مسارات أخرى."
-      ],
-      "use_cases_ar": [
-        "تشخيص أخطاء انهيار التطبيق الغامضة في بيئة الإنتاج.",
-        "حل مشكلات تدهور الأداء وتسريب الذاكرة.",
-        "تتبع الأخطاء المتزامنة (Race Conditions) وتضارب البيانات."
-      ],
-      "example_prompts_ar": [
-        "شخّص هذا الخطأ الصعب وحدد السبب الجذري بدقة قبل اقتراح أي كود."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/diagnosing-bugs",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Diagnosing Engineering Bugs",
-      "summary_en": "Trace subtle stack traces, isolate regression commits, and construct minimal reproductions for bugs.",
-      "benefits_en": [
-        "Builds clean isolated reproduction sandboxes to prove bugs before fixing.",
-        "Saves hours of developer frustration with structured error isolation."
-      ],
-      "use_cases_en": [
-        "Isolating complex frontend and backend library bugs."
-      ],
-      "example_prompts_en": [
-        "Perform root-cause diagnosis on this flaky concurrency bug before recommending any code edits."
-      ]
-    },
-    {
-      "id": "grill-with-docs",
-      "name": "grill-with-docs",
-      "title_ar": "المقابلة الاستقصائية وتوليد توثيق القرارات المعمارية",
-      "summary_ar": "جلسة حوار استقصائية متعمقة لاختبار متانة التصميم المعماري، وتدوّن آليًا سجل القرارات المعمارية (ADR) وقاموس مصطلحات المشروع.",
-      "category": "development",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "اكتشاف الثغرات المنطقية والافتراضات غير المختبرة في الخطة مبكرًا.",
-        "توثيق القرارات التقنية وسياقها في ملفات ADR بصيغة Markdown قياسية.",
-        "بناء مرجع موحد لمصطلحات المشروع يمنع التضارب بين المطورين."
-      ],
-      "use_cases_ar": [
-        "صقل الخطط المعمارية المعقدة قبل بدء كتابة الكود.",
-        "توثيق أسباب اختيار تقنية معينة أو مكتبة محددة للمستقبل.",
-        "إجراء مقابلات محاكاة لاختبار متانة هندسة البرمجيات."
-      ],
-      "example_prompts_ar": [
-        "استجوبني بدقة حول معماريّة هذا النظام ووثق قراراتنا في ملف ADR مع مسرد المصطلحات."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/grill-with-docs",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Documentation Stress-Testing",
-      "summary_en": "Challenge proposed architectures and pull requests against official upstream library documentation.",
-      "benefits_en": [
-        "Prevents implementing features using deprecated or sub-optimal patterns.",
-        "Validates edge-case behavior directly from vendor technical specs."
-      ],
-      "use_cases_en": [
-        "Auditing technical architecture proposals against official docs."
-      ],
-      "example_prompts_en": [
-        "Interview me critically on our proposed architecture and capture our consensus in an ADR with a glossary."
-      ]
-    },
-    {
-      "id": "triage",
-      "name": "triage",
-      "title_ar": "فرز وتصنيف المشاكل وطلبات السحب برمجيًا",
-      "summary_ar": "نظام فرز وتصنيف ذكي للمشاكل (Issues) وطلبات الدمج (PRs)؛ يفحص البلاغات، ويتحقق من جديتها، ويصيغ ملخصًا جاهزًا للوكلاء للتنفيذ.",
-      "category": "code-quality",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "تنظيم سيل البلاغات في مستودعات البرمجيات مفتوحة المصدر والشركات.",
-        "تحويل البلاغات المبعثرة إلى تذاكر عمل واضحة المعالم وقابلة للتنفيذ.",
-        "التأكد من اكتمال معلومات إعادة الإنتاج قبل إحالة التذكرة للمطورين."
-      ],
-      "use_cases_ar": [
-        "إدارة وفرز تذاكر الدعم الفني والمستودعات النشطة.",
-        "تجهيز مهام برمجية واضحة لوكلاء الذكاء الاصطناعي لحلها مباشرة.",
-        "تحديد المشاكل المكررة وتوجيه المستخدمين للحلول المتوفرة."
-      ],
-      "example_prompts_ar": [
-        "افرز هذه المشكلة الواردة وصنفها، وتحقق من اكتمال معلوماتها وجهز ملخصًا قابلًا للحل."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/triage",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/triage"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Issue Triage & Prioritization",
-      "summary_en": "Rapidly triage bug reports and feature requests: verify reproducibility, assign severities, and tag.",
-      "benefits_en": [
-        "Keeps open-source and product issue backlogs organized and prioritized.",
-        "Automates severity labeling (P0, P1, P2) based on business impact."
-      ],
-      "use_cases_en": [
-        "Managing high-volume GitHub issue repositories and bug trackers."
-      ],
-      "example_prompts_en": [
-        "Triage this incoming bug report, categorize its severity, verify reproduction steps, and produce a summary."
-      ]
-    },
-    {
-      "id": "improve-codebase-architecture",
-      "name": "improve-codebase-architecture",
-      "title_ar": "مسح وتعميق البنية المعمارية للكود البرمجي",
-      "summary_ar": "فحص شامل للمستودع لاكتشاف فرص تعميق الوحدات البرمجية (Deep Modules)، وتوليد تقرير بصري تفاعلي بفرص التحسين المعماري.",
-      "category": "development",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "تطبيق مبادئ كتاب A Philosophy of Software Design.",
-        "تحويل الوحدات السطحية المتشابكة إلى وحدات عميقة ذات واجهات واضحة ومباشرة.",
-        "توليد تقرير HTML تفاعلي يوضح مواطن التعقيد المعماري."
-      ],
-      "use_cases_ar": [
-        "إعادة هيكلة الأنظمة الضخمة المليئة بالديون التقنية (Technical Debt).",
-        "تبسيط الواجهات البرمجية الداخلية بين حزم المشروع.",
-        "تحسين متانة الكود وقابليته للاختبار والفهم."
-      ],
-      "example_prompts_ar": [
-        "امسح هذا المستودع وحدد الوحدات التي تعاني من التعقيد السطحي واقترح تصميمًا أعمق لها."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/improve-codebase-architecture",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Codebase Architecture Refactoring",
-      "summary_en": "Modernize repository structure, decouple circular dependencies, and enforce domain boundary hygiene.",
-      "benefits_en": [
-        "Eliminates circular dependency graph cycles that cause bundle bloat.",
-        "Restructures chaotic codebases into modular, domain-driven architectures."
-      ],
-      "use_cases_en": [
-        "Refactoring large legacy codebases and monorepo packages."
-      ],
-      "example_prompts_en": [
-        "Scan this repository to identify superficial classes and propose deep module boundaries."
-      ]
-    },
-    {
-      "id": "mp-tdd",
-      "name": "tdd",
-      "title_ar": "التطوير الموجه بالاختبارات الصارم من مات بوكوك",
-      "summary_ar": "تطبيق منهجية Test-Driven Development الصارمة؛ دورة الأحمر والأخضر وإعادة الهيكلة (Red-Green-Refactor) لبناء مزايا برمجية خالية من العيوب.",
-      "category": "code-quality",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "كتابة اختبار فاشل يثبت الحاجة للميزة قبل كتابة أي سطر كود تنفيذي.",
-        "تغطية الحالات الحدية (Edge Cases) وضمان منع الانحدارات مستقبلًا.",
-        "كتابة كود نظيف ومباشر يفي بمتطلبات الاختبار دون تعقيد مبكر."
-      ],
-      "use_cases_ar": [
-        "بناء خوارزميات ومنطق أعمال حساس يتطلب دقة مطلقة.",
-        "إصلاح العلل عبر كتابة اختبار يفشل أولًا ثم تصحيحه.",
-        "إعادة هيكلة الأكواد القديمة بثقة تامة."
-      ],
-      "example_prompts_ar": [
-        "ابنِ هذه الميزة البرمجية باتباع منهجية TDD الصارمة خطوة بخطوة مع البدء باختبار فاشل."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/tdd",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Matt Pocock TDD Methodology",
-      "summary_en": "TypeScript-first Test Driven Development: write type contracts and unit tests to guide API design.",
-      "benefits_en": [
-        "Harnesses TypeScript compiler types alongside runtime tests for maximum safety.",
-        "Creates elegant, developer-friendly library APIs from day one."
-      ],
-      "use_cases_en": [
-        "Building open-source TypeScript libraries and core business modules."
-      ],
-      "example_prompts_en": [
-        "Implement this validation module following strict Test-Driven Development, beginning with a failing unit test."
-      ]
-    },
-    {
-      "id": "to-tickets",
-      "name": "to-tickets",
-      "title_ar": "تقسيم الخطط الكبيرة إلى تذاكر برمجية مترابطة",
-      "summary_ar": "تفكيك المواصفات والخطط المعمارية إلى تذاكر عمل محددة (Tracer-Bullet Tickets) توضح التبعيات والمسارات الحرجة ونشرها في نظام التتبع.",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "تجنب المهام العملاقة المبهمة وتقسيم العمل لوحدات تنفيذية صغيرة ومستقلة.",
-        "رسم العلاقات والحواجز (Blocking Edges) بوضوح لمعرفة الترتيب الصحيح.",
-        "تسهيل العمل الموازي بين المطورين والوكلاء البرمجيين."
-      ],
-      "use_cases_ar": [
-        "تحويل وثيقة متطلبات برمجية إلى تذاكر في GitHub أو Linear.",
-        "تخطيط إطلاق ميزة جديدة على مراحل قابلة للقياس.",
-        "تنظيم أولويات التطوير بأسلوب Tracer-bullet Development."
-      ],
-      "example_prompts_ar": [
-        "قسّم هذه الخطة المعمارية إلى مجموعة تذاكر تنفيذية متسلسلة مع تحديد التبعيات بينها."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/to-tickets",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Spec-to-Tickets Breakdown",
-      "summary_en": "Transform broad engineering specifications into concise, ready-to-execute Jira/Linear tickets.",
-      "benefits_en": [
-        "Generates self-contained tickets with clear acceptance criteria and test steps.",
-        "Enables parallel sprint execution across engineering teams."
-      ],
-      "use_cases_en": [
-        "Breaking technical specs into actionable sprint backlogs."
-      ],
-      "example_prompts_en": [
-        "Break down this architectural proposal into granular, linked execution tickets with clear dependency graphs."
-      ]
-    },
-    {
-      "id": "to-spec",
-      "name": "to-spec",
-      "title_ar": "صياغة وثائق المواصفات الفنية من سياق النقاش",
-      "summary_ar": "تحويل نقاش الأفكار والمحادثات المطولة إلى وثيقة مواصفات فنية (Technical Spec) متكاملة ونشرها مباشرة في متتبع قضايا المشروع.",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "استخلاص النقاط المتفق عليها وتلخيصها في مواصفة واضحة ومباشرة.",
-        "توفير ساعات من الكتابة اليدوية لوثائق المتطلبات التقنية.",
-        "ربط التوثيق بمتتبع قضايا المشروع تلقائيًا لتسهيل المتابعة."
-      ],
-      "use_cases_ar": [
-        "بلورة جلسات العصف الذهني في وثيقة متطلبات رسمية.",
-        "توثيق الاتفاقيات التقنية قبل الشروع في كتابة الكود.",
-        "تحديث وتطوير مواصفات المنتجات الرقمية."
-      ],
-      "example_prompts_ar": [
-        "حوّل كل ما ناقشناه حتى الآن إلى وثيقة مواصفات فنية دقيقة وانشرها في المتتبع."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/to-spec",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "PRD to Technical Specification",
-      "summary_en": "Convert high-level Product Requirement Documents (PRD) into rigorous engineering architecture specs.",
-      "benefits_en": [
-        "Bridges the gap between product managers and senior software architects.",
-        "Specifies exact data models, API endpoints, and failure fallback modes."
-      ],
-      "use_cases_en": [
-        "Translating product briefs into actionable engineering blueprints."
-      ],
-      "example_prompts_en": [
-        "Synthesize our architectural discussion into an authoritative technical specification ready for tracking."
-      ]
-    },
-    {
-      "id": "grill-me",
-      "name": "grill-me",
-      "title_ar": "المراجعة الاستقصائية الصارمة لاختبار الأفكار والخطط",
-      "summary_ar": "جلسة حوارية صارمة وغير مجاملة تطرح أسئلة جوهرية صعبة لصقل الخطط والأفكار البرمجية وكشف نقاط الضعف قبل الوقوع فيها.",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": true,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "إخضاع الفكرة لاختبار منطقي صارم يظهر مكامن الخلل.",
-        "إلزام المطور بالتفكير في حالات الفشل والافتراضات غير الواقعية.",
-        "صقل الحلول البرمجية لتقليل التعديلات باهظة الثمن لاحقًا."
-      ],
-      "use_cases_ar": [
-        "استعراض خطة مشروع جديد قبل عرضها على الفريق أو الإدارة.",
-        "اختبار قرارات التصميم وهيكلة قواعد البيانات.",
-        "التدرب على الإجابة عن التساؤلات المعمارية الصعبة."
-      ],
-      "example_prompts_ar": [
-        "استجوبني بلا رحمة حول هذه الخطة واطرح عليّ أصعب الأسئلة حتى تصبح الفكرة ناضجة تمامًا."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/productivity/grill-me",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Interactive Architecture Griller",
-      "summary_en": "Interrogate the developer with tough architectural questions to uncover blind spots before coding.",
-      "benefits_en": [
-        "Acts as a rigorous principal engineer challenging your design choices.",
-        "Identifies security flaws, scaling bottlenecks, and edge case gaps upfront."
-      ],
-      "use_cases_en": [
-        "Preparing for technical design reviews and validating complex plans."
-      ],
-      "example_prompts_en": [
-        "Grill me aggressively with hard questions regarding this design proposal until every edge case is addressed."
-      ]
-    },
-    {
-      "id": "setup-pre-commit",
-      "name": "setup-pre-commit",
-      "title_ar": "تهيئة خطافات Husky وفحص الأكواد قبل الاعتماد",
-      "summary_ar": "إعداد خطافات Git (Pre-commit Hooks) باستخدام Husky و lint-staged؛ التحقق التلقائي من تنسيق Prettier، وتدقيق الأنواع، وتشغيل الاختبارات.",
-      "category": "code-quality",
-      "difficulty": "beginner",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "منع وصول الكود المعطوب أو غير المنسق إلى مستودع المشروع.",
-        "تشغيل أدوات التدقيق فقط على الملفات المعدلة (Staged Files) لضمان السرعة.",
-        "توحيد بيئة العمل ومعايير الجودة بين أعضاء الفريق جميعهم تلقائيًا."
-      ],
-      "use_cases_ar": [
-        "تهيئة مشاريع TypeScript و JavaScript الجديدة بإعدادات فحص احترافية.",
-        "أتمتة تنسيق الكود والتحقق من الأنواع قبل كل commit.",
-        "تقليل مرات فشل اختبارات CI في السحابة."
-      ],
-      "example_prompts_ar": [
-        "جهّز Husky و lint-staged في هذا المشروع لفحص الأنواع والتنسيق تلقائيًا قبل كل commit."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/misc/setup-pre-commit",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/misc/setup-pre-commit"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Pre-Commit Hooks & Lint Guardrails",
-      "summary_en": "Configure Lefthook, Husky, ESLint, Prettier, and git hook scripts to enforce code hygiene on commit.",
-      "benefits_en": [
-        "Guarantees zero malformed or unformatted code gets committed.",
-        "Runs fast incremental linting and secret scanning in milliseconds."
-      ],
-      "use_cases_en": [
-        "Setting up team-wide git guardrails and automated formatting."
-      ],
-      "example_prompts_en": [
-        "Configure Husky and lint-staged in this repository to automate type checks and formatting on pre-commit."
-      ]
-    },
-    {
-      "id": "git-guardrails-claude-code",
-      "name": "git-guardrails-claude-code",
-      "title_ar": "حواجز حماية أوامر Git الخطرة لوكلاء الذكاء الاصطناعي",
-      "summary_ar": "حواجز أمان لـ Claude Code تمنع تنفيذ أوامر Git التدميرية (مثل push و reset --hard و clean و branch -D) لمنع فقدان البيانات.",
-      "category": "development",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": true,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "حماية الكود من قرارات الوكيل التدميرية أو التعديل القسري.",
-        "حظر رفع التغييرات إلى الفروع الرئيسية دون مراجعة بشرية.",
-        "توفير شبكة أمان تتيح إعطاء الوكلاء صلاحيات أوسع بثقة."
-      ],
-      "use_cases_ar": [
-        "تأمين بيئة عمل الوكيل عند إعطائه صلاحية تنفيذ أوامر الطرفية.",
-        "منع فقدان التغييرات غير المعتمدة بسبب أوامر الحذف أو التصفير العنيف.",
-        "تطبيق قواعد الحوكمة داخل فرق التطوير."
-      ],
-      "example_prompts_ar": [
-        "ثبّت حواجز الحماية لأوامر Git لمنع تنفيذ أي أمر تدميري مثل reset --hard أو force push."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/misc/git-guardrails-claude-code",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/misc/git-guardrails-claude-code"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Git Guardrails for Claude Code",
-      "summary_en": "Safety rules and branch protections to prevent autonomous AI agents from making destructive commits.",
-      "benefits_en": [
-        "Protects main branches from accidental force-pushes or unchecked changes.",
-        "Requires explicit user confirmation before committing sensitive configuration files."
-      ],
-      "use_cases_en": [
-        "Configuring safe autonomous agent coding sessions in local terminals."
-      ],
-      "example_prompts_en": [
-        "Install Git guardrails in our environment to block destructive commands like reset --hard and force push."
-      ]
-    },
-    {
-      "id": "writing-for-agents",
-      "name": "writing-for-agents",
-      "title_ar": "كتابة المستندات والتعليمات الموجهة لوكلاء الذكاء الاصطناعي",
-      "summary_ar": "منهجية صياغة المستندات القياسية لوكلاء الكود؛ كتابة ملفات AGENTS.md و CLAUDE.md والمهارات بوضوح يحسن دقة الوكيل ويقلل الهلوسة.",
-      "category": "communication",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "رفع دقة فهم الوكيل لسياق المشروع وتقليل التشتت.",
-        "تنظيم التعليمات بطريقة هرمية واضحة تمنع تجاوز القواعد.",
-        "بناء مهارات وملفات توجيهية فعالة قابلة لإعادة الاستخدام."
-      ],
-      "use_cases_ar": [
-        "كتابة أو تعديل ملفات CLAUDE.md أو AGENTS.md للمستودعات.",
-        "بناء مهارات جديدة موجهة للوكلاء البرمجيين.",
-        "تحسين كفاءة استهلاك نافذة السياق (Context Window)."
-      ],
-      "example_prompts_ar": [
-        "صُغ لي ملف AGENTS.md لهذا المستودع باتباع أفضل ممارسات الكتابة لـ AI Agents."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/productivity/writing-for-agents",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Writing Instructions for AI Agents",
-      "summary_en": "Author unambiguous, machine-parseable system prompts and markdown instructions for AI coding agents.",
-      "benefits_en": [
-        "Prevents AI agent loops, hallucinations, and misunderstood instructions.",
-        "Structures concise constraints and deterministic expected output formats."
-      ],
-      "use_cases_en": [
-        "Crafting AGENTS.md, instructions, and prompt templates for developer tools."
-      ],
-      "example_prompts_en": [
-        "Author a clear, concise AGENTS.md guide for this repository following agentic documentation best practices."
-      ]
-    },
-    {
-      "id": "codebase-design",
-      "name": "codebase-design",
-      "title_ar": "تصميم وبناء الوحدات البرمجية العميقة",
-      "summary_ar": "قاموس ومفاهيم مشتركة لتصميم وحدات كود عميقة ذات واجهات بسيطة؛ إخفاء التفاصيل المعقدة وراء واجهات سهلة الاستخدام والصيانة.",
-      "category": "development",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "تصميم واجهات برمجية نظيفة تخفي التعقيد الداخلي للوحدة.",
-        "تقليل التبعيات المتبادلة بين أجزاء النظام البرمجي.",
-        "رفع جودة الكود المعماري وسهولة قراءته وتطويره."
-      ],
-      "use_cases_ar": [
-        "تصميم مكتبات داخلية أو واجهات خدمات جديدة.",
-        "إعادة هيكلة الوحدات السطحية التي تكشف تفاصيلها الداخلية.",
-        "اتخاذ قرارات معمارية واضحة حول موضع المسؤوليات في الكود."
-      ],
-      "example_prompts_ar": [
-        "صمم واجهة برمجية عميقة لهذه الوحدة بحيث تخفي تفاصيل التنفيذ المعقدة بالكامل."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/codebase-design",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Modular Codebase Design Principles",
-      "summary_en": "Design scalable, decoupled codebases with clear dependency flow, ports & adapters, and clean interfaces.",
-      "benefits_en": [
-        "Makes codebases enjoyable and intuitive for new developers to navigate.",
-        "Enables independent unit testing by decoupling external IO from core domain logic."
-      ],
-      "use_cases_en": [
-        "Designing greenfield backend services and modernizing legacy code."
-      ],
-      "example_prompts_en": [
-        "Design a deep interface for this telemetry module that hides underlying queue and network complexities."
-      ]
-    },
-    {
-      "id": "mp-code-review",
-      "name": "code-review",
-      "title_ar": "المراجعة المعيارية الدقيقة لتغييرات الكود",
-      "summary_ar": "مراجعة التغييرات البرمجية منذ نقطة زمنية محددة وفق محورين: الالتزام بالمعايير التوثيقية للمستودع، والتحقق المنطقي من صحة الكود.",
-      "category": "code-quality",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 309147,
-      "benefits_ar": [
-        "فحص التغييرات البرمجية بموضوعية ودقة دون تفويت أي معيار موثق.",
-        "كشف التناقضات المنطقية وحالات الحافة التي قد تسبب أعطالًا.",
-        "تقديم ملاحظات بناءة ومباشرة تسهل دمج الكود بسرعة."
-      ],
-      "use_cases_ar": [
-        "مراجعة طلبات السحب (PRs) قبل الدمج النهائي.",
-        "فحص الكود الذي يكتبه المطورون أو AI Agents للتأكد من الالتزام بالمعايير.",
-        "تدقيق التغييرات المعمارية قبل الانتقال إلى مرحلة الاختبار."
-      ],
-      "example_prompts_ar": [
-        "راجع التغييرات التي قمت بها في هذا الفرع مقارنة بـ main وقدم تقرير مراجعة دقيق."
-      ],
-      "source": {
-        "owner": "mattpocock",
-        "repo": "skills",
-        "repo_url": "https://github.com/mattpocock/skills",
-        "path_in_repo": "skills/engineering/code-review",
-        "url_verified": true,
-        "url": "https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "TypeScript Code Review Master",
-      "summary_en": "Deep TypeScript review checking type-narrowing, inference safety, avoid `any`, and performance.",
-      "benefits_en": [
-        "Enforces strict TypeScript patterns that prevent runtime `undefined` crashes.",
-        "Optimizes generic type compilation performance in large codebases."
-      ],
-      "use_cases_en": [
-        "Reviewing complex TypeScript pull requests and library APIs."
-      ],
-      "example_prompts_en": [
-        "Review the diff between this feature branch and main, providing actionable feedback with line citations."
-      ]
-    },
-    {
-      "id": "ms-mcp-builder",
-      "name": "mcp-builder",
-      "title_ar": "بناء خوادم Model Context Protocol من Microsoft",
-      "summary_ar": "دليل Microsoft الرسمي لإنشاء خوادم MCP عالية الجودة؛ لتمكين نماذج اللغة من التفاعل مع الخدمات والأدوات الخارجية بأمان وكفاءة.",
-      "category": "meta",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 3163,
-      "benefits_ar": [
-        "بناء أدوات وخدمات تتصل بالذكاء الاصطناعي وفق بروتوكول MCP القياسي.",
-        "إدارة المخططات (Schemas) والمصادقة ومعالجة الأخطاء بأفضل الممارسات.",
-        "توفير تكامل سلس مع وكلاء GitHub Copilot و Claude و VS Code."
-      ],
-      "use_cases_ar": [
-        "ربط وكيل الذكاء الاصطناعي بقواعد بيانات أو واجهات برمجية خاصة.",
-        "بناء خادم MCP لمشاركة أدوات التطوير الداخلية في المؤسسة.",
-        "فحص واختبار خوادم MCP والتحقق من أمان أدواتها."
-      ],
-      "example_prompts_ar": [
-        "ابنِ خادم MCP متكامل بلغة TypeScript يتيح للوكيل استعلام بيانات واجهاتنا الخارجية."
-      ],
-      "source": {
-        "owner": "microsoft",
-        "repo": "skills",
-        "repo_url": "https://github.com/microsoft/skills",
-        "path_in_repo": ".github/skills/mcp-builder",
-        "url_verified": true,
-        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/mcp-builder"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Microsoft MCP Server Scaffold",
-      "summary_en": "Scaffold and deploy enterprise Model Context Protocol (MCP) servers with C# or TypeScript SDKs.",
-      "benefits_en": [
-        "Connects Copilot and autonomous agents to enterprise Microsoft services.",
-        "Implements standard security, authentication, and tool execution boundaries."
-      ],
-      "use_cases_en": [
-        "Building enterprise MCP servers for Microsoft Copilot and custom agents."
-      ],
-      "example_prompts_en": [
-        "Build a complete Model Context Protocol (MCP) server in TypeScript allowing AI agents to query our API."
-      ]
-    },
-    {
-      "id": "ms-skill-creator",
-      "name": "skill-creator",
-      "title_ar": "إنشاء مهارات الوكلاء الرسمية وفق معايير Microsoft",
-      "summary_ar": "دليل بناء وتطوير مهارات ذكية لوكلاء البرمجة للعمل مع خدمات Azure SDKs و Microsoft Foundry؛ هيكلة التوجيهات وضبط التوافق.",
-      "category": "meta",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 3163,
-      "benefits_ar": [
-        "إنشاء مهارات معيارية تتبع مواصفة SKILL.md المعتمدة رسميًا.",
-        "تضمين الأمثلة الواقعية وحالات الاستخدام لتقليل معدل الخطأ.",
-        "هيكلة التعليمات لتناسب بيئات VS Code و Copilot و Claude Code."
-      ],
-      "use_cases_ar": [
-        "كتابة مهارة جديدة لتوثيق إجراءات العمل داخل الفريق.",
-        "تحديث المهارات الحالية للتوافق مع أحدث إصدارات SDK.",
-        "نشر المهارات في مستودعات الوكلاء المؤسسية."
-      ],
-      "example_prompts_ar": [
-        "أنشئ مهارة SKILL.md معيارية تشرح للوكيل كيفية استخدام مكتبتنا السحابية."
-      ],
-      "source": {
-        "owner": "microsoft",
-        "repo": "skills",
-        "repo_url": "https://github.com/microsoft/skills",
-        "path_in_repo": ".github/skills/skill-creator",
-        "url_verified": true,
-        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/skill-creator"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Microsoft Copilot Skill Creator",
-      "summary_en": "Author and package declarative plugins and skills for Microsoft 365 Copilot and Copilot Studio.",
-      "benefits_en": [
-        "Packages skills with full OpenAPI specifications and declarative manifests.",
-        "Enables enterprise agents to trigger internal enterprise APIs securely."
-      ],
-      "use_cases_en": [
-        "Authoring skills for Microsoft 365 Copilot and enterprise ecosystems."
-      ],
-      "example_prompts_en": [
-        "Author a standard SKILL.md guide instructing AI agents how to consume our cloud client SDK safely."
-      ]
-    },
-    {
-      "id": "frontend-design-review",
-      "name": "frontend-design-review",
-      "title_ar": "المراجعة المعمارية لجودة واجهات المستخدم من Microsoft",
-      "summary_ar": "تقييم الواجهات الأمامية بالاعتماد على ثلاثة أركان أساسية: تقليل الاحتكاك (Friction)، ومعايير الجمال الجوهرية (Kernel Aesthetics)، والتعاطف مع المستخدم.",
-      "category": "design",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 3163,
-      "benefits_ar": [
-        "الارتقاء بجودة واجهات الويب لتصل لمستوى المنتجات العالمية الجاهزة للإنتاج.",
-        "اكتشاف نقاط الاحتكاك التي تعيق تجربة المستخدم وسلاسة التنقل.",
-        "ضمان الالتزام الصارم بأنظمة التصميم (Design Systems) والاتساق الجمالي."
-      ],
-      "use_cases_ar": [
-        "مراجعة شاشات وتطبيقات الويب قبل الإطلاق الرسمي.",
-        "تقييم التصميمات ومقارنتها بأفضل ممارسات الشركات الكبرى.",
-        "تحسين التناسق البصري ونماذج التفاعل في الواجهات المعقدة."
-      ],
-      "example_prompts_ar": [
-        "قيّم هذه الواجهة الأمامية وفق أركان مراجعة التصميم الثلاثة واقترح تحسينات ملموسة."
-      ],
-      "source": {
-        "owner": "microsoft",
-        "repo": "skills",
-        "repo_url": "https://github.com/microsoft/skills",
-        "path_in_repo": ".github/skills/frontend-design-review",
-        "url_verified": true,
-        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/frontend-design-review"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Microsoft Frontend Design Review",
-      "summary_en": "Review frontend UI against Fluent Design, WCAG 2.1 AA accessibility, contrast, and high DPI scaling.",
-      "benefits_en": [
-        "Verifies accessibility compliance for screen readers and keyboard navigation.",
-        "Aligns web applications with polished enterprise design standards."
-      ],
-      "use_cases_en": [
-        "Auditing enterprise web apps for accessibility and design consistency."
-      ],
-      "example_prompts_en": [
-        "Evaluate this frontend view against design pillars and recommend concrete aesthetic and ergonomic fixes."
-      ]
-    },
-    {
-      "id": "github-issue-creator",
-      "name": "github-issue-creator",
-      "title_ar": "توليد تقارير المشاكل الاحترافية لـ GitHub آليًا",
-      "summary_ar": "تحويل الملاحظات غير المرتبة، وسجلات الأخطاء، أو لقطات الشاشة إلى تقارير مشاكل (Issues) منسقة بدقة وجاهزة لحلها مباشرة.",
-      "category": "development",
-      "difficulty": "beginner",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 3163,
-      "benefits_ar": [
-        "تحويل سجلات الأخطاء الفوضوية إلى تذاكر منظمة تحتوي على خطوات إعادة الإنتاج.",
-        "استخدام قوالب Markdown المعتمدة لتسهيل فحص وتصحيح العطل.",
-        "توفير الوقت المهدور في صياغة البلاغات والتقارير الفنية."
-      ],
-      "use_cases_ar": [
-        "كتابة بلاغ عن عطل برمجي فور حدوثه في بيئة التطوير.",
-        "تحويل رسائل الخطأ من موجه الأوامر إلى تذاكر GitHub منسقة.",
-        "توثيق الملاحظات السريعة للمطورين كمهام قابلة للجدولة."
-      ],
-      "example_prompts_ar": [
-        "حوّل سجل هذا الخطأ إلى تقرير issue احترافي على GitHub مع خطوات إعادة الإنتاج."
-      ],
-      "source": {
-        "owner": "microsoft",
-        "repo": "skills",
-        "repo_url": "https://github.com/microsoft/skills",
-        "path_in_repo": ".github/skills/github-issue-creator",
-        "url_verified": true,
-        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/github-issue-creator"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Automated GitHub Issue Creator",
-      "summary_en": "Generate structured GitHub issues from bugs, logs, or feature specs with reproduction steps.",
-      "benefits_en": [
-        "Turns complex bug reports into actionable, standardized GitHub issues in seconds.",
-        "Automatically attaches environment details, stack traces, and labeled tags."
-      ],
-      "use_cases_en": [
-        "Automating issue generation from bug reports and customer feedback."
-      ],
-      "example_prompts_en": [
-        "Transform this error trace and environment context into a professional GitHub issue with reproduction steps."
-      ]
-    },
-    {
-      "id": "cloud-solution-architect",
-      "name": "cloud-solution-architect",
-      "title_ar": "استشارات مهندس الحلول السحابية وفق معايير Azure",
-      "summary_ar": "تحويل الوكيل إلى مهندس حلول سحابية خبير يتبع إرشادات Azure Architecture Center لتصميم أنظمة قابلة للتوسع وآمنة وعالية التوافر.",
-      "category": "cloud-security",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": true,
-      "github_stars": 3163,
-      "benefits_ar": [
-        "تصميم معمارية الأنظمة السحابية وفق أفضل الممارسات المعتمدة عالميًا.",
-        "مراجعة الأمان، والتوافر العالي، والتكرار الجغرافي (Disaster Recovery).",
-        "تحسين التكلفة والأداء وحساب الموارد المطلوبة بدقة."
-      ],
-      "use_cases_ar": [
-        "تصميم معمارية السحابة لمشروع ناشئ أو نظام مؤسسي كبير.",
-        "مراجعة مخططات البنية التحتية واكتشاف الثغرات المعمارية.",
-        "تخطيط الترحيل السحابي (Cloud Migration) للأنظمة القديمة."
-      ],
-      "example_prompts_ar": [
-        "تصرف كمهندس حلول سحابية واقترح معمارية آمنة وعالية التوافر لهذا التطبيق على السحابة."
-      ],
-      "source": {
-        "owner": "microsoft",
-        "repo": "skills",
-        "repo_url": "https://github.com/microsoft/skills",
-        "path_in_repo": ".github/skills/cloud-solution-architect",
-        "url_verified": true,
-        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/cloud-solution-architect"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Cloud Solution Architecture Pro",
-      "summary_en": "Architect resilient multi-region cloud infrastructures on Azure, AWS, and GCP with Well-Architected rules.",
-      "benefits_en": [
-        "Designs fault-tolerant cloud topologies with automated disaster recovery.",
-        "Optimizes cloud cost footprints while guaranteeing 99.99% availability."
-      ],
-      "use_cases_en": [
-        "Designing enterprise cloud architectures, Kubernetes clusters, and networks."
-      ],
-      "example_prompts_en": [
-        "Act as a Principal Cloud Architect to recommend a secure, high-availability AWS/GCP topology for this app."
-      ]
-    },
-    {
-      "id": "copilot-sdk",
-      "name": "copilot-sdk",
-      "title_ar": "بناء التطبيقات الذكية المعتمدة على Copilot SDK",
-      "summary_ar": "دليل تطوير التطبيقات والحلول المعتمدة على GitHub Copilot باستخدام حزمة Copilot SDK بلغات Node.js و TypeScript و Python و .NET.",
-      "category": "development",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 3163,
-      "benefits_ar": [
-        "دمج قدرات Copilot البرمجية مباشرة في تطبيقاتك الخاصة.",
-        "الاستفادة من النماذج المدربة والأدوات السياقية لحل المشاكل.",
-        "دعم لغات برمجية متعددة مع أمثلة عملية جاهزة للاستخدام."
-      ],
-      "use_cases_ar": [
-        "بناء وكلاء مخصصين ومساعدات برمجية لفرق العمل.",
-        "تطوير إضافات برمجية لأدوات التطوير وبيئات العمل.",
-        "أتمتة مهام الفحص وتوليد الكود عبر واجهات SDK."
-      ],
-      "example_prompts_ar": [
-        "اشرح كيفية استخدام Copilot SDK في Node.js لبناء وكيل ذكي يولد اختبارات آلية."
-      ],
-      "source": {
-        "owner": "microsoft",
-        "repo": "skills",
-        "repo_url": "https://github.com/microsoft/skills",
-        "path_in_repo": ".github/skills/copilot-sdk",
-        "url_verified": true,
-        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/copilot-sdk"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Microsoft Copilot SDK Integration",
-      "summary_en": "Integrate the Microsoft Copilot SDK into applications for embedded conversational AI experiences.",
-      "benefits_en": [
-        "Embeds intelligent assistant experiences directly into enterprise software.",
-        "Handles multi-turn conversations, context retrieval, and action dispatching."
-      ],
-      "use_cases_en": [
-        "Developing intelligent Copilot extensions and custom assistant UI."
-      ],
-      "example_prompts_en": [
-        "Explain how to utilize the GitHub Copilot SDK in Node.js to build an autonomous test-generation assistant."
-      ]
-    },
-    {
-      "id": "podcast-generation",
-      "name": "podcast-generation",
-      "title_ar": "توليد الحوارات الصوتية التفاعلية بأسلوب البودكاست",
-      "summary_ar": "إنشاء سرد صوتي حواري بأسلوب البودكاست عبر نماذج الصوت الفورية (GPT Realtime via WebSocket)؛ تحويل المقالات والمستندات لنقاشات مسموعة.",
-      "category": "data-ai",
-      "difficulty": "intermediate",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 3163,
-      "benefits_ar": [
-        "تحويل المحتوى النصي المعقد إلى حوارات صوتية تفاعلية جذابة وسلسة.",
-        "التوليد الفوري للصوت بمخارج واقعية ونبرات حوارية طبيعية.",
-        "دعم البث التدفقي (Audio Streaming) عبر تقنية WebSockets."
-      ],
-      "use_cases_ar": [
-        "توليد بودكاست تعليمي يومي يلخص أحدث الأخبار والمقالات التقنية.",
-        "إتاحة المحتوى النصي صوتيًا للأشخاص أثناء القيادة أو التنقل.",
-        "بناء تطبيقات التدريب والمحاكاة الحوارية التفاعلية."
-      ],
-      "example_prompts_ar": [
-        "حوّل هذه المقالة التقنية إلى نص بودكاست حواري شيق بين شخصين مع إرشادات التوليد الصوتي."
-      ],
-      "source": {
-        "owner": "microsoft",
-        "repo": "skills",
-        "repo_url": "https://github.com/microsoft/skills",
-        "path_in_repo": ".github/skills/podcast-generation",
-        "url_verified": true,
-        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/podcast-generation"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "AI Podcast Script & Audio Generator",
-      "summary_en": "Transform articles and research papers into lively conversational podcast scripts with audio generation cues.",
-      "benefits_en": [
-        "Generates engaging multi-speaker dialogues that sound natural and conversational.",
-        "Includes accurate voice tone, pause markers, and sound effect annotations."
-      ],
-      "use_cases_en": [
-        "Converting blog posts, whitepapers, and news digests into audio podcasts."
-      ],
-      "example_prompts_en": [
-        "Adapt this engineering whitepaper into an engaging two-host dialogue script optimized for audio synthesis."
-      ]
-    },
-    {
-      "id": "kql",
-      "name": "kql",
-      "title_ar": "استعلام وتحليل البيانات المتقدم بلغة Kusto (KQL)",
-      "summary_ar": "دليل كتابة استعلامات KQL المتقدمة للبحث في السجلات والبيانات الضخمة؛ تحسين أداء استعلامات Azure Monitor و Log Analytics و Sentinel.",
-      "category": "data-ai",
-      "difficulty": "advanced",
-      "license": {
-        "type": "MIT",
-        "status": "open",
-        "copy_file_allowed": false
-      },
-      "kind": "skill",
-      "featured": false,
-      "github_stars": 3163,
-      "benefits_ar": [
-        "كتابة استعلامات سريعة لتحليل مليارات السجلات والبيانات في ثوانٍ.",
-        "تجنب الفخاخ الشائعة في معالجة التواريخ والبيانات الديناميكية (Dynamic Types).",
-        "تحسين استعلامات الأمان والمراقبة السحابية لتقليل تكلفة الاستعلام."
-      ],
-      "use_cases_ar": [
-        "التحقيق في الحوادث الأمنية والتهديدات في Microsoft Sentinel.",
-        "تحليل سجلات أخطاء التطبيقات في Azure Log Analytics.",
-        "بناء لوحات مؤشرات لمراقبة أداء الخوادم وقواعد البيانات."
-      ],
-      "example_prompts_ar": [
-        "اكتب استعلام KQL فعّالًا يبحث في سجلات الأخطاء خلال آخر 24 ساعة ويصنفها حسب التكرار."
-      ],
-      "source": {
-        "owner": "microsoft",
-        "repo": "skills",
-        "repo_url": "https://github.com/microsoft/skills",
-        "path_in_repo": ".github/skills/kql",
-        "url_verified": true,
-        "url": "https://github.com/microsoft/skills/tree/main/.github/skills/kql"
-      },
-      "tool_compatibility": {
-        "claude_code": true,
-        "antigravity": true,
-        "cursor": true,
-        "gemini_cli": true,
-        "copilot": true,
-        "codex_cli": true,
-        "windsurf": true,
-        "roo_code": true
-      },
-      "content_verified": true,
-      "reviewed_by": "Sayed Gamea",
-      "reviewed_on": "2026-11-02",
-      "repo_type": "skills",
-      "title_en": "Kusto Query Language (KQL) Master",
-      "summary_en": "Author high-performance KQL queries for Azure Data Explorer, Log Analytics, and Microsoft Sentinel.",
-      "benefits_en": [
-        "Searches through petabytes of log data in seconds with optimized aggregations.",
-        "Builds security threat hunting queries and performance monitoring dashboards."
-      ],
-      "use_cases_en": [
-        "Security threat hunting in Sentinel and log analysis in Azure Monitor."
-      ],
-      "example_prompts_en": [
-        "Write an efficient Kusto Query Language (KQL) query to aggregate error events over the last 24 hours by frequency."
       ]
     }
   ],

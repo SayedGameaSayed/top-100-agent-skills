@@ -1386,20 +1386,20 @@ function appendAssistantResponse({ reply, recommendedSkills = [], specialistBadg
 }
 
 const LOCAL_SYNONYM_RULES = [
-  { re: /bug|debug|error|trace|crash|خطا|عطل|اصلاح|تصحيح/i, ids: ['systematic-debugging', 'mp-diagnosing-bugs', 'debugging-error-recovery'] },
+  { re: /bug|debug|error|trace|crash|audit|خطا|عطل|اصلاح|تصحيح|فحص/i, ids: ['systematic-debugging', 'mp-diagnosing-bugs', 'debugging-error-recovery', 'ponytail-audit'] },
   { re: /test|tdd|pytest|jest|playwright|اختبار|فحص/i, ids: ['test-driven-development', 'mp-tdd', 'webapp-testing', 'python-pytest-suite', 'react-testing-library'] },
-  { re: /plan|spec|ticket|خطة|تخطيط|مواصفات/i, ids: ['obra-writing-plans', 'spec-driven-development', 'to-spec', 'planning-and-task-breakdown'] },
-  { re: /agent|subagent|mcp|llm|rag|ai|وكيل|ذكاء|معمارية/i, ids: ['subagent-driven-development', 'dispatching-parallel-agents', 'mcp-builder', 'context-engineering', 'eval-harness'] },
-  { re: /readme|doc|كتابة|توثيق|مستند/i, ids: ['doc-coauthoring', 'writing-for-agents', 'writing-guidelines', 'grill-with-docs'] },
-  { re: /react|next|ui|frontend|design|واجهة|تصميم/i, ids: ['frontend-design', 'frontend-ui-engineering', 'react-best-practices', 'composition-patterns', 'responsive-design'] },
+  { re: /plan|spec|ticket|diagram|architecture|خطة|تخطيط|مواصفات|مخطط|معمارية/i, ids: ['obra-writing-plans', 'spec-driven-development', 'to-spec', 'planning-and-task-breakdown', 'diagram-design', 'understand-explain'] },
+  { re: /agent|subagent|mcp|llm|rag|ai|token|cost|memory|وكيل|ذكاء|معمارية|توكن|ذاكرة/i, ids: ['subagent-driven-development', 'dispatching-parallel-agents', 'mcp-builder', 'context-engineering', 'caveman', 'mem-search', 'eval-harness'] },
+  { re: /readme|doc|كتابة|توثيق|مستند/i, ids: ['doc-coauthoring', 'writing-for-agents', 'writing-guidelines', 'grill-with-docs', 'understand-explain'] },
+  { re: /react|next|ui|frontend|design|واجهة|تصميم/i, ids: ['frontend-design', 'frontend-ui-engineering', 'taste-skill', 'impeccable', 'react-best-practices', 'composition-patterns', 'responsive-design'] },
   { re: /python|fastapi|django|prisma|rust|redis|api|backend|خادم/i, ids: ['fastapi-patterns', 'prisma-patterns', 'rust-patterns', 'redis-patterns', 'api-and-interface-design'] },
-  { re: /security|review|امان|حماية|مراجعة/i, ids: ['security-review-checklist', 'code-review-quality', 'mp-code-review', 'django-security'] },
-  { re: /deploy|vercel|cloud|git|worktree|نشر|سحابة/i, ids: ['deploy-to-vercel', 'shipping-and-launch', 'using-git-worktrees', 'cloud-solution-architect'] },
+  { re: /security|review|امان|حماية|مراجعة/i, ids: ['security-review-checklist', 'code-review-quality', 'mp-code-review', 'ponytail-audit', 'django-security'] },
+  { re: /deploy|vercel|cloud|git|worktree|نشر|سحابة/i, ids: ['deploy-to-vercel', 'shipping-and-launch', 'using-git-worktrees', 'ponytail-audit'] },
   { re: /word|docx|وورد|ورد/i, ids: ['docx'] },
   { re: /excel|xlsx|اكسل|جدول|جداول/i, ids: ['xlsx'] },
   { re: /pdf|بي دي اف/i, ids: ['pdf'] },
-  { re: /powerpoint|pptx|عرض|عروض|شرائح/i, ids: ['pptx'] },
-  { re: /research|paper|academic|بحث|علمي|دراسة/i, ids: ['deep-research', 'sr-screener', 'academic-paper-writer'] }
+  { re: /powerpoint|pptx|عرض|عروض|شرائح/i, ids: ['pptx', 'diagram-design'] },
+  { re: /research|paper|academic|reddit|trend|بحث|علمي|دراسة/i, ids: ['deep-research', 'last30days', 'sr-screener', 'academic-paper-writer'] }
 ];
 
 /**

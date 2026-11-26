@@ -1,6 +1,7 @@
 {
   "name": "top-100-agent-skills",
-  "version": "1.2.0",
+  "mcpName": "io.github.SayedGameaSayed/top-100-agent-skills",
+  "version": "1.2.1",
   "description": "Curated directory, daily GitHub star leaderboard, and local-first MCP server for the Top 100 open-source AI Agent Skills (English & Arabic).",
   "type": "module",
   "main": "server.js",

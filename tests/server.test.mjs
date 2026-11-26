@@ -261,7 +261,20 @@ async function runTests() {
     assert(!JSON.stringify(errHandlerRes.body).includes('SECRET_INTERNAL_TRACE'));
     console.log('  PASS: Serverless api/advisor.js enforces CORS, 400 JSON/length validation, and sanitizes internal errors');
 
-    console.log('\nAll 14 Full-Stack & Security Server tests PASSED! 🚀\n');
+    // 15. Serverless /api/health endpoint verification (api/health.js)
+    const { default: serverlessHealth } = await import('../api/health.js');
+    const healthHandlerRes = createMockRes();
+    serverlessHealth({ method: 'GET' }, healthHandlerRes);
+    assert.strictEqual(healthHandlerRes.statusCode, 200);
+    assert.strictEqual(healthHandlerRes.body.status, 'ok');
+    assert.strictEqual(healthHandlerRes.body.skills_count, expectedSkillsCount);
+    assert(typeof healthHandlerRes.body.configured_providers.groq === 'boolean');
+    const badHealthMethodRes = createMockRes();
+    serverlessHealth({ method: 'POST' }, badHealthMethodRes);
+    assert.strictEqual(badHealthMethodRes.statusCode, 405);
+    console.log('  PASS: Serverless api/health.js reports safe status and provider flags without secrets');
+
+    console.log('\nAll 15 Full-Stack & Security Server tests PASSED! 🚀\n');
   } finally {
     serverProc.kill();
   }

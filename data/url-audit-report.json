@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T23:19:23.664Z",
+  "generated_at": "2026-11-26T01:29:07.100Z",
   "total_audited": 100,
   "passed_count": 100,
   "failed_count": 0,
@@ -100,6 +100,159 @@
       "repo": "obra/superpowers",
       "path": "skills/brainstorming",
       "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/brainstorming/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "finishing-development-branch",
+      "name": "finishing-a-development-branch",
+      "repo": "obra/superpowers",
+      "path": "skills/finishing-a-development-branch",
+      "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/finishing-a-development-branch/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "using-superpowers",
+      "name": "using-superpowers",
+      "repo": "obra/superpowers",
+      "path": "skills/using-superpowers",
+      "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/using-superpowers/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "diagnosing-superpowers",
+      "name": "diagnosing-superpowers",
+      "repo": "obra/superpowers",
+      "path": "skills/diagnosing-superpowers",
+      "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/diagnosing-superpowers/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "writing-skills",
+      "name": "writing-skills",
+      "repo": "obra/superpowers",
+      "path": "skills/writing-skills",
+      "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/writing-skills/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "mp-diagnosing-bugs",
+      "name": "diagnosing-bugs",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/diagnosing-bugs",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/diagnosing-bugs/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "grill-with-docs",
+      "name": "grill-with-docs",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/grill-with-docs",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/grill-with-docs/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "triage",
+      "name": "triage",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/triage",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/triage/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "improve-codebase-architecture",
+      "name": "improve-codebase-architecture",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/improve-codebase-architecture",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/improve-codebase-architecture/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "mp-tdd",
+      "name": "tdd",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/tdd",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/tdd/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "to-tickets",
+      "name": "to-tickets",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/to-tickets",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/to-tickets/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "to-spec",
+      "name": "to-spec",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/to-spec",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/to-spec/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "grill-me",
+      "name": "grill-me",
+      "repo": "mattpocock/skills",
+      "path": "skills/productivity/grill-me",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grill-me/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "setup-pre-commit",
+      "name": "setup-pre-commit",
+      "repo": "mattpocock/skills",
+      "path": "skills/misc/setup-pre-commit",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/misc/setup-pre-commit/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "git-guardrails-claude-code",
+      "name": "git-guardrails-claude-code",
+      "repo": "mattpocock/skills",
+      "path": "skills/misc/git-guardrails-claude-code",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/misc/git-guardrails-claude-code/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "writing-for-agents",
+      "name": "writing-for-agents",
+      "repo": "mattpocock/skills",
+      "path": "skills/productivity/writing-for-agents",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/writing-for-agents/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "codebase-design",
+      "name": "codebase-design",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/codebase-design",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/codebase-design/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "mp-code-review",
+      "name": "code-review",
+      "repo": "mattpocock/skills",
+      "path": "skills/engineering/code-review",
+      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/code-review/SKILL.md",
       "status": 200,
       "ok": true
     },
@@ -235,6 +388,15 @@
       "repo": "affaan-m/ECC",
       "path": "skills/eval-harness",
       "checkedUrl": "https://raw.githubusercontent.com/affaan-m/ECC/main/skills/eval-harness/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "ponytail-audit",
+      "name": "ponytail-audit",
+      "repo": "DietrichGebert/ponytail",
+      "path": ".openclaw/skills/ponytail-audit",
+      "checkedUrl": "https://raw.githubusercontent.com/DietrichGebert/ponytail/main/.openclaw/skills/ponytail-audit/SKILL.md",
       "status": 200,
       "ok": true
     },
@@ -392,74 +554,38 @@
       "ok": true
     },
     {
-      "id": "deep-research",
-      "name": "deep-research",
-      "repo": "Imbad0202/academic-research-skills",
-      "path": "deep-research",
-      "checkedUrl": "https://raw.githubusercontent.com/Imbad0202/academic-research-skills/main/deep-research/SKILL.md",
+      "id": "caveman",
+      "name": "caveman",
+      "repo": "JuliusBrussee/caveman",
+      "path": "plugins/caveman/skills/caveman",
+      "checkedUrl": "https://raw.githubusercontent.com/JuliusBrussee/caveman/main/plugins/caveman/skills/caveman/SKILL.md",
       "status": 200,
       "ok": true
     },
     {
-      "id": "sr-screener",
-      "name": "sr-screener",
-      "repo": "Imbad0202/academic-research-skills",
-      "path": "sr-screener",
-      "checkedUrl": "https://raw.githubusercontent.com/Imbad0202/academic-research-skills/main/sr-screener/SKILL.md",
+      "id": "taste-skill",
+      "name": "design-taste-frontend",
+      "repo": "Leonxlnx/taste-skill",
+      "path": "skills/taste-skill",
+      "checkedUrl": "https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md",
       "status": 200,
       "ok": true
     },
     {
-      "id": "academic-paper-writer",
-      "name": "academic-paper-writer",
-      "repo": "Imbad0202/academic-research-skills",
-      "path": "academic-paper",
-      "checkedUrl": "https://raw.githubusercontent.com/Imbad0202/academic-research-skills/main/academic-paper/SKILL.md",
+      "id": "mem-search",
+      "name": "mem-search",
+      "repo": "thedotmack/claude-mem",
+      "path": "claude-mem-cursor/skills/mem-search",
+      "checkedUrl": "https://raw.githubusercontent.com/thedotmack/claude-mem/main/claude-mem-cursor/skills/mem-search/SKILL.md",
       "status": 200,
       "ok": true
     },
     {
-      "id": "responsive-design",
-      "name": "responsive-design",
-      "repo": "wshobson/agents",
-      "path": "plugins/ui-design/skills/responsive-design",
-      "checkedUrl": "https://raw.githubusercontent.com/wshobson/agents/main/plugins/ui-design/skills/responsive-design/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "finishing-development-branch",
-      "name": "finishing-a-development-branch",
-      "repo": "obra/superpowers",
-      "path": "skills/finishing-a-development-branch",
-      "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/finishing-a-development-branch/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "using-superpowers",
-      "name": "using-superpowers",
-      "repo": "obra/superpowers",
-      "path": "skills/using-superpowers",
-      "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/using-superpowers/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "diagnosing-superpowers",
-      "name": "diagnosing-superpowers",
-      "repo": "obra/superpowers",
-      "path": "skills/diagnosing-superpowers",
-      "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/diagnosing-superpowers/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "writing-skills",
-      "name": "writing-skills",
-      "repo": "obra/superpowers",
-      "path": "skills/writing-skills",
-      "checkedUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/writing-skills/SKILL.md",
+      "id": "impeccable",
+      "name": "impeccable",
+      "repo": "pbakaus/impeccable",
+      "path": ".claude/skills/impeccable",
+      "checkedUrl": "https://raw.githubusercontent.com/pbakaus/impeccable/main/.claude/skills/impeccable/SKILL.md",
       "status": 200,
       "ok": true
     },
@@ -635,6 +761,69 @@
       "ok": true
     },
     {
+      "id": "understand-explain",
+      "name": "understand-explain",
+      "repo": "Egonex-AI/Understand-Anything",
+      "path": "understand-anything-plugin/skills/understand-explain",
+      "checkedUrl": "https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/understand-anything-plugin/skills/understand-explain/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "last30days",
+      "name": "last30days",
+      "repo": "mvanhorn/last30days-skill",
+      "path": "skills/last30days",
+      "checkedUrl": "https://raw.githubusercontent.com/mvanhorn/last30days-skill/main/skills/last30days/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "diagram-design",
+      "name": "diagram-design",
+      "repo": "cathrynlavery/diagram-design",
+      "path": "skills/diagram-design",
+      "checkedUrl": "https://raw.githubusercontent.com/cathrynlavery/diagram-design/main/skills/diagram-design/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "deep-research",
+      "name": "deep-research",
+      "repo": "Imbad0202/academic-research-skills",
+      "path": "deep-research",
+      "checkedUrl": "https://raw.githubusercontent.com/Imbad0202/academic-research-skills/main/deep-research/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "sr-screener",
+      "name": "sr-screener",
+      "repo": "Imbad0202/academic-research-skills",
+      "path": "sr-screener",
+      "checkedUrl": "https://raw.githubusercontent.com/Imbad0202/academic-research-skills/main/sr-screener/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "academic-paper-writer",
+      "name": "academic-paper-writer",
+      "repo": "Imbad0202/academic-research-skills",
+      "path": "academic-paper",
+      "checkedUrl": "https://raw.githubusercontent.com/Imbad0202/academic-research-skills/main/academic-paper/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "id": "responsive-design",
+      "name": "responsive-design",
+      "repo": "wshobson/agents",
+      "path": "plugins/ui-design/skills/responsive-design",
+      "checkedUrl": "https://raw.githubusercontent.com/wshobson/agents/main/plugins/ui-design/skills/responsive-design/SKILL.md",
+      "status": 200,
+      "ok": true
+    },
+    {
       "id": "composition-patterns",
       "name": "composition-patterns",
       "repo": "vercel-labs/agent-skills",
@@ -712,195 +901,6 @@
       "repo": "vercel-labs/agent-skills",
       "path": "skills/writing-guidelines",
       "checkedUrl": "https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills/writing-guidelines/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "mp-diagnosing-bugs",
-      "name": "diagnosing-bugs",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/diagnosing-bugs",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/diagnosing-bugs/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "grill-with-docs",
-      "name": "grill-with-docs",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/grill-with-docs",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/grill-with-docs/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "triage",
-      "name": "triage",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/triage",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/triage/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "improve-codebase-architecture",
-      "name": "improve-codebase-architecture",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/improve-codebase-architecture",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/improve-codebase-architecture/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "mp-tdd",
-      "name": "tdd",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/tdd",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/tdd/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "to-tickets",
-      "name": "to-tickets",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/to-tickets",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/to-tickets/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "to-spec",
-      "name": "to-spec",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/to-spec",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/to-spec/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "grill-me",
-      "name": "grill-me",
-      "repo": "mattpocock/skills",
-      "path": "skills/productivity/grill-me",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grill-me/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "setup-pre-commit",
-      "name": "setup-pre-commit",
-      "repo": "mattpocock/skills",
-      "path": "skills/misc/setup-pre-commit",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/misc/setup-pre-commit/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "git-guardrails-claude-code",
-      "name": "git-guardrails-claude-code",
-      "repo": "mattpocock/skills",
-      "path": "skills/misc/git-guardrails-claude-code",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/misc/git-guardrails-claude-code/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "writing-for-agents",
-      "name": "writing-for-agents",
-      "repo": "mattpocock/skills",
-      "path": "skills/productivity/writing-for-agents",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/writing-for-agents/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "codebase-design",
-      "name": "codebase-design",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/codebase-design",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/codebase-design/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "mp-code-review",
-      "name": "code-review",
-      "repo": "mattpocock/skills",
-      "path": "skills/engineering/code-review",
-      "checkedUrl": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/code-review/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "ms-mcp-builder",
-      "name": "mcp-builder",
-      "repo": "microsoft/skills",
-      "path": ".github/skills/mcp-builder",
-      "checkedUrl": "https://raw.githubusercontent.com/microsoft/skills/main/.github/skills/mcp-builder/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "ms-skill-creator",
-      "name": "skill-creator",
-      "repo": "microsoft/skills",
-      "path": ".github/skills/skill-creator",
-      "checkedUrl": "https://raw.githubusercontent.com/microsoft/skills/main/.github/skills/skill-creator/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "frontend-design-review",
-      "name": "frontend-design-review",
-      "repo": "microsoft/skills",
-      "path": ".github/skills/frontend-design-review",
-      "checkedUrl": "https://raw.githubusercontent.com/microsoft/skills/main/.github/skills/frontend-design-review/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "github-issue-creator",
-      "name": "github-issue-creator",
-      "repo": "microsoft/skills",
-      "path": ".github/skills/github-issue-creator",
-      "checkedUrl": "https://raw.githubusercontent.com/microsoft/skills/main/.github/skills/github-issue-creator/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "cloud-solution-architect",
-      "name": "cloud-solution-architect",
-      "repo": "microsoft/skills",
-      "path": ".github/skills/cloud-solution-architect",
-      "checkedUrl": "https://raw.githubusercontent.com/microsoft/skills/main/.github/skills/cloud-solution-architect/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "copilot-sdk",
-      "name": "copilot-sdk",
-      "repo": "microsoft/skills",
-      "path": ".github/skills/copilot-sdk",
-      "checkedUrl": "https://raw.githubusercontent.com/microsoft/skills/main/.github/skills/copilot-sdk/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "podcast-generation",
-      "name": "podcast-generation",
-      "repo": "microsoft/skills",
-      "path": ".github/skills/podcast-generation",
-      "checkedUrl": "https://raw.githubusercontent.com/microsoft/skills/main/.github/skills/podcast-generation/SKILL.md",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "id": "kql",
-      "name": "kql",
-      "repo": "microsoft/skills",
-      "path": ".github/skills/kql",
-      "checkedUrl": "https://raw.githubusercontent.com/microsoft/skills/main/.github/skills/kql/SKILL.md",
       "status": 200,
       "ok": true
     }

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.SayedGameaSayed/top-100-agent-skills",
+  "title": "Top 100 AI Agent Skills",
+  "description": "Local-first MCP server providing search, leaderboard rankings, and verified prompt discovery across 100 open-source AI Agent Skills (English & Arabic).",
+  "repository": {
+    "url": "https://github.com/SayedGameaSayed/top-100-agent-skills",
+    "source": "github"
+  },
+  "version": "1.2.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "top-100-agent-skills",
+      "version": "1.2.1",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
